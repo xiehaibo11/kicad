@@ -500,6 +500,15 @@ TOOL_MANAGER* PCBNEW_JOBS_HANDLER::getToolManager( BOARD* aBrd )
 
 BOARD* PCBNEW_JOBS_HANDLER::getBoard( const wxString& aPath )
 {
+    // Prefer the live document bound by an API session.  In headless mode the in-memory board
+    // may differ from the last saved copy on disk, and reloading it here would silently hide
+    // API-created edits from DRC and export jobs.
+    if( m_currentJob && m_currentJob->GetDocumentKind() == JOB_DOCUMENT_KIND::BOARD
+        && m_currentJob->GetDocument() )
+    {
+        return static_cast<BOARD*>( m_currentJob->GetDocument() );
+    }
+
     BOARD*            brd = nullptr;
     SETTINGS_MANAGER& settingsManager = Pgm().GetSettingsManager();
     wxString loadError;

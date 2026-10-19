@@ -208,6 +208,15 @@ void EESCHEMA_JOBS_HANDLER::ClearCachedSchematic()
 
 SCHEMATIC* EESCHEMA_JOBS_HANDLER::getSchematic( const wxString& aPath )
 {
+    // Prefer the live document bound by an API session.  In headless mode the in-memory
+    // schematic may differ from the last saved copy on disk, and reloading it here would
+    // silently hide API-created edits from ERC and export jobs.
+    if( m_currentJob && m_currentJob->GetDocumentKind() == JOB_DOCUMENT_KIND::SCHEMATIC
+        && m_currentJob->GetDocument() )
+    {
+        return static_cast<SCHEMATIC*>( m_currentJob->GetDocument() );
+    }
+
     SCHEMATIC* sch = nullptr;
 
     if( !Pgm().IsGUI() && Pgm().GetSettingsManager().IsProjectOpenNotDummy() )

@@ -19,9 +19,11 @@
  */
 
 #include <magic_enum.hpp>
+#include <chrono>
 #include <memory>
 #include <properties/property.h>
 
+#include <cli/exit_codes.h>
 #include <common.h>
 #include <fmt.h>
 #include <api/api_handler_pcb.h>
@@ -2176,6 +2178,13 @@ std::optional<ApiResponseStatus> ApplyBoardPlotSettings( const BoardPlotSettings
 }
 
 
+static void applyJobOptions( JOB& aJob, const kiapi::common::types::RunJobSettings& aSettings )
+{
+    if( aSettings.has_options() )
+        aJob.SetTimeoutMs( aSettings.options().timeout_ms() );
+}
+
+
 HANDLER_RESULT<types::RunJobResponse> ExecuteBoardJob( PCB_CONTEXT* aContext, JOB& aJob )
 {
     types::RunJobResponse response;
@@ -2189,21 +2198,48 @@ HANDLER_RESULT<types::RunJobResponse> ExecuteBoardJob( PCB_CONTEXT* aContext, JO
         return response;
     }
 
-    int exitCode = aContext->GetKiway()->ProcessJob( KIWAY::FACE_PCB, &aJob, &reporter );
+    // Bind the live in-memory board so the job sees API-created edits without a save/reload.
+    aJob.SetDocumentContext( JOB_DOCUMENT_KIND::BOARD, aContext->GetBoard() );
+
+    KIID jobId;
+    response.set_job_id( jobId.AsString().ToStdString() );
+
+    auto start = std::chrono::steady_clock::now();
+    int  exitCode = aContext->GetKiway()->ProcessJob( KIWAY::FACE_PCB, &aJob, &reporter );
+    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::steady_clock::now() - start );
+    response.set_elapsed_ms( elapsed.count() );
 
     for( const JOB_OUTPUT& output : aJob.GetOutputs() )
         response.add_output_path( output.m_outputPath.ToUTF8() );
 
-    if( exitCode == 0 )
+    if( exitCode == CLI::EXIT_CODES::SUCCESS )
     {
         response.set_status( types::JobStatus::JS_SUCCESS );
         return response;
     }
 
-    response.set_status( types::JobStatus::JS_ERROR );
-    response.set_message( fmt::format( "Board export job '{}' failed with exit code {}: {}",
+    types::JobStatus status = types::JobStatus::JS_ERROR;
+
+    if( exitCode == CLI::EXIT_CODES::ERR_TIMEOUT )
+        status = types::JobStatus::JS_TIMEOUT;
+    else if( exitCode == CLI::EXIT_CODES::ERR_CANCELLED )
+        status = types::JobStatus::JS_CANCELLED;
+
+    response.set_status( status );
+
+    std::string message = fmt::format( "Board job '{}' failed with exit code {}: {}",
                                        aJob.GetType(), exitCode,
-                                       reporter.GetMessages().ToStdString() ) );
+                                       reporter.GetMessages().ToStdString() );
+    response.set_message( message );
+
+    types::JobDiagnostic* diag = response.add_diagnostics();
+    diag->set_severity( types::JobDiagnostic::DS_ERROR );
+    diag->set_code( status == types::JobStatus::JS_TIMEOUT     ? "JOB_TIMEOUT"
+                    : status == types::JobStatus::JS_CANCELLED ? "JOB_CANCELLED"
+                                                               : "JOB_FAILED" );
+    diag->set_message( message );
+
     return response;
 }
 
@@ -2263,6 +2299,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExport3D
     job.m_vrmlModelDir = wxString::FromUTF8( aCtx.Request.vrml_model_dir() );
     job.m_vrmlRelativePaths = aCtx.Request.vrml_relative_paths();
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2311,6 +2348,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportRe
     job.m_lightSideIntensity = UnpackVector3D( aCtx.Request.light_side_intensity() );
     job.m_lightSideElevation = aCtx.Request.light_side_elevation();
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2345,6 +2383,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportSv
 
     job.m_genMode = FromProtoEnum<JOB_EXPORT_PCB_SVG::GEN_MODE>( aCtx.Request.page_mode() );
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2387,6 +2426,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportDx
 
     job.m_genMode = FromProtoEnum<JOB_EXPORT_PCB_DXF::GEN_MODE>( aCtx.Request.page_mode() );
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2417,6 +2457,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportPd
 
     job.m_pdfGenMode = FromProtoEnum<JOB_EXPORT_PCB_PDF::GEN_MODE>( aCtx.Request.page_mode() );
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2454,6 +2495,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportPs
     job.m_forceA4 = aCtx.Request.force_a4();
     job.m_useGlobalSettings = aCtx.Request.use_global_settings();
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2494,6 +2536,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportGe
     case GerberPrecision::GP_6: job.m_precision = 6; break;
     }
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2561,6 +2604,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportDr
             job.m_reportPath = wxString::FromUTF8( aCtx.Request.report_filename() );
     }
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2606,6 +2650,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportPo
     job.m_units = FromProtoEnum<JOB_EXPORT_PCB_POS::UNITS>( aCtx.Request.units() );
     job.m_format = FromProtoEnum<JOB_EXPORT_PCB_POS::FORMAT>( aCtx.Request.format() );
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2631,6 +2676,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportGe
     job.m_useDrillOrigin = aCtx.Request.use_drill_origin();
     job.m_useUniquePins = aCtx.Request.use_unique_pins();
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2672,6 +2718,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportIp
     job.m_units = FromProtoEnum<JOB_EXPORT_PCB_IPC2581::IPC2581_UNITS>( aCtx.Request.units() );
     job.m_version = FromProtoEnum<JOB_EXPORT_PCB_IPC2581::IPC2581_VERSION>( aCtx.Request.version() );
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2691,6 +2738,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportIp
     job.m_filename = pcbContext()->GetCurrentFileName();
     job.SetConfiguredOutputPath( wxString::FromUTF8( aCtx.Request.job_settings().output_path() ) );
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2724,6 +2772,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportOD
     job.m_units = FromProtoEnum<JOB_EXPORT_PCB_ODB::ODB_UNITS>( aCtx.Request.units() );
     job.m_compressionMode = FromProtoEnum<JOB_EXPORT_PCB_ODB::ODB_COMPRESSION>( aCtx.Request.compression() );
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 
@@ -2757,6 +2806,7 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_PCB::handleRunBoardJobExportSt
     job.m_subtractHolesFromBoardArea = aCtx.Request.subtract_holes_from_board_area();
     job.m_subtractHolesFromCopperAreas = aCtx.Request.subtract_holes_from_copper_areas();
 
+    applyJobOptions( job, aCtx.Request.job_settings() );
     return ExecuteBoardJob( pcbContext(), job );
 }
 

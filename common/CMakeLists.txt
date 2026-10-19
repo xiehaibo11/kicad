@@ -147,6 +147,7 @@ set( KICOMMON_SRCS
     # Jobs
     jobs/job.cpp
     jobs/job_dispatcher.cpp
+    jobs/job_progress_reporter.cpp
     jobs/job_registry.cpp
     jobs/jobs_output_archive.cpp
     jobs/jobs_output_folder.cpp

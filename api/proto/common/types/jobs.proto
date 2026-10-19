@@ -29,6 +29,40 @@ enum JobStatus
     JS_SUCCESS = 1;
     JS_WARNING = 2;
     JS_ERROR = 3;
+    JS_CANCELLED = 4;
+    JS_TIMEOUT = 5;
+}
+
+// Common execution options for jobs.
+message JobOptions
+{
+    // Cooperative deadline in milliseconds.  0 disables the timeout.
+    uint32 timeout_ms = 1;
+
+    // When true, mutating jobs should report what they would change without committing it.
+    bool dry_run = 2;
+
+    // Request stable ordering and single-threaded execution where the engine supports it.
+    bool deterministic = 3;
+}
+
+// A structured job diagnostic.  Codes are stable machine-readable identifiers.
+message JobDiagnostic
+{
+    enum Severity
+    {
+        DS_UNKNOWN = 0;
+        DS_INFO = 1;
+        DS_WARNING = 2;
+        DS_ERROR = 3;
+    }
+
+    Severity severity = 1;
+    string code = 2;
+    string message = 3;
+    repeated kiapi.common.types.KIID item_ids = 4;
+    repeated kiapi.common.types.KIID related_item_ids = 5;
+    string details_json = 6;
 }
 
 message RunJobResponse
@@ -41,6 +75,19 @@ message RunJobResponse
 
     // Optional message containing warning or error details. Should be empty if status is JS_SUCCESS.
     string message = 3;
+
+    // Stable identifier for this job invocation, usable with GetJobStatus/CancelJob.
+    string job_id = 4;
+
+    // Wall-clock execution time in milliseconds.
+    uint64 elapsed_ms = 5;
+
+    // Structured diagnostics, including DRC/ERC violations when applicable.
+    repeated JobDiagnostic diagnostics = 6;
+
+    // Canonical JSON result payload.  Schema is job-specific; never mixed with human-readable
+    // logging.  Empty when the job does not produce a structured result.
+    string result_json = 7;
 }
 
 message RunJobSettings
@@ -51,4 +98,7 @@ message RunJobSettings
     // The path where the job's output should be saved
     // May be a file or a directory depending on the context of the job
     string output_path = 2;
+
+    // Execution options such as timeout and dry-run.
+    JobOptions options = 3;
 }

@@ -49,6 +49,12 @@ protected:
     REPORTER*          m_reporter;          // non-owning
     PROGRESS_REPORTER* m_progressReporter;  // non-owning
 
+    /**
+     * The job currently being executed.  Valid only while RunJob() is on the stack.
+     * Job handlers use this to bind supported engines to the live in-memory document.
+     */
+    JOB*               m_currentJob = nullptr;
+
 private:
     std::map<std::string, std::function<int( JOB* job )>> m_jobHandlers;
     std::map<std::string, std::function<bool( JOB* job, wxWindow* aParent )>>

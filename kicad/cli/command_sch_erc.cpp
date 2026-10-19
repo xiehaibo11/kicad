@@ -36,6 +36,7 @@
 #define ARG_SEVERITY_WARNING "--severity-warning"
 #define ARG_SEVERITY_EXCLUSIONS "--severity-exclusions"
 #define ARG_EXIT_CODE_VIOLATIONS "--exit-code-violations"
+#define ARG_TIMEOUT "--timeout"
 
 CLI::SCH_ERC_COMMAND::SCH_ERC_COMMAND() : COMMAND( "erc" )
 {
@@ -77,6 +78,12 @@ CLI::SCH_ERC_COMMAND::SCH_ERC_COMMAND() : COMMAND( "erc" )
     m_argParser.add_argument( ARG_EXIT_CODE_VIOLATIONS )
             .help( UTF8STDSTR( _( "Return a nonzero exit code if ERC violations exist" ) ) )
             .flag();
+
+    m_argParser.add_argument( ARG_TIMEOUT )
+            .scan<'i', int>()
+            .default_value( 0 )
+            .help( UTF8STDSTR( _( "Cooperative timeout in milliseconds (0 disables)" ) ) )
+            .metavar( "MS" );
 }
 
 
@@ -148,6 +155,11 @@ int CLI::SCH_ERC_COMMAND::doPerform( KIWAY& aKiway )
         wxFprintf( stderr, _( "Invalid report format\n" ) );
         return EXIT_CODES::ERR_ARGS;
     }
+
+    int timeoutMs = m_argParser.get<int>( ARG_TIMEOUT );
+
+    if( timeoutMs > 0 )
+        ercJob->SetTimeoutMs( static_cast<uint32_t>( timeoutMs ) );
 
     int exitCode = aKiway.ProcessJob( KIWAY::FACE_SCH, ercJob.get() );
 

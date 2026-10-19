@@ -40,6 +40,12 @@ namespace CLI
         /// No plugin for the requested face recognized the input file format.  Used quietly by the
         /// import jobs so the top-level import command can probe the other face before failing.
         static const int ERR_UNKNOWN_FILE_FORMAT = 7;
+
+        /// A job exceeded its configured cooperative deadline.
+        static const int ERR_TIMEOUT = 8;
+
+        /// A job was cancelled by the caller.
+        static const int ERR_CANCELLED = 9;
     };
 }
 

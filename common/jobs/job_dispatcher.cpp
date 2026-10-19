@@ -20,6 +20,7 @@
 
 #include <cli/exit_codes.h>
 #include <jobs/job_dispatcher.h>
+#include <jobs/job_progress_reporter.h>
 #include <reporter.h>
 #include <wx/debug.h>
 
@@ -44,19 +45,45 @@ void JOB_DISPATCHER::Register( const std::string&             aJobTypeName,
 
 int JOB_DISPATCHER::RunJob( JOB* job, REPORTER* aReporter, PROGRESS_REPORTER* aProgressReporter )
 {
+    if( !job )
+        return CLI::EXIT_CODES::ERR_ARGS;
+
     int       result = CLI::EXIT_CODES::ERR_UNKNOWN;
     REPORTER* existingReporter = m_reporter;
+    JOB*      existingJob = m_currentJob;
 
     if( aReporter )
         m_reporter = aReporter;
 
-    m_progressReporter = aProgressReporter;
-
     job->ClearExistingOutputs();
+    job->ClearCancelRequest();
 
-    if( m_jobHandlers.count( job->GetType() ) )
-        result = m_jobHandlers[job->GetType()]( job );
+    // Always install the deadline-aware wrapper.  It forwards progress to the caller's reporter
+    // (if any) but owns cancellation/timeout semantics, so engines do not need to know about
+    // them.
+    JOB_PROGRESS_REPORTER progressReporter( job, aProgressReporter );
 
+    m_progressReporter = &progressReporter;
+    m_currentJob = job;
+
+    try
+    {
+        if( m_jobHandlers.count( job->GetType() ) )
+            result = m_jobHandlers[job->GetType()]( job );
+    }
+    catch( ... )
+    {
+        m_currentJob = existingJob;
+        m_reporter = existingReporter;
+        throw;
+    }
+
+    if( progressReporter.TimedOut() )
+        result = CLI::EXIT_CODES::ERR_TIMEOUT;
+    else if( progressReporter.CancelRequested() )
+        result = CLI::EXIT_CODES::ERR_CANCELLED;
+
+    m_currentJob = existingJob;
     m_reporter = existingReporter;
 
     return result;

@@ -40,6 +40,7 @@
 #define ARG_PARITY "--schematic-parity"
 #define ARG_ZONE_FILL "--refill-zones"
 #define ARG_SAVE_BOARD "--save-board"
+#define ARG_TIMEOUT "--timeout"
 
 CLI::PCB_DRC_COMMAND::PCB_DRC_COMMAND() : COMMAND( "drc" )
 {
@@ -98,6 +99,12 @@ CLI::PCB_DRC_COMMAND::PCB_DRC_COMMAND() : COMMAND( "drc" )
     m_argParser.add_argument( ARG_SAVE_BOARD )
             .help( UTF8STDSTR( _( "Save the board after DRC, must be used with --refill-zones" ) ) )
             .flag();
+
+    m_argParser.add_argument( ARG_TIMEOUT )
+            .scan<'i', int>()
+            .default_value( 0 )
+            .help( UTF8STDSTR( _( "Cooperative timeout in milliseconds (0 disables)" ) ) )
+            .metavar( "MS" );
 }
 
 
@@ -175,6 +182,11 @@ int CLI::PCB_DRC_COMMAND::doPerform( KIWAY& aKiway )
     drcJob->m_parity = m_argParser.get<bool>( ARG_PARITY );
     drcJob->m_refillZones = m_argParser.get<bool>( ARG_ZONE_FILL );
     drcJob->m_saveBoard = m_argParser.get<bool>( ARG_SAVE_BOARD );
+
+    int timeoutMs = m_argParser.get<int>( ARG_TIMEOUT );
+
+    if( timeoutMs > 0 )
+        drcJob->SetTimeoutMs( static_cast<uint32_t>( timeoutMs ) );
 
     int exitCode = aKiway.ProcessJob( KIWAY::FACE_PCB, drcJob.get() );
 

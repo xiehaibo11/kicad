@@ -24,6 +24,8 @@
 
 #include <json_common.h>
 #include <kicommon.h>
+#include <atomic>
+#include <cstdint>
 #include <map>
 #include <settings/json_settings.h>
 #include <lseq.h>
@@ -178,6 +180,18 @@ struct KICOMMON_API JOB_OUTPUT
 };
 
 /**
+ * The type of document a job is bound to.  Jobs are dispatched through a KIFACE, which may
+ * otherwise have to re-open the document from disk.  Binding the live in-memory document lets
+ * API-created edits be visible to jobs without a save/reload cycle.
+ */
+enum class JOB_DOCUMENT_KIND
+{
+    NONE,
+    BOARD,
+    SCHEMATIC
+};
+
+/**
  * An simple container class that lets us dispatch output jobs to kifaces
  */
 class KICOMMON_API JOB
@@ -191,6 +205,39 @@ public:
     // will only land us in trouble.
     JOB( const JOB& ) = delete;
     JOB& operator=( const JOB& ) = delete;
+
+    /**
+     * Bind the live document this job should operate on.
+     *
+     * The pointer is non-owning and must outlive the job.  Passing a null document clears the
+     * binding.  This is primarily used by headless API sessions, where the in-memory document
+     * differs from the last saved copy on disk.
+     */
+    void SetDocumentContext( JOB_DOCUMENT_KIND aKind, void* aDocument )
+    {
+        m_documentKind = aDocument ? aKind : JOB_DOCUMENT_KIND::NONE;
+        m_document = aDocument;
+    }
+
+    JOB_DOCUMENT_KIND GetDocumentKind() const { return m_documentKind; }
+    void*             GetDocument() const { return m_document; }
+
+    /**
+     * Set a cooperative execution deadline.  A value of 0 disables the timeout.
+     */
+    void     SetTimeoutMs( uint32_t aTimeoutMs ) { m_timeoutMs = aTimeoutMs; }
+    uint32_t GetTimeoutMs() const { return m_timeoutMs; }
+
+    /**
+     * Request cooperative cancellation.  Long-running engines poll this through the job's
+     * progress reporter.
+     */
+    void RequestCancel() { m_cancelRequested.store( true, std::memory_order_relaxed ); }
+    void ClearCancelRequest() { m_cancelRequested.store( false, std::memory_order_relaxed ); }
+    bool IsCancelRequested() const
+    {
+        return m_cancelRequested.load( std::memory_order_relaxed );
+    }
 
     const std::string& GetType() const { return m_type; };
 
@@ -258,6 +305,11 @@ public:
     bool GetOutputPathIsDirectory() const { return m_outputPathIsDirectory; }
 
 protected:
+    JOB_DOCUMENT_KIND            m_documentKind = JOB_DOCUMENT_KIND::NONE;
+    void*                        m_document = nullptr;
+    uint32_t                     m_timeoutMs = 0;
+    std::atomic<bool>            m_cancelRequested{ false };
+
     std::string                  m_type;
     std::map<wxString, wxString> m_varOverrides;
     TITLE_BLOCK                  m_titleBlock;

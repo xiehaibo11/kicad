@@ -24,7 +24,10 @@
 #include <api/api_utils.h>
 #include <api/cross_probe_client.h>
 #include <api/sch_context.h>
+#include <chrono>
+#include <cli/exit_codes.h>
 #include <fmt.h>
+#include <kiid.h>
 #include <fmt/ranges.h>
 #include <wx/log.h>
 #include <magic_enum.hpp>
@@ -91,25 +94,65 @@ std::set<KICAD_T> API_HANDLER_SCH::s_allowedTypes = {
 };
 
 
-HANDLER_RESULT<types::RunJobResponse> ExecuteSchematicJob( KIWAY* aKiway, JOB& aJob )
+HANDLER_RESULT<types::RunJobResponse> ExecuteSchematicJob(
+        SCH_CONTEXT* aContext, JOB& aJob,
+        const kiapi::common::types::RunJobSettings& aSettings )
 {
     types::RunJobResponse response;
     WX_STRING_REPORTER reporter;
-    int exitCode = aKiway->ProcessJob( KIWAY::FACE_SCH, &aJob, &reporter );
+
+    if( !aContext || !aContext->GetKiway() )
+    {
+        response.set_status( types::JobStatus::JS_ERROR );
+        response.set_message( "Internal error" );
+        return response;
+    }
+
+    if( aSettings.has_options() )
+        aJob.SetTimeoutMs( aSettings.options().timeout_ms() );
+
+    // Bind the live in-memory schematic so the job sees API-created edits without a save/reload.
+    aJob.SetDocumentContext( JOB_DOCUMENT_KIND::SCHEMATIC, aContext->GetSchematic() );
+
+    KIID jobId;
+    response.set_job_id( jobId.AsString().ToStdString() );
+
+    auto start = std::chrono::steady_clock::now();
+    int  exitCode = aContext->GetKiway()->ProcessJob( KIWAY::FACE_SCH, &aJob, &reporter );
+    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::steady_clock::now() - start );
+    response.set_elapsed_ms( elapsed.count() );
 
     for( const JOB_OUTPUT& output : aJob.GetOutputs() )
         response.add_output_path( output.m_outputPath.ToUTF8() );
 
-    if( exitCode == 0 )
+    if( exitCode == CLI::EXIT_CODES::SUCCESS )
     {
         response.set_status( types::JobStatus::JS_SUCCESS );
         return response;
     }
 
-    response.set_status( types::JobStatus::JS_ERROR );
-    response.set_message( fmt::format( "Schematic export job '{}' failed with exit code {}: {}",
+    types::JobStatus status = types::JobStatus::JS_ERROR;
+
+    if( exitCode == CLI::EXIT_CODES::ERR_TIMEOUT )
+        status = types::JobStatus::JS_TIMEOUT;
+    else if( exitCode == CLI::EXIT_CODES::ERR_CANCELLED )
+        status = types::JobStatus::JS_CANCELLED;
+
+    response.set_status( status );
+
+    std::string message = fmt::format( "Schematic job '{}' failed with exit code {}: {}",
                                        aJob.GetType(), exitCode,
-                                       reporter.GetMessages().ToStdString() ) );
+                                       reporter.GetMessages().ToStdString() );
+    response.set_message( message );
+
+    types::JobDiagnostic* diag = response.add_diagnostics();
+    diag->set_severity( types::JobDiagnostic::DS_ERROR );
+    diag->set_code( status == types::JobStatus::JS_TIMEOUT     ? "JOB_TIMEOUT"
+                    : status == types::JobStatus::JS_CANCELLED ? "JOB_CANCELLED"
+                                                               : "JOB_FAILED" );
+    diag->set_message( message );
+
     return response;
 }
 
@@ -1455,7 +1498,8 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_SCH::handleRunSchematicJobExpo
         plotJob->m_pageSizeSelect = FromProtoEnum<JOB_PAGE_SIZE>( aCtx.Request.plot_settings().page_size() );
     }
 
-    return ExecuteSchematicJob( m_context->GetKiway(), *plotJob );
+    return ExecuteSchematicJob( m_context.get(), *plotJob,
+                                aCtx.Request.job_settings() );
 }
 
 
@@ -1499,7 +1543,8 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_SCH::handleRunSchematicJobExpo
         plotJob->m_pageSizeSelect = FromProtoEnum<JOB_PAGE_SIZE>( aCtx.Request.plot_settings().page_size() );
     }
 
-    return ExecuteSchematicJob( m_context->GetKiway(), *plotJob );
+    return ExecuteSchematicJob( m_context.get(), *plotJob,
+                                aCtx.Request.job_settings() );
 }
 
 
@@ -1547,7 +1592,8 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_SCH::handleRunSchematicJobExpo
     plotJob->m_PDFHierarchicalLinks = aCtx.Request.hierarchical_links();
     plotJob->m_PDFMetadata = aCtx.Request.include_metadata();
 
-    return ExecuteSchematicJob( m_context->GetKiway(), *plotJob );
+    return ExecuteSchematicJob( m_context.get(), *plotJob,
+                                aCtx.Request.job_settings() );
 }
 
 
@@ -1591,7 +1637,8 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_SCH::handleRunSchematicJobExpo
         plotJob->m_pageSizeSelect = FromProtoEnum<JOB_PAGE_SIZE>( aCtx.Request.plot_settings().page_size() );
     }
 
-    return ExecuteSchematicJob( m_context->GetKiway(), *plotJob );
+    return ExecuteSchematicJob( m_context.get(), *plotJob,
+                                aCtx.Request.job_settings() );
 }
 
 
@@ -1625,7 +1672,8 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_SCH::handleRunSchematicJobExpo
     if( !aCtx.Request.variant_name().empty() )
         netlistJob.m_variantNames.emplace_back( wxString::FromUTF8( aCtx.Request.variant_name() ) );
 
-    return ExecuteSchematicJob( m_context->GetKiway(), netlistJob );
+    return ExecuteSchematicJob( m_context.get(), netlistJob,
+                                aCtx.Request.job_settings() );
 }
 
 
@@ -1699,7 +1747,8 @@ HANDLER_RESULT<types::RunJobResponse> API_HANDLER_SCH::handleRunSchematicJobExpo
     if( !aCtx.Request.variant_name().empty() )
         bomJob.m_variantNames.emplace_back( wxString::FromUTF8( aCtx.Request.variant_name() ) );
 
-    return ExecuteSchematicJob( m_context->GetKiway(), bomJob );
+    return ExecuteSchematicJob( m_context.get(), bomJob,
+                                aCtx.Request.job_settings() );
 }
 
 
