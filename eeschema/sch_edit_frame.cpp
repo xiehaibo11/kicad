@@ -19,7 +19,7 @@
  */
 
 #include <algorithm>
-#include <api/api_handler_sch.h>
+#include <api/api_handler_sch_ai.h>
 #include <api/api_server.h>
 #include <base_units.h>
 #include <bitmaps.h>
@@ -449,7 +449,7 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     updateTitle();
     m_toolManager->GetTool<SCH_NAVIGATE_TOOL>()->ResetHistory();
 
-    m_apiHandler = std::make_unique<API_HANDLER_SCH>( this );
+    m_apiHandler = std::make_unique<API_HANDLER_SCH_AI>( this );
     Pgm().GetApiServer().RegisterHandler( m_apiHandler.get() );
 
     if( Kiface().IsSingle() )

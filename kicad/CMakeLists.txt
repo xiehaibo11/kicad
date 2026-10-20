@@ -101,6 +101,7 @@ set( KICAD_CLI_SRCS
     cli/command_gerber_convert_png.cpp
     cli/command_gerber_diff.cpp
     cli/command_version.cpp
+    cli/command_agent.cpp
 
     jobs_runner.cpp
     )

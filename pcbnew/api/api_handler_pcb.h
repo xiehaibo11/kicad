@@ -111,6 +111,9 @@ private:
 
     HANDLER_RESULT<Empty> handleRefillZones( const HANDLER_CONTEXT<RefillZones>& aCtx );
 
+    HANDLER_RESULT<ConnectivityProof> handleProveConnectivity(
+            const HANDLER_CONTEXT<ProveConnectivity>& aCtx );
+
     HANDLER_RESULT<ImportNetlistResponse> handleImportNetlist(
             const HANDLER_CONTEXT<ImportNetlist>& aCtx );
 

@@ -49,6 +49,8 @@ public:
 
     ~API_HANDLER_COMMON() override {}
 
+    void SetApiServer( KICAD_API_SERVER* aServer ) override { m_apiServer = aServer; }
+
     void SetOpenDocumentHandler( OPEN_DOCUMENT_HANDLER aHandler )
     {
         m_openDocumentHandler = std::move( aHandler );
@@ -78,6 +80,15 @@ private:
 
     HANDLER_RESULT<commands::GetPathsResponse> handleGetPaths(
         const HANDLER_CONTEXT<commands::GetPaths>& aCtx );
+
+    HANDLER_RESULT<commands::GetCapabilitiesResponse> handleGetCapabilities(
+        const HANDLER_CONTEXT<commands::GetCapabilities>& aCtx );
+
+    HANDLER_RESULT<commands::JobStatusResponse> handleGetJobStatus(
+        const HANDLER_CONTEXT<commands::GetJobStatus>& aCtx );
+
+    HANDLER_RESULT<commands::CancelJobResponse> handleCancelJob(
+        const HANDLER_CONTEXT<commands::CancelJob>& aCtx );
 
     HANDLER_RESULT<commands::NetClassesResponse> handleGetNetClasses(
         const HANDLER_CONTEXT<commands::GetNetClasses>& aCtx );
@@ -122,6 +133,8 @@ private:
     CLOSE_ALL_DOCUMENTS_HANDLER m_closeAllDocumentsHandler;
     CLOSE_DOCUMENT_HANDLER m_closeDocumentHandler;
     CREATE_DOCUMENT_HANDLER m_createDocumentHandler;
+
+    KICAD_API_SERVER* m_apiServer = nullptr;
 };
 
 #endif //KICAD_API_HANDLER_COMMON_H

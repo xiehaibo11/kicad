@@ -66,7 +66,7 @@ class PANEL_CONSTRAINTS;
 class WX_INFOBAR;
 
 class KICAD_API_SERVER;
-class API_HANDLER_PCB;
+class API_HANDLER_PCB_AI;
 class API_HANDLER_COMMON;
 
 enum LAST_PATH_TYPE : unsigned int;
@@ -897,7 +897,7 @@ private:
     // table to enable the same schematic scope limiting as the symbol fields table
     KIID_PATH         m_lastSchematicSheetPath;
 
-    std::unique_ptr<API_HANDLER_PCB>    m_apiHandler;
+    std::unique_ptr<API_HANDLER_PCB_AI>    m_apiHandler;
     std::unique_ptr<API_HANDLER_COMMON> m_apiHandlerCommon;
 };
 

@@ -43,7 +43,7 @@
 #include <pcb_edit_frame.h>
 #include <3d_viewer/eda_3d_viewer_frame.h>
 #include <api/api_handler_common.h>
-#include <api/api_handler_pcb.h>
+#include <api/api_handler_pcb_ai.h>
 #include <api/api_plugin_manager.h>
 #include <api/api_server.h>
 #include <api/api_utils.h>
@@ -532,7 +532,7 @@ PCB_EDIT_FRAME::PCB_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     // Sync action plugins in case they changed since the last time the frame opened
     GetToolManager()->RunAction( ACTIONS::pluginsReload );
 
-    m_apiHandler = std::make_unique<API_HANDLER_PCB>( this );
+    m_apiHandler = std::make_unique<API_HANDLER_PCB_AI>( this );
     Pgm().GetApiServer().RegisterHandler( m_apiHandler.get() );
 
     if( Kiface().IsSingle() )

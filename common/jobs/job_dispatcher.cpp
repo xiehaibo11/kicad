@@ -49,8 +49,9 @@ int JOB_DISPATCHER::RunJob( JOB* job, REPORTER* aReporter, PROGRESS_REPORTER* aP
         return CLI::EXIT_CODES::ERR_ARGS;
 
     int       result = CLI::EXIT_CODES::ERR_UNKNOWN;
-    REPORTER* existingReporter = m_reporter;
-    JOB*      existingJob = m_currentJob;
+    REPORTER*          existingReporter = m_reporter;
+    JOB*               existingJob = m_currentJob;
+    PROGRESS_REPORTER* existingProgressReporter = m_progressReporter;
 
     if( aReporter )
         m_reporter = aReporter;
@@ -75,16 +76,21 @@ int JOB_DISPATCHER::RunJob( JOB* job, REPORTER* aReporter, PROGRESS_REPORTER* aP
     {
         m_currentJob = existingJob;
         m_reporter = existingReporter;
+        m_progressReporter = existingProgressReporter;
         throw;
     }
 
+    // Only report a timeout that the engine actually observed.  A handler that
+    // finished before returning must not have its result relabeled just
+    // because wall-clock time exceeded the timeout afterwards.
     if( progressReporter.TimedOut() )
         result = CLI::EXIT_CODES::ERR_TIMEOUT;
-    else if( progressReporter.CancelRequested() )
+    else if( progressReporter.CancelRequested() || progressReporter.DelegateCancelled() )
         result = CLI::EXIT_CODES::ERR_CANCELLED;
 
     m_currentJob = existingJob;
     m_reporter = existingReporter;
+    m_progressReporter = existingProgressReporter;
 
     return result;
 }

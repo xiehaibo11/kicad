@@ -21,6 +21,7 @@
 #include <magic_enum.hpp>
 #include <chrono>
 #include <memory>
+#include <set>
 #include <properties/property.h>
 
 #include <cli/exit_codes.h>
@@ -36,6 +37,7 @@
 #include <board_commit.h>
 #include <board_connected_item.h>
 #include <board_design_settings.h>
+#include <connectivity/connectivity_proof.h>
 #include <core/kicad_algo.h>
 #include <footprint.h>
 #include <kicad_clipboard.h>
@@ -64,6 +66,7 @@
 #include <jobs/job_export_pcb_ipcd356.h>
 #include <jobs/job_export_pcb_odb.h>
 #include <jobs/job_export_pcb_pdf.h>
+#include <jobs/job_status_registry.h>
 #include <jobs/job_export_pcb_pos.h>
 #include <jobs/job_export_pcb_ps.h>
 #include <jobs/job_export_pcb_stats.h>
@@ -138,6 +141,8 @@ API_HANDLER_PCB::API_HANDLER_PCB( std::shared_ptr<PCB_CONTEXT> aContext, PCB_EDI
     registerHandler<GetNetClassForNets, NetClassForNetsResponse>(
             &API_HANDLER_PCB::handleGetNetClassForNets );
     registerHandler<RefillZones, Empty>( &API_HANDLER_PCB::handleRefillZones );
+    registerHandler<ProveConnectivity, ConnectivityProof>(
+            &API_HANDLER_PCB::handleProveConnectivity );
     registerHandler<ImportNetlist, ImportNetlistResponse>( &API_HANDLER_PCB::handleImportNetlist );
 
     registerHandler<GetBoardEditorAppearanceSettings, BoardEditorAppearanceSettings>(
@@ -1806,6 +1811,120 @@ HANDLER_RESULT<Empty> API_HANDLER_PCB::handleRefillZones( const HANDLER_CONTEXT<
 }
 
 
+HANDLER_RESULT<ConnectivityProof> API_HANDLER_PCB::handleProveConnectivity(
+        const HANDLER_CONTEXT<ProveConnectivity>& aCtx )
+{
+    if( std::optional<ApiResponseStatus> busy = checkForBusy() )
+        return tl::unexpected( *busy );
+
+    HANDLER_RESULT<bool> documentValidation = validateDocument( aCtx.Request.board() );
+
+    if( !documentValidation )
+        return tl::unexpected( documentValidation.error() );
+
+    CONNECTIVITY_PROOF proof( board() );
+
+    if( !proof.Build() )
+    {
+        ApiResponseStatus e;
+        e.set_status( ApiStatusCode::AS_BAD_REQUEST );
+        e.set_error_message( "failed to build board connectivity" );
+        return tl::unexpected( e );
+    }
+
+    std::vector<BOARD_CONNECTED_ITEM*> anchors;
+
+    if( aCtx.Request.anchors_size() > 0 )
+    {
+        for( const types::KIID& id : aCtx.Request.anchors() )
+        {
+            std::optional<BOARD_ITEM*> item = getItemById( KIID( id.value() ) );
+
+            if( !item )
+            {
+                ApiResponseStatus e;
+                e.set_status( ApiStatusCode::AS_BAD_REQUEST );
+                e.set_error_message( fmt::format( "item '{}' not found on the board",
+                                                  id.value() ) );
+                return tl::unexpected( e );
+            }
+
+            BOARD_CONNECTED_ITEM* connected = dynamic_cast<BOARD_CONNECTED_ITEM*>( *item );
+
+            if( !connected )
+            {
+                ApiResponseStatus e;
+                e.set_status( ApiStatusCode::AS_BAD_REQUEST );
+                e.set_error_message( fmt::format( "item '{}' is not a connected item",
+                                                  id.value() ) );
+                return tl::unexpected( e );
+            }
+
+            anchors.push_back( connected );
+        }
+    }
+
+    std::vector<CONNECTIVITY_ENDPOINT> endpoints =
+            proof.Prove( anchors, aCtx.Request.has_require_filled_zones()
+                                          ? aCtx.Request.require_filled_zones()
+                                          : true );
+
+    std::set<std::string> netFilter( aCtx.Request.nets().begin(), aCtx.Request.nets().end() );
+
+    ConnectivityProof response;
+    bool              ok = true;
+    int               filteredUnconnected = 0;
+
+    for( const CONNECTIVITY_ENDPOINT& src : endpoints )
+    {
+        if( !netFilter.empty() && !netFilter.contains( src.net.ToStdString() ) )
+            continue;
+
+        ConnectivityEndpoint* dst = response.add_endpoints();
+        dst->mutable_item()->set_value( src.item.AsStdString() );
+        dst->set_item_type( src.itemType.ToStdString() );
+        dst->set_reference( src.reference.ToStdString() );
+        dst->set_pad_number( src.padNumber.ToStdString() );
+        dst->set_net( src.net.ToStdString() );
+        dst->set_has_copper_connection( src.hasCopperConnection );
+        dst->set_inside_filled_zone( src.insideFilledZone );
+
+        for( const KIID& id : src.connectedItems )
+            dst->add_connected_items()->set_value( id.AsStdString() );
+
+        for( const KIID& id : src.zoneIslands )
+            dst->add_zone_islands()->set_value( id.AsStdString() );
+
+        if( !src.net.IsEmpty() && !src.hasCopperConnection )
+        {
+            ok = false;
+            filteredUnconnected++;
+        }
+    }
+
+    for( const wxString& net : proof.UnconnectedNets() )
+    {
+        if( netFilter.empty() || netFilter.contains( net.ToStdString() ) )
+        {
+            response.add_unconnected_nets( net.ToStdString() );
+
+            // A split net can have every endpoint touching some copper while
+            // still leaving a ratsnest edge between clusters.
+            ok = false;
+        }
+    }
+
+    if( netFilter.empty() )
+        response.set_unconnected_count( proof.UnconnectedCount() );
+    else
+        response.set_unconnected_count( filteredUnconnected );
+
+    response.set_ok( ok );
+
+    return response;
+}
+
+
 HANDLER_RESULT<ImportNetlistResponse> API_HANDLER_PCB::handleImportNetlist( const HANDLER_CONTEXT<ImportNetlist>& aCtx )
 {
     if( std::optional<ApiResponseStatus> busy = checkForBusy() )
@@ -2199,13 +2318,35 @@ HANDLER_RESULT<types::RunJobResponse> ExecuteBoardJob( PCB_CONTEXT* aContext, JO
     }
 
     // Bind the live in-memory board so the job sees API-created edits without a save/reload.
-    aJob.SetDocumentContext( JOB_DOCUMENT_KIND::BOARD, aContext->GetBoard() );
+    BOARD* liveBoard = aContext->GetBoard();
+    aJob.SetDocumentContext( JOB_DOCUMENT_KIND::BOARD, liveBoard );
+
+    // Export jobs call Board::SetCurrentVariant() while they run.  Restore the
+    // previous variant so one request cannot change the state seen by the next.
+    wxString previousVariant = liveBoard ? liveBoard->GetCurrentVariant() : wxString();
 
     KIID jobId;
     response.set_job_id( jobId.AsString().ToStdString() );
+    JOB_STATUS_REGISTRY::Start( &aJob, jobId.AsString() );
 
     auto start = std::chrono::steady_clock::now();
-    int  exitCode = aContext->GetKiway()->ProcessJob( KIWAY::FACE_PCB, &aJob, &reporter );
+    int  exitCode;
+
+    try
+    {
+        exitCode = aContext->GetKiway()->ProcessJob( KIWAY::FACE_PCB, &aJob, &reporter );
+    }
+    catch( ... )
+    {
+        if( liveBoard )
+            liveBoard->SetCurrentVariant( previousVariant );
+
+        throw;
+    }
+
+    if( liveBoard )
+        liveBoard->SetCurrentVariant( previousVariant );
+
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
             std::chrono::steady_clock::now() - start );
     response.set_elapsed_ms( elapsed.count() );
@@ -2216,6 +2357,9 @@ HANDLER_RESULT<types::RunJobResponse> ExecuteBoardJob( PCB_CONTEXT* aContext, JO
     if( exitCode == CLI::EXIT_CODES::SUCCESS )
     {
         response.set_status( types::JobStatus::JS_SUCCESS );
+        JOB_STATUS_REGISTRY::Finish( jobId.AsString(), (int) types::JobStatus::JS_SUCCESS,
+                                     elapsed.count(),
+                                     wxString::FromUTF8( reporter.GetMessages().ToStdString() ) );
         return response;
     }
 
@@ -2239,6 +2383,9 @@ HANDLER_RESULT<types::RunJobResponse> ExecuteBoardJob( PCB_CONTEXT* aContext, JO
                     : status == types::JobStatus::JS_CANCELLED ? "JOB_CANCELLED"
                                                                : "JOB_FAILED" );
     diag->set_message( message );
+
+    JOB_STATUS_REGISTRY::Finish( jobId.AsString(), (int) status, elapsed.count(),
+                                 wxString::FromUTF8( message ) );
 
     return response;
 }

@@ -47,8 +47,9 @@ message BoardStackupResponse
   kiapi.board.BoardStackup stackup = 1;
 }
 
-// Changes the stackup for the given board according to the contents of the message (**not yet implemented**)
-// WARNING: any existing content on layers that are removed by this call is deleted.  This operation cannot be undone.
+// Changes the stackup for the given board according to the contents of the message.
+// The layer list must match the board's existing layer structure; changing the copper layer
+// count is rejected.  A rejected request leaves the board unchanged.
 // Returns BoardStackupResponse with the updated stackup, in normalized form
 message UpdateBoardStackup
 {
@@ -620,4 +621,159 @@ message InteractiveMoveItems
   kiapi.common.types.DocumentSpecifier board = 1;
 
   repeated kiapi.common.types.KIID items = 2;
+}
+
+
+//// Verification commands ////
+
+// Prove that pads/vias (or all pads and vias) are actually connected to copper, including
+// filled inner-layer zones/planes.  Unlike a bare connectivity query, this also verifies that
+// a zone has materialized filled polygons on a shared layer, which catches "poured but empty"
+// failures.
+message ProveConnectivity
+{
+  kiapi.common.types.DocumentSpecifier board = 1;
+
+  // Anchors to prove.  If empty, all pads and vias on the board are used.
+  repeated kiapi.common.types.KIID anchors = 2;
+
+  // Optional net filter.  If non-empty, only anchors on these nets are reported.
+  repeated string nets = 3;
+
+  // When true (default), a zone connection only counts if the zone has real filled polygons.
+  optional bool require_filled_zones = 4;
+}
+
+message ConnectivityEndpoint
+{
+  kiapi.common.types.KIID item = 1;
+
+  // "pad", "via", "track", "arc", or "item".
+  string item_type = 2;
+
+  string reference = 3;
+  string pad_number = 4;
+  string net = 5;
+
+  // True if the anchor has at least one real copper connection (non-zone item, or a
+  // materialized filled zone).
+  bool has_copper_connection = 6;
+
+  repeated kiapi.common.types.KIID connected_items = 7;
+
+  // Filled zones whose polygons actually contain the anchor position.
+  repeated kiapi.common.types.KIID zone_islands = 8;
+
+  bool inside_filled_zone = 9;
+}
+
+message ConnectivityProof
+{
+  // True if every reported endpoint with a non-empty net has a copper connection.
+  bool ok = 1;
+
+  repeated ConnectivityEndpoint endpoints = 2;
+
+  // Nets whose ratsnest still has edges (not a single copper cluster).
+  repeated string unconnected_nets = 3;
+
+  uint32 unconnected_count = 4;
+
+  repeated kiapi.common.types.KIID dangling_items = 5;
+}
+
+
+//// Placement commands ////
+
+// Automatically place footprints using KiCad's autoplacer (AR_AUTOPLACER).
+// The board must have a closed Edge_Cuts outline.
+message AutoPlaceFootprints
+{
+  kiapi.common.types.DocumentSpecifier board = 1;
+
+  // Footprints to place.  If empty, all footprints on the board are used.
+  repeated kiapi.common.types.KIID footprints = 2;
+
+  // Allow the autoplacer to move footprints that are outside the board outline.
+  bool place_offboard = 3;
+
+  // Report what would be done without modifying the board.
+  bool dry_run = 4;
+}
+
+message AutoPlaceFootprintsResponse
+{
+  repeated kiapi.common.types.KIID placed = 1;
+  repeated string skipped = 2;
+  string report = 3;
+}
+
+
+//// Plane commands ////
+
+// Create a copper zone bound to an arbitrary net on one or more copper layers.
+// Inner layers are the usual choice for a plane; outer layers are also accepted.
+// In KiCad an inner "plane" is a net-bound filled copper zone, not a layer type.
+message CreatePlane
+{
+  kiapi.common.types.DocumentSpecifier board = 1;
+
+  // Net to assign to the plane.
+  string net = 2;
+
+  // Copper layers on which to create the zone.
+  repeated kiapi.board.types.BoardLayer layers = 3;
+
+  // Plane outline in board coordinates.  If fewer than three points are given,
+  // the board edge bounding box is used.
+  repeated kiapi.common.types.Vector2 outline = 4;
+
+  // Optional zone clearance.
+  kiapi.common.types.Distance clearance = 5;
+
+  // Optional minimum copper thickness.
+  kiapi.common.types.Distance min_thickness = 6;
+
+  // Zone priority.
+  uint32 priority = 7;
+
+  // Human-readable zone name (also usable in DRC expressions).
+  string name = 8;
+
+  // Fill the zone immediately.
+  bool fill = 9;
+}
+
+message PlaneInfo
+{
+  kiapi.common.types.KIID zone = 1;
+  string net = 2;
+  repeated kiapi.board.types.BoardLayer layers = 3;
+  bool filled = 4;
+
+  // True only if every assigned layer has non-empty filled polygons.
+  bool has_filled_polygons = 5;
+
+  uint64 filled_area_nm2 = 6;
+  uint32 connected_pads = 7;
+  uint32 connected_vias = 8;
+}
+
+message CreatePlaneResponse
+{
+  PlaneInfo plane = 1;
+}
+
+// Re-verify a plane: materialized fill plus pad/via connectivity.
+message VerifyPlane
+{
+  kiapi.common.types.DocumentSpecifier board = 1;
+  kiapi.common.types.KIID zone = 2;
+}
+
+message VerifyPlaneResponse
+{
+  PlaneInfo plane = 1;
+  repeated kiapi.common.types.KIID unconnected_pads = 2;
+  repeated kiapi.common.types.KIID unconnected_vias = 3;
 }

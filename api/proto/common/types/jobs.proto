@@ -31,6 +31,7 @@ enum JobStatus
     JS_ERROR = 3;
     JS_CANCELLED = 4;
     JS_TIMEOUT = 5;
+    JS_RUNNING = 6;
 }
 
 // Common execution options for jobs.

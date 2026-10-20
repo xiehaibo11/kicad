@@ -31,7 +31,7 @@ JOB_PROGRESS_REPORTER::JOB_PROGRESS_REPORTER( JOB* aJob, PROGRESS_REPORTER* aDel
 }
 
 
-bool JOB_PROGRESS_REPORTER::checkDeadline()
+bool JOB_PROGRESS_REPORTER::checkDeadline() const
 {
     if( std::chrono::steady_clock::now() < m_deadline )
         return false;
@@ -61,6 +61,8 @@ void JOB_PROGRESS_REPORTER::AddPhases( int aNumPhases )
 
 void JOB_PROGRESS_REPORTER::BeginPhase( int aPhase )
 {
+    checkDeadline();
+
     if( m_delegate )
         m_delegate->BeginPhase( aPhase );
 }
@@ -68,6 +70,8 @@ void JOB_PROGRESS_REPORTER::BeginPhase( int aPhase )
 
 void JOB_PROGRESS_REPORTER::AdvancePhase()
 {
+    checkDeadline();
+
     if( m_delegate )
         m_delegate->AdvancePhase();
 }
@@ -75,6 +79,8 @@ void JOB_PROGRESS_REPORTER::AdvancePhase()
 
 void JOB_PROGRESS_REPORTER::AdvancePhase( const wxString& aMessage )
 {
+    checkDeadline();
+
     if( m_delegate )
         m_delegate->AdvancePhase( aMessage );
 }
@@ -82,6 +88,8 @@ void JOB_PROGRESS_REPORTER::AdvancePhase( const wxString& aMessage )
 
 void JOB_PROGRESS_REPORTER::Report( const wxString& aMessage )
 {
+    checkDeadline();
+
     if( m_delegate )
         m_delegate->Report( aMessage );
 }
@@ -89,6 +97,8 @@ void JOB_PROGRESS_REPORTER::Report( const wxString& aMessage )
 
 void JOB_PROGRESS_REPORTER::SetCurrentProgress( double aProgress )
 {
+    checkDeadline();
+
     if( m_delegate )
         m_delegate->SetCurrentProgress( aProgress );
 }
@@ -103,6 +113,8 @@ void JOB_PROGRESS_REPORTER::SetMaxProgress( int aMaxProgress )
 
 void JOB_PROGRESS_REPORTER::AdvanceProgress()
 {
+    checkDeadline();
+
     if( m_delegate )
         m_delegate->AdvanceProgress();
 }
@@ -140,6 +152,8 @@ void JOB_PROGRESS_REPORTER::SetTitle( const wxString& aTitle )
 
 bool JOB_PROGRESS_REPORTER::IsCancelled() const
 {
+    checkDeadline();
+
     return m_timedOut.load( std::memory_order_relaxed )
            || ( m_job && m_job->IsCancelRequested() )
            || ( m_delegate && m_delegate->IsCancelled() );

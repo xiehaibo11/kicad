@@ -202,12 +202,14 @@ bool KICAD_API_SERVER::Running() const
 void KICAD_API_SERVER::RegisterHandler( API_HANDLER* aHandler )
 {
     wxCHECK( aHandler, /* void */ );
+    aHandler->SetApiServer( this );
     m_handlers.insert( aHandler );
 }
 
 
 void KICAD_API_SERVER::DeregisterHandler( API_HANDLER* aHandler )
 {
+    aHandler->SetApiServer( nullptr );
     m_handlers.erase( aHandler );
 }
 
@@ -215,6 +217,18 @@ void KICAD_API_SERVER::DeregisterHandler( API_HANDLER* aHandler )
 std::string KICAD_API_SERVER::SocketPath() const
 {
     return m_server ? m_server->SocketPath() : "";
+}
+
+
+bool KICAD_API_SERVER::SupportsRequestType( const std::string& aTypeName ) const
+{
+    for( API_HANDLER* handler : m_handlers )
+    {
+        if( handler && handler->SupportsRequest( aTypeName ) )
+            return true;
+    }
+
+    return false;
 }
 
 

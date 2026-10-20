@@ -81,6 +81,11 @@ public:
     const std::string& Token() const { return m_token; }
 
     /**
+     * @return true if any registered handler can process the given request type.
+     */
+    bool SupportsRequestType( const std::string& aTypeName ) const;
+
+    /**
      * Return the default API socket path (without the ipc:// scheme).
      */
     static wxFileName StandardSocketPath();

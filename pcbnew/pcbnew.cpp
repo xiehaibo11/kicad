@@ -25,7 +25,7 @@
 #include <cli_progress_reporter.h>
 #include <confirm.h>
 #include <api/api_handler_footprint.h>
-#include <api/api_handler_pcb.h>
+#include <api/api_handler_pcb_ai.h>
 #include <api/api_server.h>
 #include <api/api_utils.h>
 #include <api/cross_probe_client.h>
@@ -623,7 +623,7 @@ private:
 
     KIWAY* m_kiway = nullptr;
     std::shared_ptr<HEADLESS_PCB_CONTEXT>       m_openContext;
-    std::unique_ptr<API_HANDLER_PCB>            m_openHandler;
+    std::unique_ptr<API_HANDLER_PCB_AI>            m_openHandler;
     std::shared_ptr<HEADLESS_FOOTPRINT_CONTEXT> m_openFpContext;
     std::unique_ptr<API_HANDLER_FOOTPRINT>      m_openFpHandler;
 
@@ -1066,7 +1066,7 @@ bool IFACE::handleOpenPcb( const wxString& aPath, KICAD_API_SERVER* aServer, wxS
 
     m_openContext = std::move( newContext );
 
-    m_openHandler = std::make_unique<API_HANDLER_PCB>( m_openContext, nullptr );
+    m_openHandler = std::make_unique<API_HANDLER_PCB_AI>( m_openContext, nullptr );
     aServer->RegisterHandler( m_openHandler.get() );
 
     return true;
@@ -1138,7 +1138,7 @@ bool IFACE::handleCreatePcb( const wxString& aPath, KICAD_API_SERVER* aServer, w
 
     m_openContext = std::move( newContext );
 
-    m_openHandler = std::make_unique<API_HANDLER_PCB>( m_openContext, nullptr );
+    m_openHandler = std::make_unique<API_HANDLER_PCB_AI>( m_openContext, nullptr );
     aServer->RegisterHandler( m_openHandler.get() );
 
     return true;

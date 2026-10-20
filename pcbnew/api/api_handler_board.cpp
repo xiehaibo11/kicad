@@ -30,6 +30,7 @@
 #include <api/api_utils.h>
 #include <board_commit.h>
 #include <board_design_settings.h>
+#include <board_stackup_manager/board_stackup.h>
 #include <footprint.h>
 #include <kicad_clipboard.h>
 #include <pad.h>
@@ -74,6 +75,8 @@ API_HANDLER_BOARD::API_HANDLER_BOARD( std::shared_ptr<BOARD_CONTEXT> aContext,
             &API_HANDLER_BOARD::handleRemoveFromSelection );
 
     registerHandler<GetBoardStackup, BoardStackupResponse>( &API_HANDLER_BOARD::handleGetStackup );
+    registerHandler<UpdateBoardStackup, BoardStackupResponse>(
+            &API_HANDLER_BOARD::handleUpdateStackup );
     registerHandler<GetBoardEnabledLayers, BoardEnabledLayersResponse>(
         &API_HANDLER_BOARD::handleGetBoardEnabledLayers );
     registerHandler<GetGraphicsDefaults, GraphicsDefaultsResponse>(
@@ -715,6 +718,48 @@ HANDLER_RESULT<BoardStackupResponse> API_HANDLER_BOARD::handleGetStackup(
     BoardStackupResponse response;
 
     board::PackBoardStackup( *board(), *response.mutable_stackup() );
+
+    return response;
+}
+
+
+HANDLER_RESULT<BoardStackupResponse> API_HANDLER_BOARD::handleUpdateStackup(
+        const HANDLER_CONTEXT<UpdateBoardStackup>& aCtx )
+{
+    if( std::optional<ApiResponseStatus> busy = checkForBusy() )
+        return tl::unexpected( *busy );
+
+    HANDLER_RESULT<bool> documentValidation = validateDocument( aCtx.Request.board() );
+
+    if( !documentValidation )
+        return tl::unexpected( documentValidation.error() );
+
+    BOARD* brd = this->board();
+    BOARD_DESIGN_SETTINGS& designSettings = brd->GetDesignSettings();
+
+    // Work on a copy so a rejected request leaves the board untouched.  Seed it
+    // from GetStackupOrDefault(): boards without an explicit (stackup) section
+    // have m_HasStackup == false and an empty descriptor, and
+    // PackBoardStackup() would otherwise keep returning the default stackup.
+    BOARD_STACKUP stackup = brd->GetStackupOrDefault();
+    stackup.SynchronizeWithBoard( &designSettings );
+
+    if( !stackup.Deserialize( aCtx.Request.stackup() ) )
+    {
+        ApiResponseStatus e;
+        e.set_status( ApiStatusCode::AS_BAD_REQUEST );
+        e.set_error_message( "stackup does not match the board layer structure; "
+                             "changing the copper layer count is not supported by this command" );
+        return tl::unexpected( e );
+    }
+
+    designSettings.GetStackupDescriptor() = stackup;
+    designSettings.m_HasStackup = true;
+    designSettings.SetBoardThickness( stackup.BuildBoardThicknessFromStackup() );
+    brd->BumpDrillModelGeneration();
+
+    BoardStackupResponse response;
+    board::PackBoardStackup( *brd, *response.mutable_stackup() );
 
     return response;
 }

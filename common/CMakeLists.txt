@@ -149,6 +149,7 @@ set( KICOMMON_SRCS
     jobs/job_dispatcher.cpp
     jobs/job_progress_reporter.cpp
     jobs/job_registry.cpp
+    jobs/job_status_registry.cpp
     jobs/jobs_output_archive.cpp
     jobs/jobs_output_folder.cpp
     jobs/job_export_bom.cpp
