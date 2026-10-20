@@ -1,0 +1,178 @@
+{
+  "name": "kicad-agent-vscode",
+  "displayName": "KiCad Agent",
+  "description": "AI-native KiCad automation: DRC/ERC diagnostics, schematic generation, fanout, routing, DFM, impedance, structural checks, and an LLM tool loop.",
+  "version": "0.1.0",
+  "publisher": "kicad-agent",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "kicadAgent.health",
+        "title": "KiCad Agent: Health Check"
+      },
+      {
+        "command": "kicadAgent.actions",
+        "title": "KiCad Agent: Run Action..."
+      },
+      {
+        "command": "kicadAgent.runDrc",
+        "title": "KiCad Agent: Run DRC"
+      },
+      {
+        "command": "kicadAgent.runErc",
+        "title": "KiCad Agent: Run ERC"
+      },
+      {
+        "command": "kicadAgent.generateSchematic",
+        "title": "KiCad Agent: Generate Schematic from Circuit Spec"
+      },
+      {
+        "command": "kicadAgent.fanout",
+        "title": "KiCad Agent: BGA Fanout"
+      },
+      {
+        "command": "kicadAgent.dfmAnalyze",
+        "title": "KiCad Agent: DFM Analyze"
+      },
+      {
+        "command": "kicadAgent.dfmFix",
+        "title": "KiCad Agent: DFM Fix"
+      },
+      {
+        "command": "kicadAgent.impedance",
+        "title": "KiCad Agent: Impedance Calculate"
+      },
+      {
+        "command": "kicadAgent.autoroute",
+        "title": "KiCad Agent: Autoroute (baseline)"
+      },
+      {
+        "command": "kicadAgent.structuralCheck",
+        "title": "KiCad Agent: Structural Check + STEP"
+      },
+      {
+        "command": "kicadAgent.aiPrompt",
+        "title": "KiCad Agent: Ask the Model"
+      },
+      {
+        "command": "kicadAgent.showMcpConfig",
+        "title": "KiCad Agent: Show MCP Configuration"
+      },
+      {
+        "command": "kicadAgent.refreshActions",
+        "title": "Refresh Actions",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "kicadAgent.runAction",
+        "title": "Run KiCad Action"
+      },
+      {
+        "command": "kicadAgent.startServer",
+        "title": "KiCad: Start API Server for Active Document",
+        "category": "KiCad Agent"
+      },
+      {
+        "command": "kicadAgent.stopServer",
+        "title": "KiCad: Stop API Server",
+        "category": "KiCad Agent"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "kicadAgent",
+          "title": "KiCad Agent",
+          "icon": "resources/kicad.svg"
+        }
+      ]
+    },
+    "views": {
+      "kicadAgent": [
+        {
+          "id": "kicadAgent.actions",
+          "name": "Actions",
+          "icon": "resources/kicad.svg"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "kicadAgent.refreshActions",
+          "when": "view == kicadAgent.actions",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "kicadAgent.startServer",
+          "when": "resourceExtname == .kicad_pcb || resourceExtname == .kicad_sch"
+        },
+        {
+          "command": "kicadAgent.stopServer"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "KiCad Agent",
+      "properties": {
+        "kicadAgent.path": {
+          "type": "string",
+          "default": "kicad-agent",
+          "description": "Path to the kicad-agent executable."
+        },
+        "kicadAgent.kicadCli": {
+          "type": "string",
+          "default": "kicad-cli",
+          "description": "Path to kicad-cli (passed as KICAD_CLI)."
+        },
+        "kicadAgent.socket": {
+          "type": "string",
+          "default": "",
+          "description": "KiCad API socket path (passed as KICAD_API_SOCKET)."
+        },
+        "kicadAgent.settings": {
+          "type": "string",
+          "default": "",
+          "description": "Path to settings.json for LLM providers (default: ~/.config/kicad-agent/settings.json)."
+        },
+        "kicadAgent.timeoutMs": {
+          "type": "number",
+          "default": 1800000,
+          "description": "Maximum time for one kicad-agent invocation, in milliseconds."
+        },
+        "kicadAgent.symbolDir": {
+          "type": "string",
+          "default": "",
+          "description": "KICAD10_SYMBOL_DIR for the agent (optional)"
+        },
+        "kicadAgent.footprintDir": {
+          "type": "string",
+          "default": "",
+          "description": "KICAD10_FOOTPRINT_DIR for the agent (optional)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package --allow-missing-repository"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^4.0.0",
+    "typescript": "^5.4.0"
+  }
+}

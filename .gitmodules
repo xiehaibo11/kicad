@@ -1,0 +1,3 @@
+[submodule "tools/ai/upstream/easyeda-agent"]
+	path = tools/ai/upstream/easyeda-agent
+	url = https://github.com/zhoushoujianwork/easyeda-agent.git

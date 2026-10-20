@@ -1,0 +1,363 @@
+# KiCad AI automation (`tools/ai`)
+
+This directory integrates the open-source
+[`easyeda-agent`](https://github.com/zhoushoujianwork/easyeda-agent) (MIT) into
+KiCad as an AI-callable automation layer.  The upstream is pinned as a git
+submodule:
+
+```bash
+git submodule update --init tools/ai/upstream/easyeda-agent
+```
+
+## What is reused, what is replaced
+
+The upstream consists of a Go CLI, a local daemon, a WebSocket connector that
+runs inside EasyEDA Pro, and an MCP adapter.  Its transport and roughly 160
+action call sites are EasyEDA-specific, so they cannot drive KiCad.
+
+| Upstream component | In KiCad |
+|---|---|
+| EasyEDA daemon + connector | **Replaced** by KiCad protobuf API over NNG and `kicad-cli` |
+| Typed action catalog / audit / `apply` pattern | **Kept** as the design pattern |
+| `internal/spec` (S0 spec schema + validation) | **Reused directly** |
+| `internal/blocks` (37 circuit blocks) | **Reused directly** |
+| `internal/connectivity`, `internal/schguard`, PCB check/autoplace algorithms | **Reusable reference**; not yet wired into KiCad |
+| EasyEDA workflow state | **Replaced** by a KiCad-native stage machine |
+
+The Go module is intentionally nested under the upstream module path
+(`github.com/zhoushoujianwork/easyeda-agent/kicad-agent`) with a `replace`
+directive, so it can import upstream `internal/` packages without copying them.
+
+## Build
+
+```bash
+# CLI only (no IPC dependency)
+cd tools/ai/kicad-agent && make build
+
+# With KiCad IPC (NNG 1.x)
+make build-ipc NNG_PREFIX=$HOME/kicad-deps/nng-install
+```
+
+Or integrate into the KiCad build:
+
+```bash
+cmake -S . -B build -DKICAD_BUILD_AI_AGENT=ON
+# optional IPC:
+#   -DKICAD_BUILD_AI_AGENT=ON -DKICAD_BUILD_AI_AGENT_IPC=ON
+ninja -C build kicad-agent
+```
+
+## Terminal usage
+
+```bash
+kicad-agent health
+kicad-agent actions --domain board
+kicad-agent call board.drc.run --payload '{"input":"board.kicad_pcb","output":"drc.json","format":"json","timeoutMs":60000}'
+kicad-agent pipeline run --spec design.spec.json --project ./my-project
+```
+
+Every command emits exactly one JSON envelope on stdout; logs go to stderr.
+Exit codes: `0` success, `1` action failure, `5` rule violations, `8` timeout,
+`9` cancelled.
+
+The same tool surface is reachable through KiCad's own CLI:
+
+```bash
+kicad-cli agent health
+kicad-cli agent actions --domain board
+kicad-cli agent sch generate --spec circuit.json --project ./my-project --new
+```
+
+For a build-tree run, point the wrapper at the Go binary:
+`export KICAD_AGENT=/path/to/build/bin/kicad-agent`.  An installed build places
+`kicad-agent` next to `kicad-cli`, so no variable is needed.
+
+## Automatic schematic generation
+
+```bash
+kicad-agent sch search --library Device --query resistor --limit 10
+kicad-agent sch generate --spec circuit.json --project ./my-project --new
+```
+
+`circuit.json`:
+
+```json
+{
+  "components": [
+    {"reference":"R1","libId":"Device:R","value":"10k","position":{"xMm":50,"yMm":50}},
+    {"reference":"R2","libId":"Device:R","value":"10k","position":{"xMm":70,"yMm":50}}
+  ],
+  "nets": [
+    {"name":"NET_A","pins":["R1.1","R2.1"]},
+    {"name":"NET_B","pins":["R1.2","R2.2"]}
+  ],
+  "annotate": true
+}
+```
+
+The generator snaps positions to the 1.27 mm grid, places symbols from the
+library, reads absolute pin positions, places a local label with the net name at
+each pin, annotates, saves, and runs ERC.  The last verified run produced
+`/NET_A` and `/NET_B` nets with zero ERC violations.
+
+## LLM integration (`settings.json`)
+
+Copy [settings.example.json](kicad-agent/settings.example.json) to
+`~/.config/kicad-agent/settings.json` and export the provider's key:
+
+```bash
+export DEEPSEEK_API_KEY=...
+kicad-agent ai --settings ~/.config/kicad-agent/settings.json \
+  --prompt "Generate the schematic in ./my-project from circuit.json and report ERC"
+```
+
+Providers: OpenAI, Anthropic, DeepSeek, Qwen (DashScope compatible mode), and
+Ollama.  Keys are read from the environment variable named by `apiKeyEnv`; they
+are never stored in the file.  The agent uses a provider-agnostic JSON tool
+loop: one action per turn, results fed back, bounded by `--max-steps`.
+
+## MCP registration
+
+`kicad-agent mcp` runs a stdio MCP server.  Register it in Claude Code,
+Cursor, or any MCP client:
+
+```json
+{
+  "mcpServers": {
+    "kicad": {
+      "command": "/absolute/path/to/kicad-agent",
+      "args": ["mcp"],
+      "env": {
+        "KICAD_CLI": "/absolute/path/to/kicad-cli",
+        "KICAD_API_SOCKET": "/tmp/kicad/api.sock"
+      }
+    }
+  }
+}
+```
+
+Tools exposed: `kicad_health`, `kicad_actions`, `kicad_call`,
+`kicad_spec_validate`, `kicad_blocks`, `kicad_workflow`, `kicad_pipeline`, and
+one domain tool per safe domain (`kicad_board`, `kicad_schematic`,
+`kicad_project`, `kicad_document`, `kicad_library`, `kicad_external`,
+`kicad_system`).
+
+## Routing quality
+
+```bash
+# Multi-layer obstacle-aware A* router.  Default layers are F.Cu and B.Cu;
+# pass --layers F.Cu,In1.Cu,B.Cu to allow inner layers.  Pads, tracks, vias,
+# board edges, footprint Edge.Cuts cutouts, and rule areas are obstacles.
+kicad-agent route autoroute --document board.kicad_pcb --planner grid \
+    --layers F.Cu,B.Cu --grid-mm 0.25 --clearance-mm 0.2 \
+    --via-drill-mm 0.3 --via-diameter-mm 0.6 --apply
+
+# Coupled differential pair.  The router checks every planned segment against
+# other-net tracks and pad boxes; a pair that would short is refused with a
+# reason instead of creating copper.
+kicad-agent route diff-pair --document board.kicad_pcb \
+    --pairs '[{"p_start":"R1.1","p_end":"R2.1","n_start":"R1.2","n_end":"R2.2"}]' \
+    --width-mm 0.2 --gap-mm 0.2 --apply
+
+# Serpentine length tuning.  The planned length is verified before any copper is
+# created, and the original straight segment is deleted only after all new
+# segments were created; the final length is re-measured.
+kicad-agent route tune --document board.kicad_pcb --net DDR_DQ0 --target-mm 42.5 --apply
+```
+
+The L-router baseline also checks both L directions against other-net tracks
+and pad boxes and picks the unblocked one.  Already-connected nets are skipped.
+
+All routing commands are dry-run by default.  These are deterministic routers,
+not a commercial autorouter; run `board.drc.run` and
+`board.connectivity.prove` after applying.
+
+## Exact STEP collision check
+
+`kicad-stepcheck` (built next to `kicad-agent` when OpenCASCADE is available)
+reads a STEP file and computes pairwise boolean intersections between its
+solids.  Unlike AABB checks, it reports the actual overlap volume, so touching
+faces (board and component bodies) are not false positives.
+
+```bash
+kicad-stepcheck board.step
+# exit 0 = clean, 5 = collisions, 1 = evaluation error, 2 = bad input
+
+kicad-agent structural check --document board.kicad_pcb --exact-step
+kicad-agent call external.step.meshcheck --payload '{"input":"board.step"}'
+```
+
+The report includes component names from the STEP XCAF labels when present.
+Set `KICAD_STEPCHECK` if the checker is installed elsewhere.
+
+## Headless server and job control
+
+```bash
+# Attach to the current server, or start a detached kicad-cli api-server.
+kicad-agent call project.open --payload '{"document":"/abs/board.kicad_pcb"}'
+# -> {"socket": "...", "pid": 1234, "spawned": true}
+
+# API export jobs return a job id.
+kicad-agent call board.jobs.svg --payload '{"document":{...},"output":"out.svg"}'
+kicad-agent call job.status --payload '{"jobId":"..."}'
+kicad-agent call job.cancel --payload '{"jobId":"..."}'
+
+# Every non-interactive kicad-cli command is available through one action.
+kicad-agent cli pcb export step board.kicad_pcb -o board.step
+kicad-agent call kicad.cli.run --payload '{"args":["pcb","export","step","board.kicad_pcb"]}'
+```
+
+`GetCapabilities` now filters the advertised list against the handlers that
+are actually registered in the current API session.
+
+## Install everything
+
+```bash
+tools/ai/install.sh
+```
+
+This writes `kicad-agent` / `kicad-cli` wrappers to `~/.local/bin`, installs the
+Claude skill and slash commands under `~/.claude/`, and installs the VS Code
+extension when `code` and a packaged VSIX are present.
+
+## Install the VS Code extension
+
+```bash
+cd tools/ai/vscode-extension
+npm install && npm run compile
+npx @vscode/vsce package --no-dependencies
+code --install-extension kicad-agent-vscode-0.1.0.vsix
+```
+
+The extension contributes a KiCad activity-bar view, DRC/ERC diagnostics, and
+commands for schematic generation, routing, fanout, DFM, impedance, and exact
+STEP checks.  It also provides **KiCad: Start API Server for Active Document**
+and **KiCad: Stop API Server**, so IPC-backed actions work without a separate
+terminal.  Set `kicadAgent.path`, `kicadAgent.kicadCli`, and optionally
+`kicadAgent.symbolDir` / `kicadAgent.footprintDir` in settings.
+
+## Agent integrations
+
+- **MCP**: `kicad-agent mcp` (stdio JSON-RPC); `.mcp.json` at the repository
+  root registers it for Claude Code.
+- **Skill**: `.claude/skills/kicad-agent/SKILL.md` (source under
+  `tools/ai/skills/kicad/`).
+- **Slash commands**: `.claude/commands/kicad-check.md`, `kicad-drc.md`,
+  `kicad-schematic.md`, `kicad-route.md`, `kicad-fab.md`, `kicad-step.md`.
+- **Context compression**: `kicad-agent ai --max-context-bytes N` bounds the
+  conversation before each model call.  When the budget is exceeded, the oldest
+  turns are summarized into a compact note — falling back to lossy trimming if
+  summarization fails — while the system prompt and original task are preserved.
+
+## Design pipeline
+
+`kicad-agent pipeline run` executes these stages and writes
+`.kicad-agent/pipeline-report.json`:
+
+| Stage | Action | Status |
+|---|---|---|
+| spec | `spec.validate` | implemented |
+| health | `system.health` | implemented |
+| schematic | `schematic.erc.run` (existing `.kicad_sch`) | implemented; generate a schematic first with `kicad-agent sch generate` |
+| netlist | `schematic.export.netlist` | implemented |
+| board | `board.netlist.import` | implemented (IPC) |
+| place | `board.place.autoplace` | implemented (AR_AUTOPLACER) |
+| planes | `board.plane.create` / `board.plane.verify` | implemented (net-bound zones on inner layers, driven by `stackup.innerLayers`) |
+| fanout | `board.fanout.run` | implemented (via-in-pad / dog-bone; pass `--fanout-reference`) |
+| route | `board.route.autoroute` | implemented (deterministic L-router; DRC validates; dry-run by default) |
+| save | `document.save` | implemented (persists API edits before CLI jobs) |
+| drc | `board.drc.run` | implemented, with timeout |
+| connectivity | `board.connectivity.prove` | implemented (IPC) |
+| manufacturing | Gerber/drill/position/STEP | implemented |
+| verify | summary | implemented |
+
+Stages that cannot run are reported as `unimplemented` with remediation; they
+are never silently skipped.
+
+## Additional PCB capabilities
+
+```bash
+kicad-agent fanout run --document board.kicad_pcb --reference U1 --style via-in-pad
+kicad-agent dfm analyze --document board.kicad_pcb --min-width-mm 0.15
+kicad-agent dfm fix --document board.kicad_pcb --min-width-mm 0.15
+kicad-agent impedance calculate --document board.kicad_pcb --layer F.Cu --target 50
+kicad-agent impedance check --document board.kicad_pcb --layer F.Cu --target 50
+kicad-agent route autoroute --document board.kicad_pcb --nets DDR_DQ0 --apply
+kicad-agent route diff-pair --document board.kicad_pcb --pairs '[{"p_start":"U1.1","p_end":"U2.1","n_start":"U1.2","n_end":"U2.2"}]' --apply
+kicad-agent route length --document board.kicad_pcb --net DDR_DQ0 --target-mm 25
+kicad-agent structural check --document board.kicad_pcb --heights heights.json --export-step
+```
+
+Limitations (intentional and reported, not hidden):
+
+- **Fanout**: first-pass via-in-pad / dog-bone only. No escape search, layer
+  assignment, or current-capacity planning.
+- **Autoroute**: deterministic L-router; it does not shove, rip up, or search
+  around obstacles. Always follow with `board.drc.run` and
+  `board.connectivity.prove`.
+- **Differential pair**: two parallel L paths with the requested gap; no coupled
+  length tuning.
+- **Length**: report-only; no meander insertion yet.
+- **DFM fix**: track width and 0/45/90/135/180-degree angle snapping only; no
+  pad/footprint moves.
+- **Impedance**: IPC-2141 closed-form guidance; final values need the
+  fabricator's field solver.
+- **Structural**: 2.5D footprint bounding boxes + optional heights, plus STEP
+  export. Exact mesh collision still requires an external tool
+  (`external.step.check`).
+
+## KiCad API prerequisites
+
+For IPC actions, start a headless API server:
+
+```bash
+kicad-cli api-server /path/to/project --socket /tmp/kicad/api.sock
+```
+
+The server is also started by the GUI when **Enable API server** is on.
+
+## Generated protobuf bindings
+
+`proto/gen.sh` copies `api/proto`, injects `go_package` options, and generates
+one Go package `internal/kicadproto` for `common/**` + `board/**`, plus
+`internal/kicadproto/schematic` (`kschematic`).
+
+The split is required because KiCad's proto packages contain a cycle
+(`common/types` ↔ `board` ↔ `common/commands`) that Go forbids.  The checked-in
+proto files are not modified.
+
+After changing `api/proto`, run:
+
+```bash
+tools/ai/kicad-agent/proto/gen.sh
+```
+
+## External tools
+
+`kicad-agent external tools` reports availability.  Supported integrations:
+
+- **Freerouting** (`external.freerouting.run`) — DSN/SES autorouting.
+- **ngspice** (`external.ngspice.run`) — batch SPICE simulation.
+- **FreeCAD / OpenSCAD / scripts** (`external.step.check`) — mechanical checks.
+- **Generic allowlisted commands** (`external.command.run`).
+
+## AI agent security
+
+`kicad-agent ai` enforces an action policy outside the model prompt:
+
+- mutating actions are allowed unless `--read-only` is passed;
+- external tools require `--allow-external` (except `external.tools.list`);
+- `--allowed-actions a,b,c` restricts the model to an explicit allowlist;
+- tool results are wrapped as untrusted data and secret-looking values are
+  redacted before they reach the model;
+- external child processes receive a filtered environment, so API keys in the
+  parent process cannot be read by a project file.
+
+## Licensing
+
+The `easyeda-agent` submodule is MIT and NNG (used by the IPC build) is MIT.
+Those components are linked with KiCad's GPLv3 protobuf API and libraries, so
+the combined `kicad-agent` binary and the `kicad-cli agent` subcommand are
+distributed under the GNU General Public License, version 3 or later.  See
+`LICENSE` and `NOTICE` in this directory.  The KiCad application itself
+remains GPLv3.

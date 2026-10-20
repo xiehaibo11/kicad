@@ -22,3 +22,7 @@ target_link_libraries( utf8_tests
     )
 
 add_subdirectory( newstroke )
+
+if( KICAD_BUILD_AI_AGENT )
+    add_subdirectory( ai )
+endif()

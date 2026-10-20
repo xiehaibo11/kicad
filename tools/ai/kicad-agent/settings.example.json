@@ -1,0 +1,36 @@
+{
+  "default": "deepseek",
+  "providers": {
+    "openai": {
+      "type": "openai",
+      "baseUrl": "https://api.openai.com/v1",
+      "apiKeyEnv": "OPENAI_API_KEY",
+      "model": "gpt-4o"
+    },
+    "anthropic": {
+      "type": "anthropic",
+      "baseUrl": "https://api.anthropic.com",
+      "apiKeyEnv": "ANTHROPIC_API_KEY",
+      "model": "claude-sonnet-5-5",
+      "version": "2023-06-01"
+    },
+    "deepseek": {
+      "type": "openai",
+      "baseUrl": "https://api.deepseek.com/v1",
+      "apiKeyEnv": "DEEPSEEK_API_KEY",
+      "model": "deepseek-chat"
+    },
+    "qwen": {
+      "type": "openai",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "apiKeyEnv": "DASHSCOPE_API_KEY",
+      "model": "qwen-plus"
+    },
+    "ollama": {
+      "type": "openai",
+      "baseUrl": "http://127.0.0.1:11434/v1",
+      "apiKeyEnv": "",
+      "model": "qwen2.5-coder"
+    }
+  }
+}
