@@ -47,7 +47,7 @@ func unifiedCheck(ctx context.Context, p map[string]any, dispatch Dispatcher) (*
 	var drcRes *backend.Result
 	var drcErr error
 	drcArgs := map[string]any{"severityAll": true, "refillZones": argBool(p, "refillZones", true),
-		"timeoutMs": argFloat(p, "timeoutMs", 600000)}
+		"timeoutMs": argFloat(p, "timeoutMs", 600000), "full": true}
 	if live {
 		drcArgs["document"] = doc
 		drcRes, drcErr = LiveRules(ctx, "board.drc.run", drcArgs, dispatch)

@@ -1,0 +1,2871 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-20",
+  "sourceRoot": "demos",
+  "examples": [
+    {
+      "id": "cm5_minima--CM5_MINIMA_3",
+      "name": "CM5_MINIMA_3",
+      "project": "demos/cm5_minima/CM5_MINIMA_3.kicad_pro",
+      "files": [
+        {
+          "path": "demos/cm5_minima/3d_lib/2230-M.2-B-KEY.kicad_mod",
+          "sha256": "91690d9cc91a22701e18420e33f73252a2f30a772575ecc7acfe47300210a17d"
+        },
+        {
+          "path": "demos/cm5_minima/3d_lib/2230-key-E.kicad_mod",
+          "sha256": "8419577dd81f29d9309fb70b41aa10979b33f129cbc76bbcae837c87e8a90ce6"
+        },
+        {
+          "path": "demos/cm5_minima/3d_lib/3x4x2 tact button.step",
+          "sha256": "9cfdb688220300a9f0b116c62fe19a0c01fae8178a85c3f7139442bf319cd525"
+        },
+        {
+          "path": "demos/cm5_minima/3d_lib/BM4B-SRSS-TB.step",
+          "sha256": "1b907551895ef2da60d90564d0ef5cf9c7b6e64fbaafcd9b1dd73fb84fc30394"
+        },
+        {
+          "path": "demos/cm5_minima/3d_lib/BM6B-SRSS-TB.step",
+          "sha256": "01c5db3f3099fd33ddc7ddabecd1ff9df27d4044393a9133dc081263d057b6ef"
+        },
+        {
+          "path": "demos/cm5_minima/3d_lib/LIB_B3U-3000PM-B/B3U-3000PM-B/3D/B3U-3000PM-B.stp",
+          "sha256": "da1e3249512d9ce2e76bc7ca975f3d944e419016af43d5c2d4e8f9592500fd18"
+        },
+        {
+          "path": "demos/cm5_minima/3d_lib/M.2-B.step",
+          "sha256": "39ca013c8edb47670f0013eea9fd4e005b5eabd70dd0f801149e5452f47bc486"
+        },
+        {
+          "path": "demos/cm5_minima/3d_lib/SHTC3-TR-10KS.stp",
+          "sha256": "286b429c62dd6d4325556033b7ec3b1bc438fb4dba510c8340f4445314f41f7e"
+        },
+        {
+          "path": "demos/cm5_minima/3d_lib/WE-RJ45LAN-7498111120AR (rev1).stp",
+          "sha256": "f992b3abe8263f059560c79b031dfdd9752701dac58672e099b227ed0e6c86c9"
+        },
+        {
+          "path": "demos/cm5_minima/CM5.kicad_sch",
+          "sha256": "adf319d48ed84d685e3660995650cf30a7998b05930c51655fb759c5945bce4f"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.3dshapes/10164227-1001a1rlf.stp",
+          "sha256": "da68222b6c33b923d66d9ab7de6d4432007b4965e08b11433b5fa7e342f56540"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.3dshapes/471511051.stp",
+          "sha256": "cf3f2686ef0ac1196303d40620294ba64d8e1c1eed8413b1ddc99441c1bd8a66"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.3dshapes/FH12-22S-0.5SH.stp",
+          "sha256": "559b7f24bd15d8fa9717abba6e98751cbc34f1cc97182199a063b44aecf0d4aa"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.3dshapes/SRP5030CC.stp",
+          "sha256": "65a46864d15a4efd04d55b5f4bc565b05c8c3a5363fbde94c1df1f91ee030570"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.3dshapes/TRJG0926HENL .stp",
+          "sha256": "71ca84decaee46b96e33f580290d6dec0328b69420aab581524019ff93c5a3b7"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.kicad_sym",
+          "sha256": "57c58ea65299b9b107fb47fe4bed53bff3c4fe977b340f0ba5226aa03db0472f"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/BatteryHolder_Keystone_3034_1x20mm.kicad_mod",
+          "sha256": "c6330c2f7deaf83848bdfbc492ac4a4818175f9cc2e161007dd3815852cdd517"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/CM5_IO.kicad_sym",
+          "sha256": "96e9f1bf9a0ac469948cd0bb6dd213e08ec4533b218e88dda4fdb301acf7b0a8"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN.kicad_mod",
+          "sha256": "1a0847becc9c4d39e05de34495bfab7fd01b66ec991def5eeb65a5779bb7acb6"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/CP_EIA-3528-21_Kemet-B.kicad_mod",
+          "sha256": "ddecf22d80344006838423c4bc9a3853ad7e96d63a1882c19817ae23b6fb7ede"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/C_0402_1005Metric.kicad_mod",
+          "sha256": "c3545933d62808bc9b71ff71cd6b0cb12b6a0ce285ff46d85bd72f0e64d9d4a7"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/C_0805_2012Metric.kicad_mod",
+          "sha256": "40b8bacca43685af9aa2f8f78066dd30bb669990968267cd845caec500439f93"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/Crystal_SMD_3225-4Pin_3.2x2.5mm.kicad_mod",
+          "sha256": "800f960206a408ec690f6e016bced0818e650a9de2405549da266e77c7aaba20"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/DFN-8-1EP_2x2mm_P0.5mm_EP1.05x1.75mm.kicad_mod",
+          "sha256": "2833aa07c0d2503f7efb65517d9ccdf0b16249e54857b18b198a692c00c9033e"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/DFN2510A-10_L2.5-W1.0-P0.50-BL.kicad_mod",
+          "sha256": "c7e352338bd413d79f2679a3a5c185a5a0fa484bd33326fb2a3ddf26c2cdae8f"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/EDAC 690-019-298-412.kicad_mod",
+          "sha256": "cb3a49aee00a8c9f61d7789c225373584302075d40661e8490f84f123b7ce851"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/GLPLXSMT188S7QQYG.kicad_mod",
+          "sha256": "ac31f667cf23b3f65c2e25837f508904fcafce965f20c7da7236bacb6dfc444c"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/Hirose_FH12-22S-0.5SH_1x22-1MP_P0.50mm_Horizontal.kicad_mod",
+          "sha256": "a6468a4164056d7e5e67c88d2cdb50e9916d15040d3c5ac5bb3ccdcd41b9da2b"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical.kicad_mod",
+          "sha256": "93c58c4e6616677427fcfa425b72d772552a0c252d70d573620e3106eea83d5f"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/JST_SUR_BM10B-SURS-TF_1x10-1MP_P0.80mm_Vertical.kicad_mod",
+          "sha256": "8bb983fa89864d1e23f7d02f652a77c61ace9c2cba09685a95c44234e973956e"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/KiCad-Logo2_5mm_SilkScreen.kicad_mod",
+          "sha256": "ddb68f56ea534cf8940e624f12ee09ad8363dead641140e7ac609e44145a249b"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/LED-SMD_L1.7-W0.6-RD.kicad_mod",
+          "sha256": "fcca12a6fdbe6eb9c2447d400d6f7af6bee831f1d821fe3d03b46d20a6f75ca3"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/LGA-16_3x3mm_P0.5mm_LayoutBorder3x5y.kicad_mod",
+          "sha256": "28ee7dec98b9717335aaf453d712a7970d925a71e8a555a8b4173abdd06f5eb0"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/L_Bourns_SRP5030CC.kicad_mod",
+          "sha256": "333c0cf2ad0bb8c9d72831aeb4e6a0ee9dc8ef7e201fe64120efbdc22693c36b"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/L_Coilcraft_XAL5030-XXX.kicad_mod",
+          "sha256": "9abd0a83fa9f1055f128d3e3871e3a0ae6cbc1482bd8afbbb08efeaaa688c1ba"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/M.2 M Key socket 2230.kicad_mod",
+          "sha256": "d025b890e149580eb25d5f2af6b0f1dc0dcdf61bcfc72af150cdaaa98cba3a97"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/M.2 M Key socket.kicad_mod",
+          "sha256": "6965c428701d762a0bda62cfd03f43900f7ee45d4cdfedcf9d6bc13dc06d2505"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/M.2 M Key socket_2230_2242.kicad_mod",
+          "sha256": "f4b909a1e8a6964536b946d14ae81cc8143b0cbd62c1ce5ea4759534b03dc394"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/MTCONN_UBAF30-D2011.kicad_mod",
+          "sha256": "d6249785ae1d748e73c040c9a824f3f472666b8189d8a06e515bb9a9a9e5c359"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/MountingHole_2.2mm_M2_DIN965_Pad_TopBottom.kicad_mod",
+          "sha256": "d12c7919599c413cd1d24f15e14717db1f658ecd655234ca51e03556fa2234c4"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/MountingHole_2.7mm_M2.5_DIN965.kicad_mod",
+          "sha256": "e39aca821d1c209b17dd4451592c1f1be16f4cd0b97ca47808094755f38f01d6"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/MountingHole_2.7mm_Pad.kicad_mod",
+          "sha256": "1d275e07dd1fea378a27f543c6a4c65ef336a905f789cd0f828153e38e2a5a78"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/MountingHole_3mm_Pad.kicad_mod",
+          "sha256": "00ef80b4ca87f538d93f6b5a25b45dbbaf036efb0f6edbfbd31d9002c8f0f050"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/New_Library.kicad_sym",
+          "sha256": "ab35ceab50a4b222a750bd3a30cef53619baf852d3e8ae264624d6065eda71f0"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/R_0402_1005Metric.kicad_mod",
+          "sha256": "9c74a948a1d5b39eed04f6b3828c52ed95262a46db1b7ea0759c167f16a0817f"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/Raspberry-Pi-5-Compute-Module.kicad_mod",
+          "sha256": "6ec81c49568d807c0e50bbb8ace2bafc32e44fbb3d17924d6eddef763ea34e00"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/Raspberry-Pi-5-Compute-Module_GPIO.kicad_mod",
+          "sha256": "d64dd9490baf09b5a0f0b4c2d3489549f42272cae78d295f5f0b221f2b5695be"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/Raspberry-Pi-5-Compute-Module_HSS.kicad_mod",
+          "sha256": "4da8a2a1dc1283dd31b4b8fc62d804dff6148d67717d57384eff301fc25fd04e"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/SDCARD_MOLEX_503398-1892.kicad_mod",
+          "sha256": "a6fdc628259f3c051cd1cb154d890b1ee8c8f1ab37d9cf1bf9ce5fccd2620984"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/SOT-23-5.kicad_mod",
+          "sha256": "4a2fe35695a01ae8b9bda3356acb2eb79caa63113a5b124323584a7ed2775fe7"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/SOT-23-6.kicad_mod",
+          "sha256": "1f2940bbc27eb517e71a4c8c37c8f5a5ff6ca711c94cdaadd97e307fbefcf5de"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/SOT-353_SC-70-5.kicad_mod",
+          "sha256": "b2c0b1307122cc2b0a0dee9f6d63d9b9277bc330e7c59f57fe0e4f3f11bdd5f7"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/SOT-416.kicad_mod",
+          "sha256": "a70be0485f26449087c1471c33916b7c73bfd99442d42834a6cd1abfc0615e0e"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/SW-SMD_MK-11C04-G013.kicad_mod",
+          "sha256": "49ea6c2bdab31de3ad714014889dfd6a3d1c279f4c8aa8ebc567c8f37886f8c3"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/SW-SMD_TS-1010A-B.kicad_mod",
+          "sha256": "0ba3d01c5639b5e9490f83149c5a6e202dffec92b51f9cc9708a685ab378b699"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/TRJG0926HENL.kicad_mod",
+          "sha256": "5216c8e693ceab849c4dc2cca6964038bed68f521a155e678775fd2cc472f167"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/TestPoint_Pad_D1.0mm.kicad_mod",
+          "sha256": "d8891e503eb8de91cb9274b2586727549551f9d02048730ca7fb96a600df45da"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/TestPoint_THTPad_D1.0mm_Drill0.5mm.kicad_mod",
+          "sha256": "142fbe3d5c86efcf7f924efb1da96f85045d0f15a8988888a71337a5e457b49a"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/USB-C-SMD_TYPEC-305-ACP16H458.kicad_mod",
+          "sha256": "aab45fc2dabbae914b2b7646af96dd9f6647b64341a7ab807fb7da6fa9a4a950"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/USON-10_2.5x1.0mm_P0.5mm.kicad_mod",
+          "sha256": "fbe39b3f91237978c94d534e8c10f98684fb591efd72a45927f8d34ea665e374"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-675DA838.kicad_mod",
+          "sha256": "cb05c70333345ce173c8c09e8de37bb0e3f3b623835c7a4f9deb1175e5424dce"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-675DA850.kicad_mod",
+          "sha256": "5efbff74cf3df30b7bef6aa14072859653a473382ff714aee9d1c4cf4006b86e"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-675DA866.kicad_mod",
+          "sha256": "2887a6d4efae7c07267c43a9418260f60f84e2a4f2debe95f12e52a2914f314e"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-675EDCA4.kicad_mod",
+          "sha256": "adcc8ac11cccfa07c2c731c99696d59b843dc6e18bfe1133681465fddea87a2d"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-675EDCB9.kicad_mod",
+          "sha256": "dfc69c587852c2d3b7a5cb6175a5c78f582533eb11bff0ff233ea3c3cd1777a1"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-6772D327.kicad_mod",
+          "sha256": "fb8f67244984f356f66ac236a636524c26a5e76239c1388b9b585632d017b736"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-6772DA33.kicad_mod",
+          "sha256": "e1fed064f48c9f4827be3076dddae25e22776a92969e941b0bf7c3003e461ed9"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-6773B9CA.kicad_mod",
+          "sha256": "5d038dc0f5468e13393fdf070c8cbafb73784a40ccad28ded4ba3c1d5206a827"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-6773B9F7.kicad_mod",
+          "sha256": "e3453dc46dfb5bb73bfe768cdb83373dd48a17e6b05e6be099f50eb3c32db975"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-6773BA89.kicad_mod",
+          "sha256": "4e8a886c5b8dbe5eb17c6aa1b08f6522c8f0fb610cdf891747440df11f93f4da"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-6773C222.kicad_mod",
+          "sha256": "695afd83e14d05f8a56792ed7b907bf2e222096315d07d6aefce107cab211474"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-6773C2D7.kicad_mod",
+          "sha256": "ed75a5dc00567b701cbd0b000223b0e3680e79fe38acae613fe807d6d78c8931"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-6773C376.kicad_mod",
+          "sha256": "e52cdf97d7ce4bba45bc6e7eda3527fa2de18709c3ff472ffa83abdb93fa8bdd"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67795592.kicad_mod",
+          "sha256": "2f94bfd08dec6f715b653f45447d5c9123e76c72621fca75a012975be4fab334"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67CC6BA6.kicad_mod",
+          "sha256": "916fcfea0c25ddbf2e774f7c4808bbdc09c3847356b43898537bb0a318e8ab22"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67CC6BD3.kicad_mod",
+          "sha256": "ba427a6271a94f7d634c4cd0da670e2533557d00df6ef62766689b9454a2edc9"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67CC6D94.kicad_mod",
+          "sha256": "ad959f6889bf253b5664732b95b43f38b14eb82f700845bb1fa460ce40a20da8"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67CC6D9E.kicad_mod",
+          "sha256": "6958e4c6b7d0cb515d199b60666b8cd01159e2e6358824f2f0de96b39f5b2919"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67CC7445.kicad_mod",
+          "sha256": "fd989d8d1c13cbd371f5f07bcd4444c7f00bd1bfcd5a76e5eb712f3a11c833fe"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67EBAC4C.kicad_mod",
+          "sha256": "c0d73fe57596ba37afa9611102b0c67bdd55fbdd59b0a42ad03057c469d9f38f"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67EBB9C1.kicad_mod",
+          "sha256": "0fb3041ad3e1ef584c02c4047f46e8c003dcced1d3d0058152691306d33606f1"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67EBD21C.kicad_mod",
+          "sha256": "4ad1d9365dc75a4666f8da19355700168bd8bdff1c722bbe357a12d9aec1df7c"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67EBD221.kicad_mod",
+          "sha256": "bc0a064c0fb0b691521e7273159f67306b6a0b81d4a453e872327f25a44468b7"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67EBEF55.kicad_mod",
+          "sha256": "31e95cee624e3049a647aba17f9f180c6b428904ed931103e21a6e0df5e1eb5f"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67EBF015.kicad_mod",
+          "sha256": "541d06190ecf457bde08e6832f7172f7e812c0689a89e2c9096081814e71961c"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67EBF0A0.kicad_mod",
+          "sha256": "51ee585a33cffd8dec420122fd2b266b2a4f9517fc277320566db8550629c6b2"
+        },
+        {
+          "path": "demos/cm5_minima/CM5IO.pretty/kibuzzard-67EBF14E.kicad_mod",
+          "sha256": "cca1537000f9ad659438c521b94770018685c98ec0f25fa3c5b117de565a5045"
+        },
+        {
+          "path": "demos/cm5_minima/CM5_MINIMA_3.kicad_pcb",
+          "sha256": "123e209e6245cbcc344c1c70b425dcb44a12cd0a2d05f00a39d3f2e7ff307ffa"
+        },
+        {
+          "path": "demos/cm5_minima/CM5_MINIMA_3.kicad_pro",
+          "sha256": "aa5b004bb45d70028612f6591b2cd5fa4754095e7542dbbca974753e4399526a"
+        },
+        {
+          "path": "demos/cm5_minima/CM5_MINIMA_3.kicad_sch",
+          "sha256": "b40a486994138c07a45d20e08e6f42405e4b99a88e82a3d55f23704ca9ddc0e7"
+        },
+        {
+          "path": "demos/cm5_minima/DSI_CSI.kicad_sch",
+          "sha256": "87c70624b7ef5d5e920cf3fb961bcbdf84d7a9e209fbfbee7240251b7cd26cd6"
+        },
+        {
+          "path": "demos/cm5_minima/Ethernet.kicad_sch",
+          "sha256": "c9558c21e63bda58d6893943c54ebbe9372d37373449cfab5c546f20db19293c"
+        },
+        {
+          "path": "demos/cm5_minima/HDMI.kicad_sch",
+          "sha256": "57adc114d891f568263b153a0b72bb0c3c99dcec0d1d40f7d2ca991038561afd"
+        },
+        {
+          "path": "demos/cm5_minima/IO.kicad_sch",
+          "sha256": "745b39eb73b97ae3d655921ac36fd38a5622b1b62de9eee23f2a2f8720074e0e"
+        },
+        {
+          "path": "demos/cm5_minima/PCIe-M2.kicad_sch",
+          "sha256": "62c448d1135746caba304569459e0a39ab4851b29b1eeef57859e2315b816ca3"
+        },
+        {
+          "path": "demos/cm5_minima/USB.kicad_sch",
+          "sha256": "16cacf7bd02b47c8247e5d62c855d8ba76d9e7f97bb58508118f57bfc50d199e"
+        },
+        {
+          "path": "demos/cm5_minima/fp-lib-table",
+          "sha256": "7546c2f069c301d990137482b1d5e4742b5c8c6c40fe61333e931e3a28a97c19"
+        },
+        {
+          "path": "demos/cm5_minima/sym-lib-table",
+          "sha256": "54b29def17e4b8d2750a108d980211cc05b2f77a613de01317568791ee7ac87c"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "complex_hierarchy--complex_hierarchy",
+      "name": "complex_hierarchy",
+      "project": "demos/complex_hierarchy/complex_hierarchy.kicad_pro",
+      "files": [
+        {
+          "path": "demos/complex_hierarchy/ampli_ht.kicad_sch",
+          "sha256": "ef6f503f39f79a94ad6550268565d7418dde96b296f5f2971c97383603da18a3"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.kicad_pcb",
+          "sha256": "d5f4162d4c766448832723d139f9e0fcb88a17c82340f10f6f6dc6c2042f0d69"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.kicad_pro",
+          "sha256": "55438416ca7fd46b5bad22da2693e9c43240060977d06daabcba084aa17e2804"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.kicad_sch",
+          "sha256": "4344cf98eac9e48262bc6092add7c0dffe27b560627d0658e5129250e7226e9e"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.kicad_sym",
+          "sha256": "39ae1574cda9ab144ab6e6fc8db48ba518a6d6c2fdc4b8cbdb0d6816aea1c91b"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/Altech_AK300_1x02_P5.00mm_45-Degree.kicad_mod",
+          "sha256": "ad699abe749c42684e8a45a5c07527b74b3b8dd702940a6f48c43bc25df69d4c"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/CP_Axial_L10.0mm_D4.5mm_P15.00mm_Horizontal.kicad_mod",
+          "sha256": "85d5482650ecb76f5367bce0e039338ffe8a683f3a6dcfc3af2a22399a3ecc65"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/CP_Axial_L11.0mm_D6.0mm_P18.00mm_Horizontal.kicad_mod",
+          "sha256": "76a1e1bfd36c1dfbd24db82ae14bc8ac9688918d88be6bd2abf636af134512dd"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/C_Disc_D5.0mm_W2.5mm_P5.00mm.kicad_mod",
+          "sha256": "8470e1280101425fecbc76612432ed9adfbc570e9c5be48f2b27560952020c62"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/DIP-8_W7.62mm_LongPads.kicad_mod",
+          "sha256": "db7d323a4d137b17a5b1355b9dcc13fd712caa70bc8ecddc18cab4c9dabd9c6d"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/D_DO-35_SOD27_P7.62mm_Horizontal.kicad_mod",
+          "sha256": "a36f18c7484177cadff8626f3c19f52c7b81eddc1c2c8db7098d062b281cec26"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/D_DO-41_SOD81_P12.70mm_Horizontal.kicad_mod",
+          "sha256": "761f1d9976988de6de7da76167d6cc33464fdb1ffbd29aac0dca12c7151bae34"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/Potentiometer_Bourns_3266W_Vertical.kicad_mod",
+          "sha256": "01e6c2d009a76985b46495aaa7a0746e858f7381d01d1168a87519ff12692990"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal.kicad_mod",
+          "sha256": "280aa291709eecd34106c3a69169331922695374a3186c0949aac2f16b10b806"
+        },
+        {
+          "path": "demos/complex_hierarchy/complex_hierarchy.pretty/TO-92_HandSolder.kicad_mod",
+          "sha256": "46bba204fab663ea16febd7686759ff16c38dd1e9bd79a4b28c60d6a020c0915"
+        },
+        {
+          "path": "demos/complex_hierarchy/fp-lib-table",
+          "sha256": "033abebfd8e676afd8500b8ab27ead67e6fe599fd14e7898584d7fe43f3fe0fa"
+        },
+        {
+          "path": "demos/complex_hierarchy/sym-lib-table",
+          "sha256": "44339f22283830e5511f9586104abeb0bee776be07d5512e485dbc2d96a6eefa"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "constraints--constraints",
+      "name": "constraints",
+      "project": "demos/constraints/constraints.kicad_pro",
+      "files": [
+        {
+          "path": "demos/constraints/constraints.kicad_pcb",
+          "sha256": "edbb888d918401098fe87af52d79df770b43203c4429b28810dc5f0cce4b8648"
+        },
+        {
+          "path": "demos/constraints/constraints.kicad_pro",
+          "sha256": "b6ca39e63e92f5bccfc9f301babc0f5dd8bd5e546063d99af611614be3a1d94a"
+        },
+        {
+          "path": "demos/constraints/constraints.kicad_sch",
+          "sha256": "0d9d98f3fa81299461edda357f380ad03eda497735f6e22a151fe9b39dcaf4e8"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "ecc83--ecc83-pp",
+      "name": "ecc83-pp",
+      "project": "demos/ecc83/ecc83-pp.kicad_pro",
+      "files": [
+        {
+          "path": "demos/ecc83/3d_shapes/ecc83.wrl",
+          "sha256": "b1ef620e6fe03b40ff938f26244612d1cad279fcdba414b5f763adbfba696c96"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp.kicad_pcb",
+          "sha256": "0ab45f4f8c90ac877e3313a1888d875107f2be3fc2b2f40cfb7927873b35260c"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp.kicad_pro",
+          "sha256": "8a943fac4b0cc3ed4fa83ccc83a6e15b9326178845ada0aa906df63f0672e975"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp.kicad_sch",
+          "sha256": "8a2d0359a0f3e647378034d84ab72b09dd7aa42f8b1f5e7fa0ff28ae369beee9"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp.kicad_sym",
+          "sha256": "df52d7c0a22cc198c3b9b63c8d23149d2297da37dc485fa5cd6d63057e7b04d0"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp_v2.kicad_pcb",
+          "sha256": "9be2caf4c257a93fc2b3904add1061a4d2e23cde502a7846513ae7db6b214c30"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp_v2.kicad_pro",
+          "sha256": "8ca4caec049e921d8cae59f2eddb5ca612c18010da8191ea1d30651a00aa07c9"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp_v2.kicad_sch",
+          "sha256": "80576c542e9ce473538c30ed24b7cd7e9152fe7922ebdb518928aa815b858ff1"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/Altech_AK300_1x02_P5.00mm_45-Degree.kicad_mod",
+          "sha256": "3417ad89f53dbf4d89a864be136abc4a7d2db54c1e0d1255827bd2b6699ff56b"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/CP_Radial_D10.0mm_P5.00mm.kicad_mod",
+          "sha256": "26f2b2d92ca5f75cf3c1097d2bd25594eaa894fe9ea6ad2c5bc8aa81de38d8f0"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/CP_Radial_D12.5mm_P7.50mm.kicad_mod",
+          "sha256": "2e88b1537e49800ead205dbc89e6de1a30bbe68bfc1ada0c1fb2c538fd823a21"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/C_Axial_L12.0mm_D6.5mm_P20.00mm_Horizontal.kicad_mod",
+          "sha256": "cf734b97499f88ea309b49ed316b5b90025c7970ac48d1087ac8648fe3552154"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/C_Disc_D4.7mm_W2.5mm_P5.00mm.kicad_mod",
+          "sha256": "9a6b41d0a58e122628dee55488db66868881aba635cb2ae3719f8da58d7453ce"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/MountingHole_3.2mm_M3_DIN965_Pad.kicad_mod",
+          "sha256": "b5a025cc72ce2695227dd27860edcf8d62809e650310c45fbc5d7988e924a086"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/PinHeader_1x02_P2.54mm_Vertical.kicad_mod",
+          "sha256": "4872ff9a91b83db6c5f0c45d0e5992cbe164e81de719518ef0b4bd18b6ce8ca7"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.kicad_mod",
+          "sha256": "a2276fb3674895472869246be8da3974705d269f5232d3238cd08324d577c7f4"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/Valve_ECC-83-1.kicad_mod",
+          "sha256": "c7c0f37c57470682fb997a04077faf8c0c123a78a6dedaea4e5ab95a8f6ff494"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/Valve_ECC-83-2.kicad_mod",
+          "sha256": "5a3454a91683f23042cf10f273ea97a00dd43f9e50f25161a1c223ab720fa591"
+        },
+        {
+          "path": "demos/ecc83/fp-lib-table",
+          "sha256": "ceafadbd442dc7d2a61b759ecba37782de1b3eee4308235c9d012e1e0482ee23"
+        },
+        {
+          "path": "demos/ecc83/sym-lib-table",
+          "sha256": "d816bcba37ad6b2f6738c99adc52f796011405d8ce75ff397b736c0493e609e2"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "ecc83--ecc83-pp_v2",
+      "name": "ecc83-pp_v2",
+      "project": "demos/ecc83/ecc83-pp_v2.kicad_pro",
+      "files": [
+        {
+          "path": "demos/ecc83/3d_shapes/ecc83.wrl",
+          "sha256": "b1ef620e6fe03b40ff938f26244612d1cad279fcdba414b5f763adbfba696c96"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp.kicad_pcb",
+          "sha256": "0ab45f4f8c90ac877e3313a1888d875107f2be3fc2b2f40cfb7927873b35260c"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp.kicad_pro",
+          "sha256": "8a943fac4b0cc3ed4fa83ccc83a6e15b9326178845ada0aa906df63f0672e975"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp.kicad_sch",
+          "sha256": "8a2d0359a0f3e647378034d84ab72b09dd7aa42f8b1f5e7fa0ff28ae369beee9"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp.kicad_sym",
+          "sha256": "df52d7c0a22cc198c3b9b63c8d23149d2297da37dc485fa5cd6d63057e7b04d0"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp_v2.kicad_pcb",
+          "sha256": "9be2caf4c257a93fc2b3904add1061a4d2e23cde502a7846513ae7db6b214c30"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp_v2.kicad_pro",
+          "sha256": "8ca4caec049e921d8cae59f2eddb5ca612c18010da8191ea1d30651a00aa07c9"
+        },
+        {
+          "path": "demos/ecc83/ecc83-pp_v2.kicad_sch",
+          "sha256": "80576c542e9ce473538c30ed24b7cd7e9152fe7922ebdb518928aa815b858ff1"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/Altech_AK300_1x02_P5.00mm_45-Degree.kicad_mod",
+          "sha256": "3417ad89f53dbf4d89a864be136abc4a7d2db54c1e0d1255827bd2b6699ff56b"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/CP_Radial_D10.0mm_P5.00mm.kicad_mod",
+          "sha256": "26f2b2d92ca5f75cf3c1097d2bd25594eaa894fe9ea6ad2c5bc8aa81de38d8f0"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/CP_Radial_D12.5mm_P7.50mm.kicad_mod",
+          "sha256": "2e88b1537e49800ead205dbc89e6de1a30bbe68bfc1ada0c1fb2c538fd823a21"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/C_Axial_L12.0mm_D6.5mm_P20.00mm_Horizontal.kicad_mod",
+          "sha256": "cf734b97499f88ea309b49ed316b5b90025c7970ac48d1087ac8648fe3552154"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/C_Disc_D4.7mm_W2.5mm_P5.00mm.kicad_mod",
+          "sha256": "9a6b41d0a58e122628dee55488db66868881aba635cb2ae3719f8da58d7453ce"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/MountingHole_3.2mm_M3_DIN965_Pad.kicad_mod",
+          "sha256": "b5a025cc72ce2695227dd27860edcf8d62809e650310c45fbc5d7988e924a086"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/PinHeader_1x02_P2.54mm_Vertical.kicad_mod",
+          "sha256": "4872ff9a91b83db6c5f0c45d0e5992cbe164e81de719518ef0b4bd18b6ce8ca7"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.kicad_mod",
+          "sha256": "a2276fb3674895472869246be8da3974705d269f5232d3238cd08324d577c7f4"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/Valve_ECC-83-1.kicad_mod",
+          "sha256": "c7c0f37c57470682fb997a04077faf8c0c123a78a6dedaea4e5ab95a8f6ff494"
+        },
+        {
+          "path": "demos/ecc83/footprints.pretty/Valve_ECC-83-2.kicad_mod",
+          "sha256": "5a3454a91683f23042cf10f273ea97a00dd43f9e50f25161a1c223ab720fa591"
+        },
+        {
+          "path": "demos/ecc83/fp-lib-table",
+          "sha256": "ceafadbd442dc7d2a61b759ecba37782de1b3eee4308235c9d012e1e0482ee23"
+        },
+        {
+          "path": "demos/ecc83/sym-lib-table",
+          "sha256": "d816bcba37ad6b2f6738c99adc52f796011405d8ce75ff397b736c0493e609e2"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "interf_u--interf_u",
+      "name": "interf_u",
+      "project": "demos/interf_u/interf_u.kicad_pro",
+      "files": [
+        {
+          "path": "demos/interf_u/fp-lib-table",
+          "sha256": "ad284a80461d1f9636df60453296b6801e7621a4e1722ce759862b57f888ac7a"
+        },
+        {
+          "path": "demos/interf_u/interf_u.kicad_pcb",
+          "sha256": "a740ce7fde77ab6af191e23ece21e57d36bb3c29325879248520dcd9ab47b57e"
+        },
+        {
+          "path": "demos/interf_u/interf_u.kicad_pro",
+          "sha256": "b9908a96e6113e6e51f488482108dc87aa5d9bcd838f9e3345c85e0db09bffa9"
+        },
+        {
+          "path": "demos/interf_u/interf_u.kicad_sch",
+          "sha256": "b3b8c3b199382f414e4b4b6661978f9b72e0879a99453cdfbbb6dd366c5a5a13"
+        },
+        {
+          "path": "demos/interf_u/interf_u.kicad_sym",
+          "sha256": "bde2596f4cd4436450953b4cb7d1ef1bd6160b5860595210b4fbea1c082d4c2a"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/BUS_PC.kicad_mod",
+          "sha256": "477e3bfd386a1db622c71e105ca1e62a834e9abd52074e7b6794615201435783"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/CP_Axial_L10.0mm_D4.5mm_P15.00mm_Horizontal.kicad_mod",
+          "sha256": "4f35e4f1113d31592bfa499c7297891120c95e6a0e3f4824e9292a80f4655824"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/C_Disc_D3.0mm_W2.0mm_P2.50mm.kicad_mod",
+          "sha256": "1c673956dc522e3f534c8472f071177864ddfabc571ea43ff84c450627325b9a"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/Crystal_HC18-U_Horizontal.kicad_mod",
+          "sha256": "2470713718992af9bfb035fa52e60e0e39214b287caee64f00d6cc90097be0e7"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/DIP-20_W7.62mm.kicad_mod",
+          "sha256": "e689ca410f6fa678748435296b0d1bbaf63a81a792990b74142e174b57549891"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/DIP-24_W7.62mm.kicad_mod",
+          "sha256": "256a295e9270c1d9afd3de447c61da1b09076ba3b8ce2b78bbf656dc34e2e0bd"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/DIP-32_W15.24mm.kicad_mod",
+          "sha256": "b0004a160ff4f1ef131d3a6a791e4f4c6edbb57028891b6292955b9bb87046f1"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/DSUB-25_Female_Horizontal_P2.77x2.84mm_EdgePinOffset9.90mm_Housed_MountingHolesOffset11.32mm.kicad_mod",
+          "sha256": "aa891ab1b3d9479397c498c7b129ee522e00dea88082955499ccc50d91bde451"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/LED_D5.0mm.kicad_mod",
+          "sha256": "faf833f3d780613ec0ee7d190055a43e65697bf5da781a58278deec3e6c85c57"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/PGA120.kicad_mod",
+          "sha256": "950ba1b13bc6fee91b2c66439964f633f4d7003ec445e2eabd62725e14f74c50"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/PinHeader_2x08_P2.54mm_Vertical.kicad_mod",
+          "sha256": "95c777c54a691a08bd96d9066015efd4910fc32a3e53190cbfd6269bd28ecd70"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/R_Array_SIP10.kicad_mod",
+          "sha256": "67caf0574cae84e115fc2f08932fdbdb8b4320b4bf36b7028a8a35332dfe9ac9"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal.kicad_mod",
+          "sha256": "c4476880f1bdde2caddcfec35b3be5ea005c145519258ec8c3cfa07ce9470cf1"
+        },
+        {
+          "path": "demos/interf_u/interf_u.pretty/tux.kicad_mod",
+          "sha256": "e951d3c5adf3098ea965e544e2fe88e22c4a35ba32c595a72f8b03cbcde439fb"
+        },
+        {
+          "path": "demos/interf_u/sym-lib-table",
+          "sha256": "7d0c18d563384df77919dc964e0511bbf2086aeadbc7befa4a3ae9b5ce1c1ed3"
+        },
+        {
+          "path": "demos/interf_u/tux.kicad_sym",
+          "sha256": "3dd62b35fd887752da0718069d58a42729841be74fc717e4f0461c53175b07ed"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "jetson-agx-thor-baseboard--jetson-agx-thor-baseboard",
+      "name": "jetson-agx-thor-baseboard",
+      "project": "demos/jetson-agx-thor-baseboard/jetson-agx-thor-baseboard.kicad_pro",
+      "files": [
+        {
+          "path": "demos/jetson-agx-thor-baseboard/csi.kicad_sch",
+          "sha256": "88c30801ce6ca909f356bad9d56ea9fdc4e28b8a0de64caf4d066fc6491244e5"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/dcdc.kicad_sch",
+          "sha256": "fee1d255a97df42a699818deece36980f6d8bb2f0f1bf48fe799e6652d92067f"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/expansion_connector.kicad_sch",
+          "sha256": "127c4cf2fe5f48ee5d2db4c1ad94fbe2f55f30aa9a53ab4b12704fb205e6b6bc"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/jetson-agx-thor-baseboard.kicad_dru",
+          "sha256": "afef3270ffbaa078e6136ea87f9a2fbbc2a186bab5073aae6bf8aae871ef30aa"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/jetson-agx-thor-baseboard.kicad_pcb",
+          "sha256": "e61179b68ac151376f5552f91a8acc2aed46f0cc4cd9c771049490735cdbf3f8"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/jetson-agx-thor-baseboard.kicad_pro",
+          "sha256": "36a2d42b52b71cde1709a17c058d509a62e85e34341134d5e079af74db527191"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/jetson-agx-thor-baseboard.kicad_sch",
+          "sha256": "bd943f5c309046e09a1c99e443e1ce23a0c922291371ca60839412694351340b"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/level_shifter_x8.kicad_sch",
+          "sha256": "05e24208b02c0761d9ed48171ce765d8e91430735a58349e31f7aa45a1d01346"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/m2.kicad_sch",
+          "sha256": "14e3b338feb6bac2bdf958c406ee6de7ed3e4629ded0d968b6eed6cab05a6d1a"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/peripherals.kicad_sch",
+          "sha256": "ebd17d39c52477297d055c74779497dab11ae6e51458b10030f4deb61794136f"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/power.kicad_sch",
+          "sha256": "ef8f96b6faffbbae1407e8f05056aa8f98b061b2d0a15ec1e1698bc189d5f600"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/recovery_usb.kicad_sch",
+          "sha256": "4e280e053b1d8ba0ee2a3191248a9bd7c46d9bf2f5d737361a23402954c98b27"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/sfp.kicad_sch",
+          "sha256": "8a6998aad647a2ae2e67fa2bffd62347a71683c3df41f731f5e68dee857d5323"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/som_io.kicad_sch",
+          "sha256": "d48a025c9e213a7ff601731ce0e96526b454ef9161dbfc07f66ba65cee0d7559"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/som_io2.kicad_sch",
+          "sha256": "3df968fe0dc304073b1b9425256e2c4967c930ac0956242ae5a4a01f85c09e16"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/som_power.kicad_sch",
+          "sha256": "adbc3997093bc617abfe23e03d06f8085ce9662636f039a42e808513a46a33d3"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/usb.kicad_sch",
+          "sha256": "940cb06421de5eaea77a6d54f2778f8c1d05024c478e5f04f487958e14b28a1e"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/usb_debug_pd.kicad_sch",
+          "sha256": "60d94bc61e32de2c8b0dbd759ba8cf21c9db24d1063e7b8fee61076d2a3cf3fc"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/usb_dp.kicad_sch",
+          "sha256": "dedbbbe2842256c3b84153e7ae147beeb6b5741bc412b377cac96addbd8a7ce8"
+        },
+        {
+          "path": "demos/jetson-agx-thor-baseboard/usb_hub.kicad_sch",
+          "sha256": "309f447586550989959917e18ffae8207a36be8505f648f404190881359d865e"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "kit-dev-coldfire-xilinx_5213--kit-dev-coldfire-xilinx_5213",
+      "name": "kit-dev-coldfire-xilinx_5213",
+      "project": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire-xilinx_5213.kicad_pro",
+      "files": [
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/fp-lib-table",
+          "sha256": "8f511b609192e850658104fb20728875073fde3ad44c28ad8bdb926af8bc8d43"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/in_out_conn.kicad_sch",
+          "sha256": "b406e5f8d1903f7d094c1109020a1912a1473c08ffbc0c64640742850f7f7809"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-coldfire_schlib.kicad_sym",
+          "sha256": "3c8040be7e3c5447b4ab1448e854cb44e1b7436a54feeb965ce9c428ec8d52e0"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire-xilinx_5213.kicad_pcb",
+          "sha256": "392cf6bf4b9b62beb435f965ccd7671a46decb17f947b74bfde482acd2132a5e"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire-xilinx_5213.kicad_pro",
+          "sha256": "d6ca906944730a3eae31ba3d9240c6966424b0d80ba76e80710e39d7b23c4637"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire-xilinx_5213.kicad_sch",
+          "sha256": "a1109092165ecec0d677142294330258c8990247e804f260d7682fda82602214"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire-xilinx_5213.kicad_sym",
+          "sha256": "a400f2319b29658ce1fcdeee8855b7a1496f9a80cb0660dc5ad93a0723b70444"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/Altech_AK300_1x02_P5.00mm_45-Degree.kicad_mod",
+          "sha256": "8b894796b22389190c87f70bf627f6518d1474797176fef7c3ebf11472c59476"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/CP_Radial_D8.0mm_P5.00mm.kicad_mod",
+          "sha256": "cb427a11a264c6bf5da27a34084f719fac868eb305819cdf35b2cda6186da7ab"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/C_0805_2012Metric.kicad_mod",
+          "sha256": "4e118c238f66570eca0674765c73c71aa1ce2d8a296915ffb06be3932ad36768"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/Crystal_HC18-U_Horizontal.kicad_mod",
+          "sha256": "c6b362991e4276403cdb1bbc10b7b8fa6bbe2e9e127dac3ecfeb429c973447ca"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset7.70mm_Housed_MountingHolesOffset9.12mm.kicad_mod",
+          "sha256": "3fe54880026e5b13bdab2843316fa78204161ee1e4a498b328ebb8d4268c63e1"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/D_DO-15_P12.70mm_Horizontal.kicad_mod",
+          "sha256": "33d2ac038211121b1b42e64f1bd8676b883a3dc561c61e1a5969eee15cc03055"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/D_SOT-23_ANK.kicad_mod",
+          "sha256": "5f5e8f950a0ac247c7e7e763edeac606ab0cb6ede998f5582166faed5d673062"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/FSUPCMS.kicad_mod",
+          "sha256": "b84e82bbb891a2b05deb7dfda8b91887a139dfdaef05216b753a99e49d78fdb8"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/JACK_ALIM.kicad_mod",
+          "sha256": "56eb9fdc6dfb84895135517af3acbfe7129cca0e8527c969e3947ea5f718106f"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/LED_1206_3216Metric.kicad_mod",
+          "sha256": "3329e048fc6cf3e51610205b22a8150d66f1e989c8429899616032a988b205c2"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/LQFP-100_14x14mm_P0.5mm.kicad_mod",
+          "sha256": "0cdc77777fec4a71efa3fd0096ca83c8443052e2b2b8f149ff4f6c96216d75a0"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_1x01_P2.54mm_Vertical.kicad_mod",
+          "sha256": "1925e9d6d1de00226efe23d620a24d126ebd8bcfcbee53c921eeb74d84c8a38e"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_1x02_P2.54mm_Vertical.kicad_mod",
+          "sha256": "1a7e585e49e141948fd499e62029000b946f7bdcb75b7d5cc39fb716ba02508b"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_1x03_P2.54mm_Vertical.kicad_mod",
+          "sha256": "cf37454f65c754ae712d5127008a441728c0322daa1b9f1bf9be8ec90a5e187d"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_1x06_P2.54mm_Vertical.kicad_mod",
+          "sha256": "05305cd846172c7a95034279da2f44337c239c75c2a49db5cf5f18903b86cfbe"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_2x02_P2.54mm_Vertical.kicad_mod",
+          "sha256": "e90acbc1fb63a372111c87e269fc03b1bf152e4fa6dec6491bd139f67c17184a"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_2x03_P2.54mm_Vertical.kicad_mod",
+          "sha256": "019d5a7112abf37ddd1873ce4f9446ce7887d98a8fee78d99ca2fc5d698623d5"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_2x04_P2.54mm_Vertical.kicad_mod",
+          "sha256": "1b93dc0b452904e28019cbb73710106d809191bee8e0caa7bf4f5b9136923f57"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_2x13_P2.54mm_Vertical.kicad_mod",
+          "sha256": "f7a3eac166a988227661c4f978d367bcec886d860cc62fb7ebfc2c63a44c21e2"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_2x20_P2.54mm_Vertical.kicad_mod",
+          "sha256": "b740b53cdd16e9826d9c0527a687e1954a1ae9f820c33d72d961342344457a59"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/PinHeader_2x30_P2.54mm_Vertical.kicad_mod",
+          "sha256": "3e3696e5a788ac556cff68a9a5bcd4eca43a29da40ba573663a12b1672f3501e"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/R_0805_2012Metric.kicad_mod",
+          "sha256": "5158717d800868376082ecdf773c475860f89a915b164ee8194af2df43a3da66"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/R_1206_3216Metric_Pad1.30x1.75mm_HandSolder.kicad_mod",
+          "sha256": "6a33af83d7d4bc5d694daf2a43d26b379e666dcc82851a3bc8b8fa1d80e62911"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.kicad_mod",
+          "sha256": "1b44b542729e6d0cbdd2d88e007fc3dcbdcebe5f69e9c2ee2ea854c30423ccf8"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/SM1206POL.kicad_mod",
+          "sha256": "06cb14b72b8202466936843f45117cf9f61615e3f075506ce05638017e055ae5"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/SOIC-14_3.9x8.7mm_P1.27mm.kicad_mod",
+          "sha256": "a0fabe21749701c67a049c720390c1a8667512feb0ce14d3f427f93bb21d179d"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/SOIC-16_3.9x9.9mm_P1.27mm.kicad_mod",
+          "sha256": "8216c117ff60236b288124cd687bc1d05bc5185cfb51ee5aa1cacda53880d9d0"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/SOIC-8_3.9x4.9mm_P1.27mm.kicad_mod",
+          "sha256": "6af9c4443647172406791675be480265b061820233d08d35f505a68da024f877"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/SOT23EBC.kicad_mod",
+          "sha256": "b8cb002c2a57f86f0c48270b6fc2b269e4d2c13ed3869e2bc279364d81d76ad3"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/SOT353.kicad_mod",
+          "sha256": "df771e6b8d46994c37abe8e6c3e48c1ea0bccb9504ced7232c91f51b07f50e41"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/SW_PUSH_SMALL.kicad_mod",
+          "sha256": "1133c9d8cf3fcffa13938c4c7b230ab6f54c4c1b7f3a504b2b7a779337836bf7"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/SW_SPDT.kicad_mod",
+          "sha256": "00b3a536af54fcb3a227701f31ca2d4b76b58c9b752fac34521ac7b1d061cdb0"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/TO-263-5_TabPin3.kicad_mod",
+          "sha256": "c04c36c4840b8748d1b7eb133630075aac296c1d1a06ae0fbb479195565b33ca"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/TO-92.kicad_mod",
+          "sha256": "4db7e770a74284fe999b2ec94ecbb2d225de56e4bc4b1612f744470d22a6ac8f"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/kit-dev-coldfire.pretty/TQFP-144_20x20mm_P0.5mm.kicad_mod",
+          "sha256": "cd0dadaad27ff476c7130642ec8a0e89b3bd684777cab4bfdca1c82843639bf1"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/prj.3dshapes/Device.switch_toggle_horizontal_right_angle_PC_terminal.wrl",
+          "sha256": "7cbb1cffabe0d6d09c986bdeb0155f9a862f9b2e7222e6b7fab54e7993e73ac8"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/prj.3dshapes/Jack.wrl",
+          "sha256": "dae730d8cf3e47cc9a9fb788d7f71d5ee60a34f278879b34fc9b667d3f9fc33a"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/prj.3dshapes/push_butt_4pads.wrl",
+          "sha256": "b4d3a294f695a25fe94fa8380d023292b0f89c4334b0f3dc25c68bf70a9e681d"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/sym-lib-table",
+          "sha256": "5655ad776b467b48e1a1167637a1c14d2060c0733dcd38d5f63ecc29d232d432"
+        },
+        {
+          "path": "demos/kit-dev-coldfire-xilinx_5213/xilinx.kicad_sch",
+          "sha256": "3750dc3866cce42d96220c39dde5c7c88589207810487581047a71d541b1fb5b"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "microwave--microwave",
+      "name": "microwave",
+      "project": "demos/microwave/microwave.kicad_pro",
+      "files": [
+        {
+          "path": "demos/microwave/microwave.kicad_pcb",
+          "sha256": "7f17191488b51f8782efc0a3b9ce7b5748a4e771ff0babb34ec0369ffcf43be5"
+        },
+        {
+          "path": "demos/microwave/microwave.kicad_pro",
+          "sha256": "ea9d9b756ae3b51d485c2dcb904f09aaee0190e4b584f038c3094536e7a9334a"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "multichannel--multichannel_mixer",
+      "name": "multichannel_mixer",
+      "project": "demos/multichannel/multichannel_mixer.kicad_pro",
+      "files": [
+        {
+          "path": "demos/multichannel/channel_strip.kicad_sch",
+          "sha256": "2c98b5d37f5b60c9187474017d7b754e8b4a1d45f4115dcbecf1a745ab175e0e"
+        },
+        {
+          "path": "demos/multichannel/fp-lib-table",
+          "sha256": "8a1e7e5ab227455c8865598b3c4c36db1e75c8abced3b2c0aee4fde54176a328"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer-unrouted.kicad_pcb",
+          "sha256": "149b2dce16e0f59adb78f87068f4137b7dafca0e991a0b21fdd967c873fd5ee9"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.kicad_pcb",
+          "sha256": "44b7c119a0d05c98e9f294659879184038a5f6c30073c04d9536990429ca413e"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.kicad_pro",
+          "sha256": "ea1bc47355f707e1c4743af3e1c29e939bb5eaf4621c071bdac3841c43545538"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.kicad_sch",
+          "sha256": "e47aecee9416d51fb5aed36d008a0442d3d6d68abfc5224bcdb5c5bb4a690fcf"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.kicad_sym",
+          "sha256": "7e0793cc48f3a20ea84f3c4c8643ffeb1be79dd05faba8ae1278dc39dbf7cf8b"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.pretty/CAPC3216X140N.kicad_mod",
+          "sha256": "3e6145d55866da5a696cefe075a68d26cf30fde90403ff2e006d2e4ae1461474"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.pretty/CAPPRB254-500X840.kicad_mod",
+          "sha256": "6e1ac6aeba9d1c87ba73b30104162d35ae05625364c80ed204127c90e0542775"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.pretty/CLIFF_FC68148(DC-10A).kicad_mod",
+          "sha256": "96f4e07509d06c0157dfca2b336f761541ed5d2daead790baafe6b90d23e658e"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.pretty/Jack_6.35mm_Neutrik_NMJ6HCD2_Horizontal.kicad_mod",
+          "sha256": "b8a282923219bb3b01bf82278a7ded099fac556385eaf8707d777fc92cc32fc3"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.pretty/Potentiometer_Alps_RK09K_Single_Vertical.kicad_mod",
+          "sha256": "ce94093ebd8cd8cd35a75442db46854414f78ca9be4f3b4234a7819650b938aa"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.pretty/RESC3216X65N.kicad_mod",
+          "sha256": "a12fbb5040e28dd960364f0319773d1450c0610c18ab9844d0671b6bf6c9f6d7"
+        },
+        {
+          "path": "demos/multichannel/multichannel_mixer.pretty/SOIC127P600X175-8N.kicad_mod",
+          "sha256": "0b5f066de991d39015aab71847ce9a17e3a60394391350e46650fa8e7d274f80"
+        },
+        {
+          "path": "demos/multichannel/sym-lib-table",
+          "sha256": "68b0633966d91fd9e81c05b7706abcddc892d1c71c9994c8cb757e38216787f7"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "openair-max--One-Air-Max",
+      "name": "One-Air-Max",
+      "project": "demos/openair-max/One-Air-Max.kicad_pro",
+      "files": [
+        {
+          "path": "demos/openair-max/Battery-Holder.kicad_sch",
+          "sha256": "434f095724ba741e3b15a1a1fedce93b8262ffdd1144a61ef4c0966791279f04"
+        },
+        {
+          "path": "demos/openair-max/Libraries/ESP32-C6-WROOM v3.step",
+          "sha256": "3450546bc7556967634ad7e5314c90524918c9b292a1721e8bd08986e47600e1"
+        },
+        {
+          "path": "demos/openair-max/Libraries/HRO_TYPE-C-31-M-12.step",
+          "sha256": "6b678407ddecad2f4fe905ca97eb5b343b0659126e81bed8fdf93bbe1bae41e9"
+        },
+        {
+          "path": "demos/openair-max/Libraries/Hold_18650-3p_smd.stp",
+          "sha256": "cc7a55b72a186c1eee07693f1c3ba54eda84cf4a5b49a560a9c37d3665ee5c85"
+        },
+        {
+          "path": "demos/openair-max/One-Air-Max.kicad_pcb",
+          "sha256": "a577ba5e2b337c9b827f3c30256161a1893da8303d278fb7db10dba4f02ea810"
+        },
+        {
+          "path": "demos/openair-max/One-Air-Max.kicad_pro",
+          "sha256": "d64469625e0a2d874a7073dd13145a37ab1d33218cc2150fb55fe6f424911fa5"
+        },
+        {
+          "path": "demos/openair-max/One-Air-Max.kicad_sch",
+          "sha256": "dd5b65cdbfa1735d21bd6b6e00b61b386bb89b8f1c9a282f753ed63c20387f87"
+        },
+        {
+          "path": "demos/openair-max/Solar-Module.kicad_sch",
+          "sha256": "ba1e342f29ba5b6150f6d71bdeefaea6e2c1874482ccc5ddec3293dfa314ca9d"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "pic_programmer--pic_programmer",
+      "name": "pic_programmer",
+      "project": "demos/pic_programmer/pic_programmer.kicad_pro",
+      "files": [
+        {
+          "path": "demos/pic_programmer/fp-lib-table",
+          "sha256": "e81a9c021142c92ce2795b9b94b37d4e7f04956dfe10c3d7869518c601e25ad8"
+        },
+        {
+          "path": "demos/pic_programmer/libs/3d_shapes/adjustable_rx2v4.wrl",
+          "sha256": "f3dd9c781da7cfe705faef8f8999899a597088d7afbe727429823beec278ae54"
+        },
+        {
+          "path": "demos/pic_programmer/libs/3d_shapes/textool_40.wrl",
+          "sha256": "ef484084ef42b8c2e61363426b63838e6069975a5a260bfd66f172227bf7f2c0"
+        },
+        {
+          "path": "demos/pic_programmer/libs/pic_programmer_fp.pretty/40tex-Ell600.kicad_mod",
+          "sha256": "61c5b4297088827ba2d02143edc9cf031802ec0072e057cb8d8e5483b5d6fa9a"
+        },
+        {
+          "path": "demos/pic_programmer/libs/pic_programmer_fp.pretty/RV2X4.kicad_mod",
+          "sha256": "64add84809f19b9eb77d86695ac19b2f87677e6849cdc1b103219c18ff8780cd"
+        },
+        {
+          "path": "demos/pic_programmer/libs/pic_programmer_fp.pretty/SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm.kicad_mod",
+          "sha256": "0449fc32c1f0ed8fc10f686bb06953dbcfcf06849c41c9ebde3876df60ace016"
+        },
+        {
+          "path": "demos/pic_programmer/libs/pic_programmer_fp.pretty/TO-92.kicad_mod",
+          "sha256": "ee34a946728dbf06ab4fbcfe6d940c202f737420b010927eb537c0e911fe3a62"
+        },
+        {
+          "path": "demos/pic_programmer/pic_programmer.kicad_pcb",
+          "sha256": "1ca70b620506818eb0227e2863bbd573d1fec1672072dc43d0dbe8475e69c8fb"
+        },
+        {
+          "path": "demos/pic_programmer/pic_programmer.kicad_pro",
+          "sha256": "9233d7a30fcb4cccd1f0261f9709d13fd8043cc66cc24bb73ee20c23429d62d7"
+        },
+        {
+          "path": "demos/pic_programmer/pic_programmer.kicad_sch",
+          "sha256": "cf92bff8aebe19e45444f13b2ccd1c8ad578df6a226acd5381e2eff95e2fc08f"
+        },
+        {
+          "path": "demos/pic_programmer/pic_programmer.kicad_sym",
+          "sha256": "311bf43e2f3999072cad00a00b8c894c6adbaec5b97ada2256b0db1d2115039a"
+        },
+        {
+          "path": "demos/pic_programmer/pic_sockets.kicad_sch",
+          "sha256": "8cbf575b53b205280ca277df8affc6477cf20c5d06c63c267cd6fb19b6d771ae"
+        },
+        {
+          "path": "demos/pic_programmer/sym-lib-table",
+          "sha256": "0115c6d84c88e0da8c7b47db401ae4f93f197ee9645b9dc4fbdad8d55a22a0e8"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "royalblue54L_feather--RoyalBlue54L-Feather",
+      "name": "RoyalBlue54L-Feather",
+      "project": "demos/royalblue54L_feather/RoyalBlue54L-Feather.kicad_pro",
+      "files": [
+        {
+          "path": "demos/royalblue54L_feather/RoyalBlue54L-Feather.kicad_pcb",
+          "sha256": "535dbe212f43a8bab12b23277e176a94ac9694177258af2981c0e7b08e4b7252"
+        },
+        {
+          "path": "demos/royalblue54L_feather/RoyalBlue54L-Feather.kicad_pro",
+          "sha256": "a25ffa7ff829d5eaff27b29724b57821ce2ee7fd39ae367b9ea078d290e37690"
+        },
+        {
+          "path": "demos/royalblue54L_feather/RoyalBlue54L-Feather.kicad_sch",
+          "sha256": "3636dcd5252ae18b2651dce4480a61765bd37b2e601679c3c1465dc8ca21fad8"
+        },
+        {
+          "path": "demos/royalblue54L_feather/fp-lib-table",
+          "sha256": "d9ec1d86a6b2410c5f6c46d389dc15b8b6d1a15caa65f2235a54e42b252d09b3"
+        },
+        {
+          "path": "demos/royalblue54L_feather/lib/footprints/LordsBoards-Symbol.pretty/LordsBoardsLogo_Small_Silk.kicad_mod",
+          "sha256": "259ee4f640f18110db5a100bdc7d3e2e0d7109366ceb2ff68365f9808c8bf95b"
+        },
+        {
+          "path": "demos/royalblue54L_feather/lib/footprints/RoyalBlue54L-Feather-Connector_FFC-FPC.pretty/CONN-SMD_5P-P0.50_HCTL_HC-FPC-05-09-5RLTAG.kicad_mod",
+          "sha256": "07e6c682f422a5131b4674bc877b7a4ee317085a35211171ad17715852d03fa2"
+        },
+        {
+          "path": "demos/royalblue54L_feather/lib/footprints/RoyalBlue54L-Feather-Connector_PinHeader_2.54mm.pretty/PinHeader_1x12_P2.54mm_Vertical.kicad_mod",
+          "sha256": "dd08a04f6252c0518a69de2be7fd6cf888252237808efd7326ad0c68d91bc407"
+        },
+        {
+          "path": "demos/royalblue54L_feather/lib/footprints/RoyalBlue54L-Feather-Connector_PinHeader_2.54mm.pretty/PinHeader_1x16_P2.54mm_Vertical.kicad_mod",
+          "sha256": "a1997d9e200bf80cb57c54aa14e9f740f1770d6acd152059eeef0306787eb953"
+        },
+        {
+          "path": "demos/royalblue54L_feather/lib/footprints/RoyalBlue54L-Feather-Connector_USB.pretty/USB_C_Receptacle_HRO_TYPE-C-31-M-12.kicad_mod",
+          "sha256": "9719e21ded87e6bb8e29d6f8c4a3d92a35c029550dbffa7224e6912edcdb95a6"
+        },
+        {
+          "path": "demos/royalblue54L_feather/lib/footprints/RoyalBlue54L-Feather-MountingHole.pretty/MountingHole_2.5mm.kicad_mod",
+          "sha256": "76516e201e7a6098e8f2387e7659f3e56d37d759c64c257fd9bc39e2b19040c0"
+        },
+        {
+          "path": "demos/royalblue54L_feather/lib/footprints/RoyalBlue54L-Feather-Symbol.pretty/RoyalBlue54L_QRCode.kicad_mod",
+          "sha256": "eb8eccd71a87b089487b331ee159c2584d709a7d3abebed432b2ee884bcf0391"
+        },
+        {
+          "path": "demos/royalblue54L_feather/lib/footprints/RoyalBlue54L-Module.pretty/SparkFun_ThingPlus.kicad_mod",
+          "sha256": "57966f3e52016975e4d870c3d2684a2fce0dd76214784ddcde592f7865c92076"
+        },
+        {
+          "path": "demos/royalblue54L_feather/lib/symbols/LordsBoards-Graphic.kicad_sym",
+          "sha256": "b216e6a370f31f8d6e77e1ca39224ca6ed53900de088c2bdc16559727c0f9fee"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna.kicad_pcb",
+          "sha256": "cd87e6d1b20fe0d129d9a9c807af3118c67749eff44b1f032d85c047a814c6dc"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna.kicad_pro",
+          "sha256": "3671c9041c477226ef0a915977f1fbfede9e0206c78c5abf8b51941c41e265ac"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna.kicad_sch",
+          "sha256": "f9e17eb92e5a11eb2db9a6f71835006d4f59fa487ea6c1577565f1b6522c09ab"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna_Connector_FPC.pretty/0.5mm-2p.kicad_mod",
+          "sha256": "a56925ef82ab6852d7056fccceef23025aab59493bdcf1bb0da352277b642a09"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna_Connector_FPC.pretty/Untitled.kicad_mod",
+          "sha256": "99ba633f0ed9976c4c38e2ec32bf87193bf2ba990ff7429196ddd880215c386d"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/fp-lib-table",
+          "sha256": "e93bf63e5c6f1382b46782a11ce5dfb09c512efb36109f7bcdfe3a0fb6818b0a"
+        },
+        {
+          "path": "demos/royalblue54L_feather/sch/Connectors.kicad_sch",
+          "sha256": "7b78116155a966443ad8a8192fe5ca09668f4bf4e59bc58370762195cf8456c6"
+        },
+        {
+          "path": "demos/royalblue54L_feather/sch/Debugger.kicad_sch",
+          "sha256": "e6f3273cb98b22ee2a90ee65857cb4035ea11fcf3d19fdddfd0c5d1926ddd2bd"
+        },
+        {
+          "path": "demos/royalblue54L_feather/sch/nPM1300.kicad_sch",
+          "sha256": "b53b9a766126616e839c10bfeae26aeee85132f48cf1ba84722354d366a63a6b"
+        },
+        {
+          "path": "demos/royalblue54L_feather/sch/nRF54L15.kicad_sch",
+          "sha256": "d1c824ffcfe88dfa1bded5a341afa8775f4e59c56b95174dd7e8ab081d95caff"
+        },
+        {
+          "path": "demos/royalblue54L_feather/sym-lib-table",
+          "sha256": "61faea789379b69942e77201fcc8004bd9ab85fec00932d7b322edaa2fdaaa28"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "royalblue54L_feather--nfc_antenna--RoyalBlue54L-NFC-Antenna--RoyalBlue54L-NFC-Antenna",
+      "name": "RoyalBlue54L-NFC-Antenna",
+      "project": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna.kicad_pro",
+      "files": [
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna.kicad_pcb",
+          "sha256": "cd87e6d1b20fe0d129d9a9c807af3118c67749eff44b1f032d85c047a814c6dc"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna.kicad_pro",
+          "sha256": "3671c9041c477226ef0a915977f1fbfede9e0206c78c5abf8b51941c41e265ac"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna.kicad_sch",
+          "sha256": "f9e17eb92e5a11eb2db9a6f71835006d4f59fa487ea6c1577565f1b6522c09ab"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna_Connector_FPC.pretty/0.5mm-2p.kicad_mod",
+          "sha256": "a56925ef82ab6852d7056fccceef23025aab59493bdcf1bb0da352277b642a09"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/RoyalBlue54L-NFC-Antenna_Connector_FPC.pretty/Untitled.kicad_mod",
+          "sha256": "99ba633f0ed9976c4c38e2ec32bf87193bf2ba990ff7429196ddd880215c386d"
+        },
+        {
+          "path": "demos/royalblue54L_feather/nfc_antenna/RoyalBlue54L-NFC-Antenna/fp-lib-table",
+          "sha256": "e93bf63e5c6f1382b46782a11ce5dfb09c512efb36109f7bcdfe3a0fb6818b0a"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--amplifier-ac--amplifier-ac",
+      "name": "amplifier-ac",
+      "project": "demos/simulation/amplifier-ac/amplifier-ac.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/amplifier-ac/amplifier-ac.kicad_pro",
+          "sha256": "b2cf5becd87c8a853a6417ac39c444b9111d6341d339c55654641dfdcfc12cbf"
+        },
+        {
+          "path": "demos/simulation/amplifier-ac/amplifier-ac.kicad_sch",
+          "sha256": "5720361a32edc9ba23f541caab8765201000c7a3b9dc308275530e31f4997507"
+        },
+        {
+          "path": "demos/simulation/amplifier-ac/sym-lib-table",
+          "sha256": "2a1efc4ebfe0099500e0b00444101581b26bc4a3352f24cb09381b9f12311701"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--analog-multiplier--a-multi",
+      "name": "a-multi",
+      "project": "demos/simulation/analog-multiplier/a-multi.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/analog-multiplier/a-multi.kicad_pro",
+          "sha256": "227ddafa33dbdab0ea768640759b30a9e5d7a94f89898d5d961f65d51bbc6e0e"
+        },
+        {
+          "path": "demos/simulation/analog-multiplier/a-multi.kicad_sch",
+          "sha256": "b2941fba31d1a4ad5e9142b66fffa977d6daa674d97f1064579981e009cb6b3c"
+        },
+        {
+          "path": "demos/simulation/analog-multiplier/mult.lib",
+          "sha256": "5629cd1137d27661c22ff44b5b5bb2d57560962fd2a71b83653c02dbb7bc3c54"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--class-d--Class-D",
+      "name": "Class-D",
+      "project": "demos/simulation/class-d/Class-D.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/class-d/AudioDriver.kicad_sym",
+          "sha256": "bc8b36587190758f47e5790da9d8bbcef1dfc0ab1bd06927201125bcb231c28b"
+        },
+        {
+          "path": "demos/simulation/class-d/Class-D.kicad_pro",
+          "sha256": "56b33df5b4b0b989d91c590c5644eb14f13a5441832b1afd4b74826d27f96db7"
+        },
+        {
+          "path": "demos/simulation/class-d/Class-D.kicad_sch",
+          "sha256": "e10edaf999e4c41e88fe7d27eb1eccf840a3136f484e9cf239806d906ea3156c"
+        },
+        {
+          "path": "demos/simulation/class-d/DAudioDriver.lib",
+          "sha256": "0659f9c521d2b157650d71f3f253340017bc07d1142629468beb29c11bed523a"
+        },
+        {
+          "path": "demos/simulation/class-d/DAudioDriver_os.lib",
+          "sha256": "f202172972550c14cde8b467622c9e39aeefb1e949e0d3de51ac4c94201bff7d"
+        },
+        {
+          "path": "demos/simulation/class-d/sym-lib-table",
+          "sha256": "43115090e3420df9b15065e4f88e53b08491c9aab9eca33cdf87b5e3673fbe6e"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--gain_control--mult_vca810",
+      "name": "mult_vca810",
+      "project": "demos/simulation/gain_control/mult_vca810.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/gain_control/VCA810.kicad_sym",
+          "sha256": "fabd3d76562a8995619c576c0f0020c05b596719c7f1ae80f01dfec8ccccd5bf"
+        },
+        {
+          "path": "demos/simulation/gain_control/mult_vca810.kicad_pro",
+          "sha256": "0256e4ec601c7113766f9ce56581d0348cb95b117e2f5320c862e588e5eb394c"
+        },
+        {
+          "path": "demos/simulation/gain_control/mult_vca810.kicad_sch",
+          "sha256": "5fc9f0bbd948098df7778dc5a7298ee5d2e83f05c3aa012221649844c266a80c"
+        },
+        {
+          "path": "demos/simulation/gain_control/sym-lib-table",
+          "sha256": "a8315f08b6235003232cfdd0379a83d295ddc840f725f823d8a10a37c6b8a677"
+        },
+        {
+          "path": "demos/simulation/gain_control/vca810.lib",
+          "sha256": "05d29687b17fc2aea502de7744a471de134a6daec329892275e67c5a625e8880"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--generic_models--generic_opamp_bip",
+      "name": "generic_opamp_bip",
+      "project": "demos/simulation/generic_models/generic_opamp_bip.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/generic_models/generic_opamp_bip.kicad_pro",
+          "sha256": "611be0282d5fcf321f7ac1fa917f416e0057e6abcdead841fa643e2485cfa82a"
+        },
+        {
+          "path": "demos/simulation/generic_models/generic_opamp_bip.kicad_sch",
+          "sha256": "7b3d7987bc06fc4b7b44e7f4d7b15ca01bb3ef827dae33a150abdbf1210fbe3a"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--ibis--ibis",
+      "name": "ibis",
+      "project": "demos/simulation/ibis/ibis.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/ibis/ibis.kicad_pro",
+          "sha256": "6359f820364df999be07c1aac4ab438a2f3df685b35063e156b597dfcd879e2b"
+        },
+        {
+          "path": "demos/simulation/ibis/ibis.kicad_sch",
+          "sha256": "e93e0cce7054397fe4c17f5b8ca5e3cabd9717deba9468f23f67ebfecd4381ef"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--laser_driver--laser_driver",
+      "name": "laser_driver",
+      "project": "demos/simulation/laser_driver/laser_driver.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/laser_driver/ad8009.lib",
+          "sha256": "6a93f52fbdd073c470a6cc7b217cee2c6124bb520dfe0f10a85aa99325abfb50"
+        },
+        {
+          "path": "demos/simulation/laser_driver/fzt1049a.lib",
+          "sha256": "c7060c71ac0e6c7bfa553362347495dd3d3d1b3758d7d746aed6bc95998786df"
+        },
+        {
+          "path": "demos/simulation/laser_driver/laser.lib",
+          "sha256": "f8df727383c4562aa270efdfbf4909b8ed65295117b72162843b39e9053bee79"
+        },
+        {
+          "path": "demos/simulation/laser_driver/laser_driver.kicad_pro",
+          "sha256": "6e902b00c4d578641f0d89fd66f89e01f1bcb6deb99878558ac52145c88aecd7"
+        },
+        {
+          "path": "demos/simulation/laser_driver/laser_driver.kicad_sch",
+          "sha256": "9d64ca78e9fdb76de1f63f027b20f454d29f6c66ea3e10cdf1919218d7541543"
+        },
+        {
+          "path": "demos/simulation/laser_driver/laser_driver_schlib.kicad_sym",
+          "sha256": "765fb65a2beeb8feffef91da941f31accc9590766b445c85d6e2faab2d339bb8"
+        },
+        {
+          "path": "demos/simulation/laser_driver/sym-lib-table",
+          "sha256": "291d82aa777f2cbc251f3a908e08fe02854704d1ae4ae1e2f313c645cb618c5e"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--power_supplies--LM317_power_supply--power_supply",
+      "name": "power_supply",
+      "project": "demos/simulation/power_supplies/LM317_power_supply/power_supply.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/power_supplies/LM317_power_supply/1N4002.lib",
+          "sha256": "f1c010faba354671fcd72cf227b33a28b21281a2f05d40fa07ed08dcb7e4a0aa"
+        },
+        {
+          "path": "demos/simulation/power_supplies/LM317_power_supply/LM317.lib",
+          "sha256": "e3e6eb3133235a69aa1d5e35182ac761631e2a72e2f359cf987cc35b5491aa0d"
+        },
+        {
+          "path": "demos/simulation/power_supplies/LM317_power_supply/diode_bridge.lib",
+          "sha256": "91faedbd293cd681b80e07cbf3d6a04c940854474560c958f7b753dd8174d4f0"
+        },
+        {
+          "path": "demos/simulation/power_supplies/LM317_power_supply/power_supply.kicad_pro",
+          "sha256": "cc3a56bb74fcdfecb7fd04631efffc8ef160b3f98f3e680f6d364650b8d58b8a"
+        },
+        {
+          "path": "demos/simulation/power_supplies/LM317_power_supply/power_supply.kicad_sch",
+          "sha256": "d7c5fc0489d54f648e5c95ffc8e5118b6011df19c6288b19a0b99fcbbaa5a2b0"
+        },
+        {
+          "path": "demos/simulation/power_supplies/LM317_power_supply/xformer.lib",
+          "sha256": "bda594e208eafb4f0464c1abf9320a4606df4245699985a357cf7b76508e24e1"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--power_supplies--boost--smps-com",
+      "name": "smps-com",
+      "project": "demos/simulation/power_supplies/boost/smps-com.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/power_supplies/boost/GenOpAmp.lib",
+          "sha256": "26097cf1a070a66711eec9de5f55bf74bd31be71bf17aa09f6cf2067a2a5c557"
+        },
+        {
+          "path": "demos/simulation/power_supplies/boost/PWM.kicad_sym",
+          "sha256": "ec1ce7ebccf37fda61d7b34f3645a5deefeaeff8f6b29239790117f7a188378d"
+        },
+        {
+          "path": "demos/simulation/power_supplies/boost/pwm2_model.lib",
+          "sha256": "ce9e5f45105beb27bf0755defb0e226ad6a883c0a6a5d4f71dd4d972c33bf485"
+        },
+        {
+          "path": "demos/simulation/power_supplies/boost/smps-com.kicad_pro",
+          "sha256": "d6327593acc1c1b0f79f5f64079e2a0d8920ebb854753645dcbb7a54f0790748"
+        },
+        {
+          "path": "demos/simulation/power_supplies/boost/smps-com.kicad_sch",
+          "sha256": "8008eeac568b6e6bfbfd30f40a17ca8bd0b84ba6cd100184b362bc381de1eff8"
+        },
+        {
+          "path": "demos/simulation/power_supplies/boost/sym-lib-table",
+          "sha256": "3a9bd82ed6c6ed0138f421b13c1877fb917a99f83c442a9c143ee8c48d4f198b"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--power_supplies--buck_conv--buck_conv",
+      "name": "buck_conv",
+      "project": "demos/simulation/power_supplies/buck_conv/buck_conv.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/power_supplies/buck_conv/buck_conv.kicad_pro",
+          "sha256": "be64f6c5d67147c1deb7312a82167676befffd70b7c9a8d5a92d650047c15ab5"
+        },
+        {
+          "path": "demos/simulation/power_supplies/buck_conv/buck_conv.kicad_sch",
+          "sha256": "e2ddd9d1a947b9ed06557b09fcf4f611cdafe36641396b5cbe3974938b608397"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--power_supplies--hv_converter--hv_converter",
+      "name": "hv_converter",
+      "project": "demos/simulation/power_supplies/hv_converter/hv_converter.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/power_supplies/hv_converter/GaN_PSpice_GS-065-018-2-L_L1V3P3.lib",
+          "sha256": "5cba9f7783c9e184792f4ccaf0c45807af1cb2b89bebf848a2944da0f9938e9b"
+        },
+        {
+          "path": "demos/simulation/power_supplies/hv_converter/hv_converter.cir",
+          "sha256": "3300cb91708aa866f35bdba1ddddc1c042da71bba09aea4aefb6c240871f00e2"
+        },
+        {
+          "path": "demos/simulation/power_supplies/hv_converter/hv_converter.kicad_pro",
+          "sha256": "9ce950a4d60fec5e4fa90bc9ff517778d68d452892dcb172f90f50766dc85d48"
+        },
+        {
+          "path": "demos/simulation/power_supplies/hv_converter/hv_converter.kicad_sch",
+          "sha256": "13bb6c67cfaa6a85cbd3d76f91a1f8719bd377e195e7595b980bc7474e1b8e7b"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--power_supplies--royer--royer1",
+      "name": "royer1",
+      "project": "demos/simulation/power_supplies/royer/royer1.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/power_supplies/royer/bc337-25_spice.lib",
+          "sha256": "f04b72fab18a8ac60761dc2ea9b656b652d657a41bef8007330937aebb03039c"
+        },
+        {
+          "path": "demos/simulation/power_supplies/royer/royer1.kicad_pro",
+          "sha256": "cbaf1292caf3ab780f3a44f5e87d4b332b91a732a351ca87c799d1c44271ad97"
+        },
+        {
+          "path": "demos/simulation/power_supplies/royer/royer1.kicad_sch",
+          "sha256": "64f389208150b40fd3d41a883f37de9ba04a44b3793377acbc0b32ac926465f9"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--q17--Q17ng",
+      "name": "Q17ng",
+      "project": "demos/simulation/q17/Q17ng.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/q17/BA4558R_Rev002.lib",
+          "sha256": "bd7f5c9084c00b1db810232251cfbc5f794340e15d3d341b5cb6e5bd3fdc8f06"
+        },
+        {
+          "path": "demos/simulation/q17/Q17ng.kicad_pro",
+          "sha256": "24fd5037dee0dc47d7291ba99ae29b592062c768b8127c2426c175821cbe6fdd"
+        },
+        {
+          "path": "demos/simulation/q17/Q17ng.kicad_sch",
+          "sha256": "25f5da785909d7a3fb70588502f0a59e78b3d7520c42d9b1d440455c47141046"
+        },
+        {
+          "path": "demos/simulation/q17/all_devices.lib",
+          "sha256": "225e0f68919524a223ece0f6ac22763562f3d969973e521181cf6cc4e081f8e0"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--rectifier--rectifier",
+      "name": "rectifier",
+      "project": "demos/simulation/rectifier/rectifier.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/rectifier/rectifier.kicad_pro",
+          "sha256": "975b0070d1755bee2c27cecf0ab160dc3684bcdb1f6d621f73b33a1bb9a9b2ba"
+        },
+        {
+          "path": "demos/simulation/rectifier/rectifier.kicad_sch",
+          "sha256": "68b5cc96418d67000de2efdabe5099754a4c30664d5559c0de11e70759acd828"
+        },
+        {
+          "path": "demos/simulation/rectifier/rectifier_schlib.kicad_sym",
+          "sha256": "a0ba2ad5beaa6b6dad88577e710a658becf7105e73cba34e29b5d33fe1b84395"
+        },
+        {
+          "path": "demos/simulation/rectifier/sym-lib-table",
+          "sha256": "9678fbb3c4b54adef96f21e3f7c957b6863d780b5562f0fb4fb4fac6b8eb0f78"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--sallen_key--sallen_key",
+      "name": "sallen_key",
+      "project": "demos/simulation/sallen_key/sallen_key.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/sallen_key/ad8051.lib",
+          "sha256": "603920e25ed866bbec07b4fb784e429b5f96d7d205d7e6499481615a7418198d"
+        },
+        {
+          "path": "demos/simulation/sallen_key/sallen_key.kicad_pro",
+          "sha256": "b36a2ba16886600b51077d39a940b364aeb0fdf240d8f1ad0f9816780056194c"
+        },
+        {
+          "path": "demos/simulation/sallen_key/sallen_key.kicad_sch",
+          "sha256": "0991269e591379b8a1b1434a5f550b53ad3d427e6c7d34bc0c4d75265fe9c64a"
+        },
+        {
+          "path": "demos/simulation/sallen_key/sallen_key_schlib.kicad_sym",
+          "sha256": "6e6c009bf1d3f3be4b02ebd6dcb72b3da4c85c92347493b23e28b84253ea4bb4"
+        },
+        {
+          "path": "demos/simulation/sallen_key/sym-lib-table",
+          "sha256": "8e88a126f014b0e0a885edc2c34037e60613f1bd5febb88f7e432e11b89d2e52"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--subsheets--mainsheet",
+      "name": "mainsheet",
+      "project": "demos/simulation/subsheets/mainsheet.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/subsheets/mainsheet.kicad_pro",
+          "sha256": "847bc30f709fd1bd3a34e7d01d42196b11446961112ef2cf958cb48d9bdf885c"
+        },
+        {
+          "path": "demos/simulation/subsheets/mainsheet.kicad_sch",
+          "sha256": "b33fc58979dabe2fea6e3a6a3bbcda07f9bbe6ed3eca8a1909a4f9a903445547"
+        },
+        {
+          "path": "demos/simulation/subsheets/project.kicad_sym",
+          "sha256": "57022d2f6d18dd763218b985e129954992c542dce897ec29d456320af17edac2"
+        },
+        {
+          "path": "demos/simulation/subsheets/subsheet1.kicad_sch",
+          "sha256": "8f1c543f41d05eb39e7f3098756a3c985794bfd77526aaa57c68e88eaeb98ec0"
+        },
+        {
+          "path": "demos/simulation/subsheets/subsheet2.kicad_sch",
+          "sha256": "bf3c0928bdffcbb3eb2883c3b3a9c5bdd2df1618b20e40d80da2dd0c47820f36"
+        },
+        {
+          "path": "demos/simulation/subsheets/sym-lib-table",
+          "sha256": "62e07c18391949713341b39d972f8f41ac6232dc2c020d019bad096c4926b061"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--up-down-counter--up-down-c",
+      "name": "up-down-c",
+      "project": "demos/simulation/up-down-counter/up-down-c.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/up-down-counter/state-machine-3b-count.lib",
+          "sha256": "b19ed98172ebe9f38405324e560302a09ba876c69101636a1c90df0261692a91"
+        },
+        {
+          "path": "demos/simulation/up-down-counter/up-down-c.kicad_pro",
+          "sha256": "0ddbaf09ca3a8629b9239f8d25df88d5fadfbd46ee7b0e5cc7aaf2aede48a953"
+        },
+        {
+          "path": "demos/simulation/up-down-counter/up-down-c.kicad_sch",
+          "sha256": "facfcaf3787262ec68c217340d5256b4f99b44af0d75b13fd077b12920620f40"
+        },
+        {
+          "path": "demos/simulation/up-down-counter/up-down.kicad_sym",
+          "sha256": "9497eb18ed8866f78e8d1a8388e7ba4f66cec3b1d006353295419dc0ae5797f6"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "simulation--v_i_sources--v_i_sources",
+      "name": "v_i_sources",
+      "project": "demos/simulation/v_i_sources/v_i_sources.kicad_pro",
+      "files": [
+        {
+          "path": "demos/simulation/v_i_sources/sym-lib-table",
+          "sha256": "38f12affde9b17f6c38568da8ec475bb6e0933dca4ebb7c412c84ab7fca6c153"
+        },
+        {
+          "path": "demos/simulation/v_i_sources/v_i_sources.kicad_pro",
+          "sha256": "781775210de0d0cd7e9263aed76d84761cf64982f0789576b01fc26915bf1ec3"
+        },
+        {
+          "path": "demos/simulation/v_i_sources/v_i_sources.kicad_sch",
+          "sha256": "68b2569f358d0f697972c13d98200a17278cdc84cf7bf071f708ce2531ccf700"
+        },
+        {
+          "path": "demos/simulation/v_i_sources/v_i_sources.kicad_sym",
+          "sha256": "506f038cc7735ee1e9d20593a64246911b27d7c6bd3184d23f979f442a040c2b"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "sonde xilinx--sonde xilinx",
+      "name": "sonde xilinx",
+      "project": "demos/sonde xilinx/sonde xilinx.kicad_pro",
+      "files": [
+        {
+          "path": "demos/sonde xilinx/fp-lib-table",
+          "sha256": "cc8af24e493a4d6d8ff8206d7c58d9b4209779095abeb4edbc0e5b2dc555cc9f"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde xilinx.kicad_pcb",
+          "sha256": "d0dee876715fcdd3f656dd6a77cc1141c39bec4d6f8492a3784d38edd6b9a998"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde xilinx.kicad_pro",
+          "sha256": "ee60a96f93cc36549b52da9b3eea9547d5ea1e83a671c449668987edfb73a901"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde xilinx.kicad_sch",
+          "sha256": "5271d5d1472d4dab645870f97e62785be9eb95b793e1b8cf0d8ca607de95a985"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde-xilinx.pretty/C_Axial_L5.1mm_D3.1mm_P12.50mm_Horizontal.kicad_mod",
+          "sha256": "ea2b7f922393cb792135103efd8304d933b476ca15ab957e7d2d85452abf2710"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde-xilinx.pretty/C_Disc_D5.1mm_W3.2mm_P5.00mm.kicad_mod",
+          "sha256": "1aecdb4ad2120e99d792a4388eff86462154afbbc64cc1b06041a2c9c1e6fe65"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde-xilinx.pretty/DIP-14_W7.62mm_LongPads.kicad_mod",
+          "sha256": "bfc91319c5905ed84ce72c8a8c3c19b0c6767f812083a063559c5407ecdc1146"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde-xilinx.pretty/DSUB-25_Male_EdgeMount_P2.77mm.kicad_mod",
+          "sha256": "97e783488fc12772d98e9b734cd14a9b07632d2b9e5db4760b7ffec74e0520e4"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde-xilinx.pretty/DSUB-9_Male_EdgeMount_P2.77mm.kicad_mod",
+          "sha256": "ad60738ef94ffc9848a1137ea9dbde55f8b2a2238d519098c5d5d33cee73238b"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde-xilinx.pretty/D_A-405_P7.62mm_Horizontal.kicad_mod",
+          "sha256": "9299977270227d4a3f4bf01f88c1b9c8a2be3ac20212ec06000506d8a534bc0f"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde-xilinx.pretty/PinHeader_1x06_P2.54mm_Vertical.kicad_mod",
+          "sha256": "4cf2a6eea9a9dc960638d14dcd8729452a5443f1a21bdb8ed1c6f5f56908ce8c"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde-xilinx.pretty/R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal.kicad_mod",
+          "sha256": "48e73c07df158b05eaaf9281beffa4ac8c4aac1bec213ac21710f837d0901cd7"
+        },
+        {
+          "path": "demos/sonde xilinx/sonde_xilinx.kicad_sym",
+          "sha256": "67477c8ef19c1e2da41f760328c030dc04283805b2c76005d5ae48acd1fc365e"
+        },
+        {
+          "path": "demos/sonde xilinx/sym-lib-table",
+          "sha256": "b928ea6f61eb0e8804340a842a259e678b9a5fd8d5f9e69306160882361e6456"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "stickhub--StickHub",
+      "name": "StickHub",
+      "project": "demos/stickhub/StickHub.kicad_pro",
+      "files": [
+        {
+          "path": "demos/stickhub/3dmodels/APHB1608.step",
+          "sha256": "8437de3b595450de0209d13b6ce86e0fa9fe7c57533ff05edd65d1de50698bb0"
+        },
+        {
+          "path": "demos/stickhub/3dmodels/Crystal_SMD_4P_2520.step",
+          "sha256": "a322d16f9680ac636ff638685c3b60b66b9ed210c8f1add7f8c7f8fec5223acd"
+        },
+        {
+          "path": "demos/stickhub/3dmodels/TDFN-8_1.5x2mm_Fused-Lead_MO-252-W2015D.step",
+          "sha256": "fda9580794552b257035a664cf20f97dac92e3a68be79d1b110e466abc09137b"
+        },
+        {
+          "path": "demos/stickhub/RobotProtos.kicad_sym",
+          "sha256": "a3ac98f933906fc43bc109f4f3e28664f4daa069d5ab46d5702c2c27da638322"
+        },
+        {
+          "path": "demos/stickhub/StickHub.kicad_pcb",
+          "sha256": "cee5a90f8803791cc55498d2576ed1f3416060d37701a02d4ec2937073c76051"
+        },
+        {
+          "path": "demos/stickhub/StickHub.kicad_pro",
+          "sha256": "6aab11fbfb87800e24865f043716eb881e06b7ba6f20aac97192098e6afbd1b7"
+        },
+        {
+          "path": "demos/stickhub/StickHub.kicad_sch",
+          "sha256": "c4dd7bce0731c5b933c7acd5bd2158f58a0b15179afd9e18b832932c0ab16e26"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/1005_C.kicad_mod",
+          "sha256": "ae9a574eec2b44662de40e1e2a9e17b29b3edee8a723ebbc078408b582aa6049"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/1006_C.kicad_mod",
+          "sha256": "beab4399b92346dab249a8baa6b5843996bb58c70fd114e19f985ae3a5afba6a"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/1608_C.kicad_mod",
+          "sha256": "264179c9deea28fdfb92ba9b0ca2b29079fb0dc6e9b54afc3f5d8b83bac167d9"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/1P-1.5x1.5.kicad_mod",
+          "sha256": "444b67351843dc14faade0e8082d096652112d8cd407eb63d6ffbcd39fc2bf04"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/2012_C.kicad_mod",
+          "sha256": "39eac8c2838fc29ec59eca8cbffde39446762673565a1f61079ca563fb5b2a5a"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/CP_Elec_6.3x11_Board_Edge_Mirrored.kicad_mod",
+          "sha256": "c2f977b475468ca5009fde3e7dc37b2d1dad2a9ce42642f6fc6470b812e9a367"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/Creative_Commons_BY_Mask.kicad_mod",
+          "sha256": "32dc383de4b63b194903a65ee571ebc8e820deaedb5818af6ef89e51de26e0e1"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/Creative_Commons_CC_Mask.kicad_mod",
+          "sha256": "06e388c47d19acca16d7565d1db4e2f39fbb7ac45330ee442343712dee724f5c"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/Creative_Commons_NC_Mask.kicad_mod",
+          "sha256": "e4aaedf3fe2dab0656b612717fced9d8a26133e6d303fa47e2b9872c63877104"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/Creative_Commons_SA_Mask.kicad_mod",
+          "sha256": "b8557f1cf9ecfe9a434b92665f4f01a3874e40962772dad4ebc25a6484c79aa8"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/Crystal_4-SMD_2.5x2mm.kicad_mod",
+          "sha256": "0ef58e7ca7e2c96d5b5fc51eea9d72e88a24272cd2838f1065a38ce5537ee950"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/D_0402.kicad_mod",
+          "sha256": "30da93013104864e11fa1012c46c3acdaaedd31a1ba8d667afba1e718fb0744e"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/Duo_LED_1.6x0.8_Kingbright_APHB1608LZGKSURKC.kicad_mod",
+          "sha256": "0a521408ff30a41f1d3bb02ac84b9adb07547b6b3a2c2168e6d501623bfd8c06"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/JP-2_1.5x1.5.kicad_mod",
+          "sha256": "248c1649ae3d0035463230d2befa4e018278264d29048f853381f4ef434e5028"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.kicad_mod",
+          "sha256": "61fc7ada3c662111bf30ae1f6a96febb1f01426442ea22398a5cc30274886dc3"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/LQFP-48_7x7mm_P0.5mm.kicad_mod",
+          "sha256": "9ff0dfe9802ad95d67e01913fab76d6eda82de1a233d954059863abb67632980"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/Plain_Hole_3mm.kicad_mod",
+          "sha256": "55bdce691f696b0a02616220d6a3e26404ea1f61c262c98f144f432c0dcccc86"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/R_1005_C.kicad_mod",
+          "sha256": "94599c3661e4bdb7d7cfaae30da6ac165d1fd465f722bd08397d08426404f559"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/TDFN-8_1.5x2mm_Fused-Lead_JEDEC_MO-252_W2015D.kicad_mod",
+          "sha256": "891de293509b8298e35625384df5c4a66562a5863488d1f25ed07cd7df9be8d9"
+        },
+        {
+          "path": "demos/stickhub/footprints.pretty/USB_A_PCB_traces_small.kicad_mod",
+          "sha256": "28ac300e74bca0a82b8e266b5411f5f3813bd9de282362881ad1e509f3d7394b"
+        },
+        {
+          "path": "demos/stickhub/fp-lib-table",
+          "sha256": "235a0549cf8351cc9b9de55815b89c9ed4386b3e85ed24b81087c792c7866c4e"
+        },
+        {
+          "path": "demos/stickhub/sym-lib-table",
+          "sha256": "4390eb199c2a26515862ca4369cb9e60ffbfcc562237152dc75886db49f5e4ae"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "tiny_tapeout--tinytapeout-demo",
+      "name": "tinytapeout-demo",
+      "project": "demos/tiny_tapeout/tinytapeout-demo.kicad_pro",
+      "files": [
+        {
+          "path": "demos/tiny_tapeout/fp-lib-table",
+          "sha256": "17192ae1db7e9a101c4a75789fd7aae0ce0a4205fbdd995f4d5f434155baa8f7"
+        },
+        {
+          "path": "demos/tiny_tapeout/rp2040.kicad_sch",
+          "sha256": "ee88a17d35fb54070d9c0e38af0d4a656d52f3703559944c1261e1037c577aef"
+        },
+        {
+          "path": "demos/tiny_tapeout/sym-lib-table",
+          "sha256": "450bc07e5321a1986e2e01a3dac4280b9e33e0fc183977de5bdf6b8de5618cb4"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-demo.kicad_pcb",
+          "sha256": "0d26bf9b6d561e32cf610d428541d6433e60b45e1838f34f73467e25b9144814"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-demo.kicad_pro",
+          "sha256": "3d479ef334a9f1b35a487e5b300a995826c7bf180ccc01380b6bb9ca88c8a7a9"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-demo.kicad_sch",
+          "sha256": "232f8236bc89eed24f7b89509ea422347994ca8e576524f0229e2bd1eca5093d"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/3dmodels/418121270808.stp",
+          "sha256": "29e3fca01ca7b7befb3e0133571e9c3f29b29e4846b2198eccb77faab80e9415"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/3dmodels/434121025816.step",
+          "sha256": "f9ee8e87297a4e5d8fa55556585dcb5b9e8ecee4bd00e06821f6f1d267500899"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/3dmodels/632723130112.step",
+          "sha256": "322c22de3e9b40d439450bae542be5f0a6d673dd179cd3145517ed628112b0ae"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/3dmodels/632723300011.step",
+          "sha256": "4d471cdfca3b80d3ae7e3883154cc5d814571367b7285970c1c258b43d85dd28"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/3dmodels/USB4500-03-0-A_REVA.step",
+          "sha256": "0b31bb16ecb77c09baa2f7e07a1f27610197645a3a6a61bfd3f64729c42b5d72"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/MCU_RaspberryPi_and_Boards.pretty/Crystal_SMD_HC49-US.kicad_mod",
+          "sha256": "626fed7d4c47d05d624847497d3171ec2063453502f86c9847959f4f8e92f423"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/MCU_RaspberryPi_and_Boards.pretty/RP2040-QFN-56.kicad_mod",
+          "sha256": "83bb951b1fe64f1d82e57e6b4cc49b62f91c036a2e8bba6e8a6c1cbf74839808"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/MCU_RaspberryPi_and_Boards.pretty/RPi_Pico_SMD.kicad_mod",
+          "sha256": "e31620cf89c934e4dc2d6f17879eea26b31ffeaa540cbdfd1016040351195c68"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/MCU_RaspberryPi_and_Boards.pretty/RPi_Pico_SMD_TH.kicad_mod",
+          "sha256": "5893a9fe137962428eb98137502e674f5810a26f755ded752184f96d55f5e3c2"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/219-9GULLWING.kicad_mod",
+          "sha256": "5af4b0104b4217cd60e22d3f1b97b3f0fa233af3f9fb4ddcfc74d473844b2a63"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/418121270808.kicad_mod",
+          "sha256": "139a795ca8d701baa9e112ac1477a12ac30532edf25fd8123dddb0cd2126a456"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/434121025816.kicad_mod",
+          "sha256": "8fded24e8a0740f5b37afb5c660583e6d8c0ce9d05beb0b71ee57b6261c0b827"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/632723130112.kicad_mod",
+          "sha256": "1c020c2c83c8782890c96ed18ddd7accb0ff97de361696581b9fa41a91dab97e"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/CUI_UJC-HP-3-SMT-TR.kicad_mod",
+          "sha256": "d3ae83d8bacc3a01a148ab0111e710fa04a0a57f1d993acb94669ff9189ea06d"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/GCT_USB4500-03-0-A_REVA.kicad_mod",
+          "sha256": "6a52a2a4a3d49eb6794ce2a48b10e892e28f8cdf4f0693acb5309a176490e3c2"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/PinHeader_2x06_P2.54mm_PMODPeriph2B.kicad_mod",
+          "sha256": "4c8ecc714aed6aced9e0a511bb6a18750ac7fae5d8321c543dc6b0bf5141b0eb"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/PinSocket_2x06_P2.54mm_PMODHost1A.kicad_mod",
+          "sha256": "a84a314c6b600138abc3bbe1f908f2bb4cc9c65da8bc8f9da0181beccf967d88"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/QFN-64-1EP_9x9mm_P0.5mm_EP7.65x7.65mm_REDUCEDPASTE.kicad_mod",
+          "sha256": "058bb8fca2caa1d26c9d376013c7531690adbd5036f1fa5f7beebe11c8762821"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/SolderJumper-2_Bridged_Throughole1.kicad_mod",
+          "sha256": "af37d7dad24812e81c8a8bfd5efdead3f767b570f378da366ff1e5de0f90317f"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/TT03_BREAKOUT_SMB_FACEDOWN.kicad_mod",
+          "sha256": "aad8b355ef5d49145bdf94ac271bec1b2fe24062c8592f56c4472a9ca3ea5f9f"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/TT04_BREAKOUT_SMB.kicad_mod",
+          "sha256": "316a1cd29e0894501810ad7286e954131fdf73b842486e75635d0c1704119376"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/TT_BREAKOUT_PINHEADER_PLACEHOLDER.kicad_mod",
+          "sha256": "e16424ee9a110d1964e613315babc4fa442f662f90157ebdde0c47ed951b7b35"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/TT_BREAKOUT_PINHEADER_PLACEHOLDER_WITHPAD.kicad_mod",
+          "sha256": "e8b822af6aed738b06155a259b565e88f5ec7586f3fd98265d6574fc235b404e"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/WL_S7DS-157112V12700.kicad_mod",
+          "sha256": "e12cc44d8f7588a7af981a8a063c8b2d9c79fcc0de4c64b14684d7f82fb05990"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/TinyTapeout.pretty/WURTH_632723X00011.kicad_mod",
+          "sha256": "b0a7198823efe15893dbbec2028be71aee0b4241fe6f6d22cd5310afbeb2874a"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/ttlib.pretty/SW_E-Switch_EG1271_SPDT.kicad_mod",
+          "sha256": "5ddc183b223a1af4b30824ac979d242c50e6ffb52df3131c9bcd7528645858a9"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/footprints/ttlib.pretty/TestPoint_Keystone_5019_Minature.kicad_mod",
+          "sha256": "38869ea3b143cfdeb3b0c9b364292e47cf7edd6728208ed934c955383257c8bb"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/symbols/MCU_RaspberryPi_and_Boards.kicad_sym",
+          "sha256": "94f55a9132e692d0a4643f35772a27a2c7000fe4a80b795f66a0dd43f289831d"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/symbols/Pico.wrl",
+          "sha256": "46a6828381a536388e36c687fb1f94eba2e81915c6275f1188c5a53d95d1cd24"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/symbols/TinyTapeout.kicad_sym",
+          "sha256": "3f32dc8360ede66107f747b1b14315a608e4612c6d10e788951e3880aeb25c47"
+        },
+        {
+          "path": "demos/tiny_tapeout/tinytapeout-kicad-libs/symbols/ttlib.kicad_sym",
+          "sha256": "66bca531b98b7e6c1c901fa2487e996b3dfcaf8b091d6fcc260e80aae181f7a1"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "video--video",
+      "name": "video",
+      "project": "demos/video/video.kicad_pro",
+      "files": [
+        {
+          "path": "demos/video/bus_pci.kicad_sch",
+          "sha256": "0110ee91bd8eb39ba7c4d08703bca193f72337b25928ad2babc86dc3c54d1cde"
+        },
+        {
+          "path": "demos/video/esvideo.kicad_sch",
+          "sha256": "b736ce2d5a17fa94fcd64c656435031730b3b8524342dd4e1d19a917adbd1d6f"
+        },
+        {
+          "path": "demos/video/fp-lib-table",
+          "sha256": "1cec8bd53e12c7d1468d1a83fa543685701fedd0ae20f3651a776fbcf544bec4"
+        },
+        {
+          "path": "demos/video/graphic.kicad_sch",
+          "sha256": "c09706718277aefb6d9b1ea49825237d026191e6d91d44c7e75aa0eba682900d"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/BUSPCI.kicad_mod",
+          "sha256": "3b3b6e025c8ef0c512db5d009b42cb2e9ef097abd7aa2bc817342a7d0bcd5fd9"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder.kicad_mod",
+          "sha256": "527bab574abfa9b29bfb91655cd9ce663406a64d14b38013ac41ab543e63f9aa"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/CV3-30PF.kicad_mod",
+          "sha256": "061a32a2b13556bb4b709ef2e31db6e0cae5cb1437dca6616785940687d771ea"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/C_Disc_D3.0mm_W2.0mm_P2.50mm.kicad_mod",
+          "sha256": "d70458b61329e66fff4a05f1402e7faaf3ab949eac5d17767b223f6559bb7146"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/Crystal_HC18-U_Horizontal.kicad_mod",
+          "sha256": "11936e430dabcc0c1da1ce5e0079daf8140dd5814143a8ad51530f56197d1d49"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/Crystal_HC18-U_Vertical.kicad_mod",
+          "sha256": "6c1ecebbd219da8bbfabfc2b73e6a0866760ddc25bfc36da3e882d76b8a4a938"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/DIP-8_W7.62mm.kicad_mod",
+          "sha256": "7ae2068c7514580d6a07edf45a5bcf628907bb8378599d66dceec26ce951e13d"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset14.56mm_Housed_MountingHolesOffset15.98mm.kicad_mod",
+          "sha256": "d32728d69de247bdc240657690b5cb86c5e600699680196473aee3f57bbf54de"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/D_DO-34_SOD68_P7.62mm_Horizontal.kicad_mod",
+          "sha256": "a18d9588f922cd130be684c1c34108b35a3a5aa169079136136fc5612b2726e2"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/LED_D3.0mm.kicad_mod",
+          "sha256": "3fca0da4f9d1f1c305c2a7f123a8ac86837c8eed8cccdcb5f4ebf10713f36b4b"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/LRTDK.kicad_mod",
+          "sha256": "ca2594be2994eb12980dbe206b912802c5a53a3dbb9ca5196cabdbd1e215aaf5"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/PLCC68.kicad_mod",
+          "sha256": "482435c6dfefcd399c4ac787f833ef09b78f30227aa7ae1a19492dd6ca24b3b4"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/PLCC84.kicad_mod",
+          "sha256": "81b71c70d3c48a0d87058c2daa0515f7337f86f2e85a65e23676857f233cd858"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/PQFP-100_14x20mm_P0.65mm.kicad_mod",
+          "sha256": "87d2eacd4d87ef8579a584f2d8b63851cacfa5b41328e36f36f073fd0aae630e"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/PQFP-160_28x28mm_P0.65mm.kicad_mod",
+          "sha256": "5f159909bdec7b8dae07909713cd820023f15fcf9e7e1d6e6cf392a76f46fb45"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/PinHeader_1x01_P2.54mm_Vertical.kicad_mod",
+          "sha256": "f350885de38f4bf345d56bee342452e5fcd9e082e459206845593a053d5e1c9c"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/PinHeader_1x02_P2.54mm_Vertical.kicad_mod",
+          "sha256": "c0941bdc1c9b9b46abefe7cb46c5ec543f2268eada4a52490d53571775501cbe"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/PinHeader_1x05_P2.54mm_Vertical.kicad_mod",
+          "sha256": "1f74d9279280ad13652ea8ffd01bc535c6f91ebd4fa73278c8c518bb198441c2"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/Potentiometer_Bourns_3314G_Vertical.kicad_mod",
+          "sha256": "7855d79fa5675781993a9d9758fc0335a9a4cb8f540a33365ea0e00866fb12c9"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/R_1206_3216Metric_Pad1.30x1.75mm_HandSolder.kicad_mod",
+          "sha256": "644d3383071194ae37744ab07ccfe0eee086d1ea43691267ad7c455e98105c5f"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/R_1210_3225Metric_Pad1.30x2.65mm_HandSolder.kicad_mod",
+          "sha256": "8ad80fdd4f5cdf3c5211fdaa631c96b7ec1014df0d340d26b94bb58cdcf3e48c"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/R_1812_4532Metric_Pad1.30x3.40mm_HandSolder.kicad_mod",
+          "sha256": "22346c07f6730e9885cab232e6367eefa2a3dcd01feae94a0e03d4ee72b4c06c"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/R_Array_SIP9.kicad_mod",
+          "sha256": "92e0509a670576e0856c7211b2a8448c981a2162b5150286516a3172d39632bf"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/SOIC-20W_7.5x12.8mm_P1.27mm.kicad_mod",
+          "sha256": "5ce6690cd962155002cad901e2e7b876e1549e53fc5482bbc3d6cf2c3dc2aa39"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/SOIC-24W_7.5x15.4mm_P1.27mm.kicad_mod",
+          "sha256": "d933cf9da35d8dcab23067b91b61262949191bcf4107e36e9e80b4a646bc30ce"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/SOIC-28W_7.5x17.9mm_P1.27mm.kicad_mod",
+          "sha256": "4a8ddb1d3094553dd447c9a89689a3b27ac9899f258efbb80fd30848e39628ab"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/SOT23EBC.kicad_mod",
+          "sha256": "69623a557c068e102377daa47d63fb39ee7830c22aa3ae539dbc81745a26328a"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/SSOP-8_3.95x5.21x3.27mm_P1.27mm.kicad_mod",
+          "sha256": "1ff1a8dc91766b7acf139eac54245a3aa9bcd29f52afbfc7cf59bc036f71f1c2"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm.kicad_mod",
+          "sha256": "00f39166c6f23ff76ceb39ddd1616d0c4ac0cef3eba6538fbd15e08b15692542"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/TQFP-100_14x14mm_P0.5mm.kicad_mod",
+          "sha256": "1660898ef5a70e19b9a6157e35f232498711f2b752e294c37bf0af8ac866efa7"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/sim72.kicad_mod",
+          "sha256": "123419830f9676adccc06d46ef12bbef3079ceee47cefd3abbc7b996dde358e8"
+        },
+        {
+          "path": "demos/video/libs/footprints.pretty/subclick.kicad_mod",
+          "sha256": "d9af67f4e58390b7f2a3840245494b0351bf2812a780a143fe238220e45d3699"
+        },
+        {
+          "path": "demos/video/libs/fp.3dshapes/subclick_horiz.wrl",
+          "sha256": "ef4c232aa3cf8e071b2554cf36857fd5920fcf2cd00e16189ddb08fd46b9ab3b"
+        },
+        {
+          "path": "demos/video/libs/video_schlib.kicad_sym",
+          "sha256": "44304b91b9c95eaf709f0b7e0c8a1284265387ad4aec85e0c09047427c3c2265"
+        },
+        {
+          "path": "demos/video/modul.kicad_sch",
+          "sha256": "59f6d8152af769371bd35a08dc11c1bdf9c3b4e56ab079f389a0584d1a4574c7"
+        },
+        {
+          "path": "demos/video/muxdata.kicad_sch",
+          "sha256": "9b757497857c061632fd09cc3d0a236843c1c164f0b864a78b22c88c1fd96a58"
+        },
+        {
+          "path": "demos/video/pal-ntsc.kicad_sch",
+          "sha256": "970c766b745d299ca0b47b05a51baf628bf114a6bfe007736beb7ccd0548fd09"
+        },
+        {
+          "path": "demos/video/rams.kicad_sch",
+          "sha256": "40a46f70b6731962a4afa5858b54d3bbf55ac3e4b1a95c7c905b698ae99eb0e3"
+        },
+        {
+          "path": "demos/video/sym-lib-table",
+          "sha256": "5e4e49725a37d49ccb0d2b7888d5fef56dfe8ab7cf2a95d8e3697fcfac3b0585"
+        },
+        {
+          "path": "demos/video/video.kicad_pcb",
+          "sha256": "f620675158ddd5c61e5ce9e15f4c92b230ae1df1cbcec6c502b8ce266e4007ea"
+        },
+        {
+          "path": "demos/video/video.kicad_pro",
+          "sha256": "329241ed4d9d176ef51adcec457a7c072e4bbc1b6500738622ebeaeba74d6c7f"
+        },
+        {
+          "path": "demos/video/video.kicad_sch",
+          "sha256": "4d3ced775e49f56704b036bf56b9bf90d3d403b29bc9434eca47a8f18bea5ce1"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    },
+    {
+      "id": "vme-wren--vme-wren",
+      "name": "vme-wren",
+      "project": "demos/vme-wren/vme-wren.kicad_pro",
+      "files": [
+        {
+          "path": "demos/vme-wren/clocks.kicad_sch",
+          "sha256": "4942247e550814ae0add0aa80864956bfd35470b8e9774ee4e99fc31d655c948"
+        },
+        {
+          "path": "demos/vme-wren/ddr4-ps.kicad_sch",
+          "sha256": "000b342b036d7e7731871ca1ddebc71dc00e64afefac3ac4c383ccc24fa6ef97"
+        },
+        {
+          "path": "demos/vme-wren/flash.kicad_sch",
+          "sha256": "fb8f40e676e37069e98b8dffef303148288b556705f0203472f609116f47fb82"
+        },
+        {
+          "path": "demos/vme-wren/fp-lib-table",
+          "sha256": "53f6ab8864cace1d261fa90e6b57df302aaae91bd2473fd08d74512c41409af6"
+        },
+        {
+          "path": "demos/vme-wren/fp_connectors.kicad_sch",
+          "sha256": "7f5d60fcebe3752ba2975724b60f31e050164ef43287943eb68a345edfc5d2e6"
+        },
+        {
+          "path": "demos/vme-wren/fpga-config.kicad_sch",
+          "sha256": "387cf92f575f78afa6f9310e9b753bfeb17388ebbb86c4360c1a206dfcd6934e"
+        },
+        {
+          "path": "demos/vme-wren/fpga-hd-banks.kicad_sch",
+          "sha256": "afa21638aa44735987e97d5648b5c0f3452b72dfcd5119338fa95e22f41c146b"
+        },
+        {
+          "path": "demos/vme-wren/fpga-hp-banks.kicad_sch",
+          "sha256": "d8ff041ed2987a3c0719bf5cdc7d67b2597bcc4a0a864041585c9afd0613a91b"
+        },
+        {
+          "path": "demos/vme-wren/fpga-mgts-power.kicad_sch",
+          "sha256": "2c7cab85da7cdde39f6c576b477ea6558e2146196ebcbd788b305b5cf534175c"
+        },
+        {
+          "path": "demos/vme-wren/fpga-mgts.kicad_sch",
+          "sha256": "d391e2243f610983130ecc88d25336424ab6fe462d86e9915857b0666bd559a4"
+        },
+        {
+          "path": "demos/vme-wren/fpga-mio.kicad_sch",
+          "sha256": "c9bf69883fdce135b4363717b306bc956d121d7907d6b7ec2ff5283b8939bbe6"
+        },
+        {
+          "path": "demos/vme-wren/fpga-power-gnd.kicad_sch",
+          "sha256": "0543b36e5888e5e17b448554ab3946a658c842ba75915aa705c73dc9ede9885c"
+        },
+        {
+          "path": "demos/vme-wren/fpga-power.kicad_sch",
+          "sha256": "3e1619fbf0f05668aa2dac6632f4972604baae9ec1509f56e934dbc17f30c706"
+        },
+        {
+          "path": "demos/vme-wren/fpga-ps-ddr.kicad_sch",
+          "sha256": "845bfa141acd4dc2a5489aee8a74976d6a45c5f5e0106da21272d4d6b4cdf1bc"
+        },
+        {
+          "path": "demos/vme-wren/fpga.kicad_sch",
+          "sha256": "931ec5588e9b3135149cff29c885f8a98a83ad4820b2e361466e58aa20acedb6"
+        },
+        {
+          "path": "demos/vme-wren/front-panel-io.kicad_sch",
+          "sha256": "0e7b55b9ebe23670147f7a70bef1500fcd8ac112ab6110923fe45673edc5d429"
+        },
+        {
+          "path": "demos/vme-wren/io_driver.kicad_sch",
+          "sha256": "22a6b1929bdec15eacf91cb064ef4dba2c5cc555de64d6b2b639816f78c32034"
+        },
+        {
+          "path": "demos/vme-wren/io_driver_32x.kicad_sch",
+          "sha256": "52c56ff5652a366599669ac28a67f0a8eee7c560fb8ca57a25136b30a8f13b18"
+        },
+        {
+          "path": "demos/vme-wren/io_driver_8x.kicad_sch",
+          "sha256": "201f060bfe9a65a8cf9346c391e630d5bd12cf552ad0a7f2c33efba0e34e5a16"
+        },
+        {
+          "path": "demos/vme-wren/lib/vme-wren.pretty/BIVAR_VLP-350-F.kicad_mod",
+          "sha256": "a4090a4d561ad8ecbba30c8b19bbac22279ff3008ca390e5d25b52593c330ba6"
+        },
+        {
+          "path": "demos/vme-wren/lib/vme-wren.pretty/HARWIN_M22-2511046.kicad_mod",
+          "sha256": "40cf4d46dba97f88e7470ad9df5b74d65476863ff9a41800a1aa120024574203"
+        },
+        {
+          "path": "demos/vme-wren/lib/vme-wren.pretty/HARWIN_M22-6541042R.kicad_mod",
+          "sha256": "83e820d256a0b6ad4225fb45e39636e89913c18a5846eba3a8d657075d0df263"
+        },
+        {
+          "path": "demos/vme-wren/lib/vme-wren.pretty/LED_EVERLIGHT_19-C47_RSGHBHC-5V01_2T.kicad_mod",
+          "sha256": "e5b5b4b25225dd96001e272a2e72ec326d3e27075061f0f9a921c0e8a3f1790d"
+        },
+        {
+          "path": "demos/vme-wren/pcie_connector.kicad_sch",
+          "sha256": "d1504d7659d6786019033753c8190ecdedcc6c875640f76bc6264ca00c31e73f"
+        },
+        {
+          "path": "demos/vme-wren/power-supply-1.kicad_sch",
+          "sha256": "c201f38f7619cc4c3a1e56e46128d3fe746660f56aa87a05c99d457923ab391d"
+        },
+        {
+          "path": "demos/vme-wren/power-supply-2.kicad_sch",
+          "sha256": "356ae56e243f8d8cce7a8bda7aec21bd0a02a32f288429334f73a2688bb1725e"
+        },
+        {
+          "path": "demos/vme-wren/power-supply-3.kicad_sch",
+          "sha256": "3875c3e16e03872be6095b8137a85fc94992e3207ad31cd6dea425954ade9c93"
+        },
+        {
+          "path": "demos/vme-wren/pp_driver_2x.kicad_sch",
+          "sha256": "3c9b4de2c97d4bef8a0ec40d6004e857999f89120db2e5449ce2dc021e727919"
+        },
+        {
+          "path": "demos/vme-wren/pp_driver_32x.kicad_sch",
+          "sha256": "4616b90ca042cc85326be17f8ab8330aaa06938bcea79591862bb86085803573"
+        },
+        {
+          "path": "demos/vme-wren/pp_driver_8x.kicad_sch",
+          "sha256": "11569225b001676b85498528a9accbdef4b815618fdcf8c6ffc9306c6ef2628c"
+        },
+        {
+          "path": "demos/vme-wren/sfp+.kicad_sch",
+          "sha256": "e4cfcb9cff297a9724b064bd8a1f722bdc8b6438c071cf720bc97ba25c8ef6cf"
+        },
+        {
+          "path": "demos/vme-wren/slow_gpio.kicad_sch",
+          "sha256": "61d7229a38ee677a0d49bee45c77ed86d26836b26646d017c5715ea45cf148a4"
+        },
+        {
+          "path": "demos/vme-wren/sym-lib-table",
+          "sha256": "95f3a0ed2ddb200ad24b361cce785c2fd798e02f8ffea94bf50d6fb3c48a731f"
+        },
+        {
+          "path": "demos/vme-wren/user_interface.kicad_sch",
+          "sha256": "62a121ea4587a7783e2dff9591dbabd65921dceea904923f05e687c073db2720"
+        },
+        {
+          "path": "demos/vme-wren/vme-wren.kicad_dru",
+          "sha256": "90f428d6594827b01257218aaf92a73d4d5307d5535bb7e49462ca426adf0199"
+        },
+        {
+          "path": "demos/vme-wren/vme-wren.kicad_pcb",
+          "sha256": "1c76ac238b04babc238d2d50585858988fb3f6c4f8d0fbacc738cfe4862fff5b"
+        },
+        {
+          "path": "demos/vme-wren/vme-wren.kicad_pro",
+          "sha256": "bda72a1d94f4ddfc6a918fd430f459d2d82b124e508646db1f49f071f29ebf5d"
+        },
+        {
+          "path": "demos/vme-wren/vme-wren.kicad_sch",
+          "sha256": "4cc3e74f2e47304bd3b360b18bab55d378573bc491b4f210aebe533890aa3dcb"
+        },
+        {
+          "path": "demos/vme-wren/vme-wren.kicad_sym",
+          "sha256": "d70513de01ccb10c84946dd78c099a4f966ae9a898299223cb739eac9642434f"
+        },
+        {
+          "path": "demos/vme-wren/vme_buffers_addr.kicad_sch",
+          "sha256": "23e26501427cee90be09e9b3afdf4ff105cc3e940771234f907a876970e509fe"
+        },
+        {
+          "path": "demos/vme-wren/vme_buffers_aux.kicad_sch",
+          "sha256": "db54a9ab8f1dab24ac72e5c1db199f2e52e8d423a4f180b7b5b59508f90c592c"
+        },
+        {
+          "path": "demos/vme-wren/vme_buffers_data.kicad_sch",
+          "sha256": "81a8d975deb066e345074573611a569f6f533cd5fd04a941ad2ea57b92a5d8d7"
+        },
+        {
+          "path": "demos/vme-wren/vme_buffers_p0_hwbyte.kicad_sch",
+          "sha256": "609845f4c59160015ab194e0667d6a5e1abeae0a1fb484e16c1a3c00ff0cf05c"
+        },
+        {
+          "path": "demos/vme-wren/vme_buffers_userio_p2.kicad_sch",
+          "sha256": "e1d4d19d3cdf5d81ab42ccc919154bfdd99f328cf6b6294765df0ee3e3fbb58b"
+        },
+        {
+          "path": "demos/vme-wren/vme_interface.kicad_sch",
+          "sha256": "6ad4226e2520ee2da04631af3b87a6a5f3864fe381399e7ed395611b29b9f495"
+        },
+        {
+          "path": "demos/vme-wren/vme_p0.kicad_sch",
+          "sha256": "9752e91a609c1476780fe0d6260e5c91c1ed7be2233c637fac8ccdbb94f0750f"
+        },
+        {
+          "path": "demos/vme-wren/vme_p1_p2.kicad_sch",
+          "sha256": "6f4886c6231b918824beebef23cd056c584a49f29b5ae997411a321d07f35362"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/BGA784C80P28X28_2300X2300X332.kicad_mod",
+          "sha256": "2a67ec7a382d04495139a15ca0f13b26ae627f1c4aa4832e1dd4263484638766"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/BGA96C80P9X16_750X1350X120.kicad_mod",
+          "sha256": "6a38656114e67d50f22542c3345e2924619f582c36acd961219b03173203b80e"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/BOSSARD_BN5687-3061600_v.kicad_mod",
+          "sha256": "e370881c5c6c3ff78fa438f52bbf861eaaea8ef35b5125fd46c7dc9d728341af"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/BOSSARD_BN628-1241427_v.kicad_mod",
+          "sha256": "dd3864c83b456e1d723761a918d687cb424c839cc8216c9711dcced300c7d7f2"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/BOSSARD_BN678-8303525_v.kicad_mod",
+          "sha256": "3bc3ebfa72cfdb1714f52e9ce1f207d7056daf0867ea4ef5158bc6a08193a70f"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/CAPC1005X55N.kicad_mod",
+          "sha256": "481c071409ab0d89d29e0aec1584f480ab046034e7e3373c7f86cb9c63bbe981"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/CAPC1005X70N.kicad_mod",
+          "sha256": "7c25e22a3bba9fa8735aa73f3fe93ac55dd38dbdcee8d645acab2b18eb4aeb9e"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/CAPC1608X100N.kicad_mod",
+          "sha256": "db564b3f120fb70032f0a0de5159f10e79c1c053f8501fe1edb1070e51bfa607"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/CAPC1608X90N.kicad_mod",
+          "sha256": "97db080ace29b7f6c9f9538ed058f0393b12b7430a77cacd70f9e23953b8e7b5"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/CAPC2013X145N.kicad_mod",
+          "sha256": "ce7b3caf16d1956d4bc22e0309976469689cc8611116faaa20141f669f523856"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/CAPC3216X180N.kicad_mod",
+          "sha256": "92b8c7f05a51f7f37d124372de0120f2ca92137526095fa2ba9e3dff874d7bcc"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/CAPC3225X280N.kicad_mod",
+          "sha256": "e0daca99ff82e60775c5712ca15388e3727b7c354b0b76e44fa07b9f453f8dc2"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/CAPMP7343X200N.kicad_mod",
+          "sha256": "3b2744894f6151cd9dfdf96353d70ebc94da5ab3573bd111375af437effde620"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/CAPPR350-850X700_A.kicad_mod",
+          "sha256": "7b193d899d37b4ddaf78d5c9298b9594a9a9d28cfa85b66f985108f7d9f19ed6"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/EATON_0402ESDA-MLP.kicad_mod",
+          "sha256": "0cdfb73a4b073b719507b706ce434f3c54281cb66b3bd796fe85728db1ee2d4c"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/FIDUCIAL_TOP_C100-200.kicad_mod",
+          "sha256": "a6a2f47e663752fcfb69e24300a7df658905f2b355824ea4e83d3b6c965b0501"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/FUSR_LITTELFUSE_0603L.kicad_mod",
+          "sha256": "69271ea6182f4fd1ddbce4a4929862a54ca8ed73b8a97fe66b9792539f07ac4a"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/HARTING_02 01 160 2101.kicad_mod",
+          "sha256": "05ed017bdbcc53fd9abb6e4070828930af0297b1990ba6204f47b3f72404f0d2"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/HARTING_17 25 095 2102.kicad_mod",
+          "sha256": "392397987d2b95d57f36f5c885665f283e634e3f0580522b0676c0b3271ef0c8"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/HARWIN_M22-6541042R.kicad_mod",
+          "sha256": "0768bdf74a201555f4fc0a1ae675bd165fa4ba3835b1f71dd7690501dcce0428"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/HIROSE_U.FL-R-SMT-1(10).kicad_mod",
+          "sha256": "5f9dd2bad378c90a7430bcd610b3eede877c49fd22d7821fab5f5d861084c39d"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/INDC1608X95N.kicad_mod",
+          "sha256": "f88e79d034c5c03e7ac66787bcfbec35581714ffc4a14e59e16c8d55444939f1"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/INDC2012X105N.kicad_mod",
+          "sha256": "cf6f1b6c72a6ec22009753e6f96e156b5a4a77a2889dade1b0bdb435deccfaae"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/INDC2012X110N.kicad_mod",
+          "sha256": "66dde65943e4963170ee91ac160edb67ca86f8da7b19a6f859494e92d268448d"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/IND_COILCRAFT_XAL4020.kicad_mod",
+          "sha256": "12fb66b0f02fc4ee490f685533c695273ad3449b274c5635a140ec9221aaf0f9"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/IND_COILCRAFT_XAL4030.kicad_mod",
+          "sha256": "bf7581bc215438ec999da66bb92222f1a9c0d8b758411be4eac07dd937a5e5a6"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/IND_MURATA_BLM31PG.kicad_mod",
+          "sha256": "39d056fd362097d62d0154d4e8574f01daad1131eb77500935d44531b9a00e25"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/IND_PULSE_PA2607.kicad_mod",
+          "sha256": "1928f881a21e124d904cb3fd3d884f28a0bffed6013075e8e183156d398c26a3"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/IND_TDK_VLCF5020-1.kicad_mod",
+          "sha256": "f6b5f6b2179c0987efaae03f1e8bd8ee110f376f93da47b1dc2f5caaf9bad7f0"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/INFINEON_PG-VQFN-56-900 (IRPS5401M).kicad_mod",
+          "sha256": "fad58f17a59af6dec71ca73691a639f776f5ae935dfb2326d18fbb0fe017e7df"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/INFINEON_TDA21535.kicad_mod",
+          "sha256": "e34f56a1dd31096bb764efbcf58213fe4460fb5c5a694421071aadf7a87d32fb"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/KiCad-Logo_8mm_SilkScreen.kicad_mod",
+          "sha256": "7021a3f69dd621ba01f94415ec80b11f72470a9b3ae6ae9e5c019b55e3aba3dc"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/LED_KINGBRIGHT_KPH-1608CGCK.kicad_mod",
+          "sha256": "bc00db435a4454b0913c8ea127a4c05f8a531470f95c206dd4d5ac0096ce6d37"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/MOLEX_500075-1517.kicad_mod",
+          "sha256": "99aa6003769706c34cbe680c395852e7ae0964acddeb3b146cca87e8aed30d1b"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/MOLEX_74737-0009.kicad_mod",
+          "sha256": "a6b6914a172ac8d87a1c4b25630a2de4cc1357bc1e65851ddc7fc4b843b00e07"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/MOLEX_87832-1420.kicad_mod",
+          "sha256": "64588c3d4cb31950935fa07477f5dfeb4cb0f83818e20abb4c3cf2c2cde95614"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/MTG270_500.kicad_mod",
+          "sha256": "ae7c04ace75018588e308e51eb6483d56a3d62d82c276fc7b08c61cda5dd9318"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/OSC_CONNOR-WINFIELD_DOT050V.kicad_mod",
+          "sha256": "ef6d293076f4fa624a3c31c95c554d60b836ef3254f557e90340675377006ce5"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/OSC_EPSON_SG-8018CE.kicad_mod",
+          "sha256": "3b0b2a6256ee23bab5d088cd5020428c5935d565824677ce75e47ec7b251f0ea"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/OSC_KYOCERA_KV7050B-C3.kicad_mod",
+          "sha256": "27e9e4d85fa17dfa81311c4c732bec15c5f6be80d5bd1d0384e0f16ee3558d3b"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/PB_OMRON_B3U-1100P.kicad_mod",
+          "sha256": "11775c0bb8c46b793cd998f7f7178bacb87d81faa2e88bff4f0f1a8484b252af"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/QFN50P400X400X80-25N-S280.kicad_mod",
+          "sha256": "a55e3ef0c7e5ed82f4d642236f274fdaa2925c6afc89acf1c9b8dff8a6ea7463"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/QFN50P700X700X90-45N-S530.kicad_mod",
+          "sha256": "281f7effa7b1aaec820a11101716e41ace1481b9c6974530ac93002d7c859149"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/RESC1005X40N.kicad_mod",
+          "sha256": "d219a0699a53fd7c8926214b5ea9df6ed99a1f900b5a1e6ec1c3a43723afb1c1"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/RESC1106X84N.kicad_mod",
+          "sha256": "f2960ff03366368247612370dc31553e9771597572d27380bd25f62247f46f6a"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/RESC1608X55N.kicad_mod",
+          "sha256": "f31bfa36c435531c0f5a5cce6a046f47a1c1f2f504fb49f07dce76b6ad5eca2c"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/RESC2012X60N.kicad_mod",
+          "sha256": "749fcb50548a69b304d708f1a0c9013d408b6a73c54ce65b5adea0e66aaf63e2"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/RESC3216X65N.kicad_mod",
+          "sha256": "4537c30c77698037e79455f986db5e29f899cbbff32295ea3454528b4452004f"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SAMTEC_LSHM-120-02.5-X-DV-A-S.kicad_mod",
+          "sha256": "75d1089b3538f460f60234f452d609cf6d241b21211d43cc09fb529130f70577"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SAMTEC_MTLW-102-07-L-S-250.kicad_mod",
+          "sha256": "3b196e389af076b7c8495074c0bb2063693e6903215a5ac859e1038f09f148e3"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SAMTEC_MTLW-103-07-L-S-250.kicad_mod",
+          "sha256": "b313e11495140cb6b6088a92907982e9b2000ae3d81c96c7a3f42c73c81da3db"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SODFL1608X65N.kicad_mod",
+          "sha256": "17adc22afa3de3da657c41527210410764942d46080a7aab793079ae0634bc12"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOIC127P1030X265-16N.kicad_mod",
+          "sha256": "2525b82e168e5afc8b57dc782d2360b9d8b22e2182b78fc7a0b58e87aea303f5"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOIC127P600X175-8N.kicad_mod",
+          "sha256": "e5f416c7797605526818ea107dbe9fb0b492e0baf3c9feeea2b8992fc4503501"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOIC127P780X200-16N.kicad_mod",
+          "sha256": "fa2e60ae1f46767b8871b7e2021d1889cdb8a4800f0a945bfdc703efa4aaf375"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SON45P300X300X80-13N-R175X248.kicad_mod",
+          "sha256": "9878fc6a38cd7ed229222a3c762e7a667b7d9dfada043fe9aa9276846af7f25f"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SON50P200X200X80-9N-R100X170.kicad_mod",
+          "sha256": "b480ece8612a2bd6b965546e69a162d7c3bb3166c487e4f2da1f2e107143d94a"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOP50P810X120-48N.kicad_mod",
+          "sha256": "a1e26de618352102a9417feccdc4af1102e6a4b6f6d018c9313e788908637dfc"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOP65P400X130-8N.kicad_mod",
+          "sha256": "2f3a4957a7008552c647dbae1fffed2a66fa26759bb9126c3ed1649a4f304e30"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOP65P490X110-8N.kicad_mod",
+          "sha256": "997d509d8e5ab22cde92c6aac2943f35d41d704f962f81265df3539350def814"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOP65P640X120-24N.kicad_mod",
+          "sha256": "9ecdb6521e87a9967b93641f146d42867e5f091c7e757fe7062c191427b1fe67"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOT190P230X110-4N.kicad_mod",
+          "sha256": "0340709dc1c228c49c4a369a3815323a32f74229a346e8ac312b707337e894d3"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOT65P210X110-6N.kicad_mod",
+          "sha256": "a5b641b3f4795ad236fdb4a7e1c3a67b526c95d2575c156300ec11ade8146c7e"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOT95P237X112-3N.kicad_mod",
+          "sha256": "7e9b63288849c98af2e3294a2d50ec545df9740acdc44659a0ce3615151b13ae"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOT95P240X110-3N.kicad_mod",
+          "sha256": "e1a90dddcd9022173fa141cb97f277959e06ad5ed73578e21f6b9d552f33aa21"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOT95P240X130-3N.kicad_mod",
+          "sha256": "96e1b5ddbe6d25908917e064433b4c1a1c7accfe1a9a87f5e0bd08e90c95a90b"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SOT95P280X145-6N.kicad_mod",
+          "sha256": "163ab0d9b2d288b48700008c80d01455d1eedec21a1c24035ef7f91d0bc69060"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SW_TYCO_1-1571983-0.kicad_mod",
+          "sha256": "cdcef254820d292ebf448e64f55a25ae71e9187eb094e9352373e3b071c7bdb1"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/SW_TYCO_1571983-4.kicad_mod",
+          "sha256": "d08c8caa509fdb4254221d23a53daa5d096c843cac96d164d2049548fb760893"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/TEXAS_DRC (S-PVSON-N10).kicad_mod",
+          "sha256": "572cfe45231874702ac3753a333a9c3e418d53960d1a7afac29919799f312af6"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/TEXAS_DSC (S-PWSON-N10).kicad_mod",
+          "sha256": "24f5cc55ae5a668e0863e9709caf3f2fb32c74e5a25493e92b7c5ff261485246"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/TEXAS_RGY (R-PVQFN-N16).kicad_mod",
+          "sha256": "e221900b250de7e198fc741b6219b4724e1785c183e15a53f4a5b23963c5b487"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/TEXAS_RGY (S-PVQFN-N14).kicad_mod",
+          "sha256": "e54651c7782ba502d991217daa363be43fa9e603bae2fa02af0efe0ede30a6e5"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/TEXAS_RVQ (S-PB3QFN-N42).kicad_mod",
+          "sha256": "c344250a8dbd539bedc48353cbd392c6f253835ffdc25b6f43245bb8b9a70ba5"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/TPS127.kicad_mod",
+          "sha256": "75f89c9125d3071feaded06b317eeee001cd95a546f8289b1650e1771763ab55"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/TYCO_1761014-3.kicad_mod",
+          "sha256": "9a91ab5c2a936d704770d78260a4b5ea0587ceb24e23cb83c276214ef918d07c"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/TYCO_1888247-1.kicad_mod",
+          "sha256": "e98b48f7fea0e1f39faa4a0db5fa4dd5c800d8f38122be22192506171c376486"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/TYCO_2149027-1.kicad_mod",
+          "sha256": "3b35c9d7cb7649d3d5088d67fbfd2a3fcd1c2a5aa2b0b57290664eac87d8f2e1"
+        },
+        {
+          "path": "demos/vme-wren/wren.pretty/XFMR_MINI-CIRCUITS_CD542.kicad_mod",
+          "sha256": "b829e3ceda3f78916e87a10029e74bbc08563a779e5cd65673cba4a5994f79ab"
+        }
+      ],
+      "reviewStatus": "indexed-not-electrically-qualified"
+    }
+  ]
+}

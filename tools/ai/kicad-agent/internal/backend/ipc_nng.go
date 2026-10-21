@@ -1154,7 +1154,7 @@ func (c *IPCClient) CallAction(ctx context.Context, action string, p map[string]
 	}
 
 	if err != nil {
-		return nil, err
+		return nil, normalizeIPCError(action, err)
 	}
 
 	data, err := toAny(resp)

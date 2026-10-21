@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"github.com/spf13/cobra"
 	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/backend"
+	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/engineering"
 	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/kicadactions"
 	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/mcp"
 	"runtime"
@@ -21,7 +22,7 @@ func manifestResult() *backend.Result {
 		return &backend.Result{Action: "system.manifest", OK: false, Error: backend.ErrorFrom(err)}
 	}
 	names := mcp.ToolNames()
-	return &backend.Result{Action: "system.manifest", OK: true, Data: map[string]any{"schemaVersion": 1, "agentVersion": "0.2.0", "catalogSha256": hex.EncodeToString(hash[:]), "actionCount": len(actions), "mcpToolCount": len(names), "mcpTools": names, "nativeToolCount": len(native), "goVersion": runtime.Version(), "os": runtime.GOOS, "arch": runtime.GOARCH}}
+	return &backend.Result{Action: "system.manifest", OK: true, Data: map[string]any{"schemaVersion": 1, "agentVersion": "0.2.0", "catalogSha256": hex.EncodeToString(hash[:]), "actionCount": len(actions), "mcpToolCount": len(names), "mcpTools": names, "nativeToolCount": len(native), "engineeringReferences": engineering.Inventory(), "goVersion": runtime.Version(), "os": runtime.GOOS, "arch": runtime.GOARCH}}
 }
 
 func newManifestCmd() *cobra.Command {

@@ -66,6 +66,7 @@ endif()
 file( GLOB_RECURSE AGENT_GO_SOURCES CONFIGURE_DEPENDS
       "${CMAKE_CURRENT_SOURCE_DIR}/kicad-agent/*.go"
       "${CMAKE_CURRENT_SOURCE_DIR}/kicad-agent/internal/kicadactions/native-tools.json"
+      "${CMAKE_CURRENT_SOURCE_DIR}/kicad-agent/internal/engineering/*.json"
       "${CMAKE_CURRENT_SOURCE_DIR}/kicad-agent/go.mod"
       "${CMAKE_CURRENT_SOURCE_DIR}/kicad-agent/go.sum" )
 

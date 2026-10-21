@@ -35,12 +35,12 @@ Kicad
 完整原生运行时、NNG IPC 后端、技能和插件一起分发；操作 PCB 时需要本机 KiCad。
 npm 官方包为 [`@-kicadai/kicad-code`](https://www.npmjs.com/package/@-kicadai/kicad-code)，
 启动命令支持 `Kicad`、`kicad`、`KICAD` 等大小写组合；内容相同的 GitHub tarball 和校验报告见
-[Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.0)。
+[Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.1)。
 打包、测试与开源组件说明见 [npm 分发](Kicad-terminal/npm/README.md)。
 
 KiCad API 服务默认开启，外部 EDA 工具在 `kicad-agent ai` 中默认允许调用；
-可用 `--allow-external=false` 显式关闭。当前接入包括 247 个类型化动作、
-19 组 KiCad MCP 工具和 971 个原生工具索引。原生动作提交后的返回值包含
+可用 `--allow-external=false` 显式关闭。当前接入包括 254 个类型化动作、
+20 组 KiCad MCP 工具和 971 个原生工具索引。原生动作提交后的返回值包含
 `completionVerified=false`，实际完成情况应通过文档回读、DRC/ERC 或界面验证。
 
 工程管理器支持 **File → Open Project Folder...**，可从总目录列出并选择子目录中的工程。
@@ -412,3 +412,32 @@ the combined `kicad-agent` binary and the `kicad-cli agent` subcommand are
 distributed under the GNU General Public License, version 3 or later.  See
 `LICENSE` and `NOTICE` in this directory.  The KiCad application itself
 remains GPLv3.
+
+### Engineering reference service and evidence gates
+
+For relevant design/review/manufacturing tasks, the terminal, extension and native
+AI loop automatically use `reference.plan` and load relevant `reference.get` cards.
+No slash command is required. `reference.search` supports Chinese/English topics;
+`reference.examples` indexes every local `demos/**/*.kicad_pro`, with optional
+indexed file hashes. `PCB板设计规范.md` is the human-readable Chinese handbook.
+The backend embeds 20 topic cards, 86 engineering policy rules, 21 source records
+and 37 original project references (version 2026-10-20.1). `system.manifest` exposes
+actual installed counts and a content digest; counts are not proof that examples
+have been electrically reviewed. Refresh the example index after updating demos
+with `python3 tools/ai/kicad-agent/scripts/update-engineering-examples.py`.
+
+MCP exposes `kicad_reference`; `kicad_audit` also serves `release.snapshot`,
+`release.template` and `release.check`. The check performs a fresh native audit,
+hashes the local design graph and validates revision-bound artifact completeness.
+See `.claude/skills/kicad-engineering/references/release-evidence.md` for its schema.
+Manufacturing profiles require ordered-process provenance, not generic defaults.
+Fabrication and production evidence are separate. Report authenticity, signatories,
+physical qualification and actual release remain the accountable external process:
+`readyForFabrication`/`readyForProduction` are intentionally false. Workflow flags
+are task tracking only; pending stages cannot be skipped and `verified` cannot be
+set by a confirmation boolean. Do not use templates or zero DRC as release approval.
+
+`tools/ai/install.sh` installs the engineering skill and its references to both
+`~/.claude/skills/kicad-engineering` and `~/.codex/skills/kicad-engineering` with
+implicit invocation enabled. Rebuild the extension/terminal after changing their
+shared instructions, then run the installer and `tools/ai/verify-install.py`.

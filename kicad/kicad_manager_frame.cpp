@@ -98,7 +98,6 @@
 
 
 #define EDITORS_CAPTION _( "Start Page" )
-#define PROJECT_FILES_CAPTION _( "Project Files" )
 
 #define ID_INIT_WATCHED_PATHS 52913
 

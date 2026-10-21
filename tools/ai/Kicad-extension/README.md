@@ -1,14 +1,14 @@
 # Kicad
 
-当前版本：0.4.22。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
+当前版本：0.4.23。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
 终端源码为 `tools/ai/Kicad-terminal`。扩展显示为 **Kicad**，终端显示为 **Kicad 终端**。
 扩展安装 ID 仍为 `kicad-agent.kicad`，可直接升级并保留用户配置。
 
-从 [GitHub Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.22)
-下载 `kicad-0.4.22.vsix`，在 VS Code 扩展菜单中选择 **从 VSIX 安装…**，或者执行：
+从 [GitHub Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.23)
+下载 `kicad-0.4.23.vsix`，在 VS Code 扩展菜单中选择 **从 VSIX 安装…**，或者执行：
 
 ```sh
-code --install-extension ./kicad-0.4.22.vsix --force
+code --install-extension ./kicad-0.4.23.vsix --force
 ```
 
 需要 VS Code 1.98 或以上版本，当前验证平台为 macOS Apple Silicon。
@@ -112,7 +112,7 @@ DeepSeek 的预算参数不控制推理强度，因此显式传递该提供商�
 KiCad VS Code integration based on [Claudix](https://github.com/Haleclipse/Claudix),
 with its Vue chat, history, settings and Claude Agent SDK services retained.
 The pinned upstream is 0.3.9 at `c238b3e57c55e95220a8e2837cd4cbe6350a6b65`;
-the downstream extension version is 0.4.22.
+the downstream extension version is 0.4.23.
 
 Version 0.4.10 presents next-message suggestions solely as muted placeholder
 text in an empty input. Only Tab accepts the suggestion as an editable draft;
@@ -145,6 +145,19 @@ views from being revived after the extension was renamed. Frontend mounting is
 acknowledged in the extension log and exposed through `getWebviewReadiness()`
 for real VS Code host tests. Open chat with **kicad: Show Chat** or
 `vscode://kicad-agent.kicad/chat`.
+
+## 0.4.23 工程规范与验收更新
+
+聊天自动根据设计任务调用 `reference.plan` 与相关规则卡，无需斜杠命令。
+规范库含 20 个主题、86 条规则、21 个资料来源以及 37 个 KiCad 示例索引。
+`release.snapshot/template/check` 检查同一工程版本的投板与投产证据完整性；
+软件关卡不能代替实物测试、工程审查与最终质量放行。
+
+请同时更新后端：`npm install -g @-kicadai/kicad-code@latest`，并将
+`kicadAgent.path` 设置为全局 npm 包的
+`vendor/darwin-arm64/kicad-agent` 绝对路径（包目录通过 `npm root -g` 查询）；
+也可下载本扩展 Release 的 `kicad-agent-darwin-arm64`，赋予执行权限并配置其路径。
+仅升级 VSIX 而沿用旧后端时，不会获得新增的规范与验收动作。
 
 ## OpenCode
 
@@ -232,7 +245,7 @@ configured servers win. The extension does not add KiCad to global Claude
 settings. KiCad-specific instructions are appended to the Claude system prompt.
 **kicad: Show MCP Configuration** displays both client formats.
 
-The automation catalog contains 247 typed actions exposed through 19 MCP tools,
+The automation catalog contains 254 typed actions exposed through 20 MCP tools,
 including the Gerber domain and project discovery/switching. The 57 native CLI
 leaf commands are represented in the generated CLI schemas.
 Beyond that, the 971 native `TOOL_ACTION` definitions are discoverable through
@@ -273,7 +286,7 @@ uses --frozen-lockfile. Build manifests bind source hashes to packaged artifacts
 installation rejects stale source/artifact combinations and compares installed files.
 
 ```sh
-code --install-extension tools/ai/Kicad-extension/dist/kicad-0.4.22.vsix --force
+code --install-extension tools/ai/Kicad-extension/dist/kicad-0.4.23.vsix --force
 python3 tools/ai/Kicad-extension/audit-tools.py --output tools/ai/Kicad-extension/audit/native-tools.json
 ```
 

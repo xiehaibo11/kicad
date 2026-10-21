@@ -1,6 +1,6 @@
 {
   "name": "@-kicadai/kicad-code",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Kicad AI terminal: complete native runtime, KiCad MCP backend and PCB design skills",
   "license": "GPL-3.0-or-later",
   "type": "module",

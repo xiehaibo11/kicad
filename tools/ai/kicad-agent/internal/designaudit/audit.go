@@ -36,7 +36,7 @@ type Report struct {
 
 func Rules() map[string]any {
 	return map[string]any{
-		"version": "2026-10-20.1", "execution": "backend-only; frontend displays results, never evaluates engineering rules",
+		"version": "2026-10-20.2", "execution": "backend-only; frontend displays results, never evaluates engineering rules",
 		"nativeScope":               []string{"all enabled native DRC providers", "all track errors", "all severities including exclusions", "zone refill in memory without saving", "board/schematic parity", "schematic ERC", "disabled-check inventory", "project rule and custom .kicad_dru provenance"},
 		"pcbCategories":             []string{"shorts and connectivity", "clearance and creepage", "track widths", "via/drill/annulus and hole spacing", "copper/board edges and outlines", "solder mask and paste", "silkscreen", "zones and thermal connections", "courtyard and footprint geometry", "library and schematic parity", "length/differential-pair constraints from the project"},
 		"footprintCategories":       []string{"pad geometry and drill/copper-layer consistency", "courtyard/fabrication/reference definitions", "datasheet pin mapping and exposed-pad identity", "package dimensions and assembly orientation", "3D/mechanical fit"},
@@ -86,6 +86,36 @@ func nativeCheck(name string, res *backend.Result, err error) Check {
 	if !ok {
 		return Check{name, "blocked", "native JSON report missing or unreadable"}
 	}
+	// A status string cannot turn a missing/malformed finding list into proof.
+	required := []string{"violations"}
+	if name == "native-drc" {
+		required = append(required, "unconnected_items", "schematic_parity")
+	}
+	for _, key := range required {
+		if _, ok := report[key].([]any); !ok {
+			return Check{name, "blocked", "native finding array missing or malformed: " + key}
+		}
+	}
+	if name == "native-drc" || name == "native-erc" {
+		if _, ok := report["ignored_checks"].([]any); !ok {
+			return Check{name, "blocked", "disabled-check inventory missing or malformed"}
+		}
+		severities, ok := report["included_severities"].([]any)
+		if !ok {
+			return Check{name, "blocked", "reported severity scope missing"}
+		}
+		seen := map[string]bool{}
+		for _, s := range severities {
+			if v, ok := s.(string); ok {
+				seen[v] = true
+			}
+		}
+		for _, s := range []string{"error", "warning", "exclusion"} {
+			if !seen[s] {
+				return Check{name, "blocked", "full native severity scope missing: " + s}
+			}
+		}
+	}
 	violations := 0
 	for _, key := range []string{"violations", "unconnected_items", "schematic_parity"} {
 		if items, ok := report[key].([]any); ok {
@@ -114,7 +144,7 @@ func Run(ctx context.Context, p map[string]any, dispatch Dispatcher) (*backend.R
 		return nil, &backend.Error{Code: "BAD_INPUT", Message: "board: " + err.Error()}
 	}
 	stem := strings.TrimSuffix(board, filepath.Ext(board))
-	report := Report{PolicyVersion: "2026-10-20.1", CreatedAt: time.Now().UTC().Format(time.RFC3339), Board: board, Inputs: map[string]string{}, Checks: []Check{}, Pending: []string{}, Note: "Native checks audit the saved snapshot using the project rules. Complete fabrication approval additionally requires datasheet, manufacturing, mechanical and application-specific engineering evidence. No source design is changed."}
+	report := Report{PolicyVersion: "2026-10-20.2", CreatedAt: time.Now().UTC().Format(time.RFC3339), Board: board, Inputs: map[string]string{}, Checks: []Check{}, Pending: []string{}, Note: "Native checks audit the saved snapshot using the project rules. Complete fabrication approval additionally requires datasheet, manufacturing, mechanical and application-specific engineering evidence. No source design is changed."}
 	report.Inputs[board], err = fingerprint(board)
 	if err != nil {
 		return nil, err
@@ -162,7 +192,7 @@ func Run(ctx context.Context, p map[string]any, dispatch Dispatcher) (*backend.R
 	if err != nil {
 		return nil, err
 	}
-	params := map[string]any{"input": board, "output": filepath.Join(dir, "drc.json"), "format": "json", "allTrackErrors": true, "severityAll": true, "refillZones": true, "schematicParity": schematic != ""}
+	params := map[string]any{"input": board, "output": filepath.Join(dir, "drc.json"), "format": "json", "allTrackErrors": true, "severityAll": true, "refillZones": true, "schematicParity": schematic != "", "full": true}
 	drc, e := dispatch(ctx, "board.drc.run", params)
 	report.Checks = append(report.Checks, nativeCheck("native-drc", drc, e))
 	artifacts := []string{}
@@ -170,7 +200,7 @@ func Run(ctx context.Context, p map[string]any, dispatch Dispatcher) (*backend.R
 		artifacts = append(artifacts, drc.Artifacts...)
 	}
 	if schematic != "" {
-		erc, e := dispatch(ctx, "schematic.erc.run", map[string]any{"input": schematic, "output": filepath.Join(dir, "erc.json"), "format": "json", "severityAll": true})
+		erc, e := dispatch(ctx, "schematic.erc.run", map[string]any{"input": schematic, "output": filepath.Join(dir, "erc.json"), "format": "json", "severityAll": true, "full": true})
 		report.Checks = append(report.Checks, nativeCheck("native-erc", erc, e))
 		if erc != nil {
 			artifacts = append(artifacts, erc.Artifacts...)

@@ -295,7 +295,8 @@ func (c *KicadCLI) runRules(ctx context.Context, board bool, p map[string]any, r
 
 	consumed := map[string]bool{"input": true, "output": true, "format": true,
 		"refillZones": true, "schematicParity": true, "allTrackErrors": true,
-		"severityAll": true, "exitCodeViolations": true}
+		"severityAll": true, "exitCodeViolations": true, "full": true,
+		"sampleViolations": true}
 	extra, err := extraOptions(args[:2], p, consumed)
 	if err != nil {
 		return nil, err
@@ -324,7 +325,7 @@ func (c *KicadCLI) runRules(ctx context.Context, board bool, p map[string]any, r
 	}
 
 	res.OK = status != "timeout" && status != "cancelled"
-	res.Data = map[string]any{"status": status, "exitCode": code, "report": output}
+	res.Data = map[string]any{"status": status, "exitCode": code, "report": output, "reportPath": output}
 	res.Artifacts = []string{output}
 	res.ElapsedMs = time.Since(start).Milliseconds()
 
@@ -353,7 +354,8 @@ func (c *KicadCLI) runRules(ctx context.Context, board bool, p map[string]any, r
 				// ERC reports nest violations under sheets[]; DRC reports put
 				// them at the top level.  Normalize to a top-level list so
 				// agents have one shape to consume.
-				if reportObj, ok := report.(map[string]any); ok {
+				reportObj, isObject := report.(map[string]any)
+				if isObject {
 					if sheets, ok := reportObj["sheets"].([]any); ok {
 						all := []any{}
 						for _, sheet := range sheets {
@@ -366,9 +368,33 @@ func (c *KicadCLI) runRules(ctx context.Context, board bool, p map[string]any, r
 						reportObj["violations"] = all
 					}
 				}
-				res.Data = map[string]any{
-					"status": status, "exitCode": code, "report": output, "reportJson": report,
+
+				data := map[string]any{
+					"status": status, "exitCode": code, "report": output, "reportPath": output,
 				}
+				if isObject {
+					data["summary"] = ruleReportSummary(reportObj, output)
+				}
+				// Full reports for large boards run to hundreds of kilobytes
+				// and overflow the tool-result channel.  Inline a sample and
+				// keep the complete report at reportPath unless full is set.
+				if !isObject || argBool(p, "full") || len(raw) <= maxInlineRuleReport {
+					data["reportJson"] = report
+				} else {
+					limit := argInt(p, "sampleViolations")
+					if limit <= 0 {
+						limit = 50
+					}
+					data["reportJsonOmitted"] = true
+					data["reportBytes"] = len(raw)
+					data["sampleViolations"] = sampleRuleViolations(reportObj, limit)
+					data["next"] = "read reportPath for the complete report, or re-run with full=true to inline it"
+					res.Diagnostics = append(res.Diagnostics, Diagnostic{
+						Severity: "warning", Code: "REPORT_OMITTED",
+						Message: fmt.Sprintf("report is %d bytes; reportJson was replaced by summary/sampleViolations (full report: %s)", len(raw), output),
+					})
+				}
+				res.Data = data
 			}
 		}
 	}
@@ -495,6 +521,142 @@ func (c *KicadCLI) runDiff(ctx context.Context, action string, p map[string]any,
 	res.Data = map[string]any{"diff": strings.TrimSpace(string(stdout))}
 	res.ElapsedMs = time.Since(start).Milliseconds()
 	return res, nil
+}
+
+// maxInlineRuleReport bounds how much of a DRC/ERC JSON report is inlined in
+// the tool result.  Larger reports stay on disk at reportPath.
+const maxInlineRuleReport = 256 * 1024
+
+var ruleReportGroups = []string{"violations", "unconnected_items", "schematic_parity"}
+
+func ruleReportSummary(report map[string]any, path string) map[string]any {
+	summary := map[string]any{"reportPath": path, "total": 0}
+	bySeverity := map[string]int{}
+	byType := map[string]int{}
+
+	for _, group := range ruleReportGroups {
+		list, _ := report[group].([]any)
+		summary[group] = len(list)
+		for _, raw := range list {
+			v, _ := raw.(map[string]any)
+			if v == nil {
+				continue
+			}
+			summary["total"] = summary["total"].(int) + 1
+			severity := argString(v, "severity")
+			if severity == "" {
+				severity = "unknown"
+			}
+			bySeverity[severity]++
+			violationType := argString(v, "type")
+			if violationType == "" {
+				violationType = "unknown"
+			}
+			byType[violationType]++
+		}
+	}
+	summary["bySeverity"] = bySeverity
+	summary["byType"] = byType
+
+	if ignored, ok := report["ignored_checks"]; ok {
+		summary["ignoredChecks"] = ignored
+	}
+	return summary
+}
+
+// sampleRuleViolations returns a bounded, compact slice of the report so an
+// agent can inspect typical findings without reading the full report file.
+// One example per violation type comes first so a single noisy category (for
+// example hundreds of clearance errors) does not hide the other findings.
+func sampleRuleViolations(report map[string]any, limit int) []any {
+	type candidate struct {
+		group     string
+		violation map[string]any
+	}
+	var candidates []candidate
+	for _, group := range ruleReportGroups {
+		list, _ := report[group].([]any)
+		for _, raw := range list {
+			if v, _ := raw.(map[string]any); v != nil {
+				candidates = append(candidates, candidate{group: group, violation: v})
+			}
+		}
+	}
+
+	out := make([]any, 0, limit)
+	picked := make([]bool, len(candidates))
+	seenType := map[string]bool{}
+	for i, c := range candidates {
+		violationType := argString(c.violation, "type")
+		if seenType[violationType] {
+			continue
+		}
+		seenType[violationType] = true
+		picked[i] = true
+		out = append(out, compactRuleViolation(c.group, c.violation))
+		if len(out) >= limit {
+			return out
+		}
+	}
+	for i, c := range candidates {
+		if picked[i] {
+			continue
+		}
+		out = append(out, compactRuleViolation(c.group, c.violation))
+		if len(out) >= limit {
+			break
+		}
+	}
+	return out
+}
+
+func compactRuleViolation(group string, violation map[string]any) map[string]any {
+	sample := map[string]any{"group": group}
+	if s := argString(violation, "type"); s != "" {
+		sample["type"] = s
+	}
+	if s := argString(violation, "severity"); s != "" {
+		sample["severity"] = s
+	}
+	if s := argString(violation, "description"); s != "" {
+		sample["description"] = shortenRunes(s, 300)
+	}
+	if items := compactRuleItems(violation); len(items) > 0 {
+		sample["items"] = items
+	}
+	return sample
+}
+
+func compactRuleItems(violation map[string]any) []any {
+	list, _ := violation["items"].([]any)
+	out := make([]any, 0, len(list))
+	for _, raw := range list {
+		item, _ := raw.(map[string]any)
+		if item == nil {
+			continue
+		}
+		compact := map[string]any{}
+		if s := argString(item, "description"); s != "" {
+			compact["description"] = shortenRunes(s, 200)
+		}
+		if s := argString(item, "uuid"); s != "" {
+			compact["uuid"] = s
+		}
+		if pos, ok := item["pos"].(map[string]any); ok {
+			compact["x"] = pos["x"]
+			compact["y"] = pos["y"]
+		}
+		out = append(out, compact)
+	}
+	return out
+}
+
+func shortenRunes(s string, limit int) string {
+	runes := []rune(s)
+	if len(runes) <= limit {
+		return s
+	}
+	return string(runes[:limit]) + "..."
 }
 
 func (c *KicadCLI) run(ctx context.Context, args ...string) (stdout, stderr []byte, exitCode int, err error) {

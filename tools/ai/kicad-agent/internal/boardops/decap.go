@@ -391,7 +391,7 @@ func deepCopy(v any) any {
 // liveViolationCount returns the number of DRC violations of the open board,
 // or -1 when live DRC is unavailable.
 func liveViolationCount(ctx context.Context, dispatch Dispatcher, doc any) int {
-	res, err := LiveRules(ctx, "board.drc.run", map[string]any{"document": doc}, dispatch)
+	res, err := LiveRules(ctx, "board.drc.run", map[string]any{"document": doc, "full": true}, dispatch)
 	if err != nil || res == nil {
 		return -1
 	}

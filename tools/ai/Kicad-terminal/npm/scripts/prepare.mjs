@@ -14,6 +14,10 @@ const nngSource = process.env.NNG_SOURCE || path.join(process.env.HOME, 'kicad-d
 execFileSync('python3', [path.join(repo, 'tools/ai/build-manifest.py'), 'verify', terminal], { stdio: 'inherit' });
 if (!execFileSync('file', [agent], { encoding: 'utf8' }).includes('arm64')) throw new Error('Expected native arm64 kicad-agent');
 if (!execFileSync('go', ['version', '-m', agent], { encoding: 'utf8' }).includes('-tags=nng')) throw new Error('kicad-agent must include the full NNG IPC backend');
+const capabilities = JSON.parse(execFileSync(agent, ['manifest'], { encoding: 'utf8' })).data;
+if (!capabilities?.engineeringReferences?.contentSha256 || !capabilities.mcpTools.includes('kicad_reference')) {
+  throw new Error('kicad-agent is stale: rebuild with engineering references before packaging');
+}
 for (const name of ['vendor', 'resources', 'licenses']) fs.rmSync(path.join(root, name), { recursive: true, force: true });
 function copy(from, to) {
   const dest = path.join(root, to); fs.mkdirSync(path.dirname(dest), { recursive: true }); fs.copyFileSync(from, dest);
@@ -66,5 +70,5 @@ function inventory(dir) {
 for (const name of ['bin', 'lib', 'vendor', 'resources', 'licenses']) inventory(path.join(root, name));
 for (const name of ['package.json', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'README.md', 'scripts/link-bin.mjs']) files[name] = createHash('sha256').update(fs.readFileSync(path.join(root, name))).digest('hex');
 const build = JSON.parse(fs.readFileSync(path.join(terminal, 'dist/build-manifest.json'), 'utf8'));
-fs.writeFileSync(path.join(root, 'manifest.json'), JSON.stringify({ schemaVersion: 1, version: JSON.parse(fs.readFileSync(path.join(root, 'package.json'))).version, platform: 'darwin-arm64', nativeVersion: build.version, upstreamCommit: build.upstreamCommit, sourceSha256: build.sourceSha256, backend: 'NNG IPC + CLI + native actions + design audit + web', files }, null, 2) + '\n');
+fs.writeFileSync(path.join(root, 'manifest.json'), JSON.stringify({ schemaVersion: 1, version: JSON.parse(fs.readFileSync(path.join(root, 'package.json'))).version, platform: 'darwin-arm64', nativeVersion: build.version, upstreamCommit: build.upstreamCommit, sourceSha256: build.sourceSha256, backend: 'NNG IPC + CLI + native actions + design audit + engineering references + release evidence + web', capabilities, files }, null, 2) + '\n');
 console.log('Prepared native runtime + full NNG agent, skills, plugins and third-party licenses.');

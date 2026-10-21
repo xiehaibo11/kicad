@@ -55,7 +55,7 @@ func TestInitializeAndToolsList(t *testing.T) {
 		names[name] = true
 	}
 
-	for _, want := range []string{"kicad_health", "kicad_actions", "kicad_call", "kicad_board", "kicad_gerber", "kicad_project"} {
+	for _, want := range []string{"kicad_health", "kicad_actions", "kicad_call", "kicad_board", "kicad_gerber", "kicad_project", "kicad_reference", "kicad_audit"} {
 		if !names[want] {
 			t.Fatalf("missing tool %q", want)
 		}

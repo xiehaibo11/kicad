@@ -70,7 +70,11 @@ mkdir -p "$HOME/.claude/skills" "$HOME/.claude/commands"
 for skill in "$REPO_ROOT"/.claude/skills/kicad-*/; do
   name="$(basename "$skill")"
   mkdir -p "$HOME/.claude/skills/$name"
-  cp "$skill/SKILL.md" "$HOME/.claude/skills/$name/SKILL.md"
+  cp -R "$skill/." "$HOME/.claude/skills/$name/"
+  if [ "$name" = "kicad-engineering" ]; then
+    mkdir -p "$HOME/.codex/skills/$name"
+    cp -R "$skill/." "$HOME/.codex/skills/$name/"
+  fi
 done
 cp "$REPO_ROOT"/.claude/commands/kicad-*.md "$HOME/.claude/commands/"
 # EDA Agent Connector skill from the pinned upstream; a skill the user installed

@@ -20,6 +20,7 @@ import (
 	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/boardops"
 	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/designaudit"
 	dfmpkg "github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/dfm"
+	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/engineering"
 	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/external"
 	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/fanout"
 	impedancepkg "github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/impedance"
@@ -229,6 +230,14 @@ func newCallCmd(opts *Options) *cobra.Command {
 }
 
 func dispatch(ctx context.Context, opts *Options, action string, payload map[string]any) (*backend.Result, error) {
+	if strings.HasPrefix(action, "reference.") {
+		return engineering.Reference(action, payload)
+	}
+	if strings.HasPrefix(action, "release.") {
+		return engineering.Release(ctx, action, payload, func(ctx context.Context, a string, p map[string]any) (*backend.Result, error) {
+			return dispatch(ctx, opts, a, p)
+		})
+	}
 	if action == "system.manifest" {
 		return manifestResult(), nil
 	}
@@ -281,6 +290,25 @@ func dispatch(ctx context.Context, opts *Options, action string, payload map[str
 			return nil, err
 		}
 		return &backend.Result{Action: action, OK: true, Data: map[string]any{"path": resolved, "directory": filepath.Dir(resolved)}}, nil
+	}
+	if action == "project.info" {
+		// A path names a saved project; describe it from disk.  Without a
+		// path the request falls through to the live API, which can only
+		// answer for documents that are already open.
+		path := argString(payload, "project")
+		if path == "" {
+			path = argString(payload, "document")
+		}
+		if path == "" {
+			path = argString(payload, "directory")
+		}
+		if path != "" {
+			info, err := projectpkg.Info(path)
+			if err != nil {
+				return nil, err
+			}
+			return &backend.Result{Action: action, OK: true, Data: info}, nil
+		}
 	}
 	if action == "project.open" || action == "project.switch" {
 		socket := opts.Socket

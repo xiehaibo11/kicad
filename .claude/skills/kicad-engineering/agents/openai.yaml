@@ -1,0 +1,6 @@
+interface:
+  display_name: "KiCad 工程规范与证据关卡"
+  short_description: "按需调用可追溯设计规范，核验原理图到制造及量产的工程证据"
+  default_prompt: "使用 $kicad-engineering 为当前 KiCad 设计调用适用规范，并核对当前版本的制造与量产证据。"
+policy:
+  allow_implicit_invocation: true

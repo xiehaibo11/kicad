@@ -20,7 +20,7 @@ node "$SCRIPT_DIR/apply-waiting.mjs" "$SOURCE_DIR"
 node "$SCRIPT_DIR/apply-reasoning.mjs" "$SOURCE_DIR"
 (
   cd "$SOURCE_DIR"
-  bun install --frozen-lockfile --filter opencode --filter @opencode-ai/app --filter @opencode-ai/tui --network-concurrency=12
+  bun install --frozen-lockfile --filter opencode --filter @opencode-ai/app --filter @opencode-ai/tui --filter @opencode-ai/client --filter @opencode-ai/core --filter @opencode-ai/server --filter @opencode-ai/httpapi-codegen --network-concurrency=12
   bun run --cwd packages/client generate
   bun run --cwd packages/tui typecheck
   bun run --cwd packages/opencode typecheck

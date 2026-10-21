@@ -21,13 +21,13 @@ AI 工具的完整源码和构建文档位于
 直接下载并启动完整终端：
 
 ```sh
-npx --yes @-kicadai/kicad-code
+npx --yes @-kicadai/kicad-code@latest
 ```
 
 或者全局安装，以后使用软件名称启动：
 
 ```sh
-npm install -g @-kicadai/kicad-code
+npm install -g @-kicadai/kicad-code@latest
 Kicad
 ```
 
@@ -40,16 +40,16 @@ Kicad
 KiCad 支持。
 
 [npm 公开包](https://www.npmjs.com/package/@-kicadai/kicad-code) ·
-[发行包与验收报告](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.0)
+[发行包与验收报告](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.1)
 
 ## 在 VS Code 中使用
 
 扩展面板显示名称为 **Kicad**，终端入口显示为 **Kicad 终端**，扩展 ID 为 `kicad-agent.kicad`。
-从 [GitHub Release 下载扩展 0.4.22](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.22)
-中的 `kicad-0.4.22.vsix`，在 VS Code 扩展菜单选择 **从 VSIX 安装…**，或者在下载目录执行：
+从 [GitHub Release 下载扩展 0.4.23](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.23)
+中的 `kicad-0.4.23.vsix`，在 VS Code 扩展菜单选择 **从 VSIX 安装…**，或者在下载目录执行：
 
 ```sh
-code --install-extension ./kicad-0.4.22.vsix --force
+code --install-extension ./kicad-0.4.23.vsix --force
 ```
 
 需要 VS Code 1.98 或以上版本；当前验证平台为 macOS Apple Silicon。VSIX 包含聊天界面和
@@ -70,10 +70,11 @@ SDK/CLI，KiCad 软件、`kicad-agent` 后端及完整终端运行时需要单�
 - 工程发现与切换、文档打开、原理图和 PCB 信息读取。
 - 元件与封装库查询、原理图生成、放置、扇出、布线与制造文件导出。
 - DRC/ERC、连通性、DFM 和结构检查；具体设计检查在后端执行。
+- 按任务自动查询 20 个主题、86 条工程规则与 37 个 KiCad 原版示例索引；按工程快照校验证据完整性。
 - 公开网页资料搜索与读取，通过 `kicad_web` 等后端工具按任务调用。
 - 可选 EDA Agent Connector，通过独立 MCP 适配器连接嘉立创EDA；需要相应 CLI、daemon 和连接器。
 
-当前发布包的能力目录包含 **19 组 KiCad MCP 工具、247 个类型化动作**，详细清单由
+当前发布包的能力目录包含 **20 组 KiCad MCP 工具、254 个类型化动作**，详细清单由
 `kicad-agent manifest` 输出。MCP 工具目录、原生动作索引和实际执行验证是不同层次；
 IPC 动作是否可用取决于当前 KiCad 版本、编辑器和已注册的接口处理器。当前仍有部分 PCB
 接口适配问题，某些会话会返回 `UNHANDLED`；工程和板级接口需要逐项验证。

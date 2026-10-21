@@ -21,6 +21,8 @@ func TestNativeAuditNeverConvertsMissingIgnoredOrExcludedEvidenceIntoPass(t *tes
 		{"excluded", "clean", map[string]any{"violations": []any{map[string]any{"severity": "exclusion"}}}, "fail"},
 		{"ignored", "clean", map[string]any{"ignored_checks": []any{"clearance"}}, "blocked"},
 		{"incomplete", "timeout", map[string]any{}, "blocked"},
+		{"empty-clean", "clean", map[string]any{}, "blocked"},
+		{"malformed-clean", "clean", map[string]any{"violations": "none"}, "blocked"},
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
@@ -61,7 +63,7 @@ func TestReadOnlyAuditUsesFullNativeChecksAndRequiresEngineeringEvidence(t *test
 		if p["saveBoard"] != nil {
 			t.Fatal("audit must not save design")
 		}
-		return &backend.Result{OK: true, Data: map[string]any{"status": "clean", "reportJson": map[string]any{"violations": []any{}}}}, nil
+		return &backend.Result{OK: true, Data: map[string]any{"status": "clean", "reportJson": map[string]any{"violations": []any{}, "unconnected_items": []any{}, "schematic_parity": []any{}, "ignored_checks": []any{}, "included_severities": []any{"error", "warning", "exclusion"}}}}, nil
 	})
 	if err != nil {
 		t.Fatal(err)

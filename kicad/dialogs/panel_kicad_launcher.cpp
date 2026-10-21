@@ -115,7 +115,7 @@ void PANEL_KICAD_LAUNCHER::CreateLaunchers()
     wxFont sectionFont = wxSystemSettings::GetFont( wxSYS_DEFAULT_GUI_FONT );
     sectionFont.SetPointSize( sectionFont.GetPointSize() + 1 );
     sectionFont.SetWeight( wxFONTWEIGHT_BOLD );
-    const int margin = FromDIP( 20 );
+    const int margin = FromDIP( 12 );
 
     auto* header = new wxBoxSizer( wxVERTICAL );
     auto* title = new wxStaticText( m_scrolledWindow, wxID_ANY, _( "KiCad Workspace" ) );
@@ -137,7 +137,8 @@ void PANEL_KICAD_LAUNCHER::CreateLaunchers()
     {
         auto* label = new wxStaticText( m_scrolledWindow, wxID_ANY, text );
         label->SetFont( sectionFont );
-        content->Add( label, 0, wxLEFT | wxRIGHT | wxTOP | wxBOTTOM, margin );
+        content->Add( label, 0, wxLEFT | wxRIGHT | wxTOP, margin );
+        content->AddSpacer( FromDIP( 8 ) );
     };
 
     addHeading( _( "Quick Start" ) );
@@ -179,9 +180,9 @@ void PANEL_KICAD_LAUNCHER::CreateLaunchers()
         auto* labels = new wxBoxSizer( wxVERTICAL );
         auto* label = new wxStaticText( card, wxID_ANY, action.GetFriendlyName() );
         label->SetFont( wxSystemSettings::GetFont( wxSYS_DEFAULT_GUI_FONT ).Bold() );
-        label->Wrap( FromDIP( 140 ) );
+        label->Wrap( FromDIP( 120 ) );
         auto* help = new wxStaticText( card, wxID_ANY, helpText );
-        help->Wrap( FromDIP( 140 ) );
+        help->Wrap( FromDIP( 120 ) );
         labels->Add( label, 0, wxBOTTOM, FromDIP( 4 ) );
         labels->Add( help );
         row->Add( labels, 1, wxALIGN_CENTER_VERTICAL | wxTOP | wxBOTTOM | wxRIGHT, FromDIP( 10 ) );
@@ -228,6 +229,8 @@ void PANEL_KICAD_LAUNCHER::CreateLaunchers()
     m_recentProjects = new wxListCtrl( m_scrolledWindow, wxID_ANY, wxDefaultPosition,
                                       FromDIP( wxSize( -1, 150 ) ),
                                       wxLC_REPORT | wxLC_SINGLE_SEL | wxLC_HRULES );
+    // Column widths are scrollable content, not the minimum width of the start page.
+    m_recentProjects->SetMinSize( FromDIP( wxSize( 1, 150 ) ) );
     m_recentProjects->SetName( _( "Recent Projects" ) );
     m_recentProjects->AppendColumn( _( "Project Name" ), wxLIST_FORMAT_LEFT, FromDIP( 170 ) );
     m_recentProjects->AppendColumn( _( "Project Path" ), wxLIST_FORMAT_LEFT, FromDIP( 380 ) );
@@ -251,8 +254,8 @@ void PANEL_KICAD_LAUNCHER::CreateLaunchers()
 
 void PANEL_KICAD_LAUNCHER::updateToolColumns()
 {
-    const int available = m_scrolledWindow->GetClientSize().x - FromDIP( 40 );
-    const int cols = std::clamp( available / FromDIP( 230 ), 1, 3 );
+    const int available = m_scrolledWindow->GetClientSize().x - FromDIP( 24 );
+    const int cols = std::clamp( available / FromDIP( 190 ), 1, 3 );
     if( cols == m_toolsSizer->GetCols() )
         return;
     for( int old = 0; old < m_toolsSizer->GetCols(); ++old )
@@ -284,6 +287,9 @@ void PANEL_KICAD_LAUNCHER::RefreshProjects()
     {
         wxFileName project( history.GetHistoryFile( i ) );
         if( !project.FileExists() )
+            continue;
+        if( std::any_of( m_recentPaths.begin(), m_recentPaths.end(),
+                [&]( const wxString& old ) { return project.SameAs( wxFileName( old ) ); } ) )
             continue;
         long row = m_recentProjects->InsertItem( m_recentProjects->GetItemCount(), project.GetName() );
         m_recentProjects->SetItem( row, 1, project.GetFullPath() );

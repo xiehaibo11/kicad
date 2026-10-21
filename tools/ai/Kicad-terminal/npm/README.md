@@ -11,13 +11,13 @@ PCB 审查工具、技能、提示词优化、下一句建议与任务上下文�
 直接从 npm 官方源启动（npm 会下载并缓存完整包，无需 npm 登录）：
 
 ```sh
-npx --yes @-kicadai/kicad-code
+npx --yes @-kicadai/kicad-code@latest
 ```
 
 安装到全局，以后直接运行软件名：
 
 ```sh
-npm install -g @-kicadai/kicad-code
+npm install -g @-kicadai/kicad-code@latest
 Kicad
 # 以下写法启动相同的完整终端
 kicad
@@ -27,19 +27,19 @@ KICAD
 也可以在不全局安装的情况下传入参数：
 
 ```sh
-npx --yes @-kicadai/kicad-code --help
-npx --yes @-kicadai/kicad-code --continue
+npx --yes @-kicadai/kicad-code@latest --help
+npx --yes @-kicadai/kicad-code@latest --continue
 ```
 
 npm 官方包为 [`@-kicadai/kicad-code`](https://www.npmjs.com/package/@-kicadai/kicad-code)，
-当前版本为 `0.1.0`，可省略版本号获取 `latest`。
+当前版本为 `0.1.1`，可省略版本号获取 `latest`。
 也可以使用内容相同的 GitHub npm tarball：
 
 ```sh
-npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-code-v0.1.0/-kicadai-kicad-code-0.1.0.tgz Kicad
+npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-code-v0.1.1/-kicadai-kicad-code-0.1.1.tgz Kicad
 ```
 
-校验报告与发行包见 [Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.0)。
+校验报告与发行包见 [Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.1)。
 
 `npx` 是下载、缓存并运行 npm 包的入口；全局安装后才会在 PATH 中长期提供
 这些命令。包内携带原生运行时和完整后端，不要求 Bun、Python 或 Go。
@@ -62,6 +62,27 @@ KICAD_CLI=/path/to/kicad-cli Kicad
 源码与许可证：https://github.com/xiehaibo11/kicad/tree/codex/kicad-npm/tools/ai/Kicad-terminal
 各开源组件保留原许可证，详见 THIRD_PARTY_NOTICES.md 与 licenses/。
 
+## 0.1.1 工程规范与验收更新
+
+内置 20 个工程主题、86 条可追溯规则、21 个资料来源与全部 37 个 KiCad 示例索引。
+终端根据普通自然语言设计任务自动调用 `reference.plan/get/examples`，无需输入斜杠。
+新增 `release.snapshot/template/check`，按当前工程文件与证据的 SHA-256 检查投板、投产资料完整性。
+任务进度不能替代审查证据；软件检查也不能代替实物验证和责任工程师的最终放行。
+
+当前后端目录：254 个类型化动作、20 组 MCP 工具、971 个原生 GUI 工具索引。
+这些数量表示可发现入口，不表示每个动作都已在实板上逐项验证。
+包内含更新后的 NNG 后端、8 个技能及 `kicad-engineering` 的完整辅助参考文件。
+
+更新已有安装：
+
+```sh
+npm install -g @-kicadai/kicad-code@latest
+```
+
+配合 VS Code 扩展 0.4.23 使用时，后端也须同步更新。全局 npm 包中的后端位于
+`<npm root -g>/@-kicadai/kicad-code/vendor/darwin-arm64/kicad-agent`；可将此绝对路径填入
+VS Code 的 `kicadAgent.path` 设置，或安装扩展 Release 中的独立后端。
+
 ## 从源码构建
 
 在主仓库执行原生终端构建，并构建含 NNG 的后端：
@@ -79,6 +100,6 @@ npm test
 npm pack
 ```
 
-后端构建需 Go 1.26.3 和 NNG 1.12.4（默认 `$HOME/kicad-deps/nng-install`，
+后端构建需 Go 1.27.2 和 NNG 1.12.4（默认 `$HOME/kicad-deps/nng-install`，
 可设 `NNG_PREFIX`）；许可证来源默认 `$HOME/kicad-deps/nng-1.12.4`，可设
 `NNG_SOURCE`。打包时逐文件验证 SHA-256 和完整 NNG 构建标签。

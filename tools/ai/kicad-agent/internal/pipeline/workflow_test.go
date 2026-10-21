@@ -75,3 +75,30 @@ func TestWorkflowRejectsUnknownStage(t *testing.T) {
 		t.Fatal("expected an error for an unknown stage")
 	}
 }
+
+func TestWorkflowCannotSkipPendingOrForgeVerified(t *testing.T) {
+	dir := t.TempDir()
+	for _, stage := range []string{"schematic", "manufacturing", "verified"} {
+		if _, err := WorkflowCall("workflow.advance", map[string]any{"project": dir, "stage": stage, "readyForProduction": true, "evidence": true}); err == nil {
+			t.Fatalf("forged %s", stage)
+		}
+	}
+	st := newWorkflow(dir)
+	for _, stage := range WorkflowStages {
+		st.Stages[stage] = "ok"
+	}
+	if err := saveWorkflow(st); err != nil {
+		t.Fatal(err)
+	}
+	result, err := WorkflowCall("workflow.status", map[string]any{"project": dir})
+	if err != nil {
+		t.Fatal(err)
+	}
+	got := result.Data.(*WorkflowState)
+	if got.Stages["verified"] == "ok" || got.ReadyForFabrication || got.ReadyForProduction {
+		t.Fatal("legacy flag treated as engineering approval")
+	}
+	if _, err := WorkflowCall("workflow.advance", map[string]any{"project": dir, "stage": "verified", "confirmation": true}); err == nil {
+		t.Fatal("verified bypassed")
+	}
+}

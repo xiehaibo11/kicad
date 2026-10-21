@@ -22,12 +22,23 @@ Every command prints exactly one JSON envelope.
    `project.open` for a headless server. That call returns `{socket,pid}`;
    pass the socket to later calls.
 
+## Engineering constraints (automatic)
+
+For design/review/manufacturing work, first use `kicad_reference` action
+`reference.plan`, then relevant `reference.get` cards. Missing inputs stay
+unresolved; use exact device and manufacturer requirements. For original demos
+use `reference.examples`. For release use `kicad_audit` actions
+`release.template`, `release.snapshot`, `release.check`; evidence completeness
+is separate from accountable final engineering/quality/manufacturer approval.
+Workflow flags are task tracking and cannot certify production readiness.
+
 ## Common workflows
 
 - Schematic: `kicad_schematic` action `schematic.generate`; ERC runs
   automatically. Search libraries with `library.search.symbols` and
   `library.search.footprints`.
-- Place/route: `board.place.autoplace`, then `board.route.autoroute`, then
+- Place/route: resolve stackup/constraints and protect locked items before
+  scoped `board.place.autoplace` / `board.route.autoroute`, then
   `board.drc.run` and `board.connectivity.prove`.
 - Differential pair: `board.route.diff_pair`. The router refuses pairs that
   would short other copper.

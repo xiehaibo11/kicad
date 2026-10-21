@@ -69,14 +69,30 @@ with tempfile.TemporaryDirectory(prefix='Kicad npm acceptance ') as directory:
         subprocess.run([str(command),'debug','skill'],cwd=root,env=env,stdout=listing,stderr=subprocess.PIPE,text=True,timeout=120,check=True)
         listing.seek(0)
         skills = json.load(listing)
-    assert sum(str(item['location']).startswith(str(installed/'resources/skills')) for item in skills) == 7, skills
+    bundled_skills = [item for item in skills if str(item['location']).startswith(str(installed/'resources/skills'))]
+    expected_skills = sorted(p.name for p in (source.parents[3]/'.claude/skills').glob('kicad-*') if (p/'SKILL.md').is_file())
+    assert sorted(item['name'] for item in bundled_skills) == expected_skills, bundled_skills
+    assert 'kicad-engineering' in expected_skills
+    assert (installed/'resources/skills/kicad-engineering/references/release-evidence.md').is_file()
     agent = installed/'vendor/darwin-arm64/kicad-agent'
     inventory = json.loads(run([agent,'manifest']))['data']
+    assert inventory == manifest['capabilities'], 'payload capabilities differ from release manifest'
+    assert inventory['engineeringReferences']['ruleCount'] == 86
+    assert inventory['engineeringReferences']['exampleProjectCount'] == 37
     requests = [{'jsonrpc':'2.0','id':1,'method':'initialize','params':{'protocolVersion':'2024-11-05','capabilities':{},'clientInfo':{'name':'npm-acceptance','version':'1'}}},{'jsonrpc':'2.0','id':2,'method':'tools/list'}]
     response = subprocess.run([str(agent),'mcp'],input='\n'.join(map(json.dumps,requests))+'\n',text=True,capture_output=True,env=env,cwd=root,timeout=30,check=True)
     replies = [json.loads(line) for line in response.stdout.splitlines()]
     tools = next(item['result']['tools'] for item in replies if item.get('id')==2)
     assert {tool['name'] for tool in tools} == set(inventory['mcpTools'])
+    assert 'kicad_reference' in inventory['mcpTools']
+    for action, payload in [('reference.plan', {'query':'电源原理图设计'}), ('reference.get', {'id':'power'}), ('reference.examples', {})]:
+        data = json.loads(run([agent,'call',action,'--payload',json.dumps(payload)]))
+        assert data['ok'] and data['data'], (action,data)
+    requests.append({'jsonrpc':'2.0','id':3,'method':'tools/call','params':{'name':'kicad_reference','arguments':{'action':'reference.plan','payload':{'query':'PCB'}}}})
+    reference_response = subprocess.run([str(agent),'mcp'],input='\n'.join(map(json.dumps,requests))+'\n',text=True,capture_output=True,env=env,cwd=root,timeout=30,check=True)
+    reference_reply = next(json.loads(line)['result'] for line in reference_response.stdout.splitlines() if json.loads(line).get('id')==3)
+    reference_result = reference_reply.get('structuredContent') or json.loads(reference_reply['content'][0]['text'])
+    assert reference_result['ok'], reference_result
     with socket.socket() as sock:
         sock.bind(('127.0.0.1',0))
         port = sock.getsockname()[1]
@@ -103,7 +119,7 @@ with tempfile.TemporaryDirectory(prefix='Kicad npm acceptance ') as directory:
             server.wait(timeout=15)
     saved = json.loads(settings.read_text())
     assert all(saved.get(key) == value for key,value in json.loads(original).items()), 'existing preferences changed: '+json.dumps(saved)
-    report = {'ok':True,'package':str(package),'platform':'darwin-arm64','runtimeVersion':'1.19.3','cleanCacheNpx':True,'globalCommand':'Kicad','packageName':identity,'caseVariantCommandsVerified':aliases,'installationWithoutForce':True,'all22CommandsPreserved':True,'packageFilesVerified':len(manifest['files']),'bundledSkills':7,'mcpTools':len(tools),'actionCount':inventory['actionCount'],'NNGBackendBundled':True,'bundledMcpConnected':True,'nativeApiHealth':True,'embeddedWebAndJavaScript':True,'startupCreatesNoTask':True,'existingModelAndSettingsPreserved':True,'prefixWithSpaces':True}
+    report = {'ok':True,'package':str(package),'version':installed_package['version'],'platform':'darwin-arm64','runtimeVersion':'1.19.3','cleanCacheNpx':True,'globalCommand':'Kicad','packageName':identity,'caseVariantCommandsVerified':aliases,'installationWithoutForce':True,'all22CommandsPreserved':True,'packageFilesVerified':len(manifest['files']),'bundledSkills':len(bundled_skills),'mcpTools':len(tools),'actionCount':inventory['actionCount'],'engineeringReferences':inventory['engineeringReferences'],'referenceActionsExecuted':True,'referenceMcpExecuted':True,'NNGBackendBundled':True,'bundledMcpConnected':True,'nativeApiHealth':True,'embeddedWebAndJavaScript':True,'startupCreatesNoTask':True,'existingModelAndSettingsPreserved':True,'prefixWithSpaces':True}
     report_path = Path(os.environ.get('KICAD_NPM_TEST_REPORT','/tmp/Kicad-npm-acceptance.json'))
     report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(report,ensure_ascii=False,indent=2))

@@ -13,14 +13,19 @@ import (
 	"github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/backend"
 )
 
+// WorkflowState tracks tasks, not engineering approval. release.check owns
+// revision-bound evidence completeness; accountable people own final release.
 // WorkflowState is the KiCad-native design gate record.  It deliberately does
 // not reuse the upstream EasyEDA workflow state: that state is keyed to EasyEDA
 // document UUIDs, PLANE-layer artifacts, and `eda.*` action semantics.
 type WorkflowState struct {
-	Project   string            `json:"project"`
-	Stages    map[string]string `json:"stages"`
-	Confirmed map[string]bool   `json:"confirmed"`
-	UpdatedAt string            `json:"updatedAt"`
+	Project             string            `json:"project"`
+	Stages              map[string]string `json:"stages"`
+	Confirmed           map[string]bool   `json:"confirmed"`
+	UpdatedAt           string            `json:"updatedAt"`
+	Scope               string            `json:"scope"`
+	ReadyForFabrication bool              `json:"readyForFabrication"`
+	ReadyForProduction  bool              `json:"readyForProduction"`
 }
 
 var WorkflowStages = []string{
@@ -41,6 +46,13 @@ func newWorkflow(project string) *WorkflowState {
 }
 
 func normalizeWorkflow(st *WorkflowState, project string) {
+	st.Scope = "Task tracking only. Confirmations are operator notes, not authenticated approvals. Use release.check for current evidence; final release requires accountable engineering/quality/manufacturer review."
+	st.ReadyForFabrication = false
+	st.ReadyForProduction = false
+	// Legacy verified flags had no evidence binding and cannot be trusted.
+	if st.Stages != nil {
+		st.Stages["verified"] = "pending"
+	}
 	if st.Project == "" {
 		st.Project = project
 	}
@@ -144,10 +156,13 @@ func WorkflowCall(action string, p map[string]any) (*backend.Result, error) {
 			return nil, &backend.Error{Code: "BAD_STAGE",
 				Message: fmt.Sprintf("unknown stage %q", stage)}
 		}
+		if stage == "verified" {
+			return nil, &backend.Error{Code: "EVIDENCE_GATE_REQUIRED", Message: "workflow flags cannot confer engineering approval. Use release.template/snapshot/check; final release requires accountable external review."}
+		}
 		for _, prev := range WorkflowStages[:idx] {
-			if st.Stages[prev] == "failed" {
+			if st.Stages[prev] != "ok" {
 				return nil, &backend.Error{Code: "GATE_BLOCKED",
-					Message: fmt.Sprintf("stage %q is still failed", prev)}
+					Message: fmt.Sprintf("stage %q is not complete; pending/failed stages cannot be skipped", prev)}
 			}
 		}
 		st.Stages[stage] = "ok"
@@ -175,6 +190,7 @@ func WorkflowCall(action string, p map[string]any) (*backend.Result, error) {
 		}
 	}
 
+	normalizeWorkflow(st, project)
 	if action != "workflow.status" {
 		if err := saveWorkflow(st); err != nil {
 			return nil, &backend.Error{Code: "WORKFLOW_SAVE_FAILED", Message: err.Error()}

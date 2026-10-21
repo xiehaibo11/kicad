@@ -33,6 +33,7 @@ const (
 	DomainAudit     Domain = "audit"
 	DomainWeb       Domain = "web"
 	DomainGerber    Domain = "gerber"
+	DomainReference Domain = "reference"
 )
 
 // Backend names the transport that serves an action.
@@ -74,7 +75,7 @@ func All() []ActionSpec {
 	catalogOnce.Do(func() {
 		var out []ActionSpec
 		for _, group := range [][]ActionSpec{
-			coreActions(), editorActions(), boardExtraActions(), reviewActions(),
+			coreActions(), editorActions(), boardExtraActions(), reviewActions(), engineeringActions(),
 			ipcExtraActions(), cliGeneratedActions(), designActions(),
 		} {
 			out = append(out, group...)
@@ -130,8 +131,9 @@ func coreActions() []ActionSpec {
 		},
 		{
 			Name: "project.info", Domain: DomainProject, Backend: BackendIPC,
-			Description: "Return the open project and document identity.",
-			Outputs:     []string{"project", "documents"},
+			Description: "Describe a saved project from disk when a path is given (works offline), or return the open project and document identity when it is not.",
+			Inputs:      []string{"project optional (directory, .kicad_pro, .kicad_pcb or .kicad_sch)"},
+			Outputs:     []string{"source", "name", "directory", "documents", "sheets", "meta"},
 		},
 		{
 			Name: "document.list", Domain: DomainDocument, Backend: BackendIPC,
@@ -250,9 +252,9 @@ func coreActions() []ActionSpec {
 		},
 		{
 			Name: "board.drc.run", Domain: DomainBoard, Backend: BackendCLI,
-			Description: "Run design rule checks with a cooperative timeout and structured report.",
-			Inputs:      []string{"input", "output optional", "format report|json", "timeoutMs optional", "refillZones optional", "schematicParity optional"},
-			Outputs:     []string{"status", "violations", "report", "elapsedMs"},
+			Description: "Run design rule checks with a cooperative timeout and structured report. Large reports return summary/sampleViolations with the complete report at reportPath; pass full=true to inline reportJson.",
+			Inputs:      []string{"input", "output optional", "format report|json", "timeoutMs optional", "refillZones optional", "schematicParity optional", "full optional", "sampleViolations optional"},
+			Outputs:     []string{"status", "summary", "reportPath", "reportJson", "sampleViolations", "elapsedMs"},
 		},
 		{
 			Name: "board.render", Domain: DomainBoard, Backend: BackendCLI,
@@ -412,9 +414,9 @@ func coreActions() []ActionSpec {
 		},
 		{
 			Name: "schematic.erc.run", Domain: DomainSchematic, Backend: BackendCLI,
-			Description: "Run electrical rules checks with a cooperative timeout and structured report.",
-			Inputs:      []string{"input", "output optional", "format report|json", "timeoutMs optional"},
-			Outputs:     []string{"status", "violations", "report", "elapsedMs"},
+			Description: "Run electrical rules checks with a cooperative timeout and structured report. Large reports return summary/sampleViolations with the complete report at reportPath; pass full=true to inline reportJson.",
+			Inputs:      []string{"input", "output optional", "format report|json", "timeoutMs optional", "full optional", "sampleViolations optional"},
+			Outputs:     []string{"status", "summary", "reportPath", "reportJson", "sampleViolations", "elapsedMs"},
 		},
 		{
 			Name: "schematic.create", Domain: DomainSchematic, Backend: BackendIPC, Mutates: true,

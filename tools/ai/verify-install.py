@@ -24,7 +24,7 @@ def sha(raw):
 manifest = json.loads(run(bin_dir/'kicad-agent','manifest'))['data']
 actions = json.loads(run(bin_dir/'kicad-agent','actions'))['data']['actions']
 names = {item['name'] for item in actions}
-required = {'editor.run_action','editor.commit.begin','editor.commit.end','board.nets.get','audit.rules','audit.run','audit.footprint','web.search','web.fetch','kicad.cli.run'}
+required = {'editor.run_action','editor.commit.begin','editor.commit.end','board.nets.get','audit.rules','audit.run','audit.footprint','web.search','web.fetch','kicad.cli.run','reference.search','reference.get','reference.plan','reference.examples','release.snapshot','release.template','release.check'}
 assert required <= names, sorted(required - names)
 assert len(actions) == manifest['actionCount']
 requests = [{'jsonrpc':'2.0','id':1,'method':'initialize','params':{'protocolVersion':'2024-11-05','capabilities':{},'clientInfo':{'name':'install-verification','version':'1'}}}, {'jsonrpc':'2.0','id':2,'method':'tools/list'}]
@@ -34,7 +34,7 @@ tools = next(item['result']['tools'] for item in responses if item['id'] == 2)
 assert len(tools) == manifest['mcpToolCount']
 assert {tool['name'] for tool in tools} == set(manifest['mcpTools'])
 assert len({tool['name'] for tool in tools}) == len(tools)
-assert {'kicad_editor','kicad_audit','kicad_web','kicad_native_tools'} <= {tool['name'] for tool in tools}
+assert {'kicad_editor','kicad_audit','kicad_web','kicad_native_tools','kicad_reference'} <= {tool['name'] for tool in tools}
 terminal = root/'Kicad-terminal/dist/kicad-terminal'
 assert sha(terminal.read_bytes()) == sha((bin_dir/'kicad-terminal').read_bytes())
 terminal_version = run(bin_dir/'kicad-terminal','--version').strip()
@@ -59,6 +59,17 @@ for name in ('eda-agent-instructions.md','easyeda-mcp.mjs','session-runtime.mjs'
     assert sha((share/name).read_bytes()) == sha((root/'Kicad-terminal/dist'/name).read_bytes()), name
     with zipfile.ZipFile(root/'Kicad-extension/dist'/vsix) as archive:
         assert sha(archive.read('extension/resources/kicad/'+name)) == sha((installed/'resources/kicad'/name).read_bytes()), 'vsix '+name
+# Engineering references are callable and the implicit skill is installed with
+# its supporting evidence schema, not merely a slash-command alias.
+reference = json.loads(run(bin_dir/'kicad-agent','call','reference.plan','--payload',json.dumps({'stage':'schematic'})))
+assert reference['ok'] and reference['data']['topics']
+assert manifest['engineeringReferences']['topicCount'] >= 20
+assert 'reference.plan' in (share/'eda-agent-instructions.md').read_text()
+assert 'release.check' in (share/'eda-agent-instructions.md').read_text()
+for base in (Path.home()/'.claude/skills', Path.home()/'.codex/skills'):
+    for relative in ('SKILL.md','agents/openai.yaml','references/release-evidence.md'):
+        source = root.parents[1]/'.claude/skills/kicad-engineering'/relative
+        assert sha(source.read_bytes()) == sha((base/'kicad-engineering'/relative).read_bytes()), str(base/relative)
 easyeda_tools = []
 easyeda_bin = shutil.which('easyeda') or str(bin_dir/'easyeda')
 if shutil.which('node') and os.access(easyeda_bin, os.X_OK):
