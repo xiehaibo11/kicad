@@ -26,16 +26,16 @@ MCP 服务器与 `kicad` 并列注册（终端、扩展聊天、仓库 `.mcp.jso
 macOS Apple Silicon / Node.js 22+ 可直接使用 npm 官方源的完整安装包：
 
 ```sh
-npx --yes @haiboxie11/kicad@0.1.0
+npx --yes @-kicadai/kicad-code
 # 或全局安装后使用软件名启动
-npm install -g @haiboxie11/kicad@0.1.0
+npm install -g @-kicadai/kicad-code
 Kicad
 ```
 
 完整原生运行时、NNG IPC 后端、技能和插件一起分发；操作 PCB 时需要本机 KiCad。
-npm 官方源已公开发布 [`@haiboxie11/kicad`](https://www.npmjs.com/package/@haiboxie11/kicad)，
-命令名称保持 `Kicad`；内容相同的 GitHub tarball 和校验报告见
-[Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-terminal-v0.1.0)。
+npm 官方包为 [`@-kicadai/kicad-code`](https://www.npmjs.com/package/@-kicadai/kicad-code)，
+启动命令支持 `Kicad`、`kicad`、`KICAD` 等大小写组合；内容相同的 GitHub tarball 和校验报告见
+[Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.0)。
 打包、测试与开源组件说明见 [npm 分发](Kicad-terminal/npm/README.md)。
 
 KiCad API 服务默认开启，外部 EDA 工具在 `kicad-agent ai` 中默认允许调用；

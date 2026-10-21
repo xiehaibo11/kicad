@@ -1,22 +1,84 @@
 {
-  "name": "@haiboxie11/kicad",
+  "name": "@-kicadai/kicad-code",
   "version": "0.1.0",
   "description": "Kicad AI terminal: complete native runtime, KiCad MCP backend and PCB design skills",
   "license": "GPL-3.0-or-later",
   "type": "module",
-  "bin": { "Kicad": "bin/Kicad.mjs" },
-  "engines": { "node": ">=22" },
-  "os": ["darwin"],
-  "cpu": ["arm64"],
-  "files": ["bin/", "lib/", "vendor/", "resources/", "licenses/", "manifest.json", "LICENSE", "THIRD_PARTY_NOTICES.md", "README.md"],
+  "bin": {
+    "Kicad": "bin/Kicad.mjs",
+    "kicad": "bin/Kicad.mjs",
+    "kicaD": "bin/Kicad.mjs",
+    "kicAd": "bin/Kicad.mjs",
+    "kicAD": "bin/Kicad.mjs",
+    "kiCad": "bin/Kicad.mjs",
+    "kiCaD": "bin/Kicad.mjs",
+    "kiCAd": "bin/Kicad.mjs",
+    "kiCAD": "bin/Kicad.mjs",
+    "kIcad": "bin/Kicad.mjs",
+    "kIcaD": "bin/Kicad.mjs",
+    "kIcAd": "bin/Kicad.mjs",
+    "kIcAD": "bin/Kicad.mjs",
+    "kICad": "bin/Kicad.mjs",
+    "kICaD": "bin/Kicad.mjs",
+    "kICAd": "bin/Kicad.mjs",
+    "kICAD": "bin/Kicad.mjs",
+    "KicaD": "bin/Kicad.mjs",
+    "KicAd": "bin/Kicad.mjs",
+    "KicAD": "bin/Kicad.mjs",
+    "KiCad": "bin/Kicad.mjs",
+    "KiCaD": "bin/Kicad.mjs",
+    "KiCAd": "bin/Kicad.mjs",
+    "KiCAD": "bin/Kicad.mjs",
+    "KIcad": "bin/Kicad.mjs",
+    "KIcaD": "bin/Kicad.mjs",
+    "KIcAd": "bin/Kicad.mjs",
+    "KIcAD": "bin/Kicad.mjs",
+    "KICad": "bin/Kicad.mjs",
+    "KICaD": "bin/Kicad.mjs",
+    "KICAd": "bin/Kicad.mjs",
+    "KICAD": "bin/Kicad.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "arm64"
+  ],
+  "files": [
+    "bin/",
+    "lib/",
+    "vendor/",
+    "resources/",
+    "licenses/",
+    "manifest.json",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "README.md",
+    "scripts/link-bin.mjs"
+  ],
   "scripts": {
     "build": "node scripts/prepare.mjs",
     "prepack": "node scripts/verify.mjs",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test test/*.test.mjs",
+    "preinstall": "node scripts/link-bin.mjs"
   },
-  "dependencies": { "jsonc-parser": "3.3.1" },
-  "repository": { "type": "git", "url": "git+https://github.com/xiehaibo11/kicad.git", "directory": "tools/ai/Kicad-terminal/npm" },
+  "dependencies": {
+    "jsonc-parser": "3.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiehaibo11/kicad.git",
+    "directory": "tools/ai/Kicad-terminal/npm"
+  },
   "homepage": "https://github.com/xiehaibo11/kicad/tree/codex/kicad-npm/tools/ai/Kicad-terminal/npm",
-  "bugs": { "url": "https://github.com/xiehaibo11/kicad/issues" },
-  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" }
+  "bugs": {
+    "url": "https://github.com/xiehaibo11/kicad/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

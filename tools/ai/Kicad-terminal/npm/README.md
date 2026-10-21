@@ -4,42 +4,47 @@
 服务端 API、内置 Web 界面与全部原生子命令，加入完整 NNG IPC KiCad MCP 后端、
 PCB 审查工具、技能、提示词优化、下一句建议与任务上下文保留。
 
-支持 **macOS Apple Silicon（arm64）和 Node.js 22+**。软件命令是 **`Kicad`**。
+支持 **macOS Apple Silicon（arm64）和 Node.js 22+**。软件命令支持任意大小写组合，例如 **`Kicad`**、**`kicad`**、**`KICAD`** 和 **`KiCad`**。
 
 ## 安装与启动
 
 直接从 npm 官方源启动（npm 会下载并缓存完整包，无需 npm 登录）：
 
 ```sh
-npx --yes @haiboxie11/kicad@0.1.0
+npx --yes @-kicadai/kicad-code
 ```
 
 安装到全局，以后直接运行软件名：
 
 ```sh
-npm install -g @haiboxie11/kicad@0.1.0
+npm install -g @-kicadai/kicad-code
 Kicad
+# 以下写法启动相同的完整终端
+kicad
+KICAD
 ```
 
 也可以在不全局安装的情况下传入参数：
 
 ```sh
-npx --yes @haiboxie11/kicad@0.1.0 --help
-npx --yes @haiboxie11/kicad@0.1.0 --continue
+npx --yes @-kicadai/kicad-code --help
+npx --yes @-kicadai/kicad-code --continue
 ```
 
-npm 官方源已公开发布 [`@haiboxie11/kicad`](https://www.npmjs.com/package/@haiboxie11/kicad)，
+npm 官方包为 [`@-kicadai/kicad-code`](https://www.npmjs.com/package/@-kicadai/kicad-code)，
 当前版本为 `0.1.0`，可省略版本号获取 `latest`。
 也可以使用内容相同的 GitHub npm tarball：
 
 ```sh
-npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-terminal-v0.1.0/haiboxie11-kicad-0.1.0.tgz Kicad
+npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-code-v0.1.0/-kicadai-kicad-code-0.1.0.tgz Kicad
 ```
 
-校验报告与发行包见 [Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-terminal-v0.1.0)。
+校验报告与发行包见 [Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.0)。
 
 `npx` 是下载、缓存并运行 npm 包的入口；全局安装后才会在 PATH 中长期提供
-`Kicad`。包内携带原生运行时和完整后端，没有安装脚本，不要求 Bun、Python 或 Go。
+这些命令。包内携带原生运行时和完整后端，不要求 Bun、Python 或 Go。
+安装时只运行包内的命令链接兼容脚本，提前建立规范命令链接，避免 npm 在
+不区分大小写的文件系统上并行创建别名时冲突；不联网下载组件，也不覆盖其他软件的命令。
 首次使用模型需要原有服务商认证；已有配置、模型选择、会话和环境变量继续沿用。
 
 操作 PCB/原理图需要另外安装并运行 KiCad；包不会假装已连接 EDA 软件。

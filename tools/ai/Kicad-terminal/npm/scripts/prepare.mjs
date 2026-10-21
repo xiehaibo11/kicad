@@ -64,7 +64,7 @@ function inventory(dir) {
   }
 }
 for (const name of ['bin', 'lib', 'vendor', 'resources', 'licenses']) inventory(path.join(root, name));
-for (const name of ['package.json', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'README.md']) files[name] = createHash('sha256').update(fs.readFileSync(path.join(root, name))).digest('hex');
+for (const name of ['package.json', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'README.md', 'scripts/link-bin.mjs']) files[name] = createHash('sha256').update(fs.readFileSync(path.join(root, name))).digest('hex');
 const build = JSON.parse(fs.readFileSync(path.join(terminal, 'dist/build-manifest.json'), 'utf8'));
 fs.writeFileSync(path.join(root, 'manifest.json'), JSON.stringify({ schemaVersion: 1, version: JSON.parse(fs.readFileSync(path.join(root, 'package.json'))).version, platform: 'darwin-arm64', nativeVersion: build.version, upstreamCommit: build.upstreamCommit, sourceSha256: build.sourceSha256, backend: 'NNG IPC + CLI + native actions + design audit + web', files }, null, 2) + '\n');
 console.log('Prepared native runtime + full NNG agent, skills, plugins and third-party licenses.');

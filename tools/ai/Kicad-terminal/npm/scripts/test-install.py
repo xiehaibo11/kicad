@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Install the real tarball into an isolated prefix and exercise its shipped code."""
 import hashlib
+import itertools
 import json
 import os
 from pathlib import Path
@@ -37,9 +38,17 @@ with tempfile.TemporaryDirectory(prefix='Kicad npm acceptance ') as directory:
     output = run(invocation+['--version'])
     assert '1.19.3' in output.splitlines(), output[-1000:]
     prefix = root/'global prefix'
-    run(['npm','install','--global','--prefix',prefix,'--ignore-scripts','--no-audit','--no-fund',package])
+    run(['npm','install','--global','--prefix',prefix,'--no-audit','--no-fund',package])
     command = prefix/'bin/Kicad'
-    installed = (prefix/'lib/node_modules/@haiboxie11/kicad').resolve()
+    identity = json.loads((source/'package.json').read_text())['name']
+    installed = (prefix/'lib/node_modules'/identity).resolve()
+    aliases = [''.join(case) for case in itertools.product(*[(letter,letter.upper()) for letter in 'kicad'])]
+    for alias in aliases:
+        assert run([prefix/'bin'/alias,'--version']).strip() == '1.19.3', alias
+    installed_package = json.loads((installed/'package.json').read_text())
+    assert installed_package['name'] == identity
+    assert set(installed_package['bin']) == set(aliases)
+    assert set(installed_package['bin'].values()) == {'bin/Kicad.mjs'}
     assert command.is_file()
     assert run([command,'--version']).strip() == '1.19.3'
     help_text = run([command,'--help'])
@@ -94,7 +103,7 @@ with tempfile.TemporaryDirectory(prefix='Kicad npm acceptance ') as directory:
             server.wait(timeout=15)
     saved = json.loads(settings.read_text())
     assert all(saved.get(key) == value for key,value in json.loads(original).items()), 'existing preferences changed: '+json.dumps(saved)
-    report = {'ok':True,'package':str(package),'platform':'darwin-arm64','runtimeVersion':'1.19.3','cleanCacheNpx':True,'globalCommand':'Kicad','all22CommandsPreserved':True,'packageFilesVerified':len(manifest['files']),'bundledSkills':7,'mcpTools':len(tools),'actionCount':inventory['actionCount'],'NNGBackendBundled':True,'bundledMcpConnected':True,'nativeApiHealth':True,'embeddedWebAndJavaScript':True,'startupCreatesNoTask':True,'existingModelAndSettingsPreserved':True,'prefixWithSpaces':True}
+    report = {'ok':True,'package':str(package),'platform':'darwin-arm64','runtimeVersion':'1.19.3','cleanCacheNpx':True,'globalCommand':'Kicad','packageName':identity,'caseVariantCommandsVerified':aliases,'installationWithoutForce':True,'all22CommandsPreserved':True,'packageFilesVerified':len(manifest['files']),'bundledSkills':7,'mcpTools':len(tools),'actionCount':inventory['actionCount'],'NNGBackendBundled':True,'bundledMcpConnected':True,'nativeApiHealth':True,'embeddedWebAndJavaScript':True,'startupCreatesNoTask':True,'existingModelAndSettingsPreserved':True,'prefixWithSpaces':True}
     report_path = Path(os.environ.get('KICAD_NPM_TEST_REPORT','/tmp/Kicad-npm-acceptance.json'))
     report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(report,ensure_ascii=False,indent=2))
