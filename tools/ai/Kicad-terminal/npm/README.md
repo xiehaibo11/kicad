@@ -8,30 +8,35 @@ PCB 审查工具、技能、提示词优化、下一句建议与任务上下文�
 
 ## 安装与启动
 
-直接启动已经公开的完整 GitHub npm tarball（npm 会下载并缓存，无需 npm 登录）：
+直接从 npm 官方源启动（npm 会下载并缓存完整包，无需 npm 登录）：
 
 ```sh
-npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-terminal-v0.1.0/haiboxie11-kicad-0.1.0.tgz Kicad
+npx --yes @haiboxie11/kicad@0.1.0
 ```
 
 安装到全局，以后直接运行软件名：
 
 ```sh
-npm install -g https://github.com/xiehaibo11/kicad/releases/download/kicad-terminal-v0.1.0/haiboxie11-kicad-0.1.0.tgz
+npm install -g @haiboxie11/kicad@0.1.0
 Kicad
 ```
 
 也可以在不全局安装的情况下传入参数：
 
 ```sh
-npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-terminal-v0.1.0/haiboxie11-kicad-0.1.0.tgz Kicad --help
-npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-terminal-v0.1.0/haiboxie11-kicad-0.1.0.tgz Kicad --continue
+npx --yes @haiboxie11/kicad@0.1.0 --help
+npx --yes @haiboxie11/kicad@0.1.0 --continue
 ```
 
-npm 官方源包名为 `@haiboxie11/kicad`，当前发布需要满足 npm 的 Bypass 2FA
-凭证要求，请先使用上面的公开 tarball。官方源完成发布后可使用短命令
-`npx --yes @haiboxie11/kicad@0.1.0`；最新状态以
-[Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-terminal-v0.1.0) 为准。
+npm 官方源已公开发布 [`@haiboxie11/kicad`](https://www.npmjs.com/package/@haiboxie11/kicad)，
+当前版本为 `0.1.0`，可省略版本号获取 `latest`。
+也可以使用内容相同的 GitHub npm tarball：
+
+```sh
+npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-terminal-v0.1.0/haiboxie11-kicad-0.1.0.tgz Kicad
+```
+
+校验报告与发行包见 [Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-terminal-v0.1.0)。
 
 `npx` 是下载、缓存并运行 npm 包的入口；全局安装后才会在 PATH 中长期提供
 `Kicad`。包内携带原生运行时和完整后端，没有安装脚本，不要求 Bun、Python 或 Go。
