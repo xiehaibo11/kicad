@@ -44,8 +44,16 @@ KiCad 支持。
 
 ## 在 VS Code 中使用
 
-扩展面板显示名称为 **Kicad**，终端入口显示为 **Kicad 终端**。扩展当前通过本仓库构建的
-VSIX 安装，扩展 ID 为 `kicad-agent.kicad`。依赖、构建和安装步骤见
+扩展面板显示名称为 **Kicad**，终端入口显示为 **Kicad 终端**，扩展 ID 为 `kicad-agent.kicad`。
+从 [GitHub Release 下载扩展 0.4.22](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.22)
+中的 `kicad-0.4.22.vsix`，在 VS Code 扩展菜单选择 **从 VSIX 安装…**，或者在下载目录执行：
+
+```sh
+code --install-extension ./kicad-0.4.22.vsix --force
+```
+
+需要 VS Code 1.98 或以上版本；当前验证平台为 macOS Apple Silicon。VSIX 包含聊天界面和
+SDK/CLI，KiCad 软件、`kicad-agent` 后端及完整终端运行时需要单独安装。依赖、构建和安装步骤见
 [扩展文档](https://github.com/xiehaibo11/kicad/blob/codex/kicad-npm/tools/ai/Kicad-extension/README.md)
 和 [AI 工具集说明](https://github.com/xiehaibo11/kicad/blob/codex/kicad-npm/tools/ai/README.md)。
 
