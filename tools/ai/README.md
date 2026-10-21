@@ -23,16 +23,19 @@ MCP 服务器与 `kicad` 并列注册（终端、扩展聊天、仓库 `.mcp.jso
 仅安装已构建的终端：`bash tools/ai/Kicad-terminal/install.sh`；安装后执行
 `Kicad`，查看帮助用 `Kicad --help`。旧命令 `kicad` 保持兼容。
 
-macOS Apple Silicon / Node.js 22+ 还可使用 npm 分发：
+macOS Apple Silicon / Node.js 22+ 可直接使用已经公开的完整 npm 安装包：
 
 ```sh
-npx --yes @haiboxie11/kicad@0.1.0
+npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-terminal-v0.1.0/haiboxie11-kicad-0.1.0.tgz Kicad
 # 或全局安装后使用软件名启动
-npm install -g @haiboxie11/kicad@0.1.0
+npm install -g https://github.com/xiehaibo11/kicad/releases/download/kicad-terminal-v0.1.0/haiboxie11-kicad-0.1.0.tgz
 Kicad
 ```
 
 完整原生运行时、NNG IPC 后端、技能和插件一起分发；操作 PCB 时需要本机 KiCad。
+npm 官方源的包名为 `@haiboxie11/kicad`，当前发布受 npm Bypass 2FA 凭证要求阻塞，
+请先使用上面的 GitHub tarball。最新发布状态以
+[Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-terminal-v0.1.0) 为准。
 打包、测试与开源组件说明见 [npm 分发](Kicad-terminal/npm/README.md)。
 
 KiCad API 服务默认开启，外部 EDA 工具在 `kicad-agent ai` 中默认允许调用；
