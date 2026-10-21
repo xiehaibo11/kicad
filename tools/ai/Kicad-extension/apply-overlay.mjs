@@ -31,6 +31,9 @@ pkg.displayName = 'Kicad';
 pkg.description =
   'Kicad: the Claudix Claude Code chat and native OpenCode terminal wired to KiCad through the kicad-agent MCP server.';
 pkg.publisher = 'kicad-agent';
+pkg.repository = { type: 'git', url: 'https://github.com/xiehaibo11/kicad.git', directory: 'tools/ai/Kicad-extension' };
+pkg.homepage = 'https://github.com/xiehaibo11/kicad/tree/codex/kicad-npm/tools/ai/Kicad-extension';
+pkg.bugs = { url: 'https://github.com/xiehaibo11/kicad/issues' };
 pkg.keywords = Array.from(new Set([...(pkg.keywords ?? []), 'kicad', 'pcb', 'eda', 'schematic']));
 pkg.categories = ['AI', 'Other'];
 pkg.kicadUpstreamVersion = pkg.version;

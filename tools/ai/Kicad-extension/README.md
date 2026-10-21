@@ -4,6 +4,20 @@
 终端源码为 `tools/ai/Kicad-terminal`。扩展显示为 **Kicad**，终端显示为 **Kicad 终端**。
 扩展安装 ID 仍为 `kicad-agent.kicad`，可直接升级并保留用户配置。
 
+从 [GitHub Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.22)
+下载 `kicad-0.4.22.vsix`，在 VS Code 扩展菜单中选择 **从 VSIX 安装…**，或者执行：
+
+```sh
+code --install-extension ./kicad-0.4.22.vsix --force
+```
+
+需要 VS Code 1.98 或以上版本，当前验证平台为 macOS Apple Silicon。
+VSIX 包含聊天界面、Claude Agent SDK/CLI、会话插件和 EDA Agent Connector；
+KiCad 软件、`kicad-agent` 后端及完整终端运行时单独安装，参见
+[AI 工具集安装说明](https://github.com/xiehaibo11/kicad/blob/codex/kicad-npm/tools/ai/README.md)和
+[终端安装说明](https://github.com/xiehaibo11/kicad/blob/codex/kicad-npm/tools/ai/Kicad-terminal/npm/README.md)。
+发行页同时提供 SHA-256 校验文件与本次构建验证报告；该发布渠道为 GitHub Release。
+
 执行过程按每次请求合并，默认只显示一行运行状态和工具调用次数，点击展开或收起详情。
 工具参数、原始输出、子代理说明、思考和中间进度都在执行记录中；重要问题、需用户
 决定的事项、错误摘要和最终回复单独显示。权限确认不折叠。纯聊天仍正常显示回复，
@@ -144,7 +158,7 @@ The launcher and terminal tab use the software name `kicad`. The terminal sets
 `OPENCODE_DISABLE_TERMINAL_TITLE=true` so runtime title updates cannot replace
 that name. The full runtime is built from the pinned OpenCode source with a
 `kicad` startup wordmark and application labels. Upstream attribution is retained.
-See [the terminal build](../Kicad-terminal/README.md).
+See [the terminal build](https://github.com/xiehaibo11/kicad/blob/codex/kicad-npm/tools/ai/Kicad-terminal/README.md).
 
 Requirements: build/install `kicad-terminal` and `kicad-agent`. The command
 reports a missing executable with the corresponding setting name. In a
@@ -259,7 +273,7 @@ uses --frozen-lockfile. Build manifests bind source hashes to packaged artifacts
 installation rejects stale source/artifact combinations and compares installed files.
 
 ```sh
-code --install-extension tools/ai/Kicad-extension/dist/kicad-0.4.15.vsix --force
+code --install-extension tools/ai/Kicad-extension/dist/kicad-0.4.22.vsix --force
 python3 tools/ai/Kicad-extension/audit-tools.py --output tools/ai/Kicad-extension/audit/native-tools.json
 ```
 
