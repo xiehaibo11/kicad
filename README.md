@@ -18,6 +18,14 @@ AI 工具的完整源码和构建文档位于
 
 ## 安装 Kicad 终端
 
+本次完整更新为 **GitHub 0.1.1 / 扩展 0.4.23**。npm 官方 `latest` 目前仍为 0.1.0，
+0.1.1 等待 npm 账号的发布双重认证配置；[发布状态](tools/ai/releases/2026-10-engineering/npm-publication-status.json)
+有明确记录。立即使用 0.1.1 可运行：
+
+```sh
+npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-code-v0.1.1/-kicadai-kicad-code-0.1.1.tgz Kicad
+```
+
 直接下载并启动完整终端：
 
 ```sh

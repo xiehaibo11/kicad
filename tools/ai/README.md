@@ -1,3 +1,7 @@
+> 发行更新：GitHub 终端包 0.1.1 与 VS Code 扩展 0.4.23 已提供。
+> npm 官方 latest 仍为 0.1.0，0.1.1 等待账号发布双重认证；可先使用
+> [0.1.1 公开 tarball](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.1)。
+
 # Kicad AI 工具
 
 项目根目录：`Kicad`。主要产品入口：
