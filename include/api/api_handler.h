@@ -39,6 +39,8 @@
 using kiapi::common::ApiRequest, kiapi::common::ApiResponse;
 using kiapi::common::ApiResponseStatus, kiapi::common::ApiStatusCode;
 
+class KICAD_API_SERVER;
+
 typedef tl::expected<ApiResponse, ApiResponseStatus> API_RESULT;
 
 template <typename T>
@@ -66,6 +68,31 @@ public:
      * @return a response to send to the client, or an appropriate error
      */
     API_RESULT Handle( ApiRequest& aMsg );
+
+    /**
+     * @return true if this handler knows how to process the given request type name.
+     */
+    bool SupportsRequest( const std::string& aTypeName ) const
+    {
+        return m_handlers.contains( aTypeName );
+    }
+
+    std::vector<std::string> RequestTypes() const
+    {
+        std::vector<std::string> out;
+        out.reserve( m_handlers.size() );
+
+        for( const auto& [name, handler] : m_handlers )
+            out.push_back( name );
+
+        return out;
+    }
+
+    /**
+     * Called by KICAD_API_SERVER when the handler is registered or removed.
+     * Handlers that introspect the server (GetCapabilities) can store it.
+     */
+    virtual void SetApiServer( KICAD_API_SERVER* aServer ) {}
 
 protected:
 

@@ -1,0 +1,21 @@
+kicad-agent
+===========
+
+This directory contains a downstream KiCad integration that links against
+KiCad's GPLv3-licensed protobuf API definitions and libraries.  The combined
+binary (kicad-agent built with IPC support, and the kicad-cli "agent"
+subcommand) is therefore distributed under the GNU General Public License,
+version 3 or later.  See LICENSE.
+
+Upstream components:
+
+  * easyeda-agent (tools/ai/upstream/easyeda-agent), MIT License,
+    https://github.com/zhoushoujianwork/easyeda-agent
+  * NNG (statically linked when KICAD_BUILD_AI_AGENT_IPC=ON), MIT License,
+    https://nng.nanomutt.org/
+  * Go modules listed in kicad-agent/go.sum (MIT/BSD/Apache-2.0); their
+    license texts are available from the respective module repositories.
+
+The EasyEDA agent's MIT notice applies to its own source files.  KiCad's
+LICENSE.README lists the remaining third-party components used by the
+application.

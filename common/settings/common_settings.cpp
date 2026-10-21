@@ -507,8 +507,9 @@ COMMON_SETTINGS::COMMON_SETTINGS() :
     m_params.emplace_back( new PARAM<wxString>( "api.interpreter_path",
             &m_Api.python_interpreter, wxS( "" ) ) );
 
+    // The IPC API server is on by default so AI agents and plugins can attach
     m_params.emplace_back( new PARAM<bool>( "api.enable_server",
-            &m_Api.enable_server, false ) );
+            &m_Api.enable_server, true ) );
 
     m_params.emplace_back( new PARAM_LAMBDA<nlohmann::json>( "dialog.controls",
             [&]() -> nlohmann::json

@@ -27,7 +27,7 @@
  * Note: these ports must be enabled for firewall protection
  */
 
-#include <api/api_handler_pcb.h>
+#include <api/api_handler_pcb_ai.h>
 #include <wx/tokenzr.h>
 #include <api/api_utils.h>
 #include <api/common/commands/cross_probe_commands.pb.h>

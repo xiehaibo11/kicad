@@ -1,0 +1,152 @@
+{
+  "spec": "",
+  "project": "/Users/mosc/Downloads/kicad/tools/ai/kicad-agent",
+  "startedAt": "2026-10-20T03:01:31Z",
+  "finishedAt": "2026-10-20T03:01:31Z",
+  "ok": true,
+  "complete": false,
+  "stages": [
+    {
+      "name": "spec",
+      "status": "skipped",
+      "message": "no --spec supplied"
+    },
+    {
+      "name": "health",
+      "status": "ok",
+      "action": "system.health",
+      "elapsedMs": 308,
+      "data": {
+        "externalTools": [
+          {
+            "name": "kicad-cli",
+            "available": true,
+            "path": "/Users/mosc/Downloads/kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli",
+            "version": "10.99.0",
+            "hint": "build KiCad or set KICAD_CLI"
+          },
+          {
+            "name": "freerouting",
+            "available": false,
+            "hint": "install Freerouting or set FREEROUTING_JAR",
+            "error": "not found"
+          },
+          {
+            "name": "java",
+            "available": true,
+            "path": "/Volumes/Macintosh HD/Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java",
+            "version": "openjdk version \"21.0.10\" 2026-01-20",
+            "hint": "install a JRE (required by Freerouting)"
+          },
+          {
+            "name": "ngspice",
+            "available": true,
+            "path": "/opt/homebrew/bin/ngspice",
+            "version": "******",
+            "hint": "brew install ngspice"
+          },
+          {
+            "name": "gerbv",
+            "available": false,
+            "hint": "brew install gerbv",
+            "error": "not found"
+          },
+          {
+            "name": "openscad",
+            "available": false,
+            "hint": "brew install --cask openscad",
+            "error": "not found"
+          },
+          {
+            "name": "FreeCAD",
+            "available": false,
+            "hint": "install FreeCAD for mechanical checks",
+            "error": "not found"
+          },
+          {
+            "name": "python3",
+            "available": true,
+            "path": "/opt/homebrew/bin/python3",
+            "version": "Python 3.14.8",
+            "hint": "install Python 3"
+          }
+        ],
+        "ipc": {
+          "available": false,
+          "error": "IPC_UNAVAILABLE: Connection refused (ipc:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad/api.sock (nng error 6))",
+          "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad/api.sock"
+        },
+        "kicadCli": {
+          "available": true,
+          "path": "/Users/mosc/Downloads/kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli",
+          "version": "10.99.0"
+        }
+      }
+    },
+    {
+      "name": "schematic",
+      "status": "unimplemented",
+      "message": "no .kicad_sch found and automatic schematic generation is not yet exposed by the KiCad API (library search + place-from-library + annotation are pending)"
+    },
+    {
+      "name": "netlist",
+      "status": "skipped",
+      "message": "schematic unavailable"
+    },
+    {
+      "name": "board",
+      "status": "unimplemented",
+      "message": "no .kicad_pcb found in the project"
+    },
+    {
+      "name": "place",
+      "status": "skipped",
+      "message": "board unavailable"
+    },
+    {
+      "name": "planes",
+      "status": "skipped",
+      "message": "board unavailable"
+    },
+    {
+      "name": "fanout",
+      "status": "skipped",
+      "message": "board unavailable"
+    },
+    {
+      "name": "route",
+      "status": "skipped",
+      "message": "board unavailable"
+    },
+    {
+      "name": "save",
+      "status": "skipped",
+      "message": "board unavailable"
+    },
+    {
+      "name": "drc",
+      "status": "skipped",
+      "message": "board unavailable"
+    },
+    {
+      "name": "connectivity",
+      "status": "skipped",
+      "message": "board unavailable"
+    },
+    {
+      "name": "manufacturing",
+      "status": "skipped",
+      "message": "board unavailable"
+    },
+    {
+      "name": "verify",
+      "status": "ok",
+      "message": "ok=true complete=false stages=13",
+      "data": {
+        "complete": false,
+        "ok": true
+      }
+    }
+  ],
+  "artifacts": null
+}

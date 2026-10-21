@@ -31,7 +31,9 @@
 #include <wx/msgdlg.h>
 #include <wx/cmdline.h>
 
+#include <api/api_handler_common.h>
 #include <api/api_server.h>
+#include <api/api_utils.h>
 #include <common.h>
 #include <env_vars.h>
 #include <file_history.h>
@@ -56,6 +58,8 @@
 
 #include "pgm_kicad.h"
 #include "kicad_manager_frame.h"
+#include "tools/kicad_manager_actions.h"
+#include <tool/tool_manager.h>
 #include "mergetool_frame.h"
 
 #include <wx/crt.h>
@@ -96,9 +100,177 @@ PGM_KICAD& PgmTop()
 }
 
 
+namespace
+{
+using namespace kiapi::common;
+
+HANDLER_RESULT<commands::OpenDocumentResponse> apiFailure( ApiStatusCode aCode, const wxString& aMessage )
+{
+    ApiResponseStatus e;
+    e.set_status( aCode );
+    e.set_error_message( aMessage.ToStdString() );
+    return tl::unexpected( e );
+}
+
+
+/**
+ * Make aDocPath's project the active one in the project manager and open the schematic or PCB
+ * editor in this process, so the editor's API handlers serve later requests for the document.
+ */
+HANDLER_RESULT<commands::OpenDocumentResponse> openInGui( KICAD_MANAGER_FRAME* aFrame, const wxFileName& aDocPath,
+                                                          types::DocumentType aType )
+{
+    wxFileName projectPath( aDocPath );
+    projectPath.SetExt( FILEEXT::ProjectFileExtension );
+
+    if( !projectPath.FileExists() )
+    {
+        return apiFailure( ApiStatusCode::AS_BAD_REQUEST,
+                           wxString::Format( wxS( "No project file next to %s" ), aDocPath.GetFullPath() ) );
+    }
+
+    if( wxFileName( aFrame->GetProjectFileName() ) != projectPath && !aFrame->LoadProject( projectPath ) )
+    {
+        return apiFailure( ApiStatusCode::AS_BAD_REQUEST,
+                           wxString::Format( wxS( "Could not load project %s" ), projectPath.GetFullPath() ) );
+    }
+
+    if( aType != types::DOCTYPE_PROJECT )
+    {
+        bool     pcb = aType == types::DOCTYPE_PCB;
+        wxString root = pcb ? aFrame->PcbFileName() : aFrame->SchFileName();
+
+        if( wxFileName( root ) != aDocPath )
+        {
+            return apiFailure( ApiStatusCode::AS_BAD_REQUEST,
+                               wxString::Format( wxS( "%s is not the project's root document %s; the GUI opens "
+                                                      "only the root schematic and board" ),
+                                                 aDocPath.GetFullPath(), root ) );
+        }
+
+        aFrame->GetToolManager()->RunAction( pcb ? KICAD_MANAGER_ACTIONS::editPCB
+                                                 : KICAD_MANAGER_ACTIONS::editSchematic );
+
+        if( !aFrame->Kiway().Player( pcb ? FRAME_PCB_EDITOR : FRAME_SCH, false ) )
+            return apiFailure( ApiStatusCode::AS_BAD_REQUEST, wxS( "The editor did not open" ) );
+    }
+
+    commands::OpenDocumentResponse response;
+    types::DocumentSpecifier*      docSpec = response.mutable_document();
+
+    docSpec->set_type( aType );
+
+    if( aType == types::DOCTYPE_PCB )
+        docSpec->set_board_filename( aDocPath.GetFullName().ToStdString() );
+
+    PackProject( *docSpec->mutable_project(), aFrame->Prj() );
+
+    return response;
+}
+
+
+/**
+ * Serve OpenDocument and CreateDocument in the project manager.  kicad-cli api-server installs
+ * its own headless handlers; without these the GUI answers both with AS_UNIMPLEMENTED.
+ */
+void registerGuiDocumentHandlers( API_HANDLER_COMMON* aHandler, KICAD_MANAGER_FRAME* aFrame )
+{
+    aHandler->SetOpenDocumentHandler(
+            [aFrame]( const commands::OpenDocument& aRequest ) -> HANDLER_RESULT<commands::OpenDocumentResponse>
+            {
+                types::DocumentType type = aRequest.type();
+
+                if( type != types::DOCTYPE_PCB && type != types::DOCTYPE_SCHEMATIC
+                    && type != types::DOCTYPE_PROJECT )
+                {
+                    return apiFailure( ApiStatusCode::AS_UNIMPLEMENTED,
+                                       wxS( "The KiCad GUI can open project, schematic and PCB documents" ) );
+                }
+
+                wxFileName docPath( wxString::FromUTF8( aRequest.path() ) );
+                docPath.MakeAbsolute();
+
+                if( docPath.GetFullName().IsEmpty() || !docPath.FileExists() )
+                {
+                    return apiFailure( ApiStatusCode::AS_BAD_REQUEST,
+                                       wxString::Format( wxS( "File not found: %s" ), docPath.GetFullPath() ) );
+                }
+
+                return openInGui( aFrame, docPath, type );
+            } );
+
+    aHandler->SetCreateDocumentHandler(
+            [aFrame]( const commands::CreateDocument& aRequest ) -> HANDLER_RESULT<commands::OpenDocumentResponse>
+            {
+                types::DocumentType type = aRequest.type();
+
+                if( type != types::DOCTYPE_PCB && type != types::DOCTYPE_SCHEMATIC )
+                {
+                    return apiFailure( ApiStatusCode::AS_UNIMPLEMENTED,
+                                       wxS( "Only PCB and schematic documents can be created" ) );
+                }
+
+                wxFileName docPath( wxString::FromUTF8( aRequest.path() ) );
+
+                if( docPath.GetName().IsEmpty() )
+                    return apiFailure( ApiStatusCode::AS_BAD_REQUEST, wxS( "CreateDocument requires a non-empty path" ) );
+
+                docPath.MakeAbsolute();
+                docPath.SetExt( type == types::DOCTYPE_PCB ? FILEEXT::KiCadPcbFileExtension
+                                                          : FILEEXT::KiCadSchematicFileExtension );
+
+                if( docPath.FileExists() )
+                {
+                    return apiFailure( ApiStatusCode::AS_BAD_REQUEST,
+                                       wxString::Format( wxS( "%s already exists" ), docPath.GetFullPath() ) );
+                }
+
+                if( !docPath.DirExists() && !wxFileName::Mkdir( docPath.GetPath(), wxS_DIR_DEFAULT,
+                                                                 wxPATH_MKDIR_FULL ) )
+                {
+                    return apiFailure( ApiStatusCode::AS_BAD_REQUEST,
+                                       wxString::Format( wxS( "Cannot create folder %s" ), docPath.GetPath() ) );
+                }
+
+                if( !docPath.IsDirWritable() )
+                {
+                    return apiFailure( ApiStatusCode::AS_BAD_REQUEST,
+                                       wxString::Format( wxS( "Folder %s is not writable" ), docPath.GetPath() ) );
+                }
+
+                // Creates the project file when missing and stub root schematic/board files.
+                wxFileName projectPath( docPath );
+                projectPath.SetExt( FILEEXT::ProjectFileExtension );
+                aFrame->CreateNewProject( projectPath, true );
+
+                return openInGui( aFrame, docPath, type );
+            } );
+}
+} // namespace
+
+
 bool PGM_KICAD::OnPgmInit()
 {
     App().SetAppDisplayName( wxT( "KiCad" ) );
+
+#ifdef __WXMAC__
+    // Finder does not inherit the shell launcher's build-tree environment.
+    // Recognize only our own CMake build layout, before loading icons/plugins.
+    if( !wxGetEnv( wxS( "KICAD_RUN_FROM_BUILD_DIR" ), nullptr ) )
+    {
+        wxFileName buildRoot( wxStandardPaths::Get().GetExecutablePath() );
+        buildRoot.SetFullName( wxEmptyString );
+
+        for( int i = 0; i < 4; ++i )
+            buildRoot.RemoveLastDir();
+
+        if( wxFileExists( buildRoot.GetPathWithSep() + wxS( "CMakeCache.txt" ) )
+            && wxFileExists( buildRoot.GetPathWithSep() + wxS( "resources/images.tar.gz" ) ) )
+        {
+            wxSetEnv( wxS( "KICAD_RUN_FROM_BUILD_DIR" ), wxS( "1" ) );
+        }
+    }
+#endif
 
 #if defined(DEBUG)
     wxString absoluteArgv0 = wxStandardPaths::Get().GetExecutablePath();
@@ -292,6 +464,9 @@ bool PGM_KICAD::OnPgmInit()
         managerFrame = new KICAD_MANAGER_FRAME( nullptr, wxT( "KiCad" ), wxDefaultPosition,
                                                 wxWindow::FromDIP( wxSize( 775, -1 ), NULL ) );
         frame = managerFrame;
+
+        if( m_api_common_handler )
+            registerGuiDocumentHandlers( m_api_common_handler.get(), managerFrame );
 
         STARTWIZARD startWizard;
         startWizard.CheckAndRun( frame );

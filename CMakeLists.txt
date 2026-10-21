@@ -118,6 +118,16 @@ option( KICAD_BUILD_QA_TESTS
     "Build software Quality assurance unit tests (default ON)"
     ON )
 
+include( CMakeDependentOption )
+
+option( KICAD_BUILD_AI_AGENT
+    "Build the kicad-agent AI automation terminal (requires Go)"
+    OFF )
+
+cmake_dependent_option( KICAD_BUILD_AI_AGENT_IPC
+    "Build kicad-agent with KiCad IPC support (requires NNG)"
+    OFF "KICAD_BUILD_AI_AGENT" OFF )
+
 option( KICAD_UPDATE_CHECK
     "Build in update check"
     ON )

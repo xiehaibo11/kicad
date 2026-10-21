@@ -33,6 +33,7 @@
 #include <magic_enum.hpp>
 #include <base_screen.h>
 #include <jobs/job_export_bom.h>
+#include <jobs/job_status_registry.h>
 #include <jobs/job_export_sch_netlist.h>
 #include <jobs/job_export_sch_plot.h>
 #include <kiway.h>
@@ -112,13 +113,35 @@ HANDLER_RESULT<types::RunJobResponse> ExecuteSchematicJob(
         aJob.SetTimeoutMs( aSettings.options().timeout_ms() );
 
     // Bind the live in-memory schematic so the job sees API-created edits without a save/reload.
-    aJob.SetDocumentContext( JOB_DOCUMENT_KIND::SCHEMATIC, aContext->GetSchematic() );
+    SCHEMATIC* liveSchematic = aContext->GetSchematic();
+    aJob.SetDocumentContext( JOB_DOCUMENT_KIND::SCHEMATIC, liveSchematic );
+
+    // Export jobs switch the active variant; restore it so the next request
+    // starts from the document's own state.
+    wxString previousVariant = liveSchematic ? liveSchematic->GetCurrentVariant() : wxString();
 
     KIID jobId;
     response.set_job_id( jobId.AsString().ToStdString() );
+    JOB_STATUS_REGISTRY::Start( &aJob, jobId.AsString() );
 
     auto start = std::chrono::steady_clock::now();
-    int  exitCode = aContext->GetKiway()->ProcessJob( KIWAY::FACE_SCH, &aJob, &reporter );
+    int  exitCode;
+
+    try
+    {
+        exitCode = aContext->GetKiway()->ProcessJob( KIWAY::FACE_SCH, &aJob, &reporter );
+    }
+    catch( ... )
+    {
+        if( liveSchematic )
+            liveSchematic->SetCurrentVariant( previousVariant );
+
+        throw;
+    }
+
+    if( liveSchematic )
+        liveSchematic->SetCurrentVariant( previousVariant );
+
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
             std::chrono::steady_clock::now() - start );
     response.set_elapsed_ms( elapsed.count() );
@@ -129,6 +152,9 @@ HANDLER_RESULT<types::RunJobResponse> ExecuteSchematicJob(
     if( exitCode == CLI::EXIT_CODES::SUCCESS )
     {
         response.set_status( types::JobStatus::JS_SUCCESS );
+        JOB_STATUS_REGISTRY::Finish( jobId.AsString(), (int) types::JobStatus::JS_SUCCESS,
+                                     elapsed.count(),
+                                     wxString::FromUTF8( reporter.GetMessages().ToStdString() ) );
         return response;
     }
 
@@ -152,6 +178,9 @@ HANDLER_RESULT<types::RunJobResponse> ExecuteSchematicJob(
                     : status == types::JobStatus::JS_CANCELLED ? "JOB_CANCELLED"
                                                                : "JOB_FAILED" );
     diag->set_message( message );
+
+    JOB_STATUS_REGISTRY::Finish( jobId.AsString(), (int) status, elapsed.count(),
+                                 wxString::FromUTF8( message ) );
 
     return response;
 }

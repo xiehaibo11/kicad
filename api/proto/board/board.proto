@@ -129,7 +129,8 @@ message BoardStackupLayer
 {
   kiapi.common.types.Distance thickness = 1;
   kiapi.board.types.BoardLayer layer = 2;
-  bool enabled = 3;
+  // Omitted means enabled; only an explicit false disables the layer.
+  optional bool enabled = 3;
   BoardStackupLayerType type = 4;
 
   oneof details

@@ -44,7 +44,7 @@
 #include <tools/sch_actions.h>
 #include <tools/sch_editor_control.h>
 #include <advanced_config.h>
-#include <api/api_handler_sch.h>
+#include <api/api_handler_sch_ai.h>
 
 #include <pgm_base.h>
 #include <libraries/symbol_library_adapter.h>

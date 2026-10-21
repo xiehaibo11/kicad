@@ -1,0 +1,161 @@
+KiCad / Claudix / OpenCode 项目深度分析
+分析日期：2026-10-20（用户时区 America/Los_Angeles）
+分析对象：/Users/mosc/Downloads/Kicad 的当前工作区，包含原有未提交改动。
+
+1. 需求与架构结论
+
+用户明确：以 VS Code 扩展为主要入口，采用 Haleclipse/Claudix，保留完整 OpenCode。
+相应实现分成两条客户端路径，共用 KiCad 工具服务：
+
+  Claudix Vue 聊天 / 历史 / 设置
+    → VSCodeTransport → ClaudeAgentService → ClaudeSdkService
+    → Claude Agent SDK → kicad-agent MCP
+
+  VS Code 原生终端
+    → 原生 OpenCode 可执行程序（真实 PTY）
+    → OpenCode 自身会话 / 模型 / 命令 / 插件 / skills / 权限 / MCP
+    → kicad-agent MCP
+
+  kicad-agent MCP（stdio JSON-RPC）
+    → Go 动作目录与 dispatch
+    → CLI / IPC / offline / external / composite
+    → 定制 KiCad 的原生实现
+
+Claudix 上游是 Claude Code 客户端。它自身不提供 OpenCode 引擎。
+让 Claudix 的聊天组件完整呈现 OpenCode 的每一种事件，需要独立引擎适配层和协议测试。
+本轮采用原生 OpenCode 终端保留其功能；Claude 聊天与 OpenCode 会话不互相伪装或转换。
+
+2. 本地项目实际组成
+
+这不是只有一个扩展的小仓库，而是含 AI 改造的 KiCad C++ 完整源码树。
+
+  kicad/                 工程管理器与 kicad-cli；command_agent.cpp 转发至 Go CLI。
+  eeschema/              原理图编辑器、ERC、符号库、原理图 API。
+  pcbnew/                PCB 编辑器、DRC、铺铜、连通性、布局与 PCB API。
+  common/、include/      API 服务、通用工具管理、UI、协议基础设施。
+  api/proto/             通用、PCB、原理图等 protobuf 定义。
+  tools/ai/kicad-agent/  Go 自动化 CLI、MCP 服务、动作目录、算法与 AI 循环。
+  tools/ai/vscode-extension/
+                         原来的薄扩展：聊天、诊断、动作菜单、API 服务生命周期。
+  tools/ai/upstream/Kicad-extension/
+                         原始 Claudix 子模块，0.3.9，AGPL-3.0。
+  tools/ai/Kicad-extension/ 本轮采用的 Claudix overlay、OpenCode 入口与分析产物。
+  tools/ai/upstream/easyeda-agent/
+                         旧集成依赖：仍直接复用 spec / blocks 的 Go internal 包。
+
+Claudix 子模块固定提交：c238b3e57c55e95220a8e2837cd4cbe6350a6b65。
+Go 模块通过 replace 指向 easyeda-agent，且自身模块路径刻意嵌套在上游路径之下，
+满足 Go internal 导入规则。不能直接删除旧上游，否则 spec / blocks 相关构建会失败。
+
+3. 工具覆盖的实证
+
+可复现命令：
+  python3 tools/ai/Kicad-extension/audit-tools.py --output tools/ai/Kicad-extension/audit/native-tools.json
+  build/bin/kicad-agent actions
+
+当前类型化动作：84，11 个 domain。
+  IPC 32；CLI 20；offline 11；external 5；composite 16。
+MCP 握手与实际 tools/list：14 个工具。
+实际 tools/call kicad_actions：返回 84 个动作，isError=false。
+
+源码中的固定名称 TOOL_ACTION：970，来自以下 8 个文件：
+  common/tool/actions.cpp                          191
+  pcbnew/tools/pcb_actions.cpp                     405
+  eeschema/tools/sch_actions.cpp                   249
+  gerbview/tools/gerbview_actions.cpp                32
+  pagelayout_editor/tools/pl_actions.cpp            10
+  3d-viewer/3d_viewer/tools/eda_3d_actions.cpp        41
+  cvpcb/tools/cvpcb_actions.cpp                     16
+  kicad/tools/kicad_manager_actions.cpp             26
+
+另发现 162 处静态 API handler 注册位置；构造函数重复注册会重复计数。
+这些数字都不是运行时全部可用能力的保证，也不能用 84/970 计算功能覆盖率。
+完整 JSON 记录了每个原生动作的名称、符号、文件与行号，方便逐项建立语义映射。
+
+GetCapabilities 当前是维护的能力清单，并按照当前已注册 handler 过滤。
+它不是所有 TOOL_ACTION 的动态枚举。不同编辑器、GUI/headless 会话可用能力不同。
+Go IPC backend 也只映射部分请求，不会自动把全部 protobuf 消息变成 AI 工具。
+
+RunAction 的协议注释明确说明：命令名称不稳定，成功只说明动作已提交。
+PCB handler 对 headless 情况还会拒绝 RunAction。
+因此仅加一个“任意工具名执行”入口，无法满足全部工具可参数化、可完成、可验证的要求。
+
+4. 已存在的可复用能力
+
+原理图：符号搜索/读取/放置、标注、对象 CRUD、网表、ERC、导出、规格驱动生成。
+PCB：对象 CRUD、叠层、网表导入、autoplace、平面创建/验证、铺铜、连通性证明。
+制造：Gerber、钻孔、坐标、STEP、SVG/PDF/PNG 等导出，及受限 kicad-cli passthrough。
+算法：BGA 初步扇出、L 形路由、多层网格 A*、差分路径、蛇形调长、DFM、阻抗估算。
+结构：包络分析、STEP 导出以及可选 OpenCASCADE 实体相交检查。
+外部：Freerouting、ngspice、机械检查等受限进程调用。
+流程：spec / blocks / workflow / pipeline，统一 JSON 结果与错误码。
+
+代码中存在相关算法不代表其结果已在任意复杂真实设计上验证。
+现有 README 仍有旧描述：一处介绍网格布线和调长，另一处仍写只有 L-router 和只读长度。
+后续应按实现与测试逐项修正文档，避免把估算/实验能力宣传成签核结果。
+
+5. 本轮实施
+
+新增 kicadRuntime.ts：共享 KiCad MCP 定义、配置、可执行程序查找、JSONC 合并。
+新增 kicadIntegration.ts：原生 OpenCode PTY 终端入口、多根目录选择、缺失依赖提示。
+配置 kicadAgent.openCode.path / args / injectMcp，并保留 OpenCode 自身配置体系。
+不向模型重放聊天文本，不使用 opencode run 的单次模式替代交互终端。
+
+修正 Claudix overlay：
+  - 在 Claude SDK Options.mcpServers 显式注册 KiCad，保留已有配置的优先级。
+  - 移除通过全局 Claude settings 默认值间接注入 KiCad 的做法。
+  - SDK 和 OpenCode 共用 kicadAgent.path / kicadCli / socket。
+  - 在聊天视图标题增加终端按钮；保留原 Claudix 聊天、会话、设置服务。
+  - 上游补丁锚点漂移直接使构建失败，避免静默漏接 MCP。
+  - 完整扩展类型检查、边界验证、打包内容检查加入构建。
+  - 生成独立 downstream 版本 0.4.0；旧 VSIX 保留。
+  - 安装器选最近构建包，避免多版本目录中误装旧包。
+
+OpenCode 的 mcp.kicad 注入通过 OPENCODE_CONFIG_CONTENT 仅作用于新终端。
+继承的 inline 配置及已有 inline mcp.kicad 优先保留。
+它会覆盖 OpenCode 低优先级配置文件中同名的 kicad 条目；需要使用自定义条目时关闭 injectMcp。
+扩展不修改用户的 OpenCode 配置文件或权限策略。
+
+6. 下一阶段“全部工具”应如何完成
+
+先建立 970 项原生动作与稳定 API/CLI 能力的语义映射，而不是批量生成空壳工具。
+每项记录：编辑器、运行模式、选区、参数、是否修改、异步完成条件、回读和验证方式。
+
+优先补齐通用基础设施：完整运行时 handler 发现、输入 schema、文档身份和选区管理、
+事务/撤销、异步作业等待与取消、实际完成状态、保存与重载后的结果校验。
+
+然后按领域补齐参数化适配：
+  - PCB 交互路由/推挤、完整调长、规则编辑、封装编辑与库保存；
+  - 原理图连线/总线/层次图纸/符号编辑与库保存；
+  - GerbView、3D Viewer、页面布局编辑器、CvPcb 与项目管理器工具；
+  - 对必须交互的工具给出明确条件，不能把对话框打开或工具激活当作设计修改完成。
+
+每个可写适配都需真实场景验证：执行 → 回读 → 保存 → 重载 → 原生 DRC/ERC 或对应验证。
+未覆盖、未验证、GUI-only 和 unsupported 状态必须可被 AI 查询。
+
+7. 当前限制与验收边界
+
+“完整 OpenCode”在本轮的含义是扩展运行原生程序、不裁剪其能力；
+不是已经逐项验证所有 OpenCode 功能，也不是 Claude 聊天已切换为 OpenCode 后端。
+“KiCad 全部工具已经封装”仍未完成，源码清单与缺口已明确记录。
+
+新增 VSIX 尚需在实际 VS Code/兼容宿主中确认按钮、终端键盘操作、会话续接与真实模型工具调用。
+Node mock 验证不能代替上述实际 UI 和模型端到端验收。
+新增集成以 macOS arm64 为当前构建环境；Windows 行为未验证。
+
+原工作区已有多个未提交变更，本轮没有回滚这些变更，没有修改硬件设计文件。
+本轮未运行会修改 QA 设计副本的全量 functional-test.sh。
+依赖安装尚未固定 lockfile；按固定子模块构建仍不等于 npm 依赖解析可复现。
+旧薄扩展 1338 行、Go IPC backend 1360 行等超过仓库“300-500 行拆分”约定，
+应单独规划模块拆分；本轮新增运行模块分别不足 100 行。
+
+8. 外部依据
+
+Claudix 源码与许可证：https://github.com/Haleclipse/Claudix
+OpenCode 原生终端/CLI：https://opencode.ai/docs/cli/
+OpenCode VS Code 集成：https://opencode.ai/docs/ide/
+OpenCode 配置合并：https://opencode.ai/docs/config/
+OpenCode 本地 MCP：https://opencode.ai/docs/mcp-servers/
+Claude SDK MCP Options：https://code.claude.com/docs/en/agent-sdk/mcp
+
+本轮构建和实测结果另见 audit/verification.json；不要把静态清单视为功能验收报告。

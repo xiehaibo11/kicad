@@ -51,6 +51,7 @@
 #include <paths.h>
 #include <wx/dir.h>
 #include <wx/filedlg.h>
+#include <wx/dirdlg.h>
 #include "dialog_pcm.h"
 #include <project/project_archiver.h>
 #include <project_tree_pane.h>
@@ -534,6 +535,18 @@ int KICAD_MANAGER_CONTROL::OpenProject( const TOOL_EVENT& aEvent )
 }
 
 
+int KICAD_MANAGER_CONTROL::BrowseProjectDirectory( const TOOL_EVENT& aEvent )
+{
+    wxDirDialog folder( m_frame, _( "Select Project Folder" ), m_frame->GetMruPath(),
+                        wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST );
+
+    if( folder.ShowModal() != wxID_OK )
+        return -1;
+
+    return m_frame->AddProjectDirectory( folder.GetPath() ) ? 0 : -1;
+}
+
+
 int KICAD_MANAGER_CONTROL::OpenJobsetFile( const TOOL_EVENT& aEvent )
 {
     wxString     default_dir = wxFileName( Prj().GetProjectFullName() ).GetPathWithSep();
@@ -847,6 +860,19 @@ int KICAD_MANAGER_CONTROL::ShowPlayer( const TOOL_EVENT& aEvent )
 
 int KICAD_MANAGER_CONTROL::Execute( const TOOL_EVENT& aEvent )
 {
+    // Keep the native viewers on this project's KIWAY so the common API can
+    // target their tools as well as the schematic and PCB. Explicit file/path
+    // requests retain the external launcher's argument handling below.
+    if( ( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::viewGerbers )
+          || aEvent.IsAction( &KICAD_MANAGER_ACTIONS::editDrawingSheet ) )
+        && !aEvent.Parameter<wxString*>() )
+    {
+        TOOL_EVENT show( aEvent );
+        show.SetParameter( aEvent.IsAction( &KICAD_MANAGER_ACTIONS::viewGerbers )
+                                   ? FRAME_GERBER : FRAME_PL_EDITOR );
+        return ShowPlayer( show );
+    }
+
     wxString execFile;
     wxString param;
 
@@ -946,6 +972,8 @@ void KICAD_MANAGER_CONTROL::setTransitions()
     Go( &KICAD_MANAGER_CONTROL::NewJobsetFile,      KICAD_MANAGER_ACTIONS::newJobsetFile.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::OpenDemoProject,    KICAD_MANAGER_ACTIONS::openDemoProject.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::OpenProject,        KICAD_MANAGER_ACTIONS::openProject.MakeEvent() );
+    Go( &KICAD_MANAGER_CONTROL::BrowseProjectDirectory,
+        KICAD_MANAGER_ACTIONS::browseProjectDirectory.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::OpenJobsetFile,     KICAD_MANAGER_ACTIONS::openJobsetFile.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::CloseProject,       KICAD_MANAGER_ACTIONS::closeProject.MakeEvent() );
     Go( &KICAD_MANAGER_CONTROL::SaveProjectAs,      ACTIONS::saveAs.MakeEvent() );

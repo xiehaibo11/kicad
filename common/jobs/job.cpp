@@ -35,6 +35,9 @@ JOB::JOB( const std::string& aType, bool aOutputIsDirectory ) :
     m_params.emplace_back( new JOB_PARAM<wxString>( "description",
                                                     &m_description, m_description ) );
 
+    // Allow jobsets (and any JSON-configured job) to set a cooperative deadline.
+    m_params.emplace_back( new JOB_PARAM<uint32_t>( "timeout_ms", &m_timeoutMs, 0 ) );
+
     if( m_outputPathIsDirectory )
     {
         m_params.emplace_back( new JOB_PARAM<wxString>( "output_dir",

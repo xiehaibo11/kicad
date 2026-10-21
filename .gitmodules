@@ -1,0 +1,6 @@
+[submodule "tools/ai/upstream/easyeda-agent"]
+	path = tools/ai/upstream/easyeda-agent
+	url = https://github.com/zhoushoujianwork/easyeda-agent.git
+[submodule "tools/ai/upstream/claudix"]
+	path = tools/ai/upstream/Kicad-extension
+	url = https://github.com/Haleclipse/Claudix.git

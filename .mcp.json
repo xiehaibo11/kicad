@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "kicad": {
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "ROOT=$(git -C \"$PWD\" rev-parse --show-toplevel 2>/dev/null || echo \"$PWD\"); exec \"$ROOT/build/bin/kicad-agent\" mcp"
+      ]
+    },
+    "easyeda": {
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "B=\"$HOME/.local/share/kicad-terminal/easyeda-mcp.mjs\"; [ -f \"$B\" ] || { echo 'EDA Agent Connector is not installed: run tools/ai/install.sh' >&2; exit 1; }; EASYEDA_BIN=\"${EASYEDA_BIN:-$(command -v easyeda || echo \"$HOME/.local/bin/easyeda\")}\" exec node \"$B\""
+      ]
+    }
+  }
+}

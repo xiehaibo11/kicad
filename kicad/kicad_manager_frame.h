@@ -31,6 +31,7 @@ class PANEL_KICAD_LAUNCHER;
 class PLUGIN_CONTENT_MANAGER;
 class PROJECT_TREE;
 class PROJECT_TREE_PANE;
+class PROJECT_WORKSPACE;
 class LOCAL_HISTORY_PANE;
 class UPDATE_MANAGER;
 
@@ -150,6 +151,9 @@ public:
 
     void RefreshProjectTree();
 
+    /// Add a persistent browser root without closing the active design.
+    bool AddProjectDirectory( const wxString& aDirectory );
+
     /**
      * Creates a new project by setting up and initial project, schematic, and board files.
      *
@@ -263,6 +267,7 @@ private:
     bool                  m_showHistoryPanel;
 
     PROJECT_TREE_PANE*    m_projectTreePane;
+    PROJECT_WORKSPACE*    m_projectWorkspace;
     LOCAL_HISTORY_PANE*   m_historyPane;
     wxAuiNotebook*        m_notebook;
     PANEL_KICAD_LAUNCHER* m_launcher;

@@ -23,6 +23,7 @@ package kiapi.common.commands;
 
 import "common/types/base_types.proto";
 import "common/types/enums.proto";
+import "common/types/jobs.proto";
 
 message GetVersion
 {
@@ -122,4 +123,73 @@ message PathEntry
 message GetPathsResponse
 {
   repeated PathEntry paths = 1;
+}
+
+// Introspection command: returns the automation capabilities served by this instance.
+// Clients (including AI tool bridges) use this as the single source of truth for tool
+// discovery instead of hard-coding command lists.
+message GetCapabilities
+{
+}
+
+message Capability
+{
+  // Stable capability identifier, e.g. "board.drc.run" or "board.items.create".
+  string id = 1;
+
+  // Transport layer that can serve this capability: "api", "cli", or "api+cli".
+  string layer = 2;
+
+  // Fully-qualified request message type for API capabilities.
+  string request_type = 3;
+
+  // Fully-qualified response message type for API capabilities.
+  string response_type = 4;
+
+  // CLI command path for CLI capabilities, e.g. "pcb drc".
+  string cli_command = 5;
+
+  // True if the capability is experimental and may change without notice.
+  bool experimental = 6;
+
+  // KiCad version in which the capability became available.
+  string since = 7;
+
+  // Short human-readable description.
+  string description = 8;
+}
+
+message GetCapabilitiesResponse
+{
+  string api_version = 1;
+  repeated Capability capabilities = 2;
+}
+
+// Returns the state of a job previously started through a RunJob command.
+message GetJobStatus
+{
+  string job_id = 1;
+}
+
+message JobStatusResponse
+{
+  string job_id = 1;
+  kiapi.common.types.JobStatus status = 2;
+  int64 elapsed_ms = 3;
+  string message = 4;
+  string result_json = 5;
+  repeated kiapi.common.types.JobDiagnostic diagnostics = 6;
+}
+
+// Requests cooperative cancellation of a running job.
+message CancelJob
+{
+  string job_id = 1;
+}
+
+message CancelJobResponse
+{
+  string job_id = 1;
+  bool cancel_requested = 2;
+  string message = 3;
 }

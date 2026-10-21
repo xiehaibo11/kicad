@@ -34,6 +34,8 @@
 #include <api/api_enums.h>
 #include <api/api_utils.h>
 
+#include <limits>
+
 
 bool DIELECTRIC_PRMS::operator==( const DIELECTRIC_PRMS& aOther ) const
 {
@@ -588,8 +590,99 @@ bool BOARD_STACKUP::Deserialize( const google::protobuf::Any& aContainer )
 
 bool BOARD_STACKUP::Deserialize( const kiapi::board::BoardStackup& aInput )
 {
-    // Read-only for now
-    return false;
+    using namespace kiapi::board;
+
+    // The layer list is positional.  Reject a mismatched shape rather than partially applying a
+    // stackup that could delete or mis-assign copper.
+    if( aInput.layers_size() != GetCount() )
+        return false;
+
+    // Validate first so a malformed request cannot leave the stackup half-updated.
+    for( int i = 0; i < GetCount(); ++i )
+    {
+        BOARD_STACKUP_ITEM* item = GetStackupLayer( i );
+        const BoardStackupLayer& layer = aInput.layers( i );
+
+        if( ToProtoEnum<BOARD_STACKUP_ITEM_TYPE, BoardStackupLayerType>( item->GetType() )
+            != layer.type() )
+        {
+            return false;
+        }
+
+        // An omitted `enabled` means enabled.  An explicit false would make
+        // the saved thickness inconsistent with the physical stackup.
+        if( layer.has_enabled() && !layer.enabled() )
+            return false;
+
+        const int64_t thickness = layer.thickness().value_nm();
+
+        if( thickness < 0 || thickness > std::numeric_limits<int>::max() )
+            return false;
+
+        if( item->GetType() == BS_ITEM_TYPE_DIELECTRIC )
+        {
+            if( !layer.has_dielectric()
+                || layer.dielectric().layer_size() != item->GetSublayersCount() )
+            {
+                return false;
+            }
+
+            for( const BoardStackupDielectricProperties& props : layer.dielectric().layer() )
+            {
+                const int64_t subThickness = props.thickness().value_nm();
+
+                if( subThickness < 0 || subThickness > std::numeric_limits<int>::max() )
+                    return false;
+                if( props.epsilon_r() < 0.0 || props.loss_tangent() < 0.0 )
+                    return false;
+            }
+        }
+    }
+
+    for( int i = 0; i < GetCount(); ++i )
+    {
+        BOARD_STACKUP_ITEM* item = GetStackupLayer( i );
+        const BoardStackupLayer& layer = aInput.layers( i );
+
+        item->SetEnabled( layer.has_enabled() ? layer.enabled() : true );
+        item->SetThickness( static_cast<int>( layer.thickness().value_nm() ) );
+
+        if( layer.has_color() )
+        {
+            KIGFX::COLOR4D color = kiapi::common::UnpackColor( layer.color() );
+            item->SetColor( color.ToHexString() );
+        }
+
+        if( item->GetType() != BS_ITEM_TYPE_DIELECTRIC )
+            continue;
+
+        const BoardStackupDielectricLayer& dielectric = layer.dielectric();
+
+        if( dielectric.type() == BoardStackupDielectricType::BSDT_CORE )
+            item->SetTypeName( KEY_CORE );
+        else if( dielectric.type() == BoardStackupDielectricType::BSDT_PREPREG )
+            item->SetTypeName( KEY_PREPREG );
+        else
+            item->SetTypeName( wxEmptyString );
+
+        for( int sub = 0; sub < dielectric.layer_size(); ++sub )
+        {
+            const BoardStackupDielectricProperties& props = dielectric.layer( sub );
+
+            item->SetThickness( static_cast<int>( props.thickness().value_nm() ), sub );
+            item->SetThicknessLocked( props.thickness_locked(), sub );
+            item->SetEpsilonR( props.epsilon_r(), sub );
+            item->SetLossTangent( props.loss_tangent(), sub );
+            item->SetMaterial( wxString::FromUTF8( props.material_name() ), sub );
+            item->SetDielectricModel(
+                    FromProtoEnum<DIELECTRIC_MODEL>( props.dielectric_model() ), sub );
+
+            if( props.has_spec_frequency() )
+                item->SetSpecFreq( props.spec_frequency(), sub );
+        }
+    }
+
+    return true;
 }
 
 

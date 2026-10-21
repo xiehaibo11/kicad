@@ -26,9 +26,15 @@
 #include <tools/kicad_manager_actions.h>
 #include <tools/kicad_manager_control.h>
 #include <widgets/bitmap_button.h>
+#include <file_history.h>
+#include <wx/button.h>
+#include <wx/filename.h>
+#include <wx/listctrl.h>
+#include <wx/statline.h>
 #include <wx/stattext.h>
 
 #include "panel_kicad_launcher.h"
+#include <algorithm>
 
 
 PANEL_KICAD_LAUNCHER::PANEL_KICAD_LAUNCHER( wxWindow* aParent ) :
@@ -36,6 +42,12 @@ PANEL_KICAD_LAUNCHER::PANEL_KICAD_LAUNCHER( wxWindow* aParent ) :
         m_frame( static_cast<KICAD_MANAGER_FRAME*>( aParent->GetParent() ) )
 {
     CreateLaunchers();
+
+    m_scrolledWindow->Bind( wxEVT_SIZE, [this]( wxSizeEvent& event )
+    {
+        updateToolColumns();
+        event.Skip();
+    } );
 
     Bind( wxEVT_SYS_COLOUR_CHANGED, wxSysColourChangedEventHandler( PANEL_KICAD_LAUNCHER::onThemeChanged ), this );
 }
@@ -89,105 +101,198 @@ void PANEL_KICAD_LAUNCHER::onLauncherButtonClick( wxCommandEvent& aEvent )
 void PANEL_KICAD_LAUNCHER::CreateLaunchers()
 {
     m_frame->SetPcmButton( nullptr );
-
-    // Old buttons are about to be destroyed; drop the id lookup with them so a stale
-    // asynchronous click event can never be mapped to an action again.
     m_actionForId.clear();
+    m_scrolledWindow->Freeze();
+    wxSizer* content = m_scrolledWindow->GetSizer();
+    content->Clear( true );
+    m_recentProjects = nullptr;
+    m_projectLabel = nullptr;
+    m_projectPath = nullptr;
 
-    if( m_toolsSizer->GetEffectiveRowsCount() > 0 )
+    wxFont heading = wxSystemSettings::GetFont( wxSYS_DEFAULT_GUI_FONT );
+    heading.SetPointSize( heading.GetPointSize() + 6 );
+    heading.SetWeight( wxFONTWEIGHT_BOLD );
+    wxFont sectionFont = wxSystemSettings::GetFont( wxSYS_DEFAULT_GUI_FONT );
+    sectionFont.SetPointSize( sectionFont.GetPointSize() + 1 );
+    sectionFont.SetWeight( wxFONTWEIGHT_BOLD );
+    const int margin = FromDIP( 20 );
+
+    auto* header = new wxBoxSizer( wxVERTICAL );
+    auto* title = new wxStaticText( m_scrolledWindow, wxID_ANY, _( "KiCad Workspace" ) );
+    title->SetFont( heading );
+    header->Add( title, 0, wxBOTTOM, FromDIP( 6 ) );
+    header->Add( new wxStaticText( m_scrolledWindow, wxID_ANY,
+                  _( "Browse projects, open a design, and continue where you left off." ) ),
+                 0, wxBOTTOM, FromDIP( 14 ) );
+    m_projectLabel = new wxStaticText( m_scrolledWindow, wxID_ANY, wxEmptyString );
+    m_projectLabel->SetFont( sectionFont );
+    header->Add( m_projectLabel, 0, wxBOTTOM, FromDIP( 3 ) );
+    m_projectPath = new wxStaticText( m_scrolledWindow, wxID_ANY, wxEmptyString,
+                                     wxDefaultPosition, wxDefaultSize, wxST_ELLIPSIZE_MIDDLE );
+    header->Add( m_projectPath, 0, wxEXPAND );
+    content->Add( header, 0, wxEXPAND | wxALL, margin );
+    content->Add( new wxStaticLine( m_scrolledWindow ), 0, wxEXPAND | wxLEFT | wxRIGHT, margin );
+
+    auto addHeading = [&]( const wxString& text )
     {
-        m_toolsSizer->Clear( true );
-        m_toolsSizer->SetRows( 0 );
-    }
+        auto* label = new wxStaticText( m_scrolledWindow, wxID_ANY, text );
+        label->SetFont( sectionFont );
+        content->Add( label, 0, wxLEFT | wxRIGHT | wxTOP | wxBOTTOM, margin );
+    };
 
-    wxFont titleFont = wxSystemSettings::GetFont( wxSYS_DEFAULT_GUI_FONT );
-#ifndef __WXGTK__
-    titleFont.SetPointSize( titleFont.GetPointSize() + 2 );
-#endif
-    titleFont.SetWeight( wxFONTWEIGHT_BOLD );
+    addHeading( _( "Quick Start" ) );
+    auto* quick = new wxBoxSizer( wxHORIZONTAL );
+    auto addQuick = [&]( const TOOL_ACTION& action, const wxString& label )
+    {
+        int id = m_nextLauncherId++;
+        auto* button = new wxButton( m_scrolledWindow, id, label );
+        button->Bind( wxEVT_BUTTON, &PANEL_KICAD_LAUNCHER::onLauncherButtonClick, this );
+        m_actionForId[id] = &action;
+        quick->Add( button, 1, wxRIGHT, FromDIP( 8 ) );
+    };
+    addQuick( KICAD_MANAGER_ACTIONS::newProject, _( "New Project" ) );
+    addQuick( KICAD_MANAGER_ACTIONS::openProject, _( "Open Project" ) );
+    addQuick( KICAD_MANAGER_ACTIONS::browseProjectDirectory, _( "Add Project Folder..." ) );
+    content->Add( quick, 0, wxEXPAND | wxLEFT | wxRIGHT, margin );
 
-    wxFont helpFont = wxSystemSettings::GetFont( wxSYS_DEFAULT_GUI_FONT );
-    helpFont.SetStyle( wxFONTSTYLE_ITALIC );
+    addHeading( _( "Project Tools" ) );
+    m_toolsSizer = new wxFlexGridSizer( 0, 3, FromDIP( 10 ), FromDIP( 10 ) );
+    for( int col = 0; col < 3; ++col )
+        m_toolsSizer->AddGrowableCol( col );
 
-    auto addLauncher =
-            [&]( const TOOL_ACTION& aAction, BITMAPS aBitmaps, const wxString& aHelpText, bool enabled = true )
+    auto addLauncher = [&]( const TOOL_ACTION& action, BITMAPS bitmap,
+                            const wxString& helpText, bool enabled = true )
+    {
+        int id = m_nextLauncherId++;
+        auto* card = new wxPanel( m_scrolledWindow, wxID_ANY, wxDefaultPosition,
+                                  wxDefaultSize, wxBORDER_SIMPLE );
+        auto* row = new wxBoxSizer( wxHORIZONTAL );
+        auto* button = new BITMAP_BUTTON( card, id );
+        button->SetBitmap( KiBitmapBundleDef( bitmap, 32 ) );
+        button->SetDisabledBitmap( KiDisabledBitmapBundle( bitmap ) );
+        button->SetPadding( 4 );
+        button->SetName( action.GetFriendlyName() );
+        button->SetToolTip( action.GetTooltip() );
+        button->Bind( wxEVT_BUTTON, &PANEL_KICAD_LAUNCHER::onLauncherButtonClick, this );
+        m_actionForId[id] = &action;
+        row->Add( button, 0, wxALIGN_CENTER_VERTICAL | wxALL, FromDIP( 8 ) );
+        auto* labels = new wxBoxSizer( wxVERTICAL );
+        auto* label = new wxStaticText( card, wxID_ANY, action.GetFriendlyName() );
+        label->SetFont( wxSystemSettings::GetFont( wxSYS_DEFAULT_GUI_FONT ).Bold() );
+        label->Wrap( FromDIP( 140 ) );
+        auto* help = new wxStaticText( card, wxID_ANY, helpText );
+        help->Wrap( FromDIP( 140 ) );
+        labels->Add( label, 0, wxBOTTOM, FromDIP( 4 ) );
+        labels->Add( help );
+        row->Add( labels, 1, wxALIGN_CENTER_VERTICAL | wxTOP | wxBOTTOM | wxRIGHT, FromDIP( 10 ) );
+        card->SetSizer( row );
+        card->SetToolTip( action.GetTooltip() );
+        wxWindow* targets[] = { card, label, help };
+        for( wxWindow* target : targets )
+        {
+            target->Bind( wxEVT_LEFT_UP, [this, id]( wxMouseEvent& )
             {
-                // Assign a monotonic id that is never reused across rebuilds.  A wxID_ANY id can be
-                // recycled after CreateLaunchers() destroys the old buttons, which would let a stale
-                // deferred click resolve to a different action; a fresh id makes it miss the map instead.
-                int            id = m_nextLauncherId++;
-                BITMAP_BUTTON* btn = new BITMAP_BUTTON( m_scrolledWindow, id );
-                btn->SetBitmap( KiBitmapBundle( aBitmaps ) );
-                btn->SetDisabledBitmap( KiDisabledBitmapBundle( aBitmaps ) );
-                btn->SetPadding( 4 );
-                btn->SetToolTip( aAction.GetTooltip() );
-
-                m_scrolledWindow->SetFont( titleFont ); // Use font inheritance to avoid extra SetFont call.
-                wxStaticText* label = new wxStaticText( m_scrolledWindow, wxID_ANY, aAction.GetFriendlyName() );
-                label->SetToolTip( aAction.GetTooltip() );
-
-                m_scrolledWindow->SetFont( helpFont ); // Use font inheritance to avoid extra SetFont call.
-                wxStaticText* help = new wxStaticText( m_scrolledWindow, wxID_ANY, aHelpText );
-
-                btn->Bind( wxEVT_BUTTON, &PANEL_KICAD_LAUNCHER::onLauncherButtonClick, this );
-                m_actionForId[id] = &aAction;
-
-                // The bug fix below makes this handler active for the entire window width.  Without any visual
-                // feedback that's a bit odd.  Disabling for now.
-                // label->Bind( wxEVT_LEFT_UP, handler );
-
-                m_toolsSizer->Add( btn, 1, wxALIGN_CENTER_VERTICAL );
-
-                wxBoxSizer* textSizer = new wxBoxSizer( wxVERTICAL );
-
-                textSizer->Add( label );
-                textSizer->Add( help );
-
-                m_toolsSizer->Add( textSizer, 1, wxEXPAND | wxALIGN_CENTER_VERTICAL );
-
-                btn->Enable( enabled );
-
-                if( !enabled )
-                {
-                    help->Disable();
-                    label->Disable();
-                }
-
-                return btn;
-            };
+                wxCommandEvent click( wxEVT_BUTTON, id );
+                onLauncherButtonClick( click );
+            } );
+        }
+        card->Enable( enabled );
+        m_toolsSizer->Add( card, 1, wxEXPAND );
+        return button;
+    };
 
     addLauncher( KICAD_MANAGER_ACTIONS::editSchematic, BITMAPS::icon_eeschema,
                  _( "Edit the project schematic" ) );
-
-    addLauncher( KICAD_MANAGER_ACTIONS::editSymbols, BITMAPS::icon_libedit,
-                 _( "Edit global and/or project schematic symbol libraries" ) );
-
     addLauncher( KICAD_MANAGER_ACTIONS::editPCB, BITMAPS::icon_pcbnew,
                  _( "Edit the project PCB design" ) );
-
+    addLauncher( KICAD_MANAGER_ACTIONS::editSymbols, BITMAPS::icon_libedit,
+                 _( "Edit symbol libraries" ) );
     addLauncher( KICAD_MANAGER_ACTIONS::editFootprints, BITMAPS::icon_modedit,
-                 _( "Edit global and/or project PCB footprint libraries" ) );
-
+                 _( "Edit footprint libraries" ) );
     addLauncher( KICAD_MANAGER_ACTIONS::viewGerbers, BITMAPS::icon_gerbview,
                  _( "Preview Gerber files" ) );
-
-    addLauncher( KICAD_MANAGER_ACTIONS::convertImage, BITMAPS::icon_bitmap2component,
-                 _( "Convert bitmap images to schematic symbols or PCB footprints" ) );
-
     addLauncher( KICAD_MANAGER_ACTIONS::showCalculator, BITMAPS::icon_pcbcalculator,
-                 _( "Show tools for calculating resistance, current capacity, etc." ) );
-
+                 _( "PCB engineering calculators" ) );
+    addLauncher( KICAD_MANAGER_ACTIONS::convertImage, BITMAPS::icon_bitmap2component,
+                 _( "Convert images into symbols or footprints" ) );
     addLauncher( KICAD_MANAGER_ACTIONS::editDrawingSheet, BITMAPS::icon_pagelayout_editor,
-                 _( "Edit drawing sheet borders and title blocks for use in schematics and PCB designs" ) );
+                 _( "Edit drawing sheet borders and title blocks" ) );
+    BITMAP_BUTTON* pcm = addLauncher( KICAD_MANAGER_ACTIONS::showPluginManager, BITMAPS::icon_pcm,
+                 _( "Manage plugins and content" ),
+                 KIPLATFORM::POLICY::GetPolicyBool( POLICY_KEY_PCM )
+                         != KIPLATFORM::POLICY::PBOOL::DISABLED );
+    m_frame->SetPcmButton( pcm );
+    content->Add( m_toolsSizer, 0, wxEXPAND | wxLEFT | wxRIGHT, margin );
 
-    BITMAP_BUTTON* bb = addLauncher( KICAD_MANAGER_ACTIONS::showPluginManager, BITMAPS::icon_pcm,
-                                     _( "Manage downloadable packages from KiCad and 3rd party repositories" ),
-                                     KIPLATFORM::POLICY::GetPolicyBool( POLICY_KEY_PCM )
-                                            != KIPLATFORM::POLICY::PBOOL::DISABLED );
-
-    m_frame->SetPcmButton( bb );
-
+    addHeading( _( "Recent Projects" ) );
+    m_recentProjects = new wxListCtrl( m_scrolledWindow, wxID_ANY, wxDefaultPosition,
+                                      FromDIP( wxSize( -1, 150 ) ),
+                                      wxLC_REPORT | wxLC_SINGLE_SEL | wxLC_HRULES );
+    m_recentProjects->SetName( _( "Recent Projects" ) );
+    m_recentProjects->AppendColumn( _( "Project Name" ), wxLIST_FORMAT_LEFT, FromDIP( 170 ) );
+    m_recentProjects->AppendColumn( _( "Project Path" ), wxLIST_FORMAT_LEFT, FromDIP( 380 ) );
+    m_recentProjects->AppendColumn( _( "Updated" ), wxLIST_FORMAT_LEFT, FromDIP( 145 ) );
+    m_recentProjects->Bind( wxEVT_LIST_ITEM_ACTIVATED, [this]( wxListEvent& event )
+    {
+        if( event.GetIndex() >= 0 && static_cast<size_t>( event.GetIndex() ) < m_recentPaths.size() )
+        {
+            wxString file = m_recentPaths[event.GetIndex()];
+            m_frame->CallAfter( [this, file]() { m_frame->LoadProject( wxFileName( file ) ); } );
+        }
+    } );
+    content->Add( m_recentProjects, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, margin );
+    RefreshProjects();
+    updateToolColumns();
+    m_scrolledWindow->FitInside();
+    m_scrolledWindow->Thaw();
     Layout();
+}
+
+
+void PANEL_KICAD_LAUNCHER::updateToolColumns()
+{
+    const int available = m_scrolledWindow->GetClientSize().x - FromDIP( 40 );
+    const int cols = std::clamp( available / FromDIP( 230 ), 1, 3 );
+    if( cols == m_toolsSizer->GetCols() )
+        return;
+    for( int old = 0; old < m_toolsSizer->GetCols(); ++old )
+        m_toolsSizer->RemoveGrowableCol( old );
+    m_toolsSizer->SetCols( cols );
+    for( int col = 0; col < cols; ++col )
+        m_toolsSizer->AddGrowableCol( col );
+    m_scrolledWindow->Layout();
+    m_scrolledWindow->FitInside();
+}
+
+
+void PANEL_KICAD_LAUNCHER::RefreshProjects()
+{
+    if( !m_recentProjects )
+        return;
+
+    const bool active = m_frame->IsProjectActive();
+    wxString file = active ? m_frame->GetProjectFileName() : wxString();
+    m_projectLabel->SetLabel( active ? _( "Current Project" ) + ": " + wxFileName( file ).GetName()
+                                    : _( "No project loaded" ) );
+    m_projectPath->SetLabel( file );
+    m_projectPath->SetToolTip( file );
+    m_recentProjects->DeleteAllItems();
+    m_recentPaths.clear();
+    FILE_HISTORY& history = m_frame->GetFileHistory();
+
+    for( size_t i = 0; i < history.GetCount(); ++i )
+    {
+        wxFileName project( history.GetHistoryFile( i ) );
+        if( !project.FileExists() )
+            continue;
+        long row = m_recentProjects->InsertItem( m_recentProjects->GetItemCount(), project.GetName() );
+        m_recentProjects->SetItem( row, 1, project.GetFullPath() );
+        wxDateTime modified = project.GetModificationTime();
+        if( modified.IsValid() )
+            m_recentProjects->SetItem( row, 2, modified.FormatISOCombined( ' ' ) );
+        m_recentPaths.push_back( project.GetFullPath() );
+    }
+    m_scrolledWindow->Layout();
 }
 
 

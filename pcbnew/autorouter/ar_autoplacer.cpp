@@ -719,6 +719,12 @@ FOOTPRINT* AR_AUTOPLACER::pickFootprint()
 
 void AR_AUTOPLACER::drawPlacementRoutingMatrix( )
 {
+    // Headless callers (API jobs) do not have a VIEW_OVERLAY.  Drawing the
+    // placement matrix is purely visual, so skip it instead of dereferencing a
+    // null overlay.
+    if( !m_overlay )
+        return;
+
     // Draw the board free area
     m_overlay->Clear();
     m_overlay->SetIsFill( true );

@@ -84,6 +84,7 @@ void KICAD_MANAGER_FRAME::doReCreateMenuBar()
         fileMenu->Add( KICAD_MANAGER_ACTIONS::openDemoProject );
 
     fileMenu->Add( KICAD_MANAGER_ACTIONS::openProject );
+    fileMenu->Add( KICAD_MANAGER_ACTIONS::browseProjectDirectory );
 
     wxMenuItem* item = fileMenu->Add( openRecentMenu->Clone() );
 

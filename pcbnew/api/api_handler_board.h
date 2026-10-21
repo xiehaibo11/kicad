@@ -94,9 +94,6 @@ protected:
             const google::protobuf::RepeatedField<int>& aTypes );
 
 private:
-    HANDLER_RESULT<commands::RunActionResponse> handleRunAction(
-            const HANDLER_CONTEXT<commands::RunAction>& aCtx );
-
     HANDLER_RESULT<commands::GetItemsResponse> handleGetItemsById(
             const HANDLER_CONTEXT<commands::GetItemsById>& aCtx );
 
@@ -114,6 +111,9 @@ private:
 
     HANDLER_RESULT<BoardStackupResponse> handleGetStackup(
             const HANDLER_CONTEXT<GetBoardStackup>& aCtx );
+
+    HANDLER_RESULT<BoardStackupResponse> handleUpdateStackup(
+            const HANDLER_CONTEXT<UpdateBoardStackup>& aCtx );
 
     HANDLER_RESULT<BoardEnabledLayersResponse> handleGetBoardEnabledLayers(
             const HANDLER_CONTEXT<GetBoardEnabledLayers>& aCtx );

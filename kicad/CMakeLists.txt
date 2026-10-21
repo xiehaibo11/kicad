@@ -47,6 +47,7 @@ set( KICAD_SRCS
     project_tree.cpp
     project_tree_item.cpp
     project_tree_traverser.cpp
+    project_workspace.cpp
     update_manager.cpp
     toolbars_kicad_manager.cpp
     tools/kicad_manager_actions.cpp
@@ -101,6 +102,7 @@ set( KICAD_CLI_SRCS
     cli/command_gerber_convert_png.cpp
     cli/command_gerber_diff.cpp
     cli/command_version.cpp
+    cli/command_agent.cpp
 
     jobs_runner.cpp
     )

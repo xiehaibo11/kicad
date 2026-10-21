@@ -116,6 +116,10 @@ message RevertDocument
 message RunAction
 {
   string action = 1;  // Action name, like "eeschema.InteractiveSelection.ClearSelection"
+  // Optional target editor. Required for ambiguous common.* actions when more
+  // than one editor is open. Examples: pcbnew, eeschema, symbol_editor,
+  // footprint_editor, gerbview, 3d-viewer, cvpcb, pl_editor, kicad.
+  string editor = 2;
 }
 
 enum RunActionStatus

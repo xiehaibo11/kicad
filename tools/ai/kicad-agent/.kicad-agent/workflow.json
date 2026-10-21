@@ -1,0 +1,20 @@
+{
+  "project": "/Users/mosc/Downloads/kicad/tools/ai/kicad-agent",
+  "stages": {
+    "board": "pending",
+    "connectivity": "pending",
+    "dfm": "pending",
+    "drc": "pending",
+    "fanout": "pending",
+    "manufacturing": "pending",
+    "netlist": "pending",
+    "place": "pending",
+    "planes": "pending",
+    "route": "pending",
+    "schematic": "ok",
+    "spec": "ok",
+    "verified": "pending"
+  },
+  "confirmed": {},
+  "updatedAt": "2026-10-20T03:01:31Z"
+}

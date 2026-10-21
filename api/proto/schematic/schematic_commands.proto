@@ -57,3 +57,105 @@ message SchematicNetlistResponse
 
   repeated kiapi.schematic.types.SchematicNet nets = 2;
 }
+
+
+//// Library and schematic-generation commands ////
+
+message SearchLibrarySymbolsRequest
+{
+  // Case-insensitive match against symbol name, description, and keywords.
+  string query = 1;
+
+  // Optional library nickname filter.
+  string library = 2;
+
+  uint32 min_pins = 3;
+  uint32 max_pins = 4;
+
+  // Additional keywords that must all match.
+  repeated string keywords = 5;
+
+  // Maximum number of results (0 = no limit).
+  uint32 limit = 6;
+}
+
+message LibrarySymbolPin
+{
+  string number = 1;
+  string name = 2;
+  kiapi.common.types.ElectricalPinType electrical_type = 3;
+}
+
+message LibrarySymbolInfo
+{
+  kiapi.common.types.LibraryIdentifier id = 1;
+  string name = 2;
+  string description = 3;
+  string keywords = 4;
+  uint32 unit_count = 5;
+  uint32 pin_count = 6;
+  repeated LibrarySymbolPin pins = 7;
+}
+
+message SearchLibrarySymbolsResponse
+{
+  repeated LibrarySymbolInfo symbols = 1;
+}
+
+message GetLibrarySymbolRequest
+{
+  kiapi.common.types.LibraryIdentifier id = 1;
+}
+
+message GetLibrarySymbolResponse
+{
+  kiapi.schematic.types.SchematicSymbol definition = 1;
+  repeated LibrarySymbolPin pins = 2;
+}
+
+// Places a symbol from a library, so clients do not need to serialize a full
+// embedded symbol definition themselves.
+message PlaceSymbolFromLibraryRequest
+{
+  kiapi.common.types.DocumentSpecifier schematic = 1;
+  kiapi.common.types.LibraryIdentifier id = 2;
+  kiapi.common.types.Vector2 position = 3;
+  int32 unit = 4;
+  string reference = 5;
+  string value = 6;
+  string footprint = 7;
+}
+
+message PlacedSymbolPin
+{
+  string number = 1;
+  string name = 2;
+  kiapi.common.types.Vector2 position = 3;
+}
+
+message PlaceSymbolFromLibraryResponse
+{
+  kiapi.common.types.KIID item = 1;
+  kiapi.schematic.types.SchematicSymbolInstance symbol = 2;
+  repeated PlacedSymbolPin pins = 3;
+}
+
+message AnnotateSchematicRequest
+{
+  kiapi.common.types.DocumentSpecifier schematic = 1;
+  bool reset = 2;
+  int32 start = 3;
+  bool use_sheet_number = 4;
+  int32 sheet_interval = 5;
+}
+
+message AnnotationEntry
+{
+  kiapi.common.types.KIID item = 1;
+  string reference = 2;
+}
+
+message AnnotateSchematicResponse
+{
+  repeated AnnotationEntry annotations = 1;
+}

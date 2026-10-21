@@ -33,6 +33,27 @@
 IMPLEMENT_ABSTRACT_CLASS( PROJECT_TREE, wxTreeCtrl )
 
 
+namespace
+{
+// wxTreeCtrl::SetStateImages() exists since wxWidgets 3.3 and is backported in KiCad's macOS
+// wxWidgets build.  Detect the member so stock 3.2 builds (e.g. Homebrew) use the image list.
+template <typename TREE>
+auto setStateImages( TREE& aTree, const wxVector<wxBitmapBundle>& aImages, int )
+        -> decltype( aTree.SetStateImages( aImages ), bool() )
+{
+    aTree.SetStateImages( aImages );
+    return true;
+}
+
+
+template <typename TREE>
+bool setStateImages( TREE&, const wxVector<wxBitmapBundle>&, long )
+{
+    return false;
+}
+} // namespace
+
+
 #ifdef __WXMSW__
 #define PLATFORM_STYLE wxTR_LINES_AT_ROOT
 #else
@@ -137,9 +158,6 @@ void PROJECT_TREE::LoadIcons()
 
     SetImages( images );
 
-    // KiCad for macOS currently has backported SetStateImages for this control
-    // that is otherwise available since wxWidgets 3.3 on other platforms.
-#if wxCHECK_VERSION( 3, 3, 0 ) || defined( __WXMAC__ )
     wxVector<wxBitmapBundle> stateImages;
     stateImages.push_back( wxBitmapBundle( wxBitmap( c_gitDefSize, c_gitDefSize ) ) );      // GIT_STATUS_UNTRACKED
     stateImages.push_back( KiBitmapBundleDef( BITMAPS::git_good_check, c_gitDefSize ) );    // GIT_STATUS_CURRENT
@@ -151,8 +169,9 @@ void PROJECT_TREE::LoadIcons()
     stateImages.push_back( KiBitmapBundleDef( BITMAPS::git_conflict, c_gitDefSize ) );      // GIT_STATUS_CONFLICTED
     stateImages.push_back( wxBitmapBundle( wxBitmap( c_gitDefSize, c_gitDefSize ) ) );      // GIT_STATUS_IGNORED
 
-    SetStateImages( stateImages );
-#else
+    if( setStateImages( *this, stateImages, 0 ) )
+        return;
+
     // Make an image list containing small icons
     wxBitmap blank_bitmap( c_gitDefSize, c_gitDefSize );
 
@@ -171,7 +190,6 @@ void PROJECT_TREE::LoadIcons()
     m_statusImageList->Add( blank_bitmap );                                         // GIT_STATUS_IGNORED
 
     SetStateImageList( m_statusImageList );
-#endif
 
 }
 

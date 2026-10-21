@@ -54,12 +54,20 @@ public:
 
     bool TimedOut() const { return m_timedOut.load( std::memory_order_relaxed ); }
     bool CancelRequested() const { return m_job && m_job->IsCancelRequested(); }
+    bool DelegateCancelled() const { return m_delegate && m_delegate->IsCancelled(); }
+
+    /**
+     * Check the deadline once.  Engines that only call IsCancelled() or a
+     * progress setter still observe the timeout; KeepRefreshing() aborts as
+     * well.  The flag is what the dispatcher reports as ERR_TIMEOUT.
+     */
+    bool Expired() const { return checkDeadline(); }
 
 private:
-    bool checkDeadline();
+    bool checkDeadline() const;
 
     JOB*                                 m_job;
     PROGRESS_REPORTER*                   m_delegate;
     std::chrono::steady_clock::time_point m_deadline;
-    std::atomic<bool>                    m_timedOut{ false };
+    mutable std::atomic<bool>            m_timedOut{ false };
 };
