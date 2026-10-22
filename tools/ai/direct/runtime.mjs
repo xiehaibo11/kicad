@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+import fs from 'node:fs';
 import path from 'node:path';
 import { startNativeGUI } from './connection.mjs';
 import { nativeWorkflowSchemas } from './native-workflow-schemas.mjs';
@@ -33,6 +34,7 @@ import { decap } from './decap.mjs';
 import { structural, unified } from './structural.mjs';
 import { generateSchematic } from './schematic.mjs';
 import { pipeline } from './pipeline.mjs';
+import { viewOptionsFor } from './views.mjs';
 export const catalog = actions.filter(a => a.available !== false).map(a => ({ ...a, ...(['kicad.cli.run', 'external.command.run', 'project.switch', 'board.check.unified', 'schematic.generate'].includes(a.name) ? { mutates: true } : {}) }));
 export const byName = new Map(catalog.map(a => [a.name, a]));
 // Name and keyword hits outrank incidental matches (e.g. "drc.run" inside another action's verifyWith).
@@ -47,7 +49,7 @@ export function listActions(p = {}) {
     const ranked = found.map((a, i) => ({ a, i, r: actionRank(a, search) })).sort((x, y) => y.r - x.r || x.i - y.i);
     found = (ranked.some(x => x.r > 0) ? ranked.filter(x => x.r > 0) : ranked).map(x => x.a);
   }
-  return found.map(a => ({ ...a, ...(nativeWorkflowSchemas.has(a.name)?{inputSchema:nativeWorkflowSchemas.get(a.name)}:{}), ...(mappings[a.name] ? { request: mappings[a.name].request, inputSchema: requestSchema(mappings[a.name].request) } : {}), ...(commandFor(a.name) ? { cliSchema: commandFor(a.name) } : {}) }));
+  return found.map(a => ({ ...a, ...(nativeWorkflowSchemas.has(a.name)?{inputSchema:nativeWorkflowSchemas.get(a.name)}:{}), ...(mappings[a.name] ? { request: mappings[a.name].request, inputSchema: requestSchema(mappings[a.name].request) } : {}), ...(viewOptionsFor(a.name) ? { viewOptions: viewOptionsFor(a.name) } : {}), ...(commandFor(a.name) ? { cliSchema: commandFor(a.name) } : {}) }));
 }
 function nativeAction(action, p) {
   const operation = action.split('.').at(-1);
@@ -93,6 +95,7 @@ export class Runtime {
       if (action === 'project.resolve') return ok(action, { path: resolveProject(p.project ?? p.directory ?? '.') });
       if (action === 'project.switch' || action === 'project.open') return await this.openProject(action, p, nestedOptions);
       if (action === 'project.info' && (p.input || p.project)) return ok(action, projectInfo(p.input ?? p.project));
+      if (action === 'project.info' && p.type === undefined) return await this.currentProject(options.directory, nestedOptions);
       if (action.startsWith('editor.native.')) return nativeAction(action, p);
       if (action.startsWith('blocks.')) {
         if (action.endsWith('.show')) { const b = blocks.find(b => b.id === required(p, 'id')); return b ? ok(action, b) : fail(action, 'BLOCK_NOT_FOUND', 'Unknown block'); }
@@ -136,6 +139,20 @@ export class Runtime {
     const documents = ping.ok ? await dispatch('document.list', { timeoutMs: 1500 }) : undefined;
     const tools = detectTools(this.cli.binary);
     return ok('system.health', { cli: version, kicadCli: { available: version.ok, version: version.data?.version, error: version.error?.message }, compiledCapabilities: { actionCount: catalog.length, mcpToolCount: 20 }, externalTools: tools, ipc: { available: ping.ok, socket: this.ipc.socket, result: ping }, documents, tools, designReady: Boolean(ping.ok && documents?.data?.documents?.length) });
+  }
+  // The open project is described from its saved files, so one call answers what project.info with a path would.
+  async currentProject(directory, options) {
+    let documents = [], failure;
+    try { documents = await this.ipc.openDocuments(['DOCTYPE_PCB', 'DOCTYPE_SCHEMATIC'], options); } catch (err) { failure = err; }
+    const project = documents.find(d => d.project?.path && d.project?.name)?.project;
+    if (project) {
+      const file = path.join(project.path, project.name + '.kicad_pro');
+      return ok('project.info', fs.existsSync(file) ? { ...projectInfo(file), source: 'open-project', openDocuments: documents } : { source: 'ipc', documents });
+    }
+    let found = [];
+    try { if (directory) found = discover(directory, 1).filter(e => e.project); } catch { /* An unreadable workspace only loses the fallback. */ }
+    if (found.length === 1) return ok('project.info', { ...projectInfo(found[0].project), source: 'workspace', note: 'No project is open in a KiCad editor; this is the only project in the workspace, read from disk.' });
+    return fail('project.info', failure?.code ?? 'NO_OPEN_DOCUMENT', 'No project is open in a KiCad editor' + (failure ? ' (' + failure.message + ')' : '') + '. Pass project (directory, .kicad_pro, .kicad_pcb or .kicad_sch) to read a saved project offline; project.list finds projects in a directory.');
   }
   async openProject(action, p, options) {
     let file = p.document ?? p.path ?? p.project; if (typeof file === 'object') file = file.path;

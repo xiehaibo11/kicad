@@ -2,17 +2,33 @@ import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import * as os from 'node:os';
 
-export const DEMAND_GUIDANCE='Tools, MCP servers and skills load on demand. capability_search requires both query and kind (tool, skill or server); for example {"query":"runtime_diagnostics","kind":"tool"}. Use relevant keywords, or kind=server with query="" to list configured server names without connecting. Then use capability_call with an exact returned id and arguments. Search results contain only matching schemas. Skill content loads only when called. Do not load unrelated capabilities. No slash command or extra user turn is required.';
+export const DEMAND_GUIDANCE='Tools, MCP servers and skills load on demand. capability_search takes a query and a kind (tool, the default, skill or server); for example {"query":"drc","kind":"tool"}. Task words such as drc, stackup or 原理图 match the KiCad actions a tool runs, and results list them as matchedActions. Use kind=server with query="" to list configured server names without connecting. Then use capability_call with an exact returned id and arguments; built-in tool ids (tool:<name>) stay callable in later turns without searching again. Search results contain only matching schemas. Skill content loads only when called. Do not load unrelated capabilities. No slash command or extra user turn is required.';
 export const demandDefinitions=[
-  {name:'capability_search',description:'Find relevant built-in tools, skills or configured MCP servers. Use kind=tool with server to connect only that server and search its tools. Use specific keywords, not a request to load everything.',inputSchema:{type:'object',properties:{query:{type:'string'},kind:{type:'string',enum:['tool','skill','server']},server:{type:'string'},offset:{type:'integer',minimum:0}},required:['query','kind'],additionalProperties:false}},
-  {name:'capability_call',description:'Call one capability returned by capability_search, using its exact id and schema. For a skill, arguments is {}. Preserves the underlying tool permissions.',inputSchema:{type:'object',properties:{id:{type:'string'},arguments:{type:'object',additionalProperties:true}},required:['id','arguments'],additionalProperties:false}},
+  {name:'capability_search',description:'Find relevant built-in tools, skills or configured MCP servers (kind defaults to tool). Task words also match the KiCad actions a tool runs (matchedActions). Use kind=tool with server to connect only that server and search its tools. Use specific keywords, not a request to load everything.',inputSchema:{type:'object',properties:{query:{type:'string'},kind:{type:'string',enum:['tool','skill','server']},server:{type:'string'},offset:{type:'integer',minimum:0}},required:['query'],additionalProperties:false}},
+  {name:'capability_call',description:'Call one capability returned by capability_search, using its exact id and schema. Built-in tool ids (tool:<name>) remain callable without a new search. For a skill, arguments is {}. Preserves the underlying tool permissions.',inputSchema:{type:'object',properties:{id:{type:'string'},arguments:{type:'object',additionalProperties:true}},required:['id','arguments'],additionalProperties:false}},
 ];
-export type Capability={name:string;description:string;inputSchema:any;execute:(args:any,context?:any)=>Promise<any>};
+// actions: what a tool runs, matched by task words but never sent (e.g. kicad_board runs board.drc.run).
+export type SearchAction={name:string;mutates?:boolean;inputs?:string[];keywords?:string[];text?:string};
+export type Capability={name:string;description:string;inputSchema:any;execute:(args:any,context?:any)=>Promise<any>;actions?:SearchAction[]};
 export type Remote={list:()=>Promise<any[]>;call:(name:string,args:any,signal?:AbortSignal)=>Promise<any>;close:()=>Promise<void>};
 export type DemandOptions={cwd:string;builtins:()=>Promise<Capability[]>;servers?:Record<string,any>;connect?:(name:string,config:any)=>Promise<Remote>;skillRoots?:string[];skillFiles?:string[];disabledSkills?:string[]};
+const termsOf=(query:string)=>query.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
 function matches(query:string,text:string){
-  const terms=query.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+  const terms=termsOf(query);
   return !terms.length||terms.some(term=>text.toLocaleLowerCase().includes(term));
+}
+// Per term: a whole name segment or keyword (drc in board.drc.run, 叠层) outweighs a passing mention
+// in a description (DRC in document.save_copy). Best action first; an exact action name wins.
+function termScore(term:string,action:SearchAction){
+  const name=action.name.toLocaleLowerCase(),keywords=action.keywords||[];
+  if(name===term)return 10;
+  if(name.split(/[._]/).includes(term)||keywords.includes(term))return 3;
+  if(name.includes(term)||keywords.some(keyword=>keyword.includes(term)))return 2;
+  return (action.text||'').includes(term)?1:0;
+}
+function actionHits(query:string,actions:SearchAction[]=[]){
+  const terms=termsOf(query);if(!terms.length)return [];
+  return actions.map((action,index)=>({action,index,score:terms.reduce((sum,term)=>sum+termScore(term,action),0)})).filter(hit=>hit.score).sort((a,b)=>b.score-a.score||a.index-b.index);
 }
 // Any term matches, so a shared word such as "kicad" hits everything; rank by name and term coverage.
 function score(query:string,name:string,description:string){
@@ -48,7 +64,8 @@ export class DemandCatalog {
   private extraSkillRoots:string[]=[];
   setSkillRoots(roots:string[]){this.extraSkillRoots=roots.map(root=>path.resolve(this.options.cwd,root.replace(/^~(?=\/|$)/,os.homedir())));}
   setServers(servers:Record<string,any>){this.options.servers=servers;}
-  target(id:string){const target=this.selected.get(id);if(!target)throw Error('Search for this capability first: '+id);return {kind:target.kind,name:target.name};}
+  // Built-in ids are stable, so a later turn may call tool:<name> without repeating the search.
+  target(id:string){const target=this.selected.get(id);if(target)return {kind:target.kind,name:target.name};if(id.startsWith('tool:')&&id.length>5)return {kind:'tool',name:id.slice(5)};throw Error('Search for this capability first: '+id);}
   private async skills(){
     const roots=this.options.skillRoots||[path.join(process.env.CLAUDE_CONFIG_DIR||path.join(os.homedir(),'.claude'),'skills'),path.join(os.homedir(),'.agents/skills'),path.join(process.env.CODEX_HOME||path.join(os.homedir(),'.codex'),'skills'),path.join(process.env.XDG_CONFIG_HOME||path.join(os.homedir(),'.config'),'opencode/skills'),path.join(os.homedir(),'.local/share/kicad-terminal/skills'),path.join(os.homedir(),'.claude/plugins/cache'),path.join(os.homedir(),'.codex/plugins/cache'),path.join(this.options.cwd,'.claude/skills'),path.join(this.options.cwd,'.agents/skills'),path.join(this.options.cwd,'.opencode/skills')];
     const found=new Map<string,any>();
@@ -62,8 +79,11 @@ export class DemandCatalog {
     for(const file of this.options.skillFiles||[])await inspect(file);
     return [...found.values()].filter(item=>item.modelInvocable&&!this.options.disabledSkills?.includes(item.name));
   }
-  async search(args:{query:string;kind:string;server?:string;offset?:number}){
-    if(typeof args.query!=='string'||!['tool','skill','server'].includes(args.kind))throw Error('Expected query and kind: tool, skill or server');
+  async search(input:{query?:string;kind?:string;server?:string;offset?:number}){
+    // A missing kind means tools: models most often omit it when looking for a tool.
+    const args={...input,query:input.query??'',kind:input.kind??'tool'};
+    if(typeof args.query!=='string')throw Error('Expected query: a string of keywords, or "" to list');
+    if(!['tool','skill','server'].includes(args.kind))throw Error('kind must be tool, skill or server');
     const offset=args.offset??0;if(!Number.isInteger(offset)||offset<0)throw Error('Invalid offset');
     let items:any[]=[];
     if(args.kind==='server')items=Object.entries(this.options.servers||{}).filter(([,v])=>v.enabled!==false&&!v.disabled).map(([name])=>({id:name,name,description:'Configured MCP server; connect only by searching tools with server='+name}));
@@ -76,14 +96,24 @@ export class DemandCatalog {
     }else{
       this.builtins??=this.options.builtins();items=(await this.builtins).map(item=>({...item,id:'tool:'+item.name}));
     }
-    const filtered=items.filter(item=>matches(args.query,item.name+' '+item.description)).map((item,index)=>({item,index,rank:score(args.query,item.name,item.description||'')})).sort((a,b)=>b.rank-a.rank||a.index-b.index).map(entry=>entry.item);const page=filtered.slice(offset,offset+5);
-    return {total:filtered.length,offset,nextOffset:offset+page.length<filtered.length?offset+page.length:null,results:page.map(item=>{
+    const ranked=items.map((item,index)=>{const hits=actionHits(args.query,item.actions),direct=matches(args.query,item.name+' '+item.description);
+      return {item,index,hits,match:direct||hits.length>0,rank:(direct?score(args.query,item.name,item.description||''):0)+(hits[0]?.score??0)*2};});
+    const filtered=ranked.filter(entry=>entry.match).sort((a,b)=>b.rank-a.rank||a.index-b.index),page=filtered.slice(offset,offset+5);
+    return {total:filtered.length,offset,nextOffset:offset+page.length<filtered.length?offset+page.length:null,results:page.map(({item,hits})=>{
       if(args.kind==='server')return item;
       this.selected.set(item.id,{kind:args.kind==='skill'?'skill':args.server?'mcp':'tool',name:args.server?'mcp__'+args.server+'__'+item.name:item.name,execute:args.kind==='skill'?async()=>{if(!(await frontmatter(item.file))?.modelInvocable)throw Error('Skill no longer permits model invocation');return {name:item.name,baseDirectory:path.dirname(item.file),content:await readSkill(item.file)};}:item.execute});
-      return {id:item.id,name:item.name,description:item.description,...(item.inputSchema?{inputSchema:compactSchema(item.inputSchema)}:{})};
+      return {id:item.id,name:item.name,description:item.description,...(hits.length?{matchedActions:hits.slice(0,5).map(({action})=>({name:action.name,...(action.mutates!==undefined?{mutates:action.mutates}:{}),...(action.inputs?.length?{inputs:action.inputs}:{})}))}:{}),...(item.inputSchema?{inputSchema:compactSchema(item.inputSchema)}:{})};
     })};
   }
-  async call(id:string,args:any,context:any={}){this.target(id);if(!args||typeof args!=='object'||Array.isArray(args))throw Error('arguments must be an object');return this.selected.get(id)!.execute(args,context);}
+  async call(id:string,args:any,context:any={}){
+    this.target(id);if(!args||typeof args!=='object'||Array.isArray(args))throw Error('arguments must be an object');
+    if(!this.selected.has(id)){
+      this.builtins??=this.options.builtins();const item=(await this.builtins).find(tool=>'tool:'+tool.name===id);
+      if(!item)throw Error('Unknown capability id '+id+'; search for it with capability_search');
+      this.selected.set(id,{kind:'tool',name:item.name,execute:item.execute});
+    }
+    return this.selected.get(id)!.execute(args,context);
+  }
   async close(){await Promise.allSettled([...this.remotes.values()].map(async item=>(await item).close()));this.remotes.clear();for(const [id,target] of this.selected)if(target.kind==='mcp')this.selected.delete(id);}
 }
 // SDK constructors are injected so both frontends bundle their pinned MCP dependency.

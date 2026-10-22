@@ -186,11 +186,11 @@
     "domain": "board",
     "backend": "ipc",
     "mutates": false,
-    "description": "Enumerate board items by type.",
+    "description": "Enumerate board items by type. Large, filtered or paged reads return a compact mm view (see viewOptions); detail:\"full\" returns raw item JSON.",
     "inputs": [
       "document",
       "types[]",
-      "options optional"
+      "view options optional (viewOptions)"
     ],
     "outputs": [
       "items"
@@ -1100,10 +1100,11 @@
     "domain": "schematic",
     "backend": "ipc",
     "mutates": false,
-    "description": "Enumerate schematic items by type.",
+    "description": "Enumerate schematic items by type. Large, filtered or paged reads return a compact mm view (see viewOptions); detail:\"full\" returns raw item JSON.",
     "inputs": [
       "document",
-      "types[]"
+      "types[]",
+      "view options optional (viewOptions)"
     ],
     "outputs": [
       "items"
@@ -1904,9 +1905,10 @@
     "domain": "editor",
     "backend": "ipc",
     "mutates": false,
-    "description": "Return the items currently selected in the editor frame.",
+    "description": "Return the items currently selected in the editor frame. Large, filtered or paged reads return a compact mm view (see viewOptions); detail:\"full\" returns raw item JSON.",
     "inputs": [
-      "document optional"
+      "document optional",
+      "view options optional (viewOptions)"
     ],
     "outputs": [
       "items"
@@ -1999,10 +2001,11 @@
     "domain": "board",
     "backend": "ipc",
     "mutates": false,
-    "description": "Return the board items belonging to the given nets (by name).",
+    "description": "Return the board items belonging to the given nets (by name). Large, filtered or paged reads return a compact mm view (see viewOptions); detail:\"full\" returns raw item JSON.",
     "inputs": [
       "document",
-      "nets[]"
+      "nets[]",
+      "view options optional (viewOptions)"
     ],
     "outputs": [
       "items"
@@ -2016,10 +2019,11 @@
     "domain": "board",
     "backend": "ipc",
     "mutates": false,
-    "description": "Return the items electrically connected to the given items (by KIID).",
+    "description": "Return the items electrically connected to the given items (by KIID). Large, filtered or paged reads return a compact mm view (see viewOptions); detail:\"full\" returns raw item JSON.",
     "inputs": [
       "document",
-      "ids[]"
+      "ids[]",
+      "view options optional (viewOptions)"
     ],
     "outputs": [
       "items"
@@ -2145,10 +2149,11 @@
     "domain": "board",
     "backend": "ipc",
     "mutates": false,
-    "description": "Return the board items in the given net classes.",
+    "description": "Return the board items in the given net classes. Large, filtered or paged reads return a compact mm view (see viewOptions); detail:\"full\" returns raw item JSON.",
     "inputs": [
       "document",
-      "net_classes[]"
+      "net_classes[]",
+      "view options optional (viewOptions)"
     ],
     "outputs": [
       "items"
@@ -2159,10 +2164,11 @@
     "domain": "board",
     "backend": "ipc",
     "mutates": false,
-    "description": "Return the board items with the given KIIDs.",
+    "description": "Return the board items with the given KIIDs. Large, filtered or paged reads return a compact mm view (see viewOptions); detail:\"full\" returns raw item JSON.",
     "inputs": [
       "document",
-      "ids[]"
+      "ids[]",
+      "view options optional (viewOptions)"
     ],
     "outputs": [
       "items"

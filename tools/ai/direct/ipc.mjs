@@ -46,6 +46,18 @@ function objectType(value, schematic) {
 }
 
 const layerJobs = new Set(['board.jobs.svg', 'board.jobs.dxf', 'board.jobs.pdf', 'board.jobs.ps']);
+// Editor frames register the document handlers, so live reads need the document open in an editor.
+function editorKinds(action, types = []) {
+  const hints = array(types).map(String);
+  if (action.startsWith('schematic.') || hints.some(t => t.includes('_SCH_'))) return ['DOCTYPE_SCHEMATIC'];
+  if (action.startsWith('board.') || action.startsWith('pcb.') || hints.some(t => t.includes('_PCB_'))) return ['DOCTYPE_PCB'];
+  return ['DOCTYPE_PCB', 'DOCTYPE_SCHEMATIC', 'DOCTYPE_FOOTPRINT'];
+}
+export function noOpenDocument(kinds, file) {
+  const label = kinds.map(t => t.replace('DOCTYPE_', '').toLowerCase()).join('/');
+  const offline = kinds.length > 1 ? 'board.drc.run, schematic.erc.run or the export actions' : kinds[0] === 'DOCTYPE_SCHEMATIC' ? 'schematic.erc.run, schematic.export.netlist or other schematic.export actions' : 'board.drc.run or the board.export actions';
+  return new DirectError('NO_OPEN_DOCUMENT', `No ${label} editor has ${file ? path.basename(file) : 'a document'} open in KiCad; live actions only read documents open in an editor. Open it with project.open {project, document} (opens the GUI editor; asks for permission), or work on the saved files: project.info with project, ${offline} with input.`, { editor: label, ...(file ? { document: file } : {}), openWith: 'project.open' });
+}
 
 export class KiCadIPC {
   constructor({ socket, token = process.env.KICAD_API_TOKEN ?? '', transport, startGUI } = {}) {
@@ -126,17 +138,9 @@ export class KiCadIPC {
     return documents;
   }
   async resolveOpenDocument(action, body, options = {}) {
-    const typeHints = array(body.types ?? []).map(String);
-    const kinds = action.startsWith('schematic.') || typeHints.some(t => t.includes('_SCH_'))
-      ? ['DOCTYPE_SCHEMATIC']
-      : action.startsWith('board.') || action.startsWith('pcb.') || typeHints.some(t => t.includes('_PCB_'))
-        ? ['DOCTYPE_PCB']
-        : ['DOCTYPE_PCB', 'DOCTYPE_SCHEMATIC', 'DOCTYPE_FOOTPRINT'];
+    const kinds = editorKinds(action, body.types);
     const documents = await this.openDocuments(kinds, options);
-    if (!documents.length) {
-      const label = kinds.map(t => t.replace('DOCTYPE_', '').toLowerCase()).join('/');
-      throw new DirectError('NO_OPEN_DOCUMENT', `No open ${label} editor document. Open it in KiCad or pass an explicit document.`);
-    }
+    if (!documents.length) throw noOpenDocument(kinds);
     if (documents.length > 1) throw new DirectError('AMBIGUOUS_DOCUMENT', 'Multiple editor documents are open; pass an explicit document.');
     return documents[0];
   }
@@ -214,7 +218,8 @@ export class KiCadIPC {
     }
     if (action === 'schematic.place.symbol' || action === 'library.get.symbol') take('libId', 'id', libraryId);
     if (action === 'schematic.place.symbol') take('position', 'position', position);
-    if (action.endsWith('.items.get')) take('types', 'types', a => array(a).map(v => objectType(v, schematic)));
+    // Every typed item query (items.get, by_net, by_netclass, connected, selection.get) accepts short type names.
+    if (requestType.fields.types) take('types', 'types', a => array(a).map(v => objectType(v, schematic)));
     if (action.endsWith('.items.create') || action.endsWith('.items.update')) take('items', 'items', a => required({ a }, 'a').map(v => itemAny(v, schematic)));
     if (action.endsWith('.items.delete')) take('ids', 'item_ids');
     if (requestType.fields.header?.resolvedType?.name === 'ItemHeader') {
@@ -261,7 +266,18 @@ export class KiCadIPC {
       else bad(`Unknown payload key ${key} for ${action}`);
     }
     if (input.dryRun && !requestType.fields.dry_run) return ok(action, { dryRun: true, applied: false, requestType: spec.request, request: normalize(requestType, body) });
-    const result = await this.call(spec.request, body, { ...options, ...(p.timeoutMs ? { timeoutMs: p.timeoutMs } : {}) });
+    let result;
+    try { result = await this.call(spec.request, body, { ...options, ...(p.timeoutMs ? { timeoutMs: p.timeoutMs } : {}) }); }
+    catch (err) {
+      // An explicit document whose editor is closed reaches no handler ("UNHANDLED"); say what to open.
+      // When the editor is open, UNHANDLED means this KiCad build lacks the handler and is reported as is.
+      const explicit = input.document ?? (typeof input.board === 'string' ? input.board : undefined);
+      if (err.code === 'UNHANDLED' && docField && explicit) {
+        const kinds = editorKinds(action, body.types);
+        if (!(await this.openDocuments(kinds, options).catch(() => [undefined])).length) throw noOpenDocument(kinds, typeof explicit === 'string' ? explicit : explicit.path);
+      }
+      throw err;
+    }
     if (action === 'editor.run_action') Object.assign(result, { completionVerified: false, execution: 'submitted', action: input.action, editor: input.editor ?? '' });
     if (action === 'board.items.from_string' && !result.createdItems?.length) throw new DirectError('KICAD_HANDLER_STUB', 'Native parser created no items');
     return ok(action, result, result.outputPath);

@@ -196,7 +196,9 @@ export function createDemandCatalog(cwd=process.cwd(),configured:Record<string,a
   const catalog=new DemandCatalog({cwd,servers,skillFiles,disabledSkills,connect:mcpConnector({Client,StdioClientTransport,SSEClientTransport,StreamableHTTPClientTransport},cwd),builtins:async()=>{
     const {entry}=getKiCadRuntimeConfig(cwd),direct=await import(pathToFileURL(entry).href);
     const native=await getKiCadNativeTools(cwd);
-    return [...native,...localToolBindings(z,cwd),{name:'runtime_diagnostics',description:'Read local runtime diagnostics and error analysis. 日志 报错 运行诊断',args:{sessionId:z.string().optional()},execute:(args:any)=>diagnosticReport(cwd,args.sessionId)}].map((b:any)=>({name:b.name,description:b.description,inputSchema:direct.toolsList().find((d:any)=>d.name===b.name)?.inputSchema || (b.name==='runtime_diagnostics'?{type:'object',properties:{sessionId:{type:'string'}}}:localToolDefinitions.find(d=>d.name===b.name)?.inputSchema),execute:(args:any,ctx:any)=>b.execute(z.object(b.args).parse(args),{...ctx,directory:cwd})}));
+    // Native bindings validate their own input and answer with a short INVALID_ARGUMENTS result;
+    // parsing them here again would throw Zod's full text, which lists every allowed action.
+    return [...native.map((b:any)=>({...b,validates:true})),...localToolBindings(z,cwd),{name:'runtime_diagnostics',description:'Read local runtime diagnostics and error analysis. 日志 报错 运行诊断',args:{sessionId:z.string().optional()},execute:(args:any)=>diagnosticReport(cwd,args.sessionId)}].map((b:any)=>({name:b.name,description:b.description,inputSchema:direct.toolsList().find((d:any)=>d.name===b.name)?.inputSchema || (b.name==='runtime_diagnostics'?{type:'object',properties:{sessionId:{type:'string'}}}:localToolDefinitions.find(d=>d.name===b.name)?.inputSchema),actions:b.searchActions,execute:(args:any,ctx:any)=>b.execute(b.validates?args:z.object(b.args).parse(args),{...ctx,directory:cwd})}));
   }});
   const close=catalog.close.bind(catalog);catalog.close=async()=>{demandCatalogs.delete(catalog);await close();};
   demandCatalogs.add(catalog);return catalog;
@@ -205,7 +207,7 @@ export async function getKiCadSdkServer(cwd?:string,_options:KiCadToolsOptions={
   const catalog=createDemandCatalog(cwd,configured);
   const reply=(result:any)=>({content:[{type:'text' as const,text:JSON.stringify(result)}],isError:result?.ok===false||!!result?.isError});
   const server=createSdkMcpServer({name:'kicad',version:'0.2.0',tools:[
-    tool('capability_search',demandDefinitions[0].description,{query:z.string(),kind:z.enum(['tool','skill','server']),server:z.string().optional(),offset:z.number().int().min(0).optional()},async args=>reply(await catalog.search(args))),
+    tool('capability_search',demandDefinitions[0].description,{query:z.string(),kind:z.enum(['tool','skill','server']).optional(),server:z.string().optional(),offset:z.number().int().min(0).optional()},async args=>reply(await catalog.search(args))),
     tool('capability_call',demandDefinitions[1].description,{id:z.string(),arguments:z.record(z.unknown())},async(args,extra:any)=>reply(await catalog.call(args.id,args.arguments,{signal:extra?.signal})))
   ]});
   server.instance.server.onclose=()=>{void catalog.close();demandCatalogs.delete(catalog);};

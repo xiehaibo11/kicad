@@ -58,7 +58,7 @@ const rules:[string,RegExp,string][]=[
   ['connection',/IPC_UNAVAILABLE|NOT_READY|AMBIGUOUS_INSTANCE|GUI_NOT_FOUND|ECONN|ENOTFOUND|network|fetch failed/i,'检查原生 GUI、IPC 实例或网络地址；不要据此重放已提交编辑。'],
   ['timeout',/timeout|timed.out|deadline|超时/i,'检查耗时与取消状态，先回读执行结果再决定是否重试。'],
   ['configuration',/failed to load configuration|invalid transport/i,'检查生成的配置键和传输字段；先修正配置，再重新启动会话。'],
-  ['invalid_arguments',/BAD_INPUT|INVALID_ARGUMENT|validation|not allowed|schema|Expected query and kind|arguments must be an object|Search for this capability first/i,'重新查询工具参数和单位，修正调用后再执行。'],
+  ['invalid_arguments',/BAD_INPUT|INVALID_ARGUMENT|validation|not allowed|schema|Expected query|kind must be|arguments must be an object|Search for this capability first|Unknown capability id/i,'重新查询工具参数和单位，修正调用后再执行。'],
   ['search_limit',/Ripgrep JSON record exceeded/i,'搜索结果中有超长单行；缩小文件范围，或使用支持大型 JSON 记录的搜索版本。'],
   ['binary_file',/Cannot read binary file/i,'这是二进制文件；按格式使用归档或专用读取工具，不要当作文本读取。'],
   ['archive_write',/write error \(disk full\?\)|fchmod \(file attributes\) error|is probably truncated/i,'归档解压写入失败；先检查空间与成员文件名。在 macOS 上若涉及中文 .epro2 文件名，改用 ditto -x -k 解压到新临时目录并验证完整性。不要仅凭退出码 50 认定磁盘已满。'],
@@ -67,7 +67,31 @@ const rules:[string,RegExp,string][]=[
   ['command_exit',/(?:Command exited with code|Exit code)\s+\d+/i,'检查命令退出码、工作目录和原始终端输出；非零退出不一定是程序缺陷。'],
   ['provider',/\b50[0234]\b|overloaded|server.error/i,'检查模型服务状态；区分服务故障与本地工具错误。'],
 ];
-export function diagnose(error:unknown){const text=errorText(error);const rule=rules.find(([,pattern])=>pattern.test(text));return {kind:rule?.[0]||'unknown',suggestion:rule?.[2]||'根据关联会话和调用 ID 检查原始执行记录；目前证据不足，不能认定根因。',message:redact(text)};}
+// A failed shell command's error carries its whole output: file listings, source text, logs. Broad words
+// there ("schema", "reject", "not found") say nothing about the failure, so command exits are classified
+// only from their first and last lines and only by unambiguous error phrases; otherwise command_exit.
+const COMMAND_EXIT=/^\s*(?:Exit code|Command exited with code)\s+\d+/i;
+const commandRules:[string,RegExp,string][]=[
+  ['archive_write',rules.find(([kind])=>kind==='archive_write')![1],rules.find(([kind])=>kind==='archive_write')![2]],
+  ['shell_syntax',/\(eval\):\d+:|zsh: (?:parse error|no matches found|bad pattern|unknown file attribute)|syntax error near unexpected token|unexpected EOF while looking for matching|bad substitution|unmatched [`'"]/i,'命令语法或引号错误（zsh 会展开未加引号的通配符、== 与特殊字符）；修正引号或改写命令后再执行，不要据此判断程序缺失。'],
+  ['search_pattern',/exceeds complexity limits|regex parse error|Invalid regular expression|unmatched \(|error at position \d+/i,'搜索正则无效或过于复杂；简化模式或改用固定字符串（-F）后再搜索。'],
+  ['permission',/Permission denied|Operation not permitted|\bEACCES\b|\bEPERM\b/,'核对工作区权限与用户授权，不绕过权限重试。'],
+  ['dependency',/command not found|No such file or directory|\bENOENT\b|Cannot find module/i,'检查目标路径、程序安装和版本匹配。'],
+  ['timeout',/timed out|deadline exceeded|\bETIMEDOUT\b/i,'检查耗时与取消状态，先回读执行结果再决定是否重试。'],
+  ['connection',/Connection refused|Could not resolve host|\bECONNREFUSED\b|\bENOTFOUND\b|Network is unreachable|IPC_UNAVAILABLE/,'检查原生 GUI、IPC 实例或网络地址；不要据此重放已提交编辑。'],
+];
+const COMMAND_EXIT_RULE=rules.find(([kind])=>kind==='command_exit')!;
+function commandScope(text:string){const lines=text.split('\n').map(line=>line.trim()).filter(Boolean);return lines.length<=12?lines.join('\n'):[...lines.slice(0,4),...lines.slice(-8)].join('\n');}
+export function diagnose(error:unknown){
+  const text=errorText(error);
+  let rule=rules.find(([,pattern])=>pattern.test(text));
+  if(COMMAND_EXIT.test(text)){
+    // The earliest unambiguous error line explains the exit best.
+    const scope=commandScope(text),found=commandRules.map(entry=>({entry,at:scope.search(entry[1])})).filter(hit=>hit.at>=0).sort((a,b)=>a.at-b.at)[0];
+    rule=found?.entry??COMMAND_EXIT_RULE;
+  }
+  return {kind:rule?.[0]||'unknown',suggestion:rule?.[2]||'根据关联会话和调用 ID 检查原始执行记录；目前证据不足，不能认定根因。',message:redact(text)};
+}
 async function workspaceDir(cwd:string){const real=await fs.realpath(cwd).catch(()=>path.resolve(cwd));return path.join(root(),createHash('sha256').update(real).digest('hex').slice(0,24));}
 export class RuntimeJournal {
   private pending:Promise<void>=Promise.resolve();private warning=false;private dropped=0;private queued=0;
@@ -115,10 +139,20 @@ export async function diagnosticReport(cwd:string,sessionId?:string){
       if(e.callId&&['tool','terminal'].includes(e.category)){const key=e.source+':'+e.sessionId+':'+e.callId;const prior=calls.get(key);if(!prior||e.time>prior.time||e.time===prior.time&&e.phase==='end')calls.set(key,e);}
       if(!e.diagnosis)continue;
       const key=[e.source,e.category,e.name,e.diagnosis.kind].join(':'),g=groups.get(key)||{source:e.source,category:e.category,name:e.name,kind:e.diagnosis.kind,count:0,suggestion:e.diagnosis.suggestion,lastSeen:'',examples:[]};
-      g.count++;if(e.time>g.lastSeen)g.lastSeen=e.time;if(g.examples.length<3)g.examples.push({id:e.id,sessionId:e.sessionId,callId:e.callId,message:e.diagnosis.message});groups.set(key,g);recent.push(e);
+      g.count++;if(e.time>g.lastSeen)g.lastSeen=e.time;if(g.examples.length<3)g.examples.push({id:e.id,sessionId:e.sessionId,callId:e.callId,message:clip(e.diagnosis.message,400)});groups.set(key,g);recent.push(e);
     }
   }
-  return {directory,scope:'本工作区保留的运行事件；规则归类是排查建议，不是已确认根因。无日志不代表无错误。',pendingCalls:[...calls.values()].filter(e=>e.phase==='start').slice(0,30),pendingNote:'仅表示保留日志中未见结束事件，可能仍在运行、被中断或超出读取范围；不认定为崩溃。',retentionDays:14,events,categories,invalidLines,truncated,issues:[...groups.values()].sort((a,b)=>b.count-a.count).slice(0,100),issueGroups:groups.size,recent:recent.sort((a,b)=>b.time.localeCompare(a.time)).slice(0,30)};
+  // Report rows keep what locates an event; the suggestion lives once on its issue group.
+  const row=(e:any)=>Object.fromEntries(Object.entries({time:e.time,source:e.source,category:e.category,phase:e.phase,status:e.status,name:e.name,model:e.model,sessionId:e.sessionId,callId:e.callId,durationMs:e.durationMs,exitCode:e.exitCode,kind:e.diagnosis?.kind,message:clip(e.diagnosis?.message,240)}).filter(([,v])=>v!==undefined&&v!==null&&v!==''));
+  return {directory,scope:'本工作区保留的运行事件；规则归类是排查建议，不是已确认根因。无日志不代表无错误。',pendingCalls:[...calls.values()].filter(e=>e.phase==='start').sort((a,b)=>b.time.localeCompare(a.time)).slice(0,30).map(row),pendingNote:'仅表示保留日志中未见结束事件，可能仍在运行、被中断或超出读取范围；不认定为崩溃。',retentionDays:14,events,categories,invalidLines,truncated,issues:[...groups.values()].sort((a,b)=>b.count-a.count).slice(0,100),issueGroups:groups.size,slowCalls:slowest(calls),recent:recent.sort((a,b)=>b.time.localeCompare(a.time)).slice(0,30).map(row)};
+}
+// Journal messages keep up to 1200 characters; the report quotes the start, the call ID finds the rest.
+const clip=(text:string|undefined,limit:number)=>text&&text.length>limit?text.slice(0,limit)+'…':text;
+// Per-tool latency from finished calls, slowest first: where a session spent its time.
+function slowest(calls:Map<string,any>){
+  const byName=new Map<string,number[]>();
+  for(const e of calls.values())if(e.phase==='end'&&typeof e.durationMs==='number'&&e.name){const list=byName.get(e.name)||[];list.push(e.durationMs);byName.set(e.name,list);}
+  return [...byName.entries()].map(([name,list])=>{list.sort((a,b)=>a-b);return {name,calls:list.length,p50Ms:list[Math.floor(list.length/2)],maxMs:list[list.length-1]};}).sort((a,b)=>b.maxMs-a.maxMs).slice(0,10);
 }
 function unwrap(value:any):any {if(typeof value==='string'){try{return JSON.parse(value);}catch{return undefined;}}if(value?.content){for(const c of value.content)if(c.type==='text'){const parsed=unwrap(c.text);if(parsed?.ok===false)return parsed;}}return value;}
 export function toolFailure(value:any,exitCode?:number):unknown {const v=unwrap(value);if(v?.ok===false)return v.error||'Tool returned ok:false';if(v?.isError||v?.is_error)return 'Tool returned an error';if(typeof exitCode==='number'&&exitCode!==0)return 'Command exited with code '+exitCode;return undefined;}

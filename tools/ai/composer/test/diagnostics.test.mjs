@@ -75,3 +75,27 @@ test('EPRO2 archive write errors retain evidence and macOS extraction uses a sup
  assert.equal(archiveCommandAdvice('Bash',{command},'linux'),undefined);
  assert.equal(archiveCommandAdvice('Read',{command},'darwin'),undefined);
 });
+
+test('shell exits are classified from error lines, not from program output',()=>{
+ // Real journal cases: an ls listing that names *schemas.mjs and a Vue template mentioning reject were reported as argument and permission errors.
+ const listing='Exit code 1\n/repo/direct:\ntotal 912\n'+Array.from({length:30},(_,i)=>'-rw-r--r--  1 u  staff  100 Oct 22 file'+i+'.mjs').join('\n')+'\n-rw-r--r--  1 u  staff  8497 Oct 22 native-workflow-schemas.mjs';
+ assert.equal(diagnose(listing).kind,'command_exit');
+ assert.equal(diagnose('Exit code 1\n<template>\n  <div v-if="view.failures.length">rejected or denied</div>\n</template>').kind,'command_exit');
+ assert.equal(diagnose('Exit code 1\nugrep: error: error at position 94\n(?:x){0,400}\n     exceeds complexity limits___/\n\n(eval):1: == not found').kind,'search_pattern');
+ assert.equal(diagnose('Exit code 1\n(eval):1: no matches found: --include=*.ts').kind,'shell_syntax');
+ assert.equal(diagnose('Exit code 127\nzsh: command not found: kicad-cli').kind,'dependency');
+ assert.equal(diagnose('Exit code 1\nls: /missing: No such file or directory').kind,'dependency');
+ assert.equal(diagnose('Exit code 1\ncat: /etc/secret: Permission denied').kind,'permission');
+ assert.equal(diagnose('permission denied').kind,'permission','tool errors keep the broad rules');
+});
+test('report rows locate events without repeating suggestions and list the slowest tools',async()=>{
+ const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'kicad-diagnostics-rows-')),old=process.env.KICAD_DIAGNOSTICS_DIR;process.env.KICAD_DIAGNOSTICS_DIR=path.join(tmp,'logs');
+ try{
+ const recorder=new DiagnosticRecorder(new RuntimeJournal('extension',tmp)),now=Date.now;let clock=1000;Date.now=()=>clock;
+ try{await recorder.start('s','a','kicad_board');clock+=900;await recorder.end('s','a','kicad_board','{"ok":false,"error":{"code":"BAD_INPUT"}}');await recorder.start('s','b','Read');clock+=5;await recorder.end('s','b','Read','text');await recorder.start('s','c','Bash');}finally{Date.now=now;}
+ const report=await diagnosticReport(tmp);
+ assert.deepEqual(report.slowCalls.map(x=>[x.name,x.maxMs]),[['kicad_board',900],['Read',5]]);
+ assert.equal(report.pendingCalls.length,1);assert.equal(report.pendingCalls[0].name,'Bash');assert.equal(report.pendingCalls[0].schemaVersion,undefined);
+ assert.equal(report.recent[0].kind,'invalid_arguments');assert.equal(report.recent[0].suggestion,undefined);assert.ok(report.issues[0].suggestion);
+ }finally{if(old===undefined)delete process.env.KICAD_DIAGNOSTICS_DIR;else process.env.KICAD_DIAGNOSTICS_DIR=old;await fs.rm(tmp,{recursive:true,force:true});}
+});

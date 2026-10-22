@@ -30,7 +30,7 @@ export async function main(argv = process.argv.slice(2)) {
   try {
     let result;
     if (words[0] === 'ai') { const result = await ai(payload, runtime, {signal:controller.signal}, payload.stream ? event => process.stdout.write(JSON.stringify(event) + '\n') : undefined); if (payload.stream) { if (!result.ok) process.exitCode = 1; return; } return result; }
-    if (words[0] === 'actions') result = { ok: true, data: { actions: listActions(payload), count: listActions(payload).length } };
+    if (words[0] === 'actions') { const actions = listActions(payload); result = { ok: true, data: { actions, count: actions.length } }; }
     else {
       const aliases = { health: 'system.health', version: 'system.version', manifest: 'system.manifest' };
       let action = aliases[words[0]], rest = [];

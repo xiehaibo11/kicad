@@ -47,5 +47,8 @@ try{
  await hooks.event({event:{type:'session.error',properties:{sessionID:'fixture',error:{message:'429 rate limit'}}}});
  await hooks.tool.capability_search.execute({query:'runtime_diagnostics',kind:'tool'},{});
  const diagnostic=JSON.parse(await hooks.tool.capability_call.execute({id:'tool:runtime_diagnostics',arguments:{}},{}));assert.ok(diagnostic.issues.some(i=>i.kind==='rate_limit'));assert.ok(diagnostic.issues.some(i=>i.kind==='connection'));
+ // Task words reach the KiCad action a tool runs; kind defaults to tool; a bad call gets the binding's short error, not Zod's action list.
+ const drc=JSON.parse(await hooks.tool.capability_search.execute({query:'drc'},{}));assert.equal(drc.results[0].name,'kicad_board');assert.equal(drc.results[0].matchedActions[0].name,'board.drc.run');
+ const invalid=JSON.parse(await hooks.tool.capability_call.execute({id:'tool:kicad_board',arguments:{action:'library.list'}},{}));assert.equal(invalid.error.code,'INVALID_ARGUMENTS');assert.ok(invalid.error.message.length<200,invalid.error.message.length);
  console.log('Terminal backend plugin passed: intent gate, explicit question answers, new-input isolation, complete archive and post-compaction task state.');
 }finally{if(old===undefined)delete process.env.XDG_STATE_HOME;else process.env.XDG_STATE_HOME=old;await fs.rm(tmp,{recursive:true,force:true});}

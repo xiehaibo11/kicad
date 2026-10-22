@@ -38,6 +38,12 @@ For external MCP tools, discover server names first if the relevant server is
 unknown. Never claim tools are unavailable merely because none are loaded yet.
 For EDA work, discover the relevant KiCad domain tools and reference guidance;
 inspect before changes and verify results. Never edit design files as plain text.
+Search with task words (drc, erc, 叠层, gerber); each KiCad result lists its
+matchedActions with their inputs, so the first call can name the action directly.
+Built-in ids (`tool:kicad_board`) stay callable in later turns without a new search.
+Large item reads (board.items.get, schematic.items.get) return a compact view in
+mm; narrow them with refs, nets or layers and page with limit/offset. Ask for
+detail:"full" only when raw item JSON is needed, such as for items.update.
 
 ## Archive inspection
 

@@ -42,8 +42,13 @@ try{
   assert.deepEqual(Object.keys(lazy.kicad.instance._registeredTools),expected);
   const search=async args=>JSON.parse((await lazy.kicad.instance._registeredTools.capability_search.handler(args,{})).content[0].text);
   const call=async(id,args)=>JSON.parse((await lazy.kicad.instance._registeredTools.capability_call.handler({id,arguments:args},{})).content[0].text);
-  await assert.rejects(()=>call('tool:kicad_board',{}),/Search/);
+  // Built-in ids stay callable in later turns without a new search; unknown ids never execute.
+  await assert.rejects(()=>call('tool:no_such_tool',{}),/Unknown capability id/);
+  assert.equal((await call('tool:kicad_board',{})).error.code,'INVALID_ARGUMENTS','the tool itself validates a direct call');
+  await assert.rejects(()=>call('mcp:unused:anything',{}),/Search/);
   const found=await search({query:'runtime_diagnostics',kind:'tool'});assert.equal(found.results.length,1);
+  const drc=await search({query:'drc'});assert.equal(drc.results[0].name,'kicad_board','kind defaults to tool; task words reach the action');
+  assert.equal(drc.results[0].matchedActions[0].name,'board.drc.run');assert.ok(drc.results[0].matchedActions[0].inputs.includes('input'));
   const diagnostic=await call(found.results[0].id,{});assert.equal(diagnostic.events,0);
   const ref=await search({query:'kicad_reference',kind:'tool'});
   assert.equal(ref.results[0].name,'kicad_reference');
