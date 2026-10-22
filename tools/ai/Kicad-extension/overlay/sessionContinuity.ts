@@ -1,3 +1,5 @@
+function demandInput(input:any){if(input.tool_name?.endsWith('__capability_call')){const id=String(input.tool_input?.id||'');return {...input,tool_name:id.startsWith('tool:')?'mcp__kicad__'+id.slice(5):id.startsWith('mcp:')?'mcp__'+id.slice(4).replace(':','__'):id,tool_input:input.tool_input?.arguments};}return input;}
+import {RuntimeJournal,DiagnosticRecorder,SdkErrorLines,archiveCommandAdvice,diagnose,ARCHIVE_GUIDANCE} from '../../shared/kicadDiagnostics';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import * as os from 'node:os';
@@ -10,6 +12,12 @@ const COMPACT_RULES='Preserve the original objective, latest corrections, exact 
 
 // One instance belongs to one SDK query/channel, never global across chats.
 export class SessionContinuity {
+  private stderrLines=new SdkErrorLines();
+  async diagnosticStderr(chunk:string,cwd?:string){for(const line of this.stderrLines.push(chunk))await this.diagnosticError(line,cwd);}
+  async flushStderr(cwd?:string){for(const line of this.stderrLines.flush())await this.diagnosticError(line,cwd);}
+  private diagnostic?:DiagnosticRecorder;
+  private diagnostics(cwd=this.activeDirectory){return this.diagnostic??=new DiagnosticRecorder(new RuntimeJournal('extension',cwd));}
+  async diagnosticError(error:unknown,cwd?:string){await this.diagnostics(cwd).journal.record({category:'ai',phase:'error',status:'error',sessionId:this.activeSession,error});}
   private harness=new HarnessLoop();
   private submitted=false;
   private unclear=true;
@@ -20,6 +28,7 @@ export class SessionContinuity {
   private pendingInputs:Record<string,any>[]=[];
   async recordInput(message:Record<string,any>,cwd?:string){
     this.activeDirectory=cwd||this.activeDirectory;
+    await this.diagnostics().journal.record({category:'ai',phase:'request',status:'started',sessionId:this.activeSession});
     this.pendingInputs.push(message);
   }
   private async flushInputs(){
@@ -30,12 +39,20 @@ export class SessionContinuity {
     }
   }
   async observe(message:Record<string,any>){
+    // Init can arrive before recordInput (notably from Codex). Bind the first
+    // journal to the session workspace rather than the editor host's cwd.
+    if(message.type==='system'&&message.subtype==='init'&&typeof message.cwd==='string')this.activeDirectory=message.cwd;
+    if(message.type==='result')await this.diagnostics().journal.record({category:'ai',phase:'result',status:message.is_error?'error':'returned',sessionId:message.session_id,durationMs:message.duration_ms,error:message.is_error?(message.errors?.join('; ')||message.subtype):undefined});
+    if(message.type==='assistant'&&message.error)await this.diagnosticError(message.error);
+    if(message.type==='system'&&message.subtype==='init')await this.diagnostics().journal.record({category:'ai',phase:'session-start',status:'ready',sessionId:message.session_id,model:message.model});
     if(['assistant','user','system','result'].includes(message.type))this.observed.push(message);
     if(message.session_id)this.activeSession=message.session_id;
     await this.flushInputs();
     if(this.activeSession)await saveExtensionEvent(this.activeSession,this.activeDirectory,message);
   }
   async afterTool(input:HookInput){
+    input=demandInput(input);
+    await this.diagnostics(input.cwd).end(input.session_id,input.tool_use_id||'',input.tool_name||'',input.tool_response,undefined,(input.tool_response as any)?.exitCode);
     const failed=failedResult(input.tool_response);
     this.observed.push({type:'user',uuid:'kicad-result-'+input.tool_use_id,message:{content:[{type:'tool_result',tool_use_id:input.tool_use_id,is_error:failed,content:JSON.stringify(input.tool_response)}]}});
     const reminder=this.harness.after(input.tool_name||'',input.tool_input,failed);
@@ -45,8 +62,10 @@ export class SessionContinuity {
       ...(archived && input.tool_name?.startsWith('mcp__') ? {updatedMCPToolOutput:{content:[{type:'text',text:JSON.stringify(archived)}],isError:failed}} : {})}};
   }
   failedTool(input:HookInput){
+    input=demandInput(input);
+    void this.diagnostics(input.cwd).end(input.session_id,input.tool_use_id||'',input.tool_name||'',undefined,input.is_interrupt?'cancelled':input.error||'Tool failed');
     this.observed.push({type:'user',uuid:'kicad-result-'+input.tool_use_id,message:{content:[{type:'tool_result',tool_use_id:input.tool_use_id,is_error:true,content:input.error||'Tool failed'}]}});
-    const note=input.is_interrupt ? '' : this.harness.after(input.tool_name||'',input.tool_input,true);
+    const note=input.is_interrupt ? '' : [this.harness.after(input.tool_name||'',input.tool_input,true),diagnose(input.error).kind==='archive_write'?diagnose(input.error).suggestion:''].filter(Boolean).join('\n');
     return {continue:true,hookSpecificOutput:{hookEventName:'PostToolUseFailure' as const,additionalContext:note}};
   }
   constructor(private readonly storage=path.join(process.env.CLAUDE_CONFIG_DIR||path.join(os.homedir(),'.claude'),'kicad-task-state')){}
@@ -56,12 +75,16 @@ export class SessionContinuity {
     this.activeSession=input.session_id;this.activeDirectory=input.cwd;await this.flushInputs();
     this.harness.newTurn();
     this.submitted=true;this.unclear=needsClarification(input.prompt||'');this.prompts.push(input.prompt||'');
-    return {hookSpecificOutput:{hookEventName:'UserPromptSubmit' as const,additionalContext:this.unclear?CLARIFY_FIRST:COMPACT_RULES+'\n'+HARNESS_GUIDANCE}};
+    return {hookSpecificOutput:{hookEventName:'UserPromptSubmit' as const,additionalContext:this.unclear?CLARIFY_FIRST:[COMPACT_RULES,HARNESS_GUIDANCE,process.platform==='darwin'?ARCHIVE_GUIDANCE:''].filter(Boolean).join('\n')}};
   }
   beforeTool(input:HookInput){
+    input=demandInput(input);
+    void this.diagnostics(input.cwd).start(input.session_id,input.tool_use_id||'',input.tool_name||'');
     if(input.tool_use_id)this.observed.push({type:'assistant',uuid:'kicad-tool-'+input.tool_use_id,message:{content:[{type:'tool_use',id:input.tool_use_id,name:input.tool_name,input:input.tool_input}]}});
     if(input.tool_name==='AskUserQuestion')return {continue:true};
     if(!this.submitted||this.unclear)return {hookSpecificOutput:{hookEventName:'PreToolUse' as const,permissionDecision:'deny' as const,permissionDecisionReason:CLARIFY_FIRST}};
+    const advice=archiveCommandAdvice(input.tool_name||'',input.tool_input);
+    if(advice)return {hookSpecificOutput:{hookEventName:'PreToolUse' as const,permissionDecision:'deny' as const,permissionDecisionReason:advice}};
     const blocked=this.harness.before(input.tool_name||'',input.tool_input);
     if(blocked)return {hookSpecificOutput:{hookEventName:'PreToolUse' as const,permissionDecision:'deny' as const,permissionDecisionReason:blocked}};
     return {continue:true};

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 import * as vscode from 'vscode';
+import {diagnosticReport} from './shared/kicadDiagnostics';
 import {listHistory,readHistory} from './shared/kicadHistory';
 import { resolveDeepSeekCredentials } from './kicadProviders';
 import { closeKiCadRuntimes, findExecutable, getAgentInstructionsPath, getKiCadRuntimeConfig, openCodeConfig } from './kicadRuntime';
@@ -15,6 +16,11 @@ async function selectWorkspace(): Promise<vscode.WorkspaceFolder | undefined> {
 export function registerKiCadIntegration(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     { dispose:closeKiCadRuntimes },
+    vscode.commands.registerCommand('kicadAgent.diagnostics',async()=>{
+      const folder=await selectWorkspace();if(!folder)return;
+      try {const report=await diagnosticReport(folder.uri.fsPath);const doc=await vscode.workspace.openTextDocument({language:'json',content:JSON.stringify(report,null,2)});await vscode.window.showTextDocument(doc,{preview:true});}
+      catch(error){void vscode.window.showErrorMessage('读取运行诊断失败：'+String(error));}
+    }),
     vscode.commands.registerCommand('kicadAgent.history',async()=>{
       const folder=await selectWorkspace();if(!folder)return;
       try{

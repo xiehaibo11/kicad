@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-import fs from 'node:fs';
 import path from 'node:path';
-import { spawn } from 'node:child_process';
+import { startNativeGUI } from './connection.mjs';
 import { nativeWorkflowSchemas } from './native-workflow-schemas.mjs';
 import { nativeWorkflows, nativeWorkflow } from './native-workflows.mjs';
 import actions from './data/actions.json' with { type: 'json' };
@@ -36,8 +35,19 @@ import { generateSchematic } from './schematic.mjs';
 import { pipeline } from './pipeline.mjs';
 export const catalog = actions.filter(a => a.available !== false).map(a => ({ ...a, ...(['kicad.cli.run', 'external.command.run', 'project.switch', 'board.check.unified', 'schematic.generate'].includes(a.name) ? { mutates: true } : {}) }));
 export const byName = new Map(catalog.map(a => [a.name, a]));
+// Name and keyword hits outrank incidental matches (e.g. "drc.run" inside another action's verifyWith).
+function actionRank(a, search) {
+  const name = a.name.toLowerCase();
+  return name === search ? 3 : name.includes(search) ? 2 : [a.description, ...(a.keywords ?? [])].some(t => String(t).toLowerCase().includes(search)) ? 1 : 0;
+}
 export function listActions(p = {}) {
-  return catalog.filter(a => (!p.domain || a.domain === p.domain) && (p.mutates === undefined || a.mutates === p.mutates) && (!p.search || JSON.stringify(a).toLowerCase().includes(p.search.toLowerCase()))).map(a => ({ ...a, ...(nativeWorkflowSchemas.has(a.name)?{inputSchema:nativeWorkflowSchemas.get(a.name)}:{}), ...(mappings[a.name] ? { request: mappings[a.name].request, inputSchema: requestSchema(mappings[a.name].request) } : {}), ...(commandFor(a.name) ? { cliSchema: commandFor(a.name) } : {}) }));
+  const search = p.search?.toLowerCase();
+  let found = catalog.filter(a => (!p.domain || a.domain === p.domain) && (p.mutates === undefined || a.mutates === p.mutates) && (!search || JSON.stringify(a).toLowerCase().includes(search)));
+  if (search) {
+    const ranked = found.map((a, i) => ({ a, i, r: actionRank(a, search) })).sort((x, y) => y.r - x.r || x.i - y.i);
+    found = (ranked.some(x => x.r > 0) ? ranked.filter(x => x.r > 0) : ranked).map(x => x.a);
+  }
+  return found.map(a => ({ ...a, ...(nativeWorkflowSchemas.has(a.name)?{inputSchema:nativeWorkflowSchemas.get(a.name)}:{}), ...(mappings[a.name] ? { request: mappings[a.name].request, inputSchema: requestSchema(mappings[a.name].request) } : {}), ...(commandFor(a.name) ? { cliSchema: commandFor(a.name) } : {}) }));
 }
 function nativeAction(action, p) {
   const operation = action.split('.').at(-1);
@@ -53,7 +63,11 @@ export function findCLI() {
   return executable(process.env.KICAD_CLI) ?? executable('kicad-cli') ?? ['/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli', path.resolve('build/kicad/KiCad.app/Contents/MacOS/kicad-cli')].find(f => executable(f)) ?? 'kicad-cli';
 }
 export class Runtime {
-  constructor({ ipc, cli, ...options } = {}) { this.notify = options.notify; this.ipc = ipc ?? new KiCadIPC(options); this.cli = cli ?? new KiCadCLI({ binary: findCLI(), ...options }); }
+  constructor({ ipc, cli, ...options } = {}) {
+    this.notify = options.notify;
+    this.cli = cli ?? new KiCadCLI({ binary: findCLI(), ...options });
+    this.ipc = ipc ?? new KiCadIPC({ startGUI: options.autoConnect === false || process.env.KICAD_AUTO_CONNECT === '0' ? undefined : socket => startNativeGUI(this.cli.binary, socket), ...options });
+  }
   async dispatch(action, p = {}, options = {}) {
     try {
       if (!byName.has(action)) {
@@ -118,32 +132,16 @@ export class Runtime {
     } catch (err) { return errorResult(action, err); }
   }
   async health(dispatch) {
-    const version = await dispatch('system.version', {}), ping = await dispatch('system.ping', { timeoutMs: 1500 });
+    const version = await dispatch('system.version', {}), ping = await dispatch('system.ping', { timeoutMs: 15000 });
     const documents = ping.ok ? await dispatch('document.list', { timeoutMs: 1500 }) : undefined;
-    return ok('system.health', { cli: version, kicadCli: { available: version.ok, version: version.data?.version, error: version.error?.message }, compiledCapabilities: { actionCount: catalog.length, mcpToolCount: 20 }, externalTools: detectTools(this.cli.binary), ipc: { available: ping.ok, socket: this.ipc.socket, result: ping }, documents, tools: detectTools(this.cli.binary), designReady: Boolean(ping.ok && documents?.data?.documents?.length) });
+    const tools = detectTools(this.cli.binary);
+    return ok('system.health', { cli: version, kicadCli: { available: version.ok, version: version.data?.version, error: version.error?.message }, compiledCapabilities: { actionCount: catalog.length, mcpToolCount: 20 }, externalTools: tools, ipc: { available: ping.ok, socket: this.ipc.socket, result: ping }, documents, tools, designReady: Boolean(ping.ok && documents?.data?.documents?.length) });
   }
   async openProject(action, p, options) {
     let file = p.document ?? p.path ?? p.project; if (typeof file === 'object') file = file.path;
     file = resolveProject(required({ file }, 'file'));
     if (p.dryRun) return ok(action, { dryRun: true, applied: false, path: file });
-    try { return { ...await this.ipc.action('project.open', { path: file }, options), action }; }
-    catch (err) { if (err.code !== 'IPC_UNAVAILABLE') throw err; }
-    // Only an unavailable socket permits starting a server. A refusal by a live
-    // editor must remain a refusal, especially when unsaved changes are present.
-    fs.mkdirSync(path.dirname(this.ipc.socket), { recursive: true, mode: 0o700 });
-    const logPath = this.ipc.socket + '.log', fd = fs.openSync(logPath, 'a', 0o600);
-    let child;
-    try { child = spawn(this.cli.binary, ['api-server', '--socket', this.ipc.socket, file], { detached: true, stdio: ['ignore', fd, fd], env: options.env ?? process.env }); }
-    finally { fs.closeSync(fd); }
-    let startupError; child.on('error', err => { startupError = err; }); child.unref();
-    const deadline = Date.now() + Math.min(options.timeoutMs, 60000);
-    while (Date.now() < deadline && !options.signal?.aborted) {
-      if (startupError || child.exitCode !== null) return fail(action, 'SERVER_START_FAILED', startupError?.message ?? 'Native API server exited', { log: logPath });
-      const ping = await this.dispatch('system.ping', { timeoutMs: 1000 }, options);
-      if (ping.ok) return ok(action, { document: file, socket: this.ipc.socket, spawned: true, pid: child.pid, log: logPath });
-      await new Promise(resolve => setTimeout(resolve, 100));
-    }
-    return fail(action, options.signal?.aborted ? 'CANCELLED' : 'TIMEOUT', 'Native API server did not become ready; inspect the log before retrying', { pid: child.pid, log: logPath });
+    return { ...await this.ipc.action('project.open', { path: file }, options), action };
   }
 
   close() { this.ipc.close(); }

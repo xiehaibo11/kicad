@@ -44,16 +44,16 @@ const scope={...reasoningModule.exports,wantsKiCadTools,Map,Error,fixture:{enque
 vm.runInNewContext(transpile(`class Service {channels=new Map([['c',{model:'deepseek-flash',thinkingLevel:'low',cwd:'/same',sessionId:'conversation',permissionMode:'bypassPermissions',busy:false,in:{enqueue:fixture.enqueue,done(){}}}]]);preparingChannels=new Map();logService={info(){},warn(){},error(){}};closeChannel(id){this.channels.delete(id)};async launchClaude(...args){await fixture.launch(...args);this.channels.set(args[0],{sessionId:args[1],cwd:args[2],model:args[3],permissionMode:args[4],thinkingLevel:args[5],kicad:args[6],in:{enqueue:fixture.enqueue,done(){}}})};${methods}};globalThis.service=new Service()`),scope);
 await scope.service.setModel('c','sonnet');await scope.service.setThinkingLevel('c','high');assert.equal(launches.length,0);assert.equal(enqueued.length,0);
 await scope.service.transportMessage('c',{type:'user',message:{content:'manual'}},false);
-assert.equal(launches.length,1);assert.deepEqual([...launches[0]],['c','conversation','/same','sonnet','bypassPermissions','high',false]);assert.equal(enqueued.length,1);
+assert.equal(launches.length,1);assert.deepEqual([...launches[0]],['c','conversation','/same','sonnet','bypassPermissions','high']);assert.equal(enqueued.length,1);
 scope.service.channels.get('c').busy=false;await scope.service.setModel('c','deepseek-flash');block=true;const pending=scope.service.transportMessage('c',{type:'user'},false);await Promise.resolve();await scope.service.interruptClaude('c');release();await pending;assert.equal(enqueued.length,1,'cancel during restart must not send');
-// KiCad tools on demand: a KiCad request relaunches the same conversation once, with the tools.
+// KiCad tools on demand: KiCad requests keep the same conversation and discover tools in-process.
 scope.service.channels.set('k',{model:'sonnet',thinkingLevel:'high',cwd:'/same',sessionId:'kicad-conversation',permissionMode:'default',busy:false,in:{enqueue:scope.fixture.enqueue,done(){}}});
 block=false;fail=false;const before=launches.length,sentBefore=enqueued.length;
 await scope.service.transportMessage('k',{type:'user',message:{content:'写一个脚本'}},false);assert.equal(launches.length,before,'ordinary messages never relaunch');
 scope.service.channels.get('k').busy=false;
 await scope.service.transportMessage('k',{type:'user',message:{content:'跑一下 DRC，检查这块 PCB'}},false);
-assert.deepEqual([...launches.at(-1)],['k','kicad-conversation','/same','sonnet','default','high',true]);assert.equal(enqueued.length,sentBefore+2);
+assert.equal(launches.length,before,'KiCad work uses the same process and discovery tools');assert.equal(enqueued.length,sentBefore+2);
 scope.service.channels.get('k').busy=false;
-await scope.service.transportMessage('k',{type:'user',message:{content:'再导出 Gerber'}},false);assert.equal(launches.length,before+1,'loaded conversations stay loaded');
-console.log('KiCad tools on demand: ordinary messages keep the process, a KiCad request relaunches the same session once with the tools.');
+await scope.service.transportMessage('k',{type:'user',message:{content:'再导出 Gerber'}},false);assert.equal(launches.length,before,'follow-ups use the same discovery tools');
+console.log('KiCad tools on demand: ordinary messages keep the process, KiCad requests keep the same process and discover only selected tools.');
 console.log('Model performance checks passed: zero process launches on selection, one restart on manual send, session/permissions retained, cancellation prevents enqueue.');

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import path from 'node:path';
 import os from 'node:os';
+import fs from 'node:fs';
 import mappings from './data/ipc-actions.json' with { type: 'json' };
 import native from './data/native-enriched.json' with { type: 'json' };
 import { NngClient } from './nng.mjs';
@@ -47,11 +48,66 @@ function objectType(value, schematic) {
 const layerJobs = new Set(['board.jobs.svg', 'board.jobs.dxf', 'board.jobs.pdf', 'board.jobs.ps']);
 
 export class KiCadIPC {
-  constructor({ socket, token = process.env.KICAD_API_TOKEN ?? '', transport } = {}) {
+  constructor({ socket, token = process.env.KICAD_API_TOKEN ?? '', transport, startGUI } = {}) {
+    this.explicitSocket = Boolean(socket || process.env.KICAD_API_SOCKET);
     socket = socket || process.env.KICAD_API_SOCKET || path.join(process.platform === 'darwin' ? '/tmp' : os.tmpdir(), 'kicad/api.sock');
     this.transport = transport ?? new NngClient(socket);
     this.socket = socket;
     this.token = token;
+    this.managedConnection = !transport;
+    this.startGUI = startGUI;
+    this.defaultSocket = socket;
+  }
+  async connect(options = {}) {
+    if (!this.managedConnection || (this.transport.ready && !this.transport.socket?.destroyed)) return;
+    if (this.connecting) return this.connecting;
+    this.connecting = this.discoverConnection(options).finally(() => { this.connecting = undefined; });
+    return this.connecting;
+  }
+  async discoverConnection(options) {
+    const deadline = Date.now() + (options.timeoutMs ?? 15000);
+    let notReady = false;
+    const probe = async socket => {
+      notReady = false;
+      this.transport.close();
+      this.transport = new NngClient(socket);
+      this.socket = socket;
+      try {
+        await this.callRaw('kiapi.common.commands.Ping', {}, { ...options, timeoutMs: Math.max(1, Math.min(1000, deadline - Date.now())) });
+        return true;
+      } catch (error) {
+        if (error.code === 'NOT_READY') { notReady = true; return false; }
+        if (!['IPC_UNAVAILABLE', 'TIMEOUT'].includes(error.code)) throw error;
+        return false;
+      }
+    };
+    if (await probe(this.socket)) return;
+    if (notReady) {
+      const initializingSocket = this.socket;
+      while (Date.now() < deadline && !options.signal?.aborted) {
+        await new Promise(resolve => setTimeout(resolve, 150));
+        if (await probe(initializingSocket)) return;
+      }
+      throw new DirectError('NOT_READY', 'Native KiCad is still initializing.', initializingSocket);
+    }
+    if (this.explicitSocket) throw new DirectError('IPC_UNAVAILABLE', 'Explicit KiCad socket is unavailable; it was not redirected.', this.socket);
+    const directory = path.dirname(this.defaultSocket);
+    let candidates = [];
+    try { candidates = fs.readdirSync(directory).filter(name => /^api-\d+\.sock$/.test(name)).map(name => path.join(directory, name)); }
+    catch (error) { if (error.code !== 'ENOENT') throw error; }
+    const live = [];
+    for (const socket of candidates) if (await probe(socket)) live.push(socket);
+    if (live.length > 1) { this.transport.close(); throw new DirectError('AMBIGUOUS_INSTANCE', 'Multiple native KiCad instances are available. Set KICAD_API_SOCKET explicitly.', live); }
+    if (live.length === 1) { if (await probe(live[0])) return; }
+    this.socket = this.defaultSocket;
+    if (this.startGUI && !options.signal?.aborted && Date.now() < deadline) {
+      await this.startGUI(this.defaultSocket);
+      while (Date.now() < deadline && !options.signal?.aborted) {
+        if (await probe(this.defaultSocket)) return;
+        await new Promise(resolve => setTimeout(resolve, 150));
+      }
+    }
+    throw new DirectError(options.signal?.aborted ? 'CANCELLED' : 'IPC_UNAVAILABLE', 'Native KiCad IPC is unavailable. Check GUI startup and Preferences > API server; no project or edit was replayed.', this.defaultSocket);
   }
   async openDocuments(types, options = {}) {
     const documents = [];
@@ -85,6 +141,10 @@ export class KiCadIPC {
     return documents[0];
   }
   async call(request, payload, options = {}) {
+    await this.connect(options);
+    return this.callRaw(request, payload, options);
+  }
+  async callRaw(request, payload, options = {}) {
     if (!requests.has(request)) bad('Message is not a registered KiCad request: ' + request);
     const data = encode('kiapi.common.ApiRequest', {
       header: { client_name: `kicad-js-${process.pid}`, kicad_token: this.token },

@@ -3,12 +3,15 @@ import path from 'node:path';
 export function applyContinuity(root,overlay){
   function patch(file,before,after){const target=path.join(root,file),source=fs.readFileSync(target,'utf8');if(source.split(before).length!==2)throw Error('Continuity anchor missing/ambiguous: '+file+' '+before.slice(0,80));fs.writeFileSync(target,source.replace(before,()=>after));}
   fs.copyFileSync(path.join(overlay,'../../composer/intent.ts'),path.join(root,'src/shared/kicadIntent.ts'));
+  fs.copyFileSync(path.join(overlay,'../../composer/demand.ts'),path.join(root,'src/shared/kicadDemand.ts'));
   fs.copyFileSync(path.join(overlay,'../../composer/history.ts'),path.join(root,'src/shared/kicadHistory.ts'));
+  fs.writeFileSync(path.join(root,'src/shared/kicadLocalTools.ts'),fs.readFileSync(path.join(overlay,'../../composer/local-tools.ts'),'utf8').replace("from './history'","from './kicadHistory'"));
   fs.copyFileSync(path.join(overlay,'../../composer/harness.ts'),path.join(root,'src/shared/kicadHarness.ts'));
   fs.copyFileSync(path.join(overlay,'sessionContinuity.ts'),path.join(root,'src/services/claude/sessionContinuity.ts'));
   fs.copyFileSync(path.join(overlay,'UserQuestion.vue'),path.join(root,'src/webview/src/components/UserQuestion.vue'));
+  fs.copyFileSync(path.join(overlay,'../../composer/diagnostics.ts'),path.join(root,'src/shared/kicadDiagnostics.ts'));
   const sdk='src/services/claude/ClaudeSdkService.ts';
-  patch(sdk,"import * as vscode from 'vscode';","import * as vscode from 'vscode';\nimport {SessionContinuity} from './sessionContinuity';");
+  patch(sdk,"import * as vscode from 'vscode';","import * as vscode from 'vscode';\nimport {SessionContinuity} from './sessionContinuity';\nimport {sdkLogLevel} from '../../shared/kicadDiagnostics';");
   patch(sdk,'        // 构建 SDK Options',`        const continuity=new SessionContinuity();
         // Compact before exhausting the window. Respect explicit runtime tuning.
         if(!env.CLAUDE_AUTOCOMPACT_PCT_OVERRIDE)env.CLAUDE_AUTOCOMPACT_PCT_OVERRIDE='85';
@@ -25,8 +28,14 @@ export function applyContinuity(root,overlay){
   patch(sdk,'            const result = query({ prompt: inputStream, options });',`            const recordedInput={async *[Symbol.asyncIterator](){for await(const message of inputStream){await continuity.recordInput(message,cwdParam);yield message;}}};
             const result = query({ prompt: recordedInput, options });
             const next=result.next.bind(result);
-            result.next=async (...args)=>{const item=await next(...args);if(!item.done)await continuity.observe(item.value);return item;};`);
+            result.next=async (...args)=>{try{const item=await next(...args);if(!item.done)await continuity.observe(item.value);else await continuity.flushStderr(cwdParam);return item;}catch(error){await continuity.diagnosticError(error,cwdParam);throw error;}};
+            // Query[Symbol.asyncIterator] returns its inner generator, so for-await would bypass next above.
+            (result as any)[Symbol.asyncIterator]=()=>result;`);
   patch(sdk,'                PostToolUse: [{\n                    matcher: \"Edit|Write|MultiEdit\",',`                PostToolUse: [{hooks:[async input=>continuity.afterTool(input)]},{\n                    matcher: \"Edit|Write|MultiEdit\",`);
+  patch(sdk, '            stderr: (data: string) => {', `            stderr: (data: string) => {
+                void continuity.diagnosticStderr(data,cwdParam);`);
+  patch(sdk, "this.logService.info(`[${timestamp}] [SDK ${level}] ${line}`);", "level=sdkLogLevel(line);\n                    this.logService.info(`[${timestamp}] [SDK ${level}] ${line}`);");
+  patch(sdk, "            this.logService.error('❌❌❌ SDK 调用失败 ❌❌❌');", "            void continuity.diagnosticError(error,cwdParam);\n            this.logService.error('❌❌❌ SDK 调用失败 ❌❌❌');");
   const modal='src/webview/src/components/PermissionRequestModal.vue';
   patch(modal,'  <div\n    class="permission-request-container"',`  <UserQuestion v-if="request.toolName==='AskUserQuestion'" :key="request.channelId+JSON.stringify(request.inputs)" :request="request" />
   <div v-else

@@ -1,5 +1,12 @@
+import {DemandCatalog, demandDefinitions, mcpConnector} from './shared/kicadDemand';
+import {Client} from '@modelcontextprotocol/sdk/client/index.js';
+import {StdioClientTransport} from '@modelcontextprotocol/sdk/client/stdio.js';
+import {SSEClientTransport} from '@modelcontextprotocol/sdk/client/sse.js';
+import {StreamableHTTPClientTransport} from '@modelcontextprotocol/sdk/client/streamableHttp.js';
+import {localToolBindings,localToolDefinitions} from './shared/kicadLocalTools';
 // SPDX-License-Identifier: AGPL-3.0-only
 // Runtime shared by the Claudix chat and the native OpenCode terminal.
+import {diagnosticReport} from './shared/kicadDiagnostics';
 import * as vscode from 'vscode';
 import * as os from 'node:os';
 import * as path from 'node:path';
@@ -67,7 +74,7 @@ export function getAgentInstructionsPath(): string | undefined {
 // kicad_gerber writes converted images, so they ask like mutating domain tools (kicad_board,
 // kicad_call, ...), which keep the selected permission mode.
 export const READ_ONLY_EDA_TOOLS = [
-  'mcp__kicad__kicad_load', 'mcp__kicad__kicad_health', 'mcp__kicad__kicad_actions', 'mcp__kicad__kicad_native_tools',
+  'mcp__kicad__session_history', 'mcp__kicad__runtime_diagnostics', 'mcp__kicad__kicad_load', 'mcp__kicad__kicad_health', 'mcp__kicad__kicad_actions', 'mcp__kicad__kicad_native_tools',
   'mcp__kicad__kicad_spec_validate', 'mcp__kicad__kicad_blocks', 'mcp__kicad__kicad_reference', 'mcp__kicad__kicad_audit'
 ];
 
@@ -175,7 +182,7 @@ export function openCodeConfig(inherited?: string, deepseek?: {apiKey: string; b
 }
 
 const nativeRuntimes = new Map<string, any>();
-export function closeKiCadRuntimes() { for(const runtime of nativeRuntimes.values()) runtime.close(); nativeRuntimes.clear(); }
+export function closeKiCadRuntimes() { for(const catalog of demandCatalogs)void catalog.close(); demandCatalogs.clear(); for(const runtime of nativeRuntimes.values()) runtime.close(); nativeRuntimes.clear(); }
 export async function getKiCadNativeTools(cwd?: string) {
   const server = getKiCadRuntimeConfig(cwd), key = JSON.stringify({cwd,entry:server.entry,env:server.env});
   const direct = await import(pathToFileURL(server.entry).href);
@@ -183,20 +190,27 @@ export async function getKiCadNativeTools(cwd?: string) {
   nativeRuntimes.set(key,runtime);
   return direct.bindTools(runtime, z);
 }
-export async function getKiCadSdkServer(cwd?: string, options: KiCadToolsOptions = { tools: true }) {
-  const reply = (data: Record<string, unknown>) => ({content:[{type:'text' as const,text:JSON.stringify({ok:true,action:'tools.load',data})}]});
-  const loader = tool(KICAD_LOAD_TOOL, KICAD_LOAD_DESCRIPTION, {}, async () => {
-    if (options.tools) return reply({note:'The KiCad tools are already loaded in this conversation.'});
-    options.onLoad?.();
-    return reply({pending:true,note:'KiCad tools are enabled for this conversation and are attached when the user sends the next message; they cannot be called in this reply. Tell the user in one sentence, and ask them to send the request again (for example: 继续).'});
-  });
-  if (!options.tools) return createSdkMcpServer({name:'kicad',version:'0.1.0',tools:[loader]});
-  const tools = (await getKiCadNativeTools(cwd)).map((binding:any) => tool(binding.name, binding.description, binding.args,
-    async (args:any,extra:any) => { const result = await binding.execute(args, {signal:extra?.signal,directory:cwd}); return {content:[{type:'text' as const,text:JSON.stringify(result)}],isError:!result.ok}; }));
-  return createSdkMcpServer({name:'kicad',version:'0.1.0',tools:[loader,...tools]});
+const demandCatalogs=new Set<DemandCatalog>();
+export function createDemandCatalog(cwd=process.cwd(),configured:Record<string,any>={},skillFiles:string[]=[],disabledSkills:string[]=[]) {
+  const servers=Object.fromEntries(Object.entries(configured).filter(([name])=>!['kicad','easyeda'].includes(name)));
+  const catalog=new DemandCatalog({cwd,servers,skillFiles,disabledSkills,connect:mcpConnector({Client,StdioClientTransport,SSEClientTransport,StreamableHTTPClientTransport},cwd),builtins:async()=>{
+    const {entry}=getKiCadRuntimeConfig(cwd),direct=await import(pathToFileURL(entry).href);
+    const native=await getKiCadNativeTools(cwd);
+    return [...native,...localToolBindings(z,cwd),{name:'runtime_diagnostics',description:'Read local runtime diagnostics and error analysis. 日志 报错 运行诊断',args:{sessionId:z.string().optional()},execute:(args:any)=>diagnosticReport(cwd,args.sessionId)}].map((b:any)=>({name:b.name,description:b.description,inputSchema:direct.toolsList().find((d:any)=>d.name===b.name)?.inputSchema || (b.name==='runtime_diagnostics'?{type:'object',properties:{sessionId:{type:'string'}}}:localToolDefinitions.find(d=>d.name===b.name)?.inputSchema),execute:(args:any,ctx:any)=>b.execute(z.object(b.args).parse(args),{...ctx,directory:cwd})}));
+  }});
+  const close=catalog.close.bind(catalog);catalog.close=async()=>{demandCatalogs.delete(catalog);await close();};
+  demandCatalogs.add(catalog);return catalog;
 }
-
-export async function getKiCadSdkServers(cwd: string | undefined, configured: Record<string, unknown> = {}, options: KiCadToolsOptions = { tools: true }) {
-  const {entry}=getKiCadRuntimeConfig(cwd), direct=await import(pathToFileURL(entry).href);
-  return {...direct.withoutLegacyKiCadServers(configured), kicad:await getKiCadSdkServer(cwd, options)};
+export async function getKiCadSdkServer(cwd?:string,_options:KiCadToolsOptions={tools:false},configured:Record<string,any>={}) {
+  const catalog=createDemandCatalog(cwd,configured);
+  const reply=(result:any)=>({content:[{type:'text' as const,text:JSON.stringify(result)}],isError:result?.ok===false||!!result?.isError});
+  const server=createSdkMcpServer({name:'kicad',version:'0.2.0',tools:[
+    tool('capability_search',demandDefinitions[0].description,{query:z.string(),kind:z.enum(['tool','skill','server']),server:z.string().optional(),offset:z.number().int().min(0).optional()},async args=>reply(await catalog.search(args))),
+    tool('capability_call',demandDefinitions[1].description,{id:z.string(),arguments:z.record(z.unknown())},async(args,extra:any)=>reply(await catalog.call(args.id,args.arguments,{signal:extra?.signal})))
+  ]});
+  server.instance.server.onclose=()=>{void catalog.close();demandCatalogs.delete(catalog);};
+  return server;
+}
+export async function getKiCadSdkServers(cwd:string|undefined,configured:Record<string,unknown>={},options:KiCadToolsOptions={tools:false}) {
+  return {kicad:await getKiCadSdkServer(cwd,options,configured)};
 }

@@ -8,6 +8,15 @@ const notifications=/<(?:task|agent|bash)-notification>[\s\S]*?<\/(?:task|agent|
 const important=/^\s*(?:#{1,6}\s*)?(?:【(?:重要问题|需要确认|阻塞问题|风险提示)】|\[(?:Important|Action required|Blocked)\])/im;
 const interactive=new Set(['AskUserQuestion','ExitPlanMode','EnterPlanMode']);
 const blocks=(message:Message):ContentBlockWrapper[]=>Array.isArray(message.message.content)?message.message.content:[];
+// Local Claude Code does not stream tool_progress (CLI 2.1.83 sends it only with CLAUDE_CODE_REMOTE),
+// so derive the running tool from the latest tool_use without a result.
+const stamp=(value:unknown)=>typeof value==='number'?value:typeof value==='string'&&!Number.isNaN(Date.parse(value))?Date.parse(value):Date.now();
+function toolLabel(name:string,input:any){
+  const short=name.startsWith('mcp__')?name.split('__').at(-1)||name:name;
+  const detail=input?.description||input?.id||input?.action||input?.command||input?.file_path||input?.pattern||input?.url||input?.query||'';
+  return {name:short,detail:String(detail).replace(/\s+/g,' ').slice(0,80)};
+}
+export interface RunningTool {name:string;detail:string;since:number;parent:boolean}
 const contentText=(value:any):string=>typeof value==='string'?value:Array.isArray(value)?value.map(v=>typeof v==='string'?v:v?.text||'').join('\n'):'';
 const text=(message:Message)=>typeof message.message.content==='string'?message.message.content:contentText(blocks(message).map(w=>w.content));
 function userRequest(message:Message){
@@ -33,7 +42,7 @@ function subset(message:Message,content:ContentBlockWrapper[]):Message{
   return new Message(message.type,{role:message.message.role,content},message.timestamp,{parentToolUseId:message.parentToolUseId});
 }
 export function executionView(messages:Message[],busy:boolean,disconnected=false){
-  const tools=new Map<string,{name:string;wrapper:ContentBlockWrapper}>();
+  const tools=new Map<string,{name:string;wrapper:ContentBlockWrapper;input:any;since:number;child:boolean}>();
   let lastTool=-1,result:Message|undefined,resultIndex=messages.length;
   let stopped=disconnected;
   messages.forEach((message,index)=>{
@@ -41,7 +50,7 @@ export function executionView(messages:Message[],busy:boolean,disconnected=false
     for(const wrapper of blocks(message)){
       const block=wrapper.content;
       if(block.type==='tool_use'){
-        tools.set(block.id,{name:block.name,wrapper});
+        tools.set(block.id,{name:block.name,wrapper,input:block.input,since:stamp(message.timestamp),child:!!message.parentToolUseId});
         if(!message.parentToolUseId)lastTool=index;
       }
       if(!message.parentToolUseId&&(block.type==='interrupt'||block.type==='llm_error'))stopped=true;
@@ -97,11 +106,18 @@ export function executionView(messages:Message[],busy:boolean,disconnected=false
     const value=wrapper.getToolResultValue();
     if(!value?.is_error)return [];
     const full=contentText(value.content).replace(/<\/?tool_use_error>/g,'').trim();
-    return [{id,name,summary:(full.split('\n').find(line=>line.trim())||'工具执行失败').slice(0,180)}];
+    const lines=full.split('\n').map(line=>line.trim()).filter(Boolean),first=lines[0]||'工具执行失败';
+    const archiveWrite=/write error \(disk full\?\)|fchmod \(file attributes\) error|is probably truncated/i.test(full);
+    const detail=lines.slice(1).find(line=>/error|failed|denied|not found|异常|失败/i.test(line));
+    const summary=archiveWrite?first+' · 归档解压写入失败；macOS 中文文件名请改用 ditto，并检查磁盘空间':/^Exit code \d+$/i.test(first)&&detail?first+' · '+detail:first;
+    return [{id,name,summary:summary.slice(0,180)}];
   });
   const resultError=result?.is_error?(text(result)||'任务执行失败，请展开执行记录查看详情。'):'';
   // Some SDK providers return the final text only in result.result.
   const resultText=result?text(result):'';
   if(result&&!result.is_error&&!answers.length&&resultText.trim()&&!notices.some(message=>text(message).trim()===resultText.trim()))answers.push(new Message('assistant',{role:'assistant',content:resultText},result.timestamp));
-  return {details,notices,answers,failures,resultError,status,toolCount:tools.size};
+  let running:RunningTool|undefined;
+  if(status==='running')for(const {name,wrapper,input,since,child} of tools.values())if(!wrapper.getToolResultValue())running={...toolLabel(name,input),since,parent:!child};
+  const last=messages.at(-1);
+  return {details,notices,answers,failures,resultError,status,toolCount:tools.size,running,lastActivity:last?stamp(last.timestamp):Date.now()};
 }

@@ -11,8 +11,9 @@ const source = fs.readFileSync(path.join(root, 'src/kicadPromptOptimizer.ts'), '
 const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } });
 const predictionModule = {exports:{}};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(root,'src/kicadPrediction.ts'),'utf8'), {compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText, {module:predictionModule,exports:predictionModule.exports});
+const journalEvents=[];const diagnostics={RuntimeJournal:class{async record(event){journalEvents.push(event)}}};
 const module = { exports: {} };
-vm.runInNewContext(compiled.outputText, { module, exports: module.exports, AbortController, setTimeout, clearTimeout, require:name=>{assert.equal(name,'./kicadPrediction');return predictionModule.exports;} });
+vm.runInNewContext(compiled.outputText, { module, exports: module.exports, AbortController, setTimeout, clearTimeout, require:name=>{if(name==='./shared/kicadMembership')return {codexText:async()=> 'codex-text-fixture'};if(name==='./shared/kicadDiagnostics')return diagnostics;assert.equal(name,'./kicadPrediction');return predictionModule.exports;} });
 const { optimizePrompt } = module.exports;
 const config = { cwd: '/isolated/optimizer', cliPath: '/cli.js', env: { ANTHROPIC_AUTH_TOKEN: 'fixture-only' } };
 const request = { type: 'optimize_prompt', text: '只检查 PCB，不修改 @board.kicad_pcb', model: 'deepseek-flash' };
@@ -61,3 +62,7 @@ await assert.rejects(optimizePrompt(request, config, new AbortController().signa
 await assert.rejects(optimizePrompt(request, config, new AbortController().signal, stream([{ type: 'result', subtype: 'error_during_execution', errors: ['401 fixture error'] }])), /401/);
 await assert.rejects(optimizePrompt(request, config, new AbortController().signal, stream([{ type: 'assistant', message: { content: [{ type: 'tool_use' }] } }])), /调用工具/);
 console.log('Prompt optimizer checks passed: selected model, text-only isolation, cancel, timeout, errors, empty output, tool rejection.');
+
+assert.ok(journalEvents.some(e=>e.phase==='error'));assert.ok(journalEvents.some(e=>e.phase==='result'));assert.ok(journalEvents.every(e=>!('text' in e)&&!('env' in e)));
+
+const codexResult=await optimizePrompt({...request,model:"codex:gpt-fixture"},config,new AbortController().signal,()=>{throw Error("Codex must never call Claude SDK")});assert.equal(codexResult.text,"codex-text-fixture");

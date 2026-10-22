@@ -14,7 +14,7 @@ function method(file,className,name){
 let options;
 const query=method('src/services/claude/ClaudeSdkService.ts','ClaudeSdkService','query').replace("await import('@anthropic-ai/claude-agent-sdk')",'await fixture.sdk()');
 const fixture={sdk:async()=>({query:request=>{options=request.options;return {fixture:true,next:async()=>({done:true}),return:async()=>({done:true})}}})};
-const scope={fixture,path,os,SessionContinuity:class{validateAnswer(tool,input,result){return result}},AbortController,process:{env:{}},vscode:{Uri:{file:f=>f}},getKiCadSdkServers:async()=>({kicad:{type:'sdk',name:'kicad',instance:{}}}),READ_ONLY_EDA_TOOLS:['mcp__kicad__kicad_health'],isDeepSeekModel:()=>false,applyReasoningEnvironment(){},VS_CODE_APPEND_PROMPT:'fixture'};
+const scope={DEMAND_GUIDANCE:'on demand',membershipEnvironment:env=>env,withProviderHistory:async p=>p,fixture,path,os,SessionContinuity:class{validateAnswer(tool,input,result){return result}},AbortController,process:{env:{}},vscode:{Uri:{file:f=>f}},getKiCadSdkServers:async()=>({kicad:{type:'sdk',name:'kicad',instance:{}}}),READ_ONLY_EDA_TOOLS:['mcp__kicad__kicad_health'],isDeepSeekModel:()=>false,applyReasoningEnvironment(){},VS_CODE_APPEND_PROMPT:'fixture'};
 vm.runInNewContext(transpile(`class SDK {
   logService={info(){},warn(){},error(){}};
   configService={getAllSettings:async()=>({}),getEnvironmentVariables:async()=>({})};
@@ -33,9 +33,15 @@ for(const permissionMode of ['acceptEdits','default','plan','bypassPermissions']
   assert.ok(options.hooks.UserPromptSubmit&&options.hooks.PreCompact&&options.hooks.SessionStart);
   assert.deepEqual(Object.keys(options.mcpServers),['kicad'],'chat registers only in-process KiCad tools');
   assert.equal(options.mcpServers.kicad.type,'sdk');
-  assert.deepEqual(options.allowedTools,['mcp__kicad__kicad_health'],'only read-only EDA tools skip the prompt');
+  assert.deepEqual(Array.from(options.allowedTools),['mcp__kicad__kicad_health','mcp__kicad__capability_search'],'only read-only EDA tools skip the prompt');
   assert.equal(options.abortController.signal.aborted,false);await stream.return();assert.equal(options.abortController.signal.aborted,true,'closing a channel must abort the CLI and its MCP processes');
 }
+const delegated=[];
+await scope.sdk.query({inputStream:{},resume:null,model:'sonnet',cwd:'/fixture',permissionMode:'plan',canUseTool:async(name,args)=>{delegated.push({name,args});return {behavior:'deny',message:'fixture denial'};}});
+assert.equal((await options.canUseTool('mcp__kicad__capability_call',{id:'tool:kicad_health',arguments:{}},{})).behavior,'allow');
+for(const id of ['tool:kicad_board','mcp:selected:write','skill:fixture'])assert.equal((await options.canUseTool('mcp__kicad__capability_call',{id,arguments:{action:'write'}},{})).behavior,'deny');
+assert.deepEqual(delegated.map(x=>x.name),['mcp__kicad__kicad_board','mcp__selected__write','Skill']);
+assert.deepEqual(JSON.parse(JSON.stringify(delegated[2].args)),{skill:'fixture'});
 const change=method('src/webview/src/core/Session.ts','Session','setPermissionMode');
 let selected='acceptEdits',success=true,reject=false,approvals=[];
 const requests=['Bash','Read','mcp__kicad__kicad_call','AskUserQuestion','ExitPlanMode','EnterPlanMode'].map(toolName=>({toolName,inputs:{fixture:true},accept:(...args)=>approvals.push({toolName,args})}));

@@ -1,0 +1,6 @@
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import vm from 'node:vm';import {createRequire} from 'node:module';
+const root=process.argv[2],require=createRequire(path.join(root,'package.json')),ts=require('typescript');const source=fs.readFileSync(path.join(root,'src/services/claude/handlers/handlers.ts'),'utf8');
+const start=source.indexOf('async function loadConfig('),end=source.indexOf('\n/**',start),js=ts.transpileModule(source.slice(start,end),{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText;
+const calls=[];const load=vm.runInNewContext(js+'\nloadConfig',{process});
+const result=await load({workspaceService:{getDefaultWorkspaceFolder:()=>({uri:{fsPath:'/fixture'}})},sdkService:{query:()=>{throw Error('Configuration must not create a chat or tools');},probe:async p=>{calls.push(p);return {data:p.capabilities.includes('supportedCommands')?{supportedCommands:['fixture']}:{supportedModels:['model'],accountInfo:{claude:{subscriptionType:'fixture'}}}};}}});
+assert.equal(calls.length,2);assert.equal(result.models[0],'model');assert.equal(result.slashCommands[0],'fixture');console.log('Config discovery passed: lightweight probes only, no chat, no MCP startup/shutdown race.');

@@ -79,6 +79,15 @@ export function summarize(report, reportPath) {
   if (report.ignored_checks) summary.ignoredChecks = report.ignored_checks;
   return summary;
 }
+// Round-robin over types, most frequent first, so a large clearance group does not hide rarer errors.
+function sampleByType(violations, limit) {
+  const byType = new Map();
+  for (const v of violations) { const key = v.type ?? v.group; if (!byType.has(key)) byType.set(key, []); byType.get(key).push(v); }
+  const queues = [...byType.values()].sort((a, b) => (b[0].severity === 'error') - (a[0].severity === 'error') || b.length - a.length);
+  const out = [];
+  for (let i = 0; out.length < limit && queues.some(q => i < q.length); i++) for (const q of queues) if (i < q.length && out.length < limit) out.push(q[i]);
+  return out;
+}
 export class KiCadCLI {
   constructor({ binary = process.env.KICAD_CLI || 'kicad-cli', run = execute } = {}) { this.binary = binary; this.run = run; }
   async raw(args, options = {}) {
@@ -121,7 +130,7 @@ export class KiCadCLI {
     return result;
   }
   async rules(action, p, command, options) {
-    const full = p.full, sample = p.sampleViolations ?? 50;
+    const full = p.full, sample = p.sampleViolations ?? 20;
     delete p.full; delete p.sampleViolations;
     if (!Number.isInteger(sample) || sample < 1 || sample > 10000) bad('sampleViolations must be 1..10000');
     p.format ??= 'json'; p.exitCodeViolations = true;
@@ -142,7 +151,7 @@ export class KiCadCLI {
         data.summary = summarize(report, p.output);
         if (full || bytes <= 256 * 1024) data.reportJson = report;
         else {
-          Object.assign(data, { reportJsonOmitted: true, reportBytes: bytes, sampleViolations: groups.flatMap(g => (report[g] ?? []).map(v => ({ group: g, ...v }))).slice(0, sample), next: 'Read reportPath for the complete report, or use full=true.' });
+          Object.assign(data, { reportJsonOmitted: true, reportBytes: bytes, sampleViolations: sampleByType(groups.flatMap(g => (report[g] ?? []).map(v => ({ group: g, ...v }))), sample), next: 'Samples cover each violation type in turn. Read reportPath for the complete report, or use full=true.' });
         }
       } catch (err) { diagnostics.push({ severity: 'error', code: 'REPORT_UNREADABLE', message: err.message }); }
     }

@@ -16,6 +16,7 @@ def sources(component):
     paths = [p for p in component.iterdir() if p.is_file() and p.suffix in ('.sh', '.mjs', '.cjs', '.py', '.yaml', '.md', '.txt')]
     paths += [p for p in (component / 'overlay').rglob('*') if p.is_file() and 'node_modules' not in p.relative_to(component).parts]
     paths += [p for p in (component.parent / 'composer').rglob('*') if p.is_file()]
+    paths += [p for p in (component.parent / 'membership').rglob('*') if p.is_file()]
     paths += [p for p in (component.parent / 'direct').rglob('*') if p.is_file() and not {'node_modules', 'dist', 'test'} & set(p.relative_to(component.parent / 'direct').parts) and p.suffix in ('.mjs', '.json')]
     paths += [Path(__file__).resolve()]
     entries = [(str(p.relative_to(component.parent)), digest(p)) for p in paths]

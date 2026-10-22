@@ -61,6 +61,8 @@ echo "Installing dependencies and packaging (first run can take a few minutes) .
   node "$SCRIPT_DIR/test-composer.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-probe-lifecycle.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-provider-routing.mjs" "$BUILD_DIR"
+  node "$SCRIPT_DIR/test-membership.mjs" "$BUILD_DIR"
+  node "$SCRIPT_DIR/test-config-discovery.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-permissions.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-composer-keyboard.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-reasoning.mjs" "$BUILD_DIR"

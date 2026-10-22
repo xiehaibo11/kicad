@@ -1,0 +1,12 @@
+{
+  "fixture": "Synthetic text conversation; no actual PCB inspection",
+  "model": "kicad-deepseek/deepseek-flash",
+  "suggestion": "好的，请解释 U1 的供电和 R1 的阻值具体有什么问题。",
+  "optimized": "请以只读方式检查 U1 和 R1（10 kΩ）：不要修改任何文件，也不要进行布线，只向我解释检查中发现的问题。",
+  "mcpToolCount": 14,
+  "embeddedWebUi": true,
+  "embeddedAssetBytes": 2738111,
+  "sessionsUnchanged": true,
+  "toolsCalled": 0,
+  "chatMessagesSent": 0
+}

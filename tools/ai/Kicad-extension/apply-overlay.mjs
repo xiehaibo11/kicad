@@ -1,3 +1,4 @@
+import {applyMembership} from './apply-membership.mjs';
 // Apply the KiCad overlay to a copy of the Claudix source tree.
 //
 // Usage: node apply-overlay.mjs <buildDir> <overlayDir>
@@ -719,5 +720,8 @@ applyLifecycle(buildDir);
 applyModelSelection(buildDir);
 applyMessageEditing(buildDir,overlayDir);
 applyContinuity(buildDir,overlayDir);
-applyLazyTools(buildDir);
 applyHistory(buildDir);
+
+applyMembership(buildDir,overlayDir);
+
+applyLazyTools(buildDir);

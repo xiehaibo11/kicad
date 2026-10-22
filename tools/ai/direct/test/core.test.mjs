@@ -76,3 +76,10 @@ test('in-process default project discovery uses the frontend workspace directory
     assert.equal(listed.ok,true);assert.match(JSON.stringify(listed.data),/fixture.kicad_pro/);
   } finally {runtime.close();fs.rmSync(directory,{recursive:true,force:true});}
 });
+
+test('action search ranks the named action before incidental verifyWith matches',()=>{
+  const found=listActions({search:'drc.run'});
+  assert.equal(found[0].name,'board.drc.run');
+  assert.ok(!found.some(a=>a.name==='board.fanout.run'));
+  assert.ok(listActions({search:'BGA扇出'}).some(a=>a.name==='board.fanout.run'));
+});

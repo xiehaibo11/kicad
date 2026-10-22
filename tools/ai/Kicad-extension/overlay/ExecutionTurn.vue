@@ -16,6 +16,7 @@
         <span class="execution-status" aria-hidden="true" />
         <span>{{ awaitingPermission && busy ? '等待确认' : statusLabels[view.status] }}</span>
         <span v-if="view.toolCount" class="execution-count">· {{ view.toolCount }} 次工具调用</span>
+        <span v-if="progress" class="execution-progress" :title="progress">· {{ progress }}</span>
         <span class="execution-toggle-label">{{ expanded?'收起':'点击查看' }}</span>
         <span class="codicon" :class="expanded?'codicon-chevron-up':'codicon-chevron-down'" aria-hidden="true" />
       </button>
@@ -33,7 +34,7 @@
   </section>
 </template>
 <script setup lang="ts">
-import {computed,nextTick,ref,useId} from 'vue';
+import {computed,nextTick,onBeforeUnmount,ref,useId,watch} from 'vue';
 import type {Message} from '../../models/Message';
 import type {ToolContext} from '../../types/tool';
 import {executionView} from '../../utils/executionTimeline';
@@ -42,6 +43,17 @@ const props=defineProps<{messages:Message[];context:ToolContext;busy?:boolean;di
 const expanded=ref(false),detailsId='execution-'+useId();
 const toggleButton=ref<HTMLButtonElement>();
 const view=computed(()=>executionView(props.messages,!!props.busy,!!props.disconnected));
+// Tick only while running so long tools show live elapsed time instead of a static spinner.
+const now=ref(Date.now());let timer:ReturnType<typeof setInterval>|undefined;
+watch(()=>view.value.status==='running',running=>{if(timer)clearInterval(timer);timer=running?setInterval(()=>{now.value=Date.now();},1000):undefined;now.value=Date.now();},{immediate:true});
+onBeforeUnmount(()=>{if(timer)clearInterval(timer);});
+const elapsed=(since:number)=>{const s=Math.max(0,Math.floor((now.value-since)/1000));return s<60?s+' 秒':Math.floor(s/60)+' 分 '+(s%60)+' 秒';};
+const progress=computed(()=>{
+  if(view.value.status!=='running'||(props.awaitingPermission&&props.busy))return '';
+  const tool=view.value.running;
+  if(tool)return '正在执行 '+tool.name+(tool.detail?'：'+tool.detail:'')+(tool.parent?'':'（子代理）')+' · '+elapsed(tool.since);
+  return '等待模型回复 · '+elapsed(view.value.lastActivity);
+});
 const statusLabels={running:'运行中',completed:'已完成',failed:'执行失败',stopped:'已停止',ended:'已结束'};
 async function collapseDetails(){
   expanded.value=false;
@@ -59,6 +71,7 @@ async function collapseDetails(){
 .execution-collapse{margin:8px 8px 0 12px;}
 .execution-status{width:6px;height:6px;background:#888;border-radius:50%;flex:none;}
 .running .execution-status{background:#9ad58b;box-shadow:0 0 0 2px #9ad58b18;}
+.execution-progress{color:var(--vscode-foreground,#ccc);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;}
 .execution-count,.execution-toggle-label{color:var(--vscode-descriptionForeground,#999);}
 .execution-toggle .codicon{font-size:12px;}
 .execution-details{border-left:1px solid var(--vscode-panel-border,#333);padding:6px 0;margin:4px 0 0 7px;overflow-wrap:anywhere;min-width:0;}

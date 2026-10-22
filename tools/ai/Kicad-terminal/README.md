@@ -6,11 +6,12 @@
 
 ## 0.2.1 KiCad 工具按需加载
 
-会话开始时模型只看到一个很小的 `kicad_load` 工具和简短说明（`composer/eda-agent-instructions.md`），
-不再每次请求都带上 20 个 KiCad 工具定义和完整指南。用户消息涉及 KiCad、PCB、原理图、封装、DRC/ERC、
-布线、制造文件等，或模型调用了 `kicad_load`，从下一步起（同一轮内）才列出 20 个 KiCad 工具，并在系统提示中
-加入完整指南（`composer/kicad-tools-guide.md`）；之后该会话一直保持加载（压缩后也保持）。
-判断规则在 `composer/kicad-tools.ts`，与 VS Code 扩展共用；实现见 `overlay/packages/opencode/src/kicad/lazy.ts`。
+当前本地构建与扩展 0.4.36 共用 `composer/demand.ts`：初始仅注册两个扩展能力入口
+`capability_search`、`capability_call`，保留 Bash / Read 等基础终端工具。
+搜索每页最多返回 5 个匹配能力；只有被选择的 MCP 服务器才连接，技能只在被调用时读取正文。
+不再根据关键词或历史会话自动加载全部 KiCad 工具，也不再注入完整技能目录。
+权限、调用日志和错误分析保留；自然语言任务可在同一轮完成发现与调用。
+原生会话加载过滤由 `apply-demand.mjs` 维护，外部 MCP 配置由会话插件接管并按需连接。
 
 ## 0.2.0 工作台界面与更新
 
@@ -202,3 +203,37 @@ build manifests verify artifact/source consistency before installation.
 ## 共享会话历史
 
 输入 `/kicad-history` 可读取当前工作区的扩展和终端会话。内置 `session_history` 工具提供 `list` / `read`、`offset` / `limit` 分页；不依赖 KiCad 工具预先加载。扩展使用本地 JSONL，终端读取原生 OpenCode SQLite，按工作目录隔离。历史内容是引用数据，不自动恢复其中的任务；终端原生会话仍使用 `/sessions` 或 `--session <id>` 继续。
+
+## 后端运行日志与诊断
+
+终端插件与扩展共用 `../composer/diagnostics.ts`，自动记录工具开始/结束、
+终端命令退出码、AI 请求/完成/重试/错误和启动 IPC 状态。工具抛错通过运行时事件总线捕获，
+不需要等下一次工具调用。可以直接说“分析当前工作区的运行错误”，由常驻只读工具
+`runtime_diagnostics` 查询两端记录；可用 `sessionId` 限定会话，不需要斜杠命令。
+
+默认日志目录为 `${XDG_STATE_HOME:-~/.local/state}/kicad/diagnostics/<工作区路径哈希>/`，
+可通过 `KICAD_DIAGNOSTICS_DIR` 覆盖根目录。JSONL 按客户端、实例、UTC 日期分文件，
+单文件约 2 MiB 轮转，写入时定期清理超过 14 天或最新 40 个文件之外的记录。
+文件权限 0600，目录权限 0700；不上传到服务端。
+
+日志只保留调用元数据及脱敏错误摘要，不保存提示词、工具参数、环境变量、认证头或完整输出。
+错误摘要的脱敏是尽力处理，分享日志前仍应检查业务信息。诊断读取最多 8 MiB，明确标注截断、
+损坏行和未见结束事件的调用。规则归类覆盖认证、限流、上下文、连接、超时、参数、依赖、
+命令退出和工程检查；取消及权限拒绝单列。建议不代表已确认根因，不自动重放命令或改动设计。
+日志写入失败会输出警告并继续业务；新功能只能记录启用后的运行，不能补造旧运行记录。
+
+### 本地 Claude / Codex 会员
+
+共享运行插件自动发现本地 `claude` 和 `codex` 登录，注册两个独立的模型提供方：`kicad-claude`（Claude 本地会员）和 `kicad-codex`（Codex / ChatGPT 本地会员）。型号来自 CLI 动态目录，名称包含完整 ID；已有 DeepSeek 与自定义提供方配置保留。在模型选择器中选取相应会员入口即可，不需要输入斜杠命令。
+
+登录凭据只在发送请求时进入内存，不复制到 OpenCode 凭据文件或项目配置。Claude 在 macOS 使用 Claude Code 自己的钥匙串项，其他平台读取其 `.credentials.json`；过期时提示在 Claude Code 刷新登录。Codex 由 app-server 检查登录和刷新，再读取 CLI 的文件凭据存储。网络请求限制为官方固定来源且不跟随重定向。`KICAD_LOCAL_MEMBERSHIP=0` 可关闭自动发现（测试和不需要会员提供方时使用）；`KICAD_CLAUDE_PATH`、`KICAD_CODEX_PATH` 可指定本地 CLI。目录可读不代表额度充足，429 等错误由运行诊断记录。
+
+### Built-in documentation and local memory (0.4.34)
+
+Both interfaces register `context7`, `session_history`, and `local_memory` directly in-process, including the extension's Codex backend. They are available without a slash command or an external MCP daemon. Context7 uses the official fixed-origin REST API (`https://context7.com/api/v2/libs/search` and `/context`); only the explicit documentation query is sent. Configure `CONTEXT7_API_KEY` or a private `~/.config/kicad/context7.json` (`{"apiKey":"..."}`, mode 0600; XDG_CONFIG_HOME supported). Keys are not bundled in the extension or terminal artifacts.
+
+Chat archives remain local: extension events under `~/.local/share/kicad/history/extension/`, terminal conversations in `~/.local/share/opencode/opencode.db`, and native Claude history under `~/.claude/projects/`. The shared history reader scopes both sources to the canonical workspace. `KICAD_HISTORY_DIR` overrides the shared history root; `KICAD_HISTORY_DB` overrides the terminal database.
+
+`local_memory` appends verified summaries or user-requested preferences to `<history-root>/memory/<workspace-hash>/memory.jsonl` with private file permissions. `read` recalls the latest 30 matching records; it does not automatically replay historical instructions. Credentials are redacted from memory summaries. Chat archives and memory summaries are distinct: retaining chats does not imply every message becomes an enduring preference. The model can list/read prior chats and append/recall memory through natural-language requests. Network documentation queries and memory writes respect the active tool permission mode.
+
+The model selector shows short names only (for example `Opus 5.5`, `GPT-6.1 Sol`); the full model ID remains the request value and is available in the extension's hover hint. Local login status is in the selector heading's hover hint.

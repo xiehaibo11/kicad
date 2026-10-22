@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
+import {RuntimeJournal} from './shared/kicadDiagnostics';
 import type { Options, Query } from '@anthropic-ai/claude-agent-sdk';
 
 export interface OptimizePromptRequest {
@@ -28,6 +29,9 @@ export async function optimizePrompt(
     if (typeof request.model !== 'string' || !request.model.trim()) throw new Error('请先选择模型。');
     if (signal.aborted) throw new Error('已取消提示词优化。');
 
+    const journal=new RuntimeJournal('extension',config.cwd),started=Date.now();
+    const name=policy?.allowEmpty?'draft-prediction':'prompt-optimizer';
+    void journal.record({category:'ai',phase:'request',status:'started',name,model:request.model});
     const controller = new AbortController();
     const cancel = () => controller.abort();
     signal.addEventListener('abort', cancel, { once: true });
@@ -85,7 +89,10 @@ export async function optimizePrompt(
             })(),
             aborted
         ]);
+        await journal.record({category:'ai',phase:'result',status:'returned',name,model:request.model,durationMs:Date.now()-started});
         return result;
+    } catch(error) {
+        await journal.record({category:'ai',phase:'error',status:'error',name,model:request.model,durationMs:Date.now()-started,error});throw error;
     } finally {
         if (timer) clearTimeout(timer);
         signal.removeEventListener('abort', cancel);

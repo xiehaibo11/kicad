@@ -76,7 +76,7 @@ function load(relative, overrides = {}) {
 }
 
 const policy = load('src/kicadToolsPolicy.ts');
-const runtime = load('src/kicadRuntime.ts', { './kicadToolsPolicy': policy });
+const runtime = load('src/kicadRuntime.ts', { './shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './kicadToolsPolicy': policy });
 const server = runtime.getKiCadRuntimeConfig('/tmp/second board');
 assert.equal(server.command, undefined);
 assert.equal(server.entry, settings.directPath);
@@ -111,7 +111,7 @@ try {
   fs.rmSync(temporary, { recursive: true, force: true });
 }
 
-load('src/kicadIntegration.ts', { './shared/kicadHistory': load('src/shared/kicadHistory.ts'), './kicadRuntime': runtime, './kicadProviders': { resolveDeepSeekCredentials: async()=>undefined } }).registerKiCadIntegration({ subscriptions: [] });
+load('src/kicadIntegration.ts', { './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './shared/kicadHistory': load('src/shared/kicadHistory.ts'), './kicadRuntime': runtime, './kicadProviders': { resolveDeepSeekCredentials: async()=>undefined } }).registerKiCadIntegration({ subscriptions: [] });
 const start = handlers.get('kicadAgent.startOpenCode');
 await start();
 assert.equal(terminals.length, 1);
@@ -179,7 +179,7 @@ assert.match(sdk, /mcpServers: await getKiCadSdkServers\(cwdParam,/);
 assert.match(sdk, /applyProviderEnvironment\(this\.context, env, modelParam\)/);
 assert.match(sdk, /# KiCad Context/);
 assert.ok(!sdk.includes('getEasyEdaMcpServer'));
-assert.match(sdk, /allowedTools: READ_ONLY_EDA_TOOLS/);
+assert.match(sdk, /allowedTools: \[\.\.\.READ_ONLY_EDA_TOOLS/);
 assert.match(sdk, /Kicad EDA agent — understand the request, then use tools/, 'shared intent-first routing is in the system prompt');
 assert.match(sdk,/granting tool permission does not create a user task/);
 assert.ok(!/\/kicad-(check|drc|fab|route|schematic|step)\b/.test(sdk.split('# KiCad Context')[1]), 'routing never requires slash commands');
@@ -188,14 +188,11 @@ assert.deepEqual(extras.instructions, ['AGENTS.md', '/x/eda-agent-instructions.m
 assert.equal(extras.mcp.easyeda, undefined);
 assert.ok(runtime.READ_ONLY_EDA_TOOLS.every(name => /^mcp__kicad__/.test(name)));
 assert.ok(!runtime.READ_ONLY_EDA_TOOLS.some(name => /kicad_call|kicad_board/.test(name)));
-// KiCad tools load on demand: the always-on prompt routes to kicad_load; the guide comes with the tools.
-const alwaysOn = sdk.slice(sdk.indexOf('const VS_CODE_APPEND_PROMPT'), sdk.indexOf('const KICAD_TOOLS_PROMPT'));
-assert.match(alwaysOn, /KiCad tools load on demand/);
-assert.ok(!alwaysOn.includes('# KiCad Context') && !alwaysOn.includes('## KiCad built-in tools'), 'KiCad guide is not always loaded');
-assert.match(sdk.slice(sdk.indexOf('const KICAD_TOOLS_PROMPT')), /# KiCad tools are loaded[\s\S]*## KiCad built-in tools/);
-assert.match(sdk, /append: VS_CODE_APPEND_PROMPT \+ \(params\.kicadTools \? KICAD_TOOLS_PROMPT : ''\)/);
-assert.match(sdk, /getKiCadSdkServers\(cwdParam, [^\n]*\{tools: !!params\.kicadTools, onLoad: params\.onKiCadLoad\}\)/);
-assert.ok(runtime.READ_ONLY_EDA_TOOLS.includes('mcp__kicad__kicad_load'), 'the loader never prompts');
+// Main query never enables all tools or automatic skill injection.
+assert.match(sdk,/strictMcpConfig: true/);
+assert.match(sdk,/'disable-slash-commands': null/);
+assert.match(sdk,/DEMAND_GUIDANCE/);
+assert.ok(!sdk.includes('params.kicadTools'));
 console.log('Overlay checks passed: native terminal, workspace selection, MCP config preservation, trust, paths, provider routing, SDK syntax.');
 
 assert.ok(fs.readFileSync(path.join(root,'src/services/logService.ts'),'utf8').includes("createOutputChannel('Kicad'"));

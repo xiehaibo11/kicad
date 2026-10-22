@@ -102,3 +102,16 @@ permission checks, routing obstacles, pipeline previews and evidence gates.
 Third-party notice: circuit-block data originates from the MIT-licensed
 `zhoushoujianwork/easyeda-agent` project; see `LICENSE-blocks-MIT.txt`. That
 attribution does not imply a runtime dependency on its software or services.
+
+## Automatic native connection
+
+Both frontends connect directly to the native GUI. The default connection probes
+`/tmp/kicad/api.sock`, discovers native `api-<pid>.sock` fallbacks, and starts
+the KiCad GUI if no instance is available. Multiple fallback instances require
+an explicit socket. Startup waits for native readiness; edits are never retried.
+An explicit `KICAD_API_SOCKET` stays isolated and is never redirected.
+`KICAD_GUI` can select the native GUI executable; installer CLI wrappers are
+resolved without executing shell text. Set `KICAD_AUTO_CONNECT=0` to disable
+automatic GUI launch. `project.open` uses the GUI's native OpenDocument handler
+and no longer creates a headless API process. IPC connection and loaded-document
+readiness are reported separately.

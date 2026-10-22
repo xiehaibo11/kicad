@@ -19,12 +19,13 @@ const api = new Proxy(function () {}, {
   apply: () => api,
   construct: () => api
 });
-vm.runInNewContext(fs.readFileSync(entry, 'utf8'), {
+vm.runInNewContext(fs.readFileSync(entry, 'utf8'), Object.assign(Object.create(globalThis), {
   module, exports: module.exports,
   require: name => name === 'vscode' ? api : require(name),
   __filename: entry, __dirname: path.dirname(entry),
-  process, Buffer, console, URL, TextEncoder, TextDecoder,
+  global:globalThis, process, Buffer, console, URL, TextEncoder, TextDecoder,
+  AbortController, AbortSignal, fetch, Headers, Request, Response,
   setTimeout, clearTimeout, setInterval, clearInterval, setImmediate, clearImmediate,
-}, { filename: entry });
+}), { filename: entry });
 assert.equal(typeof module.exports.activate, 'function');
 console.log('Packaged extension entry and bundled dependencies load successfully.');

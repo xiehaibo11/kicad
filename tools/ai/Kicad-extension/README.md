@@ -1,18 +1,23 @@
 # Kicad
 
-当前版本：0.4.30。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
+当前版本：0.4.36。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
 终端源码为 `tools/ai/Kicad-terminal`。扩展显示为 **Kicad**，终端显示为 **Kicad 终端**。
 扩展安装 ID 仍为 `kicad-agent.kicad`，可直接升级并保留用户配置。
+
+0.4.31 在可信工作区激活时自动连接原生 KiCad IPC。默认实例不存在时启动 KiCad GUI 并等待就绪；工程打开直接交给 GUI，不再自动启动无界面 API 服务。显式 socket 不重定向。
 
 0.4.30 增加当前工作区的共享会话历史：聊天面板历史列表可读取终端会话，标题标记为 `[终端]`，以只读方式展示；标题栏的历史按钮或 `Kicad: 共享会话历史` 命令可查看原始记录，并在终端继续原生会话。终端使用 `/kicad-history` 或 `session_history` 工具读取两端历史。跨运行时不混用会话 ID。
 
 扩展用户消息与助手回复逐条保存到 `${KICAD_HISTORY_DIR:-${XDG_DATA_HOME:-~/.local/share}/kicad/history}/extension/` 的 0600 JSONL 备份，原生 Claude 会话仍保留在 `CLAUDE_CONFIG_DIR/projects`。历史读取合并未刷新的备份并按 UUID 去重；终端 SQLite 数据库以只读方式读取（macOS 使用系统 `/usr/bin/sqlite3`）。记录包含对话内容，应按用户数据保管；不会自动上传。Harness 的任务提醒、重复失败保护与大结果归档也随本版本集成。
 
-0.4.29 起 KiCad 工具按需加载：新对话只带一个很小的 `kicad_load` 工具和简短说明，不再每次都把
-20 个 KiCad 工具定义和完整 KiCad 指南放进上下文。发送的消息涉及 KiCad、PCB、原理图、封装、DRC/ERC、
-布线、制造文件等工作时，扩展在发送前以同一会话（resume）重启 SDK 进程并挂上全部工具和指南；之后该对话
-一直保持加载。模型在未加载时调用 `kicad_load`，工具会随用户的下一条消息挂上。恢复的历史对话若用过 KiCad
-工具或提过 KiCad 需求，打开时直接加载。判断规则与终端共用 `composer/kicad-tools.ts`。
+0.4.36 将扩展（Claude / Codex）与终端的工具、MCP 和技能统一为按需发现：
+初始只注册 `capability_search`、`capability_call` 两个扩展能力入口，不因提到 PCB 就加载整套工具。
+搜索每页最多返回 5 个匹配工具的参数定义；调用使用返回的 ID，并保留原工具权限、日志和错误分析。
+外部 MCP 先仅发现名称，指定服务器搜索其工具时才连接，未选择的服务器不启动。
+技能搜索只返回名称和描述，调用后才读取该技能正文；模型上下文不预载完整技能目录。
+全部操作可在同一轮自然语言任务中完成，无需重新发送“继续”。Codex 的 MCP / 技能关闭覆盖仅作用于
+该扩展会话，不改写本地会员登录和配置。扩展原生 Skill 入口由共享技能发现入口替代。
+
 
 0.4.28 更新共享工具模块与终端插件：`board.export.*` 等命令行导出接受 `document` 作为输入文件；
 SVG/DXF/PDF/PS 导出缺少 `layers` 时在调用前报错；阻抗计算找不到层时列出实际铜层；
@@ -70,7 +75,7 @@ Esc 或点击外部关闭弹窗，关闭后恢复入口焦点；输入框 Tab �
 **自动调用工具（无需输入 /）**：直接用自然语言描述需求即可，例如“检查 KiCad 环境”“跑一下 DRC”
 “给 U1 做 BGA 扇出”“生成制造文件”。系统提示词常驻加载 `tools/ai/composer/eda-agent-instructions.md`
 （与终端共用），把需求映射到内置 KiCad 工具；`~/.claude/skills/kicad-*` 技能按描述自动触发，
-原有 `/kicad-*` 命令只作为可选别名保留。只读且不联网的工具（`kicad_load`、health、actions、native_tools、
+原有 `/kicad-*` 命令只作为可选别名保留。只读且不联网的工具（能力搜索、health、actions、native_tools、
 spec_validate、blocks、reference、audit）不再弹出确认；会修改设计、联网（web）或写出文件（gerber）的工具仍按当前权限模式确认。
 
 自动调用以用户实际提交的任务为依据；打开面板、恢复历史、选择模型或权限、接受下一句草稿
@@ -126,7 +131,7 @@ DeepSeek 的预算参数不控制推理强度，因此显式传递该提供商�
 KiCad VS Code integration based on [Claudix](https://github.com/Haleclipse/Claudix),
 with its Vue chat, history, settings and Claude Agent SDK services retained.
 The pinned upstream is 0.3.9 at `c238b3e57c55e95220a8e2837cd4cbe6350a6b65`;
-the downstream extension version is 0.4.30.
+the downstream extension version is 0.4.32.
 
 Version 0.4.10 presents next-message suggestions solely as muted placeholder
 text in an empty input. Only Tab accepts the suggestion as an editable draft;
@@ -344,3 +349,35 @@ composer remains free of a tool-reference row or suggestion checkbox.
 此参数仅用于无真实凭据的测试。`vscode-test-host.cjs` 直接启动编辑器并拥有其进程组，
 超时或结束时关闭整组测试进程，避免 CLI 退出后遗留开发窗口。
 `python3 tools/ai/Kicad-extension/test-startup.py` 验证成品包的聊天、设置及原生终端启动。
+
+## 后端运行日志与问题分析
+
+扩展与终端共用本地运行日志。SDK 工具钩子记录调用生命周期与错误，SDK 流捕获 AI
+返回错误、异步迭代异常和 CLI 标准错误中的报错，连接检查记录 IPC 的实际结果。
+聊天可以直接说“分析当前工作区的运行错误”，调用常驻只读工具 `runtime_diagnostics`；
+也可在命令面板运行 **Kicad: 运行日志与问题分析**，选择工作区后查看两端的分类统计、
+错误样例、会话/调用 ID 和排查建议。报告是本地 JSON，只读，不重放历史任务。
+
+默认保存在 `~/.local/state/kicad/diagnostics/<工作区路径哈希>/`，支持
+`XDG_STATE_HOME` 和 `KICAD_DIAGNOSTICS_DIR`。日志有脱敏、轮转与保留期限；具体数据范围、
+读取上限和权限见 [终端日志说明](../Kicad-terminal/README.md#后端运行日志与诊断)。
+这里覆盖主聊天 SDK、工具、连接检查，以及扩展的独立提示词优化/下一句预测请求。
+宿主启动前的崩溃仍需结合原生日志排查。新增日志在加载新版扩展后生效，旧会话不会被补造记录。
+
+### 本地会员与完整模型名称
+
+模型菜单从本机 `claude` 的初始化模型目录、`codex app-server` 的 `account/read` 和分页 `model/list` 发现型号。Claude 优先使用本地 CLI（可通过 `KICAD_CLAUDE_PATH` 指定）；Codex 可通过 `KICAD_CODEX_PATH` 指定。菜单显示具体模型 ID 和本地登录状态，并去重 Claude 默认/Opus 等指向同一型号的别名。没有登录 ChatGPT 时不会把 API Key 登录当作会员。
+
+Claude 会话复用本地 Claude 登录，DeepSeek 保持独立 API 配置。Codex 会话通过本地 app-server 运行；KiCad 动态工具调用共享进程内后端，写操作遵守会话权限，计划模式拒绝写操作。切换模型后，下次发送时重启对应会话；跨后端通过工作区隔离的本地历史传递上下文，原历史保留。Codex 的停止、错误、工具结果和用量会映射到现有聊天/诊断事件。优化提示词与下一句建议使用对应会员的独立纯文本请求。
+
+本地 CLI 保管并刷新登录；应用不把令牌保存到设置或日志。Codex 终端/辅助请求读取 CLI 管理的 `$CODEX_HOME/auth.json`（默认 `~/.codex/auth.json`）；目前该路径需要文件凭据存储。模型目录不等于所有模型均可成功调用；额度耗尽、账户策略和网络错误以实际请求为准。Claude/Codex 会员不替代 DeepSeek API Key。
+
+### Built-in documentation and local memory (0.4.34)
+
+Both interfaces register `context7`, `session_history`, and `local_memory` directly in-process, including the extension's Codex backend. They are available without a slash command or an external MCP daemon. Context7 uses the official fixed-origin REST API (`https://context7.com/api/v2/libs/search` and `/context`); only the explicit documentation query is sent. Configure `CONTEXT7_API_KEY` or a private `~/.config/kicad/context7.json` (`{"apiKey":"..."}`, mode 0600; XDG_CONFIG_HOME supported). Keys are not bundled in the extension or terminal artifacts.
+
+Chat archives remain local: extension events under `~/.local/share/kicad/history/extension/`, terminal conversations in `~/.local/share/opencode/opencode.db`, and native Claude history under `~/.claude/projects/`. The shared history reader scopes both sources to the canonical workspace. `KICAD_HISTORY_DIR` overrides the shared history root; `KICAD_HISTORY_DB` overrides the terminal database.
+
+`local_memory` appends verified summaries or user-requested preferences to `<history-root>/memory/<workspace-hash>/memory.jsonl` with private file permissions. `read` recalls the latest 30 matching records; it does not automatically replay historical instructions. Credentials are redacted from memory summaries. Chat archives and memory summaries are distinct: retaining chats does not imply every message becomes an enduring preference. The model can list/read prior chats and append/recall memory through natural-language requests. Network documentation queries and memory writes respect the active tool permission mode.
+
+The model selector shows short names only (for example `Opus 5.5`, `GPT-6.1 Sol`); the full model ID remains the request value and is available in the extension's hover hint. Local login status is in the selector heading's hover hint.

@@ -9,7 +9,7 @@ const exec = promisify(execFile);
 const queues = new Map<string,Promise<void>>();
 export type HistorySource = 'extension' | 'terminal';
 export type HistoryEntry = {id:string;source:HistorySource;nativeId:string;cwd:string;summary:string;lastModified:number;messageCount:number;isCurrentWorkspace:boolean};
-const uuid=/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
+const uuid=/^(?:codex-)?[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 const terminalId=/^ses_[a-zA-Z0-9]+$/;
 const canonical = async (cwd:string) => fs.realpath(cwd).catch(()=>path.resolve(cwd));
 export const historyRoot = () => process.env.KICAD_HISTORY_DIR || path.join(process.env.XDG_DATA_HOME || path.join(os.homedir(),'.local/share'),'kicad/history');

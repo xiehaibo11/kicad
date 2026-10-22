@@ -8,7 +8,8 @@ export function referenceInventory() {
 }
 function selected(query = '', stage = '') {
   query = query.trim().toLowerCase();
-  if (stage && stage !== 'all' && !catalog.topics.some(t => [t.stage, t.id].includes(stage))) bad('Unknown stage/topic; use reference.search');
+  stage = ({review:'',requirements:'spec',verification:'verified'})[stage] ?? stage;
+  if (stage && stage !== 'all' && !catalog.topics.some(t => [t.stage, t.id].includes(stage))) bad('Unknown stage/topic. Valid stages: '+[...new Set(catalog.topics.map(t=>t.stage))].join(', ')+'. Use reference.search for topic IDs.');
   return catalog.topics.filter(t => !stage || stage === 'all' || [t.stage, t.id].includes(stage)).map(t => {
     const words = [t.id, t.title, ...t.aliases].map(s => s.toLowerCase()), text = words.join(' ');
     const score = !query ? 1 : words.reduce((n, s) => n + (query.includes(s) ? 10 : 0), 0) + query.split(/\s+/).filter(w => w.length >= 2 && text.includes(w)).length;
@@ -30,7 +31,7 @@ export function reference(action, p) {
   if (!Number.isInteger(limit) || limit < 1 || limit > 20) bad('limit must be 1..20');
   let topics = selected(p.query, p.stage), matchKind = 'topic-match';
   if (plan && !topics.length && !p.stage) {
-    topics = [...selected('', 'requirements'), ...selected('', 'verification')];
+    topics = [...selected('', 'spec'), ...selected('', 'verified')];
     matchKind = 'baseline-only; refine query or use reference.search to select task-specific cards';
   }
   const count = topics.length; topics = topics.slice(0, limit);

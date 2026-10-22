@@ -9,6 +9,7 @@ const root=process.argv[2],require=createRequire(path.join(root,'package.json'))
 function load(file){const module={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,process,console,Buffer,require:name=>name.startsWith('.')?load(path.resolve(path.dirname(file),name+'.ts')):require(name)});return module.exports;}
 const {SessionContinuity}=load(path.join(root,'src/services/claude/sessionContinuity.ts'));
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'Kicad-continuity-'));
+const oldDiagnostics=process.env.KICAD_DIAGNOSTICS_DIR;process.env.KICAD_DIAGNOSTICS_DIR=path.join(tmp,'diagnostics');
 try{
  const policy=new SessionContinuity(path.join(tmp,'state')),input={session_id:'fixture-session',cwd:tmp,transcript_path:path.join(tmp,'session.jsonl')};
  assert.equal(policy.beforeTool({...input,tool_name:'Bash'}).hookSpecificOutput.permissionDecision,'deny','startup grants no task');
@@ -24,6 +25,13 @@ try{
  assert.equal(policy.beforeTool({...input,tool_name:'Read'}).continue,true);
  await policy.prompt({...input,prompt:'修改 U1 的参数为 10 kΩ，运行 DRC，不要布线。'});
  assert.equal(policy.beforeTool({...input,tool_name:'mcp__kicad__kicad_call'}).continue,true);
+ if(process.platform==='darwin'){
+   const blocked=policy.beforeTool({...input,tool_name:'Bash',tool_input:{command:'unzip -q "中文.epro2" -d /tmp/new'}});
+   assert.equal(blocked.hookSpecificOutput.permissionDecision,'deny');assert.match(blocked.hookSpecificOutput.permissionDecisionReason,/ditto/);
+   assert.equal(policy.beforeTool({...input,tool_name:'Bash',tool_input:{command:'ditto -x -k "中文.epro2" /tmp/new'}}).continue,true);
+   const hint=policy.failedTool({...input,tool_name:'Bash',error:'Exit code 50\nwrite error (disk full?)'});
+   assert.match(hint.hookSpecificOutput.additionalContext,/ditto/);
+ }
  const records=[{type:'user',uuid:'u1',message:{content:'修改 U1 的参数为 10 kΩ，运行 DRC，不要布线。'}},{type:'assistant',message:{content:[{type:'tool_use',id:'edit-1',name:'Write',input:{file_path:'/board.kicad_pcb',content:'verified'}},{type:'tool_use',id:'todo-1',name:'TodoWrite',input:{todos:[{content:'DRC 验证',status:'in_progress'}]}}]}},{type:'user',message:{content:[{type:'tool_result',tool_use_id:'edit-1',content:'已写入'}]}},{type:'assistant',message:{content:[{type:'tool_use',id:'pending-1',name:'Bash',input:{command:'run DRC'}}]}}];
  const raw=records.map(r=>JSON.stringify(r)).join('\n')+'\n';fs.writeFileSync(input.transcript_path,raw);
  await policy.checkpoint(input);const state=JSON.parse(fs.readFileSync(path.join(tmp,'state/fixture-session/checkpoint.json')));
@@ -65,5 +73,19 @@ try{
    assert.equal((await listHistory(tmp,'extension')).length,1);
    assert.equal((await readHistory('extension:'+sessionId,tmp)).length,2,'backup is readable before SDK transcript exists');
  }finally{for(const [key,value] of [['KICAD_HISTORY_DIR',savedHistory],['CLAUDE_CONFIG_DIR',savedClaude]])if(value===undefined)delete process.env[key];else process.env[key]=value;}
+ await guarded.diagnosticError({message:'429 api_key=FIXTURE_SECRET'},tmp);
+ const {diagnosticReport}=load(path.join(root,'src/shared/kicadDiagnostics.ts'));const diagnostic=await diagnosticReport(tmp);assert.ok(diagnostic.issues.some(i=>i.kind==='rate_limit'));assert.doesNotMatch(JSON.stringify(diagnostic),/FIXTURE_SECRET/);
+ const initFirst=new SessionContinuity(path.join(tmp,'init-first'));
+ await initFirst.observe({type:'system',subtype:'init',session_id:'codex-init-first',cwd:tmp,model:'fixture'});
+ await initFirst.diagnosticError('Expected query and kind: tool, skill or server');
+ const initDiagnostic=await diagnosticReport(tmp,'codex-init-first');assert.equal(initDiagnostic.events,2);assert.equal(initDiagnostic.issues[0].kind,'invalid_arguments');
+ // The SDK Query returns its inner generator from Symbol.asyncIterator; the host's for-await must still observe results.
+ const service=fs.readFileSync(path.join(root,'src/services/claude/ClaudeSdkService.ts'),'utf8');
+ const wrap=/const next=result\.next\.bind\(result\);[\s\S]*?\(result as any\)\[Symbol\.asyncIterator\]=\(\)=>result;/.exec(service)?.[0];assert.ok(wrap,'SDK result iterator patch missing');
+ class FakeQuery{constructor(){this.sdkMessages=(async function*(){yield {type:'assistant'};yield {type:'result',session_id:'s'};})();}next(...a){return this.sdkMessages.next(...a);}[Symbol.asyncIterator](){return this.sdkMessages;}}
+ const seen=[],fakeResult=new FakeQuery(),fakeContinuity={observe:async m=>{seen.push(m.type);},flushStderr:async()=>{},diagnosticError:async()=>{}};
+ vm.runInNewContext(ts.transpileModule(wrap,{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText,{result:fakeResult,continuity:fakeContinuity,cwdParam:tmp});
+ for await(const _ of fakeResult){}
+ assert.deepEqual(seen,['assistant','result'],'for-await over the SDK query must pass every message through observe');
  console.log('Continuity passed: no startup/ambiguous execution, actual question answers, clear-task tools, exact history archive, task/todo/pending state restored, no permission grant on restore/compaction.');
-}finally{await fsp.rm(tmp,{recursive:true,force:true});}
+}finally{if(oldDiagnostics===undefined)delete process.env.KICAD_DIAGNOSTICS_DIR;else process.env.KICAD_DIAGNOSTICS_DIR=oldDiagnostics;await fsp.rm(tmp,{recursive:true,force:true});}

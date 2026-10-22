@@ -100,7 +100,7 @@
     "domain": "project",
     "backend": "ipc",
     "mutates": true,
-    "description": "Open a project in the running API server, or start a detached kicad-cli api-server for it.",
+    "description": "Open a project directly in the native KiCad GUI, automatically connecting or starting the default GUI instance.",
     "inputs": [
       "project (directory or .kicad_pro)",
       "document optional (.kicad_pcb/.kicad_sch)"
