@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 export function applyExecution(root,overlay){
   function patch(file,before,after){const target=path.join(root,file),s=fs.readFileSync(target,'utf8');if(s.split(before).length!==2)throw Error('Execution anchor missing/ambiguous: '+file+' '+before.slice(0,90));fs.writeFileSync(target,s.replace(before,()=>after));}
-  fs.copyFileSync(path.join(overlay,'executionTimeline.ts'),path.join(root,'src/webview/src/utils/executionTimeline.ts'));
-  for(const name of ['ExecutionTimeline.vue','ExecutionTurn.vue'])fs.copyFileSync(path.join(overlay,name),path.join(root,'src/webview/src/components/Messages',name));
+  for(const name of ['executionTimeline.ts','executionSteps.ts'])fs.copyFileSync(path.join(overlay,name),path.join(root,'src/webview/src/utils',name));
+  for(const name of ['ExecutionTimeline.vue','ExecutionTurn.vue','ExecutionSteps.vue','ExecutionIO.vue'])fs.copyFileSync(path.join(overlay,name),path.join(root,'src/webview/src/components/Messages',name));
   const page='src/webview/src/pages/ChatPage.vue';
   patch(page,`              <MessageRenderer
                 v-for="(m, i) in messages"

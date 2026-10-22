@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "version": "0.4.44",
+  "checks": [
+    "composer image chip shows a thumbnail and opens a preview by click or Enter; Escape and the close button dismiss it",
+    "sent message lists its images and previews them without entering edit mode",
+    "timeline rows: thought duration, tool name and summary, IN one line, OUT preview expands on click, copy",
+    "KiCad JSON results indented",
+    "edits keep the diff renderer",
+    "subagent calls nested under their Agent row",
+    "failed call marked with ERR output",
+    "running tool and thinking rows",
+    "collapse row",
+    "320px no horizontal overflow"
+  ],
+  "pageErrors": []
+}

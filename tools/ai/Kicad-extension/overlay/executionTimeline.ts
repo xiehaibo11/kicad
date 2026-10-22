@@ -1,7 +1,7 @@
 import {Message} from '../models/Message';
 import type {ContentBlockWrapper} from '../models/ContentBlockWrapper';
 
-export interface ExecutionRow {key:string;messages:Message[];active:boolean}
+export interface ExecutionRow {key:string;messages:Message[];active:boolean;startedAt?:number}
 export type ExecutionStatus='running'|'completed'|'failed'|'stopped'|'ended';
 export type TimelineRow = {kind:'message';key:string;message:Message} | ({kind:'execution'} & ExecutionRow);
 const notifications=/<(?:task|agent|bash)-notification>[\s\S]*?<\/(?:task|agent|bash)-notification>/;
@@ -24,16 +24,16 @@ function userRequest(message:Message){
 }
 export function executionRows(messages:Message[]):TimelineRow[]{
   const rows:TimelineRow[]=[];
-  let current:Extract<TimelineRow,{kind:'execution'}>|undefined;
+  let current:Extract<TimelineRow,{kind:'execution'}>|undefined,requestAt:number|undefined;
   messages.forEach((message,index)=>{
     if(userRequest(message)||message.type==='slash_command_result'){
       if(current)current.active=false;
-      current=undefined;
+      current=undefined;requestAt=message.timestamp;
       rows.push({kind:'message',key:'message-'+index,message});
       return;
     }
     // Tool results and SDK notifications belong to their request, never a new user turn.
-    if(!current){current={kind:'execution',key:'execution-'+index,messages:[],active:true};rows.push(current);}
+    if(!current){current={kind:'execution',key:'execution-'+index,messages:[],active:true,startedAt:requestAt};rows.push(current);}
     current.messages.push(message);
   });
   return rows;

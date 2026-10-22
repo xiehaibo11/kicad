@@ -28,7 +28,7 @@ export function applyHistory(root) {
   patch('src/webview/src/pages/ChatPage.vue','          <ChatInputBox',`          <div v-if="session?.sessionId.value?.startsWith('terminal:')" role="status" style="padding:12px;color:var(--vscode-descriptionForeground)">终端历史记录（只读）。可在“共享会话历史”中选择“在终端继续”。</div>
           <ChatInputBox v-else`);
   const pkgFile=path.join(root,'package.json'),pkg=JSON.parse(fs.readFileSync(pkgFile,'utf8'));
-  pkg.version='0.4.42';
+  pkg.version='0.4.44';
   pkg.contributes.commands.push({command:'kicadAgent.diagnostics',title:'Kicad: 运行日志与问题分析'});
   pkg.contributes.commands.push({command:'kicadAgent.history',title:'Kicad: 共享会话历史',icon:'$(history)'});
   pkg.contributes.menus['view/title'].push({command:'kicadAgent.history',when:'view == kicad.chatView',group:'navigation'});

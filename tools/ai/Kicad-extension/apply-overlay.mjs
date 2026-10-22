@@ -12,6 +12,7 @@ import path from 'node:path';
 import {applyReasoning} from './apply-reasoning.mjs';
 import {applyDashboard} from './apply-dashboard.mjs';
 import {applyExecution} from './apply-execution.mjs';
+import {applyAttachments} from './apply-attachments.mjs';
 import {applyLifecycle} from './apply-lifecycle.mjs';
 import {applyModelSelection} from './apply-model-selection.mjs';
 import {applyMessageEditing} from './apply-message-editing.mjs';
@@ -725,3 +726,5 @@ applyHistory(buildDir);
 applyMembership(buildDir,overlayDir);
 
 applyLazyTools(buildDir);
+// Last: anchors the chips and user messages after the editing and model-selection patches.
+applyAttachments(buildDir,overlayDir);

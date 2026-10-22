@@ -12,20 +12,15 @@
       </div>
     </div>
     <div v-if="view.details.length" class="execution-record">
-      <button ref="toggleButton" class="execution-toggle" :class="{running:view.status==='running'}" :aria-expanded="expanded" :aria-controls="detailsId" @click="expanded=!expanded">
+      <button ref="toggleButton" class="execution-toggle" :class="{running:view.status==='running',expanded}" :aria-expanded="expanded" :aria-controls="detailsId" :title="expanded?'收起执行记录':'展开执行记录'" @click="expanded=!expanded">
         <span class="execution-status" aria-hidden="true" />
-        <span>{{ awaitingPermission && busy ? '等待确认' : statusLabels[view.status] }}</span>
-        <span v-if="view.toolCount" class="execution-count">· {{ view.toolCount }} 次工具调用</span>
+        <span class="execution-label">{{ awaitingPermission && busy ? '等待确认' : statusLabels[view.status] }}</span>
+        <span v-if="view.toolCount" class="execution-count">{{ view.toolCount }} 次工具调用</span>
         <span v-if="progress" class="execution-progress" :title="progress">· {{ progress }}</span>
-        <span class="execution-toggle-label">{{ expanded?'收起':'点击查看' }}</span>
         <span class="codicon" :class="expanded?'codicon-chevron-up':'codicon-chevron-down'" aria-hidden="true" />
       </button>
       <div v-if="expanded" :id="detailsId" class="execution-details" role="region" aria-label="执行详情">
-        <MessageRenderer v-for="(message,index) in view.details" :key="index" :message="message" :context="context" />
-        <button class="execution-collapse" :aria-expanded="expanded" :aria-controls="detailsId" @click="collapseDetails">
-          <span class="codicon codicon-chevron-up" aria-hidden="true" />
-          <span>收起执行详情</span>
-        </button>
+        <ExecutionSteps :steps="steps" :context="context" :live="live" collapsible @collapse="collapseDetails" />
       </div>
     </div>
     <div v-if="view.answers.length" class="execution-answer">
@@ -38,8 +33,10 @@ import {computed,nextTick,onBeforeUnmount,ref,useId,watch} from 'vue';
 import type {Message} from '../../models/Message';
 import type {ToolContext} from '../../types/tool';
 import {executionView} from '../../utils/executionTimeline';
+import {executionSteps} from '../../utils/executionSteps';
 import MessageRenderer from './MessageRenderer.vue';
-const props=defineProps<{messages:Message[];context:ToolContext;busy?:boolean;disconnected?:boolean;awaitingPermission?:boolean}>();
+import ExecutionSteps from './ExecutionSteps.vue';
+const props=defineProps<{messages:Message[];context:ToolContext;busy?:boolean;disconnected?:boolean;awaitingPermission?:boolean;startedAt?:number}>();
 const expanded=ref(false),detailsId='execution-'+useId();
 const toggleButton=ref<HTMLButtonElement>();
 const view=computed(()=>executionView(props.messages,!!props.busy,!!props.disconnected));
@@ -55,6 +52,9 @@ const progress=computed(()=>{
   return '等待模型回复 · '+elapsed(view.value.lastActivity);
 });
 const statusLabels={running:'运行中',completed:'已完成',failed:'执行失败',stopped:'已停止',ended:'已结束'};
+// Timeline rows only while expanded; a running turn without a running tool is waiting on the model.
+const steps=computed(()=>expanded.value?executionSteps(view.value.details,view.value.status==='running',props.startedAt):[]);
+const live=computed(()=>view.value.status==='running'&&!view.value.running&&!(props.awaitingPermission&&props.busy)?'思考中… · '+elapsed(view.value.lastActivity):'');
 async function collapseDetails(){
   expanded.value=false;
   await nextTick();
@@ -64,17 +64,21 @@ async function collapseDetails(){
 </script>
 <style scoped>
 .execution-turn{min-width:0;margin-bottom:6px;}
-.execution-record{margin:4px 12px 8px;min-width:0;}
-.execution-toggle,.execution-collapse{border:0;background:transparent;color:var(--vscode-descriptionForeground,#999);display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:6px 4px;font:inherit;font-size:12px;cursor:pointer;text-align:left;max-width:100%;border-radius:4px;}
-.execution-toggle:hover,.execution-collapse:hover{background:var(--vscode-list-hoverBackground,#292929);color:var(--vscode-foreground,#ccc);}
-.execution-toggle:focus-visible,.execution-collapse:focus-visible,.execution-failure:focus-visible{outline:1px solid var(--vscode-focusBorder,#3794ff);outline-offset:2px;}
-.execution-collapse{margin:8px 8px 0 12px;}
-.execution-status{width:6px;height:6px;background:#888;border-radius:50%;flex:none;}
-.running .execution-status{background:#9ad58b;box-shadow:0 0 0 2px #9ad58b18;}
-.execution-progress{color:var(--vscode-foreground,#ccc);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;}
-.execution-count,.execution-toggle-label{color:var(--vscode-descriptionForeground,#999);}
+.execution-record{margin:4px 16px 8px;min-width:0;}
+.execution-toggle{border:0;background:transparent;color:var(--vscode-descriptionForeground,#999);display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:3px 0;font:inherit;font-size:13px;cursor:pointer;text-align:left;max-width:100%;border-radius:4px;}
+.execution-toggle:hover .execution-label,.execution-toggle:hover .codicon{color:var(--vscode-foreground,#e0e0e0);}
+.execution-toggle:focus-visible,.execution-failure:focus-visible{outline:1px solid var(--vscode-focusBorder,#3794ff);outline-offset:2px;}
+/* Header dot sits on the same rail as the timeline dots below it. */
+.execution-status{width:9px;height:9px;margin-right:5px;background:color-mix(in srgb,var(--vscode-descriptionForeground,#8b8b8b) 55%,var(--vscode-sideBar-background,#181818));border-radius:50%;flex:none;}
+.running .execution-status{background:#d97757;animation:execution-pulse 1.4s ease-in-out infinite;}
+@keyframes execution-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.execution-label{color:var(--vscode-foreground,#d4d4d4);}
+.execution-progress{color:var(--vscode-descriptionForeground,#999);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;}
+.execution-count{color:var(--vscode-descriptionForeground,#999);}
 .execution-toggle .codicon{font-size:12px;}
-.execution-details{border-left:1px solid var(--vscode-panel-border,#333);padding:6px 0;margin:4px 0 0 7px;overflow-wrap:anywhere;min-width:0;}
+.execution-details{position:relative;padding:10px 0 0;overflow-wrap:anywhere;min-width:0;}
+/* Rail from the header dot into the first row. */
+.execution-details::before{content:'';position:absolute;left:4px;top:-4px;height:20px;width:1px;background:var(--vscode-panel-border,#3a3a3a);}
 .execution-result-error{margin:6px 16px;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--vscode-errorForeground,#f48771);font-size:12px;max-height:200px;overflow:auto;}
 .execution-failures{margin:4px 16px 6px;display:grid;gap:4px;}
 .execution-failure{display:flex;align-items:baseline;gap:6px;background:none;border:0;padding:3px 0;color:var(--vscode-errorForeground,#f48771);font:inherit;font-size:12px;text-align:left;cursor:pointer;overflow-wrap:anywhere;min-width:0;}

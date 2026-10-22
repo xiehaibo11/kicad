@@ -1,7 +1,7 @@
 <template>
   <template v-for="row in rows" :key="row.key">
     <MessageRenderer v-if="row.kind === 'message'" :message="row.message" :context="context" />
-    <ExecutionTurn v-else :messages="row.messages" :context="context" :busy="row.active && busy" :disconnected="row.active && !!error" :awaiting-permission="row.active && awaitingPermission" />
+    <ExecutionTurn v-else :messages="row.messages" :context="context" :busy="row.active && busy" :disconnected="row.active && !!error" :awaiting-permission="row.active && awaitingPermission" :started-at="row.startedAt" />
   </template>
   <div v-if="error" class="execution-connection-error" role="alert">连接已中断：{{ error }}</div>
 </template>
