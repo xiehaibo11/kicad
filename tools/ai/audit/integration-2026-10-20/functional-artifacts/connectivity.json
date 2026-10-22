@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "action": "board.connectivity.prove",
+  "data": {
+    "danglingItems": [],
+    "endpoints": [
+      {
+        "connectedItems": [
+          {
+            "value": "30000000-0000-0000-0000-000000000001"
+          },
+          {
+            "value": "037e4989-e5f2-4037-90ca-45d17aa43801"
+          }
+        ],
+        "hasCopperConnection": true,
+        "insideFilledZone": false,
+        "item": {
+          "value": "20000004-0000-0000-0000-000000000004"
+        },
+        "itemType": "pad",
+        "net": "Net1",
+        "padNumber": "1",
+        "reference": "P1",
+        "zoneIslands": []
+      },
+      {
+        "connectedItems": [
+          {
+            "value": "037e4989-e5f2-4037-90ca-45d17aa43801"
+          },
+          {
+            "value": "20000004-0000-0000-0000-000000000004"
+          }
+        ],
+        "hasCopperConnection": true,
+        "insideFilledZone": false,
+        "item": {
+          "value": "30000000-0000-0000-0000-000000000001"
+        },
+        "itemType": "via",
+        "net": "Net1",
+        "padNumber": "",
+        "reference": "",
+        "zoneIslands": []
+      }
+    ],
+    "ok": true,
+    "unconnectedCount": 0,
+    "unconnectedNets": []
+  },
+  "elapsedMs": 4
+}

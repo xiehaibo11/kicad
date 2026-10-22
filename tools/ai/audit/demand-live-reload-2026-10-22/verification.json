@@ -1,0 +1,135 @@
+{
+  "ok": true,
+  "verifiedAt": "2026-10-22T19:55:05.122801+00:00",
+  "extensionInstallations": {
+    "VSCode": {
+      "version": "0.4.39",
+      "bundleSha256": "231f19688d2965aebf285353b0338cb01367f83243a02769d1142a4e902a1682"
+    },
+    "Cursor": {
+      "version": "0.4.39",
+      "bundleSha256": "231f19688d2965aebf285353b0338cb01367f83243a02769d1142a4e902a1682"
+    }
+  },
+  "extensionRealMembership": {
+    "model": "gpt-6-luna",
+    "sessionId": "codex-01a1652b-627a-76f0-811b-535af17fbf43",
+    "journalFiles": [
+      "/Users/mosc/.local/state/kicad/diagnostics/3beb5229d8cfe82e4adae373/2026-10-22-extension-bd0fb424-1c9e-45f6-aa69-ee81805775bb-1.jsonl"
+    ],
+    "events": 10,
+    "toolCompletions": [
+      {
+        "name": "mcp__kicad__capability_search",
+        "status": "returned"
+      },
+      {
+        "name": "mcp__kicad__runtime_diagnostics",
+        "status": "returned"
+      },
+      {
+        "name": "mcp__kicad__capability_search",
+        "status": "returned"
+      },
+      {
+        "name": "mcp__kicad__capability_search",
+        "status": "returned"
+      }
+    ],
+    "errors": [],
+    "pendingCalls": []
+  },
+  "terminalRealMembership": {
+    "model": "gpt-6-luna",
+    "sessionId": "ses_e9ad46eb9ffeoWAFwq7qhMqQXr",
+    "events": 15,
+    "toolCompletions": [
+      {
+        "name": "capability_search",
+        "status": "returned"
+      },
+      {
+        "name": "runtime_diagnostics",
+        "status": "returned"
+      },
+      {
+        "name": "capability_search",
+        "status": "returned"
+      }
+    ],
+    "errors": [],
+    "pendingCalls": []
+  },
+  "demandFixture": {
+    "ok": true,
+    "modelRequests": 8,
+    "initialToolNames": [
+      "bash",
+      "capability_call",
+      "capability_search",
+      "edit",
+      "glob",
+      "grep",
+      "question",
+      "read",
+      "task",
+      "todowrite",
+      "webfetch",
+      "write"
+    ],
+    "selectedMcpConnected": true,
+    "unselectedMcpConnected": false,
+    "skillBodyOnlyAfterCall": true,
+    "nativeStartupSkillCatalogEmpty": true,
+    "slashCompletionDoesNotLoadSkills": true
+  },
+  "membershipDiscovery": {
+    "ok": true,
+    "modelCount": 5,
+    "subscriptionType": "Claude Pro",
+    "apiProvider": "firstParty",
+    "unselectedMcpStarted": false
+  },
+  "hostAcceptance": {
+    "ok": true,
+    "version": "0.4.39",
+    "displayName": "Kicad",
+    "active": true,
+    "webviews": {
+      "resolved": 2,
+      "mounted": 2
+    },
+    "nativeTerminal": {
+      "name": "Kicad 终端",
+      "pid": 46108,
+      "binary": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/dist/kicad-terminal"
+    },
+    "nativeToolPluginEnabled": true,
+    "inProcessHealth": {
+      "ok": true,
+      "action": "system.health",
+      "cliAvailable": true
+    },
+    "availableTerminalProviders": []
+  },
+  "sharedTests": {
+    "passed": 16,
+    "failed": 0
+  },
+  "fixes": [
+    "Codex MCP override server keys stay literal and disabled transports validate",
+    "Native startup and slash completion do not initialize the full skill registry",
+    "Claude membership discovery uses empty strict MCP config and disabled Skill/slash registries",
+    "Codex init and startup errors log to the actual workspace",
+    "Required search arguments are explicit in guidance and diagnosed as invalid_arguments"
+  ],
+  "limitations": [
+    "Live account inference used ChatGPT membership; Claude membership discovery and real packaged CLI tool loading used a local model fixture.",
+    "Selected external MCP execution used local fixtures; real configured remote services were intentionally not all connected."
+  ],
+  "preservation": {
+    "userDraftRestored": true,
+    "oldSessionsRetained": true,
+    "kicadDesignModified": false
+  }
+}

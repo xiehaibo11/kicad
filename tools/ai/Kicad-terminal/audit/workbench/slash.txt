@@ -1,0 +1,46 @@
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                           ╭─────────────────────────────────────────────────────────────────────────╮                                          
+                                           │ Ki Kicad · AI design terminal for KiCad                  v0.2.1 → 0.2.2 │                                          
+                                           │                                                                         │                                          
+                                           │ KiCad                                Quick tasks                        │                                          
+                                           │ ● IPC       connected                /kicad-health Connection check     │                                          
+                                           │ ● kicad-cli 10.99.0                  /kicad-drc    DRC & ERC review     │                                          
+                                           ┃ /kicad-drc         Run DRC/ERC on the open design and triage violations ┃                                          
+                                           ┃ /kicad-fab         Generate fabrication outputs with a verification rep ┃                                          
+                                           ┃ /kicad-step        Export STEP and check 3D component collisions        ┃                                          
+                                           ┃ /kicad-route       Plan fanout and routing, then verify with DRC and co ┃                                          
+                                           ┃ /kicad-health      KiCad connection status                              ┃                                          
+                                           ┃ /kicad-schematic   Generate a schematic from a circuit spec and run ERC ┃                                          
+                                           ┃                                                                                                                    
+                                           ┃  /kicad-                                                                                                           
+                                           ┃                                                                                                                    
+                                           ┃  Build · Workbench fixture Local fixture                        ● KiCad                                            
+                                           ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                                          
+                                                                                           tab agents  ctrl+p commands                                          
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+  /private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-workbench-u8u3dhr_/ecc83  ● KiCad connected                             ↑ Kicad 0.2.2 /update  
+                                                                                                                                                                

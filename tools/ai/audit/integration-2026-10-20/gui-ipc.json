@@ -1,0 +1,400 @@
+{
+  "ok": true,
+  "fixture": "real native GUI, copied demo projects, whole-project switches and editor readbacks",
+  "calls": [
+    {
+      "action": "project.open",
+      "payload": {
+        "project": "/tmp/kicad-integration-projects/pic_programmer"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "project.open",
+        "data": {
+          "document": {
+            "project": {
+              "name": "pic_programmer",
+              "path": "/tmp/kicad-integration-projects/pic_programmer/"
+            },
+            "type": "DOCTYPE_PROJECT"
+          }
+        },
+        "elapsedMs": 6
+      }
+    },
+    {
+      "action": "editor.run_action",
+      "payload": {
+        "action": "kicad.Control.editPCB",
+        "editor": "kicad"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "kicad.Control.editPCB",
+          "completionVerified": false,
+          "editor": "kicad",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 6
+      }
+    },
+    {
+      "action": "document.list",
+      "payload": {
+        "type": "pcb"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "boardFilename": "pic_programmer.kicad_pcb",
+              "project": {
+                "name": "pic_programmer",
+                "path": "/tmp/kicad-integration-projects/pic_programmer"
+              },
+              "type": "DOCTYPE_PCB"
+            }
+          ]
+        },
+        "elapsedMs": 5
+      }
+    },
+    {
+      "action": "editor.run_action",
+      "payload": {
+        "action": "common.Control.zoomFitScreen",
+        "editor": "pcbnew"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "common.Control.zoomFitScreen",
+          "completionVerified": false,
+          "editor": "pcbnew",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 56
+      }
+    },
+    {
+      "action": "editor.run_action",
+      "payload": {
+        "action": "kicad.Control.editSchematic",
+        "editor": "kicad"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "kicad.Control.editSchematic",
+          "completionVerified": false,
+          "editor": "kicad",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 13
+      }
+    },
+    {
+      "action": "document.list",
+      "payload": {
+        "type": "schematic"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "project": {
+                "name": "pic_programmer",
+                "path": "/tmp/kicad-integration-projects/pic_programmer/"
+              },
+              "sheetPath": {
+                "path": [
+                  {
+                    "value": "2e45d1d2-c73f-46e5-98d6-3a9dc360bff5"
+                  }
+                ],
+                "pathHumanReadable": "/"
+              },
+              "type": "DOCTYPE_SCHEMATIC"
+            }
+          ]
+        },
+        "elapsedMs": 16
+      }
+    },
+    {
+      "action": "editor.run_action",
+      "payload": {
+        "action": "common.Control.zoomFitScreen",
+        "editor": "eeschema"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "common.Control.zoomFitScreen",
+          "completionVerified": false,
+          "editor": "eeschema",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 51
+      }
+    },
+    {
+      "action": "project.open",
+      "payload": {
+        "project": "/tmp/kicad-integration-projects/pic_programmer"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "project.open",
+        "data": {
+          "document": {
+            "project": {
+              "name": "pic_programmer",
+              "path": "/tmp/kicad-integration-projects/pic_programmer/"
+            },
+            "type": "DOCTYPE_PROJECT"
+          }
+        },
+        "elapsedMs": 3
+      }
+    },
+    {
+      "action": "document.list",
+      "payload": {
+        "type": "pcb"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "boardFilename": "pic_programmer.kicad_pcb",
+              "project": {
+                "name": "pic_programmer",
+                "path": "/tmp/kicad-integration-projects/pic_programmer"
+              },
+              "type": "DOCTYPE_PCB"
+            }
+          ]
+        },
+        "elapsedMs": 2
+      }
+    },
+    {
+      "action": "document.list",
+      "payload": {
+        "type": "schematic"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "project": {
+                "name": "pic_programmer",
+                "path": "/tmp/kicad-integration-projects/pic_programmer/"
+              },
+              "sheetPath": {
+                "path": [
+                  {
+                    "value": "2e45d1d2-c73f-46e5-98d6-3a9dc360bff5"
+                  }
+                ],
+                "pathHumanReadable": "/"
+              },
+              "type": "DOCTYPE_SCHEMATIC"
+            }
+          ]
+        },
+        "elapsedMs": 5
+      }
+    },
+    {
+      "action": "project.resolve",
+      "payload": {
+        "project": "/tmp/kicad-integration-projects/ecc83"
+      },
+      "exitCode": 1,
+      "result": {
+        "ok": false,
+        "action": "project.resolve",
+        "error": {
+          "code": "PROJECT_AMBIGUOUS",
+          "message": "multiple KiCad projects/documents; select a full path from project.list",
+          "detail": "[{\"name\":\"ecc83-pp\",\"directory\":\"/tmp/kicad-integration-projects/ecc83\",\"project\":\"/tmp/kicad-integration-projects/ecc83/ecc83-pp.kicad_pro\",\"board\":\"/tmp/kicad-integration-projects/ecc83/ecc83-pp.kicad_pcb\",\"schematic\":\"/tmp/kicad-integration-projects/ecc83/ecc83-pp.kicad_sch\"},{\"name\":\"ecc83-pp_v2\",\"directory\":\"/tmp/kicad-integration-projects/ecc83\",\"project\":\"/tmp/kicad-integration-projects/ecc83/ecc83-pp_v2.kicad_pro\",\"board\":\"/tmp/kicad-integration-projects/ecc83/ecc83-pp_v2.kicad_pcb\",\"schematic\":\"/tmp/kicad-integration-projects/ecc83/ecc83-pp_v2.kicad_sch\"}]"
+        }
+      }
+    },
+    {
+      "action": "project.switch",
+      "payload": {
+        "project": "/tmp/kicad-integration-projects/ecc83/ecc83-pp.kicad_pro"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "project.open",
+        "data": {
+          "document": {
+            "project": {
+              "name": "ecc83-pp",
+              "path": "/tmp/kicad-integration-projects/ecc83/"
+            },
+            "type": "DOCTYPE_PROJECT"
+          }
+        },
+        "elapsedMs": 1179
+      }
+    },
+    {
+      "action": "editor.run_action",
+      "payload": {
+        "action": "kicad.Control.editPCB",
+        "editor": "kicad"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "kicad.Control.editPCB",
+          "completionVerified": false,
+          "editor": "kicad",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 25
+      }
+    },
+    {
+      "action": "document.list",
+      "payload": {
+        "type": "pcb"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "boardFilename": "ecc83-pp.kicad_pcb",
+              "project": {
+                "name": "ecc83-pp",
+                "path": "/tmp/kicad-integration-projects/ecc83"
+              },
+              "type": "DOCTYPE_PCB"
+            }
+          ]
+        },
+        "elapsedMs": 1
+      }
+    },
+    {
+      "action": "editor.run_action",
+      "payload": {
+        "action": "common.Control.zoomFitScreen",
+        "editor": "pcbnew"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "common.Control.zoomFitScreen",
+          "completionVerified": false,
+          "editor": "pcbnew",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 3
+      }
+    },
+    {
+      "action": "project.switch",
+      "payload": {
+        "project": "/tmp/kicad-integration-projects/pic_programmer"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "project.open",
+        "data": {
+          "document": {
+            "project": {
+              "name": "pic_programmer",
+              "path": "/tmp/kicad-integration-projects/pic_programmer/"
+            },
+            "type": "DOCTYPE_PROJECT"
+          }
+        },
+        "elapsedMs": 56
+      }
+    },
+    {
+      "action": "editor.run_action",
+      "payload": {
+        "action": "kicad.Control.editPCB",
+        "editor": "kicad"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "kicad.Control.editPCB",
+          "completionVerified": false,
+          "editor": "kicad",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 11
+      }
+    },
+    {
+      "action": "editor.run_action",
+      "payload": {
+        "action": "common.Control.zoomFitScreen",
+        "editor": "pcbnew"
+      },
+      "exitCode": 0,
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "common.Control.zoomFitScreen",
+          "completionVerified": false,
+          "editor": "pcbnew",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 11
+      }
+    }
+  ]
+}

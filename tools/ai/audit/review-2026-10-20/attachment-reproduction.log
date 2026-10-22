@@ -1,0 +1,27 @@
+bun test v1.3.14 (0d9b296a)
+
+test/kicad-review-boundary.test.tsx:
+{"draft":"请只读检查 U1，不做修改。","remainingAttachments":[],"lateOptimizationReplacedDraft":true}
+61 |     await pending
+62 |     console.log(JSON.stringify({draft:draft(),remainingAttachments:parts(),lateOptimizationReplacedDraft:draft()!=='只检查 U1，不要修改。'}))
+63 |     expect(parts()).toEqual(['new-attachment.png'])
+64 |   } finally {app.renderer.destroy()}
+65 | })
+                         ^
+error: expect(received).toEqual(expected)
+
+- [
+-   "new-attachment.png",
+- ]
++ []
+
+- Expected  - 3
++ Received  + 1
+
+      at <anonymous> (/private/tmp/Kicad-terminal-1.19.3/packages/tui/test/kicad-review-boundary.test.tsx:65:21)
+(fail) review: an attachment added during optimization must survive late completion [77.41ms]
+
+ 0 pass
+ 1 fail
+ 1 expect() calls
+Ran 1 test across 1 file. [938.00ms]

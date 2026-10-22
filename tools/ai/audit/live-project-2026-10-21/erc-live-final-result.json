@@ -1,0 +1,980 @@
+{
+  "ok": true,
+  "action": "schematic.erc.live",
+  "data": {
+    "status": "violations",
+    "exitCode": 5,
+    "report": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/erc-complete-libraries.json",
+    "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/erc-complete-libraries.json",
+    "summary": {
+      "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/erc-complete-libraries.json",
+      "total": 1235,
+      "bySeverity": {
+        "error": 176,
+        "warning": 1059
+      },
+      "byType": {
+        "power_pin_not_driven": 13,
+        "pin_not_driven": 27,
+        "pin_not_connected": 136,
+        "same_local_global_label": 10,
+        "lib_symbol_mismatch": 275,
+        "pin_to_pin": 454,
+        "footprint_link_issues": 157,
+        "isolated_pin_label": 163
+      },
+      "violations": 1235,
+      "unconnected_items": 0,
+      "schematic_parity": 0,
+      "ignoredChecks": [
+        {
+          "description": "Global label only appears once in the schematic",
+          "key": "single_global_label"
+        },
+        {
+          "description": "Four connection points are joined together",
+          "key": "four_way_junction"
+        },
+        {
+          "description": "SPICE model issue",
+          "key": "simulation_model_issue"
+        },
+        {
+          "description": "Assigned footprint doesn't match footprint filters",
+          "key": "footprint_filter"
+        }
+      ]
+    },
+    "reportJsonOmitted": true,
+    "reportBytes": 971272,
+    "sampleViolations": [
+      {
+        "group": "violations",
+        "description": "Input Power pin not driven by any Output Power pins",
+        "items": [
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 0.1143,
+              "y": 0.1524
+            },
+            "uuid": "8b8f86d0-0f1f-4c2f-bd4b-304a9062128d"
+          }
+        ],
+        "severity": "error",
+        "type": "power_pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input pin not driven by any Output pins",
+        "items": [
+          {
+            "description": "Symbol R9 接腳 1 [1, 輸入, 線]",
+            "pos": {
+              "x": 0.2032,
+              "y": 0.8255
+            },
+            "uuid": "b68a3a04-585e-4c91-aef7-c413e08f338a"
+          }
+        ],
+        "severity": "error",
+        "type": "pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input Power pin not driven by any Output Power pins",
+        "items": [
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 0.8128,
+              "y": 0.254
+            },
+            "uuid": "c55eab94-deed-4177-a318-410c9a71f221"
+          }
+        ],
+        "severity": "error",
+        "type": "power_pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input pin not driven by any Output pins",
+        "items": [
+          {
+            "description": "Symbol R1 接腳 1 [1, 輸入, 線]",
+            "pos": {
+              "x": 1.3716,
+              "y": 0.2794
+            },
+            "uuid": "b0f297f8-1c88-4392-9529-dbdb84ebc2c3"
+          }
+        ],
+        "severity": "error",
+        "type": "pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input pin not driven by any Output pins",
+        "items": [
+          {
+            "description": "Symbol R6 接腳 1 [1, 輸入, 線]",
+            "pos": {
+              "x": 1.4224,
+              "y": 0.8001
+            },
+            "uuid": "ef5bbf16-4c69-4d05-81cb-e5a8495a09a1"
+          }
+        ],
+        "severity": "error",
+        "type": "pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Pin not connected",
+        "items": [
+          {
+            "description": "Symbol U9 接腳 4 [NC, 未指定, 線]",
+            "pos": {
+              "x": 1.4605,
+              "y": 1.3589
+            },
+            "uuid": "487b930c-a881-498e-a963-f1aaabcb177b"
+          }
+        ],
+        "severity": "error",
+        "type": "pin_not_connected"
+      },
+      {
+        "group": "violations",
+        "description": "Input Power pin not driven by any Output Power pins",
+        "items": [
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 1.6129,
+              "y": 1.2573
+            },
+            "uuid": "035a6e95-9807-4a59-a94b-bd383900c1e6"
+          }
+        ],
+        "severity": "error",
+        "type": "power_pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input Power pin not driven by any Output Power pins",
+        "items": [
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 1.6764,
+              "y": 0.3556
+            },
+            "uuid": "5fa8c15c-877f-4f0f-855e-7b2cfaf01964"
+          }
+        ],
+        "severity": "error",
+        "type": "power_pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input Power pin not driven by any Output Power pins",
+        "items": [
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 1.6764,
+              "y": 0.9017
+            },
+            "uuid": "41f7e9b5-972e-4227-a51e-72e2d4c19794"
+          }
+        ],
+        "severity": "error",
+        "type": "power_pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input Power pin not driven by any Output Power pins",
+        "items": [
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 2.4638,
+              "y": 1.3335
+            },
+            "uuid": "c572872c-d9e9-44a9-9700-8497dcf7af4c"
+          }
+        ],
+        "severity": "error",
+        "type": "power_pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input pin not driven by any Output pins",
+        "items": [
+          {
+            "description": "Symbol R3 接腳 1 [1, 輸入, 線]",
+            "pos": {
+              "x": 2.5019,
+              "y": 0.2794
+            },
+            "uuid": "876d3de9-a584-4d03-bb14-7221d74270e0"
+          }
+        ],
+        "severity": "error",
+        "type": "pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input pin not driven by any Output pins",
+        "items": [
+          {
+            "description": "Symbol R10 接腳 2 [2, 輸入, 線]",
+            "pos": {
+              "x": 2.6162,
+              "y": 1.3081
+            },
+            "uuid": "09f15b27-2b88-42c8-9c45-ce2def9d24ba"
+          }
+        ],
+        "severity": "error",
+        "type": "pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Input Power pin not driven by any Output Power pins",
+        "items": [
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 2.8067,
+              "y": 0.3556
+            },
+            "uuid": "37ab27e3-15b2-4121-aa3a-745474729624"
+          }
+        ],
+        "severity": "error",
+        "type": "power_pin_not_driven"
+      },
+      {
+        "group": "violations",
+        "description": "Local and global labels have same name",
+        "items": [
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 0.1143,
+              "y": 0.1524
+            },
+            "uuid": "8b8f86d0-0f1f-4c2f-bd4b-304a9062128d"
+          },
+          {
+            "description": "標籤 '+5V_IN'",
+            "pos": {
+              "x": 0.7366,
+              "y": 0.5842
+            },
+            "uuid": "f19a9709-4114-445c-a1c3-073331130e29"
+          }
+        ],
+        "severity": "warning",
+        "type": "same_local_global_label"
+      },
+      {
+        "group": "violations",
+        "description": "符號「Power-5V」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 #PWR? [Power-5V]",
+            "pos": {
+              "x": 0.1143,
+              "y": 0.1524
+            },
+            "uuid": "87881f5e-0911-41bf-9f56-e09625271e1c"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "符號「Power-5V」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 #PWR? [Power-5V]",
+            "pos": {
+              "x": 0.1143,
+              "y": 0.3556
+            },
+            "uuid": "9fe8d075-ae02-4aee-a62f-f4b4b429fff1"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 電源輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol D2 接腳 1 [K, 未指定, 線]",
+            "pos": {
+              "x": 0.1905,
+              "y": 0.2032
+            },
+            "uuid": "476ed5ce-dca0-439c-bcb1-86e323616371"
+          },
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 0.1143,
+              "y": 0.1524
+            },
+            "uuid": "8b8f86d0-0f1f-4c2f-bd4b-304a9062128d"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "符號「SMAJ5.0A」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 D2 [SMAJ5.0A]",
+            "pos": {
+              "x": 0.1905,
+              "y": 0.254
+            },
+            "uuid": "58593e81-427c-4d19-9d01-76975141f948"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "目前的配置不包含封裝庫「RK3308B_IPC 摄像头模块-import-syms」",
+        "items": [
+          {
+            "description": "符號 D2 [SMAJ5.0A]",
+            "pos": {
+              "x": 0.1905,
+              "y": 0.254
+            },
+            "uuid": "58593e81-427c-4d19-9d01-76975141f948"
+          }
+        ],
+        "severity": "warning",
+        "type": "footprint_link_issues"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 電源輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol D2 接腳 2 [A, 未指定, 線]",
+            "pos": {
+              "x": 0.1905,
+              "y": 0.3048
+            },
+            "uuid": "28c463f0-8e42-4a87-bd97-fe122d063c1c"
+          },
+          {
+            "description": "Symbol #PWR? 接腳 1 [GND, 電源輸入, 線]",
+            "pos": {
+              "x": 0.1905,
+              "y": 0.3302
+            },
+            "uuid": "49362f4e-a524-4989-a9a8-8159d3b511a1"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "符號「Power-5V」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 #PWR? [Power-5V]",
+            "pos": {
+              "x": 0.2032,
+              "y": 0.6985
+            },
+            "uuid": "daf7f352-8c78-48c9-afd6-bef6dd2f0f02"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "符號「RC0603FR-071KL」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 R9 [RC0603FR-071KL]",
+            "pos": {
+              "x": 0.2032,
+              "y": 0.7747
+            },
+            "uuid": "790c611c-274f-4cca-a08e-10f7dd3aae32"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "目前的配置不包含封裝庫「RK3308B_IPC 摄像头模块-import-syms」",
+        "items": [
+          {
+            "description": "符號 R9 [RC0603FR-071KL]",
+            "pos": {
+              "x": 0.2032,
+              "y": 0.7747
+            },
+            "uuid": "790c611c-274f-4cca-a08e-10f7dd3aae32"
+          }
+        ],
+        "severity": "warning",
+        "type": "footprint_link_issues"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol LED1 接腳 2 [A, 未指定, 線]",
+            "pos": {
+              "x": 0.2032,
+              "y": 0.9017
+            },
+            "uuid": "ba37d9c8-ad82-4eee-bb16-e02f127d26a9"
+          },
+          {
+            "description": "Symbol R9 接腳 1 [1, 輸入, 線]",
+            "pos": {
+              "x": 0.2032,
+              "y": 0.8255
+            },
+            "uuid": "b68a3a04-585e-4c91-aef7-c413e08f338a"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "符號「LED-0603R」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 LED1 [LED-0603R]",
+            "pos": {
+              "x": 0.2032,
+              "y": 0.9525
+            },
+            "uuid": "3c1b113b-e1d4-4895-af62-f65c6a73a37e"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "目前的配置不包含封裝庫「RK3308B_IPC 摄像头模块-import-syms」",
+        "items": [
+          {
+            "description": "符號 LED1 [LED-0603R]",
+            "pos": {
+              "x": 0.2032,
+              "y": 0.9525
+            },
+            "uuid": "3c1b113b-e1d4-4895-af62-f65c6a73a37e"
+          }
+        ],
+        "severity": "warning",
+        "type": "footprint_link_issues"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 電源輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol LED1 接腳 1 [K, 未指定, 線]",
+            "pos": {
+              "x": 0.2032,
+              "y": 1.0033
+            },
+            "uuid": "cb0c1a52-3686-40f5-8d44-9eebff2d9b7c"
+          },
+          {
+            "description": "Symbol #PWR? 接腳 1 [GND, 電源輸入, 線]",
+            "pos": {
+              "x": 0.2032,
+              "y": 1.0287
+            },
+            "uuid": "0918c8e6-5705-42ca-add8-b87ad4cdd45c"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 電源輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol C13 接腳 1 [1, 未指定, 線]",
+            "pos": {
+              "x": 0.2286,
+              "y": 0.4318
+            },
+            "uuid": "6b735ab3-82b4-4381-80cc-b97a90d6732e"
+          },
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 0.1143,
+              "y": 0.3556
+            },
+            "uuid": "83af021a-9bb9-4f1e-9ddf-b71a65444dc0"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "符號「22uF-C0805_L」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 C13 [22uF-C0805_L]",
+            "pos": {
+              "x": 0.2286,
+              "y": 0.4826
+            },
+            "uuid": "8ccfed98-a703-430b-83c4-acc21ad99aa8"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "目前的配置不包含封裝庫「RK3308B_IPC 摄像头模块-import-syms」",
+        "items": [
+          {
+            "description": "符號 C13 [22uF-C0805_L]",
+            "pos": {
+              "x": 0.2286,
+              "y": 0.4826
+            },
+            "uuid": "8ccfed98-a703-430b-83c4-acc21ad99aa8"
+          }
+        ],
+        "severity": "warning",
+        "type": "footprint_link_issues"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 電源輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol C13 接腳 2 [2, 未指定, 線]",
+            "pos": {
+              "x": 0.2286,
+              "y": 0.5334
+            },
+            "uuid": "240028c6-cba2-4f7a-a77b-b0b157e2b9f6"
+          },
+          {
+            "description": "Symbol #PWR? 接腳 1 [GND, 電源輸入, 線]",
+            "pos": {
+              "x": 0.2286,
+              "y": 0.5588
+            },
+            "uuid": "9b70691e-6520-4d8f-a56a-5ede502fef59"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 未指定 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol D1 接腳 2 [A, 未指定, 線]",
+            "pos": {
+              "x": 0.3048,
+              "y": 0.1778
+            },
+            "uuid": "02f975cb-55c7-4a06-acce-680543708692"
+          },
+          {
+            "description": "Symbol D2 接腳 1 [K, 未指定, 線]",
+            "pos": {
+              "x": 0.1905,
+              "y": 0.2032
+            },
+            "uuid": "476ed5ce-dca0-439c-bcb1-86e323616371"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "符號「SS34」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 D1 [SS34]",
+            "pos": {
+              "x": 0.3556,
+              "y": 0.1778
+            },
+            "uuid": "f2096f70-baeb-437e-bfd2-6d35a8323885"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "目前的配置不包含封裝庫「RK3308B_IPC 摄像头模块-import-syms」",
+        "items": [
+          {
+            "description": "符號 D1 [SS34]",
+            "pos": {
+              "x": 0.3556,
+              "y": 0.1778
+            },
+            "uuid": "f2096f70-baeb-437e-bfd2-6d35a8323885"
+          }
+        ],
+        "severity": "warning",
+        "type": "footprint_link_issues"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 電源輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol D1 接腳 1 [K, 未指定, 線]",
+            "pos": {
+              "x": 0.4064,
+              "y": 0.1778
+            },
+            "uuid": "9b6d2e18-81a4-476e-ad42-d5e115b16e2e"
+          },
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 0.508,
+              "y": 0.1524
+            },
+            "uuid": "4e6a58e5-3329-4d11-bfcd-e571483a150b"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 未指定 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol C14 接腳 1 [1, 未指定, 線]",
+            "pos": {
+              "x": 0.4318,
+              "y": 0.4318
+            },
+            "uuid": "e2b7f69e-af8b-44e4-9efd-bc8de276a550"
+          },
+          {
+            "description": "Symbol D1 接腳 1 [K, 未指定, 線]",
+            "pos": {
+              "x": 0.4064,
+              "y": 0.1778
+            },
+            "uuid": "9b6d2e18-81a4-476e-ad42-d5e115b16e2e"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "符號「100nF/0603/50V」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 C14 [100nF/0603/50V]",
+            "pos": {
+              "x": 0.4318,
+              "y": 0.4826
+            },
+            "uuid": "8415ae1a-4f6c-4f41-84d2-14fba8ecbc8d"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "目前的配置不包含封裝庫「RK3308B_IPC 摄像头模块-import-syms」",
+        "items": [
+          {
+            "description": "符號 C14 [100nF/0603/50V]",
+            "pos": {
+              "x": 0.4318,
+              "y": 0.4826
+            },
+            "uuid": "8415ae1a-4f6c-4f41-84d2-14fba8ecbc8d"
+          }
+        ],
+        "severity": "warning",
+        "type": "footprint_link_issues"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 電源輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol C14 接腳 2 [2, 未指定, 線]",
+            "pos": {
+              "x": 0.4318,
+              "y": 0.5334
+            },
+            "uuid": "78e52737-1df7-4992-b45b-d9be63859826"
+          },
+          {
+            "description": "Symbol #PWR? 接腳 1 [GND, 電源輸入, 線]",
+            "pos": {
+              "x": 0.4318,
+              "y": 0.5588
+            },
+            "uuid": "5510bf61-d415-4a36-995f-064b35435ca2"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "符號「Power-5V」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 #PWR? [Power-5V]",
+            "pos": {
+              "x": 0.508,
+              "y": 0.1524
+            },
+            "uuid": "ffae015e-1648-405d-85c0-d47c8320c1a0"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "符號「CAPCER10UF25VX5R0805」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 C1 [CAPCER10UF25VX5R0805]",
+            "pos": {
+              "x": 0.7366,
+              "y": 0.381
+            },
+            "uuid": "74d4c9ae-46b0-4588-be9f-50cc899ceb43"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "目前的配置不包含封裝庫「RK3308B_IPC 摄像头模块-import-syms」",
+        "items": [
+          {
+            "description": "符號 C1 [CAPCER10UF25VX5R0805]",
+            "pos": {
+              "x": 0.7366,
+              "y": 0.381
+            },
+            "uuid": "74d4c9ae-46b0-4588-be9f-50cc899ceb43"
+          }
+        ],
+        "severity": "warning",
+        "type": "footprint_link_issues"
+      },
+      {
+        "group": "violations",
+        "description": "符號「CAPCER10UF25VX5R0805」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 C5 [CAPCER10UF25VX5R0805]",
+            "pos": {
+              "x": 0.7366,
+              "y": 0.9271
+            },
+            "uuid": "96c1ca10-4ff7-476f-91cc-837413ee6f84"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "目前的配置不包含封裝庫「RK3308B_IPC 摄像头模块-import-syms」",
+        "items": [
+          {
+            "description": "符號 C5 [CAPCER10UF25VX5R0805]",
+            "pos": {
+              "x": 0.7366,
+              "y": 0.9271
+            },
+            "uuid": "96c1ca10-4ff7-476f-91cc-837413ee6f84"
+          }
+        ],
+        "severity": "warning",
+        "type": "footprint_link_issues"
+      },
+      {
+        "group": "violations",
+        "description": "符號「Power-5V」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 #PWR? [Power-5V]",
+            "pos": {
+              "x": 0.8128,
+              "y": 0.254
+            },
+            "uuid": "01d78143-1368-4003-87c7-ac1a164d3b81"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "符號「Power-5V」與元件庫「RK3308B_IPC 摄像头模块-import-syms」中的複本不符",
+        "items": [
+          {
+            "description": "符號 #PWR? [Power-5V]",
+            "pos": {
+              "x": 0.8128,
+              "y": 0.8001
+            },
+            "uuid": "7a257cb8-014c-4e98-a316-06efc0879218"
+          }
+        ],
+        "severity": "warning",
+        "type": "lib_symbol_mismatch"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol U5 接腳 5 [FB, 未指定, 線]",
+            "pos": {
+              "x": 0.889,
+              "y": 0.254
+            },
+            "uuid": "08f804b6-d133-4f30-b365-5f3fbcb76da5"
+          },
+          {
+            "description": "Symbol R1 接腳 1 [1, 輸入, 線]",
+            "pos": {
+              "x": 1.3716,
+              "y": 0.2794
+            },
+            "uuid": "b0f297f8-1c88-4392-9529-dbdb84ebc2c3"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 電源輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol U5 接腳 4 [IN, 未指定, 線]",
+            "pos": {
+              "x": 0.889,
+              "y": 0.3048
+            },
+            "uuid": "6e6fb878-0e4e-4fd3-8bd8-414d51d942c3"
+          },
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 0.8128,
+              "y": 0.254
+            },
+            "uuid": "c55eab94-deed-4177-a318-410c9a71f221"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol U7 接腳 5 [FB, 未指定, 線]",
+            "pos": {
+              "x": 0.889,
+              "y": 0.8001
+            },
+            "uuid": "243d471d-e371-4988-8482-048301e5b9a0"
+          },
+          {
+            "description": "Symbol R6 接腳 1 [1, 輸入, 線]",
+            "pos": {
+              "x": 1.4224,
+              "y": 0.8001
+            },
+            "uuid": "ef5bbf16-4c69-4d05-81cb-e5a8495a09a1"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      },
+      {
+        "group": "violations",
+        "description": "類型為 未指定 和 電源輸入 的接腳已連接",
+        "items": [
+          {
+            "description": "Symbol U7 接腳 4 [IN, 未指定, 線]",
+            "pos": {
+              "x": 0.889,
+              "y": 0.8509
+            },
+            "uuid": "7e16c0ef-b6f0-4c7e-83d2-424ab58f90ca"
+          },
+          {
+            "description": "Symbol #PWR? 接腳 1 [+5V_IN, 電源輸入, 線]",
+            "pos": {
+              "x": 0.8128,
+              "y": 0.8001
+            },
+            "uuid": "284d98a1-183c-482d-8cea-301222651be5"
+          }
+        ],
+        "severity": "warning",
+        "type": "pin_to_pin"
+      }
+    ],
+    "next": "Read reportPath for the complete report, or use full=true.",
+    "source": "live",
+    "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_sch",
+    "checkedCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-ghoeXT/RK3308B_IPC 摄像头模块.kicad_sch"
+  },
+  "artifacts": [
+    "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/erc-complete-libraries.json"
+  ]
+}

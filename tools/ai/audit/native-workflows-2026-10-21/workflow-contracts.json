@@ -1,0 +1,5291 @@
+[
+  {
+    "name": "board.copy",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Copy a closed native board to a new local .kicad_pcb file.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "newName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Parent schematic whose Sheetfile link must change atomically."
+        }
+      },
+      "required": [],
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "file"
+              ]
+            },
+            {
+              "required": [
+                "document"
+              ]
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "newName"
+              ]
+            },
+            {
+              "required": [
+                "output"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "board.create",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create a local native .kicad_pcb file without overwriting existing files.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [],
+      "anyOf": [
+        {
+          "required": [
+            "file"
+          ]
+        },
+        {
+          "required": [
+            "document"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "board.current",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Resolve exactly one open native PCB document.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "board.delete",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Delete a closed native board file with a recoverable source backup.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confirm": {
+          "const": true
+        }
+      },
+      "required": [
+        "confirm"
+      ]
+    }
+  },
+  {
+    "name": "board.list",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "List local .kicad_pcb files.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "directory": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "board.new_pcb",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create a local native .kicad_pcb file without an external board identity.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [],
+      "anyOf": [
+        {
+          "required": [
+            "file"
+          ]
+        },
+        {
+          "required": [
+            "document"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "board.rebind",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Copy a native board into an existing local KiCad project under its project stem.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "project"
+      ]
+    }
+  },
+  {
+    "name": "board.rename",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Rename a closed native board file with recoverable source backup.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "newName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Parent schematic whose Sheetfile link must change atomically."
+        }
+      },
+      "required": [],
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "file"
+              ]
+            },
+            {
+              "required": [
+                "document"
+              ]
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "newName"
+              ]
+            },
+            {
+              "required": [
+                "output"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "library.footprint.build",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Build native pads and line graphics into an empty .kicad_mod target.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional native (footprint ...) source."
+        },
+        "throughHole": {
+          "type": "boolean"
+        },
+        "pads": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "string",
+                "minLength": 1
+              },
+              "xMm": {
+                "type": "number"
+              },
+              "yMm": {
+                "type": "number"
+              },
+              "widthMm": {
+                "type": "number"
+              },
+              "heightMm": {
+                "type": "number"
+              },
+              "angleDeg": {
+                "type": "number"
+              },
+              "drillMm": {
+                "type": "number"
+              },
+              "type": {
+                "enum": [
+                  "smd",
+                  "thru_hole",
+                  "np_thru_hole"
+                ]
+              },
+              "shape": {
+                "enum": [
+                  "rect",
+                  "circle",
+                  "oval",
+                  "roundrect"
+                ]
+              },
+              "layer": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "number",
+              "widthMm"
+            ]
+          }
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "object",
+                "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+                "properties": {
+                  "xMm": {
+                    "type": "number"
+                  },
+                  "yMm": {
+                    "type": "number"
+                  },
+                  "xNm": {
+                    "type": "number"
+                  },
+                  "yNm": {
+                    "type": "number"
+                  }
+                },
+                "anyOf": [
+                  {
+                    "required": [
+                      "xMm",
+                      "yMm"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "xNm",
+                      "yNm"
+                    ]
+                  }
+                ]
+              },
+              "end": {
+                "type": "object",
+                "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+                "properties": {
+                  "xMm": {
+                    "type": "number"
+                  },
+                  "yMm": {
+                    "type": "number"
+                  },
+                  "xNm": {
+                    "type": "number"
+                  },
+                  "yNm": {
+                    "type": "number"
+                  }
+                },
+                "anyOf": [
+                  {
+                    "required": [
+                      "xMm",
+                      "yMm"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "xNm",
+                      "yNm"
+                    ]
+                  }
+                ]
+              },
+              "widthMm": {
+                "type": "number"
+              },
+              "layer": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "start",
+              "end"
+            ]
+          }
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "library.footprint.copy",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Copy a native footprint to a new entry and change its library identity.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "output"
+      ]
+    }
+  },
+  {
+    "name": "library.footprint.create",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create a native .kicad_mod without overwriting existing library entries.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional native (footprint ...) source."
+        },
+        "throughHole": {
+          "type": "boolean"
+        },
+        "pads": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "string",
+                "minLength": 1
+              },
+              "xMm": {
+                "type": "number"
+              },
+              "yMm": {
+                "type": "number"
+              },
+              "widthMm": {
+                "type": "number"
+              },
+              "heightMm": {
+                "type": "number"
+              },
+              "angleDeg": {
+                "type": "number"
+              },
+              "drillMm": {
+                "type": "number"
+              },
+              "type": {
+                "enum": [
+                  "smd",
+                  "thru_hole",
+                  "np_thru_hole"
+                ]
+              },
+              "shape": {
+                "enum": [
+                  "rect",
+                  "circle",
+                  "oval",
+                  "roundrect"
+                ]
+              },
+              "layer": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "number",
+              "widthMm"
+            ]
+          }
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "object",
+                "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+                "properties": {
+                  "xMm": {
+                    "type": "number"
+                  },
+                  "yMm": {
+                    "type": "number"
+                  },
+                  "xNm": {
+                    "type": "number"
+                  },
+                  "yNm": {
+                    "type": "number"
+                  }
+                },
+                "anyOf": [
+                  {
+                    "required": [
+                      "xMm",
+                      "yMm"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "xNm",
+                      "yNm"
+                    ]
+                  }
+                ]
+              },
+              "end": {
+                "type": "object",
+                "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+                "properties": {
+                  "xMm": {
+                    "type": "number"
+                  },
+                  "yMm": {
+                    "type": "number"
+                  },
+                  "xNm": {
+                    "type": "number"
+                  },
+                  "yNm": {
+                    "type": "number"
+                  }
+                },
+                "anyOf": [
+                  {
+                    "required": [
+                      "xMm",
+                      "yMm"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "xNm",
+                      "yNm"
+                    ]
+                  }
+                ]
+              },
+              "widthMm": {
+                "type": "number"
+              },
+              "layer": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "start",
+              "end"
+            ]
+          }
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "library.footprint.delete",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Delete a native footprint with a recoverable source backup.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confirm": {
+          "const": true
+        }
+      },
+      "required": [
+        "confirm"
+      ]
+    }
+  },
+  {
+    "name": "library.footprint.get",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Read native footprint source and inspect pads.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "library.footprint.region_create",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Add a real native footprint polygon on an explicitly selected layer.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "points": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+            "properties": {
+              "xMm": {
+                "type": "number"
+              },
+              "yMm": {
+                "type": "number"
+              },
+              "xNm": {
+                "type": "number"
+              },
+              "yNm": {
+                "type": "number"
+              }
+            },
+            "anyOf": [
+              {
+                "required": [
+                  "xMm",
+                  "yMm"
+                ]
+              },
+              {
+                "required": [
+                  "xNm",
+                  "yNm"
+                ]
+              }
+            ]
+          }
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "widthMm": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "points"
+      ]
+    }
+  },
+  {
+    "name": "library.list",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Read native project and configured global symbol/footprint library tables.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "directory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1
+        },
+        "configDirectory": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "library.symbol.build",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Build a native .kicad_sym entry with validated pin identities and electrical types.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "referencePrefix": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "x1Mm": {
+              "type": "number"
+            },
+            "y1Mm": {
+              "type": "number"
+            },
+            "x2Mm": {
+              "type": "number"
+            },
+            "y2Mm": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "x1Mm",
+            "y1Mm",
+            "x2Mm",
+            "y2Mm"
+          ]
+        },
+        "pins": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "string",
+                "minLength": 1
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "xMm": {
+                "type": "number"
+              },
+              "yMm": {
+                "type": "number"
+              },
+              "angleDeg": {
+                "enum": [
+                  0,
+                  90,
+                  180,
+                  270
+                ]
+              },
+              "lengthMm": {
+                "type": "number"
+              },
+              "type": {
+                "enum": [
+                  "input",
+                  "output",
+                  "bidirectional",
+                  "tri_state",
+                  "passive",
+                  "free",
+                  "unspecified",
+                  "power_in",
+                  "power_out",
+                  "open_collector",
+                  "open_emitter",
+                  "no_connect"
+                ]
+              }
+            },
+            "required": [
+              "number"
+            ]
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "library.symbol.create",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create a native symbol entry with pins and optional rectangular body.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "referencePrefix": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body": {
+          "type": "object",
+          "properties": {
+            "x1Mm": {
+              "type": "number"
+            },
+            "y1Mm": {
+              "type": "number"
+            },
+            "x2Mm": {
+              "type": "number"
+            },
+            "y2Mm": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "x1Mm",
+            "y1Mm",
+            "x2Mm",
+            "y2Mm"
+          ]
+        },
+        "pins": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "string",
+                "minLength": 1
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "xMm": {
+                "type": "number"
+              },
+              "yMm": {
+                "type": "number"
+              },
+              "angleDeg": {
+                "enum": [
+                  0,
+                  90,
+                  180,
+                  270
+                ]
+              },
+              "lengthMm": {
+                "type": "number"
+              },
+              "type": {
+                "enum": [
+                  "input",
+                  "output",
+                  "bidirectional",
+                  "tri_state",
+                  "passive",
+                  "free",
+                  "unspecified",
+                  "power_in",
+                  "power_out",
+                  "open_collector",
+                  "open_emitter",
+                  "no_connect"
+                ]
+              }
+            },
+            "required": [
+              "number"
+            ]
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "library.symbol.delete",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Delete one native symbol entry while retaining other library entries and a source backup.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confirm": {
+          "const": true
+        }
+      },
+      "required": [
+        "name",
+        "confirm"
+      ]
+    }
+  },
+  {
+    "name": "library.symbol.export_source",
+    "domain": "library",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Return or export one native symbol source entry.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "pcb.beautify",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Conservatively merge unbranched collinear native tracks with identical net/layer/width; preserve copper geometry.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "pcb.board.info",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Read live native board inventory, nets, layers and stackup.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "pcb.component.attrs_backfill",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Copy schematic values into native footprint fields matched by reference.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "schematic": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document",
+        "schematic"
+      ]
+    }
+  },
+  {
+    "name": "pcb.components.arrange",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Arrange explicitly selected native footprints on an mm grid.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "position": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "columns": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "spacingMm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "document",
+        "ids",
+        "position"
+      ]
+    }
+  },
+  {
+    "name": "pcb.config.set",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Set native board design rules via IPC or closed-project JSON settings with a backup.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1
+        },
+        "settings": {
+          "type": "object"
+        },
+        "rules": {
+          "type": "object"
+        }
+      },
+      "required": [],
+      "anyOf": [
+        {
+          "required": [
+            "settings"
+          ]
+        },
+        {
+          "required": [
+            "rules",
+            "document"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "pcb.constraint.list",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Read actual native custom rules and board design constraints.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "pcb.differential_pair.create",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create native gap/width constraints for existing complementary P/N or +/- net names.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "positiveNet": {
+          "type": "string",
+          "minLength": 1
+        },
+        "negativeNet": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gapMm": {
+          "type": "number"
+        },
+        "minGapMm": {
+          "type": "number"
+        },
+        "widthMm": {
+          "type": "number"
+        },
+        "minWidthMm": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "document",
+        "name",
+        "positiveNet",
+        "negativeNet",
+        "gapMm",
+        "widthMm"
+      ]
+    }
+  },
+  {
+    "name": "pcb.differential_pair.delete",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Delete only this workflow-owned native differential constraint; native naming-based pairing remains.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "pcb.differential_pair.rename",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Rename only a workflow-owned native differential constraint.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "newName": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "name",
+        "newName"
+      ]
+    }
+  },
+  {
+    "name": "pcb.equal_length_group.add_nets",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Extend a workflow-owned native skew group without losing previous member nets.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "document",
+        "name",
+        "nets"
+      ]
+    }
+  },
+  {
+    "name": "pcb.equal_length_group.create",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create a real native skew constraint across two or more existing nets.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "maxSkewMm": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "document",
+        "name",
+        "nets",
+        "maxSkewMm"
+      ]
+    }
+  },
+  {
+    "name": "pcb.equal_length_group.delete",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Delete only a workflow-owned native skew group rule.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "pcb.export.dsn",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Call KiCad DSN::ExportBoardToSpecctraFile directly through native IPC and hash the artifact.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "output"
+      ]
+    }
+  },
+  {
+    "name": "pcb.image.create",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "create native board reference raster images through in-process KiCad IPC; PNG/JPEG bytes, position in mm or nm, positive scale.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "imageFile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "imageBase64": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "position"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "imageFile"
+          ]
+        },
+        {
+          "required": [
+            "imageBase64"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "pcb.image.delete",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "delete native board reference raster images through in-process KiCad IPC; PNG/JPEG bytes, position in mm or nm, positive scale.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "pcb.image.list",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "list native board reference raster images through in-process KiCad IPC; PNG/JPEG bytes, position in mm or nm, positive scale.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "pcb.image.modify",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "modify native board reference raster images through in-process KiCad IPC; PNG/JPEG bytes, position in mm or nm, positive scale.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "imageFile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "imageBase64": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "pcb.import_autoroute",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Call native Specctra SES import with undo rollback and routing readback.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "file"
+      ]
+    }
+  },
+  {
+    "name": "pcb.import_changes",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Use native schematic netlist export and board ImportNetlist IPC to update the PCB.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "schematic": {
+          "type": "string",
+          "minLength": 1
+        },
+        "netlist": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "matchMode": {
+          "enum": [
+            "NMM_UUID",
+            "NMM_REFERENCE"
+          ]
+        },
+        "deleteExtraFootprints": {
+          "type": "boolean"
+        },
+        "updateFootprints": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "netlist"
+          ]
+        },
+        {
+          "required": [
+            "schematic"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "pcb.net_class.create",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create a native netclass using mm inputs without replacing other classes.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clearanceMm": {
+          "type": "number"
+        },
+        "trackWidthMm": {
+          "type": "number"
+        },
+        "diffPairWidthMm": {
+          "type": "number"
+        },
+        "diffPairGapMm": {
+          "type": "number"
+        },
+        "diffPairViaGapMm": {
+          "type": "number"
+        },
+        "priority": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "pcb.net_class.list",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Read native project netclasses.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "pcb.net.color.set",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Persist a native project net color assignment with guarded file readback.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1
+        },
+        "net": {
+          "type": "string",
+          "minLength": 1
+        },
+        "color": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "net",
+        "color"
+      ]
+    }
+  },
+  {
+    "name": "pcb.page.clear",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Delete native board items with explicit confirmation and locked-item protection.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "confirm": {
+          "const": true
+        }
+      },
+      "required": [
+        "document",
+        "confirm"
+      ]
+    }
+  },
+  {
+    "name": "pcb.pour.rebuild",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Run native zone refill and read back zones plus connectivity proof.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "pcb.report",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Produce native board inventory, live-copy hash, connectivity proof and DRC evidence.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "pcb.route.via_hop",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create a clearance-checked native track/via/track/via/track layer hop.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "start": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "end": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "via1": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "via2": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hopLayer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "net": {
+          "type": "string",
+          "minLength": 1
+        },
+        "widthMm": {
+          "type": "number"
+        },
+        "clearanceMm": {
+          "type": "number"
+        },
+        "diameterMm": {
+          "type": "number"
+        },
+        "drillMm": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "document",
+        "start",
+        "end",
+        "via1",
+        "via2",
+        "layer",
+        "hopLayer",
+        "net"
+      ]
+    }
+  },
+  {
+    "name": "pcb.silk.align",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Align explicitly selected silkscreen text or footprint reference fields on one axis.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "axis": {
+          "enum": [
+            "x",
+            "y"
+          ]
+        },
+        "coordinateMm": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "document",
+        "ids",
+        "coordinateMm"
+      ]
+    }
+  },
+  {
+    "name": "pcb.silk.import_svg",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Import safe SVG vector primitives as native silkscreen shapes; unsupported SVG features fail explicitly.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "svg": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "layer": {
+          "enum": [
+            "F.SilkS",
+            "B.SilkS"
+          ]
+        },
+        "widthMm": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "svg"
+          ]
+        },
+        {
+          "required": [
+            "file"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "pcb.silk.label_pads",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create native reference.pad-number silkscreen labels from actual footprints.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sizeMm": {
+          "type": "number"
+        },
+        "offsetMm": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "pcb.silk.netnames",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create native board text showing actual pad net names.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sizeMm": {
+          "type": "number"
+        },
+        "offsetMm": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "pcb.snapshot",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Render a native live board copy to SVG with a revision hash; explicitly not a viewport screenshot.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layers": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "output"
+      ]
+    }
+  },
+  {
+    "name": "pcb.stackup.set",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Update and read back the native board stackup through IPC.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "stackup": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "document",
+        "stackup"
+      ]
+    }
+  },
+  {
+    "name": "pcb.view.filter.get",
+    "domain": "board",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Read native appearance settings, visible layers and active layer without changing visibility.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "project.create",
+    "domain": "project",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create local .kicad_pro, .kicad_sch and .kicad_pcb files without overwriting existing files.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "directory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "directory",
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "schematic.attribute.inspect",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Inspect native symbol fields and return a revision hash for guarded field movement.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.attribute.move",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Move a native symbol field only when expectedSha256 matches its complete inspected state.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "angleDeg": {
+          "type": "number"
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Exact symbol state hash returned by attribute.inspect."
+        }
+      },
+      "required": [
+        "document",
+        "field",
+        "position",
+        "expectedSha256"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.bridgeCheck",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Check native schematic hierarchy, connectivity netlist and ERC without a connector.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "schematic.check",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Run native schematic hierarchy, connectivity netlist and all-severity live ERC.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "schematic.component.replace",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Replace the native symbol definition/value while preserving existing pin geometry.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "libId": {
+          "type": "string",
+          "minLength": 1,
+          "description": "KiCad Library:Item ID; replacement must preserve pin identities and geometry."
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "libId"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.designators.list",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": false,
+    "description": "List placed native symbol UUIDs, references and units.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "schematic.export.image",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Render a temporary live schematic copy with the native SVG exporter.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Destination directory for native schematic SVG exports."
+        }
+      },
+      "required": [
+        "document",
+        "output"
+      ]
+    }
+  },
+  {
+    "name": "schematic.group.move",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Move explicitly selected native schematic items and absolute symbol fields.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "delta": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "document",
+        "ids",
+        "delta"
+      ]
+    }
+  },
+  {
+    "name": "schematic.image.create",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "create native schematic raster images through in-process KiCad IPC; PNG/JPEG bytes, position in mm or nm, positive scale.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "imageFile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "imageBase64": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "position"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "imageFile"
+          ]
+        },
+        {
+          "required": [
+            "imageBase64"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.image.list",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": false,
+    "description": "list native schematic raster images through in-process KiCad IPC; PNG/JPEG bytes, position in mm or nm, positive scale.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "schematic.image.modify",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "modify native schematic raster images through in-process KiCad IPC; PNG/JPEG bytes, position in mm or nm, positive scale.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "imageFile": {
+          "type": "string",
+          "minLength": 1
+        },
+        "imageBase64": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "type": "object",
+          "description": "Absolute position or delta: use xMm/yMm (millimetres) or xNm/yNm (nanometres).",
+          "properties": {
+            "xMm": {
+              "type": "number"
+            },
+            "yMm": {
+              "type": "number"
+            },
+            "xNm": {
+              "type": "number"
+            },
+            "yNm": {
+              "type": "number"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "xMm",
+                "yMm"
+              ]
+            },
+            {
+              "required": [
+                "xNm",
+                "yNm"
+              ]
+            }
+          ]
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "layer": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.page.clear",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Clear native sheet content while retaining identity, title and embedded symbol library.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confirm": {
+          "const": true
+        }
+      },
+      "required": [
+        "confirm"
+      ]
+    }
+  },
+  {
+    "name": "schematic.page.create",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Create a child .kicad_sch and its real parent sheet symbol in one guarded transaction.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "page": {
+          "type": "string",
+          "minLength": 1,
+          "description": "New child .kicad_sch path relative to the parent."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "xMm": {
+          "type": "number"
+        },
+        "yMm": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "page",
+        "name"
+      ]
+    }
+  },
+  {
+    "name": "schematic.page.delete",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Remove a parent sheet symbol; preserve reusable child files.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sheetId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confirm": {
+          "const": true
+        }
+      },
+      "required": [
+        "confirm"
+      ]
+    }
+  },
+  {
+    "name": "schematic.page.open",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Open one native hierarchical schematic sheet by path, name or UUID.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "page": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sheetId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "schematic.page.rename",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Rename the display name of one native child sheet.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sheetId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "newName": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "newName"
+      ]
+    }
+  },
+  {
+    "name": "schematic.pages.list",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Read the native hierarchical sheet tree, paths and sheet UUIDs.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "schematic.pin.disconnect",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Delete the exact enumerated wire endpoints at a native pin and add a no-connect marker.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "pin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "wireIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "document",
+        "pin",
+        "wireIds"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.power.connect_pin",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Place a native global power/net label at the actual transformed symbol pin position.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "pin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "net": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "pin",
+        "net"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.rebind.footprint",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Rebind native symbol footprint fields to a Library:Footprint identity.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "libId": {
+          "type": "string",
+          "minLength": 1,
+          "description": "KiCad Library:Item ID; replacement must preserve pin identities and geometry."
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "libId"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.rebind.symbol",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Replace the native library definition while preserving pin identities and positions.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "overrideLocks": {
+          "type": "boolean"
+        },
+        "libId": {
+          "type": "string",
+          "minLength": 1,
+          "description": "KiCad Library:Item ID; replacement must preserve pin identities and geometry."
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "document",
+        "libId"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "id"
+          ]
+        },
+        {
+          "required": [
+            "ids"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.rename",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Rename a native schematic file and optionally update its parent sheet link.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Absolute native file path; document is accepted as an alternative."
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "expectedSha256": {
+          "type": "string",
+          "minLength": 1
+        },
+        "newName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Parent schematic whose Sheetfile link must change atomically."
+        }
+      },
+      "required": [],
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "file"
+              ]
+            },
+            {
+              "required": [
+                "document"
+              ]
+            }
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "newName"
+              ]
+            },
+            {
+              "required": [
+                "output"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "schematic.titleblock.get",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Read native schematic title block through common KiCad IPC.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "schematic.titleblock.modify",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Set and read back a native schematic title block.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "titleBlock": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "document",
+        "titleBlock"
+      ]
+    }
+  },
+  {
+    "name": "schematic.visible_text.bboxes",
+    "domain": "schematic",
+    "backend": "composite",
+    "mutates": false,
+    "description": "Compute visible native schematic text bounds with KiCad font extents.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "document": {
+          "description": "Native document path or DocumentSpecifier",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document"
+      ]
+    }
+  },
+  {
+    "name": "system.notify",
+    "domain": "system",
+    "backend": "composite",
+    "mutates": true,
+    "description": "Deliver a local frontend or terminal notification directly in-process.",
+    "nativeWorkflow": true,
+    "outputs": [
+      "native result",
+      "revision-bound readback or recoverable file transaction"
+    ],
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "level": {
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ]
+        }
+      },
+      "required": [
+        "message"
+      ]
+    }
+  }
+]

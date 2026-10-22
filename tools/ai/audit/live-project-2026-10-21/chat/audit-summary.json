@@ -1,0 +1,171 @@
+{
+  "generatedAt": "2026-10-21T11:21:32-07:00",
+  "project": "RK3308B_IPC 摄像头模块",
+  "documents": {
+    "pcb": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pcb",
+    "schematic": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_sch",
+    "openDocumentsReportedByDocumentList": [
+      "DOCTYPE_PCB: RK3308B_IPC 摄像头模块.kicad_pcb"
+    ]
+  },
+  "toolsCalled": [
+    {
+      "action": "system.health",
+      "ok": true,
+      "note": "CLI 10.99.0, IPC available, designReady=true"
+    },
+    {
+      "action": "document.list",
+      "ok": true,
+      "note": "Only the PCB was listed; no schematic document"
+    },
+    {
+      "action": "pcb.board.info",
+      "ok": true,
+      "note": "Requested action name board.state.get is not in the action schema; used the catalogued native board state action"
+    },
+    {
+      "action": "board.connectivity.prove",
+      "ok": false,
+      "status": "CONNECTIVITY_UNPROVEN"
+    },
+    {
+      "action": "pcb.snapshot",
+      "ok": true,
+      "note": "native live board render, not a viewport screenshot"
+    },
+    {
+      "action": "pcb.report",
+      "ok": true,
+      "note": "native inventory + live-copy hash + connectivity + DRC evidence"
+    },
+    {
+      "action": "board.drc.live",
+      "ok": true,
+      "status": "violations"
+    },
+    {
+      "action": "schematic.erc.live",
+      "ok": true,
+      "status": "violations"
+    },
+    {
+      "action": "schematic.check",
+      "ok": true,
+      "passed": false,
+      "note": "native hierarchy + connectivity netlist + live ERC"
+    },
+    {
+      "action": "schematic.export.netlist",
+      "ok": true,
+      "note": "exit 0; warning: schematic has annotation errors"
+    },
+    {
+      "action": "board.export.svg",
+      "ok": true,
+      "note": "exit 0; wrote a single SVG file at pcb-svg"
+    }
+  ],
+  "counts": {
+    "pcb": {
+      "footprints": 155,
+      "pads": 837,
+      "tracks": 1329,
+      "vias": 77,
+      "zones": 3,
+      "nets": 126,
+      "copperLayers": 4
+    },
+    "connectivity": {
+      "proven": false,
+      "unconnectedCount": 132,
+      "unconnectedNetCount": 80,
+      "danglingItems": 0
+    },
+    "drcLive": {
+      "total": 1343,
+      "error": 1075,
+      "warning": 268,
+      "violations": 1211,
+      "unconnectedItems": 132
+    },
+    "drcLiveByType": {
+      "clearance": 499,
+      "shorting_items": 7,
+      "hole_clearance": 10,
+      "courtyards_overlap": 18,
+      "copper_edge_clearance": 34,
+      "drill_out_of_range": 77,
+      "track_width": 199,
+      "starved_thermal": 12,
+      "via_diameter": 77,
+      "solder_mask_bridge": 10,
+      "track_dangling": 1,
+      "lib_footprint_issues": 155,
+      "text_height": 90,
+      "silk_overlap": 21,
+      "silk_over_copper": 1,
+      "unconnected_items": 132
+    },
+    "drcInsidePcbReport": {
+      "total": 1339,
+      "error": 1071,
+      "warning": 268
+    },
+    "ercLive": {
+      "total": 197,
+      "error": 15,
+      "warning": 182,
+      "byType": {
+        "power_pin_not_driven": 9,
+        "pin_not_driven": 5,
+        "pin_not_connected": 1,
+        "lib_symbol_issues": 85,
+        "pin_to_pin": 60,
+        "footprint_link_issues": 37
+      }
+    },
+    "schematicCheck": {
+      "passed": false,
+      "topLevelSheets": 1,
+      "netlistNets": 355,
+      "ercTotal": 197
+    }
+  },
+  "designVerdict": "NOT PASSED — execution of all checks succeeded, but connectivity proof failed and DRC/ERC report violations.",
+  "changesMade": "none: no layout, routing or rule mutation actions were called; no project files were saved",
+  "outputs": {
+    "board-native-report.json": {
+      "bytes": 8932105,
+      "sha256": "b39d67dd141eceab62b0b1e1d8a0436b0207bdca30638151ac2a73d1dbf09460"
+    },
+    "board-snapshot.svg": {
+      "bytes": 792591,
+      "sha256": "7adc7a0ed021ea6ac5bf6abf5c696b50362e2fca301d682ada50707836f9b14a"
+    },
+    "drc-live-report.json": {
+      "bytes": 951409,
+      "sha256": "9b8c58eb546527fd6f969b6f80a23f599801cba125e36f56d78b9ada9e75ac40"
+    },
+    "schematic-erc-live.json": {
+      "bytes": 210933,
+      "sha256": "58260dd6f9962f286c8a770b8c2b1ec066ec5dc7244e0a1f31e2cf17b4101694"
+    },
+    "schematic-erc-live-temp-report.json": {
+      "bytes": 155428,
+      "sha256": "8f6102ee333c80c6f606ac4c11a27b11a36f2ed779737cfc9e67b3fceffaa3b9"
+    },
+    "schematic-native-check.json": {
+      "bytes": 695923,
+      "sha256": "6d118f3c9c57a893b92e5c62296331b9a0708eca61288be765f992a4a3babf95"
+    },
+    "schematic-netlist.net": {
+      "bytes": 481168,
+      "sha256": "30d357b3988c3ee0280149bcc8bf81be46969961d2c83aa088e9b96b7ae0860e"
+    },
+    "pcb-export.svg": {
+      "bytes": 599373,
+      "sha256": "759a52b09be3241e58d27429975e85000e0de51f69e3084182f6f84ee5f7fc6c"
+    }
+  }
+}

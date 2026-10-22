@@ -1,0 +1,178 @@
+{
+  "ok": true,
+  "version": "0.4.13",
+  "testedPackageCodeMatchesInstalled": {
+    "dist/extension.cjs": true,
+    "dist/media/main.js": true,
+    "resources/claude-code/cli.js": true
+  },
+  "permissionTests": {
+    "ok": true,
+    "version": "0.4.13",
+    "extensionPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.13",
+    "fixture": "production extension + real bundled SDK/CLI + localhost model; harmless temporary files",
+    "cases": {
+      "ordinaryAgentPrompts": true,
+      "highestLiveExecutesWithoutPrompt": true,
+      "switchBackRestoresChecks": true,
+      "highestResolvesPendingTool": true,
+      "highestStartupExecutesWithoutPrompt": true,
+      "explicitQuestionStillAsksUser": true
+    },
+    "completedTurns": 6,
+    "prompts": [
+      {
+        "tool": "Bash",
+        "command": "printf KICAD_PERMISSION_OK > '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-permissions-workspace-4i2VLn/ordinary-agent.txt'"
+      },
+      {
+        "tool": "Bash",
+        "command": "printf KICAD_PERMISSION_OK > '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-permissions-workspace-4i2VLn/ordinary-restored.txt'"
+      },
+      {
+        "tool": "Bash",
+        "command": "printf KICAD_PERMISSION_OK > '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-permissions-workspace-4i2VLn/pending-live.txt'"
+      },
+      {
+        "tool": "AskUserQuestion"
+      }
+    ],
+    "temporaryWorkspace": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-permissions-workspace-4i2VLn"
+  },
+  "composerUI": {
+    "version": "0.4.13",
+    "initialMode": "Agent",
+    "menuOrder": [
+      "Agent",
+      "Default",
+      "Plan",
+      "最高权限"
+    ],
+    "launchPermissionMode": "acceptEdits",
+    "checks": [
+      "new chat defaults to Agent",
+      "highest permission selectable without sending",
+      "Plan and Default remain selectable",
+      "selected Agent mode forwarded to chat backend",
+      "live full access resolves pending Bash without Yes or persistent rules",
+      "switch back to Agent",
+      "Tab without suggestion keeps focus for empty and nonempty drafts",
+      "second Tab after acceptance keeps focus",
+      "completed turn triggers prediction",
+      "current selected model and actual conversation forwarded",
+      "only ghost text, no tool reference button/checkbox/status/accept buttons",
+      "Tab accepts without sending",
+      "Enter and Right do not accept ghost text",
+      "Escape dismisses",
+      "editing invalidates late result"
+    ],
+    "explicitMessages": 3,
+    "automaticMessages": 0,
+    "pageErrors": []
+  },
+  "optimizerRegression": {
+    "version": "0.4.13",
+    "fixture": "Installed production frontend, mock host responses",
+    "checks": [
+      "empty input disabled",
+      "selected model forwarded",
+      "direct input replacement",
+      "no preview dialog",
+      "undo restores original",
+      "no automatic send",
+      "Enter disabled during optimization",
+      "cancel and late result ignored",
+      "error preserves draft and can retry",
+      "concurrent edit protected"
+    ],
+    "chatMessagesSent": 0,
+    "pageErrors": []
+  },
+  "installedHost": {
+    "version": "0.4.13",
+    "displayName": "Kicad",
+    "active": true,
+    "webviews": {
+      "resolved": 2,
+      "mounted": 2
+    },
+    "nativeTerminal": {
+      "name": "Kicad 终端",
+      "pid": 15611,
+      "binary": "/Users/mosc/.local/bin/kicad-terminal"
+    },
+    "kiCadMcpEnabled": true,
+    "availableTerminalProviders": [
+      "kicad-deepseek"
+    ]
+  },
+  "installation": {
+    "ok": true,
+    "agent": {
+      "actionCount": 125,
+      "agentVersion": "0.2.0",
+      "arch": "arm64",
+      "catalogSha256": "5eadc691168c3ecd13ccec27df552eb46236d3c47d1547fb83540471234fd041",
+      "goVersion": "go1.27.2",
+      "mcpToolCount": 18,
+      "mcpTools": [
+        "kicad_health",
+        "kicad_actions",
+        "kicad_call",
+        "kicad_spec_validate",
+        "kicad_blocks",
+        "kicad_workflow",
+        "kicad_pipeline",
+        "kicad_native_tools",
+        "kicad_system",
+        "kicad_project",
+        "kicad_document",
+        "kicad_schematic",
+        "kicad_board",
+        "kicad_library",
+        "kicad_external",
+        "kicad_editor",
+        "kicad_audit",
+        "kicad_web"
+      ],
+      "nativeToolCount": 970,
+      "os": "darwin",
+      "schemaVersion": 1
+    },
+    "mcpToolCount": 18,
+    "terminalVersion": "1.19.3",
+    "terminalSha256": "b3b3f2f1b401a505cba303014f9ab0460cfc314d20b0dd6510ae3e73b0f33618",
+    "extensionVersion": "0.4.13",
+    "extensionPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.13",
+    "checkedFiles": [
+      "extension.cjs",
+      "main.js",
+      "bundled CLI"
+    ],
+    "note": "Installation and capability verification; this does not assert a connected KiCad document or fabricate engineering validation."
+  },
+  "buildManifest": {
+    "schemaVersion": 1,
+    "kind": "extension",
+    "version": "0.4.13",
+    "createdAt": "2026-10-21T00:08:06.531324+00:00",
+    "upstreamCommit": "c238b3e57c55e95220a8e2837cd4cbe6350a6b65",
+    "sourceSha256": "bf5fa939115b9e1a921e3afa0972923d12f39a65da4defc6995a00b2333edaeb",
+    "files": {
+      "kicad-0.4.13.vsix": "dbf37bb53a64368a489899e6ec1d3296cfe83576e2d354499e0035e4b403fb28"
+    }
+  },
+  "buildChecks": [
+    "Overlay checks passed: native terminal, workspace selection, MCP config preservation, trust, paths, provider routing, SDK syntax.",
+    "Prompt optimizer checks passed: selected model, text-only isolation, cancel, timeout, errors, empty output, tool rejection.",
+    "Composer backend checks passed: current model, no tools/history writes, grounded prompt, abstention and bounded context.",
+    "SDK probe lifecycle passed: success/timeout abort, bounded lifetime and no late orphan spawn.",
+    "Provider routing passed: endpoint precedence, validation, cross-provider and DeepSeek model changes, resume identity, modes and busy guard.",
+    "Permissions passed: SDK capability and selected modes, pending Bash/MCP approval, explicit questions retained, no persistent rules, failed switch rollback.",
+    "Composer keyboard passed: Tab is reserved with/without predictions and open completion menus, IME protected, Shift+Tab mode shortcut retained.",
+    "Packaged extension entry and bundled dependencies load successfully."
+  ],
+  "visibleWindow": "Kicad · 0.4.13 检查窗口",
+  "visiblePermissionMode": "最高权限",
+  "scope": "Extension permission mode and composer Tab behavior; native terminal and KiCad backend capabilities retained."
+}

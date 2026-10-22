@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "version": "0.4.14",
+  "extensionPath": "/tmp/Kicad-0.4.14-review/extension",
+  "fixture": "production extension + real bundled SDK/CLI + localhost model; harmless temporary files",
+  "cases": {
+    "ordinaryAgentPrompts": true,
+    "highestLiveExecutesWithoutPrompt": true,
+    "switchBackRestoresChecks": true,
+    "highestResolvesPendingTool": true,
+    "highestStartupExecutesWithoutPrompt": true,
+    "explicitQuestionStillAsksUser": true
+  },
+  "completedTurns": 6,
+  "prompts": [
+    {
+      "tool": "Bash",
+      "command": "printf KICAD_PERMISSION_OK > '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-permissions-workspace-EcUmY7/ordinary-agent.txt'"
+    },
+    {
+      "tool": "Bash",
+      "command": "printf KICAD_PERMISSION_OK > '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-permissions-workspace-EcUmY7/ordinary-restored.txt'"
+    },
+    {
+      "tool": "Bash",
+      "command": "printf KICAD_PERMISSION_OK > '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-permissions-workspace-EcUmY7/pending-live.txt'"
+    },
+    {
+      "tool": "AskUserQuestion"
+    }
+  ],
+  "temporaryWorkspace": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-permissions-workspace-EcUmY7"
+}

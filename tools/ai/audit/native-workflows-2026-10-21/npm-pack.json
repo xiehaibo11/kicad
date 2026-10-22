@@ -1,0 +1,2922 @@
+Verified complete Kicad package payload (580 files).
+[
+  {
+    "id": "@-kicadai/kicad-code@0.1.1",
+    "name": "@-kicadai/kicad-code",
+    "version": "0.1.1",
+    "size": 47314154,
+    "unpackedSize": 151608730,
+    "shasum": "e987949e6e5172503f347bc071308e335d9e0c67",
+    "integrity": "sha512-tELPF6swK8qVbLBveLSSGvudyZ+p86fhMLym1qJe4kYQ2uWKaLdVoz2GEUO6agAt9M+fP3+duK4BQBAcM4gpmw==",
+    "filename": "-kicadai-kicad-code-0.1.1.tgz",
+    "files": [
+      {
+        "path": "LICENSE",
+        "size": 35149,
+        "mode": 420
+      },
+      {
+        "path": "README.md",
+        "size": 4585,
+        "mode": 420
+      },
+      {
+        "path": "THIRD_PARTY_NOTICES.md",
+        "size": 1252,
+        "mode": 420
+      },
+      {
+        "path": "bin/Kicad.mjs",
+        "size": 1447,
+        "mode": 493
+      },
+      {
+        "path": "lib/config.mjs",
+        "size": 3478,
+        "mode": 420
+      },
+      {
+        "path": "licenses/circuit-blocks-MIT.txt",
+        "size": 2114,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0aa9add6a9158efad3e6649e3affd607c7e2629f6677af19f9988c8fbb0757b0-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0bb5035e49bf9b5661655b402bab3c3efccb8eab2a50e37392100139fe3280f2-LICENSE",
+        "size": 1114,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0c0468e2286378bb0b229c5d7be3512e3fefd83a23b7b064fc79001b43fb54b0-LICENSE",
+        "size": 11390,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0cef05dfff8b6aa7f35596984f5709f0d17c2582924a751efa471a76de7cdc11-LICENSE",
+        "size": 752,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594-LICENSE.APACHE",
+        "size": 10174,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0dd4e47333485760cf8c265db5a5e24ae8d7401064c6f2e19793ee81a5bef42f-LICENSE",
+        "size": 1124,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0e4c9a9b6c71019cbbea3bdc20b01223110a9035700f9c960c8fcbf78c2325ce-LICENSE",
+        "size": 1089,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0ea1dc735df3fd3f0fc0dba5034b813589254667028874a1e7f4492fd27a3756-LICENSE",
+        "size": 595,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0f0b408b8b871d983e767528c6dc51e0ad7efaa022890c449fe2b2e1ee24dbb7-LICENSE",
+        "size": 1104,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0f0ca96f50793990031ebc488a38f7292ff70bce8ab6a8e5eeda674abc32ccdf-LICENSE",
+        "size": 1067,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0ffe67fe630169de46df2d29dc18f5857b4c98f0f95b0cd9e3c21fef51f9a9b8-LICENSE.md",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1a3aeb1f1398bd697d57c3c585faadf59d825aca6e3162cd7eeb72ff76eb2466-LICENSE",
+        "size": 1073,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1a66adbb5a45806b7fe0b5ff3e78008b57e660f30e688286c0f16a6991f10fd1-LICENSE",
+        "size": 1069,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1a526fbe8d8577f5a4b1c2821842b55b7c0e18862531c62ae4ce69c9b19b74b6-LICENSE",
+        "size": 1114,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1aa9a12863eefb583779b2ca0e5d73c610b6e6d07529ae0472721769a6ea0a32-LICENSE",
+        "size": 1095,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1b02e03c3fb4f87d476c128f0eb9def1f5a1709d28b180465228bd41574623b7-LICENSE",
+        "size": 27729,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1b7ebc8d7889ed25491484ab2b102370742ca6c0b26650a0c62cc2269b579b84-LICENSE",
+        "size": 1501,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1bf0dc3f7727723e5a032ed12164a47cf92c05204cb1a3485f123c24e2833ed1-LICENSE.md",
+        "size": 1100,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1c7d24852ccde9ddd726e6fcbc67e6240533605d8ebb40da98abf8ef4f235c53-LICENSE.md",
+        "size": 102753,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1c66b5311fc6328ab70616d2cf8e20a8e0a787f534831cf8a311b20098b617a5-LICENSE",
+        "size": 1156,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1ca6c9ca372cffe26c313464b9d9f0aef2417b27b2bad20396f4769005122d4d-LICENSE.md",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1cbe51b907662f6cb1492b16c359384a595180bf0e4d101603ed525e75c4e484-LICENSE",
+        "size": 1051,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1ce941682a96c7b898ecd125d0f2e22319758ea6f3adbf498a65d649b0f3f7dd-LICENSE",
+        "size": 1101,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1dedee6f84f5875ce4dc398d4d767274eb952a43cfd510a6ada856b2ed347472-LICENSE",
+        "size": 1308,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1e76029602ae9b21cc4e612db2496d92febed882ba13ba745f8b3309e85f9d39-LICENSE",
+        "size": 1084,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6-LICENSE",
+        "size": 11558,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1f83c934f29383a9b4ccb7a25eea6907da6f2b7675905fbb82f8f97f278b83ef-LICENSE",
+        "size": 1076,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1fa6ee8bb95a81ae3d73a5bd074a3ac380ffec13697051063ca1a601921b91db-LICENSE",
+        "size": 1078,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1fca8454c0d77a73f9922a52d39e1f7c339f5da5d03f2766eff66b859fa19477-LICENSE",
+        "size": 1068,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1fe6958409c8c257a70c587a18b6f7f412b179b456630790d30b2ec9a8e4b7d4-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2a8a5d6197bb97a018b8a190dd3ed853d750ca87c8e80c17aad41d6c6ff448e1-LICENSE",
+        "size": 1133,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2aa16be0f4fad003a352a955a43314e9d1d8deef7034060a82ac9c49f32b81e2-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2b29dcfe0d6471f7e8c92c5fb38c9f93edee10330937055440192f1832b1ecef-LICENSE",
+        "size": 1183,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2b78f11c8624f013751e54a34d87e8b5be5dd525dff65c7cda86f5439ed8bf8e-LICENSE",
+        "size": 1213,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2b770a704c15de238c3f622b01b0044ddd60b49ee30608ea6991ebf19db7a7a1-LICENSE",
+        "size": 1073,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2bd8a2c61751fc47dcd214f864b6fcdbcb518995fbf497c81a06c3bfe8d1d9d4-LICENSE",
+        "size": 1129,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2c7c5d22ed5a8ee968c64757710979afcd77438c48b4a265b94e615babd8a901-LICENSE.md",
+        "size": 1550,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2c46f1325bd3822a33c1e2c1e49c18d13127ac00f9c8b3b79196c7a126f73cd9-LICENSE",
+        "size": 753,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2cee71bf4612fc2efe1c6261e3f2b21f3c7259ef8a4f3593b095ae7a7bd65ad9-LICENSE",
+        "size": 1119,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2dc0465729366c3a7890dfa9e972a1ba7048a26c02116fb8b419a6a1ac110149-LICENSE.txt",
+        "size": 731,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2e97627cb278aa7556fb9e8817368302301a595b6c7582512b8d74c57b773652-LICENSE",
+        "size": 1086,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2ea8c792510e3a013fad1f5810e2f904ec2349d04df8e7a82ee3d74b13f720a2-LICENSE",
+        "size": 1064,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2ef1e48ea743d9c82313e6887858f7c1feaddd636f5a3f43926aab0143e67ebd-LICENSE",
+        "size": 11352,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2ef2cbeeb84d5e7a92d208426ef4f841b5447ae0a9e661ffb0983e8985a9f469-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2f1a503bfab84b3ba7393627308b3274501e459e3b5185bbb56bbf16cb1602d4-LICENSE",
+        "size": 1146,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3a6d6de49d284a36c5d271ef0e62eca1838cc460dd7630e3f2c347c8f5b2232a-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3a7d3bb198e909ed642bd68bd29a7d7c09a636d27a51ec663d35f00c4760ec42-LICENSE.md",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3a61c6c96caf5c1d9b623fb9b04c822b783dfcb78aa7e49c76a3f643e6ed7f95-LICENSE",
+        "size": 1139,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3c7c2b07a2591835cb6c60687a23e425540565d9ccb65fef17478c6073bf6841-license.js",
+        "size": 1485,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3d19c2b6246b3072547af2bd05e6b4c09bd3d15955590f1f1e1d20382c919a49-LICENSE",
+        "size": 1072,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3e2c11dcf3f17ab585baab8faba54772d7872f1c6e026022acd4b4006665efb0-LICENSE.md",
+        "size": 1090,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8-LICENSE",
+        "size": 1072,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3f4609137f65070541b9214300ea0d640af8192857de0eeb2b03403003d9228a-LICENSE",
+        "size": 1080,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3fe8d55a98dbf260eace67c00cf9bc53edb46234e840098a0b93df3096b97fb6-LICENSE",
+        "size": 1078,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4ab87e6e3c0c0b78e47c77d49ec10c048f8a519fb8062e6e3217e3e6e9b0c6e9-LICENSE",
+        "size": 1476,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4bc935e71be198c67ddf3c2b5fddb195f6edc182bfc155a96a6db61b44b494b9-LICENSE",
+        "size": 1094,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4be9d87b56a306293223b490c0d0b245e9e94f39884147bf051a6c7b825aeb30-LICENSE",
+        "size": 1189,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4cd903859549d4b20b571041f96dfae1136ed079c476126268f9d7cc1b611150-LICENSE",
+        "size": 1088,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4cede26713cb397575e3dcf844b098ad3a879e6688899b1be0c26b205403e810-LICENSE.md",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4e053c510d6f3e4724213a292c65142df68d069c40f558582bc4270914e16f77-LICENSE",
+        "size": 11583,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4eb7543b08d955a6d23fcc224601d43ff566e775be918805e26210d7f6eb4893-LICENSE",
+        "size": 1100,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4ec3d4c66cd87f5c8d8ad911b10f99bf27cb00cdfcff82621956e379186b016b-LICENSE",
+        "size": 765,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4eeb3271453a891df609e5a9f4ee79a68307f730c13417a3bfeffa604ac8cf25-LICENSE",
+        "size": 1103,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4f4f28866154c8d758241a64296e8790d45d7d912ff7b029930778c06d8f2a72-LICENSE",
+        "size": 1082,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/4f8cf48502224399442f7eadd8620d96ef18125f9beb4949c53084ab3b05a4d4-LICENSE",
+        "size": 1057,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5a3b0007c4203f10fe11b3fe8747253eb994f135e10b73e1f88ada941af09c6e-LICENSE",
+        "size": 784,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5ac141bfc70bec8f40838502436bfcb85e3f4c24377e41b9ddef07bdd6aa51bc-LICENSE",
+        "size": 1091,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5b6dcf19b1aeaa28a33c1baa85ece8c0cbe1ee6b9f8d7a44a6c98eac525d8c0f-LICENSE",
+        "size": 1076,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5b37224c080cdcc97c871ada971c224e9926370fe74f11b539aa1cf9f3b1aca1-LICENSE",
+        "size": 1081,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5bba27375d93e9119f76c1015f7672cf9ad5f70952296e0842fb2243d6376869-LICENSE",
+        "size": 738,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5be1f3465bba68a626777f984878814aaf35e7ef8e9fd314d469bcf887050fb8-LICENSE",
+        "size": 1095,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5c124ba1707e9edeae4fa704df5c46b922a38b194b563c86650237bd172069ae-LICENSE",
+        "size": 1091,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5c496ce5ae47eb8e5ddcaa5e29c27c446a3855b19e3a66991b52f361bed22b28-LICENSE",
+        "size": 1078,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3-license",
+        "size": 1117,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5cfba9d5711264d45a2431a53c79f597cef12720cc7c764db2602daa92d0bd2a-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5d0698266086f217bb11ea0499d33453e401fe479fb9126ad04e625e63d3557b-license",
+        "size": 1101,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/05dc4d785ac3a488676d3ed10e901b75ad89dafcc63f8e66610fd4a39cc5c7e8-LICENSE",
+        "size": 748,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5e13dbbc1d120fc2a03cecde7c91424ae2d7de11b63d58ded2f4431e261ee50d-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5e3400b93bbb099e83e52bab885e7441750673c21f97988ca3f1240639b63283-LICENSE",
+        "size": 10140,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5e325595b4ea8cfec3802f545b1def5d7b73e4a5b8e9ba63e32a320f67732292-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5eba353fe5076ac3432177f8ab1cf75e3afcd0584251e37c3bfead5f447d040e-LICENSE",
+        "size": 15648,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5eccd0eeca906db6d661b64dd05e1d4a4b2e49d37d43bbcfd2c8cce4d7832920-LICENSE",
+        "size": 1062,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5f9cf9fb6acb1972b35ae29119ce563bb60ec097656bc4b69b9bac2d04c7a147-LICENSE",
+        "size": 1085,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5f679427d1c408cdb5b7d02474f161d14d6a04bfa015b3a04a637f8662679811-LICENSE",
+        "size": 1074,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5fe78c91b36c6147ed0b6ab1631ce731165b7dd5e00482be1f027d46d12a8082-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5ff46083b88563822b0560dd6221ab89d2f74bc97a52d4c97a75020fd62c6f32-LICENSE.md",
+        "size": 1078,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5ffe28e7ade7d8f10d85d5337a73fd793dac5c462fb9a28fbf8c5046c7fbca3b-LICENSE",
+        "size": 749,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6a134e51aa31496c15a741592fc5d782b2dbf8d8b6b8524e15c8520ae0cd6374-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6b3c03752a3f3642f33f48a6a335451cde679660671997dfc5415a7f26d1b449-LICENSE",
+        "size": 1062,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6b7a1792144374d84dc5ed3655b8bbe2754d06f4f1f64a9fb8b9de2d6f448b85-LICENSE.txt",
+        "size": 1088,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/06bafa45fdad2579ba0e43b0c9b2c6290287c99c4203c300254a462b38a307f6-LICENSE",
+        "size": 1106,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6c21ef4ee82f61419a3b7f5c532423f1d5d1c61a2da75d6f21493aab868c756e-LICENSE.md",
+        "size": 1122,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6cb2f2bf697ee9c6fa9eb8f227c63ee6e7a3cba42d4717f14c745ef9b6cbc006-LICENSE.md",
+        "size": 1076,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6cb0631f71c7749763fd3dd1d5bee52dd1070ec17f2edc1710079ad070bd2fbd-LICENSE",
+        "size": 1526,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6d99b653e1464192ef347e48fe78943bab7570e36d12a6de49b4474d46b4a39c-LICENSE",
+        "size": 1083,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6d602191187b35b9b01d2cffa01c8469c2c8d9de8a96f1bf868e0f264f51c81d-NOTICE",
+        "size": 254,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6dc0e068dcf3a5bc8e054205b85b7720e1d49265bbc64bf515d2cf79197df69a-LICENSE",
+        "size": 11323,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6dd0d97acd4d13f4608a0f530f0487e0ff20812888bd1803aecfaaa17ff0f849-LICENSE",
+        "size": 777,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6e8d23763cf7cb707ad8f6677aa502ebeca1dda447e6d6e57f6549c1625b9c4a-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6ed4f049cce59e05197d585bdf8a39980b45d546d6ea718ee344555f3a867c3a-LICENSE",
+        "size": 10783,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6ee0feb1f6ef996ff5a68600f8cf98909cf412d39ef3cdceaefd87d636fa1b7f-license",
+        "size": 1128,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6f296a5eccc1dc96714bb94ebaa9cac25b0a1467d74cc5263ac4d0646ab01f62-license",
+        "size": 1099,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6fb9754611c20f6649f68805e8c990e83261f29316e29de9e6cedae607b8634c-license",
+        "size": 1119,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7a9d8d01038aeacf9e5bcdabbddf2a7815200dce9fc1118468cc553e00ae3eee-LICENSE",
+        "size": 1121,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7a209dd1b94cabdb5ea9c6f9164b9546ffa5daaa671e7767d49510db055f5c51-LICENSE",
+        "size": 1559,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7b3638496004b2daed183a91c4ba45d3ef6331db6c9d0eb1dd882a505630c172-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7beaa85b57d7211f6684af6c1d97e6d9ef7ec1851f779152043a47a8700306a9-LICENSE",
+        "size": 746,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7bf9b2de73a6b356761c948d0e9eeb4be6c1270bd04c79cd489c1e400ffdfc1a-LICENSE",
+        "size": 1074,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7c1ed12e0891c08e5ed645b684235f13cdcefcce83000da91568375231e58469-LICENSE",
+        "size": 1080,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7c77a44a8acd9b41fdc209864a8016b3d430b5d0e09309818d5b7444336df744-LICENSE",
+        "size": 1074,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7d6562781128956f5e59d66a9d199cb0df3e27fa7d9684b82c34c80767990e9c-LICENSE",
+        "size": 1093,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7dfe6526888bac51759c99f9a51262ba2711a8c12a067f2181609dd9a4066b84-LICENSE",
+        "size": 11335,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7edb57f7065309027de249642341292a5b21410d5773cc55bba73ff9cf01060e-LICENSE",
+        "size": 1111,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7fcf6b69636551493328a8cd9a5241843d7b246b3c42ed7b06c777fc5f044b86-LICENSE",
+        "size": 1113,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7ffdcf3d9d35721f36b10c62aac38c5cdeffd90c48072a786533e3af3d78d26a-LICENSE",
+        "size": 1068,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8a1af140fdfbf5afd3df27f7e662f989c5b963a300020dfafce42033cae9e004-LICENSE.md",
+        "size": 1552,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8bf96984ff8bcfae7e48cae76a529e8a25317ba9e02abf7fd3cc64fdf95657a6-LICENSE",
+        "size": 1056,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8c342219f33308944e59ab5dc853d3b4da818b3c646dbf5f3c24f10777767616-LICENSE",
+        "size": 2247,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8c535800331e1e4439835555b3f9edc7fe9dee2fab0d8bbbd5a982e8b8343d4d-LICENSE",
+        "size": 1109,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8ca7af4f6c753e5ab8388e1078d94ce4650723bba4b0d4dfe562fbd45fb4a4e6-LICENSE",
+        "size": 1072,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8cd23e2d76d2791765f7dd1025a9df99d81db91da9e2701f283987a1c0435aa3-LICENSE",
+        "size": 11341,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8cd41c03a45ebf957a00d335d9dfab638b7ddba797a7d2f23bc1c4157a50db72-LICENSE",
+        "size": 1107,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8d8c55319c7729d57be811c747452636688d54f19701ee0752b6b15ad3771d9a-LICENSE",
+        "size": 1101,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8d58741278b289a7f4b6dde2d6273fca7711b9849452c477933d1cccd03db1e7-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8da13c785af46eb3d0bf2ce4c34bdf191b8c57bf43e410e9359d5b5eab5f4b0f-LICENSE",
+        "size": 746,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8e3a3f82f59a60958f56ca08f445647c32a4733dc7ca6c2c46f6eb898471ab9c-LICENSE.md",
+        "size": 2942,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8e75fc0e776c62ccadb8178ece8d3daa9ba7601fb0a49b2dfb0ea9a7a5c0aa07-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8ec1386f7f078b0c7cd25341cd80f332df902371cda9f40c10ec2b4007b420b7-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8f7fe359ab18923b48a4f0d50745f34d24e77a4973510b86bb8d35daf2a15c48-LICENSE",
+        "size": 1084,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8fcd6f5db99d14a8b87285b19311b170aefb3ccafd03d4e299dc05761c912b3a-LICENSE",
+        "size": 11352,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97-license",
+        "size": 1104,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9a39f2aadab11a3697edd668ff2d8ad885b649737b7ab4d3bf12b34e5ada0c86-LICENSE",
+        "size": 1053,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9c63a23124d68cd30cd316a94a1a0bca34f032786df6df69fc4b5f136bac8d2e-LICENSE",
+        "size": 1144,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9d45329f27eee77d23ab9b4a62cea6247e3e7402cf5bb04d77b9279f2c1e1be3-LICENSE",
+        "size": 1093,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9df3bb69929a3b650ed73b3bfa1756725aaff0ac296461605753547004eafeaf-LICENSE",
+        "size": 1074,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9e0d5c7989f7e9f07d7c4b158aceff270f235eb7464ace41c5e7b200834a43e0-LICENSE",
+        "size": 2011,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b-LICENSE",
+        "size": 10142,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9e23899170d96e708b24a2afce11e96d169c8cebf1bd24ac60b675a400cb1cf1-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9f084fac69d8cf1e6ce983ba5a3499c7695ed74a26ec625c38f0fd19fddd5e10-license",
+        "size": 1106,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/09fd9784b65e00b09b6366845098a2cb6d6f559e84d292528f1e462c9e4acb62-LICENSE",
+        "size": 1073,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9fe335fb097fbff0b7f709ee14a77b1d1cf739d3400cd0b0e19118946772ea56-LICENSE",
+        "size": 1060,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/10b2831912dc4dc91b25429511e6c74f901eebf64b625328f8fd08dd9c3cf8fe-LICENSE",
+        "size": 1055,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/10c904a49af44409b073532e45a53fd4df19bdf26eaf9afc7917258c2b354382-LICENSE",
+        "size": 1089,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/11d017c3b9f1ee3f44caf7203035f0461d5b57e0db8ce1bc03a9af34fa7d3f6b-LICENSE",
+        "size": 1173,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/11d55bd4541c75ee7879547ac49089c489163dae49551389713c3d026cab383e-LICENSE",
+        "size": 1062,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/11f2aafb37d06b3ee5bdaf06e9811141d0da05263c316f3d627f45c20d43261b-LICENSE",
+        "size": 2338,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/12a66fee27259312cf2101ac5a17f009da37dffdfcd051f821116a74ae9bf841-LICENSE",
+        "size": 1099,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/13d92be18d5ceac526f33cc96b6902a14d168f3e1d4b16be738f0fa70da7fe98-LICENSE.md",
+        "size": 10899,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/14c5cc0dc21f44add6d88a5621c65813d40bf382550c978430096db3df0cf68c-LICENSE.md",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/18a2bfd070b08bd1cc538c90f59989a9523e070e72fe9a9068593c3e82f44fa7-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/18d45466ba3253deae04667e267a91ea8de8548f18c1125264d1c9db28194cc1-LICENSE",
+        "size": 1465,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/21c2679a63d7699c0e644409e2f17d0adbc7a965003feb06b3ff4b833d21f722-LICENSE",
+        "size": 1118,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/22a1b925621a4fb60cb9df9914612f12482e275c9f545035599fc528b4979da9-LICENSE",
+        "size": 5623,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/22c68811e174cbbfb3813d4135918df4f540959c14d872e601d9abe83d3cde8f-LICENSE",
+        "size": 1076,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/23c91863859171455a536380991b4160fee4e19e2d8dc353ecf7143cc4e53ca2-LICENSE",
+        "size": 1123,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/23d466b1b134b415b66fa50c6526b4cf3e7b9258554da88d3abb371721e7ce68-LICENSE",
+        "size": 1172,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/25a328069fe771f8ed5b6f983ed4b0e6c84b3312ac0f69b28c3d52dc277962c9-LICENSE",
+        "size": 1128,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/25ba5c59dad3e0dd8f9540beaa0f0a86a10e3aec35af5fdc8e88c5f6a5c0d8c6-LICENSE",
+        "size": 728,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/27d998b503b18cdb16c49e93da04069a99ba8a1d7e18d67146de8e242f9a6d21-LICENSE.md",
+        "size": 798,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/31f005ecff86a12a1351f4c2cb1133267c0b152546b08cd6fa4bdeb1943e00cd-LICENSE",
+        "size": 1061,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/33b734d60042d0fe0c92dd1fc1e874193a1c899ec3e276a2eb935d2d0bf5b710-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/35a11da7e877009ddc57405844209908cfc567adda0ec1daf410368c9f5b0d01-LICENSE",
+        "size": 1072,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/35bdd8a44339719441900fb50fbefc5e2dca1ca662cbaed7a687de842c8b70f2-LICENSE",
+        "size": 1091,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/36ec394cd0f976603cfec687c19175a703c1c0d9db717a76915391e756522c8e-LICENSE",
+        "size": 791,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/39c5ec504cf6bd5cd782a7c695828e09189df79f5d94840e4f08feb97b9fd416-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/41a2aa55a9ebad3df900cf37fded512714a127f4300ef54b978f834a11ec4d48-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/41bd6d9ba4bb32c97f332bdf389dc07d8b61b600a9de2974b9ed4e4ac6cc3c03-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/42a39bbb762677f013c9b959785ff8853f67ce8ed06caa71b7044142518e1731-LICENSE",
+        "size": 1054,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/43f5ac55d8171ff91d1c364e69ff9ffb54220b7ecfbe26a2e2e747cb03cce4ee-LICENSE",
+        "size": 1085,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/46a5fbffa79b8dc33e512852b5ac5da71317eee5ce122ddb601cf1add07848cf-LICENSE",
+        "size": 1083,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/47dcccf62bf40469d23849b0b1dc8df9fc91bce219b880c638d4dc4596e6b5cf-LICENSE",
+        "size": 1119,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/47eb8ca82c798246774946d1be0f9aa08f025fa8325ced0947aeeb4c05fe5547-License",
+        "size": 1085,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0-license",
+        "size": 1109,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/49bf33cf78ef5897e4e161ce1517df7de1ae5042a65b6bcfd44401e0fc606559-LICENSE",
+        "size": 1080,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/49d6a1c9a623784c61c6cb70f773f3457faceb1914a13c8560a9823b7631950c-LICENSE",
+        "size": 1937,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/50a6b24f8defc31a078aa9799a91d776f83948071574854f12473362aee74d0d-LICENSE",
+        "size": 11312,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/50c3eddcd1ce10eed9889d4d592c5d2f32907feb16d9141485299cd710ddb917-LICENSE",
+        "size": 1094,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/52e92576851154bad7737e90cc72818936f43665cb0e3f7428ed8edc8cc5709b-LICENSE",
+        "size": 3355,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/53e59feb13058722d977c699eb0407c7bce2f93c949b681bbd2ff31698535927-LICENSE.md",
+        "size": 1145,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/54d0b82d1e7d0bc60a4b48b6172f1a9fa7385cfa8a448d14ad3a638930ef417c-LICENSE",
+        "size": 1104,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/58d4023bfbed5fb530c5bb8d44641299eac62c850267415ec939cc42dea87e4f-LICENSE",
+        "size": 1076,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/59a76ed2f4a3ebe8d20a58869ef9c09420f796aa179420c8fb916f5557defc9b-LICENSE",
+        "size": 1075,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/59a400d04c5078579acc27ddd6452c1bdf763f9506e01364700935fbb1a7c91b-LICENSE",
+        "size": 1098,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/60acd7711e6c138e6041836e32d922705254cc1568a30fdf16aa8f59bb87aeaa-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/62dfe4bdd76e08992c09cf335b2374b3e6acd4f2b959b4971760727d9b785ab4-LICENSE",
+        "size": 2001,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/63b9a188d7d43e64b0558b7115255045b9fe20a5fc3ff483421cb899e7f52bcb-LICENSE",
+        "size": 1189,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/63cb98b3f6abfb3c3592c16f88253c1bdc834087bf52671e8ce5609e4eb693cf-license",
+        "size": 1099,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/68e28d2ab9d180b8fc3d93fac0cc3e5275e4d19a23ab3dcf5458cf4e31e2233b-LICENSE",
+        "size": 1070,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/68f12f6e2c33688699249c01d8f9623c534da20aa71989c57b061b7bc1676d14-LICENSE",
+        "size": 1096,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/69b1ce578ad0aa97ce5302c7cb8d507c2fbe5a670712b02f0b4a2b95cae3184a-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/69dee148a2cc470554dfa7142e830662062394d0fe67cddd379aba90dc60d6b3-license",
+        "size": 1116,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/70aebb46c7195354683546b0ffebd5989cb18e726e715d9ba71d964f929f0075-LICENSE",
+        "size": 1113,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/70b126abc64d7ea06e1243349073935caa16fa47a41a571773ccf0b350b1d574-license",
+        "size": 1231,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/71f83c4c0621102a56d9853812777b85751bce7e9726f686f5b056c1f8a4b0e6-LICENSE",
+        "size": 1167,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/73b5283588baa142c5baaef5f56d3e8fdea7a30b214e8c5737e87640f882453a-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/73cb68c437d59e066f9386ef97be57298df4db119fdbd7d7150817c6dbd9f189-LICENSE",
+        "size": 1116,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/74b629b24865e1e83c5277ee84590b7937644d6fd959d0c7bdce758676cd2ced-LICENSE",
+        "size": 1294,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7-LICENSE",
+        "size": 1099,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/76d6d1ea0c268da37dd3c961b4fcfb23dee8417fff9e8786d4d44c585b781b69-LICENSE",
+        "size": 727,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/79bad9f51738814f83251ae89460326b2ff2ea19ff5f71ab8f7636b2e17bb231-LICENSE",
+        "size": 1074,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/80d3168ad2f70f6f5bb2ab22b23414707abf6f0a392034891481ae36a1a429d4-LICENSE",
+        "size": 745,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/82a4526b2777826043d2ca0e282f7428c2bd1762b13ef70b4fb4a57a48303d73-LICENSE",
+        "size": 1225,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/84a08edb16cc9ae161c31e76c9e593702f3d9192061abc6721398e0227bdb5e7-LICENSE",
+        "size": 1080,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/84eaa985e1ef71b8c630e8aba73404c219ff425c6fdb45c62e998b58d4fbdc8e-LICENSE.md",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/85cfb556dc2b22b55d2565674fcdaac82f3f2f6b7a928d27003132721bb6736c-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/85fe65eefab89e2a683232b96e6f689279821a0bd3b351e9ab6a6ebd19dea567-license",
+        "size": 1159,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/89e57da97f98de04c70b8c6db3abbaee34ac406f4e68a3a1dfb4f5fa97abc4f0-LICENSE",
+        "size": 1137,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/91d090a8e06fd0f8b599f7bd5bc9e3d97896548037ef43ee1926c6109b7cd342-LICENSE",
+        "size": 1076,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/91fd2d025ca697f02becd68acaabc6373fa853a04c4f7543b306e830d3ed6b36-LICENSE",
+        "size": 1107,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/93a1506953b08ad4874e1cc0971a1d2ac387ca510da91e4d05e460a6c4966fa3-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/93f5d82a8d59442fe3275383453a255fef761647fb28265644010ba799806148-LICENSE",
+        "size": 775,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/94bcb9959136723aa4fb36e1a6c4d5c662a2369978cfae344dabfb83ae619e79-LICENSE.BSD",
+        "size": 1303,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/94cfe87de9b178e8fee313a19178e625129e2ce559db32e772e7bd95114ee6ff-LICENSE",
+        "size": 1098,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/94e1923e52409cfd50e97988d9772c0de15f65700097e3227fec367a39e82b94-LICENSE",
+        "size": 1091,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/95a5762890e5c1c9808921cef095661fc482c5e1f0bba31446ac85595df6237c-LICENSE",
+        "size": 1249,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3-LICENSE",
+        "size": 1119,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/96f0820026bd6dadc4af99c6dba7111d2e0190c092c376a746c13863e151d072-license",
+        "size": 1167,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/97af7428f93afbab9bf79cd09254da1357161794f4255eb1b4599f04dd2d2e7c-LICENSE",
+        "size": 1081,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/97d87142793695cd73243de7258694abe85b3b6060fca7f247b0a2afa8219678-LICENSE",
+        "size": 1082,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/99cf22f6960a6fe228ec84ea9aefb0d75b27999ece83a3a9801e1c2081fa270b-LICENSE",
+        "size": 1074,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76-LICENSE",
+        "size": 1106,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/204cfa747341660e4da64cd23e8c876c6b20279d247f48564993d3fc4a2eab47-LICENSE",
+        "size": 1104,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/206c1adcf206dc0031b11232f5b054ec5f1662407ab1ca415247921cab2068ab-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/210b19e543130388c68654b7497e967119ce17145f66ab7d85688fbd70f08751-LICENSE.txt",
+        "size": 655,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/214d0ac13edb475ec426df1979d96fd46b443debc466c0fb592e32152ae5a940-LICENSE",
+        "size": 1093,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/255aa557a1f55224ce522f311629c0bf20854740a67955cefd798fbd1d3d1ded-LICENSE",
+        "size": 1157,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/257aed98914108e91a337912727b6a802eef218248507f74b76faffaff517a38-LICENSE",
+        "size": 1089,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/303e6f4e014208793c6c5c0b2be0a987b0134821e4e78e35816a0a00a3b552f6-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/304e4a73f6212adaf242c78fcbe1dfcebd78d8bab53b007fe69b39fc968292b7-LICENSE",
+        "size": 1081,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/306fa513e39b23a6e8747520de761809d206b99800ef41907b530226574c59ae-license",
+        "size": 1114,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/309dff61c243e706fac25101a9bdb585f7e2db45e32915b08cf47518d2075863-LICENSE",
+        "size": 1244,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/326ff3850062286003ff4cbdaa8f61764e128f9a6532431bccf97e4e2bd75059-LICENSE",
+        "size": 1159,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/364a130d2ca340bd56eb1e6d045fc6929bb0f9d0aa018f2c1949b29517e1cdd0-LICENSE",
+        "size": 11351,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/381d6cb546d0ac1f3bc64863a9de933697e0cde33b37d22498f517f37be9a3c5-LICENSE",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/435a6437e47e5e479942255680e7fbe5f333d55234ada1c35f6115ca641d5bb4-LICENSE",
+        "size": 1083,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/435a6722c786b0a56fbe7387028f1d9d3f3a2d0fb615bb8fee118727c3f59b7b-LICENSE",
+        "size": 1073,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/451ec07eeb9c4e1b86de9abdaa426462a8be48f887ec7421cf0bbb9c769555ab-LICENSE",
+        "size": 775,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/511ea01f49c4e15572d1a0dbef3c10f3e26425be79df7ef599c3b65f9bf55281-LICENSE",
+        "size": 1081,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/512cfa4d5e7a7569c7ae4dd95241cb6ae2aaf648ef9ebd080c01bd24868d26e9-LICENSE",
+        "size": 1172,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/528eec83cb836a0adda9f8fc3d6a2a70a710d6cc0be9a155f92212c8df28acfa-LICENSE.txt",
+        "size": 1069,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/553d4d20029a24e315b428a1a54a9e109eaa340f2e958a4f50a92362c2c4070b-LICENSE",
+        "size": 1177,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/564bcb001d6e131452a8e9fba0f0ccc59e8b881f84ce3e46e319a5a33e191e10-LICENSE",
+        "size": 1088,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/565acf764f4583abe4cf4b02128f01b5d4d1b4c62c253e92df7ed6a8a8ad406b-LICENSE",
+        "size": 733,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/626c3f57d6c312eb777f144bf8e255ece53a9bd081daf75fb12584584f75791c-LICENSE",
+        "size": 1093,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/636eb7d79da9bb6d515a4b3fd417aa26679eb3cf16396ddab4bc55fa74e616e4-LICENSE",
+        "size": 11336,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/646f8936b8ddcd14e13e578ff6857e368780b0d1a4f6066bee89211923a373e2-LICENSE",
+        "size": 1073,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/653b779005a3a4d64a7288c940f7b9a0e8f0b1e0375f6aa6af9473caf131e564-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/655fd92753bf55d35c30781173e8d6e6baaf9e1b6c8bb3d49ad742de1f9fb2f8-LICENSE",
+        "size": 1059,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/662a1b0115251cfb29c6aed0f221f8847bc49c6365d1c53a62c9f4bccc2489c3-LICENSE",
+        "size": 1102,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/693f9539655acc1847add1ccd364312ba570bf8ce84706b6059e7e0b5ceb90e6-LICENSE",
+        "size": 1080,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/751d0e80fb5c828f8c3de198cc760e1e05377e47c8263ab6ee2f10cdc19ba658-LICENSE.txt",
+        "size": 1518,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/766ccc1f306c885aa45542a9846bbd0a505b27a0374f146778171c2254ce18e3-LICENSE",
+        "size": 1107,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/769d154fbde32a915af110b1123650bc79f4cbe675acc66e005265bf069c6c6c-LICENSE",
+        "size": 1080,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/773e131a7684726005a7e4688a80b4620033bc08499bc1404dd1a1eb3bca725e-LICENSE",
+        "size": 1052,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/774c3bc5924ad8ae6c5a75f1c53db13feb238ade15989625c513d07b60dedf30-LICENSE",
+        "size": 1083,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0798f37cff4a3f438c071316e41f94ffe110116a313ab0fc4f8caa07218f1f0f-LICENSE",
+        "size": 1083,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/802fae69bfe8fcb201f15b6a12505580028158679c3ed3254df5ea8f0912aed4-LICENSE",
+        "size": 721,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/821a6be45c3fd08815688b30b6210fc97848cf88c7a6ed8afb22ae75b83571b4-LICENSE",
+        "size": 1084,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/824ef6c33ae5ecbbab65d37f2b37da2bfc81d76cf7676ec0f59d00a0a38bdb75-LICENSE",
+        "size": 1088,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/825dacf686e3d026be4a5b3e4efb8ddd67a8676f9e96085a53cfa045a5bd0509-LICENSE",
+        "size": 758,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/833faa18ac4b83a6372c05b3643d0d44ecd27d6627b8cd19b0f48fe74260cf39-LICENSE",
+        "size": 787,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/835eb611a23301b27115ca1be9f754c876e643ceb7fe63049c6b50609a1cafeb-LICENSE",
+        "size": 1098,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/858a63872e40ca764098e48cfcec054efaa1330dfa6c7d5c0b3fdcb3a44a9d95-LICENSE",
+        "size": 7090,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/898c2bcff663681498ad1ca8235d45b6e70b10cdf1f869a5b5e69f6e46efedd3-LICENSE",
+        "size": 739,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/901d0a7fcaccaae9917d165039c0473c354e5da2e0e94140dde67aad9ffb19da-LICENSE",
+        "size": 1303,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/902dbb4154679fb2b8d7c33878183f45b268d01eae5e5033dddaa8852d45f213-LICENSE.md",
+        "size": 745,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0943b637252a9c6f1a062c77063aa58213ae93a18d5445f2fb77d1de7c60dc12-LICENSE",
+        "size": 1064,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/965ef284f7f4c176842ec2e87fa13e79feed777d56d7a21a5a3b38f1bb6dc288-LICENSE",
+        "size": 1099,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1662fae9b5314d11cf51284e2dcd1f006a354f7343f08712a730fcff9a359801-license.md",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1776df9b9abc382a34ac53ad258f227c10a3d6d2d5cd035c7227ff0026dc30b4-LICENSE",
+        "size": 1051,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2034cce3b6fafcddd642c4175e01d3ddfc332a53b9f20fdc46b1466dc89ac469-LICENSE",
+        "size": 731,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2144eb6894cb440fde6b2b3aaae3b617c8f1dc9bb19813079dcf62ec6c517042-LICENSE",
+        "size": 1121,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2213d91c606205c71eb051a199478cdc2adde945893404d7f1421436dd6d5cc1-LICENSE",
+        "size": 1103,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2281f2db407bdbb54f069eec38128b2dee2c0c952f52b786ef1faecb81767b3c-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/2537bb3d445dd08c12be3ec5c686f0394a3ccd6bfa94dac5d269940a9cb7ff98-LICENSE.txt",
+        "size": 754,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3871c31d0cc373951d836b8bb97275a2227f8af7464df7c51bc3f98769b87653-LICENSE",
+        "size": 1123,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/04512a63dce4d2d506ad612dc0bd7681ccf6e3655f7b6eaef7dfac8323d1ec0b-LICENSE",
+        "size": 1098,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/5514f48637fa1d8fed2256d12d322009a75962e6111370755fc5b20773db67ad-LICENSE",
+        "size": 1073,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/05991c2e8f070b69ec5b656c2c12fd07cd0153dd157d39b050b82af59b319a01-LICENSE",
+        "size": 1141,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7305efadd1f8222666b20e8887ae22509e43e6f1484c017853d49ec738214371-license.mdx",
+        "size": 8208,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/07364a5f7d0177a59a05a0002187431f8f899320983c0dc049d72df015e8064c-LICENSE",
+        "size": 11385,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7585ea7bba616ccbbe43cb54ecb67956688c3c5641bb84f3099a652a73193afe-LICENSE",
+        "size": 1089,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7917b04272f3f7c11f9fb89716742747a77f5906ebe5a81e70cbd090b8c7f961-LICENSE",
+        "size": 1120,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8078b0829d6c3e9ecde2f003e1966e4cad3efc6e7a640efbab0313cc166b1af1-LICENSE.md",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8089bcc08845ec143e5761f4a101a65b8c792a0dedbfeeb90a15560c0b77f768-LICENSE",
+        "size": 1167,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/8465b04b67f473341171b5c9c8b2c741a4a395b3f6ed58339b3a4f4db3db7472-LICENSE",
+        "size": 2125,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9068a8782d2fb4c6e432cfa25334efa56f722822180570802bf86e71b6003b1e-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9107d3439217d1dc2db08b738d2da931cd8d911049ec187de50657df7ae69927-LICENSE",
+        "size": 1162,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9551c913b61690d90de1a3d5bb9214b230631e442fab081545d2114ab2b7a211-NOTICE.txt",
+        "size": 12311,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9568a2b155e66ac3e0ba1fd80b52b827b9460e6cf6f233125e7cbca8e206ddc3-LICENSE",
+        "size": 10174,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9638fa87f845af6cecc56fab498c1f74f4a98522d3b53377bedcbdb44b5a8dcc-license",
+        "size": 1173,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/9672b5ea831c360425e95b806b302e502582dd9718b056f29c40cf241daecb68-LICENSE",
+        "size": 1340,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/14275f5c8139d02054c5259d52a88ccbba662a86af18c30f071c8d082dc6004c-LICENSE",
+        "size": 1078,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/27384b39baee4b476fb876670a75f282286fa55658bf0db14639621dd3801c9a-LICENSE",
+        "size": 1174,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/32875e91f440344f1f7e0524eeac8b86e4ee3a93274c2d3b416577f8af67c496-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/035389ed56027b7dccc1a8eabb0e4fed4d053a7cf2b7b1f5eefcc28a2846d16a-LICENSE",
+        "size": 1075,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/37431eb2e9e265d8d9a67161ba96394537fbc164ef546bf2140238a582cd59b2-LICENSE",
+        "size": 1073,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/37765ef8cf5691a06a6ee5fa3ad0349e25a54ab3a9e370033add44a01b2e4396-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/37876d7de8bdf5e5b9b58a697ebc34044624e493e6f49eff5c938e5226dcac6b-LICENSE",
+        "size": 1181,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/38888f505ee628839d3223dc27bdcc9b564edaafe73c10a2afbb97bb1f055e7d-LICENSE",
+        "size": 1068,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/039184dfa0a822397b3f45a435b5b1e538721587fbade96b9fa80f86cb354109-LICENSE",
+        "size": 1068,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/45873d00a0dd243596deb4aa23b2493b3d1f0671921bf2538ea431d7380220eb-LICENSE",
+        "size": 11601,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/46231df5a7733c3f52f11b71f3df61813007745b62b09031acfb45fb42d75082-LICENSE",
+        "size": 1078,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/47404ffc18f1267832bc0623857871de5a3a93ebb19693f5e1b963af91fab54b-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85-LICENSE",
+        "size": 1086,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/62568a2d1337b77171ecca9db10579163446de1ba6151678e81f06cdc199971b-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/71368fd0f5b4129191e9afcd1e1ef2dc89a9090d3e4d80bbab92dafd032b3bef-LICENSE",
+        "size": 1102,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/75486ea0af9309140ca6e2c401d7e67bea8f4892344e5707f6394dc5e83dfc44-LICENSE",
+        "size": 1056,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/81008a3fb78f69f3c4a72a9e005c8582342ab62864371b3ab8e1b6af9041e080-LICENSE",
+        "size": 1120,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/82974dbf2639d13edab95c32ed9cb6c0867ede272cd2e07ce47ce8548fe55c05-license",
+        "size": 1099,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/90021adfb24b0a7af5754cebc6085e2560555f74d29a6d44a7f9a32125f8b348-license.md",
+        "size": 1082,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/363130a07ad4b42e4d153ab8d483fedec591bad101add0c0305e77b494982438-LICENSE",
+        "size": 1090,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/365496ca1f56da40b23c9815fc40fa9005847b2f8f8fd1c1a4929ef25ec8cd1d-LICENSE.txt",
+        "size": 731,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/407851fd57ee408b896a839b184dbbbb1ff9c0f35a9ee4cc88b6472d1ed4fcc9-LICENSE",
+        "size": 1103,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/537607e3f1533ad2c5b12978967f5ab27f34ffb7e626e321017a7ccca6cc24ff-LICENSE",
+        "size": 1075,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/631987b7616a325a5b97566c232418481ddf7dbb5ecadefb991e791876cc2599-LICENSE",
+        "size": 1081,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/644304c533dee96438937c0bdcbb49897d80fd8df3be4573f3c57b9c2ca22587-LICENSE",
+        "size": 1067,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/693866fc419c6f61c8570438ec00659d156ec2b4d4a4d04091711f5f11a365d4-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/720836c9bdad386485a492ab41fe08007ecf85ca278ddd8f9333494dcac4949d-LICENSE.md",
+        "size": 755,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/1953150d5d4b10c7542cee6f6e0c613b2682545233f069d75cfff1936386ce10-LICENSE",
+        "size": 1078,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3320319f8a5f42bc4254e65471eca7a5ea4dc8c883c4c24b4868e36b14890bcf-LICENSE",
+        "size": 1068,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3706296ed611888111ceccc1dff4712844dea4bde0b185c82d718c3b69895abe-LICENSE",
+        "size": 1107,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6206673d24786f09656f7a480b7c50af289e9690963aaa135af5b626de5250df-LICENSE",
+        "size": 1084,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6582629e2979466878f6014313dcc2f3756c9616148682227ce3063dde310750-LICENSE",
+        "size": 787,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7354457f471fda3d2ef7ae7b7dc758c98a57054875ccc1e211b950646b03bf10-LICENSE.md",
+        "size": 1059,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/7883225d5e84a6bbb9b170c3d891b4bf6d6259cee869c86bd86381a927071745-LICENSE",
+        "size": 1073,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/44191656d296391e0ec97e32f5385f0d02b6f2992694082d22ea04ba0f66f9e4-LICENSE",
+        "size": 1058,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/50627796eb4236cd05674e71d090e594447995225b7d94cd59e57c25fa3a0217-LICENSE.md",
+        "size": 1209,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/65675229fc81818c9490a1942f361f7ef31cd525bef9111e62a6c84e9bd4769d-LICENSE",
+        "size": 719,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/89024017b88a9f2b763f79b941a4f2db3b4428edfcacdc0b23866b2da633ad0c-LICENSE.md",
+        "size": 1150,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/0154425673db15cdfa80ecba2c9b1f1a867f7197a006764712849bfc3a93cbb7-LICENSE",
+        "size": 1102,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/688222000d499a064a7feb8fa0bb2a3dded5a182f90ef9de986bf7307d777a26-LICENSE",
+        "size": 2599,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/05811400116ed61f1a7693b78fe8ca6598c155a12f3978e609db4df648a4cb3d-license",
+        "size": 1099,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/6895190430d809c4c57a7582ecc2f99acbc2ea39a5dfad20262a41d5b3e91733-LICENSE",
+        "size": 1101,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/3749709146345fa15546aaba4e3ab1b3b92a4d930077b5bc32d90815cb63afaf-LICENSE.md",
+        "size": 760,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a0ec0dab16b3666f24950f86d257930ac2ad475557b4bfe245620e0817d8a45d-LICENSE",
+        "size": 1174,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a1bd5deadb6a06dd74efa852c1b8b23f63b67f2214fbe9c8bd591da51da69268-LICENSE.md",
+        "size": 1096,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a1de72eb7bdf08c10c5804e04a6d99fa9530879844262db439429937de4a3a6d-LICENSE",
+        "size": 1103,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a3d60eaf32d2fb09c9d82ef39f14bd6e2c0f3ca7de30daa827486c0d6f8b6e9f-LICENSE",
+        "size": 3326,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a4cdda44b5adea4731d53dcae78fb5124f8fd853e994f01e25d8c33a7daf818b-LICENSE",
+        "size": 1518,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a5a110eb524bf3217958e405b5e3411277e915a2f5902c330348877000337e53-LICENSE",
+        "size": 787,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a5b84e79d71db5b8baef48e7c04143ca70117ee0a0b637133c02ab63a79fa6c7-LICENSE",
+        "size": 1064,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a5edccac92c3aa845694dcfaa72a0c098c1ae40d5ca6a37e4e59d778cf8e29bd-LICENSE",
+        "size": 1068,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a5f35901ee8b2039a7431144c23dd10bd47c1d07bcee0cd3a536421d86412214-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a6ab98e5c77b9070c443eaff2ff81034a6f8cc05a7524d5098eb0f24defa0115-LICENSE",
+        "size": 1101,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a6db8096b2707bc0102d256917d4d33f298ba36d8c3f25de067a2b5bb379db27-LICENSE",
+        "size": 1090,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a7ae9adc15354b280af770bf3bd99a336d0893333068bbd088e78215b228fec6-LICENSE",
+        "size": 1108,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a07bc24468b9654ce76a547d47a2db282d07733b715db4c73a98bd63961f9550-LICENSE",
+        "size": 1084,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47-LICENSE",
+        "size": 9197,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a7e7ce843788817af39fc18c22962ad6e23b2dd8f99b8c63fb7ad4e59f1094c4-LICENSE",
+        "size": 1093,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a11fc89e4c6b118854c7a667734a0b2e6bf2af5e45c6686de31adbccc8f3ae8d-LICENSE",
+        "size": 1086,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a21d6c8d3fc631198b97e57584697f7f9c37805c71c6cf9a12e4442b40394b88-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a49c9ba464796f65b59fca3f1e6ca40912df1e859f575383223f7ec6c5baae09-LICENSE.md",
+        "size": 1764,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a055e3a15db4b4cbb5af381230eba085603126d7d5d8c4dae45ee85b877a9729-LICENSE",
+        "size": 1069,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a67b34a24a5daddcce46aea68c5004e4442bbfb63690329fa607bf4de4269794-LICENSE",
+        "size": 1505,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a84ab50793627920239781ad6a48a749bc2fe37707e47fdf8e6cb1f55bc747ab-LICENSE",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a338a09e00418402e779e3ff372a2bca3be66259d6192e0a9fe2949969d648f3-LICENSE",
+        "size": 1119,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a405ee70c632bb938acb7ac5f210e814409b3760ea9d2329d8ed8ffcfd11a0e7-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a806e21000ee60cfd64a6f1416f29c7552b4834701974e86c0156f99c0cdd806-LICENSE",
+        "size": 765,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a832d679750e49ab433626ab196350b89964b60eb0d3edd3341887c7d5f4c128-LICENSE",
+        "size": 1108,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a889cc4dbee2ae172c179856b25d75b0b7a5a136e1b97109b9b590b2ff1a879c-LICENSE.md",
+        "size": 1323,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a0932fa80b4c27a0dce36e606e8d755cb02511ff25b41622314882415cfd321b-LICENSE",
+        "size": 1083,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a05350a88e318e4f5f2c2a1ff1e2e88daa4dd38e6e78b71cccae422bdc762cc3-LICENSE",
+        "size": 1090,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a3504441e109da15ac873123ac4436250936b8261055c998360748ce35485963-NOTICE.md",
+        "size": 1754,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a9455541e8a4e4766d146a7552ac547c04bfb7a8718f5af516f1b9e346e82a77-LICENSE",
+        "size": 1080,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/a7996721249a136fbcfc1c201bcb5f414f38a701d4a24f28abe65e16cfcce813-LICENSE",
+        "size": 1094,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/aa523c5b0d9c02231b3837555ddfab2e4d7208158c52c1cead8920f032aab6b3-LICENSE",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/aaa78451b6fecd1b9c4594c796c133c0e90cad100372ff8bc6de615e9ef9adf1-LICENSE",
+        "size": 1105,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/aab63d733edfbb74393d94d75ece4ca89577d9f4a852a4cb18fb25cc8e254209-LICENSE",
+        "size": 1088,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ab868ad5a2ef5068560d9cd3b2180ec63c140bb4c5cae1ba779d300a0ac74fa3-LICENSE",
+        "size": 1274,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ac779f7314c74f232ef847ea86e714abe25cf6eeb5cc97b69451b74e2af6492d-LICENSE",
+        "size": 1064,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ace51ee77a0c6ebf8885e3b1de75b410f77fbc76602b063fbfd74d96f8574296-LICENSE",
+        "size": 1076,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ad7c4af507aa34d170dfa1e897f5704c6c2387d0c4fa2564d32a0bb491b43405-LICENSE.md",
+        "size": 1076,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ade66f698fd417addc4d948a85ef33e8abb302daff6453feda18b191d250e54d-license",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/aef11f1ea1092ed19cf5c2ace111cdca883ceabe2a69af2ee7afec648aa5c36d-LICENSE",
+        "size": 1084,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/af2dd164640b8bf4ee95b3f10dc33cde95df232c0fccd853f6e4a029b7d0dae4-LICENSE",
+        "size": 1201,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b0f2417199889f1c0d28ec4e0244eacf1a15de5819d61f641dd7d8f45153ac9c-LICENSE",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b1d4c43571e6d521c9e9489130fa27954e2ebd9cd81e3f1f2da2f4a5c3d9426c-LICENSE",
+        "size": 1076,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b2b93854987428637d6147d4d560d0457c40640088327c3f466c91c23c8405fd-LICENSE",
+        "size": 1098,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b2bd24f5c975f659433271170b17e0a769b12ef8065bbca6dcd5511d57e94ce0-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b4f9adb7c568904834d0dd6cc98d16c390d21ca32fc17ae7a267715269bd5529-LICENSE",
+        "size": 552,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b5cb7ff7859e7d282d98fc43ab081b0dda5dc659dc3385cf65740c759a7e6a6c-LICENSE.md",
+        "size": 1083,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b5eb225171f3e63071ef155a9439b70853aaf13f4ddf5cbe24b0e00f81659230-NOTICE.txt",
+        "size": 46873,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b7ad8777cf2eaca832498a2bd34fca0a5bde02d74158fa6c24ab4596d4f73a25-LICENSE.md",
+        "size": 808,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b08de5bb7b21f44a8358edf74febe50c75ef2a1e5470e06c8919eb934cba067c-LICENSE",
+        "size": 1165,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b9b3eeac9f4ae8ae50773f318ac29f2052bbf08ee33fb6bb024d90d86c7492d2-LICENSE.md",
+        "size": 813,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b010b0dfdfdb23d7396e03b82cd4621fc9bb8f95d6b0aea70b9c24e12074c786-LICENSE",
+        "size": 1813,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681-LICENSE.md",
+        "size": 1069,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b070d77bfb2c52a1dd6996de0ce5f64c49a0ca55c889b163a963ddf5cb001ee2-LICENSE",
+        "size": 11343,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5-LICENSE.BSD",
+        "size": 1344,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b87ce31de5980ee87652930662312fcf8a68a5618a1605feb230dbed0db0bed2-LICENSE",
+        "size": 1081,
+        "mode": 493
+      },
+      {
+        "path": "licenses/js/b173e19b9a78df305577ace0e52ef45a4bcc915ea28b47b256dc3b68dcb1f7e7-LICENSE.txt",
+        "size": 790,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b8778b155bfde5a28b023a558753c0fa058a52bb9de35c343c250be1bbcdedab-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1-LICENSE",
+        "size": 11357,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b50925b3e63e2192e04323a29e905154bda999c8dcc4c78e96733a00a10fed9a-LICENSE",
+        "size": 11352,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/b630651f34d0e0284ea940601bbe0a58f306ad7e9819e351d9dfab812f8d0f38-LICENSE",
+        "size": 775,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bbe87b573c12bda5baf18742117330efa177e0886b3b0a278dacf8f236e1e129-LICENSE.md",
+        "size": 2859,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bc4c06b48b593b8b63f3e1557f52bdd37ebf40295033cfdb03d420d181809c11-license.js",
+        "size": 860,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bd40cc437e28a3ad7bef2ad34e6b72e757b182e67bda1acadbab4ef0476f8232-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bd47ce7b88c7759630d1e2b9fcfa170a0f1fde522be09e13fb1581a79d090400-LICENSE",
+        "size": 1094,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bd134b41da59e452fb5a1d366b660886f741c87c2bf9428e93764c419fbc40f5-LICENSE",
+        "size": 1094,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bdfd5e0edb6089e6586c8f15e6a86fab83ffbeeda3b3b7b33734ccb8c5906965-LICENSE",
+        "size": 1124,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/be46ce1e3b0479af9ce82d22b465a6d7d2ff084fca0aaf3d54172da2b5eb5781-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bea8e581121934176676096d9745f71a67bc2f8fe1d5579ba0a977c78902beea-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/beaa6b04fb82e41dd2ad679e19e27953afb5999b1abbb455b6564e78ebfeb332-LICENSE.md",
+        "size": 1109,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/beaaa6163b3107bec675c3149e71cc818ffa5a6470f4ccca4326568619f18596-LICENSE",
+        "size": 1064,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bf3c970fd0a59e110dbadd142283a6844e20652277ea676172d7b426648f7eef-LICENSE",
+        "size": 1499,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bf8fd38056b7606deccfcadb4d8ca1c210082d8ef5513426d2650daedc30bed3-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bf9b0d665be2a689851eea667ca9f42066ea1d903b38349c51e6a44b2577680a-LICENSE",
+        "size": 1083,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bfa751427053e9f0e4f2af1e62862681cdd45000db8d8db753baf7d462cb1a08-LICENSE",
+        "size": 762,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/bfc2c678db20d806b3787956f607a1509da5fca45b4d40a97c671cbee737159d-LICENSE",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c1a5a1ebc88f3e0f3caa04c0af52bf8f3a5405a467337a09594ae1ad149cec83-LICENSE",
+        "size": 1077,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383-LICENSE",
+        "size": 1141,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c3a24c02d678e5f0711623dcf3ab3f243b273c2633f638a1fa8e35fb7c7f8e4d-LICENSE.md",
+        "size": 1092,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c5c6c5183a789d122f267c405f685037efb87e27fcde28ab1dd7378a2d2f5962-LICENSE",
+        "size": 1126,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c6d67da3ac65d0575d116165e1df5f391859e8d6a86e65cb8b1f890719ed47f9-LICENSE",
+        "size": 1086,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c6e83b9be7af3b907525722dadbd781848162e4fbfcbe20324f7a237d91ee0f3-LICENSE",
+        "size": 1299,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c7cc929b57080f4b9d0c6cf57669f0463fc5b39906344dfc8d3bc43426b30eac-LICENSE",
+        "size": 1081,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c8df456c7ccba74b959087dff494d4ac2a12dfb0400c08b46b2494a08a000567-LICENSE",
+        "size": 10236,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c46e2c333e1c9e6fcfd130cf91b8e54bf67b60fabbc04996f7e199b990353ff3-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c59ffead4ccbc72ddc3258c23d608bc6f10cea5241038ca8d39cdd7d7e7667c9-LICENSE",
+        "size": 1778,
+        "mode": 493
+      },
+      {
+        "path": "licenses/js/c064f7a3e353bc1bc977f3c897941c75ef763f44f41677e0a15370ca0853d6e2-LICENSE",
+        "size": 1085,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4-LICENSE",
+        "size": 11357,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c211cc5336d2d47f21322aca35c8149699de621edc447294b617048d05a745ce-LICENSE",
+        "size": 1163,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c372ef2fa1dfcb124ed807609751e75e3a009f108c5724916b489288fcb88a0c-LICENSE",
+        "size": 764,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c414dde36704bd9c8a76c7aa2921b19270ff9abeb478ea0050250d16cf29b0f6-LICENSE",
+        "size": 1118,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c542ba7851b5d39a5face477e47a27cb7c00a9759e321b66824e79718bffe1ac-LICENSE",
+        "size": 11355,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c917e031100ed852c478f53e2d04b1b950efb44933b2c9ca3d15f8057e0b5c86-LICENSE.md",
+        "size": 1086,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c984c291167af70cc5fb7c7f4cec9b4560565110b766a718b3e12aba650327a7-LICENSE.md",
+        "size": 11546,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c1476ec53119cd4c8370f91f5152ac76312a29b4fae2d49b5e0e0970fe0fa5ee-LICENSE",
+        "size": 733,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c02110eedc16c7114f1a9bdc026c65626ce1d9c7e27fd51a8e0feee8a48a6858-LICENSE",
+        "size": 1175,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c3367f6d01a79d368fc4fbb41b3615fcd92f243d6597ab96742f6f976f9325af-LICENSE",
+        "size": 765,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c58416e852f7603cc1c7c5f7582e8cc7b1934d7bcb5456d64ada379d6770da45-LICENSE.md",
+        "size": 1779,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/c8442419dc614089ea022b3da6bfc089b41a58fb7b9030d1e651f2f36189dce2-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ca90abb6ed71de0774461ef9f928de33e748b617aeb79f9e52415cf08d69230e-LICENSE",
+        "size": 1537,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ca4662cb5d1b738fbe5350c0d5485ba11773b4b7208974082ae6e129a52d631d-license",
+        "size": 1099,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48-LICENSE",
+        "size": 197,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cb00dc7c358014d300dba2462e57d3f477299c169c7ab14d8fe5e347eca44f48-LICENSE",
+        "size": 2267,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cb992345949ccd6e8394b2cd6c465f7b897c864f845937dbf64e8997f389e164-LICENSE",
+        "size": 1260,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cbf263504e800cf09f99962cce8497b76eef79c3526bca434b90c3ef4c17220d-LICENSE.md",
+        "size": 1114,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cc1dfd4dafa27271e8212cd3b274eeb3f262e40a6fdab36ddc3f9696f706f58b-LICENSE",
+        "size": 1172,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cd519ad3d7e012427f978dfb2e3b92ee403d189d7b859ba6bf68fd7e12ca456f-LICENSE",
+        "size": 1075,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cd9809cec53323a3e4977bb8f3c7fd4009e32c10966f92165528a457ecedba8e-LICENSE",
+        "size": 11355,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cdbc258d13806538e727964c2436a8806e6e2496ccd616224aace6f7bf98dbc1-LICENSE",
+        "size": 775,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cfc3f455254c0af0655cc3ff46a41ed644b67599f6043346169d285bf2b3cf3b-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30-LICENSE",
+        "size": 11358,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d0b7cddf14a2005e05b397a950b9f69e1de412b8c6749e5b5d70610fb119e9ee-LICENSE",
+        "size": 1060,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d0bca4e517157b7a6120c085f5fe43a35b90c095e3bbeb9e67f220c608506a16-LICENSE",
+        "size": 1128,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d0cd141b0c322fded5dfad1d4645bb2fedfc05b7321fe1009469638190d59ef9-LICENSE",
+        "size": 1091,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d2d9ce3d07931cf6c105b8c70638b768b07d3c21bb682c7ef89ac43caba13043-LICENSE",
+        "size": 1081,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d4eb00c3ef2fa54cdf05d167b15e994bc67226a7998e090e22a0bc8b16223a6c-LICENSE",
+        "size": 1209,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d06b5d27bbbbe22c36b1fd88406b1208876e2d37d795f5b8eaed951a459a3111-LICENSE",
+        "size": 1067,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d6c8d3da280f25f50b8dfbb9f5219631ddc3a45a3ad15c6beb40703d32bf0270-LICENSE",
+        "size": 1105,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d7d2a7786de7c7cfd96f920c6f12927d74e1d2a861ca4498bf465c3bc3f4c21c-LICENSE",
+        "size": 1098,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d8c77eaffed7f1f874b97f66ee47a557ae24fd59bae8ae14f9b1b84f26a94d2f-LICENSE.md",
+        "size": 1588,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d9c397a5dc5ac77a2a08fc967ea06a65317a4b5b8de48f6f732ffcb21737e3d2-LICENSE",
+        "size": 1063,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d9fed24f132985934fca621c4dc1dfb53e03377a24d0568d424383d7eaa9c0ac-LICENSE",
+        "size": 1063,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d37af134e0d0b998393188394202052e2ff6cd5d18efb2fcc81ba7b00ad77b75-LICENSE",
+        "size": 4771,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d56e4f9066438d7528cc00ba09ad572d2b1cef71cf1dcc8c5ad9a8a44d74d9d5-LICENSE",
+        "size": 1109,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d68a3fa8f9d630e745cbdc7398691467fc11b2d4fe466f68692402461cf67781-LICENSE",
+        "size": 1213,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d82ceb8cbd004a2d4834085c557d55459f528e30268d95159ee1e4030a693a6e-LICENSE",
+        "size": 11357,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d82dccd4a42e5a02fb1cc2a6cc673265b4756246407f7d03514e2ccabc1f9eb3-LICENSE",
+        "size": 11357,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d90bf0a089da4cf43d644ed240a0b3825dcdb705e64e38371d56995a4cc9e4c5-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d96e657000a00ad35280309c8a3d66db9c575efaa652720b82e619185581c835-LICENSE",
+        "size": 1112,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d96eba1f1881334d50ffc144276dfa98e147a415e7c591ecdfcb81680361dc91-LICENSE",
+        "size": 10836,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d375a08160f483be96161beb8b319231694108494544eaef8e022bb279b58517-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d408f38ffa3355c5faec517153295338892eb0f1ea43f57874bb23c6075979b5-LICENSE.md",
+        "size": 1155,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d9726abc9eff9496f3ecb5302e70756f310db24a01c7ddd20f541143bf5576ad-LICENSE",
+        "size": 1059,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d490035c46547ddc88330bc0b42fcd89eabfd66435c4291352d1b9b68d62c729-LICENSE",
+        "size": 1807,
+        "mode": 493
+      },
+      {
+        "path": "licenses/js/d11323827fa4edeaafc437cc5b91b6971b335f0127efeeb42bf5122fe8657e8f-LICENSE",
+        "size": 775,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/d00470775464c789c7ac04cfba3bf1b79ef149790eb72556d1c51d8f50c8e7f3-LICENSE",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/da4db1480d9beea3483a2eda5c53b22238d0827d57da162b48f122e04d2d9987-LICENSE",
+        "size": 1095,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/daca23d50b0f54d36d6da1b16c82dfea6461e2ae20de0e869957e44cc6d34781-LICENSE",
+        "size": 1088,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/db1ed8cccea0d0fb5d92b7c59d9aa78a5bbcd047972519c6a21a4416937f2ebf-LICENSE",
+        "size": 11356,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/db5c3795cb080810fed0380bf4d6adef3f81579e8ae3a867d3c2abab2329db9d-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/db9ba183d4cbfbaf6c27db2effddbb84b46340c33ed32a066bc0b144a3ea1298-LICENSE",
+        "size": 1129,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dbbf03317f0101fed5643cd87ca80fb769e358fa4f428445bf2315deeb23a154-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dc5d6874c25b4d5af22aa7bb9a18422bc86c7516c80056c1788fc120c4121f72-LICENSE",
+        "size": 10713,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dc6d4961d8b6ee747231582ae9c53ce1d66bf76bc9f5a28f554c0e97210953bf-LICENSE",
+        "size": 765,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dc18a39627c8f2e5391255635bd1d6bbb02e91ba4a9bd3e13e53347b8c25e61a-LICENSE",
+        "size": 1117,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dc32a0dee275e0a9aeffbc974dbf4899a30dcdc2e5ffa8934aecb69261065864-LICENSE",
+        "size": 742,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dcb94ff9b1e037a847bc20589dc81a1066d041fd4c16deb18b0fa968c66cf395-LICENSE",
+        "size": 1168,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dcba4e24de35d4e5f0d9e14804f925babe6d670afc2989eb650eb1aec4e43dd1-LICENSE",
+        "size": 1106,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dd1081884a92952802f4803110a6bb543acea9a814c786d58605b4c1219b5ebb-license",
+        "size": 1094,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ddc9158fa20e427bc12fa8e1e6d07c642ed4d2c618607df768b30ae2986b3b7c-LICENSE",
+        "size": 1082,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/de4d1f2d2ad5ad0cfd1657a106476b31cb5db5ef9d1ff842b237c0c81f0c8a23-LICENSE",
+        "size": 12775,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/def82c085d05e795fe6a9cb5b70c48e022212355afc0e91d4de047cade28df06-LICENSE",
+        "size": 1081,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/df0e3cef4a42bae7db60ee33c3409a63df5f4dc40291d3627fbf52dfbd44e8a7-LICENSE",
+        "size": 3366,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/df05697a04b8997c79d423930534e59cc18828f6e22d0c8c2d62fcbea1c4f50b-LICENSE",
+        "size": 1339,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dfde54fedc270c2a305d9a9f993d93f706d34624455a2fd2d2a05ca34d8ae8c3-LICENSE",
+        "size": 1797,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/dffec71d93f273d2af7b54c6c7e7e70b3289c632ec0d7253210ec21ac336d5ac-LICENSE",
+        "size": 1114,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e3a956681ee067f971ac413994171b3d90ca801ec6324e76c9c55366cfe31cb0-LICENSE",
+        "size": 1075,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e3b44af066615de2ea48d18d852d0762f18c0b2efcea714fa48a6f729d405b85-LICENSE",
+        "size": 1153,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e5b780d4f38d1d3328e3e53186c4e62d3fa149ea6f2bacd5de5ad0c30ac85343-License",
+        "size": 1118,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e7ceb6a6926e76a67981a440f4107d6152ac1fc2250c90a66460444518328b75-LICENSE.md",
+        "size": 1068,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e7d1fee7347ffddccc5fd03327ffdb50f8c112be0d5016d62388a92c4ae6e7a9-LICENSE",
+        "size": 1091,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e7dc37bf662d7f786efcb46c545615e70c1daf458a38385521c63cf6607cdfe1-LICENSE.md",
+        "size": 1600,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e7e94f2db9f81458817ca8eb7420d63ec607272eb4259b39c420339c76414dfe-LICENSE",
+        "size": 1083,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e7f5d28405c9fe6580db684634bace66953055b436d7fbb6f860d0c800c44a9f-LICENSE",
+        "size": 1074,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e9d6a94ab01c6c9ab68c099d3ba8dd9f8aca60f2e2250c2302275405fca9e806-LICENSE",
+        "size": 1071,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e67aed7df22dc8031e4fcf5338fe91cb33e3817e5c58a99a2a2802eea9069791-LICENSE",
+        "size": 1082,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e70ff771504ba41f2be55de812a017ff46433d7a250c862e38fc419159e44500-LICENSE",
+        "size": 1088,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e345c2ee7df4446e739de7b91535f0c10ddcd909b9753889e943ee637b05db8c-LICENSE",
+        "size": 11390,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e580c7d30024b7e9a41f4386d359d56ab2397a1aeadee2588ffbe7d03d21506b-LICENSE",
+        "size": 1093,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/e2560e002e13281578c75c850061d9255c33d16d732939e8c2db64c2506642fa-LICENSE",
+        "size": 1067,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ea5a8caa168f387ef2ccac8d7eea12d3be7e2e70a8b7125b68dbc8d1e7fa1998-LICENSE",
+        "size": 11369,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ea7f376fe7a1fc28572b83ac8f806d92effb31852b9981bc9ba9d5266caa6b28-LICENSE.md",
+        "size": 734,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ea9e6806c48a8a043ad8f2446527dc860617068265cffbef3efa4aaba39f18d8-LICENSE",
+        "size": 1092,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ea75e9321945b7f0bc4644da1e404ad76ce55e9bc05cae3b2f5f2d973aede83b-LICENSE",
+        "size": 1050,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ebb30d70f7ebd918f223ce6ed7621fa4cef3ec2d59d6707c23868b01def28ce2-LICENSE",
+        "size": 1078,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ec9ee83580841e8eb687aca9867f221503809ba6426c7f876ede17d91b9fcfd0-License.txt",
+        "size": 1095,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ec62dc96da0099b87f4511736c87309335527fb7031639493e06c95728dc8c54-LICENSE",
+        "size": 2337,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ec5696fcba435679958162f5fcd71bd77cee6d2008e5bd0cbb2e88aedd1822b2-LICENSE.md",
+        "size": 1122,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ec99456b6f97f7e559790df166a17a2418dbdbf595d63502792a5ce661f1346c-LICENSE",
+        "size": 1064,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ec361617c0473d39347b020eaa6dceedaebab43879fa1cd8b8f0f97a8e80a475-LICENSE",
+        "size": 756,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ecdccbcf39024f624ded480c01c0b25458e1eca8f26ecf040933865ce56d9a4f-license.md",
+        "size": 1064,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ed0b4f44d335645e243ff856c66b5ca7b353ed58d10307e6d4dbfb35658a7814-LICENSE",
+        "size": 1074,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ed251dc3a48522399fffe95fe04d94fbcadcd9edd0e7689f3b71cf73403a6138-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ed11982ff1ff5818970e943bf9aefc3909dbc65e5f0b3465a969c73a8bca5bb2-LICENSE",
+        "size": 1075,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/eda81a415869e67809f6a9f3fd6056062cb83a462118e07eec5e92b2e0c40ce9-LICENSE",
+        "size": 1546,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/edea91454b811f127fbdea3d86f378f6719bd372ed440abf82b232f6fca06c3d-LICENSE",
+        "size": 11352,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f0f3b8c5bf5da3d208712e755976604d1cb489711ba5a13b4d110cd039c4692d-LICENSE",
+        "size": 1499,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f1f6a1f3170072992cfdbbd59b125a04b9e810f6d1e08bb459741f54904a3460-LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f3df0b92efcd9d8cc0de5a36c151569a12a647d65b851abbb696ef7b13dee10b-LICENSE",
+        "size": 1093,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f3e1645267f7dd77ee6545283cc1766e5883e8fb3b5088fe2cfb995defbb3dde-LICENSE",
+        "size": 728,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f5afc95c69e116ea6b1755f91a8763f53eadb78b4f1582a08d2d18586a03a117-LICENSE",
+        "size": 11351,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f6d8d56714209bca4f23969f7b219acb442d3b7b0f95f23605da354d4757f00c-LICENSE",
+        "size": 1081,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f7ac4712aa30551de5b97b30215010515d783638107f207bcce32a85bfffc05e-LICENSE",
+        "size": 1055,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f8d791359a50cbcac82c29cb7b0b1b889b28be76fdd35b8ee33f0f7c8704702a-LICENSE",
+        "size": 1061,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f17f1be30bce27fe6324513a35fa61f6e6766d3028e42e45bdf668a0db7c8d4f-License",
+        "size": 1112,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f20adb7ae92bfb7fde52791839ff1714564b4ea60a4cd031d77208a521592a4e-LICENSE",
+        "size": 1095,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f65c5d9f22a317b2a10803bd1868461ce6499c2ed7217bc80c0cc772a748789c-LICENSE",
+        "size": 791,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f71e8ed126b46346494aad5486874cd8f0aafe95092ed67d2e3cb6110f939abc-LICENSE",
+        "size": 1952,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f95f668fe64081ddb4153b322e34fdd719b991285ed08177d5ad7133b7988d92-LICENSE",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f655e6291356ec0de7a8f0e69f294961a2cea86678ec94588be1e6a492e278ab-LICENSE",
+        "size": 1178,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f683a72ffe6a9675b5507af22fe0f448d8c8de3da1e14f139d370a7e6a54a23e-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f2046b2f212d286d06a53214867136c8152a481737e62fcda49c1412488c3a74-LICENSE",
+        "size": 1055,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f8171b7a645bca1eff1e69f911dc4c1fa93bf92a2f7d4d7fa24b4b7660c33041-LICENSE",
+        "size": 4241,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f8884a291249e0e14ed46e94c96665767a5133159778e355770f4899c45cf5e9-LICENSE",
+        "size": 1091,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f55828df4b8752c48e765a806465b76a103e3cb363379c569b15a1df2ba2d79e-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f58943cb354fb2707fea2f7b26b04e6014ddb56835cdfd414c9d2c6c59165b64-LICENSE",
+        "size": 1086,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f674630c4d3e668dabac6d955fb5f74c75b4a63a707ac93a8833b74bdc57221e-LICENSE",
+        "size": 1333,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/f309720128d29476b91891a60c0e9270c96a41ce0f241cd05fcf11d771300a4a-LICENSE",
+        "size": 1075,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/fa1bd040c5bdeefe65b3821cebf474f2733ce65df13089bd151dda1778e62fe8-LICENSE.md",
+        "size": 35231,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/fa88fba1c6bbb009934eddffaf9e1b99618e9db585dc2ed4378f4f3caecd42c7-LICENSE",
+        "size": 1087,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/fd3a263fe19ed8faa9068b43abaebafc02c77897b0c6fc09abc04bb592e5f16e-LICENSE",
+        "size": 18651,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/fd4098360de4b9fb2e003ac7c852e8c86f264a1d6e27c47128e8c8075c81249b-NOTICE",
+        "size": 1174,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/fe26044de416cf0cdb2cfd12ed299e5756d05b5d2ee6c59d3fd25ed304635d58-LICENSE",
+        "size": 1162,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/feb87a2e0c305de3464cc44077da5393c52d8ca6362d37427157d04ec6f4510d-LICENSE",
+        "size": 1057,
+        "mode": 420
+      },
+      {
+        "path": "licenses/js/ffc4aee7f1279fc0494ff2b27f6829e6b4d16c20aa93aa008c3bd8d8af176387-LICENSE",
+        "size": 750,
+        "mode": 420
+      },
+      {
+        "path": "licenses/OpenCode-MIT.txt",
+        "size": 1065,
+        "mode": 420
+      },
+      {
+        "path": "licenses/protobufjs-BSD.txt",
+        "size": 1937,
+        "mode": 420
+      },
+      {
+        "path": "manifest.json",
+        "size": 300281,
+        "mode": 420
+      },
+      {
+        "path": "package.json",
+        "size": 2149,
+        "mode": 420
+      },
+      {
+        "path": "resources/branding.json",
+        "size": 1346,
+        "mode": 420
+      },
+      {
+        "path": "resources/build-manifest.json",
+        "size": 1313,
+        "mode": 420
+      },
+      {
+        "path": "resources/composer.json",
+        "size": 163,
+        "mode": 420
+      },
+      {
+        "path": "resources/eda-agent-instructions.md",
+        "size": 10078,
+        "mode": 420
+      },
+      {
+        "path": "resources/kicad-direct.mjs",
+        "size": 1886640,
+        "mode": 493
+      },
+      {
+        "path": "resources/session-runtime.mjs",
+        "size": 2289660,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-agent/SKILL.md",
+        "size": 3473,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-drc-review/SKILL.md",
+        "size": 951,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-engineering/agents/openai.yaml",
+        "size": 351,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-engineering/references/release-evidence.md",
+        "size": 4273,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-engineering/SKILL.md",
+        "size": 3295,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-environment/SKILL.md",
+        "size": 1101,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-fabrication/SKILL.md",
+        "size": 898,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-routing/SKILL.md",
+        "size": 1031,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-schematic-generation/SKILL.md",
+        "size": 908,
+        "mode": 420
+      },
+      {
+        "path": "resources/skills/kicad-step-collision/SKILL.md",
+        "size": 683,
+        "mode": 420
+      },
+      {
+        "path": "resources/upstream.json",
+        "size": 188,
+        "mode": 420
+      },
+      {
+        "path": "resources/waiting.json",
+        "size": 272,
+        "mode": 420
+      },
+      {
+        "path": "scripts/link-bin.mjs",
+        "size": 1085,
+        "mode": 420
+      },
+      {
+        "path": "vendor/darwin-arm64/kicad-terminal",
+        "size": 145760080,
+        "mode": 493
+      }
+    ],
+    "entryCount": 581,
+    "bundled": []
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "status": 0,
+  "requests": [
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "ordinary-agent",
+      "toolResult": false
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "ordinary-agent",
+      "toolResult": true
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "highest-live",
+      "toolResult": false
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "highest-live",
+      "toolResult": true
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "ordinary-restored",
+      "toolResult": false
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "ordinary-restored",
+      "toolResult": true
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "pending-live",
+      "toolResult": false
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "pending-live",
+      "toolResult": true
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "highest-startup",
+      "toolResult": false
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "highest-startup",
+      "toolResult": true
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "question-highest",
+      "toolResult": false
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-6",
+      "name": "question-highest",
+      "toolResult": true
+    }
+  ]
+}

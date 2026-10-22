@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "/Users/mosc/Downloads/Kicad",
+      "name": "Kicad"
+    }
+  ],
+  "settings": {
+    "window.title": "Kicad · 原生工具",
+    "kicadAgent.openCode.args": [
+      "--model",
+      "kicad-deepseek/deepseek-flash"
+    ],
+    "kicadAgent.openCode.path": "/Users/mosc/.local/bin/kicad-terminal",
+    "kicadAgent.kicadCli": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli"
+  }
+}

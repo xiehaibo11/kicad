@@ -1,0 +1,17 @@
+{
+  "version": "0.4.9",
+  "active": true,
+  "webviews": {
+    "resolved": 2,
+    "mounted": 2
+  },
+  "nativeTerminal": {
+    "name": "kicad",
+    "pid": 69251,
+    "binary": "/Users/mosc/.local/bin/kicad-terminal"
+  },
+  "kiCadMcpEnabled": true,
+  "availableTerminalProviders": [
+    "kicad-deepseek"
+  ]
+}

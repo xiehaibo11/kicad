@@ -1,0 +1,453 @@
+{
+  "createdAt": "2026-10-21T18:41:23.594501+00:00",
+  "project": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块",
+  "chat": {
+    "totalToolCalls": 19,
+    "nativeToolCalls": 14,
+    "allReturned": true,
+    "ipc": {
+      "available": true,
+      "socket": "/tmp/kicad/api.sock",
+      "result": {
+        "ok": true,
+        "action": "system.ping",
+        "data": {}
+      }
+    },
+    "documents": [
+      {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "type": "DOCTYPE_PCB",
+              "boardFilename": "RK3308B_IPC 摄像头模块.kicad_pcb",
+              "project": {
+                "name": "RK3308B_IPC 摄像头模块",
+                "path": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "type": "DOCTYPE_SCHEMATIC",
+              "sheetPath": {
+                "path": [
+                  {
+                    "value": "4d8b9ae3-79ef-4159-9b55-b392b946c8bc"
+                  }
+                ],
+                "pathHumanReadable": "/"
+              },
+              "project": {
+                "name": "RK3308B_IPC 摄像头模块",
+                "path": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "actions": [
+      "document.list",
+      "document.list",
+      "board.drc.live",
+      "schematic.erc.live",
+      "pcb.snapshot",
+      "schematic.export.netlist",
+      "board.connectivity.prove",
+      "schematic.pages.list"
+    ],
+    "drc": {
+      "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/chat-final/drc.json",
+      "total": 1550,
+      "bySeverity": {
+        "error": 1075,
+        "warning": 475
+      },
+      "byType": {
+        "clearance": 499,
+        "shorting_items": 7,
+        "hole_clearance": 10,
+        "courtyards_overlap": 18,
+        "copper_edge_clearance": 34,
+        "drill_out_of_range": 77,
+        "track_width": 199,
+        "starved_thermal": 12,
+        "via_diameter": 77,
+        "solder_mask_bridge": 10,
+        "track_dangling": 1,
+        "text_height": 90,
+        "silk_overlap": 21,
+        "silk_over_copper": 1,
+        "unconnected_items": 132,
+        "missing_footprint": 8,
+        "footprint_symbol_mismatch": 155,
+        "net_conflict": 199
+      },
+      "violations": 1056,
+      "unconnected_items": 132,
+      "schematic_parity": 362,
+      "ignoredChecks": [
+        {
+          "description": "Footprint has no courtyard defined",
+          "key": "missing_courtyard"
+        },
+        {
+          "description": "Track endpoint not centered on via",
+          "key": "track_not_centered_on_via"
+        },
+        {
+          "description": "Tuning profile track geometries",
+          "key": "tuning_profile_track_geometries"
+        },
+        {
+          "description": "Footprint doesn't match symbol's footprint filters",
+          "key": "footprint_filters_mismatch"
+        },
+        {
+          "description": "Footprint component type doesn't match footprint pads",
+          "key": "footprint_type_mismatch"
+        }
+      ]
+    },
+    "erc": {
+      "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/chat-final/erc.json",
+      "total": 1235,
+      "bySeverity": {
+        "error": 176,
+        "warning": 1059
+      },
+      "byType": {
+        "power_pin_not_driven": 13,
+        "pin_not_driven": 27,
+        "pin_not_connected": 136,
+        "same_local_global_label": 10,
+        "lib_symbol_mismatch": 275,
+        "pin_to_pin": 454,
+        "footprint_link_issues": 157,
+        "isolated_pin_label": 163
+      },
+      "violations": 1235,
+      "unconnected_items": 0,
+      "schematic_parity": 0,
+      "ignoredChecks": [
+        {
+          "description": "Global label only appears once in the schematic",
+          "key": "single_global_label"
+        },
+        {
+          "description": "Four connection points are joined together",
+          "key": "four_way_junction"
+        },
+        {
+          "description": "SPICE model issue",
+          "key": "simulation_model_issue"
+        },
+        {
+          "description": "Assigned footprint doesn't match footprint filters",
+          "key": "footprint_filter"
+        }
+      ]
+    },
+    "checkedPcbCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-j9i9DH/RK3308B_IPC 摄像头模块.kicad_pcb",
+    "connectivity": {
+      "code": "CONNECTIVITY_UNPROVEN",
+      "unconnectedNetCount": 80,
+      "unconnectedItemCount": 132,
+      "danglingItemCount": 0,
+      "summarySource": "frontend tool result",
+      "frontendOutputTruncated": true
+    },
+    "retryErrors": []
+  },
+  "terminal": {
+    "totalToolCalls": 16,
+    "nativeToolCalls": 11,
+    "allReturned": true,
+    "ipc": {
+      "available": true,
+      "socket": "/tmp/kicad/api.sock",
+      "result": {
+        "ok": true,
+        "action": "system.ping",
+        "data": {}
+      }
+    },
+    "documents": [
+      {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "type": "DOCTYPE_PCB",
+              "boardFilename": "RK3308B_IPC 摄像头模块.kicad_pcb",
+              "project": {
+                "name": "RK3308B_IPC 摄像头模块",
+                "path": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "type": "DOCTYPE_SCHEMATIC",
+              "sheetPath": {
+                "path": [
+                  {
+                    "value": "4d8b9ae3-79ef-4159-9b55-b392b946c8bc"
+                  }
+                ],
+                "pathHumanReadable": "/"
+              },
+              "project": {
+                "name": "RK3308B_IPC 摄像头模块",
+                "path": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "actions": [
+      "document.list",
+      "document.list",
+      "board.drc.live",
+      "board.drc.live",
+      "schematic.erc.live",
+      "pcb.snapshot",
+      "schematic.export.netlist",
+      "board.connectivity.prove"
+    ],
+    "drc": {
+      "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/drc.json",
+      "total": 1543,
+      "bySeverity": {
+        "error": 1068,
+        "warning": 475
+      },
+      "byType": {
+        "clearance": 499,
+        "shorting_items": 7,
+        "hole_clearance": 3,
+        "courtyards_overlap": 18,
+        "copper_edge_clearance": 34,
+        "drill_out_of_range": 77,
+        "track_width": 199,
+        "starved_thermal": 12,
+        "via_diameter": 77,
+        "solder_mask_bridge": 10,
+        "track_dangling": 1,
+        "text_height": 90,
+        "silk_overlap": 21,
+        "silk_over_copper": 1,
+        "unconnected_items": 132,
+        "missing_footprint": 8,
+        "footprint_symbol_mismatch": 155,
+        "net_conflict": 199
+      },
+      "violations": 1049,
+      "unconnected_items": 132,
+      "schematic_parity": 362,
+      "ignoredChecks": [
+        {
+          "description": "Footprint has no courtyard defined",
+          "key": "missing_courtyard"
+        },
+        {
+          "description": "Track endpoint not centered on via",
+          "key": "track_not_centered_on_via"
+        },
+        {
+          "description": "Tuning profile track geometries",
+          "key": "tuning_profile_track_geometries"
+        },
+        {
+          "description": "Footprint doesn't match symbol's footprint filters",
+          "key": "footprint_filters_mismatch"
+        },
+        {
+          "description": "Footprint component type doesn't match footprint pads",
+          "key": "footprint_type_mismatch"
+        }
+      ]
+    },
+    "erc": {
+      "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/erc.json",
+      "total": 1235,
+      "bySeverity": {
+        "error": 176,
+        "warning": 1059
+      },
+      "byType": {
+        "power_pin_not_driven": 13,
+        "pin_not_driven": 27,
+        "pin_not_connected": 136,
+        "same_local_global_label": 10,
+        "lib_symbol_mismatch": 275,
+        "pin_to_pin": 454,
+        "footprint_link_issues": 157,
+        "isolated_pin_label": 163
+      },
+      "violations": 1235,
+      "unconnected_items": 0,
+      "schematic_parity": 0,
+      "ignoredChecks": [
+        {
+          "description": "Global label only appears once in the schematic",
+          "key": "single_global_label"
+        },
+        {
+          "description": "Four connection points are joined together",
+          "key": "four_way_junction"
+        },
+        {
+          "description": "SPICE model issue",
+          "key": "simulation_model_issue"
+        },
+        {
+          "description": "Assigned footprint doesn't match footprint filters",
+          "key": "footprint_filter"
+        }
+      ]
+    },
+    "checkedPcbCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-H42l2F/RK3308B_IPC 摄像头模块.kicad_pcb",
+    "connectivity": {
+      "code": "CONNECTIVITY_UNPROVEN",
+      "unconnectedNetCount": 80,
+      "unconnectedItemCount": 132,
+      "danglingItemCount": 0,
+      "summarySource": "/Users/mosc/.local/share/opencode/tool-output/tool_15fbd51fd001ipIGzGUKfq2x7z",
+      "frontendOutputTruncated": true
+    },
+    "retryErrors": [
+      {
+        "code": "BAD_INPUT",
+        "message": "document is required"
+      }
+    ]
+  },
+  "onlineModels": "Actual configured DeepSeek Flash in both visible frontends; not fixture-model responses.",
+  "frontendsNote": "Default per-track first-error DRC counts may vary with native traversal order. Both runs inspected identical native PCB snapshot content.",
+  "allTrackErrorsDrc": {
+    "options": {
+      "severityAll": true,
+      "schematicParity": true,
+      "allTrackErrors": true
+    },
+    "summary": {
+      "total": 1572,
+      "bySeverity": {
+        "error": 1097,
+        "warning": 475
+      },
+      "byType": {
+        "clearance": 499,
+        "shorting_items": 13,
+        "hole_clearance": 26,
+        "courtyards_overlap": 18,
+        "copper_edge_clearance": 34,
+        "drill_out_of_range": 77,
+        "track_width": 199,
+        "starved_thermal": 12,
+        "via_diameter": 77,
+        "solder_mask_bridge": 10,
+        "track_dangling": 1,
+        "text_height": 90,
+        "silk_overlap": 21,
+        "silk_over_copper": 1,
+        "unconnected_items": 132,
+        "missing_footprint": 8,
+        "footprint_symbol_mismatch": 155,
+        "net_conflict": 199
+      },
+      "violations": 1078,
+      "unconnected_items": 132,
+      "schematic_parity": 362,
+      "ignoredChecks": [
+        {
+          "description": "Footprint has no courtyard defined",
+          "key": "missing_courtyard"
+        },
+        {
+          "description": "Track endpoint not centered on via",
+          "key": "track_not_centered_on_via"
+        },
+        {
+          "description": "Tuning profile track geometries",
+          "key": "tuning_profile_track_geometries"
+        },
+        {
+          "description": "Footprint doesn't match symbol's footprint filters",
+          "key": "footprint_filters_mismatch"
+        },
+        {
+          "description": "Footprint component type doesn't match footprint pads",
+          "key": "footprint_type_mismatch"
+        }
+      ]
+    },
+    "twoRunSummaryIdentical": true,
+    "twoRunItemRecordsIdenticalIgnoringOrder": false,
+    "limitation": "Native DRC has per-type report limits (199/499). Clearance=499, track_width=199 and net_conflict=199 reach those limits. Concurrent native traversal can retain different item pairs; 1572 is a bounded report count, not an exhaustive count of all unique violations.",
+    "limitSource": "pcbnew/drc/drc_engine.cpp:57-58, 906-929, 2308-2317"
+  },
+  "erc": {
+    "chat": {
+      "total": 1235,
+      "bySeverity": {
+        "error": 176,
+        "warning": 1059
+      },
+      "sheets": 8
+    },
+    "terminal": {
+      "total": 1235,
+      "bySeverity": {
+        "error": 176,
+        "warning": 1059
+      },
+      "sheets": 8
+    }
+  },
+  "designFiles": {
+    "count": 10,
+    "finalAcceptanceHashesUnchanged": true,
+    "note": "Initial opening/restoration had earlier file changes with unresolved provenance. Both original/opened snapshots are preserved. This hash assertion covers only the later final acceptance round."
+  },
+  "coverage": {
+    "actionCount": 333,
+    "executed": 333,
+    "positiveResult": 331,
+    "currentTurnPositiveRechecks": 14,
+    "classifiedNegative": [
+      {
+        "action": "audit.run",
+        "status": "expected-design-and-manufacturing-evidence-incomplete"
+      },
+      {
+        "action": "release.check",
+        "status": "expected-release-evidence-incomplete"
+      }
+    ]
+  },
+  "routing": {
+    "chat": "Extension host -> in-process SDK binding -> shared JavaScript -> native KiCad IPC/CLI/files",
+    "terminal": "Native terminal process -> in-process plugin -> same shared JavaScript -> native KiCad IPC/CLI/files",
+    "nativeIpcSocket": "/tmp/kicad/api.sock",
+    "externalUtilities": "Directly executed external utilities are explicitly identified; these are not all KiCad algorithms."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": "0.4.34",
+  "terminal": [
+    {
+      "path": "/Users/mosc/.local/share/kicad-terminal/session-runtime.mjs",
+      "sha256": "a17fc99d968609754d0da0e3d450bac77e7cd38bae88e2ab5209f62ac4f0df8b"
+    },
+    {
+      "path": "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/resources/session-runtime.mjs",
+      "sha256": "a17fc99d968609754d0da0e3d450bac77e7cd38bae88e2ab5209f62ac4f0df8b"
+    }
+  ],
+  "credentialExcludedFromArtifacts": true,
+  "installedExtensions": [
+    "VS Code 0.4.34",
+    "Cursor 0.4.34"
+  ],
+  "extensionEntrySHA256": "bb3f587fa4d5f62cb3145944fbbbeff24e6c5763e7cfa558afabafdb59de2082",
+  "shortModelMenuVisuallyVerified": true
+}

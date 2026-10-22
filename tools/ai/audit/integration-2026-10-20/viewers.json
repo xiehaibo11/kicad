@@ -1,0 +1,186 @@
+{
+  "ok": true,
+  "fixture": "live native viewer and library frames, no design modifications",
+  "calls": [
+    {
+      "payload": {
+        "action": "kicad.Control.viewGerbers",
+        "editor": "kicad"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "kicad.Control.viewGerbers",
+          "completionVerified": false,
+          "editor": "kicad",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 302
+      }
+    },
+    {
+      "payload": {
+        "action": "common.Control.zoomFitScreen",
+        "editor": "gerbview"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "common.Control.zoomFitScreen",
+          "completionVerified": false,
+          "editor": "gerbview",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 3
+      }
+    },
+    {
+      "payload": {
+        "action": "kicad.Control.editDrawingSheet",
+        "editor": "kicad"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "kicad.Control.editDrawingSheet",
+          "completionVerified": false,
+          "editor": "kicad",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 258
+      }
+    },
+    {
+      "payload": {
+        "action": "common.Control.zoomFitScreen",
+        "editor": "pl_editor"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "common.Control.zoomFitScreen",
+          "completionVerified": false,
+          "editor": "pl_editor",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 62
+      }
+    },
+    {
+      "payload": {
+        "action": "kicad.Control.editSymbols",
+        "editor": "kicad"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "kicad.Control.editSymbols",
+          "completionVerified": false,
+          "editor": "kicad",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 1197
+      }
+    },
+    {
+      "payload": {
+        "action": "common.Control.zoomFitScreen",
+        "editor": "symbol_editor"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "common.Control.zoomFitScreen",
+          "completionVerified": false,
+          "editor": "symbol_editor",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 61
+      }
+    },
+    {
+      "payload": {
+        "action": "kicad.Control.editFootprints",
+        "editor": "kicad"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "kicad.Control.editFootprints",
+          "completionVerified": false,
+          "editor": "kicad",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 1013
+      }
+    },
+    {
+      "payload": {
+        "action": "common.Control.zoomFitScreen",
+        "editor": "footprint_editor"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "common.Control.zoomFitScreen",
+          "completionVerified": false,
+          "editor": "footprint_editor",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 200
+      }
+    },
+    {
+      "payload": {
+        "action": "common.Control.show3DViewer",
+        "editor": "pcbnew"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "common.Control.show3DViewer",
+          "completionVerified": false,
+          "editor": "pcbnew",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 557
+      }
+    },
+    {
+      "payload": {
+        "action": "3DViewer.Control.viewFront",
+        "editor": "3d-viewer"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "3DViewer.Control.viewFront",
+          "completionVerified": false,
+          "editor": "3d-viewer",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 6
+      }
+    }
+  ]
+}

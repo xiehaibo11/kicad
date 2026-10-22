@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/dist/kicad-terminal",
+    "sha256": "95504a419fa5079244d545a8a50344e2b522616aedd97ea38edf2f1fcb3a3c0d"
+  },
+  {
+    "path": "/Users/mosc/.local/bin/kicad-terminal",
+    "sha256": "95504a419fa5079244d545a8a50344e2b522616aedd97ea38edf2f1fcb3a3c0d"
+  },
+  {
+    "path": "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/vendor/darwin-arm64/kicad-terminal",
+    "sha256": "95504a419fa5079244d545a8a50344e2b522616aedd97ea38edf2f1fcb3a3c0d"
+  },
+  {
+    "path": "/Users/mosc/.local/share/kicad-terminal/session-runtime.mjs",
+    "sha256": "460c0477b001385c3321d6e78e1e3b5b0e6423c6d3bca53e333969fbb009ff9b"
+  },
+  {
+    "path": "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/resources/session-runtime.mjs",
+    "sha256": "460c0477b001385c3321d6e78e1e3b5b0e6423c6d3bca53e333969fbb009ff9b"
+  }
+]

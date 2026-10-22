@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "version": "0.4.12",
+  "fixture": "actual installed extension service + bundled SDK/CLI; local model servers; no external model calls",
+  "completedTurns": 3,
+  "sameConversation": true,
+  "modelSequence": [
+    "deepseek-flash",
+    "sonnet",
+    "deepseek-v4-pro"
+  ],
+  "staleProcessClosedReplacement": false
+}

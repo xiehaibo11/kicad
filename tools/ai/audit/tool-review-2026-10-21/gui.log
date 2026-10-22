@@ -1,0 +1,29 @@
+{
+  dir: '/tmp/kn-pcb-gui-Awd9Pj',
+  document: '/tmp/kn-pcb-gui-Awd9Pj/acceptance.kicad_pcb',
+  socket: '/tmp/kn-pcb-gui-Awd9Pj/api.sock'
+}
+pcb.view.filter.get PASS
+board.via.create PASS
+editor.selection.clear PASS
+editor.selection.add PASS
+editor.selection.get PASS
+editor.selection.export PASS
+editor.selection.remove PASS
+editor.selection.get PASS
+editor.selection.sync PASS
+editor.nets.highlight PASS
+board.layers.visible.get PASS
+board.layers.visible.set PASS
+board.layers.visible.get PASS
+board.layers.visible.set PASS
+board.layers.active.get PASS
+board.layers.active.set PASS
+board.layers.active.get PASS
+board.layers.active.set PASS
+board.appearance.get PASS
+board.appearance.set PASS
+board.appearance.get PASS
+editor.run_action PASS
+board.move.interactive PASS
+{"executed":23,"successful":23,"selectionReadback":true,"layerRoundtrip":true,"appearanceRoundtrip":true}

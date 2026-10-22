@@ -1,0 +1,88 @@
+{
+  "version": "0.4.11",
+  "checkedAt": "2026-10-20T16:04:52.590544-07:00",
+  "package": {
+    "version": "0.4.11",
+    "labels": [
+      "Kicad",
+      "Kicad",
+      "Kicad"
+    ],
+    "installedMatchesVsix": true,
+    "sha256": {
+      "dist/extension.cjs": "e33dba37febd9c4856dfa3632623a55fb9d1b03633e03338ad1e32c658b330ff",
+      "dist/media/main.js": "c4239a8aa6ed58efd428ba2bd08db9f3b27bf67cd2fc0afe30c19fca8c68e084",
+      "dist/media/style.css": "787e8bfc496947a0a425964ad08a365ea5b5ccc6cf01e51a4b6f2616f3758c47"
+    }
+  },
+  "composer": {
+    "version": "0.4.11",
+    "initialMode": "Agent",
+    "menuOrder": [
+      "Agent",
+      "Default",
+      "Plan"
+    ],
+    "launchPermissionMode": "acceptEdits",
+    "checks": [
+      "new chat defaults to Agent",
+      "Agent is first in mode menu",
+      "Plan and Default remain selectable without sending",
+      "selected Agent mode forwarded to chat backend",
+      "completed turn triggers prediction",
+      "current selected model and actual conversation forwarded",
+      "only ghost text, no tool reference button/checkbox/status/accept buttons",
+      "Tab accepts without sending",
+      "Enter and Right do not accept ghost text",
+      "Escape dismisses",
+      "editing invalidates late result"
+    ],
+    "explicitMessages": 3,
+    "automaticMessages": 0,
+    "pageErrors": []
+  },
+  "promptOptimizerRegression": {
+    "version": "0.4.11",
+    "fixture": "Installed production frontend, mock host responses",
+    "checks": [
+      "empty input disabled",
+      "selected model forwarded",
+      "direct input replacement",
+      "no preview dialog",
+      "undo restores original",
+      "no automatic send",
+      "Enter disabled during optimization",
+      "cancel and late result ignored",
+      "error preserves draft and can retry",
+      "concurrent edit protected"
+    ],
+    "chatMessagesSent": 0,
+    "pageErrors": []
+  },
+  "realVSCodeHost": {
+    "version": "0.4.11",
+    "displayName": "Kicad",
+    "active": true,
+    "webviews": {
+      "resolved": 2,
+      "mounted": 2
+    },
+    "nativeTerminal": {
+      "name": "Kicad 终端",
+      "pid": 82864,
+      "binary": "/Users/mosc/.local/bin/kicad-terminal"
+    },
+    "kiCadMcpEnabled": true,
+    "availableTerminalProviders": [
+      "kicad-deepseek"
+    ]
+  },
+  "normalInspectionWindow": {
+    "workspace": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.11.code-workspace",
+    "title": "Kicad · 0.4.11 检查窗口",
+    "frontendMounted": true,
+    "loadedInstalledVersion": "0.4.11",
+    "log": "/Users/mosc/Library/Application Support/Code/logs/20261020T154541/window4/exthost/kicad-agent.kicad/Kicad.log"
+  },
+  "scope": "Installed production frontend behavior uses simulated host/model replies; real VS Code host confirms activation and frontend mounting. No model conversation or PCB operation was performed for this UI change."
+}

@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "action": "editor.run_action",
+  "data": {
+    "action": "cvpcb.Control.changeFocusRight",
+    "completionVerified": false,
+    "editor": "cvpcb",
+    "execution": "submitted",
+    "status": "RAS_OK"
+  },
+  "elapsedMs": 1
+}

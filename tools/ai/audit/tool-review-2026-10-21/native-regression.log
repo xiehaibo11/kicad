@@ -1,0 +1,15 @@
+✔ native board workflows: images, silk, netclasses, constraints, layer hop, cleanup, DSN/SES and reports (8889.862875ms)
+✔ native parser loads generated symbol library and selects child sheet IPC context (1634.472167ms)
+✔ native schematic workflows preserve fields and pin geometry, save and export (10139.011333ms)
+✔ all 79 original deferred handlers have concrete in-process native workflows (1.508084ms)
+✔ native file workflows preserve hierarchy, libraries, project settings and recoverable deletions (55.869333ms)
+✔ isolated native KiCad: direct IPC writes/readback/delete, temporary live DRC and CLI export (5428.617583ms)
+✔ isolated native schematic generation resolves library pins, creates labels and saves (4304.549875ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12977.891334

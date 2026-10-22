@@ -1,0 +1,10 @@
+{
+  "windowTitle": "Kicad · 0.4.18 · 修复后检查",
+  "observedUsing": "native VS Code accessibility state",
+  "extensionVisible": true,
+  "heading": "New Conversation",
+  "brand": "Kicad",
+  "initialMode": "Agent",
+  "composerVisible": true,
+  "sendDisabledForEmptyDraft": true
+}

@@ -1,0 +1,20 @@
+{
+  "source": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/dist/session-runtime.mjs",
+  "installations": [
+    {
+      "target": "/Users/mosc/.local/share/kicad-terminal/session-runtime.mjs",
+      "installed": true,
+      "beforeSha256": "674124c471455fb494aae61529355fce5e62db79047afb2a1040dd2c5d91d506",
+      "sha256": "6660f82a8190343eb5c3634ba5680ff05298e9415fc7c6df7266d70f2d5d8474",
+      "backup": "/Users/mosc/Downloads/Kicad/tools/ai/audit/runtime-diagnostics-2026-10-22/install-backup/0-session-runtime.mjs"
+    },
+    {
+      "target": "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/resources/session-runtime.mjs",
+      "installed": true,
+      "beforeSha256": "8646321ac35a55be1f24017592a45411781734ff10b14f197733308b48281d8a",
+      "sha256": "6660f82a8190343eb5c3634ba5680ff05298e9415fc7c6df7266d70f2d5d8474",
+      "backup": "/Users/mosc/Downloads/Kicad/tools/ai/audit/runtime-diagnostics-2026-10-22/install-backup/1-session-runtime.mjs"
+    }
+  ],
+  "activation": "new terminal process required"
+}

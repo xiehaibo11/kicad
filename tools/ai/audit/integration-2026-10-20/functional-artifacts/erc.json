@@ -1,0 +1,120 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-20T19:15:21",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.99.0",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/513e765f-34fa-43aa-ba9d-42d9cdbd1bee",
+            "violations": [
+                {
+                    "description": "Wires not connected to anything",
+                    "items": [
+                        {
+                            "description": "Horizontal Wire, length 0.1524 mm",
+                            "pos": {
+                                "x": 0.9779,
+                                "y": 1.0541
+                            },
+                            "uuid": "20a703fc-44d4-4868-875e-0720a60631a9"
+                        },
+                        {
+                            "description": "Vertical Wire, length 0.0762 mm",
+                            "pos": {
+                                "x": 1.1303,
+                                "y": 0.9779
+                            },
+                            "uuid": "7a769a1a-85db-462d-8ae9-5902204c8bf3"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "wire_dangling"
+                },
+                {
+                    "description": "Unconnected wire endpoint",
+                    "items": [
+                        {
+                            "description": "Horizontal Wire, length 0.1524 mm",
+                            "pos": {
+                                "x": 0.9779,
+                                "y": 1.0541
+                            },
+                            "uuid": "20a703fc-44d4-4868-875e-0720a60631a9"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "unconnected_wire_endpoint"
+                },
+                {
+                    "description": "Unconnected wire endpoint",
+                    "items": [
+                        {
+                            "description": "Vertical Wire, length 0.0762 mm",
+                            "pos": {
+                                "x": 1.1303,
+                                "y": 0.9779
+                            },
+                            "uuid": "7a769a1a-85db-462d-8ae9-5902204c8bf3"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "unconnected_wire_endpoint"
+                },
+                {
+                    "description": "Unconnected wire endpoint",
+                    "items": [
+                        {
+                            "description": "Horizontal Wire, length 0.1778 mm",
+                            "pos": {
+                                "x": 1.1303,
+                                "y": 1.0541
+                            },
+                            "uuid": "7d42cdb1-f27f-42d4-8633-b9054b67dee2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "unconnected_wire_endpoint"
+                },
+                {
+                    "description": "Unconnected wire endpoint",
+                    "items": [
+                        {
+                            "description": "Horizontal Wire, length 0.0762 mm",
+                            "pos": {
+                                "x": 1.2573,
+                                "y": 0.5715
+                            },
+                            "uuid": "ddca24db-e3db-4e30-9cfb-809a995b7364"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "unconnected_wire_endpoint"
+                }
+            ]
+        }
+    ],
+    "source": "erc_wire_endpoints.kicad_sch"
+}

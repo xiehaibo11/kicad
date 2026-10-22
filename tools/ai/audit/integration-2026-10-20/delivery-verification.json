@@ -1,0 +1,18 @@
+{
+  "createdAt": "2026-10-21T02:25:40.362487+00:00",
+  "installation": "passed",
+  "terminalVersionSmoke": "passed: built runtime, installed runtime, canonical Kicad and legacy kicad",
+  "terminalModelSmoke": "passed: health and project.list, no slash",
+  "sourceAndArtifactManifests": "passed",
+  "goNngFullSuite": "passed with local nng include and static library flags",
+  "earlierAttempts": [
+    {
+      "check": "terminal build first version smoke",
+      "result": "exit 137; subsequent invocations of the produced signed artifact and installed artifact passed; retained original build log"
+    },
+    {
+      "check": "Go NNG test without local CGO flags",
+      "result": "nng/nng.h missing; rerun with configured include/library paths passed"
+    }
+  ]
+}

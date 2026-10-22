@@ -1,0 +1,67 @@
+{
+  "time": "2026-10-22T20:15:12.768393+00:00",
+  "ok": true,
+  "scope": "Our extension and terminal load custom tools, MCP and skills on demand; Claude Code is a reference only",
+  "startupCustomTools": [
+    "capability_search",
+    "capability_call"
+  ],
+  "nativeCoreToolsRemainAvailable": true,
+  "maxMatchingSchemasPerSearch": 5,
+  "startupConnectsAllMcp": false,
+  "skillBodyLoadedOnlyOnCall": true,
+  "disableModelInvocationRespected": true,
+  "archiveReproduction": "archive-reproduction.json",
+  "sourceArchiveUnchanged": true,
+  "unitTests": {
+    "passed": 18,
+    "failed": 0
+  },
+  "realExtensionHost": "extension-host.json",
+  "nativeDemandFixture": "demand-native.json",
+  "nativeDiagnosticsFixture": "diagnostics-native.json",
+  "fixtureModelNote": "Controlled local model responses drive real installed terminal/plugin tools; this is not a fresh Claude membership inference",
+  "installedExtensions": [
+    {
+      "path": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.40",
+      "version": "0.4.40",
+      "runtimeMatches": true
+    },
+    {
+      "path": "/Users/mosc/.cursor/extensions/kicad-agent.kicad-0.4.40",
+      "version": "0.4.40",
+      "runtimeMatches": true
+    }
+  ],
+  "runtimePluginSha256": "c9b402749c29f40a22d0573bead40d7ee4de12b633fb2acef82ae95f214ed43d",
+  "research": [
+    {
+      "url": "https://code.claude.com/docs/en/mcp#scale-with-mcp-tool-search",
+      "finding": "Tool schema context deferral and server connection are different; preserve our selected-server connection policy."
+    },
+    {
+      "url": "https://code.claude.com/docs/en/skills",
+      "finding": "Skill metadata discovery differs from body loading. Respect disable-model-invocation and user-invocable separately."
+    },
+    {
+      "url": "https://cursor.com/blog/dynamic-context-discovery",
+      "finding": "Retrieve relevant context and tool descriptions dynamically."
+    },
+    {
+      "url": "https://agentskills.io/home",
+      "finding": "Progressive disclosure separates skill metadata, instructions, resources."
+    }
+  ],
+  "visibleReadback": {
+    "vscodeReloaded": true,
+    "vscodeVersion": "0.4.40",
+    "vscodePriorDraftRestoredUnsent": true,
+    "nativeTerminalRestarted": true,
+    "nativeTerminalIdleToolsNotLoaded": true,
+    "cursorReloaded": true,
+    "cursorHistoricalExit50ShowsArchiveGuidance": true,
+    "cursorOriginalChatRestored": true,
+    "unsavedEditorPreserved": true,
+    "existingClaudeQuotaMessageObserved": true
+  }
+}

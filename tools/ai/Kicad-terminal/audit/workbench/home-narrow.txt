@@ -1,0 +1,24 @@
+                                                            
+                                                            
+  ╭──────────────────────────────────────────────────────╮  
+  │ Ki Kicad                              v0.2.1 → 0.2.2 │  
+  │ ○ IPC       not running                              │  
+  │ ● kicad-cli 10.99.0                                  │  
+  │ PRJ ecc83-pp.kicad_pro                               │  
+  │ PRJ ecc83-pp_v2.kicad_pro                            │  
+  │ Type /kicad- for quick tasks                         │  
+  ╰──────────────────────────────────────────────────────╯  
+                                                            
+  ┃                                                         
+  ┃  Describe a KiCad task… "Export Gerbers for this        
+  ┃  project"                                               
+  ┃                                                         
+  ┃  Build · Workbench fixture Local fixture     ● KiCad    
+  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  
+                               tab agents  ctrl+p commands  
+                                                            
+                                                            
+                                                            
+  ● Tip Run /connect to add API keys for 75+ supported      
+  /private/var/  ● KiCad CLI only    ↑ Kicad 0.2.2 /update  
+                                                            

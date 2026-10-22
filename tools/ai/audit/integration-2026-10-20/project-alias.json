@@ -1,0 +1,120 @@
+{
+  "ok": true,
+  "fixture": "reopen the current project through /private/tmp symlink alias and prove PCB, schematic and 3D viewer survive",
+  "calls": [
+    {
+      "action": "document.list",
+      "payload": {
+        "type": "pcb"
+      },
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "boardFilename": "pic_programmer.kicad_pcb",
+              "project": {
+                "name": "pic_programmer",
+                "path": "/tmp/kicad-integration-projects/pic_programmer"
+              },
+              "type": "DOCTYPE_PCB"
+            }
+          ]
+        },
+        "elapsedMs": 6
+      }
+    },
+    {
+      "action": "project.open",
+      "payload": {
+        "project": "/private/tmp/kicad-integration-projects/pic_programmer"
+      },
+      "result": {
+        "ok": true,
+        "action": "project.open",
+        "data": {
+          "document": {
+            "project": {
+              "name": "pic_programmer",
+              "path": "/tmp/kicad-integration-projects/pic_programmer/"
+            },
+            "type": "DOCTYPE_PROJECT"
+          }
+        },
+        "elapsedMs": 1
+      }
+    },
+    {
+      "action": "document.list",
+      "payload": {
+        "type": "pcb"
+      },
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "boardFilename": "pic_programmer.kicad_pcb",
+              "project": {
+                "name": "pic_programmer",
+                "path": "/tmp/kicad-integration-projects/pic_programmer"
+              },
+              "type": "DOCTYPE_PCB"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "action": "document.list",
+      "payload": {
+        "type": "schematic"
+      },
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "project": {
+                "name": "pic_programmer",
+                "path": "/tmp/kicad-integration-projects/pic_programmer/"
+              },
+              "sheetPath": {
+                "path": [
+                  {
+                    "value": "2e45d1d2-c73f-46e5-98d6-3a9dc360bff5"
+                  }
+                ],
+                "pathHumanReadable": "/"
+              },
+              "type": "DOCTYPE_SCHEMATIC"
+            }
+          ]
+        },
+        "elapsedMs": 2
+      }
+    },
+    {
+      "action": "editor.run_action",
+      "payload": {
+        "action": "3DViewer.Control.viewFront",
+        "editor": "3d-viewer"
+      },
+      "result": {
+        "ok": true,
+        "action": "editor.run_action",
+        "data": {
+          "action": "3DViewer.Control.viewFront",
+          "completionVerified": false,
+          "editor": "3d-viewer",
+          "execution": "submitted",
+          "status": "RAS_OK"
+        },
+        "elapsedMs": 7
+      }
+    }
+  ]
+}

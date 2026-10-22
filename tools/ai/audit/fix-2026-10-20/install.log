@@ -1,0 +1,46 @@
+[0/2] Re-checking globbed directories...
+ninja: no work to do.
+{"verified": true, "kind": "terminal", "version": "1.19.3"}
+{"verified": true, "kind": "extension", "version": "0.4.12"}
+Kicad 终端 installed: /Users/mosc/.local/bin/kicad-terminal
+Installed:
+  /Users/mosc/.local/bin/kicad-agent
+  /Users/mosc/.local/bin/kicad-cli
+  /Users/mosc/.local/bin/kicad   (AI terminal launcher)
+  ~/.claude/skills/kicad-agent/SKILL.md
+  ~/.claude/commands/kicad-*.md
+
+Terminal:      kicad-agent health
+Start server:  kicad-agent call project.open --payload '{"document":"/abs/board.kicad_pcb"}'
+MCP (user):    claude mcp add --scope user kicad -- "/Users/mosc/Downloads/Kicad/build/bin/kicad-agent" mcp
+VS Code:       tools/ai/Kicad-extension/build.sh
+Installing extensions...
+Extension 'kicad-0.4.12.vsix' was successfully installed.
+(node:4504) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+VS Code extension installed: kicad-0.4.12.vsix
+kicad-agent.kicad@0.4.12
+{
+  "literalNamedNativeActions": 970,
+  "nativeActionsBySource": {
+    "common/tool/actions.cpp": 191,
+    "pcbnew/tools/pcb_actions.cpp": 405,
+    "eeschema/tools/sch_actions.cpp": 249,
+    "gerbview/tools/gerbview_actions.cpp": 32,
+    "pagelayout_editor/tools/pl_actions.cpp": 10,
+    "3d-viewer/3d_viewer/tools/eda_3d_actions.cpp": 41,
+    "cvpcb/tools/cvpcb_actions.cpp": 16,
+    "kicad/tools/kicad_manager_actions.cpp": 26
+  },
+  "unparsedNativeDefinitions": 0,
+  "typedAutomationActions": 125,
+  "automationByBackend": {
+    "composite": 17,
+    "cli": 20,
+    "ipc": 67,
+    "offline": 14,
+    "external": 7
+  },
+  "apiRegistrationSites": 162
+}
+{"ok": true, "agent": {"actionCount": 125, "agentVersion": "0.2.0", "arch": "arm64", "catalogSha256": "5eadc691168c3ecd13ccec27df552eb46236d3c47d1547fb83540471234fd041", "goVersion": "go1.27.2", "mcpToolCount": 18, "mcpTools": ["kicad_health", "kicad_actions", "kicad_call", "kicad_spec_validate", "kicad_blocks", "kicad_workflow", "kicad_pipeline", "kicad_native_tools", "kicad_system", "kicad_project", "kicad_document", "kicad_schematic", "kicad_board", "kicad_library", "kicad_external", "kicad_editor", "kicad_audit", "kicad_web"], "nativeToolCount": 970, "os": "darwin", "schemaVersion": 1}, "mcpToolCount": 18, "terminalVersion": "1.19.3", "terminalSha256": "b3b3f2f1b401a505cba303014f9ab0460cfc314d20b0dd6510ae3e73b0f33618", "extensionVersion": "0.4.12", "extensionPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.12", "checkedFiles": ["extension.cjs", "main.js", "bundled CLI"], "note": "Installation and capability verification; this does not assert a connected KiCad document or fabricate engineering validation."}

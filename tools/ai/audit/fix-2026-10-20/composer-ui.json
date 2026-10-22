@@ -1,0 +1,26 @@
+{
+  "version": "0.4.12",
+  "initialMode": "Agent",
+  "menuOrder": [
+    "Agent",
+    "Default",
+    "Plan"
+  ],
+  "launchPermissionMode": "acceptEdits",
+  "checks": [
+    "new chat defaults to Agent",
+    "Agent is first in mode menu",
+    "Plan and Default remain selectable without sending",
+    "selected Agent mode forwarded to chat backend",
+    "completed turn triggers prediction",
+    "current selected model and actual conversation forwarded",
+    "only ghost text, no tool reference button/checkbox/status/accept buttons",
+    "Tab accepts without sending",
+    "Enter and Right do not accept ghost text",
+    "Escape dismisses",
+    "editing invalidates late result"
+  ],
+  "explicitMessages": 3,
+  "automaticMessages": 0,
+  "pageErrors": []
+}

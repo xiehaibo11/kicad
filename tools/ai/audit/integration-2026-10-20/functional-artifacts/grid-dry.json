@@ -1,0 +1,31 @@
+{
+  "ok": false,
+  "action": "board.route.autoroute",
+  "data": {
+    "nets": [
+      {
+        "net": "Net1",
+        "padCount": 1,
+        "routed": 0,
+        "skipped": 0,
+        "reason": "fewer than two pads"
+      }
+    ],
+    "created": 0,
+    "failed": 0,
+    "dryRun": true,
+    "verified": false,
+    "planner": "grid-3d",
+    "gridMm": 0.25,
+    "clearanceMm": 0.2,
+    "layers": [
+      "F.Cu",
+      "B.Cu"
+    ],
+    "note": "3D A* grid router; obstacles include pads, tracks, vias, board edges, and rule areas"
+  },
+  "error": {
+    "code": "ROUTE_NO_TRACKS",
+    "message": "the 3D grid router found no routable paths"
+  }
+}

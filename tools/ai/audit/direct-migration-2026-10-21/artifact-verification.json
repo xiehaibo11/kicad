@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "sharedModuleIdentical": {
+    "sourceBundle": "8c77c360186e943761633ce78a2d12aa31116220ba3bc4bbb918842dfc4bce8b",
+    "cmakeBundle": "8c77c360186e943761633ce78a2d12aa31116220ba3bc4bbb918842dfc4bce8b",
+    "terminalBundle": "8c77c360186e943761633ce78a2d12aa31116220ba3bc4bbb918842dfc4bce8b",
+    "legacyExtensionBundle": "8c77c360186e943761633ce78a2d12aa31116220ba3bc4bbb918842dfc4bce8b",
+    "extensionVsix": "8c77c360186e943761633ce78a2d12aa31116220ba3bc4bbb918842dfc4bce8b",
+    "npmTarball": "8c77c360186e943761633ce78a2d12aa31116220ba3bc4bbb918842dfc4bce8b",
+    "replacedArchive": "8c77c360186e943761633ce78a2d12aa31116220ba3bc4bbb918842dfc4bce8b"
+  },
+  "terminalPluginIdentical": true,
+  "terminalBinaryInNpmIdentical": true
+}

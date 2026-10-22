@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "originalCliEntries": [
+    "completion",
+    "acp",
+    "mcp",
+    "[project]",
+    "attach",
+    "run",
+    "debug",
+    "providers",
+    "agent",
+    "upgrade",
+    "uninstall",
+    "serve",
+    "web",
+    "models",
+    "stats",
+    "export",
+    "import",
+    "github",
+    "pr",
+    "session",
+    "plugin",
+    "db"
+  ],
+  "cliEntryCount": 22,
+  "embeddedWebUI": true,
+  "assetBytes": 2738111,
+  "assetSha256": "521b103de4415f7ba14efb9fc8a9db50d2d511d6e4919a4850f4c4ec6fe486b2",
+  "modelCalls": 0
+}

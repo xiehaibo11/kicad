@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "name": "Kicad",
+      "path": "/Users/mosc/Downloads/Kicad"
+    }
+  ],
+  "settings": {
+    "window.title": "Kicad · 0.4.14 检查窗口",
+    "workbench.startupEditor": "none",
+    "kicadAgent.openCode.path": "/Users/mosc/.local/bin/kicad-terminal"
+  }
+}

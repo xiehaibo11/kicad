@@ -1,0 +1,741 @@
+{
+  "ok": true,
+  "fixture": "isolated generated four-layer board, GND vias, 40x40mm outline; native readback, save and reload",
+  "calls": [
+    {
+      "action": "board.layers.type.set",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb",
+        "layers": {
+          "In1.Cu": "power",
+          "In2.Cu": "power"
+        }
+      },
+      "result": {
+        "ok": true,
+        "action": "board.layers.type.set",
+        "data": {
+          "backup": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-agent-layertype-1792548711143976000-p0.kicad_pcb",
+          "changed": [
+            {
+              "from": "signal",
+              "layer": "In1.Cu",
+              "to": "power"
+            },
+            {
+              "from": "signal",
+              "layer": "In2.Cu",
+              "to": "power"
+            }
+          ],
+          "live": true,
+          "readback": {
+            "copperLayers": [
+              {
+                "id": "0",
+                "name": "F.Cu",
+                "type": "signal"
+              },
+              {
+                "id": "4",
+                "name": "In1.Cu",
+                "type": "power"
+              },
+              {
+                "id": "6",
+                "name": "In2.Cu",
+                "type": "power"
+              },
+              {
+                "id": "2",
+                "name": "B.Cu",
+                "type": "signal"
+              }
+            ],
+            "source": "live"
+          },
+          "steps": [
+            "rewrote layer table",
+            "reloaded open board"
+          ],
+          "verified": true
+        }
+      }
+    },
+    {
+      "action": "board.via.create",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb",
+        "positions": [
+          {
+            "xMm": 25,
+            "yMm": 25
+          },
+          {
+            "xMm": 35,
+            "yMm": 35
+          }
+        ],
+        "net": "GND",
+        "filled": true,
+        "capped": true,
+        "plugged": "both",
+        "covered": "both"
+      },
+      "result": {
+        "ok": true,
+        "action": "board.via.create",
+        "data": {
+          "createdIds": [
+            "14815917-4e83-4d95-8ce5-271af5052315",
+            "f830078e-d8ff-417b-a095-0d41ffd4b513"
+          ],
+          "next": "run board.drc.live (or board.drc.run after saving) and board.connectivity.prove",
+          "requested": 2,
+          "sites": [
+            {
+              "net": "GND",
+              "pad": "",
+              "xMm": 25,
+              "yMm": 25
+            },
+            {
+              "net": "GND",
+              "pad": "",
+              "xMm": 35,
+              "yMm": 35
+            }
+          ],
+          "verified": true,
+          "verifiedCount": 2
+        }
+      }
+    },
+    {
+      "action": "board.via.modify",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb",
+        "ids": [
+          "14815917-4e83-4d95-8ce5-271af5052315",
+          "f830078e-d8ff-417b-a095-0d41ffd4b513"
+        ],
+        "diameterMm": 0.8,
+        "drillMm": 0.35,
+        "filled": true,
+        "capped": true
+      },
+      "result": {
+        "ok": true,
+        "action": "board.via.modify",
+        "data": {
+          "next": "run board.drc.live (or board.drc.run after saving) and board.connectivity.prove",
+          "selected": 2,
+          "updatedIds": [
+            "f830078e-d8ff-417b-a095-0d41ffd4b513",
+            "14815917-4e83-4d95-8ce5-271af5052315"
+          ],
+          "verified": true,
+          "verifiedCount": 2
+        }
+      }
+    },
+    {
+      "action": "board.plane.build",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb",
+        "net": "GND",
+        "layers": [
+          "In1.Cu"
+        ],
+        "name": "GND_INNER_PROOF"
+      },
+      "result": {
+        "ok": true,
+        "action": "board.plane.build",
+        "data": {
+          "connectivity": {
+            "danglingItems": [],
+            "endpoints": [
+              {
+                "connectedItems": [
+                  {
+                    "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                  },
+                  {
+                    "value": "14815917-4e83-4d95-8ce5-271af5052315"
+                  },
+                  {
+                    "value": "eb324e02-9a6b-42c2-96b9-3a792c4e6ad3"
+                  },
+                  {
+                    "value": "5781853c-2420-49d0-bf00-ff2510f86c00"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "f830078e-d8ff-417b-a095-0d41ffd4b513"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                  },
+                  {
+                    "value": "f830078e-d8ff-417b-a095-0d41ffd4b513"
+                  },
+                  {
+                    "value": "eb324e02-9a6b-42c2-96b9-3a792c4e6ad3"
+                  },
+                  {
+                    "value": "5781853c-2420-49d0-bf00-ff2510f86c00"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "14815917-4e83-4d95-8ce5-271af5052315"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                  },
+                  {
+                    "value": "f830078e-d8ff-417b-a095-0d41ffd4b513"
+                  },
+                  {
+                    "value": "14815917-4e83-4d95-8ce5-271af5052315"
+                  },
+                  {
+                    "value": "5781853c-2420-49d0-bf00-ff2510f86c00"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "eb324e02-9a6b-42c2-96b9-3a792c4e6ad3"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                  },
+                  {
+                    "value": "f830078e-d8ff-417b-a095-0d41ffd4b513"
+                  },
+                  {
+                    "value": "14815917-4e83-4d95-8ce5-271af5052315"
+                  },
+                  {
+                    "value": "eb324e02-9a6b-42c2-96b9-3a792c4e6ad3"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "5781853c-2420-49d0-bf00-ff2510f86c00"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                  }
+                ]
+              }
+            ],
+            "ok": true,
+            "unconnectedCount": 0,
+            "unconnectedNets": []
+          },
+          "created": {
+            "connectedPads": 0,
+            "connectedVias": 4,
+            "filled": true,
+            "filledAreaNm2": "1520906523120362",
+            "hasFilledPolygons": true,
+            "layers": [
+              "BL_In1_Cu"
+            ],
+            "net": "GND",
+            "zone": {
+              "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+            }
+          },
+          "layers": [
+            "In1.Cu"
+          ],
+          "net": "GND",
+          "steps": [
+            "created and filled zone 600d63b5-e855-4594-afd1-48dafc4b0f7f",
+            "verified materialized fill",
+            "proved net connectivity through zones"
+          ],
+          "verified": true,
+          "verify": {
+            "plane": {
+              "connectedPads": 0,
+              "connectedVias": 4,
+              "filled": true,
+              "filledAreaNm2": "1520906523120362",
+              "hasFilledPolygons": true,
+              "layers": [
+                "BL_In1_Cu"
+              ],
+              "net": "GND",
+              "zone": {
+                "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+              }
+            },
+            "unconnectedPads": [],
+            "unconnectedVias": []
+          },
+          "zone": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+        }
+      }
+    },
+    {
+      "action": "board.rule_area.create",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb",
+        "name": "T1",
+        "box": {
+          "x1Mm": 12,
+          "y1Mm": 12,
+          "x2Mm": 16,
+          "y2Mm": 16
+        },
+        "layers": [
+          "F.Cu"
+        ],
+        "keepout": {
+          "tracks": true,
+          "vias": true,
+          "copper": true
+        }
+      },
+      "result": {
+        "ok": true,
+        "action": "board.rule_area.create",
+        "data": {
+          "keepout": {
+            "keepoutCopper": true,
+            "keepoutFootprints": false,
+            "keepoutPads": false,
+            "keepoutTracks": true,
+            "keepoutVias": true
+          },
+          "layers": [
+            "BL_F_Cu"
+          ],
+          "name": "T1",
+          "region": {
+            "source": "box"
+          },
+          "verified": true,
+          "zone": "e8e64903-5f32-41e3-9d47-a44cccf83fff"
+        }
+      }
+    },
+    {
+      "action": "board.rules.region.set",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb",
+        "area": "T1",
+        "clearanceMm": 0.2,
+        "trackWidthMm": 0.25
+      },
+      "result": {
+        "ok": true,
+        "action": "board.rules.region.set",
+        "data": {
+          "added": 2,
+          "area": "T1",
+          "errorText": "",
+          "next": "run board.drc.live to evaluate the region rules",
+          "replaced": 0,
+          "status": "CRS_VALID",
+          "total": 2,
+          "verified": true
+        }
+      }
+    },
+    {
+      "action": "document.save",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb"
+      },
+      "result": {
+        "ok": true,
+        "action": "document.save",
+        "data": {},
+        "elapsedMs": 115
+      }
+    },
+    {
+      "action": "document.revert",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb"
+      },
+      "result": {
+        "ok": true,
+        "action": "document.revert",
+        "data": {},
+        "elapsedMs": 42
+      }
+    },
+    {
+      "action": "board.layers.type.get",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb"
+      },
+      "result": {
+        "ok": true,
+        "action": "board.layers.type.get",
+        "data": {
+          "copperLayers": [
+            {
+              "id": "0",
+              "name": "F.Cu",
+              "type": "signal"
+            },
+            {
+              "id": "4",
+              "name": "In1.Cu",
+              "type": "power"
+            },
+            {
+              "id": "6",
+              "name": "In2.Cu",
+              "type": "power"
+            },
+            {
+              "id": "2",
+              "name": "B.Cu",
+              "type": "signal"
+            }
+          ],
+          "source": "live"
+        }
+      }
+    },
+    {
+      "action": "board.connectivity.prove",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb",
+        "nets": [
+          "GND"
+        ],
+        "requireFilledZones": true
+      },
+      "result": {
+        "ok": true,
+        "action": "board.connectivity.prove",
+        "data": {
+          "danglingItems": [],
+          "endpoints": [
+            {
+              "connectedItems": [
+                {
+                  "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                },
+                {
+                  "value": "5781853c-2420-49d0-bf00-ff2510f86c00"
+                },
+                {
+                  "value": "eb324e02-9a6b-42c2-96b9-3a792c4e6ad3"
+                },
+                {
+                  "value": "f830078e-d8ff-417b-a095-0d41ffd4b513"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "14815917-4e83-4d95-8ce5-271af5052315"
+              },
+              "itemType": "via",
+              "net": "GND",
+              "padNumber": "",
+              "reference": "",
+              "zoneIslands": [
+                {
+                  "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                }
+              ]
+            },
+            {
+              "connectedItems": [
+                {
+                  "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                },
+                {
+                  "value": "14815917-4e83-4d95-8ce5-271af5052315"
+                },
+                {
+                  "value": "eb324e02-9a6b-42c2-96b9-3a792c4e6ad3"
+                },
+                {
+                  "value": "f830078e-d8ff-417b-a095-0d41ffd4b513"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "5781853c-2420-49d0-bf00-ff2510f86c00"
+              },
+              "itemType": "via",
+              "net": "GND",
+              "padNumber": "",
+              "reference": "",
+              "zoneIslands": [
+                {
+                  "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                }
+              ]
+            },
+            {
+              "connectedItems": [
+                {
+                  "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                },
+                {
+                  "value": "14815917-4e83-4d95-8ce5-271af5052315"
+                },
+                {
+                  "value": "5781853c-2420-49d0-bf00-ff2510f86c00"
+                },
+                {
+                  "value": "f830078e-d8ff-417b-a095-0d41ffd4b513"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "eb324e02-9a6b-42c2-96b9-3a792c4e6ad3"
+              },
+              "itemType": "via",
+              "net": "GND",
+              "padNumber": "",
+              "reference": "",
+              "zoneIslands": [
+                {
+                  "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                }
+              ]
+            },
+            {
+              "connectedItems": [
+                {
+                  "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                },
+                {
+                  "value": "14815917-4e83-4d95-8ce5-271af5052315"
+                },
+                {
+                  "value": "5781853c-2420-49d0-bf00-ff2510f86c00"
+                },
+                {
+                  "value": "eb324e02-9a6b-42c2-96b9-3a792c4e6ad3"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "f830078e-d8ff-417b-a095-0d41ffd4b513"
+              },
+              "itemType": "via",
+              "net": "GND",
+              "padNumber": "",
+              "reference": "",
+              "zoneIslands": [
+                {
+                  "value": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                }
+              ]
+            }
+          ],
+          "ok": true,
+          "unconnectedCount": 0,
+          "unconnectedNets": []
+        },
+        "elapsedMs": 24
+      }
+    },
+    {
+      "action": "board.drc.live",
+      "payload": {
+        "document": "/tmp/kicad-p0-integration/p0.kicad_pcb",
+        "timeoutMs": 60000
+      },
+      "result": {
+        "ok": true,
+        "action": "board.drc.run",
+        "data": {
+          "checkedCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-agent-live-1668540360/p0.kicad_pcb",
+          "document": "/tmp/kicad-p0-integration/p0.kicad_pcb",
+          "exitCode": 5,
+          "report": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-agent-live-1668540360/report.json",
+          "reportJson": {
+            "$schema": "https://schemas.kicad.org/drc.v1.json",
+            "coordinate_units": "mm",
+            "date": "2026-10-20T19:11:59",
+            "ignored_checks": [
+              {
+                "description": "Footprint has no courtyard defined",
+                "key": "missing_courtyard"
+              },
+              {
+                "description": "Track endpoint not centered on via",
+                "key": "track_not_centered_on_via"
+              },
+              {
+                "description": "Tuning profile track geometries",
+                "key": "tuning_profile_track_geometries"
+              },
+              {
+                "description": "Footprint doesn't match symbol's footprint filters",
+                "key": "footprint_filters_mismatch"
+              },
+              {
+                "description": "Footprint component type doesn't match footprint pads",
+                "key": "footprint_type_mismatch"
+              }
+            ],
+            "included_severities": [
+              "error",
+              "warning"
+            ],
+            "kicad_version": "10.99.0",
+            "schematic_parity": [],
+            "source": "p0.kicad_pcb",
+            "unconnected_items": [],
+            "violations": [
+              {
+                "description": "Via is not connected or connected on only one layer",
+                "items": [
+                  {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                      "x": 25,
+                      "y": 25
+                    },
+                    "uuid": "14815917-4e83-4d95-8ce5-271af5052315"
+                  }
+                ],
+                "severity": "warning",
+                "type": "via_dangling"
+              },
+              {
+                "description": "Via is not connected or connected on only one layer",
+                "items": [
+                  {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                      "x": 40,
+                      "y": 40
+                    },
+                    "uuid": "5781853c-2420-49d0-bf00-ff2510f86c00"
+                  }
+                ],
+                "severity": "warning",
+                "type": "via_dangling"
+              },
+              {
+                "description": "Via is not connected or connected on only one layer",
+                "items": [
+                  {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                      "x": 20,
+                      "y": 20
+                    },
+                    "uuid": "eb324e02-9a6b-42c2-96b9-3a792c4e6ad3"
+                  }
+                ],
+                "severity": "warning",
+                "type": "via_dangling"
+              },
+              {
+                "description": "Via is not connected or connected on only one layer",
+                "items": [
+                  {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                      "x": 35,
+                      "y": 35
+                    },
+                    "uuid": "f830078e-d8ff-417b-a095-0d41ffd4b513"
+                  }
+                ],
+                "severity": "warning",
+                "type": "via_dangling"
+              },
+              {
+                "description": "Isolated copper fill",
+                "items": [
+                  {
+                    "description": "Zone 'GND_INNER_PROOF' [GND] on In1.Cu, priority 0",
+                    "pos": {
+                      "x": 49.5,
+                      "y": 10.5
+                    },
+                    "uuid": "600d63b5-e855-4594-afd1-48dafc4b0f7f"
+                  }
+                ],
+                "severity": "warning",
+                "type": "isolated_copper"
+              }
+            ]
+          },
+          "source": "live",
+          "status": "violations"
+        },
+        "diagnostics": [
+          {
+            "severity": "info",
+            "code": "LIVE_DOCUMENT",
+            "message": "checked the in-memory document (unsaved edits included) via a temporary copy"
+          }
+        ],
+        "artifacts": [
+          "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-agent-live-1668540360/report.json"
+        ],
+        "elapsedMs": 5492
+      }
+    }
+  ]
+}

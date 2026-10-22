@@ -1,0 +1,74 @@
+{
+  "ok": true,
+  "fixture": "shipped native binary + localhost model + actual installed plugin API",
+  "startupNoModelCalls": true,
+  "ambiguousWriteBlocked": true,
+  "explicitWriteWorks": true,
+  "nativeCompactionArchivesFullHistory": true,
+  "continuedTaskContextRestored": true,
+  "requests": [
+    {
+      "case": "ambiguous",
+      "summary": false,
+      "afterTool": false,
+      "checkpoint": false,
+      "model": "fixture"
+    },
+    {
+      "case": "ambiguous",
+      "summary": false,
+      "afterTool": false,
+      "checkpoint": false,
+      "model": "fixture"
+    },
+    {
+      "case": "ambiguous",
+      "summary": false,
+      "afterTool": true,
+      "checkpoint": false,
+      "model": "fixture"
+    },
+    {
+      "case": "clear",
+      "summary": false,
+      "afterTool": false,
+      "checkpoint": false,
+      "model": "fixture"
+    },
+    {
+      "case": "clear",
+      "summary": false,
+      "afterTool": false,
+      "checkpoint": false,
+      "model": "fixture"
+    },
+    {
+      "case": "clear",
+      "summary": false,
+      "afterTool": true,
+      "checkpoint": false,
+      "model": "fixture"
+    },
+    {
+      "case": "clear",
+      "summary": true,
+      "afterTool": false,
+      "checkpoint": true,
+      "model": "fixture"
+    },
+    {
+      "case": "clear",
+      "summary": false,
+      "afterTool": false,
+      "checkpoint": true,
+      "model": "fixture"
+    },
+    {
+      "case": "clear",
+      "summary": false,
+      "afterTool": true,
+      "checkpoint": true,
+      "model": "fixture"
+    }
+  ]
+}

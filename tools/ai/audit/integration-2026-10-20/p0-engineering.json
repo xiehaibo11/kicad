@@ -1,0 +1,1578 @@
+{
+  "ok": true,
+  "fixture": "disposable generated four-layer board; two GND through-hole pads, four vias and two power planes; save, reload, native readback and zero DRC",
+  "calls": [
+    {
+      "action": "board.layers.type.set",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "layers": {
+          "In1.Cu": "power",
+          "In2.Cu": "power"
+        }
+      },
+      "result": {
+        "ok": true,
+        "action": "board.layers.type.set",
+        "data": {
+          "backup": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-agent-layertype-1792548812495021000-p0.kicad_pcb",
+          "changed": [
+            {
+              "from": "signal",
+              "layer": "In1.Cu",
+              "to": "power"
+            },
+            {
+              "from": "signal",
+              "layer": "In2.Cu",
+              "to": "power"
+            }
+          ],
+          "live": true,
+          "readback": {
+            "copperLayers": [
+              {
+                "id": "0",
+                "name": "F.Cu",
+                "type": "signal"
+              },
+              {
+                "id": "4",
+                "name": "In1.Cu",
+                "type": "power"
+              },
+              {
+                "id": "6",
+                "name": "In2.Cu",
+                "type": "power"
+              },
+              {
+                "id": "2",
+                "name": "B.Cu",
+                "type": "signal"
+              }
+            ],
+            "source": "live"
+          },
+          "steps": [
+            "rewrote layer table",
+            "reloaded open board"
+          ],
+          "verified": true
+        }
+      }
+    },
+    {
+      "action": "board.via.create",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "positions": [
+          {
+            "xMm": 25,
+            "yMm": 25
+          },
+          {
+            "xMm": 35,
+            "yMm": 35
+          }
+        ],
+        "net": "GND",
+        "filled": true,
+        "capped": true,
+        "plugged": "both",
+        "covered": "both"
+      },
+      "result": {
+        "ok": true,
+        "action": "board.via.create",
+        "data": {
+          "createdIds": [
+            "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe",
+            "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+          ],
+          "next": "run board.drc.live (or board.drc.run after saving) and board.connectivity.prove",
+          "requested": 2,
+          "sites": [
+            {
+              "net": "GND",
+              "pad": "",
+              "xMm": 25,
+              "yMm": 25
+            },
+            {
+              "net": "GND",
+              "pad": "",
+              "xMm": 35,
+              "yMm": 35
+            }
+          ],
+          "verified": true,
+          "verifiedCount": 2
+        }
+      }
+    },
+    {
+      "action": "board.via.modify",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "ids": [
+          "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe",
+          "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+        ],
+        "diameterMm": 0.8,
+        "drillMm": 0.35,
+        "filled": true,
+        "capped": true
+      },
+      "result": {
+        "ok": true,
+        "action": "board.via.modify",
+        "data": {
+          "next": "run board.drc.live (or board.drc.run after saving) and board.connectivity.prove",
+          "selected": 2,
+          "updatedIds": [
+            "c2c54b38-8ef0-4034-8322-5b7ca7996548",
+            "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+          ],
+          "verified": true,
+          "verifiedCount": 2
+        }
+      }
+    },
+    {
+      "action": "board.plane.build",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "net": "GND",
+        "layers": [
+          "In1.Cu"
+        ],
+        "name": "GND_In1.Cu"
+      },
+      "result": {
+        "ok": true,
+        "action": "board.plane.build",
+        "data": {
+          "connectivity": {
+            "danglingItems": [],
+            "endpoints": [
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                },
+                "itemType": "pad",
+                "net": "GND",
+                "padNumber": "1",
+                "reference": "J1",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                },
+                "itemType": "pad",
+                "net": "GND",
+                "padNumber": "2",
+                "reference": "J1",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  }
+                ]
+              }
+            ],
+            "ok": true,
+            "unconnectedCount": 0,
+            "unconnectedNets": []
+          },
+          "created": {
+            "connectedPads": 2,
+            "connectedVias": 4,
+            "filled": true,
+            "filledAreaNm2": "1513944569785702",
+            "hasFilledPolygons": true,
+            "layers": [
+              "BL_In1_Cu"
+            ],
+            "net": "GND",
+            "zone": {
+              "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+            }
+          },
+          "layers": [
+            "In1.Cu"
+          ],
+          "net": "GND",
+          "steps": [
+            "created and filled zone 3dffdfe8-6b91-4c1a-ac76-0934a4e2abae",
+            "verified materialized fill",
+            "proved net connectivity through zones"
+          ],
+          "verified": true,
+          "verify": {
+            "plane": {
+              "connectedPads": 2,
+              "connectedVias": 4,
+              "filled": true,
+              "filledAreaNm2": "1513944569785702",
+              "hasFilledPolygons": true,
+              "layers": [
+                "BL_In1_Cu"
+              ],
+              "net": "GND",
+              "zone": {
+                "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+              }
+            },
+            "unconnectedPads": [],
+            "unconnectedVias": []
+          },
+          "zone": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+        }
+      }
+    },
+    {
+      "action": "board.plane.build",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "net": "GND",
+        "layers": [
+          "In2.Cu"
+        ],
+        "name": "GND_In2.Cu"
+      },
+      "result": {
+        "ok": true,
+        "action": "board.plane.build",
+        "data": {
+          "connectivity": {
+            "danglingItems": [],
+            "endpoints": [
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                },
+                "itemType": "pad",
+                "net": "GND",
+                "padNumber": "1",
+                "reference": "J1",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                },
+                "itemType": "pad",
+                "net": "GND",
+                "padNumber": "2",
+                "reference": "J1",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              }
+            ],
+            "ok": true,
+            "unconnectedCount": 0,
+            "unconnectedNets": []
+          },
+          "created": {
+            "connectedPads": 2,
+            "connectedVias": 4,
+            "filled": true,
+            "filledAreaNm2": "1513944569785702",
+            "hasFilledPolygons": true,
+            "layers": [
+              "BL_In2_Cu"
+            ],
+            "net": "GND",
+            "zone": {
+              "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+            }
+          },
+          "layers": [
+            "In2.Cu"
+          ],
+          "net": "GND",
+          "steps": [
+            "created and filled zone 9ee96691-1e0e-43c2-8735-e4f563bcee27",
+            "verified materialized fill",
+            "proved net connectivity through zones"
+          ],
+          "verified": true,
+          "verify": {
+            "plane": {
+              "connectedPads": 2,
+              "connectedVias": 4,
+              "filled": true,
+              "filledAreaNm2": "1513944569785702",
+              "hasFilledPolygons": true,
+              "layers": [
+                "BL_In2_Cu"
+              ],
+              "net": "GND",
+              "zone": {
+                "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+              }
+            },
+            "unconnectedPads": [],
+            "unconnectedVias": []
+          },
+          "zone": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+        }
+      }
+    },
+    {
+      "action": "board.plane.build",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "net": "GND",
+        "layers": [
+          "In1.Cu"
+        ],
+        "outline": [
+          {
+            "xMm": 60,
+            "yMm": 60
+          },
+          {
+            "xMm": 65,
+            "yMm": 60
+          },
+          {
+            "xMm": 65,
+            "yMm": 65
+          },
+          {
+            "xMm": 60,
+            "yMm": 65
+          }
+        ]
+      },
+      "result": {
+        "ok": false,
+        "action": "board.plane.build",
+        "data": {
+          "connectivity": {
+            "danglingItems": [],
+            "endpoints": [
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                },
+                "itemType": "pad",
+                "net": "GND",
+                "padNumber": "1",
+                "reference": "J1",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                },
+                "itemType": "pad",
+                "net": "GND",
+                "padNumber": "2",
+                "reference": "J1",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              },
+              {
+                "connectedItems": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  },
+                  {
+                    "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                  },
+                  {
+                    "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                  },
+                  {
+                    "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                  },
+                  {
+                    "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                  },
+                  {
+                    "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                  }
+                ],
+                "hasCopperConnection": true,
+                "insideFilledZone": true,
+                "item": {
+                  "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                },
+                "itemType": "via",
+                "net": "GND",
+                "padNumber": "",
+                "reference": "",
+                "zoneIslands": [
+                  {
+                    "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                  },
+                  {
+                    "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                  }
+                ]
+              }
+            ],
+            "ok": true,
+            "unconnectedCount": 0,
+            "unconnectedNets": []
+          },
+          "created": {
+            "connectedPads": 0,
+            "connectedVias": 0,
+            "filled": true,
+            "filledAreaNm2": "0",
+            "hasFilledPolygons": false,
+            "layers": [
+              "BL_In1_Cu"
+            ],
+            "net": "GND",
+            "zone": {
+              "value": "ab46094f-a5ff-4e5b-a924-8694edc4751d"
+            }
+          },
+          "layers": [
+            "In1.Cu"
+          ],
+          "net": "GND",
+          "problems": [
+            "zone has no filled copper on at least one layer"
+          ],
+          "rolledBack": true,
+          "steps": [
+            "created and filled zone ab46094f-a5ff-4e5b-a924-8694edc4751d",
+            "verified materialized fill",
+            "proved net connectivity through zones",
+            "removed unverified zone (keepOnFailure=false)"
+          ],
+          "verify": {
+            "plane": {
+              "connectedPads": 0,
+              "connectedVias": 0,
+              "filled": true,
+              "filledAreaNm2": "0",
+              "hasFilledPolygons": false,
+              "layers": [
+                "BL_In1_Cu"
+              ],
+              "net": "GND",
+              "zone": {
+                "value": "ab46094f-a5ff-4e5b-a924-8694edc4751d"
+              }
+            },
+            "unconnectedPads": [
+              {
+                "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+              },
+              {
+                "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+              }
+            ],
+            "unconnectedVias": [
+              {
+                "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+              },
+              {
+                "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+              },
+              {
+                "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+              },
+              {
+                "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+              }
+            ]
+          },
+          "zone": "ab46094f-a5ff-4e5b-a924-8694edc4751d"
+        },
+        "error": {
+          "code": "PLANE_UNVERIFIED",
+          "message": "plane for GND did not verify: zone has no filled copper on at least one layer"
+        }
+      }
+    },
+    {
+      "action": "board.rule_area.create",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "name": "T1",
+        "box": {
+          "x1Mm": 12,
+          "y1Mm": 12,
+          "x2Mm": 16,
+          "y2Mm": 16
+        },
+        "layers": [
+          "F.Cu"
+        ],
+        "keepout": {
+          "tracks": true,
+          "vias": true,
+          "copper": true
+        }
+      },
+      "result": {
+        "ok": true,
+        "action": "board.rule_area.create",
+        "data": {
+          "keepout": {
+            "keepoutCopper": true,
+            "keepoutFootprints": false,
+            "keepoutPads": false,
+            "keepoutTracks": true,
+            "keepoutVias": true
+          },
+          "layers": [
+            "BL_F_Cu"
+          ],
+          "name": "T1",
+          "region": {
+            "source": "box"
+          },
+          "verified": true,
+          "zone": "443dbac9-fc58-4558-8963-ba03f25b2142"
+        }
+      }
+    },
+    {
+      "action": "board.rules.region.set",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "area": "T1",
+        "clearanceMm": 0.2,
+        "trackWidthMm": 0.25
+      },
+      "result": {
+        "ok": true,
+        "action": "board.rules.region.set",
+        "data": {
+          "added": 2,
+          "area": "T1",
+          "errorText": "",
+          "next": "run board.drc.live to evaluate the region rules",
+          "replaced": 0,
+          "status": "CRS_VALID",
+          "total": 2,
+          "verified": true
+        }
+      }
+    },
+    {
+      "action": "document.save",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb"
+      },
+      "result": {
+        "ok": true,
+        "action": "document.save",
+        "data": {},
+        "elapsedMs": 32
+      }
+    },
+    {
+      "action": "document.revert",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb"
+      },
+      "result": {
+        "ok": true,
+        "action": "document.revert",
+        "data": {},
+        "elapsedMs": 12
+      }
+    },
+    {
+      "action": "board.layers.type.get",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb"
+      },
+      "result": {
+        "ok": true,
+        "action": "board.layers.type.get",
+        "data": {
+          "copperLayers": [
+            {
+              "id": "0",
+              "name": "F.Cu",
+              "type": "signal"
+            },
+            {
+              "id": "4",
+              "name": "In1.Cu",
+              "type": "power"
+            },
+            {
+              "id": "6",
+              "name": "In2.Cu",
+              "type": "power"
+            },
+            {
+              "id": "2",
+              "name": "B.Cu",
+              "type": "signal"
+            }
+          ],
+          "source": "live"
+        }
+      }
+    },
+    {
+      "action": "board.connectivity.prove",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "nets": [
+          "GND"
+        ],
+        "requireFilledZones": true
+      },
+      "result": {
+        "ok": true,
+        "action": "board.connectivity.prove",
+        "data": {
+          "danglingItems": [],
+          "endpoints": [
+            {
+              "connectedItems": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                },
+                {
+                  "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                },
+                {
+                  "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                },
+                {
+                  "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                },
+                {
+                  "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                },
+                {
+                  "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+              },
+              "itemType": "pad",
+              "net": "GND",
+              "padNumber": "1",
+              "reference": "J1",
+              "zoneIslands": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                }
+              ]
+            },
+            {
+              "connectedItems": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                },
+                {
+                  "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                },
+                {
+                  "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                },
+                {
+                  "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                },
+                {
+                  "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                },
+                {
+                  "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+              },
+              "itemType": "pad",
+              "net": "GND",
+              "padNumber": "2",
+              "reference": "J1",
+              "zoneIslands": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                }
+              ]
+            },
+            {
+              "connectedItems": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                },
+                {
+                  "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                },
+                {
+                  "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                },
+                {
+                  "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                },
+                {
+                  "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                },
+                {
+                  "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+              },
+              "itemType": "via",
+              "net": "GND",
+              "padNumber": "",
+              "reference": "",
+              "zoneIslands": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                }
+              ]
+            },
+            {
+              "connectedItems": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                },
+                {
+                  "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                },
+                {
+                  "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                },
+                {
+                  "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                },
+                {
+                  "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                },
+                {
+                  "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+              },
+              "itemType": "via",
+              "net": "GND",
+              "padNumber": "",
+              "reference": "",
+              "zoneIslands": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                }
+              ]
+            },
+            {
+              "connectedItems": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                },
+                {
+                  "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                },
+                {
+                  "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                },
+                {
+                  "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+                },
+                {
+                  "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                },
+                {
+                  "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+              },
+              "itemType": "via",
+              "net": "GND",
+              "padNumber": "",
+              "reference": "",
+              "zoneIslands": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                }
+              ]
+            },
+            {
+              "connectedItems": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                },
+                {
+                  "value": "6933db2f-6e2f-4105-a333-42d4b6c4c75b"
+                },
+                {
+                  "value": "697f8dc4-f0f0-4a3f-ace6-f34ef38a65fe"
+                },
+                {
+                  "value": "c2c54b38-8ef0-4034-8322-5b7ca7996548"
+                },
+                {
+                  "value": "6259a3f2-e3a7-470e-b6b8-f80d7c86af6b"
+                },
+                {
+                  "value": "72b6b002-33eb-479a-8191-d86f57c71ff6"
+                }
+              ],
+              "hasCopperConnection": true,
+              "insideFilledZone": true,
+              "item": {
+                "value": "ed23fc58-e6d5-46f8-9560-1787caf58266"
+              },
+              "itemType": "via",
+              "net": "GND",
+              "padNumber": "",
+              "reference": "",
+              "zoneIslands": [
+                {
+                  "value": "3dffdfe8-6b91-4c1a-ac76-0934a4e2abae"
+                },
+                {
+                  "value": "9ee96691-1e0e-43c2-8735-e4f563bcee27"
+                }
+              ]
+            }
+          ],
+          "ok": true,
+          "unconnectedCount": 0,
+          "unconnectedNets": []
+        },
+        "elapsedMs": 16
+      }
+    },
+    {
+      "action": "board.drc.live",
+      "payload": {
+        "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+        "timeoutMs": 60000
+      },
+      "result": {
+        "ok": true,
+        "action": "board.drc.run",
+        "data": {
+          "checkedCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-agent-live-599505670/p0.kicad_pcb",
+          "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-p0-acceptance-6ucy62ut/p0.kicad_pcb",
+          "exitCode": 0,
+          "report": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-agent-live-599505670/report.json",
+          "reportJson": {
+            "$schema": "https://schemas.kicad.org/drc.v1.json",
+            "coordinate_units": "mm",
+            "date": "2026-10-20T19:13:35",
+            "ignored_checks": [
+              {
+                "description": "Footprint has no courtyard defined",
+                "key": "missing_courtyard"
+              },
+              {
+                "description": "Track endpoint not centered on via",
+                "key": "track_not_centered_on_via"
+              },
+              {
+                "description": "Tuning profile track geometries",
+                "key": "tuning_profile_track_geometries"
+              },
+              {
+                "description": "Footprint doesn't match symbol's footprint filters",
+                "key": "footprint_filters_mismatch"
+              },
+              {
+                "description": "Footprint component type doesn't match footprint pads",
+                "key": "footprint_type_mismatch"
+              }
+            ],
+            "included_severities": [
+              "error",
+              "warning"
+            ],
+            "kicad_version": "10.99.0",
+            "schematic_parity": [],
+            "source": "p0.kicad_pcb",
+            "unconnected_items": [],
+            "violations": []
+          },
+          "source": "live",
+          "status": "clean"
+        },
+        "diagnostics": [
+          {
+            "severity": "info",
+            "code": "LIVE_DOCUMENT",
+            "message": "checked the in-memory document (unsaved edits included) via a temporary copy"
+          }
+        ],
+        "artifacts": [
+          "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-agent-live-599505670/report.json"
+        ],
+        "elapsedMs": 2544
+      }
+    }
+  ]
+}

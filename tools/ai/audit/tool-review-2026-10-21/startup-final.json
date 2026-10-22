@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "version": "0.4.26",
+  "displayName": "Kicad",
+  "active": true,
+  "webviews": {
+    "resolved": 2,
+    "mounted": 2
+  },
+  "nativeTerminal": {
+    "name": "Kicad \u7ec8\u7aef",
+    "pid": 79748,
+    "binary": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/dist/kicad-terminal"
+  },
+  "nativeToolPluginEnabled": true,
+  "inProcessHealth": {
+    "ok": true,
+    "action": "system.health",
+    "cliAvailable": true
+  },
+  "availableTerminalProviders": []
+}

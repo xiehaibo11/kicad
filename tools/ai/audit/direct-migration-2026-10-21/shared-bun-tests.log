@@ -1,0 +1,14 @@
+bun test v1.3.14 (0d9b296a)
+
+tools/ai/direct/test/bindings.test.mjs:
+(pass) in-process tools call the shared runtime, preserve write permission and validate input before execution [10.63ms]
+(pass) in-process composite tools serialize and queued cancellation never starts an edit [1.88ms]
+(pass) stdio compatibility handles fragmented UTF8, domain errors, real catalog and cancellation [5.30ms]
+
+tools/ai/direct/test/native.test.mjs:
+(pass) isolated native KiCad: direct IPC writes/readback/delete, temporary live DRC and CLI export [4925.59ms]
+(pass) isolated native schematic generation resolves library pins, creates labels and saves [3402.93ms]
+
+ 5 pass
+ 0 fail
+Ran 5 tests across 2 files. [8.87s]

@@ -1,0 +1,14 @@
+{
+  "name": "read-only acceptance spec",
+  "modules": [
+    { "name": "PWR1", "kind": "POWER", "zone": "left", "parts": [] },
+    { "name": "U1", "kind": "MCU", "zone": "center", "parts": [] }
+  ],
+  "interfaces": [
+    { "name": "USB", "edge": "left", "facing": "user-facing" }
+  ],
+  "flow": ["POWER", "MCU"],
+  "flowAxis": "x",
+  "stackup": { "layers": 4, "inner1": "GND", "inner2": "PWR" },
+  "assembly": { "profile": "reflow" }
+}

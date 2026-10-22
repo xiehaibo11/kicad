@@ -1,0 +1,71 @@
+{
+  "version": "0.4.22",
+  "fixture": "installed extension, bundled SDK, actual configured DeepSeek model and real MCP, plain Chinese prompt",
+  "prompt": "检查 KiCad API 服务连接和可用工具，然后列出当前目录的 KiCad 工程及完整路径。只进行读取。",
+  "ok": true,
+  "toolUses": [
+    {
+      "type": "tool_use",
+      "id": "call_00_ziYQBexvh4FKXWh9YyX93453",
+      "name": "mcp__kicad__kicad_health",
+      "input": {}
+    },
+    {
+      "type": "tool_use",
+      "id": "call_01_C4hGLaR7Qhp6C2xWhCtI0218",
+      "name": "mcp__kicad__kicad_project",
+      "input": {
+        "action": "project.list",
+        "payload": {
+          "directory": "/private/tmp/kicad-integration-projects",
+          "depth": 3
+        }
+      }
+    }
+  ],
+  "result": {
+    "type": "result",
+    "subtype": "success",
+    "is_error": false,
+    "duration_ms": 10804,
+    "duration_api_ms": 7588,
+    "num_turns": 3,
+    "result": "KiCad 环境正常，读取完成。\n\n## 环境与连接\n\n| 层 | 状态 |\n|---|---|\n| kicad-cli | ✅ 10.99.0 (`/Users/mosc/.local/bin/kicad-cli`) |\n| IPC (`/tmp/kicad/api.sock`) | ✅ 可用，API 11.0 |\n| 已打开文档 | ⚠️ 无法枚举：`GetOpenDocuments` 未被服务端处理（PCB/原理图均返回该错误） |\n| MCP 工具 | 19 个，247 个 typed action，971 个 native GUI 工具 |\n| 外部工具 | Freerouting 2.5.0、Java 21、ngspice、gerbv 4.0、OpenSCAD、FreeCAD 1.1.4、python3 全部可用 |\n\nIPC 虽已连通，但已打开文档列表当前不可读，涉及 live editor 的操作可能受影响。\n\n## 当前目录工程（4 个，3 个目录级项目）\n\n1. **ecc83-pp** — `/private/tmp/kicad-integration-projects/ecc83/ecc83-pp.kicad_pro`\n2. **ecc83-pp_v2** — `/private/tmp/kicad-integration-projects/ecc83/ecc83-pp_v2.kicad_pro`\n3. **pic_programmer** — `/private/tmp/kicad-integration-projects/pic_programmer/pic_programmer.kicad_pro`\n4. **pic_sockets** — 仅原理图，无 `.kicad_pro`/PCB：`/private/tmp/kicad-integration-projects/pic_programmer/pic_sockets.kicad_sch`\n\n未做任何变更。",
+    "stop_reason": "end_turn",
+    "session_id": "35dcc2d0-d316-4aa1-abf8-9116ee4dffb5",
+    "total_cost_usd": 0.21831,
+    "usage": {
+      "input_tokens": 37573,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 35840,
+      "output_tokens": 501,
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "deepseek-flash": {
+        "inputTokens": 37573,
+        "outputTokens": 501,
+        "cacheReadInputTokens": 35840,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.21831,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      }
+    },
+    "permission_denials": [],
+    "fast_mode_state": "off",
+    "uuid": "7e676912-f9a3-42bb-8a39-1f1dd408c65d"
+  }
+}

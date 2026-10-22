@@ -1,0 +1,256 @@
+{
+  "ok": true,
+  "action": "reference.plan",
+  "data": {
+    "version": "2026-10-20.1",
+    "matchKind": "baseline-only; refine query or use reference.search to select task-specific cards",
+    "policy": "本库是项目工程约束与检查方法，不是付费标准全文或工业认证。资料按需加载，任何未知参数都不生成通用安全默认值。",
+    "authorityOrder": [
+      "适用法规/合同及经授权取得的标准",
+      "准确器件数据表/勘误/硬件指南",
+      "订单对应制造/装配能力",
+      "KiCad 官方工具及库文档",
+      "专家教学/示例（非强制约束）"
+    ],
+    "count": 2,
+    "topics": [
+      {
+        "id": "requirements",
+        "title": "需求、风险、可靠性和标准适用性",
+        "stage": "spec",
+        "aliases": [
+          "工业级",
+          "最高级别",
+          "需求",
+          "class 3",
+          "class3",
+          "可靠性",
+          "requirements"
+        ],
+        "requiredInputs": [
+          "用途/市场/失效后果",
+          "输入电源与接口",
+          "温湿度/海拔/寿命/振动",
+          "成本、尺寸、维修和制造目标"
+        ],
+        "rules": [
+          {
+            "id": "REQUIREMENTS-01",
+            "kind": "project-engineering-policy",
+            "requirement": "建立需求到电路、规则、测试和交付物的追踪矩阵；未知项显式列出",
+            "verification": "逐项记录指标、单位、容差、验证方法、责任人和版本",
+            "sourceIds": [
+              "ipc-design",
+              "ipc-dfm",
+              "kicad-sch"
+            ]
+          },
+          {
+            "id": "REQUIREMENTS-02",
+            "kind": "project-engineering-policy",
+            "requirement": "分别选择性能等级、制造工艺能力和元器件环境等级；最高可靠性目标须落实到可验证需求",
+            "verification": "查适用 IPC/产品标准、合同版本及供应商能力，不把工业级等同于 Class 3",
+            "sourceIds": [
+              "ipc-design",
+              "ipc-dfm",
+              "kicad-sch"
+            ]
+          },
+          {
+            "id": "REQUIREMENTS-03",
+            "kind": "project-engineering-policy",
+            "requirement": "按产品使用环境完成风险分析、失效模式与关键特性分级",
+            "verification": "审查电击、发热、火灾、反接、失控及单点失效的缓解和试验",
+            "sourceIds": [
+              "ipc-design",
+              "ipc-dfm",
+              "kicad-sch"
+            ]
+          },
+          {
+            "id": "REQUIREMENTS-04",
+            "kind": "project-engineering-policy",
+            "requirement": "记录电源、信号和机械接口预算及允许变化",
+            "verification": "对需求边界、瞬态、容差、启动及异常工况做最坏情况分析",
+            "sourceIds": [
+              "ipc-design",
+              "ipc-dfm",
+              "kicad-sch"
+            ]
+          },
+          {
+            "id": "REQUIREMENTS-05",
+            "kind": "project-engineering-policy",
+            "requirement": "每个关卡保留设计快照和证据；未验证不得标通过",
+            "verification": "将待办与证据验收分开；源文件变化后重新检查",
+            "sourceIds": [
+              "ipc-design",
+              "ipc-dfm",
+              "kicad-sch"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "ipc-design",
+          "ipc-dfm",
+          "kicad-sch"
+        ],
+        "tools": [
+          "project.info",
+          "reference.plan"
+        ],
+        "requiredEvidence": [
+          "requirements",
+          "risk-register",
+          "standards-applicability"
+        ]
+      },
+      {
+        "id": "verification",
+        "title": "ERC、DRC、连通、规则与版本证据",
+        "stage": "verified",
+        "aliases": [
+          "审查",
+          "验收",
+          "DRC",
+          "ERC",
+          "连通",
+          "检查",
+          "audit"
+        ],
+        "requiredInputs": [
+          "保存的完整工程与依赖",
+          "需求/规则/制造基线",
+          "原生报告和工程审查材料"
+        ],
+        "rules": [
+          {
+            "id": "VERIFICATION-01",
+            "kind": "project-engineering-policy",
+            "requirement": "对同一保存快照运行全部级别 ERC/DRC、原理图 PCB 一致性与连通检查",
+            "verification": "包含排除项/禁用项/所有 track errors、重新填铜和每个子页，不只看错误计数",
+            "sourceIds": [
+              "kicad-cli",
+              "kicad-pcb",
+              "kicad-sch"
+            ]
+          },
+          {
+            "id": "VERIFICATION-02",
+            "kind": "project-engineering-policy",
+            "requirement": "报告缺失、检查未运行、忽略项目或规则依据不明均不得判通过",
+            "verification": "保留原生 JSON 和工具版本；只改状态或确认布尔值不是证据",
+            "sourceIds": [
+              "kicad-cli",
+              "kicad-pcb",
+              "kicad-sch"
+            ]
+          },
+          {
+            "id": "VERIFICATION-03",
+            "kind": "project-engineering-policy",
+            "requirement": "当前源文件与证据绑定 SHA-256；改变后失效",
+            "verification": "覆盖子页、本地符号/封装、规则、3D 和制造约束，检查读取期间是否变化",
+            "sourceIds": [
+              "kicad-cli",
+              "kicad-pcb",
+              "kicad-sch"
+            ]
+          },
+          {
+            "id": "VERIFICATION-04",
+            "kind": "project-engineering-policy",
+            "requirement": "静态检查、工程审查和实物测试分层验收",
+            "verification": "DRC 零错误不证明时序/热/EMC/功能/绝缘/量产良率",
+            "sourceIds": [
+              "kicad-cli",
+              "kicad-pcb",
+              "kicad-sch"
+            ]
+          },
+          {
+            "id": "VERIFICATION-05",
+            "kind": "project-engineering-policy",
+            "requirement": "所有例外有依据、影响、责任人和重验范围",
+            "verification": "不自动禁用规则、缩小范围或改网名来消除真实缺陷",
+            "sourceIds": [
+              "kicad-cli",
+              "kicad-pcb",
+              "kicad-sch"
+            ]
+          }
+        ],
+        "sourceIds": [
+          "kicad-cli",
+          "kicad-pcb",
+          "kicad-sch"
+        ],
+        "tools": [
+          "audit.rules",
+          "audit.run",
+          "board.connectivity.prove",
+          "release.check"
+        ],
+        "requiredEvidence": [
+          "native-audit",
+          "engineering-review",
+          "revision-bound-evidence"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "kicad-sch",
+        "title": "KiCad Schematic Editor",
+        "url": "https://docs.kicad.org/10.0/en/eeschema/eeschema.html",
+        "authority": "official-documentation",
+        "version": "10.0",
+        "checkedAt": "2026-10-20",
+        "accessScope": "manual",
+        "limitations": "本机 10.99 开发版须同时核对本机帮助和实际 API；ERC 不证明电路功能。"
+      },
+      {
+        "id": "kicad-pcb",
+        "title": "KiCad PCB Editor",
+        "url": "https://docs.kicad.org/10.0/en/pcbnew/pcbnew.html",
+        "authority": "official-documentation",
+        "version": "10.0",
+        "checkedAt": "2026-10-20",
+        "accessScope": "manual",
+        "limitations": "规则必须由产品和板厂确认；软件功能不等于制造能力。"
+      },
+      {
+        "id": "kicad-cli",
+        "title": "KiCad CLI",
+        "url": "https://docs.kicad.org/10.0/en/cli/cli.html",
+        "authority": "official-documentation",
+        "version": "10.0",
+        "checkedAt": "2026-10-20",
+        "accessScope": "manual",
+        "limitations": "命令参数以本机 --help 为准，保存快照的检查不代表未保存画布。"
+      },
+      {
+        "id": "ipc-design",
+        "title": "IPC Design Standards",
+        "url": "https://www.ipc.org/ipc-design-standards",
+        "authority": "standards-publisher",
+        "version": "public overview checked 2026-10-20",
+        "checkedAt": "2026-10-20",
+        "accessScope": "public overview only",
+        "limitations": "未收录付费标准全文或尺寸表；项目须取得适用版本并由责任工程师解释。"
+      },
+      {
+        "id": "ipc-dfm",
+        "title": "IPC Design for Manufacturing",
+        "url": "https://www.ipc.org/design-manufacturing-confirmed-ipc-standards",
+        "authority": "standards-publisher",
+        "version": "public overview",
+        "checkedAt": "2026-10-20",
+        "accessScope": "public overview only",
+        "limitations": "性能等级、可制造性等级和工业温度范围分别确定，不能混为一个最高等级。"
+      }
+    ],
+    "unknownInputPolicy": "Do independent work first; list unresolved design decisions. Never invent safety/manufacturing/interface constraints or mark unknown evidence passed.",
+    "releasePolicy": "Use release.template/snapshot/check; workflow flags are task tracking only. Fabrication evidence and production qualification are separate."
+  }
+}

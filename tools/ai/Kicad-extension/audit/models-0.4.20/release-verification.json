@@ -1,0 +1,213 @@
+{
+  "ok": true,
+  "version": "0.4.20",
+  "checks": [
+    "modified user message replaces original bubble",
+    "repeated edits send once each",
+    "ordinary new messages remain independent",
+    "earlier conversation retained",
+    "attachments retained",
+    "same session model permissions and effort",
+    "SDK client UUID persists",
+    "reopened history displays one latest edited request",
+    "history title updated",
+    "real continued Write succeeds after pause",
+    "production UI no page errors",
+    "installed files match package"
+  ],
+  "realSdk": {
+    "ok": true,
+    "persistedSession": true,
+    "processStopped": true,
+    "resendResult": "success",
+    "sameModel": true,
+    "samePermissions": true,
+    "sameEffort": true,
+    "continuedToolWrite": true,
+    "hostModelPreferencePersists": true,
+    "reopenedEditedRequestAppearsOnce": true,
+    "sdkPersistsClientMessageUuid": true,
+    "events": [
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "system",
+        "parent": false
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "assistant",
+        "parent": false
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "system",
+        "parent": false
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "io_message",
+        "messageType": "user",
+        "parent": true
+      },
+      {
+        "channelId": "pause-fixture",
+        "type": "close_channel",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "system",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "assistant",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "user",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "assistant",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "stream_event",
+        "parent": false
+      },
+      {
+        "channelId": "resend-fixture",
+        "type": "io_message",
+        "messageType": "result",
+        "parent": false
+      }
+    ]
+  },
+  "installed": {
+    "ok": true,
+    "version": "0.4.20",
+    "installedPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.20",
+    "files": {
+      "dist/extension.cjs": "e003f85e2463938c4816e53516babf71f53b2916ac816ff63c891335d282dec8",
+      "dist/media/main.js": "98d60239a0135974745cdd4a6044157f8c23565979832a84234b1b93359dc344",
+      "dist/media/style.css": "9585c9aa6ad24abc7b73f4c9fa1c8c5f0906a595a18b7e37e2ed91f15dc075ac",
+      "resources/claude-code/cli.js": "e19a27df55b31271c82c7b39c49f6b221c9809e0be2af0b83c4cc6f1a9163c06"
+    }
+  },
+  "nativeWindow": "Kicad · 0.4.20 · 原位修改续发检查",
+  "nativeEvidence": "Kicad chat loaded and DeepSeek Flash restored in VS Code accessibility state"
+}

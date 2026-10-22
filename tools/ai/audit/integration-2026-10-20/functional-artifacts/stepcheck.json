@@ -1,0 +1,1 @@
+{"ok":false,"step":"--self-test","solids":2,"collisions":[{"a":0,"b":1,"aName":"cube A","bName":"cube B","volumeMm3":125,"aBox":[-0.000000,-0.000000,-0.000000,10.000000,10.000000,10.000000],"bBox":[5.000000,5.000000,5.000000,15.000000,15.000000,15.000000]}],"checkedPairs":1,"errors":0,"truncated":false,"minVolumeMm3":0.0001}

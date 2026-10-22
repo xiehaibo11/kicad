@@ -1,0 +1,97 @@
+system.capabilities PASS 
+project.info PASS 
+board.connectivity.prove PASS 
+board.place.autoplace PASS 
+board.plane.create PASS 
+board.plane.verify PLANE_UNCONNECTED Plane has unconnected pads or vias
+board.jobs.svg PASS 
+schematic.items.delete PASS 
+schematic.annotate PASS 
+library.search.symbols PASS 
+editor.run_action UNHANDLED no handler available for request of type kiapi.common.commands.RunAction
+editor.selection.get UNIMPLEMENTED GetSelection is not available in headless mode
+editor.selection.clear UNIMPLEMENTED ClearSelection is not available in headless mode
+editor.selection.add UNIMPLEMENTED AddToSelection is not available in headless mode
+editor.selection.remove UNIMPLEMENTED RemoveFromSelection is not available in headless mode
+editor.commit.begin PASS 
+board.items.by_net PASS 
+board.items.connected PASS 
+board.origin.get PASS 
+board.origin.set PASS 
+board.bbox.get PASS 
+board.rules.set PASS 
+board.items.by_netclass PASS 
+board.flip PASS 
+board.pagesettings.get PASS 
+board.pagesettings.set PASS 
+board.layers.name.get PASS 
+board.layers.by_name.get PASS 
+board.hittest PASS 
+board.export.string PASS 
+board.netclasses.get PASS 
+board.pad.polygon.get PASS 
+board.text.expand PASS 
+board.graphics.defaults.get PASS 
+board.layers.enabled.set PASS 
+board.variants.get PASS 
+board.embedded.get PASS 
+system.binary_path PASS 
+system.paths PASS 
+system.plugin_settings_path PASS 
+document.text.shapes PASS 
+project.textvars.get PASS 
+project.textvars.set PASS 
+document.modified PASS 
+editor.selection.export UNIMPLEMENTED SaveSelectionToString is not available in headless mode
+schematic.jobs.svg PASS 
+schematic.jobs.dxf PASS 
+schematic.jobs.pdf PASS 
+schematic.jobs.ps PASS 
+schematic.jobs.netlist PASS 
+schematic.jobs.bom PASS 
+editor.crossprobe.announce PASS 
+editor.selection.sync UNIMPLEMENTED SyncSelection is not available in headless mode
+editor.nets.highlight UNIMPLEMENTED HighlightNets is not available in headless mode
+schematic.variants.add PASS 
+schematic.variants.copy PASS 
+schematic.variants.rename PASS 
+schematic.variants.describe PASS 
+schematic.variants.current.set PASS 
+schematic.variants.current.get PASS 
+schematic.variants.delete PASS 
+board.padstack.presence PASS 
+board.move.interactive UNIMPLEMENTED InteractiveMoveItems is not available in headless mode
+board.items.from_string UNIMPLEMENTED ParseAndCreateItemsFromString is not implemented in this KiCad build
+board.layers.visible.get UNIMPLEMENTED GetVisibleLayers is not available in headless mode
+board.layers.visible.set UNIMPLEMENTED SetVisibleLayers is not available in headless mode
+board.layers.active.get UNIMPLEMENTED GetActiveLayer is not available in headless mode
+board.layers.active.set UNIMPLEMENTED SetActiveLayer is not available in headless mode
+editor.library.open UNHANDLED no handler available for request of type kiapi.common.commands.OpenLibraryItem
+board.embedded.add PASS 
+board.embedded.set PASS 
+board.appearance.get UNIMPLEMENTED GetBoardEditorAppearanceSettings is not available in headless mode
+board.appearance.set UNIMPLEMENTED SetBoardEditorAppearanceSettings is not available in headless mode
+board.plotsettings.get PASS 
+board.plotsettings.set PASS 
+board.drc.marker.add PASS 
+board.jobs.3d PASS 
+board.jobs.render PASS 
+board.jobs.dxf PASS 
+board.jobs.pdf PASS 
+board.jobs.ps PASS 
+board.jobs.gerbers PASS 
+board.jobs.drill PASS 
+board.jobs.position PASS 
+board.jobs.gencad PASS 
+board.jobs.ipc2581 PASS 
+board.jobs.ipcd356 PASS 
+board.jobs.odb PASS 
+board.jobs.stats PASS 
+editor.commit.end PASS 
+document.revert PASS 
+document.close PASS 
+project.open PASS 
+document.close_all PASS 
+job.status PASS 
+job.cancel PASS 
+{"executed":96,"successful":78,"failed":18}

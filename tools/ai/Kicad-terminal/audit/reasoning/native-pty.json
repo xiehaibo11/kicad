@@ -1,0 +1,85 @@
+{
+  "fixture": "Packaged native binary; real PTY; local HTTP model fixture; isolated configuration and sessions",
+  "externalModelCalls": 0,
+  "toolsCalled": 0,
+  "ok": true,
+  "requests": [
+    {
+      "title": true,
+      "model": "deepseek-flash",
+      "effort": "high",
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 1024
+      },
+      "path": "/v1/messages"
+    },
+    {
+      "title": false,
+      "model": "deepseek-flash",
+      "effort": "max",
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 1024
+      },
+      "path": "/v1/messages"
+    },
+    {
+      "title": false,
+      "model": "deepseek-flash",
+      "effort": "low",
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 1024
+      },
+      "path": "/v1/messages"
+    },
+    {
+      "title": false,
+      "model": "deepseek-flash",
+      "effort": null,
+      "thinking": {
+        "type": "disabled"
+      },
+      "path": "/v1/messages"
+    }
+  ],
+  "chatRequests": [
+    {
+      "title": false,
+      "model": "deepseek-flash",
+      "effort": "max",
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 1024
+      },
+      "path": "/v1/messages"
+    },
+    {
+      "title": false,
+      "model": "deepseek-flash",
+      "effort": "low",
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 1024
+      },
+      "path": "/v1/messages"
+    },
+    {
+      "title": false,
+      "model": "deepseek-flash",
+      "effort": null,
+      "thinking": {
+        "type": "disabled"
+      },
+      "path": "/v1/messages"
+    }
+  ],
+  "checks": [
+    "real PTY /effort menu",
+    "selection never sends",
+    "max and low reach actual Anthropic HTTP",
+    "off disables thinking",
+    "native /variants retained"
+  ]
+}

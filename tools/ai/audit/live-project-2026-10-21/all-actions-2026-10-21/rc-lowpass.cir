@@ -1,0 +1,7 @@
+* RC low-pass acceptance netlist (read-only test)
+V1 1 0 PULSE(0 1 0 1n 1n 5u 10u)
+R1 1 2 1k
+C1 2 0 100n
+.tran 100n 20u 0 100n
+.print tran v(1) v(2)
+.end

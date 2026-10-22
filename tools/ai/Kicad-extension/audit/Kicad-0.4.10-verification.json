@@ -1,0 +1,134 @@
+{
+  "extensionName": "Kicad 扩展",
+  "extensionVersion": "0.4.10",
+  "terminalName": "Kicad 终端",
+  "terminalVersion": "1.19.3",
+  "terminalCommands": [
+    "completion",
+    "acp",
+    "mcp",
+    "[project]",
+    "attach",
+    "run",
+    "debug",
+    "providers",
+    "agent",
+    "upgrade",
+    "uninstall",
+    "serve",
+    "web",
+    "models",
+    "stats",
+    "export",
+    "import",
+    "github",
+    "pr",
+    "session",
+    "plugin",
+    "db"
+  ],
+  "nativeCliVersion": "10.99.0",
+  "paths": {
+    "projectRoot": "/Users/mosc/Downloads/Kicad",
+    "extension": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension",
+    "terminal": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal",
+    "extensionUpstream": "/Users/mosc/Downloads/Kicad/tools/ai/upstream/Kicad-extension",
+    "terminalUpstream": "/tmp/Kicad-terminal-1.19.3"
+  },
+  "sha256": {
+    "terminalSource": "9b093147c1f0b202d9eb26c5a14ade94c6abac6fc2599011b9fb168e9a7e6aa9",
+    "terminalInstalled": "9b093147c1f0b202d9eb26c5a14ade94c6abac6fc2599011b9fb168e9a7e6aa9",
+    "vsix": "972d07d6bc66935f64c6290bf0dc949cb7bfe12f89fb988627f23b0aa9a306f6",
+    "extensionInstalled": "cdb1e181d706e17b8e164e4ff6a213b83807f085069cbbbe7af6e5a35f7adad1",
+    "frontendInstalled": "9684f02957d519b21cdaac6c072889608090c27605e9076c56b1ec63520a4a64"
+  },
+  "checkedAt": "2026-10-20T15:58:14.342527-07:00",
+  "installedHost": {
+    "version": "0.4.10",
+    "active": true,
+    "webviews": {
+      "resolved": 2,
+      "mounted": 2
+    },
+    "nativeTerminal": {
+      "name": "Kicad 终端",
+      "pid": 80126,
+      "binary": "/Users/mosc/.local/bin/kicad-terminal"
+    },
+    "kiCadMcpEnabled": true,
+    "availableTerminalProviders": [
+      "kicad-deepseek"
+    ]
+  },
+  "composerUi": {
+    "version": "0.4.10",
+    "checks": [
+      "completed turn triggers prediction",
+      "current selected model and actual conversation forwarded",
+      "only ghost text, no tool reference button/checkbox/status/accept buttons",
+      "Tab accepts without sending",
+      "Enter and Right do not accept ghost text",
+      "Escape dismisses",
+      "editing invalidates late result"
+    ],
+    "explicitMessages": 3,
+    "automaticMessages": 0,
+    "pageErrors": []
+  },
+  "optimizerUi": {
+    "version": "0.4.10",
+    "fixture": "Installed production frontend, mock host responses",
+    "checks": [
+      "empty input disabled",
+      "selected model forwarded",
+      "direct input replacement",
+      "no preview dialog",
+      "undo restores original",
+      "no automatic send",
+      "Enter disabled during optimization",
+      "cancel and late result ignored",
+      "error preserves draft and can retry",
+      "concurrent edit protected"
+    ],
+    "chatMessagesSent": 0,
+    "pageErrors": []
+  },
+  "nativeTui": {
+    "passed": 204,
+    "skipped": 1,
+    "failed": 0,
+    "snapshots": 8,
+    "assertions": 527,
+    "files": 47,
+    "specificComposerAssertions": 39,
+    "renamedUpstreamRootTestPassed": true
+  },
+  "buildChecks": [
+    "extension TypeScript",
+    "Vue TypeScript",
+    "packaged extension loads",
+    "native TUI TypeScript",
+    "native backend TypeScript",
+    "native binary smoke test",
+    "native macOS code signature",
+    "installed artifact equality",
+    "MCP catalog connection",
+    "22 native command entries",
+    "git diff --check"
+  ],
+  "evidenceScope": "Installed frontend tests use mock host responses; real VS Code test host confirms chat/settings mounts and native terminal creation. No new AI model requests or PCB mutations were used for this UI and naming change.",
+  "sourceIntegrity": {
+    "upstreamRevision": "c238b3e57c55e95220a8e2837cd4cbe6350a6b65",
+    "upstreamClean": true,
+    "protocolAndConfigIdentifiersPreserved": true,
+    "upstreamLicensesPreserved": true
+  },
+  "inspectionWindow": {
+    "workspace": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.10.code-workspace",
+    "chatMounted": true,
+    "extensionVersion": "0.4.10",
+    "nativeTerminalPid": 81388,
+    "nativeTerminalRunning": true,
+    "log": "/Users/mosc/Library/Application Support/Code/logs/20261020T154541/window3/exthost/kicad-agent.kicad/Kicad 扩展.log"
+  }
+}

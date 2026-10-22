@@ -1,0 +1,1274 @@
+{
+  "ok": true,
+  "action": "board.drc.live",
+  "data": {
+    "status": "violations",
+    "exitCode": 5,
+    "report": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/drc-complete-2.json",
+    "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/drc-complete-2.json",
+    "summary": {
+      "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/drc-complete-2.json",
+      "total": 1572,
+      "bySeverity": {
+        "error": 1097,
+        "warning": 475
+      },
+      "byType": {
+        "clearance": 499,
+        "shorting_items": 13,
+        "hole_clearance": 26,
+        "courtyards_overlap": 18,
+        "copper_edge_clearance": 34,
+        "drill_out_of_range": 77,
+        "track_width": 199,
+        "starved_thermal": 12,
+        "via_diameter": 77,
+        "solder_mask_bridge": 10,
+        "track_dangling": 1,
+        "text_height": 90,
+        "silk_overlap": 21,
+        "silk_over_copper": 1,
+        "unconnected_items": 132,
+        "missing_footprint": 8,
+        "footprint_symbol_mismatch": 155,
+        "net_conflict": 199
+      },
+      "violations": 1078,
+      "unconnected_items": 132,
+      "schematic_parity": 362,
+      "ignoredChecks": [
+        {
+          "description": "Footprint has no courtyard defined",
+          "key": "missing_courtyard"
+        },
+        {
+          "description": "Track endpoint not centered on via",
+          "key": "track_not_centered_on_via"
+        },
+        {
+          "description": "Tuning profile track geometries",
+          "key": "tuning_profile_track_geometries"
+        },
+        {
+          "description": "Footprint doesn't match symbol's footprint filters",
+          "key": "footprint_filters_mismatch"
+        },
+        {
+          "description": "Footprint component type doesn't match footprint pads",
+          "key": "footprint_type_mismatch"
+        }
+      ]
+    },
+    "reportJsonOmitted": true,
+    "reportBytes": 1086522,
+    "sampleViolations": [
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1031 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DM] on Top Layer, length 1.1278 mm",
+            "pos": {
+              "x": 149.096,
+              "y": 123.0935
+            },
+            "uuid": "e7a30725-b5b0-41d6-be6b-f10f8c9c1af7"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1031 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DM] on Top Layer, length 3.3145 mm",
+            "pos": {
+              "x": 149.8935,
+              "y": 122.296
+            },
+            "uuid": "2a76d540-c37f-44bf-9ecd-7cd5e4cb44f6"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1565 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [+5V] of R9 on Top Layer",
+            "pos": {
+              "x": 139.8315,
+              "y": 128.796
+            },
+            "uuid": "b749faba-d988-43f9-8865-d1e904759471"
+          },
+          {
+            "description": "Track [GND] on Top Layer, length 2.0421 mm",
+            "pos": {
+              "x": 140.17,
+              "y": 129.6215
+            },
+            "uuid": "f4492256-71b9-4e3f-981c-e9ad77661541"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1742 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.6718 mm",
+            "pos": {
+              "x": 150.7595,
+              "y": 130.8635
+            },
+            "uuid": "3e2a8839-6af8-4444-abba-76be854fbd4a"
+          },
+          {
+            "description": "Pad 1 [FB_DDR] of R6 on Bottom Layer",
+            "pos": {
+              "x": 151.2785,
+              "y": 130.193
+            },
+            "uuid": "a8e04ae2-c29b-467a-bbbb-e286d024af11"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1654 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 3.5278 mm",
+            "pos": {
+              "x": 157.4855,
+              "y": 88.519
+            },
+            "uuid": "3e183b93-575d-4c70-b99b-2b12479f0b21"
+          },
+          {
+            "description": "Pad 1 [FB_CORE] of R1 on Bottom Layer",
+            "pos": {
+              "x": 156.6125,
+              "y": 90.569
+            },
+            "uuid": "42b5dbff-6db0-4ad7-865c-ec0fc8159e3b"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1698 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.8130 mm",
+            "pos": {
+              "x": 159.1515,
+              "y": 105.047
+            },
+            "uuid": "3d7baf6e-ca84-438c-9988-45847fbf77f2"
+          },
+          {
+            "description": "Track [VDD_CORE] on Bottom Layer, length 1.2930 mm",
+            "pos": {
+              "x": 159.6065,
+              "y": 106.36
+            },
+            "uuid": "895aee84-cd80-49a1-982c-765f6be4c2ec"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.6859 mm",
+            "pos": {
+              "x": 160.6045,
+              "y": 122.2605
+            },
+            "uuid": "4c7bb943-f6cf-4712-836b-8fb8d971028b"
+          },
+          {
+            "description": "Pad 1 [VDD_DDR] of C103 on Bottom Layer",
+            "pos": {
+              "x": 160.5885,
+              "y": 121.76
+            },
+            "uuid": "d9a2d74e-58b4-4c2d-82ab-476cabd95718"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1932 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [+1V8] of C83 on Bottom Layer",
+            "pos": {
+              "x": 160.5885,
+              "y": 100.983
+            },
+            "uuid": "26d2f8c8-8bb6-4a8c-a669-0468c68a9582"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.4495 mm",
+            "pos": {
+              "x": 160.978,
+              "y": 101.4835
+            },
+            "uuid": "9502c640-99b8-40ba-b0c0-1838d22fc9c5"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1618 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [V1P8_ANA] of C86 on Bottom Layer",
+            "pos": {
+              "x": 156.0365,
+              "y": 100.983
+            },
+            "uuid": "8f5b8cf6-6104-4256-be5a-33479f45c82b"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.2855 mm",
+            "pos": {
+              "x": 156.876,
+              "y": 101.491
+            },
+            "uuid": "91073d01-4b7a-4c69-b887-b216a4ed9c9c"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1606 mm)",
+        "items": [
+          {
+            "description": "Pad 3 [SW_DDR] of U7 on Bottom Layer",
+            "pos": {
+              "x": 149.344,
+              "y": 128.273
+            },
+            "uuid": "045d333c-c38f-4afb-b2dc-f9692528b655"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.0380 mm",
+            "pos": {
+              "x": 148.565,
+              "y": 128.679
+            },
+            "uuid": "8d69d932-450c-4757-9e63-4632a707aed1"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [VDD_DDR] of C105 on Bottom Layer",
+            "pos": {
+              "x": 162.864,
+              "y": 121.76
+            },
+            "uuid": "6b29dbba-6198-46e2-bc8f-0ab6856338e6"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.2930 mm",
+            "pos": {
+              "x": 163.7035,
+              "y": 122.2605
+            },
+            "uuid": "9c31baa2-5dd9-4f47-93d6-7a3fbb4e6cd6"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1537 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 2.2760 mm",
+            "pos": {
+              "x": 161.4275,
+              "y": 115.758
+            },
+            "uuid": "9e17682f-6eb3-4317-9a31-be8ac219ec18"
+          },
+          {
+            "description": "Pad 1 [VDD_DDR] of C111 on Bottom Layer",
+            "pos": {
+              "x": 162.864,
+              "y": 115.258
+            },
+            "uuid": "c99d1333-be62-4f05-8f77-ae86c79bf9c4"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1527 mm)",
+        "items": [
+          {
+            "description": "Pad 3 [SW_DDR] of U7 on Bottom Layer",
+            "pos": {
+              "x": 149.344,
+              "y": 128.273
+            },
+            "uuid": "045d333c-c38f-4afb-b2dc-f9692528b655"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.8150 mm",
+            "pos": {
+              "x": 148.565,
+              "y": 127.864
+            },
+            "uuid": "9bf2389f-c83c-4f1e-9726-6601292beecf"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0843 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.8150 mm",
+            "pos": {
+              "x": 148.565,
+              "y": 127.864
+            },
+            "uuid": "9bf2389f-c83c-4f1e-9726-6601292beecf"
+          },
+          {
+            "description": "Track [+5V] on Bottom Layer, length 0.2136 mm",
+            "pos": {
+              "x": 148.565,
+              "y": 127.3255
+            },
+            "uuid": "baa9687d-1311-4b11-9f86-875c00ad897d"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1610 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.8584 mm",
+            "pos": {
+              "x": 138.3515,
+              "y": 118.11
+            },
+            "uuid": "90056676-05ad-495c-be41-19a1d427cebf"
+          },
+          {
+            "description": "Pad 3 [SW_3V3] of U8 on Bottom Layer",
+            "pos": {
+              "x": 138.6,
+              "y": 117.173
+            },
+            "uuid": "d1a87aee-04e2-423b-a722-9082085ad84b"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1378 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.1616 mm",
+            "pos": {
+              "x": 151.6765,
+              "y": 98.5775
+            },
+            "uuid": "82ca606b-16e2-4f48-91a3-d67f532684e4"
+          },
+          {
+            "description": "Track [V1P8_ANA] on Bottom Layer, length 0.4880 mm",
+            "pos": {
+              "x": 151.486,
+              "y": 99.3575
+            },
+            "uuid": "f2b96fda-d8f7-452f-95ae-5df7b7b630d2"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1608 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 3.8940 mm",
+            "pos": {
+              "x": 158.415,
+              "y": 96.942
+            },
+            "uuid": "a5f60e0f-97f4-433b-8353-06abdf7eab9e"
+          },
+          {
+            "description": "Pad 1 [+5V] of C1 on Bottom Layer",
+            "pos": {
+              "x": 156.874,
+              "y": 96.03
+            },
+            "uuid": "faaef24b-acf9-4328-ae93-e34a4b77411e"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1771 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.8610 mm",
+            "pos": {
+              "x": 160.719,
+              "y": 111.0085
+            },
+            "uuid": "abc2ce98-6493-497d-b29b-df224eeb24a8"
+          },
+          {
+            "description": "Via [WIFI_WAKE_HOST] on Top Layer - Bottom Layer",
+            "pos": {
+              "x": 160.2845,
+              "y": 111.1405
+            },
+            "uuid": "aed54031-5f9a-4368-94b3-da095b20aff0"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.2040 mm",
+            "pos": {
+              "x": 146.8325,
+              "y": 99.863
+            },
+            "uuid": "a0a77252-4514-46fa-8f78-aada4ffc191a"
+          },
+          {
+            "description": "Pad 1 [RECOVERY] of C53 on Bottom Layer",
+            "pos": {
+              "x": 147.333,
+              "y": 99.498
+            },
+            "uuid": "d41e4fc5-ff05-4540-a72a-263d50dff385"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [+5V] of C14 on Bottom Layer",
+            "pos": {
+              "x": 140.791,
+              "y": 100.094
+            },
+            "uuid": "74719b76-041c-4800-a717-abe33292d5d2"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.1050 mm",
+            "pos": {
+              "x": 140.188,
+              "y": 100.7745
+            },
+            "uuid": "9feea0a2-bfab-4ed1-b408-7d26580aaa6b"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1042 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DM] on Top Layer, length 2.2985 mm",
+            "pos": {
+              "x": 145.418,
+              "y": 118.913
+            },
+            "uuid": "334cded3-75d6-4782-b50f-09cc29e41a41"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1771 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.5005 mm",
+            "pos": {
+              "x": 160.719,
+              "y": 110.508
+            },
+            "uuid": "a6bae3e9-688d-41a0-855e-7ce8ba7539de"
+          },
+          {
+            "description": "Via [WIFI_WAKE_HOST] on Top Layer - Bottom Layer",
+            "pos": {
+              "x": 160.2845,
+              "y": 111.1405
+            },
+            "uuid": "aed54031-5f9a-4368-94b3-da095b20aff0"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1255 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.0535 mm",
+            "pos": {
+              "x": 151.7905,
+              "y": 98.7455
+            },
+            "uuid": "d812300a-3f1d-4de4-8e5b-d08e5d1ff3fd"
+          },
+          {
+            "description": "Track [V1P8_ANA] on Bottom Layer, length 0.4880 mm",
+            "pos": {
+              "x": 151.486,
+              "y": 99.3575
+            },
+            "uuid": "f2b96fda-d8f7-452f-95ae-5df7b7b630d2"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 2.7455 mm",
+            "pos": {
+              "x": 159.634,
+              "y": 122.2605
+            },
+            "uuid": "ca83b86b-e87a-4140-8e1d-a5297a6eba23"
+          },
+          {
+            "description": "Pad 1 [VDD_DDR] of C102 on Bottom Layer",
+            "pos": {
+              "x": 158.3125,
+              "y": 121.76
+            },
+            "uuid": "e0e6156b-d019-4d87-8465-49e70e643c89"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1589 mm)",
+        "items": [
+          {
+            "description": "Pad 3 [SW_LOG] of U6 on Bottom Layer",
+            "pos": {
+              "x": 139.311,
+              "y": 94.1355
+            },
+            "uuid": "275cad4b-bfb7-4c1b-a907-a604c93caff4"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.0055 mm",
+            "pos": {
+              "x": 138.532,
+              "y": 94.539
+            },
+            "uuid": "c4d1795c-26cf-4a95-a0e0-e012095a0dd9"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1628 mm)",
+        "items": [
+          {
+            "description": "Pad 3 [SW_DDR] of U7 on Bottom Layer",
+            "pos": {
+              "x": 149.344,
+              "y": 128.273
+            },
+            "uuid": "045d333c-c38f-4afb-b2dc-f9692528b655"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.7651 mm",
+            "pos": {
+              "x": 149.106,
+              "y": 127.323
+            },
+            "uuid": "d5e5d23e-87a4-4e96-bc49-b1b1153648aa"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0505 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.7651 mm",
+            "pos": {
+              "x": 149.106,
+              "y": 127.323
+            },
+            "uuid": "d5e5d23e-87a4-4e96-bc49-b1b1153648aa"
+          },
+          {
+            "description": "Track [+5V] on Bottom Layer, length 0.9525 mm",
+            "pos": {
+              "x": 148.565,
+              "y": 126.373
+            },
+            "uuid": "e27d4a0f-81c4-40ff-8ab5-86a8fba3b0a3"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0674 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.7184 mm",
+            "pos": {
+              "x": 155.5905,
+              "y": 102.1005
+            },
+            "uuid": "e36acd2c-d012-4677-9bcd-840223c4c38b"
+          },
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 0.7078 mm",
+            "pos": {
+              "x": 155.555,
+              "y": 102.6085
+            },
+            "uuid": "f360fd19-d55b-4299-96ce-dc888ef0a5f6"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1605 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [FB_CORE] of R2 on Bottom Layer",
+            "pos": {
+              "x": 160.8035,
+              "y": 95.776
+            },
+            "uuid": "2c8b057d-f3ed-494a-ad87-eb323c5b0f85"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.8933 mm",
+            "pos": {
+              "x": 161.6765,
+              "y": 96.073
+            },
+            "uuid": "c47d710b-1a90-4455-ac4a-b6331d3bf348"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [DDR_ZQ] of R103 on Bottom Layer",
+            "pos": {
+              "x": 156.0235,
+              "y": 121.76
+            },
+            "uuid": "578e0231-dd64-4f1a-8f7b-15600017fd51"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 2.2885 mm",
+            "pos": {
+              "x": 154.6,
+              "y": 122.2605
+            },
+            "uuid": "c043b736-bc7d-4c10-91ed-dbd281818755"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1589 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [+5V] of C14 on Bottom Layer",
+            "pos": {
+              "x": 140.791,
+              "y": 100.094
+            },
+            "uuid": "74719b76-041c-4800-a717-abe33292d5d2"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.3769 mm",
+            "pos": {
+              "x": 141.293,
+              "y": 100.7745
+            },
+            "uuid": "bd42fadc-0891-404d-a7bf-1e7e24f2e97c"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1309 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.7184 mm",
+            "pos": {
+              "x": 155.5905,
+              "y": 101.491
+            },
+            "uuid": "edbd6ce0-de8c-4ebd-a394-2ea949752f6b"
+          },
+          {
+            "description": "Track [V1P8_ANA] on Bottom Layer, length 0.4825 mm",
+            "pos": {
+              "x": 156.0375,
+              "y": 100.983
+            },
+            "uuid": "f84d0cd6-f1d0-4d64-82c3-aa7e02f96314"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [VDD_DDR] of C103 on Bottom Layer",
+            "pos": {
+              "x": 160.5885,
+              "y": 121.76
+            },
+            "uuid": "d9a2d74e-58b4-4c2d-82ab-476cabd95718"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.8230 mm",
+            "pos": {
+              "x": 161.4275,
+              "y": 122.2605
+            },
+            "uuid": "f3328b3c-445a-4e97-b218-639a479df487"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [VREF_DDR] of C123 on Bottom Layer",
+            "pos": {
+              "x": 156.0365,
+              "y": 116.8835
+            },
+            "uuid": "3bb496a0-e94a-4305-9d22-723bc3381ed6"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.6385 mm",
+            "pos": {
+              "x": 155.2375,
+              "y": 117.384
+            },
+            "uuid": "eccb6cce-36b8-447b-81d0-d674cbfe04da"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [VDD_DDR] of C113 on Bottom Layer",
+            "pos": {
+              "x": 156.0365,
+              "y": 115.258
+            },
+            "uuid": "43777528-5252-458f-99a2-61a60ecc9b67"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 2.2760 mm",
+            "pos": {
+              "x": 156.876,
+              "y": 114.7575
+            },
+            "uuid": "f18c0226-f3c0-48bd-abcf-f8d2b2c33a49"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1532 mm)",
+        "items": [
+          {
+            "description": "Pad 3 [SW_CORE] of U5 on Bottom Layer",
+            "pos": {
+              "x": 158.9455,
+              "y": 94.1355
+            },
+            "uuid": "8fe39841-f39d-4e3f-a825-bc23fef00c87"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.3640 mm",
+            "pos": {
+              "x": 158.166,
+              "y": 93.185
+            },
+            "uuid": "f36416dd-0f91-439b-aee9-4427fc3ab1e3"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1932 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [+1V8] of C83 on Bottom Layer",
+            "pos": {
+              "x": 160.5885,
+              "y": 100.983
+            },
+            "uuid": "26d2f8c8-8bb6-4a8c-a669-0468c68a9582"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.2623 mm",
+            "pos": {
+              "x": 160.7925,
+              "y": 101.669
+            },
+            "uuid": "ec217b3a-772e-401b-a715-5ad16e545dcc"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1605 mm)",
+        "items": [
+          {
+            "description": "Pad 1 [FB_DDR] of R6 on Bottom Layer",
+            "pos": {
+              "x": 151.2785,
+              "y": 130.193
+            },
+            "uuid": "a8e04ae2-c29b-467a-bbbb-e286d024af11"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.5282 mm",
+            "pos": {
+              "x": 152.1515,
+              "y": 130.49
+            },
+            "uuid": "fef37e9e-0bbf-416b-9f52-ece085ed50b4"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0395 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [GND] of C75 on Bottom Layer",
+            "pos": {
+              "x": 159.1525,
+              "y": 104.234
+            },
+            "uuid": "33f73b2e-98ba-403d-bd32-bf6d61c7209e"
+          },
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 1.7755 mm",
+            "pos": {
+              "x": 157.831,
+              "y": 103.734
+            },
+            "uuid": "757e1956-03e9-493f-81aa-f789b1199204"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1169 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [GND] of C75 on Bottom Layer",
+            "pos": {
+              "x": 159.1525,
+              "y": 104.234
+            },
+            "uuid": "33f73b2e-98ba-403d-bd32-bf6d61c7209e"
+          },
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 1.1255 mm",
+            "pos": {
+              "x": 159.6065,
+              "y": 102.6085
+            },
+            "uuid": "716f3ed6-e42a-47a4-ad40-b6acba3d15ee"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1021 mm)",
+        "items": [
+          {
+            "description": "Track [+3V3] on Top Layer, length 0.5671 mm",
+            "pos": {
+              "x": 146.934,
+              "y": 99.7385
+            },
+            "uuid": "777bf6df-7481-48ff-be2d-0f7e2c98057e"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1417 mm)",
+        "items": [
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 0.9040 mm",
+            "pos": {
+              "x": 143.792,
+              "y": 109.873
+            },
+            "uuid": "6b60aede-3563-4438-8ae4-51e214a4ea1f"
+          },
+          {
+            "description": "Zone [GND] on Bottom Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1010 mm)",
+        "items": [
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 8.0465 mm",
+            "pos": {
+              "x": 148.425,
+              "y": 123.208
+            },
+            "uuid": "6c5bfd6e-0a76-4d03-b673-d647b1247ba1"
+          },
+          {
+            "description": "Zone [GND] on Bottom Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0608 mm)",
+        "items": [
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 1.2930 mm",
+            "pos": {
+              "x": 155.0545,
+              "y": 103.109
+            },
+            "uuid": "68a18095-3459-4047-9397-46fe499f90f8"
+          },
+          {
+            "description": "Track [VDD_LOG] on Bottom Layer, length 0.8941 mm",
+            "pos": {
+              "x": 153.1295,
+              "y": 103.1015
+            },
+            "uuid": "6c2e4c9d-344d-475a-b9ec-b6ea06f087de"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1010 mm)",
+        "items": [
+          {
+            "description": "Track [+3V3] on Top Layer, length 0.1880 mm",
+            "pos": {
+              "x": 144.717,
+              "y": 109.144
+            },
+            "uuid": "f76742d4-e2a3-4dee-81c9-da2bce71c886"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0400 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [GND] of C76 on Bottom Layer",
+            "pos": {
+              "x": 154.601,
+              "y": 102.6085
+            },
+            "uuid": "2370cd5a-e98c-4d51-889d-166f4cc1ef71"
+          },
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 1.2930 mm",
+            "pos": {
+              "x": 155.0545,
+              "y": 103.109
+            },
+            "uuid": "68a18095-3459-4047-9397-46fe499f90f8"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1924 mm)",
+        "items": [
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 0.6450 mm",
+            "pos": {
+              "x": 146.533,
+              "y": 100.856
+            },
+            "uuid": "93225c78-e256-4153-8d39-7b1b10afdc20"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.2040 mm",
+            "pos": {
+              "x": 146.8325,
+              "y": 99.863
+            },
+            "uuid": "a0a77252-4514-46fa-8f78-aada4ffc191a"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1911 mm)",
+        "items": [
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 0.6450 mm",
+            "pos": {
+              "x": 146.533,
+              "y": 100.856
+            },
+            "uuid": "93225c78-e256-4153-8d39-7b1b10afdc20"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.6969 mm",
+            "pos": {
+              "x": 147.3255,
+              "y": 100.3555
+            },
+            "uuid": "eb546bd1-24aa-44f0-9537-224ee0f9c6b2"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0415 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [GND] of C8 on Bottom Layer",
+            "pos": {
+              "x": 142.491,
+              "y": 112.413
+            },
+            "uuid": "a3482614-092c-4d69-9c0a-0894255ce3e9"
+          },
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 1.0306 mm",
+            "pos": {
+              "x": 143.0635,
+              "y": 111.506
+            },
+            "uuid": "d675d32d-8b33-40a2-a721-0ff084aa7c81"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0674 mm)",
+        "items": [
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 0.4825 mm",
+            "pos": {
+              "x": 156.0375,
+              "y": 102.6085
+            },
+            "uuid": "9006b00b-1c6b-4eeb-b05d-af3f2bff4859"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.7184 mm",
+            "pos": {
+              "x": 155.5905,
+              "y": 102.1005
+            },
+            "uuid": "e36acd2c-d012-4677-9bcd-840223c4c38b"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      }
+    ],
+    "next": "Read reportPath for the complete report, or use full=true.",
+    "source": "live",
+    "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pcb",
+    "checkedCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-xJh518/RK3308B_IPC 摄像头模块.kicad_pcb"
+  },
+  "artifacts": [
+    "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/drc-complete-2.json"
+  ]
+}

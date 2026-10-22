@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "status": "reference service and evidence gates implemented, installed and verified",
+  "inventory": {
+    "actionCount": 254,
+    "agentVersion": "0.2.0",
+    "arch": "arm64",
+    "catalogSha256": "2fa82e3e61fc0460083a9c2e70194b563e418d8717beaa096daf4954345a5379",
+    "engineeringReferences": {
+      "contentSha256": "8cdbcbe5b7c53cab4ba8c436d244c68b1fa7bdc7fc1c99ae0b39e65468bbd6a4",
+      "exampleProjectCount": 37,
+      "ruleCount": 86,
+      "sourceCount": 21,
+      "topicCount": 20,
+      "version": "2026-10-20.1"
+    },
+    "goVersion": "go1.27.2",
+    "mcpToolCount": 20,
+    "mcpTools": [
+      "kicad_health",
+      "kicad_actions",
+      "kicad_call",
+      "kicad_spec_validate",
+      "kicad_blocks",
+      "kicad_workflow",
+      "kicad_pipeline",
+      "kicad_native_tools",
+      "kicad_system",
+      "kicad_project",
+      "kicad_document",
+      "kicad_schematic",
+      "kicad_board",
+      "kicad_library",
+      "kicad_external",
+      "kicad_editor",
+      "kicad_reference",
+      "kicad_audit",
+      "kicad_web",
+      "kicad_gerber"
+    ],
+    "nativeToolCount": 971,
+    "os": "darwin",
+    "schemaVersion": 1
+  },
+  "validation": {
+    "goAllPackages": "passed; see go-tests.log",
+    "raceTests": "passed; see race-tests.log",
+    "terminalBuildTests": 206,
+    "terminalNaturalLanguage": true,
+    "extensionNaturalLanguage": true,
+    "extensionVersion": "0.4.23",
+    "installation": true,
+    "skillValidation": "passed",
+    "finalGoAllPackages": "passed after final manifest/snapshot/parser changes",
+    "finalRaceTests": "passed after final changes"
+  },
+  "projectCheck": {
+    "project": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pro",
+    "snapshotDigest": "9b6c32ed1f5da3148613d5acc9397ab16ee647e8657b4e576332bf8425715809",
+    "localDesignFileCount": 46,
+    "pendingEvidenceCount": 42,
+    "fabricationEvidenceComplete": false,
+    "productionEvidenceComplete": false,
+    "readyForFabrication": false,
+    "readyForProduction": false,
+    "designSnapshotUnchanged": true
+  },
+  "limitations": [
+    "Example inventory is not electrical qualification of every reference design.",
+    "Standards catalog/overview access is not a licensed full-text standards review.",
+    "Gate verifies local evidence completeness, revision binding and hashes; not authenticity of people, signatures, laboratory reports or physical hardware.",
+    "Accountable engineering/quality/manufacturer release and applicable real product validation remain external."
+  ],
+  "agentBinarySha256": "edb3aaa63736da9fdf187b94f483e348864bf2f14c576779dd2df97a8e67d031",
+  "sourceSha256": {
+    "tools/ai/kicad-agent/internal/engineering/catalog.json": "6ab8d4210c2f51f4c94b60df7448c9b85edf8e3af94bb9552a0e98ac29c26b22",
+    "tools/ai/kicad-agent/internal/engineering/engineering_test.go": "8c200a9700dc9f883f8d844de2818973053fa34870940336dd659211c747dde9",
+    "tools/ai/kicad-agent/internal/engineering/examples.json": "bb90f73e848edaf8312ebdb18cf417c59209dd40a3abc9e20b5273e5ae142cdd",
+    "tools/ai/kicad-agent/internal/engineering/reference.go": "2a0887c886aa9c2c100cb8a0000188a588333f5612ff3383c80a9ba30ea58d94",
+    "tools/ai/kicad-agent/internal/engineering/release.go": "63156d97ef8ac01f7b5a18011351742373d24fc37894c7ed712cd79b20f838ee"
+  }
+}

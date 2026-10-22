@@ -1,0 +1,30 @@
+{
+  "ok": false,
+  "action": "board.dfm.analyze",
+  "data": {
+    "documentLoaded": true,
+    "trackCount": 1,
+    "violations": [
+      {
+        "item": "037e4989-e5f2-4037-90ca-45d17aa43801",
+        "net": "Net1",
+        "layer": "F.Cu",
+        "type": "width_under_minimum",
+        "widthMm": 0.25,
+        "minWidthMm": 0.3,
+        "fixable": true,
+        "fix": "widen to 0.300 mm",
+        "note": "clearance must be re-checked after widening"
+      }
+    ],
+    "fixed": 0,
+    "deleted": 0,
+    "failed": 0,
+    "unfixable": 0,
+    "dryRun": false
+  },
+  "error": {
+    "code": "DFM_VIOLATIONS",
+    "message": "1 DFM issue(s) found"
+  }
+}

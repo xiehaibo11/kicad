@@ -1,0 +1,6 @@
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/commands	[no test files]
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/mcp	0.281s
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/backend.test
+ld: warning: ignoring duplicate libraries: '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/backend	0.291s
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/kicadactions	[no test files]

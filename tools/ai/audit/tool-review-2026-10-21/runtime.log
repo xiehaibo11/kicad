@@ -1,0 +1,62 @@
+system.health PASS 
+project.list PASS 
+project.resolve PASS 
+project.switch PASS 
+board.fanout.run PASS 
+board.impedance.layers PASS 
+board.impedance.calculate PASS 
+board.impedance.check IMPEDANCE_VIOLATIONS Tracks outside tolerance
+board.dfm.analyze PASS 
+board.dfm.fix PASS 
+board.route.autoroute PASS 
+board.route.diff_pair PASS 
+board.route.length_report PASS 
+board.route.tune_length PASS 
+board.check.3d PASS 
+library.search.footprints PASS 
+kicad.cli.run PASS 
+external.tools.list PASS 
+external.freerouting.run PASS 
+external.ngspice.run PASS 
+external.step.check PASS 
+external.step.meshcheck TOOL_MISSING Executable not found: kicad-stepcheck
+external.command.run PASS 
+spec.validate PASS 
+workflow.init PASS 
+workflow.status PASS 
+workflow.advance PASS 
+workflow.confirm PASS 
+workflow.reset PASS 
+blocks.list PASS 
+blocks.search PASS 
+blocks.show PASS 
+pipeline.run PASS 
+pipeline.status PASS 
+editor.native.search PASS 
+editor.native.list PASS 
+editor.native.show PASS 
+editor.native.categories PASS 
+system.manifest PASS 
+audit.rules PASS 
+audit.run AUDIT_NOT_PASSED Violations or incomplete evidence; see checks and artifacts
+audit.footprint PASS 
+web.search BAD_INPUT Private, local and reserved network destinations are not allowed
+web.fetch PASS 
+reference.search PASS 
+reference.get PASS 
+reference.plan PASS 
+reference.examples PASS 
+release.snapshot PASS 
+release.template PASS 
+release.check RELEASE_EVIDENCE_INCOMPLETE Missing, stale or failing evidence; no fabrication/production approval conferred
+board.layers.type.get PASS 
+board.layers.type.set PASS 
+board.plane.build PASS 
+board.keepout.antenna PASS 
+board.fiducial.add PASS 
+board.decap.check PASS 
+board.decap.place DECAP_DRC_REGRESSION DRC failed or violation count increased
+board.check.unified CHECK_FINDINGS Native violations, heuristic findings or incomplete checks remain
+board.dfm.full PASS 
+board.route.length_match PASS 
+{"executed":61,"successful":54,"negative":[{"action":"board.impedance.check","error":{"code":"IMPEDANCE_VIOLATIONS","message":"Tracks outside tolerance"}},{"action":"external.step.meshcheck","error":{"code":"TOOL_MISSING","message":"Executable not found: kicad-stepcheck"}},{"action":"audit.run","error":{"code":"AUDIT_NOT_PASSED","message":"Violations or incomplete evidence; see checks and artifacts"}},{"action":"web.search","error":{"code":"BAD_INPUT","message":"Private, local and reserved network destinations are not allowed"}},{"action":"release.check","error":{"code":"RELEASE_EVIDENCE_INCOMPLETE","message":"Missing, stale or failing evidence; no fabrication/production approval conferred"}},{"action":"board.decap.place","error":{"code":"DECAP_DRC_REGRESSION","message":"DRC failed or violation count increased"}},{"action":"board.check.unified","error":{"code":"CHECK_FINDINGS","message":"Native violations, heuristic findings or incomplete checks remain"}}]}

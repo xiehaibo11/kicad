@@ -1,0 +1,6 @@
+{
+  "board": {"outline": "compact", "widthMm": 30, "heightMm": 45},
+  "stackup": {"layers": 4, "innerLayers": ["GND"]},
+  "modules": [{"name": "MCU", "kind": "MCU"}],
+  "flow": ["MCU", "IO"]
+}

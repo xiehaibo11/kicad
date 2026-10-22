@@ -1,0 +1,88 @@
+{
+  "tools": [
+    {
+      "name": "mcp__kicad__kicad_health",
+      "description": "Check kicad-cli, the KiCad IPC socket, and external tools.",
+      "schema": "{\n  \"properties\": {},\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_actions",
+      "description": "List or search typed KiCad automation actions.",
+      "schema": "{\n  \"properties\": {\n    \"domain\": {\n      \"type\": \"string\"\n    },\n    \"mutates\": {\n      \"type\": \"boolean\"\n    },\n    \"search\": {\n      \"type\": \"string\"\n    }\n  },\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_call",
+      "description": "Run any typed KiCad action. Inspect kicad_actions first for inputs.",
+      "schema": "{\n  \"properties\": {\n    \"action\": {\n      \"type\": \"string\"\n    },\n    \"payload\": {\n      \"additionalProperties\": true,\n      \"type\": \"object\"\n    }\n  },\n  \"required\": [\n    \"action\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_spec_validate",
+      "description": "Parse and validate an S0 design spec JSON file.",
+      "schema": "{\n  \"properties\": {\n    \"file\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"file\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_blocks",
+      "description": "List, search, or show reusable circuit blocks.",
+      "schema": "{\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"operation\": {\n      \"enum\": [\n        \"list\",\n        \"search\",\n        \"show\"\n      ],\n      \"type\": \"string\"\n    },\n    \"query\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"operation\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_workflow",
+      "description": "Read or advance the KiCad design workflow gates.",
+      "schema": "{\n  \"properties\": {\n    \"confirmation\": {\n      \"type\": \"string\"\n    },\n    \"operation\": {\n      \"enum\": [\n        \"init\",\n        \"status\",\n        \"advance\",\n        \"confirm\",\n        \"reset\"\n      ],\n      \"type\": \"string\"\n    },\n    \"project\": {\n      \"type\": \"string\"\n    },\n    \"resetAll\": {\n      \"type\": \"boolean\"\n    },\n    \"resetFrom\": {\n      \"type\": \"string\"\n    },\n    \"stage\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"operation\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_pipeline",
+      "description": "Run or inspect the full design pipeline.",
+      "schema": "{\n  \"properties\": {\n    \"dryRun\": {\n      \"type\": \"boolean\"\n    },\n    \"operation\": {\n      \"enum\": [\n        \"run\",\n        \"status\"\n      ],\n      \"type\": \"string\"\n    },\n    \"project\": {\n      \"type\": \"string\"\n    },\n    \"spec\": {\n      \"type\": \"string\"\n    },\n    \"stages\": {\n      \"items\": {\n        \"type\": \"string\"\n      },\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"operation\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_system",
+      "description": "Run one typed KiCad system action. Use kicad_actions for input guidance.",
+      "schema": "{\n  \"properties\": {\n    \"action\": {\n      \"enum\": [\n        \"system.health\",\n        \"system.version\",\n        \"system.capabilities\",\n        \"kicad.cli.run\",\n        \"job.status\",\n        \"job.cancel\"\n      ],\n      \"type\": \"string\"\n    },\n    \"payload\": {\n      \"additionalProperties\": true,\n      \"type\": \"object\"\n    }\n  },\n  \"required\": [\n    \"action\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_project",
+      "description": "Run one typed KiCad project action. Use kicad_actions for input guidance.",
+      "schema": "{\n  \"properties\": {\n    \"action\": {\n      \"enum\": [\n        \"project.open\",\n        \"project.info\"\n      ],\n      \"type\": \"string\"\n    },\n    \"payload\": {\n      \"additionalProperties\": true,\n      \"type\": \"object\"\n    }\n  },\n  \"required\": [\n    \"action\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_document",
+      "description": "Run one typed KiCad document action. Use kicad_actions for input guidance.",
+      "schema": "{\n  \"properties\": {\n    \"action\": {\n      \"enum\": [\n        \"document.list\",\n        \"document.save\",\n        \"document.revert\"\n      ],\n      \"type\": \"string\"\n    },\n    \"payload\": {\n      \"additionalProperties\": true,\n      \"type\": \"object\"\n    }\n  },\n  \"required\": [\n    \"action\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_schematic",
+      "description": "Run one typed KiCad schematic action. Use kicad_actions for input guidance.",
+      "schema": "{\n  \"properties\": {\n    \"action\": {\n      \"enum\": [\n        \"schematic.items.get\",\n        \"schematic.items.create\",\n        \"schematic.items.update\",\n        \"schematic.items.delete\",\n        \"schematic.erc.run\",\n        \"schematic.create\",\n        \"schematic.place.symbol\",\n        \"schematic.annotate\",\n        \"schematic.generate\",\n        \"schematic.netlist.get\",\n        \"schematic.export.netlist\",\n        \"schematic.export.bom\",\n        \"schematic.export.pdf\",\n        \"schematic.export.svg\",\n        \"schematic.export.pythonbom\",\n        \"schematic.diff\"\n      ],\n      \"type\": \"string\"\n    },\n    \"payload\": {\n      \"additionalProperties\": true,\n      \"type\": \"object\"\n    }\n  },\n  \"required\": [\n    \"action\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_board",
+      "description": "Run one typed KiCad board action. Use kicad_actions for input guidance.",
+      "schema": "{\n  \"properties\": {\n    \"action\": {\n      \"enum\": [\n        \"board.items.get\",\n        \"board.items.create\",\n        \"board.items.update\",\n        \"board.items.delete\",\n        \"board.connectivity.prove\",\n        \"board.layers.get\",\n        \"board.stackup.read\",\n        \"board.stackup.write\",\n        \"board.zones.refill\",\n        \"board.netlist.import\",\n        \"board.place.autoplace\",\n        \"board.fanout.run\",\n        \"board.plane.create\",\n        \"board.plane.verify\",\n        \"board.jobs.svg\",\n        \"board.drc.run\",\n        \"board.render\",\n        \"board.impedance.layers\",\n        \"board.impedance.calculate\",\n        \"board.impedance.check\",\n        \"board.dfm.analyze\",\n        \"board.dfm.fix\",\n        \"board.route.autoroute\",\n        \"board.route.diff_pair\",\n        \"board.route.length_report\",\n        \"board.route.tune_length\",\n        \"board.check.3d\",\n        \"board.export.gerbers\",\n        \"board.export.drill\",\n        \"board.export.position\",\n        \"board.export.step\",\n        \"board.export.svg\",\n        \"board.export.pdf\",\n        \"board.export.png\",\n        \"board.export.ipc2581\",\n        \"board.export.odb\",\n        \"board.diff\"\n      ],\n      \"type\": \"string\"\n    },\n    \"payload\": {\n      \"additionalProperties\": true,\n      \"type\": \"object\"\n    }\n  },\n  \"required\": [\n    \"action\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_library",
+      "description": "Run one typed KiCad library action. Use kicad_actions for input guidance.",
+      "schema": "{\n  \"properties\": {\n    \"action\": {\n      \"enum\": [\n        \"library.search.symbols\",\n        \"library.get.symbol\",\n        \"library.search.footprints\"\n      ],\n      \"type\": \"string\"\n    },\n    \"payload\": {\n      \"additionalProperties\": true,\n      \"type\": \"object\"\n    }\n  },\n  \"required\": [\n    \"action\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    },
+    {
+      "name": "mcp__kicad__kicad_external",
+      "description": "Run one typed KiCad external action. Use kicad_actions for input guidance.",
+      "schema": "{\n  \"properties\": {\n    \"action\": {\n      \"enum\": [\n        \"external.tools.list\",\n        \"external.freerouting.run\",\n        \"external.ngspice.run\",\n        \"external.step.check\",\n        \"external.step.meshcheck\",\n        \"external.command.run\"\n      ],\n      \"type\": \"string\"\n    },\n    \"payload\": {\n      \"additionalProperties\": true,\n      \"type\": \"object\"\n    }\n  },\n  \"required\": [\n    \"action\"\n  ],\n  \"type\": \"object\"\n}",
+      "access": "依参数可能修改，请查看工具说明"
+    }
+  ]
+}

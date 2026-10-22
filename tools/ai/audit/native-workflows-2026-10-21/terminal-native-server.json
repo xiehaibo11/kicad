@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "fixture": "real native binary + local streaming model + in-process native tools",
+  "cases": [
+    {
+      "finishReason": "stop",
+      "httpStatus": 200,
+      "response": {
+        "text": "只读检查 U1 和 R1（10 kΩ），不修改文件、不布线，并解释检查结果。",
+        "model": "regression/fixture"
+      }
+    },
+    {
+      "finishReason": "length",
+      "httpStatus": 400,
+      "response": {
+        "message": "模型输出未完整结束（length），草稿未替换，请重试。"
+      }
+    },
+    {
+      "finishReason": "content_filter",
+      "httpStatus": 400,
+      "response": {
+        "message": "模型输出未完整结束（content-filter），草稿未替换，请重试。"
+      }
+    }
+  ],
+  "requests": [
+    {
+      "model": "fixture",
+      "tools": 0,
+      "toolChoice": null
+    },
+    {
+      "model": "fixture",
+      "tools": 0,
+      "toolChoice": null
+    },
+    {
+      "model": "fixture",
+      "tools": 0,
+      "toolChoice": null
+    }
+  ],
+  "savedChatsUnchanged": true,
+  "actualRegisteredTools": 34,
+  "health": {
+    "text": "工具: 进程内直接调用\nKiCad CLI: 10.99.0\nKiCad IPC: 已连接\n文档: {\"ok\":false,\"action\":\"document.list\",\"error\":{\"code\":\"UNHANDLED\",\"message\":\"no handler available for request of type kiapi.common.commands.GetOpenDocuments\"}}\n缺少的可选工具: kicad-stepcheck"
+  }
+}

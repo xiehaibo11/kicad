@@ -1,0 +1,194 @@
+{
+  "createdAt": "2026-10-20T16:30:18.640107-07:00",
+  "scope": "扩展与终端源代码、当前安装包、隔离构建、模型路由、输入框交互、工具目录和健康状态；本轮未修改业务代码或安装版本。",
+  "installed": {
+    "extension": "kicad-agent.kicad-0.4.11",
+    "terminalUpstream": "OpenCode 1.19.3",
+    "terminalSha256": "1e9028b3ce6867d7d98f314293c3a9797726da072d3406ddab52664c7fca55e7"
+  },
+  "runtimeHealth": {
+    "kicadCli": {
+      "available": true,
+      "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli",
+      "version": "10.99.0"
+    },
+    "ipc": {
+      "available": false,
+      "error": "IPC_UNAVAILABLE: Connection refused (ipc:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad/api.sock (nng error 6))",
+      "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad/api.sock"
+    },
+    "missingOptionalTools": [
+      "freerouting",
+      "gerbv",
+      "openscad",
+      "FreeCAD"
+    ]
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "priority": "high",
+      "area": "shared-agent-install",
+      "title": "已安装 agent 与源码能力不一致",
+      "evidence": {
+        "installedActions": 84,
+        "sourceActions": 119,
+        "installedMcpTools": 14,
+        "sourceMcpTools": 16,
+        "missingMcpTools": [
+          "kicad_native_tools",
+          "kicad_editor"
+        ]
+      },
+      "reproduction": [
+        "agent-diff.json",
+        "mcp-tools.json"
+      ],
+      "source": [
+        "tools/ai/install.sh:8",
+        "tools/ai/install.sh:12",
+        "tools/ai/install.sh:22",
+        "tools/ai/kicad-agent/internal/commands/root.go:80"
+      ],
+      "recommendation": "构建后统一安装并校验 agent、终端、扩展版本和能力清单；临时 Go 二进制仅用于目录和 MCP 枚举，未验证实时 IPC。"
+    },
+    {
+      "id": "F2",
+      "priority": "high",
+      "area": "extension-model-routing",
+      "title": "已有会话跨服务商切换模型未刷新端点和凭据",
+      "evidence": "真实捆绑 CLI 和 SDK 接本地模拟 Anthropic 服务；deepseek-flash 切到 sonnet 后，第二轮请求仍为原端点上的 deepseek-flash。",
+      "reproduction": [
+        "model-switch.json"
+      ],
+      "source": [
+        "tools/ai/upstream/Kicad-extension/src/services/claude/ClaudeAgentService.ts:950",
+        "tools/ai/Kicad-extension/overlay/kicadProviders.ts:138",
+        "tools/ai/Kicad-extension/apply-overlay.mjs:306"
+      ],
+      "recommendation": "显式管理 provider 与 model；跨 provider 时用新环境重建或恢复会话，验证界面选项与实际请求一致。"
+    },
+    {
+      "id": "F3",
+      "priority": "high",
+      "area": "terminal-optimizer",
+      "title": "优化等待期间新增的附件会在回填时丢失",
+      "evidence": "实际 useKiCadComposer 配合 OpenTUI 测试：新增附件后放行优化响应，remainingAttachments 变为 []。",
+      "reproduction": [
+        "attachment-reproduction.log",
+        "attachment-reproduction.test.tsx"
+      ],
+      "source": [
+        "tools/ai/Kicad-terminal/overlay/composer.tsx:180",
+        "tools/ai/Kicad-terminal/apply-composer.mjs:44"
+      ],
+      "recommendation": "回填前复查附件和输入模式修订号及 blocked 状态，忽略过期结果；撤销也不得清除新增附件。"
+    },
+    {
+      "id": "F4",
+      "priority": "high",
+      "area": "terminal-optimizer",
+      "title": "终端把模型截断输出作为成功优化结果",
+      "evidence": "已安装原生终端接隔离本地模型，finish_reason=length 时 /kicad/composer 返回 200 和不完整文本。扩展对应 max_tokens 场景正确报错。",
+      "reproduction": [
+        "local-model-truncation-terminal.json",
+        "local-model-truncation-extension.json"
+      ],
+      "source": [
+        "tools/ai/Kicad-terminal/overlay/composer-handlers.ts:60"
+      ],
+      "recommendation": "检查流结束原因，截断、过滤或未完整结束时保留原草稿并提示重试；不对用户文本另加长度限制。"
+    },
+    {
+      "id": "F5",
+      "priority": "medium",
+      "area": "extension-provider-config",
+      "title": "用户配置文件中的自定义 DeepSeek baseUrl 被默认值遮蔽",
+      "evidence": "隔离配置夹具设置 custom-provider.invalid，解析结果仍为 api.deepseek.com；源码默认值使 file.baseUrl 回退不可达。",
+      "reproduction": [
+        "provider-config.jsonl"
+      ],
+      "source": [
+        "tools/ai/Kicad-extension/overlay/kicadProviders.ts:53",
+        "tools/ai/Kicad-extension/overlay/kicadProviders.ts:108"
+      ],
+      "recommendation": "明确配置优先级：显式 VS Code 设置、用户文件、默认值；终端与扩展共用解析契约。"
+    },
+    {
+      "id": "F6",
+      "priority": "medium",
+      "area": "extension-next-suggestion",
+      "title": "下一句建议失败后错误信息未显示",
+      "evidence": "已安装前端接可控 429 错误，错误响应已送达，界面未呈现。notice 已生成但未绑定。",
+      "reproduction": [
+        "prediction-error.json"
+      ],
+      "source": [
+        "tools/ai/Kicad-extension/overlay/useDraftPrediction.ts:65",
+        "tools/ai/Kicad-extension/apply-overlay.mjs:495"
+      ],
+      "recommendation": "使用轻量状态或日志入口提供错误和重试；保留仅输入框灰字、Tab 接受的现有设计。"
+    }
+  ],
+  "optimizations": [
+    {
+      "area": "build-dependency",
+      "source": [
+        "tools/ai/CMakeLists.txt:66",
+        "tools/ai/kicad-agent/internal/kicadactions/native.go:16"
+      ],
+      "detail": "native-tools.json 被 go:embed 引用，但 CMake 自定义命令依赖仅包括 Go 文件及模块文件；单改 JSON 可能不触发重新构建。"
+    },
+    {
+      "area": "capability-audit",
+      "source": [
+        "tools/ai/Kicad-extension/audit-tools.py:39"
+      ],
+      "detail": "静态动作统计只读取 catalog.go，报告 84，遗漏 editor.go 和 board_extra.go 追加动作；应以编译后的目录输出为准。"
+    },
+    {
+      "area": "health-status",
+      "detail": "分别展示 MCP、IPC、当前文档、可选外部工具的状态；MCP 可启动不代表可以控制 KiCad 当前文档。"
+    },
+    {
+      "area": "prediction-performance",
+      "source": [
+        "tools/ai/Kicad-extension/overlay/useDraftPrediction.ts:34",
+        "tools/ai/Kicad-terminal/apply-composer.mjs:43",
+        "tools/ai/composer/prediction.ts:19"
+      ],
+      "detail": "在客户端组装和传输前限制建议所需的历史上下文；提供持久开关，保留现有输入框简洁交互。"
+    },
+    {
+      "area": "build-and-install-diagnostics",
+      "source": [
+        "tools/ai/Kicad-extension/build.sh:41",
+        "tools/ai/install.sh:101"
+      ],
+      "detail": "锁定构建依赖并记录产物清单；安装时保留 VSIX 错误输出，安装后核对实际版本和能力。"
+    }
+  ],
+  "validation": {
+    "extensionTypechecks": "tsc 和 vue-tsc 均通过",
+    "extensionSuites": [
+      "overlay",
+      "prompt optimizer",
+      "composer backend",
+      "SDK probe lifecycle"
+    ],
+    "installedFrontend": "真实已安装生产前端、模拟宿主响应；Agent 默认、直接回填、撤销、取消、并发编辑保护、Tab 建议、不自动发送均通过；另复现建议错误不显示。",
+    "terminalRegression": {
+      "pass": 205,
+      "skip": 1,
+      "fail": 0,
+      "files": 48,
+      "snapshots": 8,
+      "assertions": 539
+    },
+    "terminalTypechecks": "TUI 和 opencode 均通过",
+    "agentGoTests": "带 nng 的 internal/commands、mcp、backend、kicadactions；mcp/backend 通过，commands/kicadactions 无测试文件。",
+    "newBoundaryReproducer": "附件保护测试故意作为回归用例独立执行：1 fail；未混入既有测试集。",
+    "modelEvidence": "真实 CLI/SDK 或已安装原生服务接本地模型夹具；未调用外部付费模型，不代表真实模型的语义质量验收。",
+    "guiLimitation": "未进行原生 VS Code 屏幕和 KiCad 当前文档读写验收；检查时 IPC 不可用。"
+  }
+}

@@ -1,0 +1,6990 @@
+{
+  "summary": {
+    "actionCount": 333,
+    "executed": 333,
+    "positiveResult": 331,
+    "currentTurnPositiveRechecks": 14,
+    "classifiedNegative": [
+      {
+        "action": "audit.run",
+        "status": "expected-design-and-manufacturing-evidence-incomplete"
+      },
+      {
+        "action": "release.check",
+        "status": "expected-release-evidence-incomplete"
+      }
+    ]
+  },
+  "note": "Cumulative coverage: earlier positive executions remain linked to original evidence; this turn resolves all seven previous software/environment capability failures. Two release-evidence gates remain intentionally blocked. This is not a claim that every action ran on the user board.",
+  "retired": [
+    {
+      "action": "board.export.hpgl",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": false,
+      "status": "native-KiCad-10-removed-HPGL-explicit-alternatives",
+      "available": false,
+      "unavailableReason": "KiCad 10 removed HPGL export; use PDF, SVG, DXF or PS.",
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 35,
+          "ok": false,
+          "error": {
+            "code": "KICAD_CLI_FAILED",
+            "message": "board.export.hpgl exited with 1"
+          }
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.hpgl",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": false,
+      "status": "native-KiCad-10-removed-HPGL-explicit-alternatives",
+      "available": false,
+      "unavailableReason": "KiCad 10 removed HPGL export; use PDF, SVG, DXF or PS.",
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 49,
+          "ok": false,
+          "error": {
+            "code": "KICAD_CLI_FAILED",
+            "message": "schematic.export.hpgl exited with 1"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "action": "system.health",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 0,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "system.version",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 0,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "system.capabilities",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 0,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.list",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 1,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.resolve",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 2,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.switch",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 3,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.open",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 92,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.info",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 1,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "document.list",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 0,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 1,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 4,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 5,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 7,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 8,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 113,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 115,
+          "ok": false,
+          "error": "UNHANDLED"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 117,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 206,
+          "ok": false,
+          "error": "UNHANDLED"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 210,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 360,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 361,
+          "ok": false,
+          "error": "UNHANDLED"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 363,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 394,
+          "ok": false,
+          "error": "UNHANDLED"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 395,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui-library.json",
+          "index": 3,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "document.save",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 106,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 250,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 264,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 354,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 370,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 393,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 67,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 91,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 8,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "document.revert",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 90,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.items.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 123,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 128,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 132,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 150,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 253,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 255,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 261,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 263,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 265,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 267,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 269,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 271,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 273,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 275,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 278,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 280,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 282,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 284,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 286,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 288,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 290,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 292,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 294,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 297,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 299,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 302,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 304,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 306,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 309,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 315,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 318,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 329,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 372,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 375,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 377,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 380,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 382,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 383,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 385,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 52,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 56,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 85,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 87,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "board.items.create",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 120,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 159,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 167,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 270,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 274,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 277,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 281,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 298,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 301,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 73,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 6,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.items.update",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 136,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 259,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 266,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 287,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 303,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 374,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.items.delete",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 145,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 291,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 305,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 384,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.connectivity.prove",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 310,
+          "ok": false,
+          "error": "CONNECTIVITY_UNPROVEN"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 316,
+          "ok": false,
+          "error": "CONNECTIVITY_UNPROVEN"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 334,
+          "ok": false,
+          "error": "CONNECTIVITY_UNPROVEN"
+        },
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 2,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.layers.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 129,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 295,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 320,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 331,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.stackup.read",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 134,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 137,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 146,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 321,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 332,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 30,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "board.stackup.write",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 142,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.zones.refill",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 308,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.netlist.import",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 379,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.place.autoplace",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 3,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.fanout.run",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 4,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.plane.create",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 4,
+          "ok": true
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 3,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.plane.verify",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 5,
+          "ok": false,
+          "error": {
+            "code": "PLANE_UNCONNECTED",
+            "message": "Plane has unconnected pads or vias",
+            "detail": {
+              "plane": {
+                "zone": {
+                  "value": "f586e269-5e5e-4784-8f89-50af4b4b0dec"
+                },
+                "net": "",
+                "layers": [
+                  "BL_F_Cu"
+                ],
+                "filled": true,
+                "hasFilledPolygons": true,
+                "filledAreaNm2": "781964894126453",
+                "connectedPads": 0,
+                "connectedVias": 0
+              },
+              "unconnectedPads": [],
+              "unconnectedVias": [
+                {
+                  "value": "6915694d-3bff-434d-b38d-2868321f10c0"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 4,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.jobs.svg",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 6,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.drc.run",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 336,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 356,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 1,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.render",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 2,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.impedance.layers",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 5,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.impedance.calculate",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 6,
+          "ok": true
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 5,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.impedance.check",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 7,
+          "ok": false,
+          "error": {
+            "code": "IMPEDANCE_VIOLATIONS",
+            "message": "Tracks outside tolerance"
+          }
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 7,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.dfm.analyze",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 8,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.dfm.fix",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 9,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.route.autoroute",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 10,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.route.diff_pair",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 11,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.route.length_report",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 12,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.route.tune_length",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 13,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.check.3d",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 14,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.gerbers",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 3,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.drill",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 4,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.position",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 5,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.step",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 6,
+          "ok": true
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 9,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.export.svg",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 327,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 338,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 7,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.pdf",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 8,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.png",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 9,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.ipc2581",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 10,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.odb",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 11,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.diff",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 12,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.items.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 126,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 130,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 133,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 143,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 148,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 153,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 156,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 164,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 168,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 177,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 180,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 190,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 192,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 200,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 205,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 217,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 218,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 226,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 231,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 234,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 243,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 246,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 251,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 254,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 257,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 373,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 397,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 38,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.items.create",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 223,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 249,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 256,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 353,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 369,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.items.update",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 138,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 158,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 171,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 188,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 198,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 237,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.items.delete",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 7,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.erc.run",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 344,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 387,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 399,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 13,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.create",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 98,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 350,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 364,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.place.symbol",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 103,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 352,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 368,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.annotate",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 8,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.generate",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 107,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 355,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 371,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 33,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 83,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.netlist.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 260,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 325,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 348,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 65,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.netlist",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 323,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 365,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 378,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 78,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        },
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 14,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.bom",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 15,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.pdf",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 16,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.svg",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 391,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 17,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.pythonbom",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 18,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.diff",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 19,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "library.search.symbols",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 9,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "library.get.symbol",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 102,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 185,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 195,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 351,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 366,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "library.search.footprints",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 15,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "kicad.cli.run",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 16,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "job.status",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 94,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "job.cancel",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 95,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "external.tools.list",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 17,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "external.freerouting.run",
+      "backend": "external",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 18,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "external.ngspice.run",
+      "backend": "external",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 19,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "external.step.check",
+      "backend": "external",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 20,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "external.step.meshcheck",
+      "backend": "external",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 21,
+          "ok": false,
+          "error": {
+            "code": "TOOL_MISSING",
+            "message": "Executable not found: kicad-stepcheck"
+          }
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 10,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "external.command.run",
+      "backend": "external",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 22,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "spec.validate",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 23,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "workflow.init",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 24,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "workflow.status",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 25,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "workflow.advance",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 26,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "workflow.confirm",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 27,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "workflow.reset",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 28,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "blocks.list",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 29,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "blocks.search",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 30,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "blocks.show",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 31,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "pipeline.run",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 32,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "pipeline.status",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 33,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.run_action",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 10,
+          "ok": false,
+          "error": {
+            "code": "UNHANDLED",
+            "message": "no handler available for request of type kiapi.common.commands.RunAction"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 21,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui-library.json",
+          "index": 1,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.native.search",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 34,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.native.list",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 35,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.native.show",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 36,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.native.categories",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 37,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.selection.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 11,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "GetSelection is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 4,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 7,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.selection.clear",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 12,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "ClearSelection is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 2,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.selection.add",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 13,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "AddToSelection is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 3,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.selection.remove",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 14,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "RemoveFromSelection is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 6,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.commit.begin",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 15,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.commit.end",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 89,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.nets.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 127,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 179,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 212,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 228,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 296,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 319,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 330,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.items.by_net",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 16,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.items.connected",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 17,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.rules.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 172,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.origin.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 18,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.origin.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 19,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.bbox.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 20,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.rules.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 21,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.rules.custom.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 166,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 175,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 176,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 183,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 186,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 189,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 196,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 199,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 207,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 211,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 220,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 224,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 238,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 242,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 247,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.rules.custom.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 181,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 182,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 194,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 204,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 216,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 233,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 245,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.items.by_netclass",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 22,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.items.get_by_id",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 124,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 139,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 162,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 169,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.flip",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 23,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.titleblock.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 110,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 114,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 121,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 222,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 229,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 235,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 240,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.titleblock.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 119,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 225,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.pagesettings.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 24,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.pagesettings.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 25,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.layers.name.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 26,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.layers.by_name.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 27,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.hittest",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 28,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.string",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 29,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.netclasses.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 30,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.pad.polygon.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 31,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.text.expand",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 32,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.graphics.defaults.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 33,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.layers.enabled.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 34,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.variants.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 35,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.embedded.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 36,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "system.manifest",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 38,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "audit.rules",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 39,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "audit.run",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": false,
+      "status": "expected-design-and-manufacturing-evidence-incomplete",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 40,
+          "ok": false,
+          "error": {
+            "code": "AUDIT_NOT_PASSED",
+            "message": "Violations or incomplete evidence; see checks and artifacts"
+          }
+        },
+        {
+          "file": "audit.run-result.json",
+          "ok": false,
+          "error": {
+            "code": "AUDIT_NOT_PASSED",
+            "message": "Violations or incomplete evidence; see checks and artifacts"
+          },
+          "scope": "Actual RK3308B project, read-only gate check."
+        }
+      ]
+    },
+    {
+      "action": "audit.footprint",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 41,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "web.search",
+      "backend": "external",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-public-DNS-resolution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 42,
+          "ok": false,
+          "error": {
+            "code": "BAD_INPUT",
+            "message": "Private, local and reserved network destinations are not allowed"
+          }
+        },
+        {
+          "file": "web-search.json",
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "web.fetch",
+      "backend": "external",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 43,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "reference.search",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 44,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "reference.get",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 45,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "reference.plan",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 46,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "reference.examples",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 47,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "release.snapshot",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 48,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "release.template",
+      "backend": "offline",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 49,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "release.check",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": false,
+      "status": "expected-release-evidence-incomplete",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 50,
+          "ok": false,
+          "error": {
+            "code": "RELEASE_EVIDENCE_INCOMPLETE",
+            "message": "Missing, stale or failing evidence; no fabrication/production approval conferred"
+          }
+        },
+        {
+          "file": "release.check-result.json",
+          "ok": false,
+          "error": {
+            "code": "RELEASE_EVIDENCE_INCOMPLETE",
+            "message": "Missing, stale or failing evidence; no fabrication/production approval conferred"
+          },
+          "scope": "Actual RK3308B project, read-only gate check."
+        }
+      ]
+    },
+    {
+      "action": "system.api.version",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 112,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "system.binary_path",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 37,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "system.paths",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 38,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "system.ping",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 2,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 10,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 94,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 95,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 96,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 97,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 99,
+          "ok": false,
+          "error": "NOT_READY"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 100,
+          "ok": false,
+          "error": "NOT_READY"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 101,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 104,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 105,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 108,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 109,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 140,
+          "ok": false,
+          "error": "NOT_READY"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 174,
+          "ok": false,
+          "error": "NOT_READY"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 202,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 339,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 340,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 341,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 342,
+          "ok": false,
+          "error": "IPC_UNAVAILABLE"
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 343,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "system.plugin_settings_path",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 39,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.netclasses.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 151,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 155,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 160,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.netclasses.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 157,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "document.text.extents",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 209,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 213,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "document.text.shapes",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 40,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.textvars.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 41,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.textvars.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 42,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "document.close",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 91,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "document.close_all",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 93,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "document.modified",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 43,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "document.save_copy",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 193,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 322,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 326,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 333,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 335,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 349,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 367,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 390,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.selection.export",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 44,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "SaveSelectionToString is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 5,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.jobs.svg",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 45,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.jobs.dxf",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 46,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.jobs.pdf",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 47,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.jobs.ps",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 48,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.jobs.netlist",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 49,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.jobs.bom",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 50,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.hierarchy.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 215,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 324,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 347,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 396,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.crossprobe.announce",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 51,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.selection.sync",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 52,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "SyncSelection is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 8,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.nets.highlight",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 53,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "HighlightNets is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 9,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.variants.add",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 54,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.variants.delete",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 60,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.variants.rename",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 56,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.variants.copy",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 55,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.variants.describe",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 57,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.variants.current.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 58,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.variants.current.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 59,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.padstack.presence",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 61,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.move.interactive",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 62,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "InteractiveMoveItems is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 22,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.items.from_string",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "implemented-native-parser-create-readback",
+      "available": true,
+      "unavailableReason": "The native ParseAndCreateItemsFromString handler is not implemented in this KiCad build. Use typed board.items.create.",
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 63,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "ParseAndCreateItemsFromString is not implemented in this KiCad build"
+          }
+        },
+        {
+          "file": "direct-tests-final.log",
+          "test": "isolated native KiCad: direct IPC writes/readback/delete, temporary live DRC and CLI export",
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.layers.visible.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 64,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "GetVisibleLayers is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 10,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 12,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.layers.visible.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 65,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "SetVisibleLayers is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 11,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 13,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.layers.active.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 66,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "GetActiveLayer is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 14,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 16,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.layers.active.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 67,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "SetActiveLayer is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 15,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 17,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "editor.library.open",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 68,
+          "ok": false,
+          "error": {
+            "code": "UNHANDLED",
+            "message": "no handler available for request of type kiapi.common.commands.OpenLibraryItem"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui-library.json",
+          "index": 2,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.embedded.add",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 69,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.embedded.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 70,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.appearance.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 71,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "GetBoardEditorAppearanceSettings is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 18,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 20,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.appearance.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 72,
+          "ok": false,
+          "error": {
+            "code": "UNIMPLEMENTED",
+            "message": "SetBoardEditorAppearanceSettings is not available in headless mode"
+          }
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 19,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.plotsettings.get",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 73,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.plotsettings.set",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 74,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.drc.marker.add",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 75,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.3d",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 76,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.render",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 77,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.dxf",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 78,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.pdf",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 79,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.ps",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 80,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.gerbers",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 81,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.drill",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 82,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.position",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 83,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.gencad",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 84,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.ipc2581",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 85,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.ipcd356",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 86,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.odb",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 87,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.jobs.stats",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/ipc/ipc-catalog.json",
+          "index": 88,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.diff",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 20,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.export_svg",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 21,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.upgrade",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 22,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "gerber.convert_png",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 23,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "gerber.diff",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 24,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "gerber.info",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 25,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.import",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 26,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.jobset.run",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 27,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.mergetool",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 28,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.3dpdf",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 29,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.bom",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 30,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.brep",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 31,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.dxf",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 32,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.gencad",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 33,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.glb",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 34,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.ipcd356",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 36,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.ply",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 37,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.ps",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 38,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.stackup",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 39,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.stats",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 40,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.stl",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 41,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.stpz",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 42,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.u3d",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 43,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.vrml",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 44,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.export.xao",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 45,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.import",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 46,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.upgrade",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 47,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.dxf",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 48,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.png",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 50,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.ps",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 51,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.import",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 52,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.upgrade",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 53,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.diff",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 54,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.export_svg",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 55,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.upgrade",
+      "backend": "cli",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/cli/cli-catalog.json",
+          "index": 56,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.layers.type.get",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 51,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.layers.type.set",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 52,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.via.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 118,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 125,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 1,
+          "ok": true
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 2,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.via.modify",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 141,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.plane.build",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 53,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.rule_area.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 170,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.keepout.antenna",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 54,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.rules.region.set",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 184,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.footprint.place",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 163,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.fiducial.add",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 55,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.decap.check",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 56,
+          "ok": true
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 1,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.decap.place",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 57,
+          "ok": false,
+          "error": {
+            "code": "DECAP_DRC_REGRESSION",
+            "message": "DRC failed or violation count increased"
+          }
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 0,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.drc.live",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 337,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 357,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "schematic.erc.live",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 345,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 388,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 400,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.check.unified",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-native-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 58,
+          "ok": false,
+          "error": {
+            "code": "CHECK_FINDINGS",
+            "message": "Native violations, heuristic findings or incomplete checks remain"
+          }
+        },
+        {
+          "file": "remaining-tools.json",
+          "index": 12,
+          "ok": true
+        }
+      ],
+      "currentTurnRechecked": true
+    },
+    {
+      "action": "board.dfm.full",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 59,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.route.length_match",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/runtime/runtime-catalog.json",
+          "index": 60,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "project.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 3,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 0,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.pages.list",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 203,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 1,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.open",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 219,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 398,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 62,
+          "ok": true,
+          "mode": "native-child-sheet-ipc"
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 92,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 6,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 2,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.rename",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 3,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.delete",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 6,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.clear",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 5,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.rename",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 4,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.list",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 7,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.current",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 116,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 28,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "board.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 8,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.new_pcb",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 9,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.rename",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 11,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.copy",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 10,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.delete",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 12,
+          "ok": true,
+          "mode": "native-files"
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 27,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.rebind",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 13,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.list",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 26,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 16,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.get",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 18,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.copy",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 20,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.delete",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 21,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.build",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 17,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.region_create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 19,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 22,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.build",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 9,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 23,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.export_source",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 24,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.delete",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 25,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.titleblock.get",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 111,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 236,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 241,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 34,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.titleblock.modify",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 122,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 230,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 37,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.attribute.inspect",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 131,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 39,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.attribute.move",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 144,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 149,
+          "ok": false,
+          "error": "SOURCE_CHANGED"
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 41,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.designators.list",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 154,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 43,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.image.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 227,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 55,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.image.list",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 232,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 57,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.image.modify",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 244,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 59,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.group.move",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 165,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 45,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.pin.disconnect",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 258,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 64,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.check",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 346,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 80,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.bridgeCheck",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 389,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 89,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.image",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 392,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 90,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.power.connect_pin",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 252,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 61,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.rebind.footprint",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 178,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 46,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.rebind.symbol",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 191,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 48,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.component.replace",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 201,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 51,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.visible_text.bboxes",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 214,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 53,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.net_class.list",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 152,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 32,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.net_class.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 161,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 35,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.constraint.list",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 173,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 36,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.differential_pair.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 187,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 40,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.differential_pair.delete",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 208,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 44,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.differential_pair.rename",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 197,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 42,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.equal_length_group.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 221,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 47,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.equal_length_group.add_nets",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 239,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 49,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.equal_length_group.delete",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 248,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 50,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.route.via_hop",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 300,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 72,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.pour.rebuild",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 311,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 75,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.beautify",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 307,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 74,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.export.dsn",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 313,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 76,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.import_autoroute",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 317,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 77,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.stackup.set",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 147,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 31,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.silk.align",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 268,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 58,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.silk.import_svg",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 279,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 66,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.image.create",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 283,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 68,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.image.list",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 285,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 69,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.image.modify",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 289,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 70,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.image.delete",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 293,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 71,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.silk.netnames",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 272,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 60,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.silk.label_pads",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 276,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 63,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.report",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 358,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 81,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.board.info",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 135,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 29,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "system.notify",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 359,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 82,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.import_changes",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 381,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 86,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.component.attrs_backfill",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 376,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 84,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.page.clear",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 386,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 88,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.components.arrange",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 262,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 54,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.config.set",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 362,
+          "ok": false,
+          "error": "DOCUMENT_OPEN"
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 14,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "pcb.net.color.set",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 15,
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "pcb.view.filter.get",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/gui.json",
+          "index": 0,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/gui-library.json",
+          "index": 0,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "pcb.snapshot",
+      "backend": "composite",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 328,
+          "ok": true
+        },
+        {
+          "file": "../tool-review-2026-10-21/workflow-final.jsonl",
+          "index": 79,
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "board.specctra.export",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 312,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "action": "board.specctra.import",
+      "backend": "ipc",
+      "executed": true,
+      "positiveResult": true,
+      "status": "positive-execution",
+      "available": true,
+      "observations": [
+        {
+          "file": "../tool-review-2026-10-21/native-dispatch.jsonl",
+          "index": 314,
+          "ok": true
+        }
+      ]
+    }
+  ]
+}

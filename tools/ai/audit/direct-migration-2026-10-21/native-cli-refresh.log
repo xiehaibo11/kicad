@@ -1,0 +1,94 @@
+[0/2] Re-checking globbed directories...
+-- GLOB mismatch!
+The following files were added:
+  +/Users/mosc/Downloads/Kicad/tools/ai/direct/test/entry.test.mjs
+[1/2] Re-running CMake...
+CMake Warning (deprecated) at CMakeLists.txt:28 (cmake_policy):
+  The OLD behavior for policy CMP0116 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- KiCad install dir: </usr/local>
+-- Enabling warning -Wsuggest-override
+-- Enabling warning -Winconsistent-missing-override
+-- Enabling error for -Wvla
+-- Enabling warning -Wimplicit-fallthrough
+-- Enabling error for -Wreturn-type
+-- Enabling warning -Wshadow
+-- Enabling warning -Wsign-compare
+-- Enabling warning -Wmissing-field-initializers
+-- Enabling warning -Wempty-body
+-- Enabling warning -Wreorder
+-- Enabling warning -Wmismatched-tags
+-- Enabling warning -Wpessimizing-move
+-- Enabling warning -Wredundant-move
+-- Disabling warning -Wpsabi
+-- Initializing trivial variables (-ftrivial-auto-var-init=zero)
+-- Found Zstd: /opt/homebrew/lib/libzstd.dylib
+CMake Warning (policy) at CMakeLists.txt:841 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+This warning is for project developers.  Use -Wno-author or -Wno-policy to
+suppress it.
+
+-- Found the following HarfBuzz libraries:
+--  HarfBuzz (required): /opt/homebrew/lib/libharfbuzz.dylib
+-- Found OpenCASCADE Standard Edition version: 7.9.3
+--  ++ OpenCASCADE Standard Edition include directory: /opt/homebrew/opt/opencascade/include/opencascade
+--  ++ OpenCASCADE Standard Edition shared libraries directory: /opt/homebrew/lib
+-- Attempting to find Protobuf using CONFIG mode...
+-- Found Protobuf using CONFIG mode
+-- Check for installed Python Interpreter -- found
+-- Found wxWidgets: -L/opt/homebrew/lib;;;-framework IOKit;-framework Carbon;-framework Cocoa;-framework QuartzCore;-framework AudioToolbox;-framework System;-framework OpenGL;-lwx_osx_cocoau_gl-3.2;-lwx_osx_cocoau_aui-3.2;-lwx_osx_cocoau_html-3.2;-lwx_osx_cocoau_core-3.2;-lwx_baseu_net-3.2;-lwx_baseu-3.2;-lwx_osx_cocoau_propgrid-3.2;-lwx_baseu_xml-3.2;-lwx_osx_cocoau_stc-3.2;-lwx_osx_cocoau_richtext-3.2;-lwx_osx_cocoau_webview-3.2 (found suitable version "3.2.12", minimum required is "3.2.0")
+-- Detected wxWidgets port: osx
+-- wxUSE_GLCANVAS_EGL=0
+-- wxHAS_GLX=wxHAS_GLX
+-- wxHAS_EGL=wxHAS_EGL
+-- Checking for module 'nng'
+--   Package 'nng' not found
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- WARNING: Doxygen not found - doxygen-docs (Source Docs) target not created
+-- Creating MacOS metadata
+-- Using Git to determine build version string.
+-- Tests are disabled. Set FASTFLOAT_TEST to ON to run tests.
+-- Benchmarks are disabled. Set FASTFLOAT_BENCHMARKS to ON to build benchmarks (assumes C++17).
+-- {fmt} version: 12.2.0
+-- Build type: RelWithDebInfo
+-- nanodbc version: 2.14.0
+-- nanodbc compile: C++14
+-- nanodbc feature: ODBC Version Override - OFF
+-- nanodbc feature: Disable async features - OFF
+-- nanodbc feature: Enable Unicode - ON
+-- nanodbc feature: Enable Boost - ON
+-- nanodbc feature: Enable SQL_NO_DATA bug workaround - OFF
+-- nanodbc build: ODBC on Unix - unixODBC
+-- ODBC compile flags: -I/opt/homebrew/Cellar/unixodbc/2.3.14/include
+-- ODBC link flags: -L/opt/homebrew/Cellar/unixodbc/2.3.14/lib -lodbc
+-- Use rpaths on Mac OS X - ON
+-- Using Git to determine build version string.
+-- Using Git to determine build version string.
+-- Including 3Dconnexion SpaceMouse navigation support in pcbcommon
+-- S3DSG version: 2.0.0
+-- Including 3Dconnexion SpaceMouse navigation support in 3d-viewer
+-- Including 3Dconnexion SpaceMouse navigation support in eeschema
+-- Including 3Dconnexion SpaceMouse navigation support in gerbview
+-- Including 3Dconnexion SpaceMouse navigation support in pagelayout editor
+-- kicad-cli found: /Users/mosc/.local/bin/kicad-cli
+-- Found wxWidgets: -L/opt/homebrew/lib;;;-framework IOKit;-framework Carbon;-framework Cocoa;-framework QuartzCore;-framework AudioToolbox;-framework System;-framework OpenGL;-lwx_osx_cocoau_gl-3.2;-lwx_osx_cocoau_aui-3.2;-lwx_osx_cocoau_html-3.2;-lwx_osx_cocoau_core-3.2;-lwx_baseu_net-3.2;-lwx_baseu-3.2;-lwx_baseu_xml-3.2;-lwx_osx_cocoau_stc-3.2 (found suitable version "3.2.12", minimum required is "3.0.0")
+-- pytest-xdist not found, qa_cli tests will run sequentially
+-- Configuring done (3.1s)
+-- Generating done (1.5s)
+-- Build files have been written to: /Users/mosc/Downloads/Kicad/build
+[0/4] Re-checking globbed directories...
+[1/4] Bundling shared KiCad JavaScript runtime
+Bundled 88 modules in 33ms
+
+  kicad-direct.mjs  1.78 MB  (entry point)
+

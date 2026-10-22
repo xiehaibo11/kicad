@@ -1,0 +1,70 @@
+{
+  "status": 0,
+  "requests": [
+    {
+      "provider": "claude",
+      "path": "/v1/messages?beta=true",
+      "model": "claude-haiku-4-5-20251001"
+    },
+    {
+      "provider": "claude",
+      "path": "/v1/messages?beta=true",
+      "model": "claude-opus-4-5-20251101"
+    },
+    {
+      "provider": "deepseek",
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-flash"
+    },
+    {
+      "provider": "deepseek",
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-flash"
+    },
+    {
+      "provider": "deepseek",
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-flash"
+    },
+    {
+      "provider": "claude",
+      "path": "/v1/messages?beta=true",
+      "model": "claude-haiku-4-5-20251001"
+    },
+    {
+      "provider": "claude",
+      "path": "/v1/messages?beta=true",
+      "model": "claude-opus-4-5-20251101"
+    },
+    {
+      "provider": "claude",
+      "path": "/v1/messages?beta=true",
+      "model": "claude-haiku-4-5-20251001"
+    },
+    {
+      "provider": "claude",
+      "path": "/v1/messages?beta=true",
+      "model": "claude-opus-4-5-20251101"
+    },
+    {
+      "provider": "claude",
+      "path": "/v1/messages?beta=true",
+      "model": "claude-sonnet-4-5-20250929"
+    },
+    {
+      "provider": "deepseek",
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-v4-pro"
+    },
+    {
+      "provider": "deepseek",
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-v4-pro"
+    },
+    {
+      "provider": "deepseek",
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-v4-pro"
+    }
+  ]
+}

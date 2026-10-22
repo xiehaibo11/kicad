@@ -1,0 +1,402 @@
+ninja: Entering directory `build'
+[0/2] Re-checking globbed directories...
+-- GLOB mismatch!
+The following files were added:
+  +/Users/mosc/Downloads/Kicad/tools/ai/direct/legacy.mjs
+  +/Users/mosc/Downloads/Kicad/tools/ai/direct/scripts/audit-cli-catalog.mjs
+  +/Users/mosc/Downloads/Kicad/tools/ai/direct/scripts/audit-ipc-catalog.mjs
+  +/Users/mosc/Downloads/Kicad/tools/ai/direct/scripts/frontend-fixture.mjs
+  +/Users/mosc/Downloads/Kicad/tools/ai/direct/scripts/trace-native-tests.mjs
+  +/Users/mosc/Downloads/Kicad/tools/ai/direct/test/ipc-job-settings.test.mjs
+  +/Users/mosc/Downloads/Kicad/tools/ai/direct/test/legacy.test.mjs
+  +/Users/mosc/Downloads/Kicad/tools/ai/direct/tools.mjs
+The following files were removed:
+  -/Users/mosc/Downloads/Kicad/tools/ai/direct/mcp.mjs
+[1/2] Re-running CMake...
+CMake Warning (deprecated) at CMakeLists.txt:28 (cmake_policy):
+  The OLD behavior for policy CMP0116 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- KiCad install dir: </usr/local>
+-- Enabling warning -Wsuggest-override
+-- Enabling warning -Winconsistent-missing-override
+-- Enabling error for -Wvla
+-- Enabling warning -Wimplicit-fallthrough
+-- Enabling error for -Wreturn-type
+-- Enabling warning -Wshadow
+-- Enabling warning -Wsign-compare
+-- Enabling warning -Wmissing-field-initializers
+-- Enabling warning -Wempty-body
+-- Enabling warning -Wreorder
+-- Enabling warning -Wmismatched-tags
+-- Enabling warning -Wpessimizing-move
+-- Enabling warning -Wredundant-move
+-- Disabling warning -Wpsabi
+-- Initializing trivial variables (-ftrivial-auto-var-init=zero)
+-- Found Zstd: /opt/homebrew/lib/libzstd.dylib
+CMake Warning (policy) at CMakeLists.txt:841 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+This warning is for project developers.  Use -Wno-author or -Wno-policy to
+suppress it.
+
+-- Found the following HarfBuzz libraries:
+--  HarfBuzz (required): /opt/homebrew/lib/libharfbuzz.dylib
+-- Found OpenCASCADE Standard Edition version: 7.9.3
+--  ++ OpenCASCADE Standard Edition include directory: /opt/homebrew/opt/opencascade/include/opencascade
+--  ++ OpenCASCADE Standard Edition shared libraries directory: /opt/homebrew/lib
+-- Attempting to find Protobuf using CONFIG mode...
+-- Found Protobuf using CONFIG mode
+-- Check for installed Python Interpreter -- found
+-- Found wxWidgets: -L/opt/homebrew/lib;;;-framework IOKit;-framework Carbon;-framework Cocoa;-framework QuartzCore;-framework AudioToolbox;-framework System;-framework OpenGL;-lwx_osx_cocoau_gl-3.2;-lwx_osx_cocoau_aui-3.2;-lwx_osx_cocoau_html-3.2;-lwx_osx_cocoau_core-3.2;-lwx_baseu_net-3.2;-lwx_baseu-3.2;-lwx_osx_cocoau_propgrid-3.2;-lwx_baseu_xml-3.2;-lwx_osx_cocoau_stc-3.2;-lwx_osx_cocoau_richtext-3.2;-lwx_osx_cocoau_webview-3.2 (found suitable version "3.2.12", minimum required is "3.2.0")
+-- Detected wxWidgets port: osx
+-- wxUSE_GLCANVAS_EGL=0
+-- wxHAS_GLX=wxHAS_GLX
+-- wxHAS_EGL=wxHAS_EGL
+-- Checking for module 'nng'
+--   Package 'nng' not found
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- WARNING: Doxygen not found - doxygen-docs (Source Docs) target not created
+-- Creating MacOS metadata
+-- Using Git to determine build version string.
+-- Tests are disabled. Set FASTFLOAT_TEST to ON to run tests.
+-- Benchmarks are disabled. Set FASTFLOAT_BENCHMARKS to ON to build benchmarks (assumes C++17).
+-- {fmt} version: 12.2.0
+-- Build type: RelWithDebInfo
+-- nanodbc version: 2.14.0
+-- nanodbc compile: C++14
+-- nanodbc feature: ODBC Version Override - OFF
+-- nanodbc feature: Disable async features - OFF
+-- nanodbc feature: Enable Unicode - ON
+-- nanodbc feature: Enable Boost - ON
+-- nanodbc feature: Enable SQL_NO_DATA bug workaround - OFF
+-- nanodbc build: ODBC on Unix - unixODBC
+-- ODBC compile flags: -I/opt/homebrew/Cellar/unixodbc/2.3.14/include
+-- ODBC link flags: -L/opt/homebrew/Cellar/unixodbc/2.3.14/lib -lodbc
+-- Use rpaths on Mac OS X - ON
+-- Using Git to determine build version string.
+-- Using Git to determine build version string.
+-- Including 3Dconnexion SpaceMouse navigation support in pcbcommon
+-- S3DSG version: 2.0.0
+-- Including 3Dconnexion SpaceMouse navigation support in 3d-viewer
+-- Including 3Dconnexion SpaceMouse navigation support in eeschema
+-- Including 3Dconnexion SpaceMouse navigation support in gerbview
+-- Including 3Dconnexion SpaceMouse navigation support in pagelayout editor
+-- kicad-cli found: /Users/mosc/.local/bin/kicad-cli
+-- Found wxWidgets: -L/opt/homebrew/lib;;;-framework IOKit;-framework Carbon;-framework Cocoa;-framework QuartzCore;-framework AudioToolbox;-framework System;-framework OpenGL;-lwx_osx_cocoau_gl-3.2;-lwx_osx_cocoau_aui-3.2;-lwx_osx_cocoau_html-3.2;-lwx_osx_cocoau_core-3.2;-lwx_baseu_net-3.2;-lwx_baseu-3.2;-lwx_baseu_xml-3.2;-lwx_osx_cocoau_stc-3.2 (found suitable version "3.2.12", minimum required is "3.0.0")
+-- pytest-xdist not found, qa_cli tests will run sequentially
+-- Configuring done (3.0s)
+-- Generating done (1.5s)
+-- Build files have been written to: /Users/mosc/Downloads/Kicad/build
+[0/4] Re-checking globbed directories...
+[1/15] Copying remote provider schema files into build directory
+[2/15] Generating version string header
+-- Found Git: /usr/bin/git (found version "2.50.1 (Apple Git-155)")
+-- Using Git to determine build version string.
+-- Not updating /Users/mosc/Downloads/Kicad/build/kicad_build_version.h
+[3/9] Building CXX object kicad/CMakeFiles/kicad-cli.dir/cli/command_agent.cpp.o
+[4/9] Linking CXX executable kicad/KiCad.app/Contents/MacOS/kicad-cli
+ld: warning: ignoring duplicate libraries: '-lodbc', '-lwx_baseu-3.2', '-lwx_baseu_net-3.2', '-lwx_baseu_xml-3.2', '-lwx_osx_cocoau_aui-3.2', '-lwx_osx_cocoau_core-3.2', '-lwx_osx_cocoau_gl-3.2', '-lwx_osx_cocoau_html-3.2', '-lwx_osx_cocoau_propgrid-3.2', '-lwx_osx_cocoau_richtext-3.2', '-lwx_osx_cocoau_stc-3.2', '-lwx_osx_cocoau_webview-3.2', 'common/libcommon.a', 'libs/core/libcore.a'
+[5/9] Building CXX object pcbnew/CMakeFiles/pcbnew_kiface_objects.dir/api/api_handler_board.cpp.o
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:318:13: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  318 |             anyItem.UnpackTo( &dimension );
+      |             ^~~~~~~~~~~~~~~~  ~~~~~~~~~~
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:68:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::ExportSpecctraBoard, google::protobuf::Empty, API_HANDLER_BOARD>' requested here
+   68 |     registerHandler<ExportSpecctraBoard, Empty>( &API_HANDLER_BOARD::handleExportSpecctra );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:69:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::ImportSpecctraRoutes, google::protobuf::Empty, API_HANDLER_BOARD>' requested here
+   69 |     registerHandler<ImportSpecctraRoutes, Empty>( &API_HANDLER_BOARD::handleImportSpecctra );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:71:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::GetItemsById, kiapi::common::commands::GetItemsResponse, API_HANDLER_BOARD>' requested here
+   71 |     registerHandler<GetItemsById, GetItemsResponse>( &API_HANDLER_BOARD::handleGetItemsById );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:73:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::GetSelection, kiapi::common::commands::SelectionResponse, API_HANDLER_BOARD>' requested here
+   73 |     registerHandler<GetSelection, SelectionResponse>( &API_HANDLER_BOARD::handleGetSelection );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:74:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::ClearSelection, google::protobuf::Empty, API_HANDLER_BOARD>' requested here
+   74 |     registerHandler<ClearSelection, Empty>( &API_HANDLER_BOARD::handleClearSelection );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:75:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::AddToSelection, kiapi::common::commands::SelectionResponse, API_HANDLER_BOARD>' requested here
+   75 |     registerHandler<AddToSelection, SelectionResponse>( &API_HANDLER_BOARD::handleAddToSelection );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:76:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::RemoveFromSelection, kiapi::common::commands::SelectionResponse, API_HANDLER_BOARD>' requested here
+   76 |     registerHandler<RemoveFromSelection, SelectionResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:79:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::GetBoardStackup, kiapi::board::commands::BoardStackupResponse, API_HANDLER_BOARD>' requested here
+   79 |     registerHandler<GetBoardStackup, BoardStackupResponse>( &API_HANDLER_BOARD::handleGetStackup );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:80:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::UpdateBoardStackup, kiapi::board::commands::BoardStackupResponse, API_HANDLER_BOARD>' requested here
+   80 |     registerHandler<UpdateBoardStackup, BoardStackupResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:82:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::GetBoardEnabledLayers, kiapi::board::commands::BoardEnabledLayersResponse, API_HANDLER_BOARD>' requested here
+   82 |     registerHandler<GetBoardEnabledLayers, BoardEnabledLayersResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:84:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::GetGraphicsDefaults, kiapi::board::commands::GraphicsDefaultsResponse, API_HANDLER_BOARD>' requested here
+   84 |     registerHandler<GetGraphicsDefaults, GraphicsDefaultsResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:86:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::GetBoundingBox, kiapi::common::commands::GetBoundingBoxResponse, API_HANDLER_BOARD>' requested here
+   86 |     registerHandler<GetBoundingBox, GetBoundingBoxResponse>( &API_HANDLER_BOARD::handleGetBoundingBox );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:87:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::GetPadShapeAsPolygon, kiapi::board::commands::PadShapeAsPolygonResponse, API_HANDLER_BOARD>' requested here
+   87 |     registerHandler<GetPadShapeAsPolygon, PadShapeAsPolygonResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:89:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::CheckPadstackPresenceOnLayers, kiapi::board::commands::PadstackPresenceResponse, API_HANDLER_BOARD>' requested here
+   89 |     registerHandler<CheckPadstackPresenceOnLayers, PadstackPresenceResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:91:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::ExpandTextVariables, kiapi::common::commands::ExpandTextVariablesResponse, API_HANDLER_BOARD>' requested here
+   91 |     registerHandler<ExpandTextVariables, ExpandTextVariablesResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:94:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::InteractiveMoveItems, google::protobuf::Empty, API_HANDLER_BOARD>' requested here
+   94 |     registerHandler<InteractiveMoveItems, Empty>( &API_HANDLER_BOARD::handleInteractiveMoveItems );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:95:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::FlipItems, kiapi::board::commands::FlipItemsResponse, API_HANDLER_BOARD>' requested here
+   95 |     registerHandler<FlipItems, FlipItemsResponse>( &API_HANDLER_BOARD::handleFlipItems );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:97:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::SaveDocumentToString, kiapi::common::commands::SavedDocumentResponse, API_HANDLER_BOARD>' requested here
+   97 |     registerHandler<SaveDocumentToString, SavedDocumentResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:99:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::SaveSelectionToString, kiapi::common::commands::SavedSelectionResponse, API_HANDLER_BOARD>' requested here
+   99 |     registerHandler<SaveSelectionToString, SavedSelectionResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:101:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::common::commands::ParseAndCreateItemsFromString, kiapi::common::commands::CreateItemsResponse, API_HANDLER_BOARD>' requested here
+  101 |     registerHandler<ParseAndCreateItemsFromString, CreateItemsResponse>(
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:103:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::GetVisibleLayers, kiapi::board::commands::BoardLayers, API_HANDLER_BOARD>' requested here
+  103 |     registerHandler<GetVisibleLayers, BoardLayers>( &API_HANDLER_BOARD::handleGetVisibleLayers );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:104:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::SetVisibleLayers, google::protobuf::Empty, API_HANDLER_BOARD>' requested here
+  104 |     registerHandler<SetVisibleLayers, Empty>( &API_HANDLER_BOARD::handleSetVisibleLayers );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:105:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::GetActiveLayer, kiapi::board::commands::BoardLayerResponse, API_HANDLER_BOARD>' requested here
+  105 |     registerHandler<GetActiveLayer, BoardLayerResponse>( &API_HANDLER_BOARD::handleGetActiveLayer );
+      |     ^
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:27:
+In file included from /Users/mosc/Downloads/Kicad/pcbnew/./api/api_handler_board.h:28:
+In file included from /Users/mosc/Downloads/Kicad/include/api/api_handler_editor.h:24:
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:145:25: warning: ignoring return value of function declared with 'nodiscard' attribute [-Wunused-result]
+  145 |                         envelope.mutable_message()->PackFrom( *response );
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+/Users/mosc/Downloads/Kicad/include/api/api_handler.h:130:17: note: while substituting into a lambda expression here
+  130 |                 {
+      |                 ^
+/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp:106:5: note: in instantiation of function template specialization 'API_HANDLER::registerHandler<kiapi::board::commands::SetActiveLayer, google::protobuf::Empty, API_HANDLER_BOARD>' requested here
+  106 |     registerHandler<SetActiveLayer, Empty>( &API_HANDLER_BOARD::handleSetActiveLayer );
+      |     ^
+25 warnings generated.
+[6/9] Linking CXX shared module kicad/KiCad.app/Contents/PlugIns/_pcbnew.kiface
+ld: warning: ignoring duplicate libraries: '-lodbc', '-lwx_baseu-3.2', '-lwx_baseu_net-3.2', '-lwx_baseu_xml-3.2', '-lwx_osx_cocoau_aui-3.2', '-lwx_osx_cocoau_core-3.2', '-lwx_osx_cocoau_gl-3.2', '-lwx_osx_cocoau_html-3.2', '-lwx_osx_cocoau_propgrid-3.2', '-lwx_osx_cocoau_richtext-3.2', '-lwx_osx_cocoau_stc-3.2', '-lwx_osx_cocoau_webview-3.2', 'common/libcommon.a', 'common/libpcbcommon.a', 'libs/core/libcore.a', 'libs/kiplatform/libkiplatform.a', 'thirdparty/markdown2html/libmarkdown_lib.a'

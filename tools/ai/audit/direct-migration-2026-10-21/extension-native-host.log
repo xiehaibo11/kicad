@@ -1,0 +1,46 @@
+{"isolatedEditorRoot": "/tmp/kn-vs-v3smpbke", "editor": "Visual Studio Code extension test host"}
+{
+  "ok": true,
+  "version": "0.4.25",
+  "active": true,
+  "inProcessHealth": {
+    "ok": true,
+    "action": "system.health",
+    "cli": {
+      "version": "10.99.0"
+    },
+    "ipcConnected": false
+  },
+  "invalidCompatibilityNodePathIgnored": true,
+  "inProcessCatalog": {
+    "count": 20,
+    "names": [
+      "mcp__kicad__kicad_health",
+      "mcp__kicad__kicad_actions",
+      "mcp__kicad__kicad_call",
+      "mcp__kicad__kicad_spec_validate",
+      "mcp__kicad__kicad_blocks",
+      "mcp__kicad__kicad_workflow",
+      "mcp__kicad__kicad_pipeline",
+      "mcp__kicad__kicad_native_tools",
+      "mcp__kicad__kicad_system",
+      "mcp__kicad__kicad_project",
+      "mcp__kicad__kicad_document",
+      "mcp__kicad__kicad_schematic",
+      "mcp__kicad__kicad_board",
+      "mcp__kicad__kicad_library",
+      "mcp__kicad__kicad_external",
+      "mcp__kicad__kicad_editor",
+      "mcp__kicad__kicad_reference",
+      "mcp__kicad__kicad_audit",
+      "mcp__kicad__kicad_web",
+      "mcp__kicad__kicad_gerber"
+    ]
+  },
+  "automaticIntermediaryRemoved": true,
+  "webviewReadinessObserved": {
+    "resolved": 1,
+    "mounted": 0
+  },
+  "scope": "Native host activation, in-process health and tool catalog. Full chat UI and terminal creation are separate tests."
+}

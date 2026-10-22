@@ -1,0 +1,1092 @@
+[
+  {
+    "action": "board.decap.place",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb",
+      "apply": true,
+      "offsetMm": 0.3,
+      "maxDistanceMm": 5
+    },
+    "result": {
+      "ok": true,
+      "action": "board.decap.place",
+      "data": {
+        "dryRun": false,
+        "planned": 1,
+        "findings": [
+          {
+            "x": 30000000,
+            "y": 30000000,
+            "id": "ec6b221e-43cf-4e99-8828-b079edc8a2e4",
+            "ref": "U1",
+            "number": "1",
+            "net": "VDD",
+            "layers": [
+              "BL_F_Cu",
+              "BL_F_Mask"
+            ],
+            "layer": "BL_F_Cu",
+            "sizeX": 500000,
+            "sizeY": 500000,
+            "pinType": "EPT_UNKNOWN",
+            "nearest": {
+              "reference": "C1",
+              "distanceMm": 49.49747468305833,
+              "pad": "1"
+            },
+            "status": "missing",
+            "maxDistanceMm": 5
+          }
+        ],
+        "plan": [
+          {
+            "type": "footprint",
+            "json": {
+              "id": {
+                "value": "9c1340cc-5df2-4d61-b4ab-0c6c094f0a0a"
+              },
+              "position": {
+                "xNm": 34104375,
+                "yNm": 30000000
+              },
+              "orientation": {
+                "valueDegrees": 0
+              },
+              "layer": "BL_F_Cu",
+              "locked": "LS_UNLOCKED",
+              "definition": {
+                "id": {
+                  "libraryNickname": "",
+                  "entryName": "Test"
+                },
+                "anchor": null,
+                "attributes": {
+                  "description": "",
+                  "keywords": "",
+                  "notInSchematic": false,
+                  "excludeFromPositionFiles": false,
+                  "excludeFromBillOfMaterials": false,
+                  "exemptFromCourtyardRequirement": false,
+                  "doNotPopulate": false,
+                  "mountingStyle": "FMS_UNKNOWN",
+                  "allowSoldermaskBridges": false,
+                  "excludeFromSimulation": false
+                },
+                "overrides": null,
+                "netTies": [],
+                "privateLayers": [],
+                "referenceField": null,
+                "valueField": null,
+                "datasheetField": null,
+                "descriptionField": null,
+                "items": [
+                  {
+                    "@type": "type.googleapis.com/kiapi.board.types.Pad",
+                    "id": {
+                      "value": "bbb03192-6418-46ae-9cd4-ad51ef6d9538"
+                    },
+                    "locked": "LS_UNLOCKED",
+                    "number": "1",
+                    "net": {
+                      "code": null,
+                      "name": "VDD"
+                    },
+                    "type": "PT_SMD",
+                    "padStack": {
+                      "type": "PST_NORMAL",
+                      "layers": [
+                        "BL_F_Cu",
+                        "BL_F_Mask"
+                      ],
+                      "drill": {
+                        "startLayer": "BL_F_Cu",
+                        "endLayer": "BL_B_Cu",
+                        "diameter": {
+                          "xNm": "0",
+                          "yNm": "0"
+                        },
+                        "shape": "DS_CIRCLE",
+                        "capped": "VDCM_UNKNOWN",
+                        "filled": "VDFM_UNKNOWN"
+                      },
+                      "unconnectedLayerRemoval": "ULR_KEEP",
+                      "copperLayers": [
+                        {
+                          "layer": "BL_F_Cu",
+                          "shape": "PSS_RECTANGLE",
+                          "size": {
+                            "xNm": "500000",
+                            "yNm": "500000"
+                          },
+                          "cornerRoundingRatio": 0.25,
+                          "chamferRatio": 0.2,
+                          "chamferedCorners": null,
+                          "customShapes": [],
+                          "customAnchorShape": "PSS_CIRCLE",
+                          "zoneSettings": null,
+                          "trapezoidDelta": null,
+                          "offset": {
+                            "xNm": "0",
+                            "yNm": "0"
+                          }
+                        }
+                      ],
+                      "angle": {
+                        "valueDegrees": 0
+                      },
+                      "frontOuterLayers": null,
+                      "backOuterLayers": null,
+                      "zoneSettings": {
+                        "zoneConnection": "ZCS_INHERITED",
+                        "thermalSpokes": {
+                          "width": null,
+                          "angle": {
+                            "valueDegrees": 90
+                          },
+                          "gap": null
+                        }
+                      },
+                      "secondaryDrill": null,
+                      "tertiaryDrill": null,
+                      "frontPostMachining": null,
+                      "backPostMachining": null
+                    },
+                    "position": {
+                      "xNm": 34104375,
+                      "yNm": 30000000
+                    },
+                    "copperClearanceOverride": null,
+                    "padToDieLength": {
+                      "valueNm": "0"
+                    },
+                    "symbolPin": {
+                      "name": "",
+                      "type": "EPT_UNKNOWN",
+                      "noConnect": false
+                    },
+                    "padToDieDelay": {
+                      "valueAs": "0"
+                    },
+                    "simElectricalType": "PSET_NONE",
+                    "parent": {
+                      "value": "9c1340cc-5df2-4d61-b4ab-0c6c094f0a0a"
+                    },
+                    "teardrop": {
+                      "mode": "PTM_DISABLED",
+                      "curvedEdges": false,
+                      "allowMultipleTrackSegments": true,
+                      "preferZoneConnection": true,
+                      "maxLength": {
+                        "valueNm": "1000000"
+                      },
+                      "maxWidth": {
+                        "valueNm": "2000000"
+                      },
+                      "bestLengthRatio": 0.5,
+                      "bestWidthRatio": 1,
+                      "maxTrackWidthRatio": 0.9
+                    },
+                    "zoneLayerOverrides": [],
+                    "fabProperty": "PFP_NONE",
+                    "customProperties": []
+                  },
+                  {
+                    "@type": "type.googleapis.com/kiapi.board.types.Pad",
+                    "id": {
+                      "value": "d42ca8d4-3344-48b1-b540-aefa43bd9f1f"
+                    },
+                    "locked": "LS_UNLOCKED",
+                    "number": "2",
+                    "net": {
+                      "code": null,
+                      "name": "GND"
+                    },
+                    "type": "PT_SMD",
+                    "padStack": {
+                      "type": "PST_NORMAL",
+                      "layers": [
+                        "BL_F_Cu",
+                        "BL_F_Mask"
+                      ],
+                      "drill": {
+                        "startLayer": "BL_F_Cu",
+                        "endLayer": "BL_B_Cu",
+                        "diameter": {
+                          "xNm": "0",
+                          "yNm": "0"
+                        },
+                        "shape": "DS_CIRCLE",
+                        "capped": "VDCM_UNKNOWN",
+                        "filled": "VDFM_UNKNOWN"
+                      },
+                      "unconnectedLayerRemoval": "ULR_KEEP",
+                      "copperLayers": [
+                        {
+                          "layer": "BL_F_Cu",
+                          "shape": "PSS_RECTANGLE",
+                          "size": {
+                            "xNm": "500000",
+                            "yNm": "500000"
+                          },
+                          "cornerRoundingRatio": 0.25,
+                          "chamferRatio": 0.2,
+                          "chamferedCorners": null,
+                          "customShapes": [],
+                          "customAnchorShape": "PSS_CIRCLE",
+                          "zoneSettings": null,
+                          "trapezoidDelta": null,
+                          "offset": {
+                            "xNm": "0",
+                            "yNm": "0"
+                          }
+                        }
+                      ],
+                      "angle": {
+                        "valueDegrees": 0
+                      },
+                      "frontOuterLayers": null,
+                      "backOuterLayers": null,
+                      "zoneSettings": {
+                        "zoneConnection": "ZCS_INHERITED",
+                        "thermalSpokes": {
+                          "width": null,
+                          "angle": {
+                            "valueDegrees": 90
+                          },
+                          "gap": null
+                        }
+                      },
+                      "secondaryDrill": null,
+                      "tertiaryDrill": null,
+                      "frontPostMachining": null,
+                      "backPostMachining": null
+                    },
+                    "position": {
+                      "xNm": 36104375,
+                      "yNm": 30000000
+                    },
+                    "copperClearanceOverride": null,
+                    "padToDieLength": {
+                      "valueNm": "0"
+                    },
+                    "symbolPin": {
+                      "name": "",
+                      "type": "EPT_UNKNOWN",
+                      "noConnect": false
+                    },
+                    "padToDieDelay": {
+                      "valueAs": "0"
+                    },
+                    "simElectricalType": "PSET_NONE",
+                    "parent": {
+                      "value": "9c1340cc-5df2-4d61-b4ab-0c6c094f0a0a"
+                    },
+                    "teardrop": {
+                      "mode": "PTM_DISABLED",
+                      "curvedEdges": false,
+                      "allowMultipleTrackSegments": true,
+                      "preferZoneConnection": true,
+                      "maxLength": {
+                        "valueNm": "1000000"
+                      },
+                      "maxWidth": {
+                        "valueNm": "2000000"
+                      },
+                      "bestLengthRatio": 0.5,
+                      "bestWidthRatio": 1,
+                      "maxTrackWidthRatio": 0.9
+                    },
+                    "zoneLayerOverrides": [],
+                    "fabProperty": "PFP_NONE",
+                    "customProperties": []
+                  }
+                ],
+                "jumpers": {
+                  "duplicateNamesAreJumpered": false,
+                  "groups": []
+                }
+              },
+              "referenceField": {
+                "id": {
+                  "id": 1
+                },
+                "name": "Reference",
+                "text": {
+                  "id": {
+                    "value": "fe0a974a-41d1-419c-81fa-53c002f67a2b"
+                  },
+                  "text": {
+                    "position": {
+                      "xNm": 34104375,
+                      "yNm": 28000000
+                    },
+                    "attributes": {
+                      "fontName": "",
+                      "horizontalAlignment": "HA_CENTER",
+                      "verticalAlignment": "VA_CENTER",
+                      "angle": {
+                        "valueDegrees": 0
+                      },
+                      "lineSpacing": 1,
+                      "strokeWidth": {
+                        "valueNm": "0"
+                      },
+                      "italic": false,
+                      "bold": false,
+                      "underlined": false,
+                      "visible": true,
+                      "mirrored": false,
+                      "multiline": true,
+                      "keepUpright": true,
+                      "size": {
+                        "xNm": "1000000",
+                        "yNm": "1000000"
+                      }
+                    },
+                    "text": "C1",
+                    "hyperlink": ""
+                  },
+                  "layer": "BL_F_SilkS",
+                  "knockout": false,
+                  "locked": "LS_UNLOCKED",
+                  "parent": {
+                    "value": "9c1340cc-5df2-4d61-b4ab-0c6c094f0a0a"
+                  },
+                  "customProperties": []
+                },
+                "visible": true,
+                "customProperties": []
+              },
+              "valueField": {
+                "id": {
+                  "id": 2
+                },
+                "name": "Value",
+                "text": {
+                  "id": {
+                    "value": "bbe9c4fc-978d-4d18-becb-1a917cf1dc9c"
+                  },
+                  "text": {
+                    "position": {
+                      "xNm": 34104375,
+                      "yNm": 32000000
+                    },
+                    "attributes": {
+                      "fontName": "",
+                      "horizontalAlignment": "HA_CENTER",
+                      "verticalAlignment": "VA_CENTER",
+                      "angle": {
+                        "valueDegrees": 0
+                      },
+                      "lineSpacing": 1,
+                      "strokeWidth": {
+                        "valueNm": "0"
+                      },
+                      "italic": false,
+                      "bold": false,
+                      "underlined": false,
+                      "visible": true,
+                      "mirrored": false,
+                      "multiline": true,
+                      "keepUpright": true,
+                      "size": {
+                        "xNm": "1000000",
+                        "yNm": "1000000"
+                      }
+                    },
+                    "text": "Test",
+                    "hyperlink": ""
+                  },
+                  "layer": "BL_F_Fab",
+                  "knockout": false,
+                  "locked": "LS_UNLOCKED",
+                  "parent": {
+                    "value": "9c1340cc-5df2-4d61-b4ab-0c6c094f0a0a"
+                  },
+                  "customProperties": []
+                },
+                "visible": true,
+                "customProperties": []
+              },
+              "datasheetField": {
+                "id": {
+                  "id": 4
+                },
+                "name": "Datasheet",
+                "text": {
+                  "id": {
+                    "value": "6fb769f4-52b1-4045-ae82-77e2bd515b6e"
+                  },
+                  "text": {
+                    "position": {
+                      "xNm": 34104375,
+                      "yNm": 30000000
+                    },
+                    "attributes": {
+                      "fontName": "",
+                      "horizontalAlignment": "HA_CENTER",
+                      "verticalAlignment": "VA_CENTER",
+                      "angle": {
+                        "valueDegrees": 0
+                      },
+                      "lineSpacing": 1,
+                      "strokeWidth": {
+                        "valueNm": "0"
+                      },
+                      "italic": false,
+                      "bold": false,
+                      "underlined": false,
+                      "visible": true,
+                      "mirrored": false,
+                      "multiline": true,
+                      "keepUpright": true,
+                      "size": {
+                        "xNm": "1270000",
+                        "yNm": "1270000"
+                      }
+                    },
+                    "text": "",
+                    "hyperlink": ""
+                  },
+                  "layer": "BL_F_Fab",
+                  "knockout": false,
+                  "locked": "LS_UNLOCKED",
+                  "parent": {
+                    "value": "9c1340cc-5df2-4d61-b4ab-0c6c094f0a0a"
+                  },
+                  "customProperties": []
+                },
+                "visible": false,
+                "customProperties": []
+              },
+              "descriptionField": {
+                "id": {
+                  "id": 5
+                },
+                "name": "Description",
+                "text": {
+                  "id": {
+                    "value": "7121c1ea-6148-426e-88e8-e8612c418ae4"
+                  },
+                  "text": {
+                    "position": {
+                      "xNm": 34104375,
+                      "yNm": 30000000
+                    },
+                    "attributes": {
+                      "fontName": "",
+                      "horizontalAlignment": "HA_CENTER",
+                      "verticalAlignment": "VA_CENTER",
+                      "angle": {
+                        "valueDegrees": 0
+                      },
+                      "lineSpacing": 1,
+                      "strokeWidth": {
+                        "valueNm": "0"
+                      },
+                      "italic": false,
+                      "bold": false,
+                      "underlined": false,
+                      "visible": true,
+                      "mirrored": false,
+                      "multiline": true,
+                      "keepUpright": true,
+                      "size": {
+                        "xNm": "1270000",
+                        "yNm": "1270000"
+                      }
+                    },
+                    "text": "",
+                    "hyperlink": ""
+                  },
+                  "layer": "BL_F_Fab",
+                  "knockout": false,
+                  "locked": "LS_UNLOCKED",
+                  "parent": {
+                    "value": "9c1340cc-5df2-4d61-b4ab-0c6c094f0a0a"
+                  },
+                  "customProperties": []
+                },
+                "visible": false,
+                "customProperties": []
+              },
+              "attributes": {
+                "description": "",
+                "keywords": "",
+                "notInSchematic": false,
+                "excludeFromPositionFiles": false,
+                "excludeFromBillOfMaterials": false,
+                "exemptFromCourtyardRequirement": false,
+                "doNotPopulate": false,
+                "mountingStyle": "FMS_SMD",
+                "allowSoldermaskBridges": false,
+                "excludeFromSimulation": false
+              },
+              "overrides": {
+                "solderMask": null,
+                "solderPaste": null,
+                "copperClearance": null,
+                "zoneConnection": "ZCS_INHERITED"
+              },
+              "symbolPath": {
+                "path": [],
+                "pathHumanReadable": ""
+              },
+              "symbolSheetName": "",
+              "symbolSheetFilename": "",
+              "symbolFootprintFilters": "",
+              "parent": {
+                "value": "29c7a6bb-70fe-4903-9b76-97c84a03f0d9"
+              },
+              "embeddedFiles": {
+                "files": []
+              },
+              "customProperties": [],
+              "variants": []
+            }
+          }
+        ],
+        "verified": true,
+        "moved": 1,
+        "drcSkipped": false
+      }
+    }
+  },
+  {
+    "action": "board.decap.check",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb",
+      "maxDistanceMm": 5
+    },
+    "result": {
+      "ok": true,
+      "action": "board.decap.check",
+      "data": {
+        "pins": [
+          {
+            "x": 30000000,
+            "y": 30000000,
+            "id": "ec6b221e-43cf-4e99-8828-b079edc8a2e4",
+            "ref": "U1",
+            "number": "1",
+            "net": "VDD",
+            "layers": [
+              "BL_F_Cu",
+              "BL_F_Mask"
+            ],
+            "layer": "BL_F_Cu",
+            "sizeX": 500000,
+            "sizeY": 500000,
+            "pinType": "EPT_UNKNOWN",
+            "nearest": {
+              "reference": "C1",
+              "distanceMm": 4.104375,
+              "pad": "1"
+            },
+            "status": "ok",
+            "maxDistanceMm": 5
+          }
+        ],
+        "caps": [
+          "C1"
+        ],
+        "maxDistanceMm": 5,
+        "findings": []
+      }
+    }
+  },
+  {
+    "action": "board.via.create",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb",
+      "net": "GND",
+      "position": {
+        "xMm": 50,
+        "yMm": 50
+      },
+      "diameterMm": 0.6,
+      "drillMm": 0.3
+    },
+    "result": {
+      "ok": true,
+      "action": "board.via.create",
+      "data": {
+        "requested": 1,
+        "sites": [
+          {
+            "position": {
+              "xNm": 50000000,
+              "yNm": 50000000
+            },
+            "net": "GND"
+          }
+        ],
+        "verified": true,
+        "createdIds": [
+          "1be8186c-cda8-4cea-a29c-608ea92ea53b"
+        ],
+        "verifiedCount": 1,
+        "mismatches": {},
+        "next": "Run board.drc.live and board.connectivity.prove"
+      }
+    }
+  },
+  {
+    "action": "board.plane.create",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb",
+      "net": "GND",
+      "layers": [
+        "BL_F_Cu"
+      ],
+      "outline": [
+        {
+          "xMm": 25,
+          "yMm": 25
+        },
+        {
+          "xMm": 80,
+          "yMm": 25
+        },
+        {
+          "xMm": 80,
+          "yMm": 80
+        },
+        {
+          "xMm": 25,
+          "yMm": 80
+        }
+      ],
+      "fill": true
+    },
+    "result": {
+      "ok": true,
+      "action": "board.plane.create",
+      "data": {
+        "plane": {
+          "zone": {
+            "value": "aec7db0e-0373-4d9b-a414-3b6c678d219c"
+          },
+          "net": "GND",
+          "layers": [
+            "BL_F_Cu"
+          ],
+          "filled": true,
+          "hasFilledPolygons": true,
+          "filledAreaNm2": "3019314992869482",
+          "connectedPads": 2,
+          "connectedVias": 1
+        }
+      }
+    }
+  },
+  {
+    "action": "board.plane.verify",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb",
+      "zone": {
+        "value": "aec7db0e-0373-4d9b-a414-3b6c678d219c"
+      }
+    },
+    "result": {
+      "ok": true,
+      "action": "board.plane.verify",
+      "data": {
+        "plane": {
+          "zone": {
+            "value": "aec7db0e-0373-4d9b-a414-3b6c678d219c"
+          },
+          "net": "GND",
+          "layers": [
+            "BL_F_Cu"
+          ],
+          "filled": true,
+          "hasFilledPolygons": true,
+          "filledAreaNm2": "3019314992869482",
+          "connectedPads": 2,
+          "connectedVias": 1
+        },
+        "unconnectedPads": [],
+        "unconnectedVias": []
+      }
+    }
+  },
+  {
+    "action": "board.impedance.calculate",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb",
+      "layer": "F.Cu",
+      "targetOhm": 100
+    },
+    "result": {
+      "ok": true,
+      "action": "board.impedance.calculate",
+      "data": {
+        "name": "F.Cu",
+        "kind": "microstrip",
+        "er": 4.5,
+        "heightMm": 1.51,
+        "planeSpacingMm": 1.51,
+        "copperThicknessMm": 0.035,
+        "layer": "F.Cu",
+        "widthMm": 0.6465454360281859,
+        "gapMm": 0,
+        "z0Ohm": 100,
+        "targetOhm": 100,
+        "errorPct": 0,
+        "scope": "IPC-2141 approximation; verify with manufacturer field solver"
+      }
+    }
+  },
+  {
+    "action": "board.items.create",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb",
+      "items": [
+        {
+          "type": "track",
+          "json": {
+            "start": {
+              "xNm": 40000000,
+              "yNm": 90000000
+            },
+            "end": {
+              "xNm": 60000000,
+              "yNm": 90000000
+            },
+            "width": {
+              "valueNm": 646545
+            },
+            "layer": "BL_F_Cu",
+            "net": {
+              "name": "GND"
+            }
+          }
+        }
+      ]
+    },
+    "result": {
+      "ok": true,
+      "action": "board.items.create",
+      "data": {
+        "header": null,
+        "status": "IRS_OK",
+        "createdItems": [
+          {
+            "status": {
+              "code": "ISC_OK",
+              "errorMessage": ""
+            },
+            "item": {
+              "@type": "type.googleapis.com/kiapi.board.types.Track",
+              "id": {
+                "value": "e74b0909-9e08-4cc9-8dee-149664812f27"
+              },
+              "start": {
+                "xNm": "40000000",
+                "yNm": "90000000"
+              },
+              "end": {
+                "xNm": "60000000",
+                "yNm": "90000000"
+              },
+              "width": {
+                "valueNm": "646545"
+              },
+              "locked": "LS_UNLOCKED",
+              "layer": "BL_F_Cu",
+              "net": {
+                "code": null,
+                "name": "GND"
+              },
+              "parent": {
+                "value": "29c7a6bb-70fe-4903-9b76-97c84a03f0d9"
+              },
+              "solderMask": null,
+              "customProperties": []
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "action": "board.impedance.check",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb",
+      "layer": "F.Cu",
+      "targetOhm": 100
+    },
+    "result": {
+      "ok": true,
+      "action": "board.impedance.check",
+      "data": {
+        "targetOhm": 100,
+        "tolerancePct": 10,
+        "checkedTracks": 1,
+        "skippedItems": 0,
+        "violations": [],
+        "expectedWidthsMm": {
+          "F.Cu": 0.6465454360281859
+        }
+      }
+    }
+  },
+  {
+    "action": "document.save",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb"
+    },
+    "result": {
+      "ok": true,
+      "action": "document.save",
+      "data": {}
+    }
+  },
+  {
+    "action": "board.export.step",
+    "payload": {
+      "input": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-jyFVa7/fixture.kicad_pcb",
+      "output": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/fixture.step",
+      "boardOnly": true
+    },
+    "result": {
+      "ok": true,
+      "action": "board.export.step",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "STEP file '/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/fixture.step' created.\n\nExport time 0.005 s",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/fixture.step"
+      ]
+    }
+  },
+  {
+    "action": "external.step.meshcheck",
+    "payload": {
+      "input": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/fixture.step"
+    },
+    "result": {
+      "ok": true,
+      "action": "external.step.meshcheck",
+      "data": {
+        "command": "/Users/mosc/.local/bin/kicad-stepcheck",
+        "args": [
+          "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/fixture.step"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "{\"ok\":true,\"step\":\"/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/fixture.step\",\"solids\":1,\"collisions\":[],\"checkedPairs\":0,\"errors\":0,\"truncated\":false,\"minVolumeMm3\":0.0001}",
+        "stderr": "",
+        "ok": true,
+        "step": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/fixture.step",
+        "solids": 1,
+        "collisions": [],
+        "checkedPairs": 0,
+        "errors": 0,
+        "truncated": false,
+        "minVolumeMm3": 0.0001
+      }
+    }
+  },
+  {
+    "action": "external.step.meshcheck",
+    "payload": {
+      "input": "--self-test"
+    },
+    "result": {
+      "ok": false,
+      "action": "external.step.meshcheck",
+      "error": {
+        "code": "STEP_COLLISIONS",
+        "message": "External tool failed"
+      },
+      "data": {
+        "command": "/Users/mosc/.local/bin/kicad-stepcheck",
+        "args": [
+          "--self-test"
+        ],
+        "exitCode": 5,
+        "signal": null,
+        "stdout": "{\"ok\":false,\"step\":\"--self-test\",\"solids\":2,\"collisions\":[{\"a\":0,\"b\":1,\"aName\":\"cube A\",\"bName\":\"cube B\",\"volumeMm3\":125,\"aBox\":[-0.000000,-0.000000,-0.000000,10.000000,10.000000,10.000000],\"bBox\":[5.000000,5.000000,5.000000,15.000000,15.000000,15.000000]}],\"checkedPairs\":1,\"errors\":0,\"truncated\":false,\"minVolumeMm3\":0.0001}",
+        "stderr": "",
+        "ok": false,
+        "step": "--self-test",
+        "solids": 2,
+        "collisions": [
+          {
+            "a": 0,
+            "b": 1,
+            "aName": "cube A",
+            "bName": "cube B",
+            "volumeMm3": 125,
+            "aBox": [
+              0,
+              0,
+              0,
+              10,
+              10,
+              10
+            ],
+            "bBox": [
+              5,
+              5,
+              5,
+              15,
+              15,
+              15
+            ]
+          }
+        ],
+        "checkedPairs": 1,
+        "errors": 0,
+        "truncated": false,
+        "minVolumeMm3": 0.0001
+      }
+    }
+  },
+  {
+    "action": "board.check.unified",
+    "payload": {
+      "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-S27pt3/fixture.kicad_pcb",
+      "fiducials": 0
+    },
+    "result": {
+      "ok": true,
+      "action": "board.check.unified",
+      "data": {
+        "results": {
+          "native": {
+            "ok": true,
+            "action": "board.drc.live",
+            "data": {
+              "status": "clean",
+              "exitCode": 0,
+              "report": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-opAOkq/report.json",
+              "reportPath": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-opAOkq/report.json",
+              "summary": {
+                "reportPath": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-opAOkq/report.json",
+                "total": 0,
+                "bySeverity": {},
+                "byType": {},
+                "violations": 0,
+                "unconnected_items": 0,
+                "schematic_parity": 0,
+                "ignoredChecks": [
+                  {
+                    "description": "Footprint has no courtyard defined",
+                    "key": "missing_courtyard"
+                  },
+                  {
+                    "description": "Track endpoint not centered on via",
+                    "key": "track_not_centered_on_via"
+                  },
+                  {
+                    "description": "Tuning profile track geometries",
+                    "key": "tuning_profile_track_geometries"
+                  },
+                  {
+                    "description": "Footprint doesn't match symbol's footprint filters",
+                    "key": "footprint_filters_mismatch"
+                  },
+                  {
+                    "description": "Footprint component type doesn't match footprint pads",
+                    "key": "footprint_type_mismatch"
+                  }
+                ]
+              },
+              "reportJson": {
+                "$schema": "https://schemas.kicad.org/drc.v1.json",
+                "coordinate_units": "mm",
+                "date": "2026-10-21T11:28:02",
+                "ignored_checks": [
+                  {
+                    "description": "Footprint has no courtyard defined",
+                    "key": "missing_courtyard"
+                  },
+                  {
+                    "description": "Track endpoint not centered on via",
+                    "key": "track_not_centered_on_via"
+                  },
+                  {
+                    "description": "Tuning profile track geometries",
+                    "key": "tuning_profile_track_geometries"
+                  },
+                  {
+                    "description": "Footprint doesn't match symbol's footprint filters",
+                    "key": "footprint_filters_mismatch"
+                  },
+                  {
+                    "description": "Footprint component type doesn't match footprint pads",
+                    "key": "footprint_type_mismatch"
+                  }
+                ],
+                "included_severities": [
+                  "error",
+                  "warning",
+                  "exclusion"
+                ],
+                "kicad_version": "10.99.0",
+                "schematic_parity": [],
+                "source": "fixture.kicad_pcb",
+                "unconnected_items": [],
+                "violations": []
+              },
+              "source": "live",
+              "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-S27pt3/fixture.kicad_pcb",
+              "checkedCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-opAOkq/fixture.kicad_pcb"
+            },
+            "artifacts": [
+              "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-opAOkq/report.json"
+            ]
+          },
+          "dfm": {
+            "ok": true,
+            "action": "board.dfm.full",
+            "data": {
+              "violations": [],
+              "issues": {},
+              "fixed": 0,
+              "deleted": 0,
+              "dryRun": true,
+              "verified": false,
+              "plan": {
+                "updates": [],
+                "deleteIds": [],
+                "stubIds": []
+              }
+            }
+          },
+          "decap": {
+            "ok": true,
+            "action": "board.decap.check",
+            "data": {
+              "pins": [],
+              "caps": [],
+              "maxDistanceMm": 3,
+              "findings": []
+            }
+          },
+          "connectivity": {
+            "ok": true,
+            "action": "board.connectivity.prove",
+            "data": {
+              "ok": true,
+              "endpoints": [],
+              "unconnectedNets": [],
+              "unconnectedCount": 0,
+              "danglingItems": []
+            }
+          }
+        },
+        "findings": [],
+        "nativeViolationCount": 0,
+        "verified": false,
+        "readyForFabrication": false
+      }
+    }
+  }
+]

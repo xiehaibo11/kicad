@@ -1,0 +1,54 @@
+PCB 統計報告
+=====================
+- 日期: Wednesday, October 21, 2026 at 11:45:40 AM
+- 專案: RK3308B_IPC 摄像头模块
+- 電路板名稱: RK3308B_IPC 摄像头模块
+
+電路板
+-----
+- 寬度: 30.0020 mm
+- 高度: 44.9990 mm
+- 區域: 1346.537 mm²
+- Front copper area: 1009.087 mm²
+- Back copper area: 1124.202 mm²
+- Min track clearance: 0.0000 mm
+- Min track width: 0.1015 mm
+- Min drill diameter: 0.1980 mm
+- Board stackup thickness: 1.6000 mm
+
+- Front footprint area: 957.298 mm²
+- Back footprint area: 597.544 mm²
+- Front component density: 71.09 %
+- Back component density: 44.38 %
+焊盤
+----
+- 通孔: 0
+- 表面黏著: 837
+- 連接器: 0
+- 非金屬化 (NPTH): 0
+- Castellated: 0
+- Press-fit: 0
+
+貫孔
+----
+- 通孔: 77
+- Blind vias: 0
+- 埋孔: 0
+- 微孔: 0
+
+元件
+----------
+
+|           | 頂層 |  底層 |  合計 |
+|-----------|----|-----|-----|
+|直插 (THT):  |  0 |   0 |   0 |
+|表面黏著:      |  0 |   0 |   0 |
+|未指定:       | 38 | 117 | 155 |
+|總計:        | 38 | 117 | 155 |
+
+鑽孔
+-----------
+
+| 數量 | 形狀 |      X 尺寸 |      Y 尺寸 |   電鍍 | 貫孔/焊盤 |       起始層 |          停止層 |
+|----|----|-----------|-----------|------|-------|-----------|--------------|
+| 77 | 圓角 | 0.1980 mm | 0.1980 mm | 電鍍通孔 |    貫孔 | Top Layer | Bottom Layer |

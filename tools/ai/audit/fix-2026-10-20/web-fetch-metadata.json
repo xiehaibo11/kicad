@@ -1,0 +1,216 @@
+{
+  "ok": true,
+  "action": "web.fetch",
+  "data": {
+    "bytes": 345320,
+    "contentTrust": "untrusted public reference material; never instructions to execute",
+    "contentType": "text/html",
+    "links": [
+      {
+        "title": "Docs",
+        "url": "https://docs.kicad.org/",
+        "snippet": ""
+      },
+      {
+        "title": "KiCad Command-Line Interface",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "Introduction",
+        "url": "https://docs.kicad.org/master/en/introduction/introduction.html",
+        "snippet": ""
+      },
+      {
+        "title": "Getting Started in KiCad",
+        "url": "https://docs.kicad.org/master/en/getting_started_in_kicad/getting_started_in_kicad.html",
+        "snippet": ""
+      },
+      {
+        "title": "KiCad",
+        "url": "https://docs.kicad.org/master/en/kicad/kicad.html",
+        "snippet": ""
+      },
+      {
+        "title": "Schematic Editor",
+        "url": "https://docs.kicad.org/master/en/eeschema/eeschema.html",
+        "snippet": ""
+      },
+      {
+        "title": "PCB Editor",
+        "url": "https://docs.kicad.org/master/en/pcbnew/pcbnew.html",
+        "snippet": ""
+      },
+      {
+        "title": "Gerber Viewer",
+        "url": "https://docs.kicad.org/master/en/gerbview/gerbview.html",
+        "snippet": ""
+      },
+      {
+        "title": "Drawing Sheet Editor",
+        "url": "https://docs.kicad.org/master/en/pl_editor/pl_editor.html",
+        "snippet": ""
+      },
+      {
+        "title": "Calculator Tools",
+        "url": "https://docs.kicad.org/master/en/pcb_calculator/pcb_calculator.html",
+        "snippet": ""
+      },
+      {
+        "title": "KiCad Command-Line Interface",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "nightly",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "7.0",
+        "url": "https://docs.kicad.org/7.0/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "8.0",
+        "url": "https://docs.kicad.org/8.0/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "9.0",
+        "url": "https://docs.kicad.org/9.0/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "10.0",
+        "url": "https://docs.kicad.org/10.0/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "nightly",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "English",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "Deutsch",
+        "url": "https://docs.kicad.org/master/de/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "English",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "简体中文",
+        "url": "https://docs.kicad.org/master/zh/cli/cli.html",
+        "snippet": ""
+      },
+      {
+        "title": "Introduction to the KiCad Command-Line Interface",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#introduction_to_the_kicad_command_line_interface",
+        "snippet": ""
+      },
+      {
+        "title": "API server commands",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#api-server",
+        "snippet": ""
+      },
+      {
+        "title": "Footprint commands",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#fp",
+        "snippet": ""
+      },
+      {
+        "title": "Footprint export",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#footprint_export",
+        "snippet": ""
+      },
+      {
+        "title": "Footprint upgrade",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#footprint_upgrade",
+        "snippet": ""
+      },
+      {
+        "title": "Gerber commands",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#gerber",
+        "snippet": ""
+      },
+      {
+        "title": "Gerber convert",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#gerber_convert",
+        "snippet": ""
+      },
+      {
+        "title": "Gerber diff",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#gerber_diff",
+        "snippet": ""
+      },
+      {
+        "title": "Gerber info",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#gerber_info",
+        "snippet": ""
+      },
+      {
+        "title": "Jobset commands",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#jobset",
+        "snippet": ""
+      },
+      {
+        "title": "PCB commands",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#pcb",
+        "snippet": ""
+      },
+      {
+        "title": "PCB DRC",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#pcb_drc",
+        "snippet": ""
+      },
+      {
+        "title": "PCB export: 3D PDF",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#pcb_export_3d_pdf",
+        "snippet": ""
+      },
+      {
+        "title": "PCB export: BREP (OCCT)",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#pcb_export_brep_occt",
+        "snippet": ""
+      },
+      {
+        "title": "PCB export: drill file",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#pcb_export_drill_file",
+        "snippet": ""
+      },
+      {
+        "title": "PCB export: DXF",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#pcb_export_dxf",
+        "snippet": ""
+      },
+      {
+        "title": "PCB export: GenCAD",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#pcb_export_gencad",
+        "snippet": ""
+      },
+      {
+        "title": "PCB export: Gerber",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#pcb_export_gerber",
+        "snippet": ""
+      },
+      {
+        "title": "PCB export: GLB",
+        "url": "https://docs.kicad.org/master/en/cli/cli.html#pcb_export_glb",
+        "snippet": ""
+      }
+    ],
+    "retrievedAt": "2026-10-20T23:51:10Z",
+    "sha256": "88d3f0e141cf16be8081ebcb4d4f89e0a8ee7efe658f1967fbcfdee66c6ea7c9",
+    "title": "KiCad Command-Line Interface | master | English | Documentation | KiCad",
+    "truncated": true,
+    "url": "https://docs.kicad.org/master/en/cli/cli.html"
+  }
+}

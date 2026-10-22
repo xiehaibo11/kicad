@@ -1,0 +1,11 @@
+{
+  "fixture": "real bundled CLI and actual optimizePrompt helper; local model returns stop_reason=max_tokens",
+  "error": "Error: API Error: Claude's response exceeded the 32000 output token maximum. To configure this behavior, set the CLAUDE_CODE_MAX_OUTPUT_TOKENS environment variable.",
+  "requests": [
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-flash",
+      "lastUserText": "[{\"type\":\"text\",\"text\":\"只检查 U1 和 R1，不修改文件、不布线，并解释结果。\",\"cache_control\":{\"type\":\"ephemeral\"}}]"
+    }
+  ]
+}

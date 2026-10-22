@@ -1,0 +1,13 @@
+
+> kicad-agent-vscode@0.1.0 vscode:prepublish
+> node ../direct/build.mjs && mkdir -p resources && cp ../direct/dist/kicad-direct.mjs ../direct/dist/LICENSE-protobufjs.txt ../direct/dist/LICENSE-blocks-MIT.txt resources/ && cp ../../../LICENSE resources/LICENSE-KiCad-GPL.txt && npm run compile && node test-native.cjs
+
+Bundled 99 modules in 17ms
+
+  kicad-direct.mjs  1.89 MB  (entry point)
+
+
+> kicad-agent-vscode@0.1.0 compile
+> tsc -p ./
+
+Legacy extension native tools: compiled host imports shared ESM, 335 actions, real reference call, relative paths and cancellation passed.

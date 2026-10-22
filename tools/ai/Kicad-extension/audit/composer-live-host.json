@@ -1,0 +1,25 @@
+{
+  "fixture": "Synthetic text conversation; no actual PCB inspection",
+  "original": "帮我只读检查 U1 和 R1（10 kΩ），不要修改文件，也不要布线，解释发现的问题。",
+  "optimized": "请对 U1 和 R1（10 kΩ）进行只读检查，并解释发现的问题。\n\n约束：\n- 不要修改任何文件。\n- 不要布线。\n- 保持只读检查，不进行任何设计变更。\n\n期望输出：以问题解释为主，说明你在 U1 和 R1 上发现的问题。",
+  "version": "0.4.9",
+  "webviews": {
+    "resolved": 2,
+    "mounted": 2
+  },
+  "liveModel": "deepseek-flash",
+  "history": [
+    {
+      "role": "user",
+      "text": "请只读检查 U1 和 R1（10 kΩ）的相关问题，不要修改文件，也不要布线。检查后解释发现的问题。"
+    },
+    {
+      "role": "assistant",
+      "text": "已完成只读检查，没有修改文件或布线。U1 的供电与 R1 的阻值有需要解释的地方，下一步可以分别说明这两个器件的检查结果。"
+    }
+  ],
+  "suggestion": "请分别说明 U1 和 R1 的检查结果。",
+  "actualMcpToolCount": 14,
+  "toolsCalled": 0,
+  "chatMessagesSent": 0
+}

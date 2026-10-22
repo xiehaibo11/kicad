@@ -1,0 +1,15 @@
+{
+  "version": "0.4.18",
+  "package": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/dist/kicad-0.4.18.vsix",
+  "sha256": "1fd143678751580c27d151fa6815789faccb32b695e9adb14ab2e68f9c3e2afa",
+  "evidence": [
+    "production-ui-verification.json",
+    "pause-sdk-verification.json",
+    "pause-host-requests.json",
+    "installed-verification.json",
+    "sdk-tested-backend-hash.json",
+    "native-window-verification.json"
+  ],
+  "modelTest": "Local Messages API fixture with actual VS Code, SDK and CLI",
+  "finalPackageVerified": true
+}

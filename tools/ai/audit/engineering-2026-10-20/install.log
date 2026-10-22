@@ -1,0 +1,59 @@
+[0/2] Re-checking globbed directories...
+[1/2] Building kicad-agent AI automation terminal
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/cmd/kicad-agent
+ld: warning: ignoring duplicate libraries: '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'
+{"verified": true, "kind": "terminal", "version": "1.19.3"}
+{"verified": true, "kind": "extension", "version": "0.4.23"}
+{"verified": true, "kind": "terminal", "version": "1.19.3"}
+
+Kicad installed: /Users/mosc/.local/bin/Kicad
+Version: 1.19.3
+
+Start:   Kicad
+Help:    Kicad --help
+Resume:  Kicad --continue
+Installed:
+  /Users/mosc/.local/bin/kicad-agent
+  /Users/mosc/.local/bin/kicad-cli
+  /Users/mosc/.local/bin/kicad-eda   (KiCad GUI, IPC on /tmp/kicad/api.sock)
+  /Users/mosc/.local/bin/Kicad   (AI terminal launcher; kicad remains compatible)
+  ~/.claude/skills/kicad-*/SKILL.md   (auto-triggered, no slash needed)
+  ~/.local/share/kicad-terminal/{eda-agent-instructions.md,easyeda-mcp.mjs}
+  ~/.claude/commands/kicad-*.md
+
+Terminal:      Kicad
+Check backend: kicad-agent health
+Start GUI:     kicad-eda /abs/project.kicad_pro
+Start server:  kicad-agent call project.open --payload '{"document":"/abs/board.kicad_pcb"}'
+MCP (user):    claude mcp add --scope user kicad -- "/Users/mosc/Downloads/Kicad/build/bin/kicad-agent" mcp
+VS Code:       tools/ai/Kicad-extension/build.sh
+Installing extensions...
+Extension 'kicad-0.4.23.vsix' was successfully installed.
+(node:85115) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+VS Code extension installed: kicad-0.4.23.vsix
+kicad-agent.kicad@0.4.23
+{
+  "literalNamedNativeActions": 971,
+  "nativeActionsBySource": {
+    "common/tool/actions.cpp": 191,
+    "pcbnew/tools/pcb_actions.cpp": 405,
+    "eeschema/tools/sch_actions.cpp": 249,
+    "gerbview/tools/gerbview_actions.cpp": 32,
+    "pagelayout_editor/tools/pl_actions.cpp": 10,
+    "3d-viewer/3d_viewer/tools/eda_3d_actions.cpp": 41,
+    "cvpcb/tools/cvpcb_actions.cpp": 16,
+    "kicad/tools/kicad_manager_actions.cpp": 27
+  },
+  "unparsedNativeDefinitions": 0,
+  "typedAutomationActions": 254,
+  "automationByBackend": {
+    "composite": 36,
+    "cli": 57,
+    "ipc": 128,
+    "offline": 26,
+    "external": 7
+  },
+  "apiRegistrationSites": 164
+}
+{"ok": true, "terminalCommand": "Kicad", "legacyCommand": "kicad", "autoUse": {"instructions": "/Users/mosc/.local/share/kicad-terminal/eda-agent-instructions.md", "skills": "~/.claude/skills/kicad-*", "easyedaTools": ["easyeda_actions", "easyeda_artifact", "easyeda_blocks", "easyeda_board", "easyeda_document", "easyeda_health", "easyeda_pcb", "easyeda_project", "easyeda_project_transfer", "easyeda_schematic", "easyeda_system", "easyeda_workflow"]}, "agent": {"actionCount": 254, "agentVersion": "0.2.0", "arch": "arm64", "catalogSha256": "2fa82e3e61fc0460083a9c2e70194b563e418d8717beaa096daf4954345a5379", "engineeringReferences": {"contentSha256": "8cdbcbe5b7c53cab4ba8c436d244c68b1fa7bdc7fc1c99ae0b39e65468bbd6a4", "exampleProjectCount": 37, "ruleCount": 86, "sourceCount": 21, "topicCount": 20, "version": "2026-10-20.1"}, "goVersion": "go1.27.2", "mcpToolCount": 20, "mcpTools": ["kicad_health", "kicad_actions", "kicad_call", "kicad_spec_validate", "kicad_blocks", "kicad_workflow", "kicad_pipeline", "kicad_native_tools", "kicad_system", "kicad_project", "kicad_document", "kicad_schematic", "kicad_board", "kicad_library", "kicad_external", "kicad_editor", "kicad_reference", "kicad_audit", "kicad_web", "kicad_gerber"], "nativeToolCount": 971, "os": "darwin", "schemaVersion": 1}, "mcpToolCount": 20, "terminalVersion": "1.19.3", "terminalSha256": "d2e743d33b9325f19db4b9156ccb14ef174d03148450f73429b7985c449b85a7", "extensionVersion": "0.4.23", "extensionPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.23", "checkedFiles": ["extension.cjs", "main.js", "bundled CLI", "eda-agent-instructions.md", "easyeda-mcp.mjs", "session-runtime.mjs"], "note": "Installation and capability verification; this does not assert a connected KiCad document or fabricate engineering validation."}

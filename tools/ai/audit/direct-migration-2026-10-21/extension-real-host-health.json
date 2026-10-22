@@ -1,0 +1,133 @@
+{
+  "scope": "Actual packaged extension host health only; full UI and terminal host test did not complete",
+  "invalidCompatibilityNodePathIgnored": true,
+  "nativeHealth": {
+    "ok": true,
+    "action": "system.health",
+    "data": {
+      "cli": {
+        "ok": true,
+        "action": "system.version",
+        "data": {
+          "version": "10.99.0"
+        }
+      },
+      "kicadCli": {
+        "available": true,
+        "version": "10.99.0"
+      },
+      "compiledCapabilities": {
+        "actionCount": 254,
+        "mcpToolCount": 20
+      },
+      "externalTools": [
+        {
+          "name": "kicad-cli",
+          "available": true,
+          "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli"
+        },
+        {
+          "name": "freerouting",
+          "available": true,
+          "path": "/Users/mosc/.local/bin/freerouting"
+        },
+        {
+          "name": "java",
+          "available": true,
+          "path": "/usr/bin/java"
+        },
+        {
+          "name": "ngspice",
+          "available": true,
+          "path": "/opt/homebrew/bin/ngspice"
+        },
+        {
+          "name": "gerbv",
+          "available": true,
+          "path": "/opt/homebrew/bin/gerbv"
+        },
+        {
+          "name": "openscad",
+          "available": true,
+          "path": "/opt/homebrew/bin/openscad"
+        },
+        {
+          "name": "FreeCAD",
+          "available": true,
+          "path": "/Users/mosc/.local/bin/FreeCAD"
+        },
+        {
+          "name": "python3",
+          "available": true,
+          "path": "/usr/bin/python3"
+        },
+        {
+          "name": "kicad-stepcheck",
+          "available": false,
+          "error": "not found"
+        }
+      ],
+      "ipc": {
+        "available": false,
+        "socket": "/tmp/kn-vs-476tjka6/unopened.sock",
+        "result": {
+          "ok": false,
+          "action": "system.ping",
+          "error": {
+            "code": "IPC_UNAVAILABLE",
+            "message": "connect ENOENT /tmp/kn-vs-476tjka6/unopened.sock",
+            "detail": "/tmp/kn-vs-476tjka6/unopened.sock"
+          }
+        }
+      },
+      "tools": [
+        {
+          "name": "kicad-cli",
+          "available": true,
+          "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli"
+        },
+        {
+          "name": "freerouting",
+          "available": true,
+          "path": "/Users/mosc/.local/bin/freerouting"
+        },
+        {
+          "name": "java",
+          "available": true,
+          "path": "/usr/bin/java"
+        },
+        {
+          "name": "ngspice",
+          "available": true,
+          "path": "/opt/homebrew/bin/ngspice"
+        },
+        {
+          "name": "gerbv",
+          "available": true,
+          "path": "/opt/homebrew/bin/gerbv"
+        },
+        {
+          "name": "openscad",
+          "available": true,
+          "path": "/opt/homebrew/bin/openscad"
+        },
+        {
+          "name": "FreeCAD",
+          "available": true,
+          "path": "/Users/mosc/.local/bin/FreeCAD"
+        },
+        {
+          "name": "python3",
+          "available": true,
+          "path": "/usr/bin/python3"
+        },
+        {
+          "name": "kicad-stepcheck",
+          "available": false,
+          "error": "not found"
+        }
+      ],
+      "designReady": false
+    }
+  }
+}

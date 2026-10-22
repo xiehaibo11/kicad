@@ -1,0 +1,46 @@
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                           ╭──────  Kicad update available                               esc  ───────╮                                          
+                                           │ Ki Ki                                                             0.2.2 │                                          
+                                           │        Kicad 0.2.2 is available (you have 0.2.1)                        │                                          
+                                           │ KiCad                                                                   │                                          
+                                           │ ● IPC  Installation: development build                           ck     │                                          
+                                           │ ● kic                                                            ew     │                                          
+                                           │ PCB e  This is a development build. Rebuild it with tools/ai/    tputs  │                                          
+                                           │        Kicad-terminal/build.sh.                                  ng     │                                          
+                                           │                                                                  isions │                                          
+                                           ╰──────  Releases: https://www.npmjs.com/package/@-kicadai/kicad-  ───────╯                                          
+                                                    code?activeTab=versions                                                                                     
+                                                                                                                                                                
+                                           ┃                                                                                                                    
+                                           ┃  Desc                                Skip this version   Close                                                     
+                                           ┃                                                                                                                    
+                                           ┃  Build · Workbench fixture Local fixture                        ● KiCad                                            
+                                           ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                                          
+                                                                                           tab agents  ctrl+p commands                                          
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+  /private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-workbench-u8u3dhr_/ecc83  ● KiCad connected                             ↑ Kicad 0.2.2 /update  
+                                                                                                                                                                

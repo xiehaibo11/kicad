@@ -1,0 +1,141 @@
+{
+  "checkedAt": "2026-10-20T22:46:55.609338+00:00",
+  "extensionVersion": "0.4.9",
+  "runtimeVersion": "1.19.3",
+  "composerRevision": 2,
+  "installedArtifactsMatch": true,
+  "terminalSha256": "8b3740704e47abae0e30f5e3aff99b1f3daa95f812a6f60a0b519b9c7eeb7e76",
+  "terminalCliCommands": [
+    "kicad-terminal completion          generate shell completion script",
+    "kicad-terminal acp                 start ACP (Agent Client Protocol) server",
+    "kicad-terminal mcp                 manage MCP (Model Context Protocol) servers",
+    "kicad-terminal [project]           start kicad terminal                                  [default]",
+    "kicad-terminal attach <url>        attach to a running kicad server",
+    "kicad-terminal run [message..]     run kicad with a message",
+    "kicad-terminal debug               debugging and troubleshooting tools",
+    "kicad-terminal providers           manage AI providers and credentials             [aliases: auth]",
+    "kicad-terminal agent               manage agents",
+    "kicad-terminal upgrade [target]    upgrade the kicad runtime to the latest or a specific version",
+    "kicad-terminal uninstall           uninstall the kicad runtime and remove all related files",
+    "kicad-terminal serve               starts a headless kicad server",
+    "kicad-terminal web                 start kicad server and open web interface",
+    "kicad-terminal models [provider]   list all available models",
+    "kicad-terminal stats               show token usage and cost statistics",
+    "kicad-terminal export [sessionID]  export session data as JSON",
+    "kicad-terminal import <file>       import session data from JSON file",
+    "kicad-terminal github              manage GitHub agent",
+    "kicad-terminal pr <number>         fetch and checkout a GitHub PR branch, then run kicad",
+    "kicad-terminal session             manage sessions",
+    "kicad-terminal plugin <module>     install plugin and update config                [aliases: plug]",
+    "kicad-terminal db                  database tools"
+  ],
+  "typechecks": [
+    "extension TypeScript passed",
+    "extension Vue TypeScript passed",
+    "terminal backend TypeScript passed",
+    "terminal TUI TypeScript passed"
+  ],
+  "terminalRegression": {
+    "pass": 204,
+    "skip": 1,
+    "fail": 0,
+    "assertions": 523
+  },
+  "sdkProbeLifecycle": "success and timeout abort; late executable resolution cannot spawn",
+  "extensionHost": {
+    "version": "0.4.9",
+    "active": true,
+    "webviews": {
+      "resolved": 2,
+      "mounted": 2
+    },
+    "nativeTerminal": {
+      "name": "kicad",
+      "pid": 69251,
+      "binary": "/Users/mosc/.local/bin/kicad-terminal"
+    },
+    "kiCadMcpEnabled": true,
+    "availableTerminalProviders": [
+      "kicad-deepseek"
+    ]
+  },
+  "extensionLiveModel": {
+    "fixture": "Synthetic text conversation; no actual PCB inspection",
+    "original": "帮我只读检查 U1 和 R1（10 kΩ），不要修改文件，也不要布线，解释发现的问题。",
+    "optimized": "请对 U1 和 R1（10 kΩ）进行只读检查，并解释发现的问题。\n\n约束：\n- 不要修改任何文件。\n- 不要布线。\n- 保持只读检查，不进行任何设计变更。\n\n期望输出：以问题解释为主，说明你在 U1 和 R1 上发现的问题。",
+    "version": "0.4.9",
+    "webviews": {
+      "resolved": 2,
+      "mounted": 2
+    },
+    "liveModel": "deepseek-flash",
+    "history": [
+      {
+        "role": "user",
+        "text": "请只读检查 U1 和 R1（10 kΩ）的相关问题，不要修改文件，也不要布线。检查后解释发现的问题。"
+      },
+      {
+        "role": "assistant",
+        "text": "已完成只读检查，没有修改文件或布线。U1 的供电与 R1 的阻值有需要解释的地方，下一步可以分别说明这两个器件的检查结果。"
+      }
+    ],
+    "suggestion": "请分别说明 U1 和 R1 的检查结果。",
+    "actualMcpToolCount": 14,
+    "toolsCalled": 0,
+    "chatMessagesSent": 0
+  },
+  "terminalLiveModel": {
+    "fixture": "Synthetic text conversation; no actual PCB inspection",
+    "model": "kicad-deepseek/deepseek-flash",
+    "suggestion": "好的，请解释 U1 的供电和 R1 的阻值具体有什么问题。",
+    "optimized": "请以只读方式检查 U1 和 R1（10 kΩ）：不要修改任何文件，也不要进行布线，只向我解释检查中发现的问题。",
+    "mcpToolCount": 14,
+    "embeddedWebUi": true,
+    "embeddedAssetBytes": 2738111,
+    "sessionsUnchanged": true,
+    "toolsCalled": 0,
+    "chatMessagesSent": 0
+  },
+  "extensionUi": {
+    "version": "0.4.9",
+    "checks": [
+      "completed turn triggers prediction",
+      "current selected model and actual conversation forwarded",
+      "ghost remains outside draft",
+      "Tab accepts without sending",
+      "Enter accepts without sending",
+      "editing invalidates late result",
+      "tool search inserts real MCP definition only",
+      "suggestions can be disabled"
+    ],
+    "explicitMessages": 4,
+    "automaticMessages": 0,
+    "pageErrors": []
+  },
+  "optimizerUi": {
+    "version": "0.4.9",
+    "fixture": "Installed production frontend, mock host responses",
+    "checks": [
+      "empty input disabled",
+      "selected model forwarded",
+      "direct input replacement",
+      "no preview dialog",
+      "undo restores original",
+      "no automatic send",
+      "Enter disabled during optimization",
+      "cancel and late result ignored",
+      "error preserves draft and can retry",
+      "concurrent edit protected"
+    ],
+    "chatMessagesSent": 0,
+    "pageErrors": []
+  },
+  "normalWindow": {
+    "title": "kicad · 建议与工具参考 0.4.9",
+    "chatMounted": true,
+    "nativeTerminalPid": 73632,
+    "nativeModel": "kicad-deepseek/deepseek-flash"
+  },
+  "scope": "Text fixtures and isolated model generation only; no actual PCB inspection or design mutation.",
+  "terminalCliCommandCount": 22
+}

@@ -1,0 +1,21 @@
+CUA 原生界面观察，2026-10-20
+1. File → Open Project Folder... 可打开系统目录选择器。
+2. 选择 /tmp/kicad-integration-projects 后，Open or Switch Project 对话框显示：
+   ecc83/ecc83-pp.kicad_pro
+   ecc83/ecc83-pp_v2.kicad_pro
+   pic_programmer/pic_programmer.kicad_pro
+3. 重选 pic_programmer 并点击工程管理窗口标题后，Window 菜单仍有管理器、PCB、原理图。
+4. 最终构建启动后，Window 菜单实际列出：
+   *[no drawing sheet loaded] — Drawing Sheet Editor
+   3D Viewer
+   Footprint Editor
+   Gerber Viewer
+   pic_programmer — KiCad 10.99
+   pic_programmer — PCB Editor
+   pic_programmer — Schematic Editor
+   Symbol Editor
+5. 3D Viewer 显示载入完成的 pic_programmer 板卡及器件，视图为 viewFront。
+6. Assign Footprints 窗口显示 Footprint Filters、15472 matching footprints 及 Apply/OK/Cancel。
+   检查后 Cancel 关闭，未应用封装分配。
+7. 最后通过 Window 菜单切回 pic_programmer — KiCad 10.99，管理器仍正常显示。
+这是界面观察记录；原始自动化结果见 gui-ipc.json、viewers.json、cvpcb-*.json。

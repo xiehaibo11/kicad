@@ -1,0 +1,189 @@
+{
+ "finish": {
+  "typeName": "None"
+ },
+ "impedance": {},
+ "edge": {
+  "connector": {
+   "type": "BECT_NONE"
+  },
+  "plating": {}
+ },
+ "layers": [
+  {
+   "thickness": {},
+   "layer": "BL_F_SilkS",
+   "enabled": true,
+   "type": "BSLT_SILKSCREEN",
+   "userName": "Top Silkscreen Layer",
+   "silkscreen": {
+    "materialName": "Not specified"
+   }
+  },
+  {
+   "thickness": {},
+   "layer": "BL_F_Paste",
+   "enabled": true,
+   "type": "BSLT_SOLDERPASTE",
+   "userName": "Top Paste Mask Layer"
+  },
+  {
+   "thickness": {
+    "valueNm": "10000"
+   },
+   "layer": "BL_F_Mask",
+   "enabled": true,
+   "type": "BSLT_SOLDERMASK",
+   "userName": "Top Solder Mask Layer",
+   "soldermask": {
+    "epsilonR": 3.3,
+    "materialName": "Not specified",
+    "thickness": {
+     "valueNm": "10000"
+    }
+   }
+  },
+  {
+   "thickness": {
+    "valueNm": "35000"
+   },
+   "layer": "BL_F_Cu",
+   "enabled": true,
+   "type": "BSLT_COPPER",
+   "materialName": "copper",
+   "userName": "Top Layer"
+  },
+  {
+   "thickness": {
+    "valueNm": "480000"
+   },
+   "layer": "BL_UNDEFINED",
+   "enabled": true,
+   "type": "BSLT_DIELECTRIC",
+   "dielectric": {
+    "layer": [
+     {
+      "epsilonR": 4.5,
+      "lossTangent": 0.02,
+      "materialName": "FR4",
+      "thickness": {
+       "valueNm": "480000"
+      },
+      "specFrequency": 1000000000,
+      "dielectricModel": "DM_CONSTANT"
+     }
+    ],
+    "type": "BSDT_CORE"
+   }
+  },
+  {
+   "thickness": {
+    "valueNm": "35000"
+   },
+   "layer": "BL_In1_Cu",
+   "enabled": true,
+   "type": "BSLT_COPPER",
+   "materialName": "copper",
+   "userName": "Inner1"
+  },
+  {
+   "thickness": {
+    "valueNm": "480000"
+   },
+   "layer": "BL_UNDEFINED",
+   "enabled": true,
+   "type": "BSLT_DIELECTRIC",
+   "dielectric": {
+    "layer": [
+     {
+      "epsilonR": 4.5,
+      "lossTangent": 0.02,
+      "materialName": "FR4",
+      "thickness": {
+       "valueNm": "480000"
+      },
+      "specFrequency": 1000000000,
+      "dielectricModel": "DM_CONSTANT"
+     }
+    ],
+    "type": "BSDT_PREPREG"
+   }
+  },
+  {
+   "thickness": {
+    "valueNm": "35000"
+   },
+   "layer": "BL_In2_Cu",
+   "enabled": true,
+   "type": "BSLT_COPPER",
+   "materialName": "copper",
+   "userName": "Inner2"
+  },
+  {
+   "thickness": {
+    "valueNm": "480000"
+   },
+   "layer": "BL_UNDEFINED",
+   "enabled": true,
+   "type": "BSLT_DIELECTRIC",
+   "dielectric": {
+    "layer": [
+     {
+      "epsilonR": 4.5,
+      "lossTangent": 0.02,
+      "materialName": "FR4",
+      "thickness": {
+       "valueNm": "480000"
+      },
+      "specFrequency": 1000000000,
+      "dielectricModel": "DM_CONSTANT"
+     }
+    ],
+    "type": "BSDT_CORE"
+   }
+  },
+  {
+   "thickness": {
+    "valueNm": "35000"
+   },
+   "layer": "BL_B_Cu",
+   "enabled": true,
+   "type": "BSLT_COPPER",
+   "materialName": "copper",
+   "userName": "Bottom Layer"
+  },
+  {
+   "thickness": {
+    "valueNm": "10000"
+   },
+   "layer": "BL_B_Mask",
+   "enabled": true,
+   "type": "BSLT_SOLDERMASK",
+   "userName": "Bottom Solder Mask Layer",
+   "soldermask": {
+    "epsilonR": 3.3,
+    "materialName": "Not specified",
+    "thickness": {
+     "valueNm": "10000"
+    }
+   }
+  },
+  {
+   "thickness": {},
+   "layer": "BL_B_Paste",
+   "enabled": true,
+   "type": "BSLT_SOLDERPASTE",
+   "userName": "Bottom Paste Mask Layer"
+  },
+  {
+   "thickness": {},
+   "layer": "BL_B_SilkS",
+   "enabled": true,
+   "type": "BSLT_SILKSCREEN",
+   "userName": "Bottom Silkscreen Layer",
+   "silkscreen": {
+    "materialName": "Not specified"
+   }
+  }
+ ]
+}

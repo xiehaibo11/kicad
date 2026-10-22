@@ -1,0 +1,116 @@
+{
+  "workspace": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-intent-workspace-0t0nWp",
+  "profile": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-intent-profile-KCwWuV",
+  "requests": [
+    {
+      "name": "ambiguous",
+      "summarizing": false,
+      "wasCompacted": false,
+      "questionResult": false,
+      "writeResult": false,
+      "last": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now on when X\", \"each time X\", \"whenever X\", \"before/after X\") require hooks configured in settings.json - the harness executes these, not Claude, so me",
+      "containsCheckpoint": false,
+      "preservesRestriction": false,
+      "model": "claude-sonnet-4-6"
+    },
+    {
+      "name": "ambiguous",
+      "summarizing": false,
+      "wasCompacted": false,
+      "questionResult": false,
+      "writeResult": true,
+      "last": "<system-reminder>\nPreToolUse:Callback hook blocking error from command: \"callback\": 用户尚未提供明确任务。请先询问用户具体需求并等待回答；不要把数字、工具授权或历史记录猜成任务，不要调用业务工具或启动子代理。\n</system-reminder>",
+      "containsCheckpoint": false,
+      "preservesRestriction": false,
+      "model": "claude-sonnet-4-6"
+    },
+    {
+      "name": "generic-yes",
+      "summarizing": false,
+      "wasCompacted": false,
+      "questionResult": false,
+      "writeResult": false,
+      "last": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now on when X\", \"each time X\", \"whenever X\", \"before/after X\") require hooks configured in settings.json - the harness executes these, not Claude, so me",
+      "containsCheckpoint": false,
+      "preservesRestriction": false,
+      "model": "claude-sonnet-4-6"
+    },
+    {
+      "name": "generic-yes",
+      "summarizing": false,
+      "wasCompacted": false,
+      "questionResult": true,
+      "writeResult": false,
+      "last": "",
+      "containsCheckpoint": false,
+      "preservesRestriction": false,
+      "model": "claude-sonnet-4-6"
+    },
+    {
+      "name": "answered",
+      "summarizing": false,
+      "wasCompacted": false,
+      "questionResult": false,
+      "writeResult": false,
+      "last": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now on when X\", \"each time X\", \"whenever X\", \"before/after X\") require hooks configured in settings.json - the harness executes these, not Claude, so me",
+      "containsCheckpoint": false,
+      "preservesRestriction": false,
+      "model": "claude-sonnet-4-6"
+    },
+    {
+      "name": "answered",
+      "summarizing": false,
+      "wasCompacted": false,
+      "questionResult": true,
+      "writeResult": false,
+      "last": "",
+      "containsCheckpoint": false,
+      "preservesRestriction": false,
+      "model": "claude-sonnet-4-6"
+    },
+    {
+      "name": "answered",
+      "summarizing": false,
+      "wasCompacted": false,
+      "questionResult": true,
+      "writeResult": true,
+      "last": "",
+      "containsCheckpoint": false,
+      "preservesRestriction": false,
+      "model": "claude-sonnet-4-6"
+    },
+    {
+      "name": "compact",
+      "summarizing": false,
+      "wasCompacted": false,
+      "questionResult": false,
+      "writeResult": false,
+      "last": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now on when X\", \"each time X\", \"whenever X\", \"before/after X\") require hooks configured in settings.json - the harness executes these, not Claude, so me",
+      "containsCheckpoint": false,
+      "preservesRestriction": true,
+      "model": "claude-sonnet-4-6"
+    },
+    {
+      "name": "compact",
+      "summarizing": true,
+      "wasCompacted": false,
+      "questionResult": false,
+      "writeResult": true,
+      "last": "Your task is to create a detailed summary of the conversation so far, paying close attention to the user's explicit requests and your previous actions.\nThis summary should be thorough in capturing technical details, code patterns, and architectural decisions that would be essential for continuing development work without losing context.\n\nBefore pro",
+      "containsCheckpoint": false,
+      "preservesRestriction": true,
+      "model": "claude-sonnet-4-6"
+    },
+    {
+      "name": "compact",
+      "summarizing": false,
+      "wasCompacted": true,
+      "questionResult": false,
+      "writeResult": false,
+      "last": "<system-reminder>\nResult of calling the Read tool: \"     1→INTENT_OK\\n\\n<system-reminder>\\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or ",
+      "containsCheckpoint": true,
+      "preservesRestriction": true,
+      "model": "claude-sonnet-4-6"
+    }
+  ]
+}

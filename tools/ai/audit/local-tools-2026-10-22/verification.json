@@ -1,0 +1,34 @@
+{
+  "version": "0.4.34",
+  "sharedTests": {
+    "passed": 13,
+    "failed": 0
+  },
+  "extension": {
+    "typecheck": true,
+    "regressions": true,
+    "bundle": true,
+    "manifestVerified": true,
+    "installed": [
+      "VS Code",
+      "Cursor"
+    ],
+    "shortModelMenuScreenshot": "short-model-menu.png"
+  },
+  "terminal": {
+    "runtimePluginUpdated": true,
+    "nativeBinaryRebuilt": false,
+    "installedProviderDiscovery": "installed-models.log",
+    "context7AndMemoryLive": "terminal-live.json"
+  },
+  "localModels": {
+    "claude": 4,
+    "codex": 7
+  },
+  "membershipGeneration": {
+    "codex": "prior live conversation and tool call passed",
+    "claude": "prior live request returned HTTP 429; not a successful generation"
+  },
+  "credentialStorage": "local private config, excluded from build artifacts",
+  "history": "Existing native chat archives retained; shared readers and per-workspace memory available in both interfaces"
+}

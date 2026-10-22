@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "version": "0.4.19",
+  "installed": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.19",
+  "sha256": {
+    "dist/extension.cjs": "eae6a72fa0f2a12a83ad2eda9244ca7c7008fe1e9254e5e0e1cbe858769b9ab1",
+    "dist/media/main.js": "cf8d2d36439e3c454b297ee6ddb605b47c1fa5a998edcd6f36f45b5fef184467",
+    "dist/media/style.css": "db95dce53efd0a157e070cd57b45657a753ebf826d4fcbcc689ed7b82b2ad635"
+  }
+}

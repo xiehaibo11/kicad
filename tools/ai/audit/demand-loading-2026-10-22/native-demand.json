@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "modelRequests": 8,
+  "initialToolNames": [
+    "bash",
+    "capability_call",
+    "capability_search",
+    "edit",
+    "glob",
+    "grep",
+    "question",
+    "read",
+    "task",
+    "todowrite",
+    "webfetch",
+    "write"
+  ],
+  "selectedMcpConnected": true,
+  "unselectedMcpConnected": false,
+  "skillBodyOnlyAfterCall": true
+}

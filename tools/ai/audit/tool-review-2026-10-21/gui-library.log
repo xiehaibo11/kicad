@@ -1,0 +1,9 @@
+{
+  dir: '/tmp/kn-pcb-gui-IK9tqj',
+  document: '/tmp/kn-pcb-gui-IK9tqj/acceptance.kicad_pcb',
+  socket: '/tmp/kn-pcb-gui-IK9tqj/api.sock'
+}
+pcb.view.filter.get PASS
+editor.run_action PASS
+document.list PASS
+{"ok":true,"footprintLibraryOpened":true,"readback":{"documents":[{"type":"DOCTYPE_FOOTPRINT","libId":{"libraryNickname":"Test","entryName":"Test"},"project":{"name":"acceptance","path":"/tmp/kn-pcb-gui-IK9tqj"}}]}}

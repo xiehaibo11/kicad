@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "action": "editor.run_action",
+  "data": {
+    "action": "eeschema.EditorControl.assignFootprints",
+    "completionVerified": false,
+    "editor": "eeschema",
+    "execution": "submitted",
+    "status": "RAS_OK"
+  },
+  "elapsedMs": 14218
+}

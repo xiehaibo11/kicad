@@ -1,0 +1,36 @@
+{
+  "version": "0.4.19",
+  "initialMode": "Agent",
+  "menuOrder": [
+    "Agent",
+    "Default",
+    "Plan",
+    "最高权限"
+  ],
+  "launchPermissionMode": "acceptEdits",
+  "checks": [
+    "reasoning options follow DeepSeek capabilities",
+    "effort selection never sends",
+    "selected max effort reaches host before send",
+    "live change sends low to host",
+    "failed change keeps previous effort and shows inline error",
+    "new chat defaults to Agent",
+    "highest permission selectable without sending",
+    "Plan and Default remain selectable",
+    "selected Agent mode forwarded to chat backend",
+    "live full access resolves pending Bash without Yes or persistent rules",
+    "switch back to Agent",
+    "Tab without suggestion keeps focus for empty and nonempty drafts",
+    "second Tab after acceptance keeps focus",
+    "completed turn triggers prediction",
+    "current selected model and actual conversation forwarded",
+    "only ghost text, no tool reference button/checkbox/status/accept buttons",
+    "Tab accepts without sending",
+    "Enter and Right do not accept ghost text",
+    "Escape dismisses",
+    "editing invalidates late result"
+  ],
+  "explicitMessages": 3,
+  "automaticMessages": 0,
+  "pageErrors": []
+}

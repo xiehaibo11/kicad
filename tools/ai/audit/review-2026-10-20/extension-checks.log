@@ -1,0 +1,10 @@
+RUN pnpm exec tsc --noEmit
+RUN pnpm exec vue-tsc --noEmit -p src/webview/tsconfig.json
+RUN node /Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/test-overlay.mjs /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-review-cg_0wgnn
+Overlay checks passed: native terminal, workspace selection, MCP config preservation, trust, paths, provider routing, SDK syntax.
+RUN node /Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/test-prompt-optimizer.mjs /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-review-cg_0wgnn
+Prompt optimizer checks passed: selected model, text-only isolation, cancel, timeout, errors, empty output, tool rejection.
+RUN node /Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/test-composer.mjs /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-review-cg_0wgnn
+Composer backend checks passed: current model, no tools/history writes, grounded prompt, abstention and bounded context.
+RUN node /Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/test-probe-lifecycle.mjs /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-review-cg_0wgnn
+SDK probe lifecycle passed: success/timeout abort, bounded lifetime and no late orphan spawn.

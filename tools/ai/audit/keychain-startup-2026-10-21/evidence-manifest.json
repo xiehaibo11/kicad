@@ -1,0 +1,15 @@
+{
+  "REPORT.md": "1b5942d672026f1d8bd1b7174032bc11006d395b64e44007535e3c7a8691a2b9",
+  "actual-window.png": "38e242e0643ae1c0cd6e213a1f5dbdb51e521bb619c5888357c77c24c4b1236e",
+  "actual-window.txt": "7fe7da95b0da7bcd1013caa31d5bf8aa3578a0f003ed3a9b1d20af20405d9e98",
+  "extension-build-manifest.json": "23fa7ed76cdea3540ec76db55e719d0fb35d33e8143698d49d5daf31c41ca97e",
+  "extension-build.log": "be341492312ffdb174de9dbba7d0341663f360f885c60216f03f15b4f4ce40b9",
+  "extension-install.log": "be248998ab59767784cb1962fc5df8460182f9b4b2884d2d090aa295a1bb3022",
+  "sdk-host.log": "29313e262a2164608e72f47c4e5987f9c4d85e9610f32454da217831d193c5e7",
+  "sdk-requests.json": "1676d6e1210eb98de23f9bc60eb5643bfca9da7b26b61b12164880affe11e1f0",
+  "startup.json": "5e282cd7a9e364f2cc4531d8319b2e2768c68f3903f6d2e25ebeca393f806d59",
+  "startup.log": "59ebb0f33340a8a4f117d1e2f1043c36361e46434519e9e4c534adb15fc40d88",
+  "terminal-build-manifest.json": "a6ea04a88929fccc15e51e2bad0da549f6619a0f2b3b0c74b59c12df9f930f48",
+  "terminal-install.log": "0dd5e1750675a419dc665367c279a7c0372738e5bf1a4c7f4039b2d06f2a8874",
+  "verification.json": "0a693de4f8892aa5cdcb940ec5af4ef445c7693be4040d41f10a0b59c290313c"
+}

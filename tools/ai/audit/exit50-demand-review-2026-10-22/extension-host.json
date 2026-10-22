@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "version": "0.4.40",
+  "displayName": "Kicad",
+  "active": true,
+  "webviews": {
+    "resolved": 2,
+    "mounted": 2
+  },
+  "nativeTerminal": {
+    "name": "Kicad 终端",
+    "pid": 50951,
+    "binary": "/Users/mosc/.local/bin/kicad-terminal"
+  },
+  "nativeToolPluginEnabled": true,
+  "inProcessHealth": {
+    "ok": true,
+    "action": "system.health",
+    "cliAvailable": true
+  },
+  "availableTerminalProviders": []
+}

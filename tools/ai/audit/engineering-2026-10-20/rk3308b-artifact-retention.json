@@ -1,0 +1,22 @@
+[
+  {
+    "original": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-design-audit-100297162/drc.json",
+    "retained": "tools/ai/audit/engineering-2026-10-20/rk3308b-drc.json",
+    "sha256": "6e8773c9c008743589c67d707d310e4ea8f72626e35a0533378bc57c824a5441"
+  },
+  {
+    "original": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-design-audit-100297162/erc.json",
+    "retained": "tools/ai/audit/engineering-2026-10-20/rk3308b-erc.json",
+    "sha256": "d7c7393b0a5e431cfb47a118ec816fd8e63805ead0fede54d4a897dbba863f96"
+  },
+  {
+    "original": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-design-audit-100297162/audit.json",
+    "retained": "tools/ai/audit/engineering-2026-10-20/rk3308b-audit.json",
+    "sha256": "17c822c4abe0cc7087c514b155cecb64bdceef9667928d6b31b2157c19909482"
+  },
+  {
+    "original": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-release-check-456489183/release-check.json",
+    "retained": "tools/ai/audit/engineering-2026-10-20/rk3308b-release-check.json",
+    "sha256": "0828f97555db13566661bf9e7d35269597156a1cc20cc4e048cf471f027c1209"
+  }
+]

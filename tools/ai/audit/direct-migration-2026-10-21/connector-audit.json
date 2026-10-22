@@ -1,0 +1,1035 @@
+{
+  "sourceArchiveSha256": "1c162989e161016d004a3f3fcc32b93a32281566c8dcf0b2bdb37439ffd22be9",
+  "sourceVersion": "1.14.0",
+  "originalHandlerCount": 170,
+  "statusCounts": {
+    "removed-platform-contract": 19,
+    "native-capability": 72,
+    "requires-native-workflow": 79
+  },
+  "runtime": "KiCad native JavaScript",
+  "execution": "in-process in terminal and SDK extension; native IPC/CLI only",
+  "aliasesExecuted": false,
+  "actions": [
+    {
+      "originalAction": "system.page_reload",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "project.current",
+      "status": "native-capability",
+      "nativeAction": "project.info",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "project.export_source",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "project.find",
+      "status": "native-capability",
+      "nativeAction": "project.list",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "project.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "project.open",
+      "status": "native-capability",
+      "nativeAction": "project.open",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "project.export",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "project.import",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "document.current",
+      "status": "native-capability",
+      "nativeAction": "document.list",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "document.source.get",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "document.source.roundtrip",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "document.open",
+      "status": "native-capability",
+      "nativeAction": "project.open",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "document.close",
+      "status": "native-capability",
+      "nativeAction": "document.close",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "view.fit",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "view.zoom",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "view.region",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.pages.list",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.page.open",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.page.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.page.rename",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.page.delete",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.page.clear",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.primitives.delete",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.rename",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.titleblock.get",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.titleblock.modify",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.components.list",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.attribute.inspect",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.attribute.move",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.designators.list",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.component.place",
+      "status": "native-capability",
+      "nativeAction": "schematic.place.symbol",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.component.modify",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.component.delete",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.wire.create",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.image.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.image.list",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.image.modify",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.group.move",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.netflag.create",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.pin.set_no_connect",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.pin.disconnect",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.drc.check",
+      "status": "native-capability",
+      "nativeAction": "schematic.erc.live",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.check",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.bridgeCheck",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.read",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.save",
+      "status": "native-capability",
+      "nativeAction": "document.save",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.export.netlist",
+      "status": "native-capability",
+      "nativeAction": "schematic.export.netlist",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.export.image",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.export.bom",
+      "status": "native-capability",
+      "nativeAction": "schematic.export.bom",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.power.connect_pin",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.library.search",
+      "status": "native-capability",
+      "nativeAction": "library.search.symbols",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.library.get_by_lcsc",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.list",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.common.list",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.footprint.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.footprint.get",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.footprint.copy",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.footprint.delete",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.footprint.build",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.footprint.region_create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.symbol.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.symbol.build",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.symbol.get",
+      "status": "native-capability",
+      "nativeAction": "library.get.symbol",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "library.symbol.export_source",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.symbol.delete",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "library.model3d.create",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.model3d.get",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.model3d.search",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.model3d.copy",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.model3d.delete",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.device.create",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.device.get",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.device.set_model3d",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.device.delete",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "schematic.rebind.footprint",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.rebind.symbol",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.component.replace",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "schematic.component.resolve_lcsc",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "schematic.text.list",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.text.move",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.visible_text.bboxes",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.documents.list",
+      "status": "native-capability",
+      "nativeAction": "document.list",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.components.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.layers.list",
+      "status": "native-capability",
+      "nativeAction": "board.layers.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.layers.set_current",
+      "status": "native-capability",
+      "nativeAction": "board.layers.active.set",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.layers.visibility",
+      "status": "native-capability",
+      "nativeAction": "board.layers.visible.set",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.view.side",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.stackup.set",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.silk.align",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.silk.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.silk.add",
+      "status": "native-capability",
+      "nativeAction": "board.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.silk.import_svg",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.image.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.image.list",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.image.modify",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.image.delete",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.silk.set",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.silk.netnames",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.silk.label_pads",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.nets.list",
+      "status": "native-capability",
+      "nativeAction": "board.nets.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.net_class.list",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.net_class.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.report",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.constraint.list",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.differential_pair.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.differential_pair.delete",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.differential_pair.rename",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.equal_length_group.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.equal_length_group.add_nets",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.equal_length_group.delete",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.board.info",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "board.list",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "board.current",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "board.create",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "board.new_pcb",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "system.notify",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "board.rename",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "board.copy",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "board.delete",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "board.rebind",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.import_changes",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.add_component",
+      "status": "native-capability",
+      "nativeAction": "board.footprint.place",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.component.attrs_backfill",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.component.modify",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.component.lock",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.component.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.page.clear",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.align",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.distribute",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.grid_snap",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.components.move",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.components.arrange",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.drc.check",
+      "status": "native-capability",
+      "nativeAction": "board.drc.live",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.drc.rules",
+      "status": "native-capability",
+      "nativeAction": "board.rules.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.drc.rules.set",
+      "status": "native-capability",
+      "nativeAction": "board.rules.set",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.config.get",
+      "status": "native-capability",
+      "nativeAction": "board.rules.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.config.set",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.net.color.set",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.line.create",
+      "status": "native-capability",
+      "nativeAction": "board.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.via.create",
+      "status": "native-capability",
+      "nativeAction": "board.via.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.line.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.via.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.route.rip_up",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.track.lock",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.route.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.route.via_hop",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.clear_routing",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.pour.create",
+      "status": "native-capability",
+      "nativeAction": "board.plane.build",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.pour.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.poured.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.pour.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.pour.rebuild",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.beautify",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.region.create",
+      "status": "native-capability",
+      "nativeAction": "board.rule_area.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.region.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.region.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.fill.create",
+      "status": "native-capability",
+      "nativeAction": "board.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.fill.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.fill.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.save",
+      "status": "native-capability",
+      "nativeAction": "document.save",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.export.dsn",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.import_autoroute",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.view.filter.get",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.snapshot",
+      "status": "requires-native-workflow",
+      "nativeAction": null,
+      "note": "No one-to-one mapping audited. Use typed KiCad items/native actions with explicit verification; the original handler is not shipped or advertised as supported."
+    },
+    {
+      "originalAction": "pcb.outline.set",
+      "status": "native-capability",
+      "nativeAction": "board.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.outline.get",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.outline.clear",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.origin.get",
+      "status": "native-capability",
+      "nativeAction": "board.origin.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.origin.set",
+      "status": "native-capability",
+      "nativeAction": "board.origin.set",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "debug.exec_js",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    }
+  ]
+}

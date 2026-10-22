@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "version": "0.4.18",
+  "selectionLatencyMs": 48,
+  "checks": [
+    "dashboard hidden on launch, draft, ordinary chat and background-only tasks",
+    "dashboard appears only after actual subagent events",
+    "entry below chat and outside composer",
+    "completed agents available for review",
+    "new conversation hides entry again",
+    "local model selection while SDK probe blocked",
+    "no launch or send on selection",
+    "search and keyboard selection",
+    "live tasks correlated without duplicate",
+    "agent progress and failure update",
+    "background tasks separate",
+    "details",
+    "desktop and 320/380/540px layout",
+    "modal focus trap / Escape / focus restoration",
+    "composer Tab unchanged"
+  ],
+  "source": "production Vue bundle with SDK event fixtures; no external model call"
+}

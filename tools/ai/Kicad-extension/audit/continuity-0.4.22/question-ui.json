@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "version": "0.4.22",
+  "fixture": "production Vue bundle with controlled host",
+  "checks": [
+    "real questions and descriptions displayed",
+    "no default answer or generic Yes",
+    "all questions required",
+    "single and multiple selections",
+    "custom answer preserves restrictions",
+    "cancel interrupts task",
+    "answers never submit a new chat",
+    "320px and 720px layouts"
+  ],
+  "pageErrors": []
+}

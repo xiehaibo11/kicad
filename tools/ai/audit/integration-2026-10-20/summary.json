@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-21T02:25:40.362487+00:00",
+  "progress": {
+    "passed": 8,
+    "partial": 1,
+    "total": 9,
+    "passedChecklistPercent": 88.9,
+    "meaning": "等权交付检查通过项占比，不代表全部原生工具的自动完成覆盖率",
+    "checks": [
+      {
+        "item": "API默认开启",
+        "status": "passed",
+        "evidence": "源默认值、用户配置及真实GUI IPC握手"
+      },
+      {
+        "item": "外部工具默认允许",
+        "status": "passed",
+        "evidence": "AllowExternal=true，8/8个外部程序检测可用"
+      },
+      {
+        "item": "EDA Agent Connector打包",
+        "status": "passed",
+        "evidence": "终端及VSIX打包、安装哈希及12组真实MCP工具发现"
+      },
+      {
+        "item": "终端自然语言调用",
+        "status": "passed",
+        "evidence": "真实模型以普通中文自动调用health和project.list"
+      },
+      {
+        "item": "扩展自然语言调用",
+        "status": "passed",
+        "evidence": "已安装0.4.22，真实VS Code宿主、SDK及模型调用"
+      },
+      {
+        "item": "工程目录查看和切换",
+        "status": "passed",
+        "evidence": "目录选择器、列表、歧义拒绝及完整工程切换回读"
+      },
+      {
+        "item": "当前工程窗口保留",
+        "status": "passed",
+        "evidence": "重复打开、标题点击、路径别名回归，PCB和原理图保持"
+      },
+      {
+        "item": "扩充工具入口与编辑器路由",
+        "status": "passed",
+        "evidence": "247个类型化动作、19组MCP、971项索引，9类原生窗口代表调用"
+      },
+      {
+        "item": "全部原生工具逐项语义验收",
+        "status": "partial",
+        "evidence": "971项中仍有交互选点、对象选择、参数或对话框流程，未逐项完成业务验收"
+      }
+    ]
+  },
+  "versions": {
+    "extension": "0.4.22",
+    "terminal": "1.19.3",
+    "agent": "0.2.0",
+    "kicad": "10.99.0",
+    "arch": "arm64"
+  },
+  "catalog": {
+    "typedActions": 247,
+    "mcpGroups": 19,
+    "nativeToolsIndexed": 971,
+    "edaConnectorMcpGroups": 12
+  },
+  "verification": {
+    "goTests": "Final go test -tags nng ./... passed with configured local CGO flags; prior default suite passed",
+    "nativeGuiCalls": 18,
+    "nativeViewerCalls": 10,
+    "nativeCvpcbCall": true,
+    "p0EngineeringCalls": 13,
+    "planeFailureRolledBackAndAbsentAfterSave": true,
+    "nativeP0Drc": {
+      "errors": 0,
+      "warnings": 0,
+      "unconnected": 0
+    },
+    "functionalChecks": 21,
+    "externalProgramsAvailable": 8,
+    "nativeEditorAliases": "CLI and real MCP: 3DViewer/3d-viewer=41, plEditor/pl_editor/pagelayout_editor=10",
+    "installedTerminalNaturalLanguage": "Final installed Kicad 1.19.3: real model health and project.list both passed"
+  },
+  "artifactsSha256": {
+    "build/bin/kicad-agent": "ffc14e2c2aa0f31ce3823c6362861cc3a93dc9acb9c9895e2c4f915f4d5d4412",
+    "build/kicad/KiCad.app/Contents/MacOS/kicad": "6de1e17ecc189140005ae2c54cb3ed1034a9024c975697b66f9d3e67bceab8e6",
+    "build/kicad/KiCad.app/Contents/MacOS/kicad-cli": "a1754cc886e0d1bdaa459c06a29c6b70cce8f5416fabe48a9d3bf0312e014e1e",
+    "build/kicad/KiCad.app/Contents/PlugIns/_pcbnew.kiface": "1fe45e7f4768b83bef6742539db4fd197dc2016fcca1cc182c84407161680f0b",
+    "tools/ai/Kicad-terminal/dist/kicad-terminal": "b66ec25a48bf4c3990c7699b66bbec600c0a91869db243284f2244928fea8f54",
+    "tools/ai/Kicad-extension/dist/kicad-0.4.22.vsix": "6aa6e0e75edd4de03529946e4d07c7e6dfcab67a45059441dd6e37a293e99cdb"
+  },
+  "remaining": [
+    "原生971项逐项的参数和交互语义适配及业务验收",
+    "复杂BGA、差分与等长、制造修复及真实STEP外壳等场景的专用夹具与原生回读",
+    "短板.md所述RK3308B实际工程的另行迁移或真实板级验证；本轮未执行"
+  ]
+}

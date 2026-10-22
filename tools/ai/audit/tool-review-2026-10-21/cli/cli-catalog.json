@@ -1,0 +1,1529 @@
+[
+  {
+    "action": "system.version",
+    "payload": {
+      "timeoutMs": 45000
+    },
+    "elapsedMs": 267,
+    "result": {
+      "ok": true,
+      "action": "system.version",
+      "data": {
+        "version": "10.99.0"
+      }
+    }
+  },
+  {
+    "action": "board.drc.run",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.drc.run/output.out",
+      "format": "json",
+      "full": true
+    },
+    "elapsedMs": 2899,
+    "result": {
+      "ok": true,
+      "action": "board.drc.run",
+      "data": {
+        "status": "clean",
+        "exitCode": 0,
+        "report": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.drc.run/output.out",
+        "reportPath": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.drc.run/output.out",
+        "summary": {
+          "reportPath": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.drc.run/output.out",
+          "total": 0,
+          "bySeverity": {},
+          "byType": {},
+          "violations": 0,
+          "unconnected_items": 0,
+          "schematic_parity": 0,
+          "ignoredChecks": [
+            {
+              "description": "Footprint has no courtyard defined",
+              "key": "missing_courtyard"
+            },
+            {
+              "description": "Track endpoint not centered on via",
+              "key": "track_not_centered_on_via"
+            },
+            {
+              "description": "Tuning profile track geometries",
+              "key": "tuning_profile_track_geometries"
+            },
+            {
+              "description": "Footprint doesn't match symbol's footprint filters",
+              "key": "footprint_filters_mismatch"
+            },
+            {
+              "description": "Footprint component type doesn't match footprint pads",
+              "key": "footprint_type_mismatch"
+            }
+          ]
+        },
+        "reportJson": {
+          "$schema": "https://schemas.kicad.org/drc.v1.json",
+          "coordinate_units": "mm",
+          "date": "2026-10-21T10:58:04",
+          "ignored_checks": [
+            {
+              "description": "Footprint has no courtyard defined",
+              "key": "missing_courtyard"
+            },
+            {
+              "description": "Track endpoint not centered on via",
+              "key": "track_not_centered_on_via"
+            },
+            {
+              "description": "Tuning profile track geometries",
+              "key": "tuning_profile_track_geometries"
+            },
+            {
+              "description": "Footprint doesn't match symbol's footprint filters",
+              "key": "footprint_filters_mismatch"
+            },
+            {
+              "description": "Footprint component type doesn't match footprint pads",
+              "key": "footprint_type_mismatch"
+            }
+          ],
+          "included_severities": [
+            "error",
+            "warning"
+          ],
+          "kicad_version": "10.99.0",
+          "schematic_parity": [],
+          "source": "fixture.kicad_pcb",
+          "unconnected_items": [],
+          "violations": []
+        }
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.drc.run/output.out"
+      ]
+    }
+  },
+  {
+    "action": "board.render",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.render/render.png",
+      "width": 128,
+      "height": 128,
+      "quality": "basic"
+    },
+    "elapsedMs": 525,
+    "result": {
+      "ok": true,
+      "action": "board.render",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "載入中...\n建置電路板邊框\n\n建立板層\n生成走線和貫孔\n建立區域\n建置疊層\n建置疊層 11\n建置疊層 9\n建置疊層 15\n建置疊層 13\n建置疊層 7\n建置疊層 5\n建置疊層 3\n建置疊層 1\n建置疊層 17\n建置疊層 19\n建置疊層 21\n建置疊層 23\n建置疊層 35\n建置疊層 33\n建置疊層 31\n建置疊層 29\n建置疊層 39\n建置疊層 41\n建置疊層 43\n建置疊層 45\n建置疊層 47\n建置疊層 49\n建置疊層 51\n建置疊層 53\n建置疊層 55\n建置疊層 57\n建置疊層 59\n建置疊層 61\n建置疊層 63\n建置疊層 65\n建置疊層 67\n建置疊層 69\n建置疊層 71\n建置疊層 73\n建置疊層 75\n建置疊層 77\n建置疊層 79\n建置疊層 81\n建置疊層 83\n建置疊層 85\n建置疊層 87\n建置疊層 89\n建置疊層 91\n建置疊層 93\n建置疊層 95\n建置疊層 97\n建置疊層 99\n建置疊層 101\n建置疊層 103\n建置疊層 105\n建置疊層 107\n建置疊層 109\n建置疊層 111\n建置疊層 113\n建置疊層 115\n建置疊層 117\n建置疊層 119\n建置疊層 121\n建置疊層 123\n建置疊層 125\n建置疊層 127\n簡化銅層上的多邊形\n計算鍍銅\n簡化通孔輪廓\n為通孔和貫孔建置 BVH（盲埋孔）\n載入光線追蹤: 電路板\n載入光線追蹤: 層\n正在載入 3D 模型...\n重新載入時間 0.025 s\n算繪: 100 %\n算繪時間 0.002 s\n已成功建立 3D 算繪圖像",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.render/render.png"
+      ]
+    }
+  },
+  {
+    "action": "board.export.gerbers",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.gerbers/output/",
+      "layers": "F.Cu,F.SilkS,Edge.Cuts"
+    },
+    "elapsedMs": 513,
+    "result": {
+      "ok": true,
+      "action": "board.export.gerbers",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.gerbers/output/fixture-F_Cu.gtl'。\n繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.gerbers/output/fixture-f_silkscreen.gto'。\n繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.gerbers/output/fixture-Edge_Cuts.gm1'。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.gerbers/output/"
+      ]
+    }
+  },
+  {
+    "action": "board.export.drill",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.drill/output/"
+    },
+    "elapsedMs": 445,
+    "result": {
+      "ok": true,
+      "action": "board.export.drill",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已建立檔案 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.drill/output/fixture.drl'\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.drill/output/"
+      ]
+    }
+  },
+  {
+    "action": "board.export.position",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.position/output.csv"
+    },
+    "elapsedMs": 1149,
+    "result": {
+      "ok": true,
+      "action": "board.export.position",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "寫入定位資料到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.position/output.csv'。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.position/output.csv"
+      ]
+    }
+  },
+  {
+    "action": "board.export.step",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.step/output.step"
+    },
+    "elapsedMs": 591,
+    "result": {
+      "ok": true,
+      "action": "board.export.step",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "STEP file '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.step/output.step' created.\n\n匯出耗時 0.006 s",
+        "stderr": "2026-10-21 10:58:08.297 kicad-cli[75888:87629147] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.step” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.step/output.step, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.step/output.step, NSUnderlyingError=0x1139d20e0 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.step/output.step"
+      ],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "KICAD_CLI_STDERR",
+          "message": "2026-10-21 10:58:08.297 kicad-cli[75888:87629147] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.step” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.step/output.step, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.step/output.step, NSUnderlyingError=0x1139d20e0 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+        }
+      ]
+    }
+  },
+  {
+    "action": "board.export.svg",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.svg/output.svg",
+      "layers": "F.Cu,F.SilkS,Edge.Cuts"
+    },
+    "elapsedMs": 503,
+    "result": {
+      "ok": true,
+      "action": "board.export.svg",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "\u001b[33;1m此指令在 KiCad 9.0 中已被棄用，未來版本將更改其預設行為。\u001b[0m\n\u001b[33;1m新行為將與 --mode-multi 相符\u001b[0m\n已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.svg/output.svg'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.svg/output.svg"
+      ]
+    }
+  },
+  {
+    "action": "board.export.pdf",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.pdf/output.pdf",
+      "layers": "F.Cu,F.SilkS,Edge.Cuts"
+    },
+    "elapsedMs": 538,
+    "result": {
+      "ok": true,
+      "action": "board.export.pdf",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.pdf/output.pdf'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.pdf/output.pdf"
+      ]
+    }
+  },
+  {
+    "action": "board.export.png",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.png/output.png",
+      "layers": "F.Cu,F.SilkS,Edge.Cuts"
+    },
+    "elapsedMs": 1420,
+    "result": {
+      "ok": true,
+      "action": "board.export.png",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.png/output.png/fixture-F_Cu.png'。\n已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.png/output.png/fixture-f_silkscreen.png'。\n已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.png/output.png/fixture-Edge_Cuts.png'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.png/output.png"
+      ]
+    }
+  },
+  {
+    "action": "board.export.ipc2581",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ipc2581/output.ipc2581"
+    },
+    "elapsedMs": 364,
+    "result": {
+      "ok": true,
+      "action": "board.export.ipc2581",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ipc2581/output.ipc2581"
+      ]
+    }
+  },
+  {
+    "action": "board.export.odb",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.odb/output.odb"
+    },
+    "elapsedMs": 351,
+    "result": {
+      "ok": true,
+      "action": "board.export.odb",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.odb/output.odb"
+      ]
+    }
+  },
+  {
+    "action": "board.diff",
+    "payload": {
+      "timeoutMs": 45000,
+      "FILE1": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "FILE2": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.diff/output.json"
+    },
+    "elapsedMs": 366,
+    "result": {
+      "ok": true,
+      "action": "board.diff",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": "",
+        "diff": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.diff/output.json"
+      ]
+    }
+  },
+  {
+    "action": "schematic.erc.run",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.erc.run/output.out",
+      "format": "json",
+      "full": true
+    },
+    "elapsedMs": 1970,
+    "result": {
+      "ok": true,
+      "action": "schematic.erc.run",
+      "data": {
+        "status": "violations",
+        "exitCode": 5,
+        "report": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.erc.run/output.out",
+        "reportPath": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.erc.run/output.out",
+        "summary": {
+          "reportPath": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.erc.run/output.out",
+          "total": 2,
+          "bySeverity": {
+            "error": 1,
+            "warning": 1
+          },
+          "byType": {
+            "pin_not_connected": 1,
+            "isolated_pin_label": 1
+          },
+          "violations": 2,
+          "unconnected_items": 0,
+          "schematic_parity": 0,
+          "ignoredChecks": [
+            {
+              "description": "Global label only appears once in the schematic",
+              "key": "single_global_label"
+            },
+            {
+              "description": "Four connection points are joined together",
+              "key": "four_way_junction"
+            },
+            {
+              "description": "SPICE model issue",
+              "key": "simulation_model_issue"
+            },
+            {
+              "description": "Assigned footprint doesn't match footprint filters",
+              "key": "footprint_filter"
+            }
+          ]
+        },
+        "reportJson": {
+          "$schema": "https://schemas.kicad.org/erc.v1.json",
+          "coordinate_units": "mm",
+          "date": "2026-10-21T10:58:13",
+          "ignored_checks": [
+            {
+              "description": "Global label only appears once in the schematic",
+              "key": "single_global_label"
+            },
+            {
+              "description": "Four connection points are joined together",
+              "key": "four_way_junction"
+            },
+            {
+              "description": "SPICE model issue",
+              "key": "simulation_model_issue"
+            },
+            {
+              "description": "Assigned footprint doesn't match footprint filters",
+              "key": "footprint_filter"
+            }
+          ],
+          "included_severities": [
+            "error",
+            "warning"
+          ],
+          "kicad_version": "10.99.0",
+          "sheets": [
+            {
+              "path": "/",
+              "uuid_path": "/8e3c6866-9b6d-42ff-a80b-7920575edc4f",
+              "violations": [
+                {
+                  "description": "Pin not connected",
+                  "items": [
+                    {
+                      "description": "Symbol R1 接腳 2 [無源, 線]",
+                      "pos": {
+                        "x": 0.4953,
+                        "y": 0.5334
+                      },
+                      "uuid": "2d2e2db5-67b9-42b1-8cd6-79a6a296eb65"
+                    }
+                  ],
+                  "severity": "error",
+                  "type": "pin_not_connected"
+                },
+                {
+                  "description": "Label connected to only one pin",
+                  "items": [
+                    {
+                      "description": "標籤 'SIGNAL'",
+                      "pos": {
+                        "x": 0.4953,
+                        "y": 0.4572
+                      },
+                      "uuid": "c369d958-a318-4caa-bf2e-13cee344345e"
+                    }
+                  ],
+                  "severity": "warning",
+                  "type": "isolated_pin_label"
+                }
+              ]
+            }
+          ],
+          "source": "fixture.kicad_sch",
+          "violations": [
+            {
+              "description": "Pin not connected",
+              "items": [
+                {
+                  "description": "Symbol R1 接腳 2 [無源, 線]",
+                  "pos": {
+                    "x": 0.4953,
+                    "y": 0.5334
+                  },
+                  "uuid": "2d2e2db5-67b9-42b1-8cd6-79a6a296eb65"
+                }
+              ],
+              "severity": "error",
+              "type": "pin_not_connected"
+            },
+            {
+              "description": "Label connected to only one pin",
+              "items": [
+                {
+                  "description": "標籤 'SIGNAL'",
+                  "pos": {
+                    "x": 0.4953,
+                    "y": 0.4572
+                  },
+                  "uuid": "c369d958-a318-4caa-bf2e-13cee344345e"
+                }
+              ],
+              "severity": "warning",
+              "type": "isolated_pin_label"
+            }
+          ]
+        }
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.erc.run/output.out"
+      ]
+    }
+  },
+  {
+    "action": "schematic.export.netlist",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.netlist/output.net"
+    },
+    "elapsedMs": 334,
+    "result": {
+      "ok": true,
+      "action": "schematic.export.netlist",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.netlist/output.net"
+      ]
+    }
+  },
+  {
+    "action": "schematic.export.bom",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.bom/output.csv"
+    },
+    "elapsedMs": 341,
+    "result": {
+      "ok": true,
+      "action": "schematic.export.bom",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "將物料清單寫入‘/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.bom/output.csv’。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.bom/output.csv"
+      ]
+    }
+  },
+  {
+    "action": "schematic.export.pdf",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.pdf/output.pdf"
+    },
+    "elapsedMs": 378,
+    "result": {
+      "ok": true,
+      "action": "schematic.export.pdf",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.pdf/output.pdf'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.pdf/output.pdf"
+      ]
+    }
+  },
+  {
+    "action": "schematic.export.svg",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.svg/output/"
+    },
+    "elapsedMs": 376,
+    "result": {
+      "ok": true,
+      "action": "schematic.export.svg",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.svg/output/fixture.svg'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.svg/output/"
+      ]
+    }
+  },
+  {
+    "action": "schematic.export.pythonbom",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.pythonbom/output.xml"
+    },
+    "elapsedMs": 346,
+    "result": {
+      "ok": true,
+      "action": "schematic.export.pythonbom",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "將物料清單寫入‘/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.pythonbom/output.xml’。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.pythonbom/output.xml"
+      ]
+    }
+  },
+  {
+    "action": "schematic.diff",
+    "payload": {
+      "timeoutMs": 45000,
+      "FILE1": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "FILE2": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.diff/output.json"
+    },
+    "elapsedMs": 378,
+    "result": {
+      "ok": true,
+      "action": "schematic.diff",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": "",
+        "diff": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.diff/output.json"
+      ]
+    }
+  },
+  {
+    "action": "library.footprint.diff",
+    "payload": {
+      "timeoutMs": 45000,
+      "DIR1": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/Test.pretty",
+      "DIR2": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/Test.pretty",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.footprint.diff/output.json"
+    },
+    "elapsedMs": 281,
+    "result": {
+      "ok": true,
+      "action": "library.footprint.diff",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": "",
+        "diff": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.footprint.diff/output.json"
+      ]
+    }
+  },
+  {
+    "action": "library.footprint.export_svg",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE_OR_DIR": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/Test.pretty",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.footprint.export_svg/output/",
+      "layers": "F.Cu,F.SilkS,Edge.Cuts",
+      "footprint": "Test"
+    },
+    "elapsedMs": 328,
+    "result": {
+      "ok": true,
+      "action": "library.footprint.export_svg",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "將封裝從 'Test' 繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.footprint.export_svg/output/Test.svg'\n已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.footprint.export_svg/output/Test.svg'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.footprint.export_svg/output/"
+      ]
+    }
+  },
+  {
+    "action": "library.footprint.upgrade",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE_OR_DIR": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/Test.pretty",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.footprint.upgrade/Upgraded.pretty"
+    },
+    "elapsedMs": 307,
+    "result": {
+      "ok": true,
+      "action": "library.footprint.upgrade",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.footprint.upgrade/Upgraded.pretty"
+      ]
+    }
+  },
+  {
+    "action": "gerber.convert_png",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.gbr",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/gerber.convert_png/output.png",
+      "dpi": 100
+    },
+    "elapsedMs": 186,
+    "result": {
+      "ok": true,
+      "action": "gerber.convert_png",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "Exported PNG to: /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/gerber.convert_png/output.png",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/gerber.convert_png/output.png"
+      ]
+    }
+  },
+  {
+    "action": "gerber.diff",
+    "payload": {
+      "timeoutMs": 45000,
+      "FILE1": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.gbr",
+      "FILE2": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.gbr",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/gerber.diff/output.json"
+    },
+    "elapsedMs": 172,
+    "result": {
+      "ok": true,
+      "action": "gerber.diff",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "Diff PNG written to: /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/gerber.diff/output.json",
+        "stderr": "",
+        "diff": "Diff PNG written to: /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/gerber.diff/output.json"
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/gerber.diff/output.json"
+      ]
+    }
+  },
+  {
+    "action": "gerber.info",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.gbr"
+    },
+    "elapsedMs": 175,
+    "result": {
+      "ok": true,
+      "action": "gerber.info",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "File: fixture.gbr\nType: Gerber\nItem count: 1\n\nBounding box:\n  Origin: (9.500, -10.500) mm\n  Size: 1.000 x 1.000 mm\n\nApertures defined: 1",
+        "stderr": ""
+      }
+    }
+  },
+  {
+    "action": "project.import",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILES": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb"
+      ],
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/project.import/Imported"
+    },
+    "elapsedMs": 317,
+    "result": {
+      "ok": true,
+      "action": "project.import",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "正在使用 /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb 格式匯入 'KiCad'...\nSuccessfully saved imported board to '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/project.import/Imported.kicad_pcb'\nCreated project '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/project.import/Imported.kicad_pro'",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/project.import/Imported.kicad_pro"
+      ]
+    }
+  },
+  {
+    "action": "project.jobset.run",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pro",
+      "output": "acceptance",
+      "file": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/project.jobset.run/native.kicad_jobset"
+    },
+    "elapsedMs": 2103,
+    "result": {
+      "ok": true,
+      "action": "project.jobset.run",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "|--------------------------------\n| Running jobs for destination acceptance\n|--------------------------------\n|No.   | Description                                       \n|1     | 執行 DRC                                            \n|--------------------------------\n\n\n|--------------------------------\n| Running job 1: 執行 DRC\n|--------------------------------\n發現 0 條違規項\n發現 0 個未連接的項目\n儲存 DRC 報告到 /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/0b2c2e20-392a-45e3-9f33-16d53b14039a/native-drc.txt\n\u001b[32;1m作業成功\u001b[0m\n\n\n\n\n\u001b[33;1m1 jobs succeeded, 0 job failed\u001b[0m",
+        "stderr": ""
+      }
+    }
+  },
+  {
+    "action": "project.mergetool",
+    "payload": {
+      "timeoutMs": 45000,
+      "ANCESTOR": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "OURS": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "THEIRS": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/project.mergetool/output.kicad_pcb"
+    },
+    "elapsedMs": 2086,
+    "result": {
+      "ok": true,
+      "action": "project.mergetool",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/project.mergetool/output.kicad_pcb"
+      ]
+    }
+  },
+  {
+    "action": "board.export.3dpdf",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.3dpdf/output.3dpdf"
+    },
+    "elapsedMs": 344,
+    "result": {
+      "ok": true,
+      "action": "board.export.3dpdf",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "PDF file '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.3dpdf/output.3dpdf' created.\n\n匯出耗時 0.030 s",
+        "stderr": "2026-10-21 10:58:22.263 kicad-cli[75958:87629967] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.3dpdf” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.3dpdf/output.3dpdf, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.3dpdf/output.3dpdf, NSUnderlyingError=0x1336fc880 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.3dpdf/output.3dpdf"
+      ],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "KICAD_CLI_STDERR",
+          "message": "2026-10-21 10:58:22.263 kicad-cli[75958:87629967] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.3dpdf” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.3dpdf/output.3dpdf, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.3dpdf/output.3dpdf, NSUnderlyingError=0x1336fc880 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+        }
+      ]
+    }
+  },
+  {
+    "action": "board.export.bom",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.bom/output.csv"
+    },
+    "elapsedMs": 291,
+    "result": {
+      "ok": true,
+      "action": "board.export.bom",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "將物料清單寫入‘/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.bom/output.csv’。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.bom/output.csv"
+      ]
+    }
+  },
+  {
+    "action": "board.export.brep",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.brep/output.brep"
+    },
+    "elapsedMs": 303,
+    "result": {
+      "ok": true,
+      "action": "board.export.brep",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "BREP file '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.brep/output.brep' created.\n\n匯出耗時 0.002 s",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.brep/output.brep"
+      ]
+    }
+  },
+  {
+    "action": "board.export.dxf",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.dxf/output.dxf",
+      "layers": "F.Cu,F.SilkS,Edge.Cuts"
+    },
+    "elapsedMs": 354,
+    "result": {
+      "ok": true,
+      "action": "board.export.dxf",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "\u001b[33;1m此指令在 KiCad 9.0 中已被棄用，未來版本將更改其預設行為。\u001b[0m\n\u001b[33;1m新行為將與 --mode-multi 相符\u001b[0m\n已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.dxf/output.dxf/fixture-F_Cu.dxf'。\n已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.dxf/output.dxf/fixture-f_silkscreen.dxf'。\n已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.dxf/output.dxf/fixture-Edge_Cuts.dxf'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.dxf/output.dxf"
+      ]
+    }
+  },
+  {
+    "action": "board.export.gencad",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.gencad/output.gencad"
+    },
+    "elapsedMs": 382,
+    "result": {
+      "ok": true,
+      "action": "board.export.gencad",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已成功建立 genCAD 檔案",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.gencad/output.gencad"
+      ]
+    }
+  },
+  {
+    "action": "board.export.glb",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.glb/output.glb"
+    },
+    "elapsedMs": 321,
+    "result": {
+      "ok": true,
+      "action": "board.export.glb",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "Binary GLTF file '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.glb/output.glb' created.\n\n匯出耗時 0.005 s",
+        "stderr": "2026-10-21 10:58:23.936 kicad-cli[75972:87630155] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.glb” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.glb/output.glb, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.glb/output.glb, NSUnderlyingError=0x1317b9e00 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.glb/output.glb"
+      ],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "KICAD_CLI_STDERR",
+          "message": "2026-10-21 10:58:23.936 kicad-cli[75972:87630155] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.glb” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.glb/output.glb, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.glb/output.glb, NSUnderlyingError=0x1317b9e00 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+        }
+      ]
+    }
+  },
+  {
+    "action": "board.export.hpgl",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.hpgl/output.hpgl"
+    },
+    "elapsedMs": 191,
+    "result": {
+      "ok": false,
+      "action": "board.export.hpgl",
+      "error": {
+        "code": "KICAD_CLI_FAILED",
+        "message": "board.export.hpgl exited with 1"
+      },
+      "data": {
+        "exitCode": 1,
+        "signal": null,
+        "stdout": "",
+        "stderr": "自 KiCad 10.0 版起，不再支援匯出 HPGL 格式。"
+      }
+    }
+  },
+  {
+    "action": "board.export.ipcd356",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ipcd356/output.ipcd356"
+    },
+    "elapsedMs": 351,
+    "result": {
+      "ok": true,
+      "action": "board.export.ipcd356",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已成功建立 genCAD 檔案",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ipcd356/output.ipcd356"
+      ]
+    }
+  },
+  {
+    "action": "board.export.ply",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ply/output.ply"
+    },
+    "elapsedMs": 315,
+    "result": {
+      "ok": true,
+      "action": "board.export.ply",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "PLY file '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ply/output.ply' created.\n\n匯出耗時 0.005 s",
+        "stderr": "2026-10-21 10:58:24.795 kicad-cli[75977:87630239] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.ply” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ply/output.ply, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ply/output.ply, NSUnderlyingError=0x105793690 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ply/output.ply"
+      ],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "KICAD_CLI_STDERR",
+          "message": "2026-10-21 10:58:24.795 kicad-cli[75977:87630239] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.ply” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ply/output.ply, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ply/output.ply, NSUnderlyingError=0x105793690 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+        }
+      ]
+    }
+  },
+  {
+    "action": "board.export.ps",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ps/output.ps",
+      "layers": "F.Cu,F.SilkS,Edge.Cuts"
+    },
+    "elapsedMs": 362,
+    "result": {
+      "ok": true,
+      "action": "board.export.ps",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ps/output.ps/fixture-F_Cu.ps'。\n已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ps/output.ps/fixture-f_silkscreen.ps'。\n已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ps/output.ps/fixture-Edge_Cuts.ps'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.ps/output.ps"
+      ]
+    }
+  },
+  {
+    "action": "board.export.stackup",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stackup/output.stackup"
+    },
+    "elapsedMs": 315,
+    "result": {
+      "ok": true,
+      "action": "board.export.stackup",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "Wrote board stackup to '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stackup/output.stackup'.",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stackup/output.stackup"
+      ]
+    }
+  },
+  {
+    "action": "board.export.stats",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stats/output.stats"
+    },
+    "elapsedMs": 320,
+    "result": {
+      "ok": true,
+      "action": "board.export.stats",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "Wrote board statistics to '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stats/output.stats'.",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stats/output.stats"
+      ]
+    }
+  },
+  {
+    "action": "board.export.stl",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stl/output.stl"
+    },
+    "elapsedMs": 314,
+    "result": {
+      "ok": true,
+      "action": "board.export.stl",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "STL file '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stl/output.stl' created.\n\n匯出耗時 0.004 s",
+        "stderr": "2026-10-21 10:58:26.110 kicad-cli[75983:87630337] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.stl” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stl/output.stl, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stl/output.stl, NSUnderlyingError=0x123ed21d0 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stl/output.stl"
+      ],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "KICAD_CLI_STDERR",
+          "message": "2026-10-21 10:58:26.110 kicad-cli[75983:87630337] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.stl” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stl/output.stl, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stl/output.stl, NSUnderlyingError=0x123ed21d0 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+        }
+      ]
+    }
+  },
+  {
+    "action": "board.export.stpz",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stpz/output.stpz"
+    },
+    "elapsedMs": 316,
+    "result": {
+      "ok": true,
+      "action": "board.export.stpz",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "STPZ file '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stpz/output.stpz' created.\n\n匯出耗時 0.006 s",
+        "stderr": "2026-10-21 10:58:26.426 kicad-cli[75984:87630356] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.stpz” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stpz/output.stpz, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stpz/output.stpz, NSUnderlyingError=0x109f5f430 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stpz/output.stpz"
+      ],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "KICAD_CLI_STDERR",
+          "message": "2026-10-21 10:58:26.426 kicad-cli[75984:87630356] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.stpz” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stpz/output.stpz, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.stpz/output.stpz, NSUnderlyingError=0x109f5f430 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+        }
+      ]
+    }
+  },
+  {
+    "action": "board.export.u3d",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.u3d/output.u3d"
+    },
+    "elapsedMs": 324,
+    "result": {
+      "ok": true,
+      "action": "board.export.u3d",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "Universal 3D file '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.u3d/output.u3d' created.\n\n匯出耗時 0.004 s",
+        "stderr": "2026-10-21 10:58:26.750 kicad-cli[75985:87630368] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.u3d” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.u3d/output.u3d, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.u3d/output.u3d, NSUnderlyingError=0x12609d470 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.u3d/output.u3d"
+      ],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "KICAD_CLI_STDERR",
+          "message": "2026-10-21 10:58:26.750 kicad-cli[75985:87630368] Error retrieving source file attributes: Error Domain=NSCocoaErrorDomain Code=260 \"The file “output.u3d” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.u3d/output.u3d, NSURL=file:///var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.u3d/output.u3d, NSUnderlyingError=0x12609d470 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}"
+        }
+      ]
+    }
+  },
+  {
+    "action": "board.export.vrml",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.vrml/output.vrml"
+    },
+    "elapsedMs": 402,
+    "result": {
+      "ok": true,
+      "action": "board.export.vrml",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "成功匯出 VRML 到 /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.vrml/output.vrml",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.vrml/output.vrml"
+      ]
+    }
+  },
+  {
+    "action": "board.export.xao",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.xao/output.xao"
+    },
+    "elapsedMs": 371,
+    "result": {
+      "ok": true,
+      "action": "board.export.xao",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "XAO file '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.xao/output.xao' created.\n\n匯出耗時 0.002 s",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.export.xao/output.xao"
+      ]
+    }
+  },
+  {
+    "action": "board.import",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.import/output.kicad_pcb"
+    },
+    "elapsedMs": 335,
+    "result": {
+      "ok": true,
+      "action": "board.import",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "正在使用 /var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_pcb 格式匯入 'KiCad'...\nSuccessfully saved imported board to '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.import/output.kicad_pcb'",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.import/output.kicad_pcb"
+      ]
+    }
+  },
+  {
+    "action": "board.upgrade",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/board.upgrade/fixture.kicad_pcb"
+    },
+    "elapsedMs": 340,
+    "result": {
+      "ok": true,
+      "action": "board.upgrade",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已使用最新格式成功儲存電路板檔案",
+        "stderr": ""
+      }
+    }
+  },
+  {
+    "action": "schematic.export.dxf",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.dxf/output/"
+    },
+    "elapsedMs": 390,
+    "result": {
+      "ok": true,
+      "action": "schematic.export.dxf",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.dxf/output/fixture.dxf'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.dxf/output/"
+      ]
+    }
+  },
+  {
+    "action": "schematic.export.hpgl",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.hpgl/output.hpgl"
+    },
+    "elapsedMs": 179,
+    "result": {
+      "ok": false,
+      "action": "schematic.export.hpgl",
+      "error": {
+        "code": "KICAD_CLI_FAILED",
+        "message": "schematic.export.hpgl exited with 1"
+      },
+      "data": {
+        "exitCode": 1,
+        "signal": null,
+        "stdout": "",
+        "stderr": "自 KiCad 10.0 版起，不再支援匯出 HPGL 格式。"
+      }
+    }
+  },
+  {
+    "action": "schematic.export.png",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.png/output/"
+    },
+    "elapsedMs": 594,
+    "result": {
+      "ok": true,
+      "action": "schematic.export.png",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.png/output/fixture.png'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.png/output/"
+      ]
+    }
+  },
+  {
+    "action": "schematic.export.ps",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/fixture.kicad_sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.ps/output/"
+    },
+    "elapsedMs": 343,
+    "result": {
+      "ok": true,
+      "action": "schematic.export.ps",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "已繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.ps/output/fixture.ps'。\n完成。",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.export.ps/output/"
+      ]
+    }
+  },
+  {
+    "action": "schematic.import",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/Users/mosc/Downloads/Kicad/qa/data/eeschema/io/eagle/issue24483_pin_tag.sch",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.import/output.kicad_sch"
+    },
+    "elapsedMs": 293,
+    "result": {
+      "ok": true,
+      "action": "schematic.import",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "正在使用 /Users/mosc/Downloads/Kicad/qa/data/eeschema/io/eagle/issue24483_pin_tag.sch 格式匯入 'EAGLE'...\nSuccessfully saved imported schematic to '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.import/output.kicad_sch'",
+        "stderr": "10:58:29 AM: 正將原理圖符號 'U1 MYDEV' 庫索引值設定為 'output-eagle-import:MYDEV'。\n10:58:29 AM: 正將原理圖符號 '#U2 MYDEV_NC' 庫索引值設定為 'output-eagle-import:MYDEV_NC'。"
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.import/output.kicad_sch"
+      ],
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "KICAD_CLI_STDERR",
+          "message": "10:58:29 AM: 正將原理圖符號 'U1 MYDEV' 庫索引值設定為 'output-eagle-import:MYDEV'。\n10:58:29 AM: 正將原理圖符號 '#U2 MYDEV_NC' 庫索引值設定為 'output-eagle-import:MYDEV_NC'。"
+        }
+      ]
+    }
+  },
+  {
+    "action": "schematic.upgrade",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/schematic.upgrade/fixture.kicad_sch"
+    },
+    "elapsedMs": 337,
+    "result": {
+      "ok": true,
+      "action": "schematic.upgrade",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": "原理圖檔案未更新"
+      },
+      "diagnostics": [
+        {
+          "severity": "info",
+          "code": "KICAD_CLI_STDERR",
+          "message": "原理圖檔案未更新"
+        }
+      ]
+    }
+  },
+  {
+    "action": "library.symbol.diff",
+    "payload": {
+      "timeoutMs": 45000,
+      "FILE1": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/Device.kicad_sym",
+      "FILE2": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/Device.kicad_sym",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.symbol.diff/output.json"
+    },
+    "elapsedMs": 465,
+    "result": {
+      "ok": true,
+      "action": "library.symbol.diff",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": "",
+        "diff": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.symbol.diff/output.json"
+      ]
+    }
+  },
+  {
+    "action": "library.symbol.export_svg",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/Device.kicad_sym",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.symbol.export_svg/output/",
+      "symbol": "R"
+    },
+    "elapsedMs": 292,
+    "result": {
+      "ok": true,
+      "action": "library.symbol.export_svg",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "將符號 'R' 單元 1 繪製到 '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.symbol.export_svg/output/R_unit1.svg'",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.symbol.export_svg/output/"
+      ]
+    }
+  },
+  {
+    "action": "library.symbol.upgrade",
+    "payload": {
+      "timeoutMs": 45000,
+      "INPUT_FILE_OR_DIR": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/Device.kicad_sym",
+      "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.symbol.upgrade/output.upgrade"
+    },
+    "elapsedMs": 324,
+    "result": {
+      "ok": true,
+      "action": "library.symbol.upgrade",
+      "data": {
+        "exitCode": 0,
+        "signal": null,
+        "stdout": "用更新的格式儲存符號庫",
+        "stderr": ""
+      },
+      "artifacts": [
+        "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-fl2iVH/library.symbol.upgrade/output.upgrade"
+      ]
+    }
+  }
+]

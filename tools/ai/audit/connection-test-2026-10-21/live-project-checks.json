@@ -1,0 +1,159 @@
+{
+  "project": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pro",
+  "board": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pcb",
+  "schematic": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_sch",
+  "drc": {
+    "tool": "board.drc.run",
+    "status": "violations",
+    "exitCode": 5,
+    "total": 1184,
+    "bySeverity": {
+      "error": 1071,
+      "warning": 113
+    },
+    "violations": 1052,
+    "unconnectedItems": 132,
+    "byType": {
+      "clearance": 499,
+      "track_width": 199,
+      "unconnected_items": 132,
+      "text_height": 90,
+      "drill_out_of_range": 77,
+      "via_diameter": 77,
+      "copper_edge_clearance": 34,
+      "silk_overlap": 21,
+      "courtyards_overlap": 18,
+      "starved_thermal": 12,
+      "solder_mask_bridge": 10,
+      "hole_clearance": 7,
+      "shorting_items": 6,
+      "track_dangling": 1,
+      "silk_over_copper": 1
+    },
+    "ignoredChecks": [
+      "missing_courtyard",
+      "track_not_centered_on_via",
+      "tuning_profile_track_geometries",
+      "footprint_filters_mismatch",
+      "footprint_type_mismatch"
+    ],
+    "reportPath": "/tmp/kicad-link-test/drc.json",
+    "note": "Default run without --all-track-errors; clearance=499 and track_width=199 hit native report caps, so 1184 is capped report count, not exact unique total."
+  },
+  "erc": {
+    "tool": "schematic.erc.run",
+    "status": "violations",
+    "exitCode": 5,
+    "sheets": 8,
+    "total": 1235,
+    "bySeverity": {
+      "error": 176,
+      "warning": 1059
+    },
+    "bySheet": {
+      "/": {
+        "total": 669,
+        "error": 12,
+        "warning": 657
+      },
+      "/SoC_U1.1/": {
+        "total": 156,
+        "error": 24,
+        "warning": 132
+      },
+      "/DDR/": {
+        "total": 97,
+        "error": 8,
+        "warning": 89
+      },
+      "/Flash/": {
+        "total": 13,
+        "error": 3,
+        "warning": 10
+      },
+      "/WiFi/": {
+        "total": 53,
+        "error": 23,
+        "warning": 30
+      },
+      "/IO/": {
+        "total": 55,
+        "error": 10,
+        "warning": 45
+      },
+      "/SoC_U1.3/": {
+        "total": 107,
+        "error": 75,
+        "warning": 32
+      },
+      "/SoC_U1.2/": {
+        "total": 85,
+        "error": 21,
+        "warning": 64
+      }
+    },
+    "byType": {
+      "pin_to_pin": 454,
+      "lib_symbol_mismatch": 275,
+      "isolated_pin_label": 163,
+      "footprint_link_issues": 157,
+      "pin_not_connected": 136,
+      "pin_not_driven": 27,
+      "power_pin_not_driven": 13,
+      "same_local_global_label": 10
+    },
+    "reportPath": "/tmp/kicad-link-test/erc.json"
+  },
+  "connectivity": {
+    "status": "NOT_RUN",
+    "reason": "board.connectivity.prove returned UNHANDLED ProveConnectivity; no live PCB editor handler",
+    "drcUnconnectedItems": 132,
+    "previousAuditEvidence": "2026-10-21 prior native proof: CONNECTIVITY_UNPROVEN, 80 unconnected nets, 132 unconnected items"
+  },
+  "exports": {
+    "gerbers": {
+      "files": 30,
+      "bytes": 2204734,
+      "dir": "/tmp/kicad-link-test/gerbers"
+    },
+    "drill": {
+      "files": 1,
+      "bytes": 1740,
+      "dir": "/tmp/kicad-link-test/drill"
+    },
+    "bom": {
+      "lines": 156,
+      "path": "/tmp/kicad-link-test/bom.csv"
+    },
+    "position": {
+      "lines": 161,
+      "path": "/tmp/kicad-link-test/positions.csv"
+    },
+    "stepBoardOnly": {
+      "bytes": 150127,
+      "path": "/tmp/kicad-link-test/board.step"
+    },
+    "stepFull": {
+      "bytes": 150142,
+      "path": "/tmp/kicad-link-test/components.step"
+    },
+    "stepMeshcheck": {
+      "solids": 1,
+      "collisions": 0,
+      "checkedPairs": 0,
+      "errors": 0,
+      "reason": "All component 3D models reference missing ${KIPRJMOD}/EASYEDA_MODELS/*.step, so only 1 board solid is exported."
+    }
+  },
+  "projectIntegrity": {
+    "filesCompared": 10,
+    "match": 10,
+    "reference": "tools/ai/audit/live-project-2026-10-21/final-validation-current.json",
+    "currentHashes": "tools/ai/audit/connection-test-2026-10-21/project-hashes.json"
+  },
+  "verdict": {
+    "toolchain": "PASS",
+    "fabricationReadiness": "NOT_ASSESSED_AND_DESIGN_NOT_PASSING",
+    "note": "DRC/ERC violations are real design findings, not tool-link failures. No rules were relaxed or disabled."
+  }
+}

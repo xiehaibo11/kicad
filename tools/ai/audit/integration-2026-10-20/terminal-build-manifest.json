@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "terminal",
+  "version": "1.19.3",
+  "createdAt": "2026-10-21T02:22:17.094431+00:00",
+  "upstreamCommit": "e3c4eb242585dcd77be1a867391b7c25fd47ce52",
+  "sourceSha256": "06b86d85ac01b0cf1580cdc64197c298e7030623645aa9b187538df731c88914",
+  "files": {
+    "kicad-terminal": "b66ec25a48bf4c3990c7699b66bbec600c0a91869db243284f2244928fea8f54",
+    "upstream.json": "bb4d8ab01636797b974ba28fd4a04aafbe9a784105c23fe52ff6997e84914c6d",
+    "composer.json": "f06e6bc850af2afbfb9bc3ceb316cca8182f17433408912db94111752987b0a9",
+    "waiting.json": "1edee71d1813570c8db62c98ec259deeb3483f65675a6398b3bd5b2d69294dc7",
+    "branding.json": "fa677ee83f678ad09b8cecc340fd8aac4ca93b2f8ecd2917e9ea1e0f5043205e",
+    "LICENSE-OpenCode.txt": "625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b",
+    "eda-agent-instructions.md": "a0959039f54d10855d1619ea9aa9e06789a7dfb0229f041369f8acc6ea88a670",
+    "easyeda-mcp.mjs": "c1311fff359bd1897a15ae67de45c1f905c87ebb55b81ff3fd3945f813af3668",
+    "session-runtime.mjs": "a3dfcceb1988930fe8b26e5998aa0eab3ce6816305ca0b0b11f9bb60737c0810"
+  }
+}

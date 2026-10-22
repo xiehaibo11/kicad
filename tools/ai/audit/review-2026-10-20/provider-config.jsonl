@@ -1,0 +1,2 @@
+{"case":"file_endpoint_ignored","configured":"https://custom-provider.invalid/anthropic","resolved":"https://api.deepseek.com/anthropic","confirmed":true}
+{"case":"cross_provider_switch_only_changes_model","selected":"sonnet","endpoint":"https://deepseek-fixture.invalid/anthropic","methodUpdatesProvider":false,"confirmed":true}

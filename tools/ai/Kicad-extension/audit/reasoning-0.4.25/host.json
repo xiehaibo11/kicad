@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "version": "0.4.25",
+  "completedTurns": 4,
+  "sessionId": "c07d5198-85c4-44f9-ac3d-3a6b4db234ab",
+  "checks": [
+    "low/max/off/high reach HTTP",
+    "same conversation resumed",
+    "permission mode retained",
+    "invalid effort rejected",
+    "switching does not send"
+  ],
+  "fixture": "production VS Code services + bundled SDK/CLI + localhost model; no external model"
+}

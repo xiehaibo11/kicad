@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "action": "board.check.3d",
+  "data": {
+    "footprints": [
+      {
+        "reference": "P1",
+        "side": "front",
+        "heightMm": 0,
+        "heightKnown": false,
+        "box": {
+          "MinX": 97500000,
+          "MinY": 97500000,
+          "MaxX": 102500000,
+          "MaxY": 102500000
+        }
+      }
+    ],
+    "findings": [
+      {
+        "type": "height_unknown",
+        "a": "P1",
+        "message": "no height supplied; pass heights[ref] = mm for a collision check"
+      }
+    ],
+    "meshChecked": false,
+    "meshCollisions": 0,
+    "verified": false,
+    "note": "2.5D check: footprint bounding boxes + optional heights; use external.step.check for mesh collision"
+  }
+}

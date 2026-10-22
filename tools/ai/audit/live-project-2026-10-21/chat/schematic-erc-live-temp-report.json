@@ -1,0 +1,3507 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-21T11:20:36",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.99.0",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/4d8b9ae3-79ef-4159-9b55-b392b946c8bc",
+            "violations": [
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 0.1143,
+                                "y": 0.1524
+                            },
+                            "uuid": "8b8f86d0-0f1f-4c2f-bd4b-304a9062128d"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Input pin not driven by any Output pins",
+                    "items": [
+                        {
+                            "description": "Symbol R9 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 0.8255
+                            },
+                            "uuid": "b68a3a04-585e-4c91-aef7-c413e08f338a"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_not_driven"
+                },
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.143,
+                                "y": 0.2286
+                            },
+                            "uuid": "21998fd0-62e6-4b83-95f4-613333c75e6b"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Input pin not driven by any Output pins",
+                    "items": [
+                        {
+                            "description": "Symbol R1 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.2794
+                            },
+                            "uuid": "b0f297f8-1c88-4392-9529-dbdb84ebc2c3"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_not_driven"
+                },
+                {
+                    "description": "Input pin not driven by any Output pins",
+                    "items": [
+                        {
+                            "description": "Symbol R6 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 1.4224,
+                                "y": 0.8001
+                            },
+                            "uuid": "ef5bbf16-4c69-4d05-81cb-e5a8495a09a1"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_not_driven"
+                },
+                {
+                    "description": "Pin not connected",
+                    "items": [
+                        {
+                            "description": "Symbol U9 Pin 4 [NC, 未指定, Line]",
+                            "pos": {
+                                "x": 1.4605,
+                                "y": 1.3589
+                            },
+                            "uuid": "487b930c-a881-498e-a963-f1aaabcb177b"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_not_connected"
+                },
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.6129,
+                                "y": 1.2573
+                            },
+                            "uuid": "035a6e95-9807-4a59-a94b-bd383900c1e6"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.6764,
+                                "y": 0.3556
+                            },
+                            "uuid": "5fa8c15c-877f-4f0f-855e-7b2cfaf01964"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.6764,
+                                "y": 0.9017
+                            },
+                            "uuid": "41f7e9b5-972e-4227-a51e-72e2d4c19794"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.4638,
+                                "y": 1.3335
+                            },
+                            "uuid": "c572872c-d9e9-44a9-9700-8497dcf7af4c"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Input pin not driven by any Output pins",
+                    "items": [
+                        {
+                            "description": "Symbol R3 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.2794
+                            },
+                            "uuid": "876d3de9-a584-4d03-bb14-7221d74270e0"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_not_driven"
+                },
+                {
+                    "description": "Input pin not driven by any Output pins",
+                    "items": [
+                        {
+                            "description": "Symbol R10 Pin 2 [2, Input, Line]",
+                            "pos": {
+                                "x": 2.6162,
+                                "y": 1.3081
+                            },
+                            "uuid": "09f15b27-2b88-42c8-9c45-ce2def9d24ba"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_not_driven"
+                },
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 2.6924,
+                                "y": 0.2794
+                            },
+                            "uuid": "73c2341e-5499-409a-84e8-69850600ebda"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.8067,
+                                "y": 0.3556
+                            },
+                            "uuid": "37ab27e3-15b2-4121-aa3a-745474729624"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "Input Power pin not driven by any Output Power pins",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.8067,
+                                "y": 0.9017
+                            },
+                            "uuid": "9a2052cf-a31b-4749-b928-04b559a1ca48"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "power_pin_not_driven"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol ? [Drawing-Symbol_A4]",
+                            "pos": {
+                                "x": 0.0,
+                                "y": 2.0955
+                            },
+                            "uuid": "191a9435-7ffd-40b8-90d9-1c8e1aa8d3ce"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 0.1143,
+                                "y": 0.1524
+                            },
+                            "uuid": "87881f5e-0911-41bf-9f56-e09625271e1c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 0.1143,
+                                "y": 0.3556
+                            },
+                            "uuid": "9fe8d075-ae02-4aee-a62f-f4b4b429fff1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol D2 Pin 1 [K, 未指定, Line]",
+                            "pos": {
+                                "x": 0.1905,
+                                "y": 0.2032
+                            },
+                            "uuid": "476ed5ce-dca0-439c-bcb1-86e323616371"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 0.1143,
+                                "y": 0.1524
+                            },
+                            "uuid": "8b8f86d0-0f1f-4c2f-bd4b-304a9062128d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol D2 [SMAJ5.0A]",
+                            "pos": {
+                                "x": 0.1905,
+                                "y": 0.254
+                            },
+                            "uuid": "58593e81-427c-4d19-9d01-76975141f948"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol D2 [SMAJ5.0A]",
+                            "pos": {
+                                "x": 0.1905,
+                                "y": 0.254
+                            },
+                            "uuid": "58593e81-427c-4d19-9d01-76975141f948"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol D2 Pin 2 [A, 未指定, Line]",
+                            "pos": {
+                                "x": 0.1905,
+                                "y": 0.3048
+                            },
+                            "uuid": "28c463f0-8e42-4a87-bd97-fe122d063c1c"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 0.1905,
+                                "y": 0.3302
+                            },
+                            "uuid": "49362f4e-a524-4989-a9a8-8159d3b511a1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 0.1905,
+                                "y": 0.3302
+                            },
+                            "uuid": "d6d20464-55e8-478e-835a-972b2aa41a3e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 0.6985
+                            },
+                            "uuid": "daf7f352-8c78-48c9-afd6-bef6dd2f0f02"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R9 [RC0603FR-071KL]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 0.7747
+                            },
+                            "uuid": "790c611c-274f-4cca-a08e-10f7dd3aae32"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R9 [RC0603FR-071KL]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 0.7747
+                            },
+                            "uuid": "790c611c-274f-4cca-a08e-10f7dd3aae32"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol LED1 Pin 2 [A, 未指定, Line]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 0.9017
+                            },
+                            "uuid": "ba37d9c8-ad82-4eee-bb16-e02f127d26a9"
+                        },
+                        {
+                            "description": "Symbol R9 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 0.8255
+                            },
+                            "uuid": "b68a3a04-585e-4c91-aef7-c413e08f338a"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol LED1 [LED-0603R]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 0.9525
+                            },
+                            "uuid": "3c1b113b-e1d4-4895-af62-f65c6a73a37e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol LED1 [LED-0603R]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 0.9525
+                            },
+                            "uuid": "3c1b113b-e1d4-4895-af62-f65c6a73a37e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol LED1 Pin 1 [K, 未指定, Line]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 1.0033
+                            },
+                            "uuid": "cb0c1a52-3686-40f5-8d44-9eebff2d9b7c"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 1.0287
+                            },
+                            "uuid": "0918c8e6-5705-42ca-add8-b87ad4cdd45c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 0.2032,
+                                "y": 1.0287
+                            },
+                            "uuid": "8be8efec-29b1-47de-91ce-55d462119a10"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C13 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 0.2286,
+                                "y": 0.4318
+                            },
+                            "uuid": "6b735ab3-82b4-4381-80cc-b97a90d6732e"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 0.1143,
+                                "y": 0.3556
+                            },
+                            "uuid": "83af021a-9bb9-4f1e-9ddf-b71a65444dc0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C13 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 0.2286,
+                                "y": 0.4826
+                            },
+                            "uuid": "8ccfed98-a703-430b-83c4-acc21ad99aa8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C13 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 0.2286,
+                                "y": 0.4826
+                            },
+                            "uuid": "8ccfed98-a703-430b-83c4-acc21ad99aa8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C13 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 0.2286,
+                                "y": 0.5334
+                            },
+                            "uuid": "240028c6-cba2-4f7a-a77b-b0b157e2b9f6"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 0.2286,
+                                "y": 0.5588
+                            },
+                            "uuid": "9b70691e-6520-4d8f-a56a-5ede502fef59"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 0.2286,
+                                "y": 0.5588
+                            },
+                            "uuid": "cba9d6da-e752-4005-939c-5a3e7a2b4f6a"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol D1 Pin 2 [A, 未指定, Line]",
+                            "pos": {
+                                "x": 0.3048,
+                                "y": 0.1778
+                            },
+                            "uuid": "02f975cb-55c7-4a06-acce-680543708692"
+                        },
+                        {
+                            "description": "Symbol D2 Pin 1 [K, 未指定, Line]",
+                            "pos": {
+                                "x": 0.1905,
+                                "y": 0.2032
+                            },
+                            "uuid": "476ed5ce-dca0-439c-bcb1-86e323616371"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol D1 [SS34]",
+                            "pos": {
+                                "x": 0.3556,
+                                "y": 0.1778
+                            },
+                            "uuid": "f2096f70-baeb-437e-bfd2-6d35a8323885"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol D1 [SS34]",
+                            "pos": {
+                                "x": 0.3556,
+                                "y": 0.1778
+                            },
+                            "uuid": "f2096f70-baeb-437e-bfd2-6d35a8323885"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol D1 Pin 1 [K, 未指定, Line]",
+                            "pos": {
+                                "x": 0.4064,
+                                "y": 0.1778
+                            },
+                            "uuid": "9b6d2e18-81a4-476e-ad42-d5e115b16e2e"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 0.508,
+                                "y": 0.1524
+                            },
+                            "uuid": "4e6a58e5-3329-4d11-bfcd-e571483a150b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C14 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 0.4318
+                            },
+                            "uuid": "e2b7f69e-af8b-44e4-9efd-bc8de276a550"
+                        },
+                        {
+                            "description": "Symbol D1 Pin 1 [K, 未指定, Line]",
+                            "pos": {
+                                "x": 0.4064,
+                                "y": 0.1778
+                            },
+                            "uuid": "9b6d2e18-81a4-476e-ad42-d5e115b16e2e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C14 [100nF/0603/50V]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 0.4826
+                            },
+                            "uuid": "8415ae1a-4f6c-4f41-84d2-14fba8ecbc8d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C14 [100nF/0603/50V]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 0.4826
+                            },
+                            "uuid": "8415ae1a-4f6c-4f41-84d2-14fba8ecbc8d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C14 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 0.5334
+                            },
+                            "uuid": "78e52737-1df7-4992-b45b-d9be63859826"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 0.5588
+                            },
+                            "uuid": "5510bf61-d415-4a36-995f-064b35435ca2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 0.5588
+                            },
+                            "uuid": "79abf4e4-3ba2-4388-b43c-56543ae853e7"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 0.508,
+                                "y": 0.1524
+                            },
+                            "uuid": "ffae015e-1648-405d-85c0-d47c8320c1a0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C1 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 0.7366,
+                                "y": 0.381
+                            },
+                            "uuid": "74d4c9ae-46b0-4588-be9f-50cc899ceb43"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C1 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 0.7366,
+                                "y": 0.381
+                            },
+                            "uuid": "74d4c9ae-46b0-4588-be9f-50cc899ceb43"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 0.7366,
+                                "y": 0.4318
+                            },
+                            "uuid": "f2f818f2-9c10-44e9-bcae-75e4932f0c62"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C5 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 0.7366,
+                                "y": 0.9271
+                            },
+                            "uuid": "96c1ca10-4ff7-476f-91cc-837413ee6f84"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C5 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 0.7366,
+                                "y": 0.9271
+                            },
+                            "uuid": "96c1ca10-4ff7-476f-91cc-837413ee6f84"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 0.7366,
+                                "y": 0.9779
+                            },
+                            "uuid": "2a770a1e-f8d6-4f34-a11b-1e562ba9bf25"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 0.8128,
+                                "y": 0.254
+                            },
+                            "uuid": "01d78143-1368-4003-87c7-ac1a164d3b81"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 0.8128,
+                                "y": 0.8001
+                            },
+                            "uuid": "7a257cb8-014c-4e98-a316-06efc0879218"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U5 Pin 5 [FB, 未指定, Line]",
+                            "pos": {
+                                "x": 0.889,
+                                "y": 0.254
+                            },
+                            "uuid": "08f804b6-d133-4f30-b365-5f3fbcb76da5"
+                        },
+                        {
+                            "description": "Symbol R1 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.2794
+                            },
+                            "uuid": "b0f297f8-1c88-4392-9529-dbdb84ebc2c3"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U5 Pin 4 [IN, 未指定, Line]",
+                            "pos": {
+                                "x": 0.889,
+                                "y": 0.3048
+                            },
+                            "uuid": "6e6fb878-0e4e-4fd3-8bd8-414d51d942c3"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 0.8128,
+                                "y": 0.254
+                            },
+                            "uuid": "c55eab94-deed-4177-a318-410c9a71f221"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U7 Pin 5 [FB, 未指定, Line]",
+                            "pos": {
+                                "x": 0.889,
+                                "y": 0.8001
+                            },
+                            "uuid": "243d471d-e371-4988-8482-048301e5b9a0"
+                        },
+                        {
+                            "description": "Symbol R6 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 1.4224,
+                                "y": 0.8001
+                            },
+                            "uuid": "ef5bbf16-4c69-4d05-81cb-e5a8495a09a1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U7 Pin 4 [IN, 未指定, Line]",
+                            "pos": {
+                                "x": 0.889,
+                                "y": 0.8509
+                            },
+                            "uuid": "7e16c0ef-b6f0-4c7e-83d2-424ab58f90ca"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 0.8128,
+                                "y": 0.8001
+                            },
+                            "uuid": "284d98a1-183c-482d-8cea-301222651be5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C9 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 0.9779,
+                                "y": 1.3843
+                            },
+                            "uuid": "8c08ec71-1d67-494d-89a9-db3665243ce4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C9 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 0.9779,
+                                "y": 1.3843
+                            },
+                            "uuid": "8c08ec71-1d67-494d-89a9-db3665243ce4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 0.9779,
+                                "y": 1.4351
+                            },
+                            "uuid": "08c19aeb-8841-4a4d-bce8-a06fde46cad2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U5 [SY8089AAAC]",
+                            "pos": {
+                                "x": 0.9906,
+                                "y": 0.2794
+                            },
+                            "uuid": "75d6349f-ca2f-4598-8e8b-7c44ffd77826"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U5 [SY8089AAAC]",
+                            "pos": {
+                                "x": 0.9906,
+                                "y": 0.2794
+                            },
+                            "uuid": "75d6349f-ca2f-4598-8e8b-7c44ffd77826"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U7 [SY8089AAAC]",
+                            "pos": {
+                                "x": 0.9906,
+                                "y": 0.8255
+                            },
+                            "uuid": "1e133187-ad1d-4346-bc6c-aa23c9fc0ef6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U7 [SY8089AAAC]",
+                            "pos": {
+                                "x": 0.9906,
+                                "y": 0.8255
+                            },
+                            "uuid": "1e133187-ad1d-4346-bc6c-aa23c9fc0ef6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U5 Pin 1 [EN, 未指定, Line]",
+                            "pos": {
+                                "x": 1.0922,
+                                "y": 0.254
+                            },
+                            "uuid": "1c93aa2e-ecd6-4e1b-b2ce-2929cedc1c72"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.143,
+                                "y": 0.2286
+                            },
+                            "uuid": "21998fd0-62e6-4b83-95f4-613333c75e6b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U5 Pin 2 [GND, 未指定, Line]",
+                            "pos": {
+                                "x": 1.0922,
+                                "y": 0.2794
+                            },
+                            "uuid": "e4162f8a-d270-4c70-a052-a6a7c693e3ff"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 1.1684,
+                                "y": 0.3048
+                            },
+                            "uuid": "8b8435e7-e6a5-4de3-becf-2d4a39c14c04"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U7 Pin 1 [EN, 未指定, Line]",
+                            "pos": {
+                                "x": 1.0922,
+                                "y": 0.8001
+                            },
+                            "uuid": "af4e2aa9-d336-4061-a295-8f2b6e4bdec7"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.143,
+                                "y": 0.7747
+                            },
+                            "uuid": "ee97ad2a-36b5-4ad3-916b-f0bb563fafff"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U7 Pin 2 [GND, 未指定, Line]",
+                            "pos": {
+                                "x": 1.0922,
+                                "y": 0.8255
+                            },
+                            "uuid": "fa4ee468-e882-4148-952b-46ba0d7f3b17"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 1.1684,
+                                "y": 0.8509
+                            },
+                            "uuid": "908dd43d-7c18-4477-b94b-bdb4ac781d02"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 1.1176,
+                                "y": 1.2573
+                            },
+                            "uuid": "6d86e875-2997-434f-a1f7-509b4292de44"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 1.143,
+                                "y": 0.2286
+                            },
+                            "uuid": "0230aba3-db5c-433e-9c1a-fbb742293266"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 1.143,
+                                "y": 0.7747
+                            },
+                            "uuid": "9752f062-671c-45ec-ad82-0b6370e971c8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.1684,
+                                "y": 0.3048
+                            },
+                            "uuid": "e39aa7b5-f2f7-45a1-85ad-fcd3eb405092"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.1684,
+                                "y": 0.8509
+                            },
+                            "uuid": "1075ea78-216e-4978-8948-21135ee698c1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.1684,
+                                "y": 1.3589
+                            },
+                            "uuid": "cc97a03a-690c-4c37-8e1d-3ce286fdfec5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol L1 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 1.2192,
+                                "y": 0.4064
+                            },
+                            "uuid": "61d4c8b1-4b48-436d-b24e-54b0360b1f7f"
+                        },
+                        {
+                            "description": "Symbol U5 Pin 3 [LX, 未指定, Line]",
+                            "pos": {
+                                "x": 1.0922,
+                                "y": 0.3048
+                            },
+                            "uuid": "c217a45e-8d6c-4af3-a737-780d06156010"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol L3 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 1.2192,
+                                "y": 0.9525
+                            },
+                            "uuid": "069d9f04-c501-4504-b96b-f953f1173d8b"
+                        },
+                        {
+                            "description": "Symbol U7 Pin 3 [LX, 未指定, Line]",
+                            "pos": {
+                                "x": 1.0922,
+                                "y": 0.8509
+                            },
+                            "uuid": "a3970a08-a799-456d-81ba-8dab78e899ee"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U9 Pin 1 [VIN, 未指定, Line]",
+                            "pos": {
+                                "x": 1.2573,
+                                "y": 1.3081
+                            },
+                            "uuid": "1bd58fc3-9288-44d7-88c0-db4ec624959a"
+                        },
+                        {
+                            "description": "Symbol U9 Pin 3 [EN, 未指定, Line]",
+                            "pos": {
+                                "x": 1.2573,
+                                "y": 1.3589
+                            },
+                            "uuid": "35923481-5e43-41de-bf3e-7325cb0d982d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U9 Pin 2 [GND, 未指定, Line]",
+                            "pos": {
+                                "x": 1.2573,
+                                "y": 1.3335
+                            },
+                            "uuid": "2ca8c99c-610d-46e5-b9c5-4dfb2b549ea7"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 1.1684,
+                                "y": 1.3589
+                            },
+                            "uuid": "acd93083-16dd-4f5b-b634-6c9ea877484e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U9 Pin 3 [EN, 未指定, Line]",
+                            "pos": {
+                                "x": 1.2573,
+                                "y": 1.3589
+                            },
+                            "uuid": "35923481-5e43-41de-bf3e-7325cb0d982d"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.1176,
+                                "y": 1.2573
+                            },
+                            "uuid": "54c53cca-a513-460f-97c6-0f18a388e8ea"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol L1 [SWPA3015S2R2MT]",
+                            "pos": {
+                                "x": 1.27,
+                                "y": 0.4064
+                            },
+                            "uuid": "605ddca1-61a2-4a49-9614-bf6357d82fcd"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol L1 [SWPA3015S2R2MT]",
+                            "pos": {
+                                "x": 1.27,
+                                "y": 0.4064
+                            },
+                            "uuid": "605ddca1-61a2-4a49-9614-bf6357d82fcd"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol L3 [SWPA3015S2R2MT]",
+                            "pos": {
+                                "x": 1.27,
+                                "y": 0.9525
+                            },
+                            "uuid": "901e7f7a-ba41-4aba-bcac-6a82515453b6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol L3 [SWPA3015S2R2MT]",
+                            "pos": {
+                                "x": 1.27,
+                                "y": 0.9525
+                            },
+                            "uuid": "901e7f7a-ba41-4aba-bcac-6a82515453b6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol L1 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 1.3208,
+                                "y": 0.4064
+                            },
+                            "uuid": "ec19a650-25bf-4185-9c55-c9d27f87df13"
+                        },
+                        {
+                            "description": "Symbol R1 Pin 2 [2, Input, Line]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.381
+                            },
+                            "uuid": "d203b842-1066-45a2-890e-806319a3e713"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol L3 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 1.3208,
+                                "y": 0.9525
+                            },
+                            "uuid": "9735a8ce-268c-4bf0-b4cc-937800d26db7"
+                        },
+                        {
+                            "description": "Symbol R5 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.9271
+                            },
+                            "uuid": "f42cff6f-3d87-4a7d-8cd6-d1e43a9f38c1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U9 [AP2112K-1.8TRG1]",
+                            "pos": {
+                                "x": 1.3589,
+                                "y": 1.3335
+                            },
+                            "uuid": "89477084-7c74-4c0e-92bb-28e87c11308f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U9 [AP2112K-1.8TRG1]",
+                            "pos": {
+                                "x": 1.3589,
+                                "y": 1.3335
+                            },
+                            "uuid": "89477084-7c74-4c0e-92bb-28e87c11308f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R1 [RC0603FR-0715KL]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.3302
+                            },
+                            "uuid": "f83475cf-bf73-4427-85e7-4f97f8cf535f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R1 [RC0603FR-0715KL]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.3302
+                            },
+                            "uuid": "f83475cf-bf73-4427-85e7-4f97f8cf535f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol R5 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.8255
+                            },
+                            "uuid": "04898de2-5741-43ff-9c2b-699f248b640b"
+                        },
+                        {
+                            "description": "Symbol R6 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 1.4224,
+                                "y": 0.8001
+                            },
+                            "uuid": "ef5bbf16-4c69-4d05-81cb-e5a8495a09a1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R5 [RC0603DR-0724K9L]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.8763
+                            },
+                            "uuid": "f3c9cbfe-4675-492f-89e8-f751fd3b2ae5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R5 [RC0603DR-0724K9L]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.8763
+                            },
+                            "uuid": "f3c9cbfe-4675-492f-89e8-f751fd3b2ae5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol R5 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 1.3716,
+                                "y": 0.9271
+                            },
+                            "uuid": "f42cff6f-3d87-4a7d-8cd6-d1e43a9f38c1"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.6764,
+                                "y": 0.9017
+                            },
+                            "uuid": "41f7e9b5-972e-4227-a51e-72e2d4c19794"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U9 Pin 5 [VOUT, 未指定, Line]",
+                            "pos": {
+                                "x": 1.4605,
+                                "y": 1.3081
+                            },
+                            "uuid": "d0e448a7-c292-4b1f-b44a-7b1c6d0fa0b3"
+                        },
+                        {
+                            "description": "Symbol C10 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 1.5367,
+                                "y": 1.3335
+                            },
+                            "uuid": "4350bb06-0fa6-4f7c-b3a8-623543ceb509"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R2 [RC0603FR-0720KL]",
+                            "pos": {
+                                "x": 1.4732,
+                                "y": 0.254
+                            },
+                            "uuid": "fe375fdb-6946-4c50-a4d4-73a2c965b977"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R2 [RC0603FR-0720KL]",
+                            "pos": {
+                                "x": 1.4732,
+                                "y": 0.254
+                            },
+                            "uuid": "fe375fdb-6946-4c50-a4d4-73a2c965b977"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R6 [RC0603FR-0720KL]",
+                            "pos": {
+                                "x": 1.4732,
+                                "y": 0.8001
+                            },
+                            "uuid": "b9b93d3a-dee6-4046-ae00-33a846955bdd"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R6 [RC0603FR-0720KL]",
+                            "pos": {
+                                "x": 1.4732,
+                                "y": 0.8001
+                            },
+                            "uuid": "b9b93d3a-dee6-4046-ae00-33a846955bdd"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C10 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 1.5367,
+                                "y": 1.3843
+                            },
+                            "uuid": "9b8aee49-0ec5-43f7-87b6-7f7248d9b7f4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C10 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 1.5367,
+                                "y": 1.3843
+                            },
+                            "uuid": "9b8aee49-0ec5-43f7-87b6-7f7248d9b7f4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.5367,
+                                "y": 1.4351
+                            },
+                            "uuid": "b12e9a0c-ee9d-4dd6-a266-e733fdca5db5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.5621,
+                                "y": 0.2794
+                            },
+                            "uuid": "38b32b7b-67ae-4cf5-a3b4-ace9b5ee06f6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.5621,
+                                "y": 0.8255
+                            },
+                            "uuid": "7ac0a17a-06c6-4715-9da8-2f440ceac473"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C2 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 0.4191
+                            },
+                            "uuid": "b6922bfd-c614-4f19-a58c-cb3d155dc84b"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.6764,
+                                "y": 0.3556
+                            },
+                            "uuid": "5fa8c15c-877f-4f0f-855e-7b2cfaf01964"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C2 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 0.4699
+                            },
+                            "uuid": "baf0a7f3-0d59-4044-acb3-d1edf0606b21"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C2 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 0.4699
+                            },
+                            "uuid": "baf0a7f3-0d59-4044-acb3-d1edf0606b21"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C2 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 0.5207
+                            },
+                            "uuid": "dcc62206-6950-4ad8-a326-c015cdfef72c"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 0.5461
+                            },
+                            "uuid": "894bcb9f-21e4-47ce-bde4-dcfd376ad34a"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 0.5461
+                            },
+                            "uuid": "73b0c5a9-5c86-4ca2-a7fe-4c39aa9f352d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C6 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 0.9652
+                            },
+                            "uuid": "8210d142-afbb-458e-9eb4-acd9c87ad385"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.6764,
+                                "y": 0.9017
+                            },
+                            "uuid": "41f7e9b5-972e-4227-a51e-72e2d4c19794"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C6 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 1.016
+                            },
+                            "uuid": "d19b6575-7491-4965-924d-a972db288040"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C6 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 1.016
+                            },
+                            "uuid": "d19b6575-7491-4965-924d-a972db288040"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C6 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 1.0668
+                            },
+                            "uuid": "a47b9e6f-4b06-474c-933d-1b7577d52e9b"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 1.0922
+                            },
+                            "uuid": "05250301-f363-4f04-8b84-eaf20264309d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 1.0922
+                            },
+                            "uuid": "90a63ce1-0f1b-4af9-adf7-5ced7761889c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 1.6129,
+                                "y": 1.2573
+                            },
+                            "uuid": "56a8f9d7-4db7-489b-9204-13f8125cb2e1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 1.6764,
+                                "y": 0.3556
+                            },
+                            "uuid": "f7cff011-5db6-442f-b345-d1853cdce274"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 1.6764,
+                                "y": 0.9017
+                            },
+                            "uuid": "06ab177f-de6c-4dc6-a0d8-2e2986de0c64"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C3 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 1.8669,
+                                "y": 0.381
+                            },
+                            "uuid": "2f574970-57f3-4266-8c22-563078abdd0f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C3 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 1.8669,
+                                "y": 0.381
+                            },
+                            "uuid": "2f574970-57f3-4266-8c22-563078abdd0f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.8669,
+                                "y": 0.4318
+                            },
+                            "uuid": "d1d5b726-3488-4d84-8d36-62913b198a22"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C7 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 1.8669,
+                                "y": 0.9271
+                            },
+                            "uuid": "a8fbf31c-325c-44df-aaf7-5b6a606c5151"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C7 [CAPCER10UF25VX5R0805]",
+                            "pos": {
+                                "x": 1.8669,
+                                "y": 0.9271
+                            },
+                            "uuid": "a8fbf31c-325c-44df-aaf7-5b6a606c5151"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.8669,
+                                "y": 0.9779
+                            },
+                            "uuid": "98c2de99-5ed9-45f7-8480-a31cd888206f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 1.8796,
+                                "y": 1.2827
+                            },
+                            "uuid": "4ec218aa-0c1c-439e-8eaa-a49d96eefcf5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 1.9431,
+                                "y": 0.254
+                            },
+                            "uuid": "c7ba89fc-8713-421f-bf1a-ec5a887e6323"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 1.9431,
+                                "y": 0.8001
+                            },
+                            "uuid": "05efd9ac-7b9b-4008-9301-187a250cf695"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C11 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 1.9558,
+                                "y": 1.3589
+                            },
+                            "uuid": "f5cac9eb-24a9-453a-b765-22e61633a2ed"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.8796,
+                                "y": 1.2827
+                            },
+                            "uuid": "9268eb48-915b-4046-bad9-31b95dea1b7c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C11 [100nF/0603/50V]",
+                            "pos": {
+                                "x": 1.9558,
+                                "y": 1.4097
+                            },
+                            "uuid": "cb23ca96-4083-48b8-b0dc-dc9dd1991df5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C11 [100nF/0603/50V]",
+                            "pos": {
+                                "x": 1.9558,
+                                "y": 1.4097
+                            },
+                            "uuid": "cb23ca96-4083-48b8-b0dc-dc9dd1991df5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C11 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 1.9558,
+                                "y": 1.4605
+                            },
+                            "uuid": "1be93f90-ca4a-4260-a3f2-a376afe26c14"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 1.9558,
+                                "y": 1.4859
+                            },
+                            "uuid": "75e87350-57d1-4b9c-946b-58168ca6a000"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 1.9558,
+                                "y": 1.4859
+                            },
+                            "uuid": "1ae8187f-960d-4ba5-96c2-8142d0fc6acb"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U6 Pin 5 [FB, 未指定, Line]",
+                            "pos": {
+                                "x": 2.0193,
+                                "y": 0.254
+                            },
+                            "uuid": "24b39276-5af1-49e3-bb23-d1a67ca0015a"
+                        },
+                        {
+                            "description": "Symbol R3 Pin 1 [1, Input, Line]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.2794
+                            },
+                            "uuid": "876d3de9-a584-4d03-bb14-7221d74270e0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U6 Pin 4 [IN, 未指定, Line]",
+                            "pos": {
+                                "x": 2.0193,
+                                "y": 0.3048
+                            },
+                            "uuid": "6eab130f-5275-4538-b66d-d1d786051801"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.9431,
+                                "y": 0.254
+                            },
+                            "uuid": "961e2ded-f79b-492a-8aaf-38110399a7c3"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U8 Pin 4 [IN, 未指定, Line]",
+                            "pos": {
+                                "x": 2.0193,
+                                "y": 0.8509
+                            },
+                            "uuid": "5217f49f-8840-4076-853d-dd838a7b9bac"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.9431,
+                                "y": 0.8001
+                            },
+                            "uuid": "c19508d4-406c-4ada-82e3-6f3e13c40cd2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U10 Pin 4 [EN, 未指定, Line]",
+                            "pos": {
+                                "x": 2.0955,
+                                "y": 1.2827
+                            },
+                            "uuid": "13624a8d-0838-4754-911c-d8dbc01c4548"
+                        },
+                        {
+                            "description": "Symbol U10 Pin 5 [IN, 未指定, Line]",
+                            "pos": {
+                                "x": 2.0955,
+                                "y": 1.3335
+                            },
+                            "uuid": "7fd12c88-f001-49f4-863b-90db7eff4ee4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U10 Pin 5 [IN, 未指定, Line]",
+                            "pos": {
+                                "x": 2.0955,
+                                "y": 1.3335
+                            },
+                            "uuid": "7fd12c88-f001-49f4-863b-90db7eff4ee4"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 1.8796,
+                                "y": 1.2827
+                            },
+                            "uuid": "9268eb48-915b-4046-bad9-31b95dea1b7c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U6 [SY8089AAAC]",
+                            "pos": {
+                                "x": 2.1209,
+                                "y": 0.2794
+                            },
+                            "uuid": "729e08a7-4de3-4776-9354-b0e38a118af9"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U6 [SY8089AAAC]",
+                            "pos": {
+                                "x": 2.1209,
+                                "y": 0.2794
+                            },
+                            "uuid": "729e08a7-4de3-4776-9354-b0e38a118af9"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U8 [SY8089AAAC]",
+                            "pos": {
+                                "x": 2.1209,
+                                "y": 0.8255
+                            },
+                            "uuid": "d5510b01-6f98-4725-995e-77303cbcba55"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U8 [SY8089AAAC]",
+                            "pos": {
+                                "x": 2.1209,
+                                "y": 0.8255
+                            },
+                            "uuid": "d5510b01-6f98-4725-995e-77303cbcba55"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U10 [SY6280AAC_C55136]",
+                            "pos": {
+                                "x": 2.1844,
+                                "y": 1.3081
+                            },
+                            "uuid": "5226dd67-aebb-4d38-938d-fc71bb1c5865"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol U10 [SY6280AAC_C55136]",
+                            "pos": {
+                                "x": 2.1844,
+                                "y": 1.3081
+                            },
+                            "uuid": "5226dd67-aebb-4d38-938d-fc71bb1c5865"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U6 Pin 1 [EN, 未指定, Line]",
+                            "pos": {
+                                "x": 2.2225,
+                                "y": 0.254
+                            },
+                            "uuid": "e14e3868-1893-4149-9ab5-17a7689cb0da"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.2733,
+                                "y": 0.2286
+                            },
+                            "uuid": "e6e7c774-5394-4451-834d-5aaaafde05a2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U6 Pin 2 [GND, 未指定, Line]",
+                            "pos": {
+                                "x": 2.2225,
+                                "y": 0.2794
+                            },
+                            "uuid": "dca822a2-bbf3-435c-b592-2fe4f61811ef"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 2.2987,
+                                "y": 0.3048
+                            },
+                            "uuid": "a38979cd-cfbc-45f1-8fe7-1fe37a515560"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U8 Pin 1 [EN, 未指定, Line]",
+                            "pos": {
+                                "x": 2.2225,
+                                "y": 0.8001
+                            },
+                            "uuid": "e2773d52-1a2b-4a93-89b6-8eab7b75632b"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.2733,
+                                "y": 0.7747
+                            },
+                            "uuid": "16984f89-85d2-4bfe-a75b-c9fa1f88f867"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U8 Pin 2 [GND, 未指定, Line]",
+                            "pos": {
+                                "x": 2.2225,
+                                "y": 0.8255
+                            },
+                            "uuid": "080dcf7a-b15b-4d34-9b5e-6524f43983a1"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 2.2987,
+                                "y": 0.8509
+                            },
+                            "uuid": "96d6d44b-fad0-477a-bd89-fde5f6632561"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 2.2733,
+                                "y": 0.2286
+                            },
+                            "uuid": "f1299c68-27e0-4025-9f8d-8468bb31ef2d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 2.2733,
+                                "y": 0.7747
+                            },
+                            "uuid": "a59030b7-ddbf-42f1-b717-3e6796dc8000"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U10 Pin 3 [ISET, 未指定, Line]",
+                            "pos": {
+                                "x": 2.2733,
+                                "y": 1.2827
+                            },
+                            "uuid": "a0141e6b-5cf2-4e75-9a72-1981512e5aff"
+                        },
+                        {
+                            "description": "Symbol R10 Pin 2 [2, Input, Line]",
+                            "pos": {
+                                "x": 2.6162,
+                                "y": 1.3081
+                            },
+                            "uuid": "09f15b27-2b88-42c8-9c45-ce2def9d24ba"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U10 Pin 2 [GND, 未指定, Line]",
+                            "pos": {
+                                "x": 2.2733,
+                                "y": 1.3081
+                            },
+                            "uuid": "2bcfef6e-02d9-461a-88c7-320703283639"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 2.3622,
+                                "y": 1.3335
+                            },
+                            "uuid": "6c2155bd-8b12-4059-8435-00dfc5f76d0c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U10 Pin 1 [OUT, 未指定, Line]",
+                            "pos": {
+                                "x": 2.2733,
+                                "y": 1.3335
+                            },
+                            "uuid": "f24d4843-acb5-4657-9754-bf08d79ab67b"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.4638,
+                                "y": 1.3335
+                            },
+                            "uuid": "c572872c-d9e9-44a9-9700-8497dcf7af4c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 2.2987,
+                                "y": 0.3048
+                            },
+                            "uuid": "94da506c-4796-4170-939d-c3bb05a6c763"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 2.2987,
+                                "y": 0.8509
+                            },
+                            "uuid": "f3b47743-81b1-499a-9bfb-55b7a4d0800f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol L2 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 2.3495,
+                                "y": 0.4064
+                            },
+                            "uuid": "e20ed2fc-e2f8-4d6e-86a4-3cda0019e61b"
+                        },
+                        {
+                            "description": "Symbol U6 Pin 3 [LX, 未指定, Line]",
+                            "pos": {
+                                "x": 2.2225,
+                                "y": 0.3048
+                            },
+                            "uuid": "b7423c98-c8a8-4170-94c4-dbbaf43b30a6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol L4 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 2.3495,
+                                "y": 0.9525
+                            },
+                            "uuid": "cbb6196a-e236-40b8-b680-15d12a553b73"
+                        },
+                        {
+                            "description": "Symbol U8 Pin 3 [LX, 未指定, Line]",
+                            "pos": {
+                                "x": 2.2225,
+                                "y": 0.8509
+                            },
+                            "uuid": "64b3d0bd-d238-4113-ac77-aac4ac8a12c1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 2.3622,
+                                "y": 1.3335
+                            },
+                            "uuid": "1d6368f1-29e5-4a46-8dbc-94bbff15c165"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C12 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 2.3876,
+                                "y": 1.4097
+                            },
+                            "uuid": "c409653e-8172-4823-8f96-81f4dad5d1de"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.4638,
+                                "y": 1.3335
+                            },
+                            "uuid": "c572872c-d9e9-44a9-9700-8497dcf7af4c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C12 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 2.3876,
+                                "y": 1.4605
+                            },
+                            "uuid": "0eda8bcc-a657-455f-8bc5-acd09274c82f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C12 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 2.3876,
+                                "y": 1.4605
+                            },
+                            "uuid": "0eda8bcc-a657-455f-8bc5-acd09274c82f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C12 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 2.3876,
+                                "y": 1.5113
+                            },
+                            "uuid": "56fc0b70-f641-4ae8-ac4a-7eef596d963d"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 2.3876,
+                                "y": 1.5367
+                            },
+                            "uuid": "27c05ed0-7a80-45be-adaa-c6d9322da8ed"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 2.3876,
+                                "y": 1.5367
+                            },
+                            "uuid": "19e99aa8-4fa1-4014-a4b8-c6918bdf0c82"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol L2 [SWPA3015S2R2MT]",
+                            "pos": {
+                                "x": 2.4003,
+                                "y": 0.4064
+                            },
+                            "uuid": "b3cd9496-babc-4500-b58e-f81a586c4be1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol L2 [SWPA3015S2R2MT]",
+                            "pos": {
+                                "x": 2.4003,
+                                "y": 0.4064
+                            },
+                            "uuid": "b3cd9496-babc-4500-b58e-f81a586c4be1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol L4 [SWPA3015S2R2MT]",
+                            "pos": {
+                                "x": 2.4003,
+                                "y": 0.9525
+                            },
+                            "uuid": "f22785df-3859-4561-a138-3695cb878312"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol L4 [SWPA3015S2R2MT]",
+                            "pos": {
+                                "x": 2.4003,
+                                "y": 0.9525
+                            },
+                            "uuid": "f22785df-3859-4561-a138-3695cb878312"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol L2 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 2.4511,
+                                "y": 0.4064
+                            },
+                            "uuid": "aea78f7a-a7e7-4821-9325-99de20aac832"
+                        },
+                        {
+                            "description": "Symbol R3 Pin 2 [2, Input, Line]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.381
+                            },
+                            "uuid": "5fbd6cbd-6cd9-41c6-b0c6-70dc0970d6a0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol L4 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 2.4511,
+                                "y": 0.9525
+                            },
+                            "uuid": "d243aac8-a58c-48ff-98a9-0cc7ae61e8e1"
+                        },
+                        {
+                            "description": "Symbol R7 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.9271
+                            },
+                            "uuid": "d6f0599b-7aca-4927-a1b9-300d78db4df9"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 2.4638,
+                                "y": 1.3335
+                            },
+                            "uuid": "bdcb79c0-79ef-4807-bf13-a075827edf52"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R3 [RC0603FR-076K81L]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.3302
+                            },
+                            "uuid": "cb9ee41d-f192-4fb9-856e-d7ad7af72a4a"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R3 [RC0603FR-076K81L]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.3302
+                            },
+                            "uuid": "cb9ee41d-f192-4fb9-856e-d7ad7af72a4a"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol R7 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.8255
+                            },
+                            "uuid": "c4db05c5-5bb2-4ac7-8751-96c4fcc0f092"
+                        },
+                        {
+                            "description": "Symbol R8 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 2.5527,
+                                "y": 0.8001
+                            },
+                            "uuid": "f6840203-c799-486d-8c94-b09cc278feae"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R7 [RC0603FR-07100KL]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.8763
+                            },
+                            "uuid": "a704788a-78e4-4318-80a0-309c5d7be545"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R7 [RC0603FR-07100KL]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.8763
+                            },
+                            "uuid": "a704788a-78e4-4318-80a0-309c5d7be545"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol R7 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 2.5019,
+                                "y": 0.9271
+                            },
+                            "uuid": "d6f0599b-7aca-4927-a1b9-300d78db4df9"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.8067,
+                                "y": 0.9017
+                            },
+                            "uuid": "9a2052cf-a31b-4749-b928-04b559a1ca48"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type 未指定 and 未指定 are connected",
+                    "items": [
+                        {
+                            "description": "Symbol R8 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 2.5527,
+                                "y": 0.8001
+                            },
+                            "uuid": "f6840203-c799-486d-8c94-b09cc278feae"
+                        },
+                        {
+                            "description": "Symbol U8 Pin 5 [FB, 未指定, Line]",
+                            "pos": {
+                                "x": 2.0193,
+                                "y": 0.8001
+                            },
+                            "uuid": "8973726a-2302-4f90-80e1-187af3546d39"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R4 [RC0603FR-0710KL]",
+                            "pos": {
+                                "x": 2.6035,
+                                "y": 0.254
+                            },
+                            "uuid": "0294c1a6-ee18-4914-b936-216d82295224"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R4 [RC0603FR-0710KL]",
+                            "pos": {
+                                "x": 2.6035,
+                                "y": 0.254
+                            },
+                            "uuid": "0294c1a6-ee18-4914-b936-216d82295224"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R8 [RT0603DRE0722K1L]",
+                            "pos": {
+                                "x": 2.6035,
+                                "y": 0.8001
+                            },
+                            "uuid": "5651007b-8137-4bec-a829-8c6bd729a0b2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R8 [RT0603DRE0722K1L]",
+                            "pos": {
+                                "x": 2.6035,
+                                "y": 0.8001
+                            },
+                            "uuid": "5651007b-8137-4bec-a829-8c6bd729a0b2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R10 [RC0603FR-0710KL]",
+                            "pos": {
+                                "x": 2.6162,
+                                "y": 1.3589
+                            },
+                            "uuid": "a3b775dd-0292-4848-ad5b-0bf38efd0334"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol R10 [RC0603FR-0710KL]",
+                            "pos": {
+                                "x": 2.6162,
+                                "y": 1.3589
+                            },
+                            "uuid": "a3b775dd-0292-4848-ad5b-0bf38efd0334"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 2.6162,
+                                "y": 1.4351
+                            },
+                            "uuid": "48297a89-92bd-49f6-bb67-3a3de19b776f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol R8 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 2.6543,
+                                "y": 0.8001
+                            },
+                            "uuid": "d5fecd36-3cf5-4457-b7d4-b7f6adca786a"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 2.6924,
+                                "y": 0.8255
+                            },
+                            "uuid": "17783044-fa5f-4ccf-9ae9-ac680c4cd254"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 2.6924,
+                                "y": 0.2794
+                            },
+                            "uuid": "52004fcc-9246-4267-8778-cb58423bc50e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 2.6924,
+                                "y": 0.8255
+                            },
+                            "uuid": "f2861e29-4daf-4fa7-ada6-18cc95076f69"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C4 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 0.4191
+                            },
+                            "uuid": "888472ca-5a70-42e9-90dd-48a5863e6aa3"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.8067,
+                                "y": 0.3556
+                            },
+                            "uuid": "37ab27e3-15b2-4121-aa3a-745474729624"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C4 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 0.4699
+                            },
+                            "uuid": "f5c448c4-1969-4e3c-b797-4556b51a727d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C4 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 0.4699
+                            },
+                            "uuid": "f5c448c4-1969-4e3c-b797-4556b51a727d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C4 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 0.5207
+                            },
+                            "uuid": "52810b73-11f2-47d4-bbea-71fdfc2940c3"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 0.5461
+                            },
+                            "uuid": "b5e7856f-7d4a-4518-acb3-810f92086bb8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 0.5461
+                            },
+                            "uuid": "2f4835cb-39e1-4550-94c1-ceb6fd032487"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C8 Pin 1 [1, 未指定, Line]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 0.9652
+                            },
+                            "uuid": "3c68a92a-2519-4f5a-a3e0-f582869ae896"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                            "pos": {
+                                "x": 2.8067,
+                                "y": 0.9017
+                            },
+                            "uuid": "9a2052cf-a31b-4749-b928-04b559a1ca48"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C8 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 1.016
+                            },
+                            "uuid": "22d28330-2627-451e-ac34-0fd04522ed6d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol C8 [22uF-C0805_L]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 1.016
+                            },
+                            "uuid": "22d28330-2627-451e-ac34-0fd04522ed6d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Pins of type 未指定 and Power input are connected",
+                    "items": [
+                        {
+                            "description": "Symbol C8 Pin 2 [2, 未指定, Line]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 1.0668
+                            },
+                            "uuid": "c5467e8b-16f6-4d67-a63b-cb4e30329150"
+                        },
+                        {
+                            "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 1.0922
+                            },
+                            "uuid": "abef3e1b-a272-4e7e-b015-77db8f04adb0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Ground-GND]",
+                            "pos": {
+                                "x": 2.7305,
+                                "y": 1.0922
+                            },
+                            "uuid": "7def77b3-eea0-4223-8bee-d65b89ac92f1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 2.8067,
+                                "y": 0.3556
+                            },
+                            "uuid": "37d47073-94fa-41c7-8ec6-4f40b4ddbc8b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'RK3308B_IPC 摄像头模块-import-syms'",
+                    "items": [
+                        {
+                            "description": "Symbol #PWR? [Power-5V]",
+                            "pos": {
+                                "x": 2.8067,
+                                "y": 0.9017
+                            },
+                            "uuid": "41e347d9-d8d7-4d55-b605-8098eb8751fe"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                }
+            ]
+        },
+        {
+            "path": "/SoC_U1.1/",
+            "uuid_path": "/4d8b9ae3-79ef-4159-9b55-b392b946c8bc/06dd4d40-68f9-46f3-aca5-a0d1765d241b",
+            "violations": []
+        },
+        {
+            "path": "/DDR/",
+            "uuid_path": "/4d8b9ae3-79ef-4159-9b55-b392b946c8bc/02f5e8ee-b9c9-4906-b0d3-56e889b821c4",
+            "violations": []
+        },
+        {
+            "path": "/Flash/",
+            "uuid_path": "/4d8b9ae3-79ef-4159-9b55-b392b946c8bc/7fa00d17-1b11-449f-8eb7-59e477e17f2d",
+            "violations": []
+        },
+        {
+            "path": "/WiFi/",
+            "uuid_path": "/4d8b9ae3-79ef-4159-9b55-b392b946c8bc/38283542-4a64-427a-921b-dd0c448261e1",
+            "violations": []
+        },
+        {
+            "path": "/IO/",
+            "uuid_path": "/4d8b9ae3-79ef-4159-9b55-b392b946c8bc/76c3961b-2cb8-47b1-8383-9e7cb7841cab",
+            "violations": []
+        },
+        {
+            "path": "/SoC_U1.3/",
+            "uuid_path": "/4d8b9ae3-79ef-4159-9b55-b392b946c8bc/7a644c86-3f4b-4e12-8fe3-4be006fb86de",
+            "violations": []
+        },
+        {
+            "path": "/SoC_U1.2/",
+            "uuid_path": "/4d8b9ae3-79ef-4159-9b55-b392b946c8bc/c6c68fbe-4ee8-410a-8a2b-ef1c65064bf5",
+            "violations": []
+        }
+    ],
+    "source": "RK3308B_IPC 摄像头模块.kicad_sch"
+}

@@ -1,0 +1,7 @@
+{
+  "layers": [
+    {"layer": "BL_F_Cu", "type": "BSLT_COPPER", "thickness": {"valueNm": "35000"}},
+    {"layer": "BL_UNDEFINED", "type": "BSLT_DIELECTRIC", "dielectric": {"layer": [{"epsilonR": 4.5, "thickness": {"valueNm": "1440000"}}]}},
+    {"layer": "BL_B_Cu", "type": "BSLT_COPPER", "thickness": {"valueNm": "35000"}}
+  ]
+}

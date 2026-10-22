@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "terminalCommand": "Kicad",
+  "legacyCommand": "kicad",
+  "autoUse": {
+    "instructions": "/Users/mosc/.local/share/kicad-terminal/eda-agent-instructions.md",
+    "skills": "~/.claude/skills/kicad-*",
+    "easyedaTools": [
+      "easyeda_actions",
+      "easyeda_artifact",
+      "easyeda_blocks",
+      "easyeda_board",
+      "easyeda_document",
+      "easyeda_health",
+      "easyeda_pcb",
+      "easyeda_project",
+      "easyeda_project_transfer",
+      "easyeda_schematic",
+      "easyeda_system",
+      "easyeda_workflow"
+    ]
+  },
+  "agent": {
+    "actionCount": 247,
+    "agentVersion": "0.2.0",
+    "arch": "arm64",
+    "catalogSha256": "80411e42d8c00a446a6e5cfddf7faf66ebae5fbc19bb8f26372f1d4fb934d90c",
+    "goVersion": "go1.27.2",
+    "mcpToolCount": 19,
+    "mcpTools": [
+      "kicad_health",
+      "kicad_actions",
+      "kicad_call",
+      "kicad_spec_validate",
+      "kicad_blocks",
+      "kicad_workflow",
+      "kicad_pipeline",
+      "kicad_native_tools",
+      "kicad_system",
+      "kicad_project",
+      "kicad_document",
+      "kicad_schematic",
+      "kicad_board",
+      "kicad_library",
+      "kicad_external",
+      "kicad_editor",
+      "kicad_audit",
+      "kicad_web",
+      "kicad_gerber"
+    ],
+    "nativeToolCount": 971,
+    "os": "darwin",
+    "schemaVersion": 1
+  },
+  "mcpToolCount": 19,
+  "terminalVersion": "1.19.3",
+  "terminalSha256": "b66ec25a48bf4c3990c7699b66bbec600c0a91869db243284f2244928fea8f54",
+  "extensionVersion": "0.4.22",
+  "extensionPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.22",
+  "checkedFiles": [
+    "extension.cjs",
+    "main.js",
+    "bundled CLI",
+    "eda-agent-instructions.md",
+    "easyeda-mcp.mjs",
+    "session-runtime.mjs"
+  ],
+  "note": "Installation and capability verification; this does not assert a connected KiCad document or fabricate engineering validation."
+}

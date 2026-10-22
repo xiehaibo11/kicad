@@ -1,0 +1,28 @@
+{
+  "jobs": [
+    {
+      "id": "acceptance-drc",
+      "type": "pcb_drc",
+      "settings": {
+        "fail_on_error": false,
+        "format": "report",
+        "output_filename": "jobset-drc.txt",
+        "parity": false,
+        "severity": 48,
+        "units": "mm"
+      }
+    }
+  ],
+  "meta": {
+    "version": 1
+  },
+  "outputs": [
+    {
+      "id": "acceptance",
+      "type": "folder",
+      "settings": {
+        "output_path": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/all-actions-2026-10-21/jobs/jobset-output"
+      }
+    }
+  ]
+}

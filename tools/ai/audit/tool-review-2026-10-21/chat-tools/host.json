@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "version": "0.4.26",
+  "resultSubtype": "success",
+  "webviews": {
+    "resolved": 1,
+    "mounted": 1
+  },
+  "fixture": "actual extension chat service + SDK + native IPC/CLI, localhost model"
+}

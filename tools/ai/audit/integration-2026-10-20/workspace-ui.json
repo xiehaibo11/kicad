@@ -1,0 +1,98 @@
+{
+  "created_at": "2026-10-20T19:53:37.952423-07:00",
+  "scope": "Native KiCad project workspace and startup/opening flow based on supplied EasyEDA reference images",
+  "acceptance": "manual native GUI observations through cua_repl plus native build and filesystem/config readback",
+  "checks": [
+    {
+      "id": "start_page_and_sections",
+      "status": "pass",
+      "evidence": "Native GUI shows a permanent Start Page and All Projects / Project Design tabs; Simplified and Traditional Chinese were observed."
+    },
+    {
+      "id": "add_parent_folder",
+      "status": "pass",
+      "evidence": "Native folder dialog added /tmp/kicad-integration-projects; three complete projects appeared, excluding standalone child schematic."
+    },
+    {
+      "id": "persistence",
+      "status": "pass",
+      "evidence": "After a clean GUI restart, the saved root and its three projects reappeared without opening a project."
+    },
+    {
+      "id": "search",
+      "status": "pass",
+      "evidence": "ecc83-pp_v2 returned one entry; a nonexistent query returned the localized empty result; active project was not changed."
+    },
+    {
+      "id": "whole_project_open",
+      "status": "pass",
+      "evidence": "Double-clicking pic_programmer selected Project Design and showed its PCB, schematic, library, and current full path."
+    },
+    {
+      "id": "native_editor_launch",
+      "status": "pass",
+      "evidence": "Start Page card opened the PCB; native design tree opened the schematic; Window menu listed manager, PCB, schematic together."
+    },
+    {
+      "id": "same_project_windows",
+      "status": "pass",
+      "evidence": "With both editors open, switching to All Projects and reopening pic_programmer retained all three windows, verified in the Window menu."
+    },
+    {
+      "id": "project_switch",
+      "status": "pass",
+      "evidence": "Selecting ecc83-pp and pressing Enter switched the whole project; manager remained open and tree/current path updated."
+    },
+    {
+      "id": "recent_project_open",
+      "status": "pass",
+      "evidence": "Double-clicking pic_programmer in the Start Page recent-project table loaded that project."
+    },
+    {
+      "id": "remove_folder",
+      "status": "pass",
+      "evidence": "Right-click Remove Folder from List removed the saved root; current project stayed active and its project file still existed."
+    },
+    {
+      "id": "final_native_build",
+      "status": "pass",
+      "evidence": "cmake --build build --target kicad --parallel 6 exited 0; existing duplicate-library linker warnings only."
+    },
+    {
+      "id": "diff_check",
+      "status": "pass",
+      "evidence": "git diff --check exited 0."
+    },
+    {
+      "id": "normal_profile_delivery",
+      "status": "pass",
+      "evidence": "Final rebuilt app was launched using the normal user profile; /Users/mosc/Downloads/Kicad/demos was added using the native folder dialog. GUI showed 41 entries (37 scanned projects plus recent entries)."
+    }
+  ],
+  "binary": {
+    "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad",
+    "sha256": "dc39ab72f7f1422580db010cf8aa0984c0a1a2226b1fd04bec0215ee01da46c1"
+  },
+  "sources": {
+    "kicad/project_workspace.cpp": "3025db74342c5a106a1ddce0bc2de0c06a2eef5133880932fb5a30e2a5b803a8",
+    "kicad/project_workspace.h": "dc94b1c899f1c8ca9aa694f974e8c8f376b4476ff314465911717067d4511cd6",
+    "kicad/dialogs/panel_kicad_launcher.cpp": "b626ae985f393c55cf483636a25b9e3990d016c6c9fed1a6e217034af0dda1f5",
+    "kicad/kicad_manager_frame.cpp": "ce266e51539a2f8265bbe1f5c25307e9ded446096f1c961d0d42c299336fb3c1"
+  },
+  "normal_profile_workspace": {
+    "project_directories": [
+      "/Users/mosc/Downloads/Kicad/demos"
+    ]
+  },
+  "qa_workspace_after_remove": {
+    "project_directories": []
+  },
+  "qa_project_retained": true,
+  "limitations": [
+    "PCB and schematic editing retain native independent editor windows; they are not embedded as main-window document tabs.",
+    "Folder discovery is bounded to depth 8, 100000 entries and approximately five seconds; hidden, build, node_modules and backup directories are skipped.",
+    "The prior 971-tool semantic coverage status is not changed by this UI work."
+  ],
+  "build_log": "workspace-ui-build.txt",
+  "prior_integration_summary": "summary.json is the earlier integration snapshot; workspace-ui.json carries the current GUI binary fingerprint."
+}

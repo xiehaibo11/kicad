@@ -1,0 +1,29 @@
+bun test v1.3.14 (0d9b296a)
+
+tools/ai/composer/test/history.test.mjs:
+(pass) shared history persists extension messages and reads native terminal sessions without crossing workspaces [36.61ms]
+
+tools/ai/composer/test/diagnostics.test.mjs:
+(pass) journal captures both clients, isolates workspaces, redacts secrets and correlates calls [4.21ms]
+(pass) terminal bus records final thrown errors even with no next tool, AI errors and retry status [0.14ms]
+(pass) diagnosis distinguishes cancellations, permissions, design violations and runtime failures [0.11ms]
+(pass) concurrent writes stay parseable, malformed tails are visible and retention ignores unrelated files [7.03ms]
+(pass) logging failures never throw into the tool execution and report failure once [0.52ms]
+(pass) SDK debug messages are not errors and chunked actual failures remain visible [0.27ms]
+
+tools/ai/composer/test/harness.test.mjs:
+(pass) retry guard counts identical failures, allows changed requests and resets on a real user turn [0.37ms]
+(pass) todo reminders are periodic, successful todo updates persist, question answers do not consume cycles [0.14ms]
+(pass) large results are archived byte-exact with a bounded preview; archive failures propagate [1.69ms]
+
+tools/ai/composer/test/local-tools.test.mjs:
+(pass) local memory survives reload, isolates workspaces, and excludes secrets; history is available to both clients [2.01ms]
+(pass) Context7 uses fixed official endpoints, protects credentials, reports HTTP failures and bounds context [2.91ms]
+
+tools/ai/membership/test/local.test.mjs:
+(pass) membership environment and complete model IDs [0.14ms]
+(pass) local CLI discovery paginates, sanitizes account details and does not infer membership from models [979.47ms]
+
+ 14 pass
+ 0 fail
+Ran 14 tests across 5 files. [1.55s]

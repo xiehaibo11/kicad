@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "sharedBundleSha256": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151",
+  "copies": {
+    "shared": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151",
+    "terminal": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151",
+    "npmPrepared": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151",
+    "legacyExtension": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151",
+    "nativeBuild": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151",
+    "packagedExtension": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151",
+    "npmTarball": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151",
+    "nativeArchive": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151"
+  },
+  "sessionRuntimeIdentical": true,
+  "nativeProtoSourcesVerified": 53,
+  "externalArchiveAliasIdentical": true,
+  "oldGoSourceAndBinaryAbsent": true,
+  "artifacts": {
+    "tools/ai/Kicad-extension/dist/kicad-0.4.25.vsix": "b61326e89d6356b541fca60321b6c44fb3e4b253078ad6bdec65944b74d733a9",
+    "tools/ai/Kicad-terminal/dist/-kicadai-kicad-code-0.1.1.tgz": "7bfd77ec2441a7ecea4b45d24cbbae50c5330afe3aac92bf1bdd95ec8b392ddb",
+    "tools/ai/direct/dist/kicad-native-tools.zip": "6c428ae45833182b86f4d9e44a62c67edab58b2d464bc7cb8a7872d7200c17bd"
+  }
+}

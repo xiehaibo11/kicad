@@ -1,0 +1,118 @@
+{
+  "ok": true,
+  "fixture": "real SDK/CLI + localhost HTTP; no external model",
+  "cases": [
+    {
+      "path": "/"
+    },
+    {
+      "model": "deepseek-flash",
+      "effort": "low",
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 1024
+      },
+      "path": "/v1/messages?beta=true"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "model": "deepseek-flash",
+      "effort": "high",
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 1024
+      },
+      "path": "/v1/messages?beta=true"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "model": "deepseek-flash",
+      "effort": "max",
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 1024
+      },
+      "path": "/v1/messages?beta=true"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "model": "deepseek-flash",
+      "thinking": {
+        "type": "disabled"
+      },
+      "path": "/v1/messages?beta=true"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "model": "deepseek-flash",
+      "thinking": {
+        "type": "adaptive"
+      },
+      "path": "/v1/messages?beta=true"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "model": "deepseek-v4-pro",
+      "effort": "max",
+      "thinking": {
+        "type": "enabled",
+        "budget_tokens": 1024
+      },
+      "path": "/v1/messages?beta=true"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "effort": "low",
+      "thinking": {
+        "type": "adaptive"
+      },
+      "path": "/v1/messages?beta=true"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "effort": "medium",
+      "thinking": {
+        "type": "adaptive"
+      },
+      "path": "/v1/messages?beta=true"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "effort": "high",
+      "thinking": {
+        "type": "adaptive"
+      },
+      "path": "/v1/messages?beta=true"
+    },
+    {
+      "path": "/"
+    },
+    {
+      "model": "claude-opus-4-6",
+      "effort": "max",
+      "thinking": {
+        "type": "adaptive"
+      },
+      "path": "/v1/messages?beta=true"
+    }
+  ]
+}

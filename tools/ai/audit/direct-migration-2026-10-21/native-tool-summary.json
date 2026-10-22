@@ -1,0 +1,23 @@
+{
+  "literalNamedNativeActions": 971,
+  "nativeActionsBySource": {
+    "common/tool/actions.cpp": 191,
+    "pcbnew/tools/pcb_actions.cpp": 405,
+    "eeschema/tools/sch_actions.cpp": 249,
+    "gerbview/tools/gerbview_actions.cpp": 32,
+    "pagelayout_editor/tools/pl_actions.cpp": 10,
+    "3d-viewer/3d_viewer/tools/eda_3d_actions.cpp": 41,
+    "cvpcb/tools/cvpcb_actions.cpp": 16,
+    "kicad/tools/kicad_manager_actions.cpp": 27
+  },
+  "unparsedNativeDefinitions": 0,
+  "typedAutomationActions": 254,
+  "automationByBackend": {
+    "composite": 36,
+    "cli": 57,
+    "ipc": 128,
+    "offline": 26,
+    "external": 7
+  },
+  "apiRegistrationSites": 164
+}

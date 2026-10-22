@@ -1,0 +1,156 @@
+{
+  "ok": true,
+  "version": "0.4.14",
+  "installed": {
+    "ok": true,
+    "agent": {
+      "actionCount": 125,
+      "agentVersion": "0.2.0",
+      "arch": "arm64",
+      "catalogSha256": "5eadc691168c3ecd13ccec27df552eb46236d3c47d1547fb83540471234fd041",
+      "goVersion": "go1.27.2",
+      "mcpToolCount": 18,
+      "mcpTools": [
+        "kicad_health",
+        "kicad_actions",
+        "kicad_call",
+        "kicad_spec_validate",
+        "kicad_blocks",
+        "kicad_workflow",
+        "kicad_pipeline",
+        "kicad_native_tools",
+        "kicad_system",
+        "kicad_project",
+        "kicad_document",
+        "kicad_schematic",
+        "kicad_board",
+        "kicad_library",
+        "kicad_external",
+        "kicad_editor",
+        "kicad_audit",
+        "kicad_web"
+      ],
+      "nativeToolCount": 970,
+      "os": "darwin",
+      "schemaVersion": 1
+    },
+    "mcpToolCount": 18,
+    "terminalVersion": "1.19.3",
+    "terminalSha256": "a03306dd5b193e6561803e3b13ab83eb8152fc7c7ddbc5a058230d7ff977bc81",
+    "extensionVersion": "0.4.14",
+    "extensionPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.14",
+    "checkedFiles": [
+      "extension.cjs",
+      "main.js",
+      "bundled CLI"
+    ],
+    "note": "Installation and capability verification; this does not assert a connected KiCad document or fabricate engineering validation."
+  },
+  "extensionHost": {
+    "ok": true,
+    "version": "0.4.14",
+    "completedTurns": 4,
+    "sessionId": "621a231a-ec02-4956-a102-a79dab30376e",
+    "checks": [
+      "low/max/off/high reach HTTP",
+      "same conversation resumed",
+      "permission mode retained",
+      "invalid effort rejected",
+      "switching does not send"
+    ],
+    "fixture": "production VS Code services + bundled SDK/CLI + localhost model; no external model"
+  },
+  "terminal": {
+    "fixture": "Packaged native binary; real PTY; local HTTP model fixture; isolated configuration and sessions",
+    "externalModelCalls": 0,
+    "toolsCalled": 0,
+    "ok": true,
+    "requests": [
+      {
+        "title": true,
+        "model": "deepseek-flash",
+        "effort": "high",
+        "thinking": {
+          "type": "enabled",
+          "budget_tokens": 1024
+        },
+        "path": "/v1/messages"
+      },
+      {
+        "title": false,
+        "model": "deepseek-flash",
+        "effort": "max",
+        "thinking": {
+          "type": "enabled",
+          "budget_tokens": 1024
+        },
+        "path": "/v1/messages"
+      },
+      {
+        "title": false,
+        "model": "deepseek-flash",
+        "effort": "low",
+        "thinking": {
+          "type": "enabled",
+          "budget_tokens": 1024
+        },
+        "path": "/v1/messages"
+      },
+      {
+        "title": false,
+        "model": "deepseek-flash",
+        "effort": null,
+        "thinking": {
+          "type": "disabled"
+        },
+        "path": "/v1/messages"
+      }
+    ],
+    "chatRequests": [
+      {
+        "title": false,
+        "model": "deepseek-flash",
+        "effort": "max",
+        "thinking": {
+          "type": "enabled",
+          "budget_tokens": 1024
+        },
+        "path": "/v1/messages"
+      },
+      {
+        "title": false,
+        "model": "deepseek-flash",
+        "effort": "low",
+        "thinking": {
+          "type": "enabled",
+          "budget_tokens": 1024
+        },
+        "path": "/v1/messages"
+      },
+      {
+        "title": false,
+        "model": "deepseek-flash",
+        "effort": null,
+        "thinking": {
+          "type": "disabled"
+        },
+        "path": "/v1/messages"
+      }
+    ],
+    "checks": [
+      "real PTY /effort menu",
+      "selection never sends",
+      "max and low reach actual Anthropic HTTP",
+      "off disables thinking",
+      "native /variants retained"
+    ]
+  },
+  "terminalTests": {
+    "passed": 206,
+    "skipped": 1,
+    "failed": 0
+  },
+  "terminalTestedSha256": "a03306dd5b193e6561803e3b13ab83eb8152fc7c7ddbc5a058230d7ff977bc81",
+  "scope": "Reasoning effort controls and provider transport; local HTTP model fixtures, no external-model quality claim",
+  "parallelWorkspaceChanges": "Another task added tools/ai/composer EDA integration sources after this build. Those changes are preserved and are outside this tested 0.4.14 artifact."
+}

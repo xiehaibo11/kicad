@@ -1,0 +1,9 @@
+{
+  "externalArchiveImportAndCall": true,
+  "actionCount": 254,
+  "toolCount": 20,
+  "nativeTools": 971,
+  "archiveSha256": "73c4482e21ae8ee81bc76f290765da590c7d09301f8dad054ea932857e09c8e4",
+  "bundleSha256": "8c77c360186e943761633ce78a2d12aa31116220ba3bc4bbb918842dfc4bce8b",
+  "replaced": "/Users/mosc/Downloads/hardware/tools/easyeda-agent-release/easyeda-agent-connector.eext"
+}

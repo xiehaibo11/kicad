@@ -1,0 +1,85 @@
+[90m[main 2026-10-22T20:13:33.284Z][0m StorageMainService: creating application shared storage
+[90m[main 2026-10-22T20:13:33.413Z][0m [shared storage] Creating shared storage database at ':memory:' (wasCreated: true)
+[90m[main 2026-10-22T20:13:33.413Z][0m [shared storage] Initializing fallback application storage (path: in-memory)
+[90m[main 2026-10-22T20:13:33.517Z][0m [shared storage] Fallback application storage initialized with 3 items
+[90m[main 2026-10-22T20:13:34.180Z][0m update#setState idle
+[AgentHost:renderer] Acquiring MessagePort to agent host...
+[90m[main 2026-10-22T20:13:34.192Z][0m AgentHostProcessManager: agent host started
+[ChatModelSelection] event=no-model-at-toolbar-build surface="workbench" sessionKey=undefined conversationKey=undefined modelTarget=undefined storageKey="chat.currentLanguageModel.panel" widgetViewKind="view"
+[AgentHost:renderer] MessagePort acquired, creating client...
+[91m[main 2026-10-22T20:13:34.504Z][0m [AgentHost:stderr] (node:50889) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code Helper --trace-deprecation ...` to show where the warning was created)
+
+[ChatModelSelection] event=no-model-at-toolbar-build surface="workbench" sessionKey="local" conversationKey="vscode-chat-session://local/ZmQ0YTQzMjItNDg4MS00OGM5LTkwZTQtYzAwZmM0YWQ3OWE0" modelTarget=undefined storageKey="chat.currentLanguageModel.panel" widgetViewKind="view"
+Started local extension host with pid 50896.
+[AgentHost:renderer] Protocol connection established; clientId=1b20d632-c1e4-4d38-8391-aba46b10dc72
+[AccountPolicyGate] apply: state=inactive, reason=undefined, isRestricted=false
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] Clearing authentication for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] Clearing authentication for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+Started initializing default profile extensions in extensions installation folder. file:///tmp/kicad-exit50-host-BogYmO/extensions
+[ChatModelSelection] event=no-model-at-toolbar-build surface="workbench" sessionKey="local" conversationKey="vscode-chat-session://local/ZmQ0YTQzMjItNDg4MS00OGM5LTkwZTQtYzAwZmM0YWQ3OWE0" modelTarget=undefined storageKey="chat.currentLanguageModel.panel" widgetViewKind="view"
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+[AgentHost] No token resolved for resource: https://api.github.com
+[AgentHost] No token resolved for resource: https://api.github.com/repos
+Completed initializing default profile extensions in extensions installation folder. file:///tmp/kicad-exit50-host-BogYmO/extensions
+Loading development extension at /Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.40
+(node:50867) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+Settings Sync: Account status changed from uninitialized to unavailable
+Unknown channel: agentHostClientByokLm
+Unknown channel: agentHostClientProxy
+Unknown channel: agentHostClientProxy
+[ChatModelSelection] event=no-model-at-toolbar-build surface="workbench" sessionKey="local" conversationKey="vscode-chat-session://local/ZmQ0YTQzMjItNDg4MS00OGM5LTkwZTQtYzAwZmM0YWQ3OWE0" modelTarget=undefined storageKey="chat.currentLanguageModel.panel" widgetViewKind="view"
+Unknown channel: agentHostClientProxy
+[AccountPolicyGate] apply: state=inactive, reason=undefined, isRestricted=false
+KiCad real VS Code host checks passed: {"ok":true,"version":"0.4.40","displayName":"Kicad","active":true,"webviews":{"resolved":2,"mounted":2},"nativeTerminal":{"name":"Kicad 终端","pid":50951,"binary":"/Users/mosc/.local/bin/kicad-terminal"},"nativeToolPluginEnabled":true,"inProcessHealth":{"ok":true,"action":"system.health","cliAvailable":true},"availableTerminalProviders":[]}
+[90m[main 2026-10-22T20:13:40.687Z][0m Extension host with pid 50896 exited with code: 0, signal: unknown.

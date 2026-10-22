@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "version": "0.4.16",
+  "requests": 3,
+  "tasks": [
+    {
+      "id": "tool_dashboard_task",
+      "kind": "agent",
+      "title": "验证真实子代理事件",
+      "status": "completed",
+      "startedAt": 1792544452578,
+      "toolId": "tool_dashboard_task",
+      "prompt": "KICAD_DASHBOARD_CHILD: Reply CHILD_OK without tools.",
+      "agentType": "general-purpose",
+      "taskId": "a0c84bf850d17a41d",
+      "tokens": 22,
+      "toolUses": 0,
+      "durationMs": 11,
+      "latest": "CHILD_OK\nagentId: a0c84bf850d17a41d (use SendMessage with to: 'a0c84bf850d17a41d' to continue this agent)\n<usage>total_tokens: 22\ntool_uses: 0\nduration_ms: 11</usage>",
+      "endedAt": 1792544452578
+    }
+  ],
+  "fixture": "real VS Code extension services and pinned SDK/CLI with localhost Messages API; no external model"
+}

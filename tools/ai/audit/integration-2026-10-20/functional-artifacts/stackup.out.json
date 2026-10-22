@@ -1,0 +1,163 @@
+{
+  "ok": true,
+  "action": "board.stackup.read",
+  "data": {
+    "stackup": {
+      "edge": {
+        "castellation": null,
+        "connector": {
+          "type": "BECT_NONE"
+        },
+        "plating": {
+          "hasEdgePlating": false
+        }
+      },
+      "finish": {
+        "typeName": "None"
+      },
+      "impedance": {
+        "isControlled": false
+      },
+      "layers": [
+        {
+          "color": null,
+          "enabled": true,
+          "layer": "BL_F_SilkS",
+          "materialName": "",
+          "silkscreen": {
+            "materialName": "Not specified"
+          },
+          "thickness": {
+            "valueNm": "0"
+          },
+          "type": "BSLT_SILKSCREEN",
+          "userName": "F.Silkscreen"
+        },
+        {
+          "color": null,
+          "enabled": true,
+          "layer": "BL_F_Paste",
+          "materialName": "",
+          "thickness": {
+            "valueNm": "0"
+          },
+          "type": "BSLT_SOLDERPASTE",
+          "userName": "F.Paste"
+        },
+        {
+          "color": null,
+          "enabled": true,
+          "layer": "BL_F_Mask",
+          "materialName": "",
+          "soldermask": {
+            "epsilonR": 3.3,
+            "lossTangent": 0,
+            "materialName": "Not specified",
+            "thickness": {
+              "valueNm": "10000"
+            }
+          },
+          "thickness": {
+            "valueNm": "10000"
+          },
+          "type": "BSLT_SOLDERMASK",
+          "userName": "F.Mask"
+        },
+        {
+          "color": null,
+          "enabled": true,
+          "layer": "BL_F_Cu",
+          "materialName": "copper",
+          "thickness": {
+            "valueNm": "35000"
+          },
+          "type": "BSLT_COPPER",
+          "userName": "F.Cu"
+        },
+        {
+          "color": null,
+          "dielectric": {
+            "layer": [
+              {
+                "dielectricModel": "DM_CONSTANT",
+                "epsilonR": 4.5,
+                "lossTangent": 0.02,
+                "materialName": "FR4",
+                "specFrequency": 1000000000,
+                "thickness": {
+                  "valueNm": "1510000"
+                },
+                "thicknessLocked": false
+              }
+            ],
+            "type": "BSDT_CORE"
+          },
+          "enabled": true,
+          "layer": "BL_UNDEFINED",
+          "materialName": "",
+          "thickness": {
+            "valueNm": "1510000"
+          },
+          "type": "BSLT_DIELECTRIC",
+          "userName": ""
+        },
+        {
+          "color": null,
+          "enabled": true,
+          "layer": "BL_B_Cu",
+          "materialName": "copper",
+          "thickness": {
+            "valueNm": "35000"
+          },
+          "type": "BSLT_COPPER",
+          "userName": "B.Cu"
+        },
+        {
+          "color": null,
+          "enabled": true,
+          "layer": "BL_B_Mask",
+          "materialName": "",
+          "soldermask": {
+            "epsilonR": 3.3,
+            "lossTangent": 0,
+            "materialName": "Not specified",
+            "thickness": {
+              "valueNm": "10000"
+            }
+          },
+          "thickness": {
+            "valueNm": "10000"
+          },
+          "type": "BSLT_SOLDERMASK",
+          "userName": "B.Mask"
+        },
+        {
+          "color": null,
+          "enabled": true,
+          "layer": "BL_B_Paste",
+          "materialName": "",
+          "thickness": {
+            "valueNm": "0"
+          },
+          "type": "BSLT_SOLDERPASTE",
+          "userName": "B.Paste"
+        },
+        {
+          "color": null,
+          "enabled": true,
+          "layer": "BL_B_SilkS",
+          "materialName": "",
+          "silkscreen": {
+            "materialName": "Not specified"
+          },
+          "thickness": {
+            "valueNm": "0"
+          },
+          "type": "BSLT_SILKSCREEN",
+          "userName": "B.Silkscreen"
+        }
+      ]
+    }
+  },
+  "elapsedMs": 10
+}

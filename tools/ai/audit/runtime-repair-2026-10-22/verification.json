@@ -1,0 +1,45 @@
+{
+  "version": "0.4.35",
+  "initialJournalEvents": 1290,
+  "initialDistinctErrorGroups": 99,
+  "fixes": [
+    "SDK stderr severity and partial-line buffering",
+    "configuration discovery uses lightweight probes instead of full chat/MCP startup",
+    "reference.plan fallback uses real spec/verified stages; review alias accepted and invalid stages explained",
+    "ripgrep JSON record bound increased from 64 KiB to 8 MiB; output preview remains bounded",
+    "binary-read and search-limit errors classified separately; shell Exit code recognized"
+  ],
+  "triagedNotProductCrashes": [
+    "binary .epro2 read as text",
+    "glob path contains wildcard instead of concrete directory",
+    "ad-hoc shell/Python parse failures",
+    "user cancellation"
+  ],
+  "tests": {
+    "sharedPassed": 14,
+    "directPassed": 55,
+    "directSkipped": 6,
+    "ripgrepPassed": 4,
+    "extensionBuildAndRegressions": true,
+    "nativeTerminalLargeJSONAndErrorJournal": true
+  },
+  "extensionStartup": {
+    "log": "/Users/mosc/Library/Application Support/Code/logs/20261020T154541/window26/exthost/kicad-agent.kicad/Kicad.log",
+    "fullChatStarted": false,
+    "mcpStartupClosed": false,
+    "sdkErrorLines": 0,
+    "panelOpened": true,
+    "probeRequests": 2
+  },
+  "installed": [
+    "VS Code 0.4.35",
+    "Cursor 0.4.35",
+    "local terminal binary/runtime",
+    "npm terminal binary/runtime"
+  ],
+  "limits": [
+    "No board mutation or fabrication verification",
+    "Existing running sessions keep old code until restarted",
+    "Local model fixture verifies transport and tools; not a fresh Claude/Codex cloud entitlement test"
+  ]
+}

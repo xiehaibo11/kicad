@@ -1,0 +1,54 @@
+Codex 输入框建议与工具引用调查
+核对日期：2026-10-20
+
+截图判读
+灰色整句与本机“下一条用户消息预测”功能相符。单凭截图无法证明那一次请求的具体模型或原始系统提示词；模型下拉框显示的是主会话选择。
+该功能与 KiCad 0.4.8 的主动优化草稿功能不同。
+
+本机安装包的直接证据（仅静态读取，未更改应用）
+/Volumes/Macintosh HD/Applications/ChatGPT.app/Contents/Resources/app.asar
+- webview/assets/app-primary-b4ce9e46e8cf.js: JZe / YZe; requestUserMessagePrediction; generationTrigger=catch_up; canShowPrediction.
+- webview/assets/app-initial-90eb42395b7d.js: requestUserMessagePrediction with generationTrigger=live after the latest turn; prediction UI plugin key cumberbatch.
+- Yqu: editor decoration rather than real draft text; cumberbatch-content; aria-hidden.
+- $qu: requires empty paragraph, not composing, completion menu inactive.
+- handleKeyDown: plain Tab/ArrowRight/Enter accepts the suggestion into editable document and consumes the event. It does not invoke the send function.
+- composer.prediction.pressTabToAccept localization describes editable draft acceptance, not sending.
+完整预测服务的系统提示词和截图这一次的调用记录未在本次调查中确定。
+内部模块名不是公开插件安装接口，也不是本会话可直接调用的 MCP 工具。
+
+官方开源证据
+Repository: https://github.com/openai/codex
+Inspected tree SHA: 36512a34ffe71a48bd9aab66fc81c3b909ef2dfc
+License: Apache-2.0
+- codex-rs/app-server-protocol/src/protocol/common.rs line 622: experimental thread/prediction/request.
+- common.rs line 1977: experimental thread/prediction/updated.
+- codex-rs/app-server-protocol/src/protocol/v2/thread_prediction.rs: threadId + sourceTurnId request; completed text or failed result.
+These public protocol types do not establish that the entire desktop renderer or exact generation prompt is open source.
+
+工具发现与引用参考
+https://learn.chatgpt.com/docs/app-server
+- mcpServerStatus/list: server tools, resources, auth status.
+- skills/list: workspace-scoped skill discovery.
+- app/list and app/read: connector discovery and tool summaries.
+- model/list: model capabilities and reasoning options.
+- dynamicTools + item/tool/call: experimental custom client tool execution flow.
+Tool declarations and argument schemas enable model tool calls. Prompt suggestion text itself does not authorize or execute those calls.
+
+开源参考
+1. https://github.com/SteelDynamite/pi-prompt-suggestions (MIT)
+   Tree SHA: 6284dea31b499ec402d8df7cb31cb78974af711b
+   src/index.ts: agent_end event, recent conversation context, generationId stale-response guard, ghost text, keyboard acceptance.
+   prompts/suggestion-system-prompt.md: predict what user would naturally type next; no output when uncertain.
+   Adaptation needed: its Enter behavior submits immediately and its default model/length limits differ from our requirements.
+2. https://github.com/linshenkx/prompt-optimizer
+   Optimize-user-prompt / optimize-system-prompt / iterate-prompt MCP tools; relevant to rewriting an existing draft, rather than predicting the next user message.
+3. https://github.com/continuedev/continue/blob/main/docs/customize/deep-dives/custom-providers.mdx
+   @File / @Terminal / MCP context providers; useful for tool/context reference menus.
+4. https://github.com/Haleclipse/Claudix (AGPL-3.0)
+   Existing local source: src/webview/src/components/ChatInputBox.vue and composables/useCompletionDropdown.ts.
+   Existing /command and @file completion provides a suitable foundation for KiCad references.
+
+KiCad adaptation direction (proposal, not implemented here)
+Keep current-model prompt optimization separate from next-message suggestions.
+If next-message suggestions are added: generate after completed turn; show only in empty editor; accept into draft with Tab; preserve explicit manual send; hide on typing/session changes; ignore stale output.
+Build KiCad tool/reference entries from the real MCP catalog, including read/write distinction and prerequisites, rather than hardcoding nonexistent capabilities.

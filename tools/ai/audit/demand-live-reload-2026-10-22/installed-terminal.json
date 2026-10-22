@@ -1,0 +1,8 @@
+{
+  "sha256": "8b1ff42f32732e24e5d278acd796832fcda25b52d2e8574fd7a3356195b9578d",
+  "targets": {
+    "tools/ai/Kicad-terminal/dist/kicad-terminal": "8b1ff42f32732e24e5d278acd796832fcda25b52d2e8574fd7a3356195b9578d",
+    "/Users/mosc/.local/bin/kicad-terminal": "8b1ff42f32732e24e5d278acd796832fcda25b52d2e8574fd7a3356195b9578d",
+    "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/vendor/darwin-arm64/kicad-terminal": "8b1ff42f32732e24e5d278acd796832fcda25b52d2e8574fd7a3356195b9578d"
+  }
+}

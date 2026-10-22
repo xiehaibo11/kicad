@@ -1,0 +1,571 @@
+Window: "Kicad · 原生工具", App: Code.
+0 标准窗口 Kicad · 原生工具, URL: file:///Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.11.code-workspace, Secondary Actions: Raise
+	1 container Kicad · 原生工具
+		2 container
+			3 HTML 内容 Kicad · 原生工具, URL: vscode-file://vscode-app/Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html
+				4 container
+					5 container
+						6 container
+							7 工具栏
+								8 按钮 (disabled) 返回 (⌃-)
+									9 文本 
+								10 按钮 (disabled) 前进 (⌃⇧-)
+									11 文本 
+								12 工具栏 智能体状态
+									13 按钮 打开快速访问
+									14 container
+										15 按钮 切换聊天
+											16 按钮 切换聊天
+												17 文本 
+										18 弹出式按钮 更多操作
+							19 工具栏
+								20 按钮 在智能体窗口中打开 (⇧⌥⌘A)
+							21 工具栏 标题操作
+								22 切换按钮 Description: 切换主侧栏 (⌘B), Value: 1
+									23 文本 
+								24 按钮 自定义布局...
+									25 文本 
+								26 切换按钮 Description: 切换面板 (⌘J), Value: 1
+									27 文本 
+								28 切换按钮 Description: 切换辅助侧栏 (⌥⌘B), Value: 1
+									29 文本 
+						30 container
+							31 container
+								32 标签组 活动视图切换器
+									33 标签 (selected) 资源管理器 (⇧⌘E), Value: 1
+										34 container 资源管理器 (⇧⌘E)
+											35 文本 
+									36 标签 (settable, integer) 搜索 (⇧⌘F), Value: 0
+										37 container 搜索 (⇧⌘F)
+											38 文本 
+									39 标签 (settable, integer) Description: 源代码管理 (⌃⇧G) - 850 个挂起的更改, Value: 0
+										40 container 源代码管理 (⌃⇧G) - 850 个挂起的更改
+											41 文本 
+										42 container 源代码管理 (⌃⇧G) - 850 个挂起的更改
+											43 文本 850
+									44 标签 (settable, integer) 运行和调试 (⇧⌘D), Value: 0
+										45 container 运行和调试 (⇧⌘D)
+											46 文本 
+									47 标签 (settable, integer) 远程资源管理器, Value: 0
+										48 container 远程资源管理器
+											49 文本 
+									50 标签 (settable, integer) 扩展 (⇧⌘X), Value: 0
+										51 container 扩展 (⇧⌘X)
+											52 文本 
+									53 标签 (settable, integer) Claude Code, Value: 0
+										54 container Claude Code
+								55 工具栏 管理
+									56 弹出式按钮 帐户
+										57 container 帐户
+									58 弹出式按钮 管理
+										59 container 管理
+											60 文本 
+							61 container
+								62 标题 资源管理器, Value: 2
+									63 文本 资源管理器
+								64 工具栏 资源管理器操作
+									65 弹出式按钮 视图和更多操作…
+								66 container
+									67 container
+										68 按钮 资源管理器部分: Kicad-0.4.11 (工作区)
+											69 文本 
+											70 标题 Description: 资源管理器部分: Kicad-0.4.11 (工作区), Value: 3
+												71 文本 Kicad-0.4.11 (工作区)
+										72 外框 文件资源管理器
+											73 container
+												74 row composer-suggestion-0.4.10.png
+													75 container
+														76 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-suggestion-0.4.10.png
+															77 文本 
+															78 文本 composer-suggestion-0.4.10.png
+												79 row composer-suggestion-0.4.11.png
+													80 container
+														81 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-suggestion-0.4.11.png
+															82 文本 
+															83 文本 composer-suggestion-0.4.11.png
+												84 row composer-suggestion-0.4.12.png
+													85 container
+														86 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-suggestion-0.4.12.png
+															87 文本 
+															88 文本 composer-suggestion-0.4.12.png
+												89 row composer-suggestion-0.4.13.png
+													90 container
+														91 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-suggestion-0.4.13.png
+															92 文本 
+															93 文本 composer-suggestion-0.4.13.png
+												94 row composer-suggestion-0.4.14.png
+													95 container
+														96 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-suggestion-0.4.14.png
+															97 文本 
+															98 文本 composer-suggestion-0.4.14.png
+												99 row composer-suggestion-0.4.16.png
+													100 container
+														101 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-suggestion-0.4.16.png
+															102 文本 
+															103 文本 composer-suggestion-0.4.16.png
+												104 row composer-suggestion-0.4.17.png
+													105 container
+														106 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-suggestion-0.4.17.png
+															107 文本 
+															108 文本 composer-suggestion-0.4.17.png
+												109 row composer-suggestion-0.4.18.png
+													110 container
+														111 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-suggestion-0.4.18.png
+															112 文本 
+															113 文本 composer-suggestion-0.4.18.png
+												114 row composer-suggestion-0.4.19.png
+													115 container
+														116 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-suggestion-0.4.19.png
+															117 文本 
+															118 文本 composer-suggestion-0.4.19.png
+												119 row composer-tools.json
+													120 container
+														121 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-tools.json
+															122 文本 
+															123 文本 composer-tools.json
+												124 row composer-ui.json
+													125 container
+														126 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/composer-ui.json
+															127 文本 
+															128 文本 composer-ui.json
+												129 row Kicad-0.4.10-artifacts.json
+													130 container
+														131 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.10-artifacts.json
+															132 文本 
+															133 文本 Kicad-0.4.10-artifacts.json
+												134 row Kicad-0.4.10-check.txt
+													135 container
+														136 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.10-check.txt
+															137 文本 
+															138 文本 Kicad-0.4.10-check.txt
+												139 row Kicad-0.4.10-installed-host.json
+													140 container
+														141 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.10-installed-host.json
+															142 文本 
+															143 文本 Kicad-0.4.10-installed-host.json
+												144 row Kicad-0.4.10-verification.json
+													145 container
+														146 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.10-verification.json
+															147 文本 
+															148 文本 Kicad-0.4.10-verification.json
+												149 row Kicad-0.4.10.code-workspace
+													150 container
+														151 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.10.code-workspace
+															152 文本 
+															153 文本 Kicad-0.4.10.code-workspace
+												154 row Kicad-0.4.11-installed-host.json
+													155 container
+														156 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.11-installed-host.json
+															157 文本 
+															158 文本 Kicad-0.4.11-installed-host.json
+												159 row Kicad-0.4.11-package.json
+													160 container
+														161 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.11-package.json
+															162 文本 
+															163 文本 Kicad-0.4.11-package.json
+												164 row Kicad-0.4.11-verification.json
+													165 container
+														166 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.11-verification.json
+															167 文本 
+															168 文本 Kicad-0.4.11-verification.json
+												169 row (selected) Kicad-0.4.11.code-workspace
+													170 container
+														171 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.11.code-workspace
+															172 文本 
+															173 文本 Kicad-0.4.11.code-workspace
+												174 row kicad-composer-review.code-workspace
+													175 container
+														176 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/kicad-composer-review.code-workspace
+															177 文本 
+															178 文本 kicad-composer-review.code-workspace
+												179 row Kicad-review.code-workspace
+													180 container
+														181 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-review.code-workspace
+															182 文本 
+															183 文本 Kicad-review.code-workspace
+												184 row launch-verification.json
+													185 container
+														186 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/launch-verification.json
+															187 文本 
+															188 文本 launch-verification.json
+												189 row native-tools.json
+													190 container
+														191 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/native-tools.json
+															192 文本 
+															193 文本 native-tools.json
+												194 row prediction-error-visible.json
+													195 container
+														196 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prediction-error-visible.json
+															197 文本 
+															198 文本 prediction-error-visible.json
+												199 row prompt-optimizer-inline-0.4.8.png
+													200 container
+														201 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prompt-optimizer-inline-0.4.8.png
+															202 文本 
+															203 文本 prompt-optimizer-inline-0.4.8.png
+												204 row prompt-optimizer-inline-0.4.10.png
+													205 container
+														206 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prompt-optimizer-inline-0.4.10.png
+															207 文本 
+															208 文本 prompt-optimizer-inline-0.4.10.png
+												209 row prompt-optimizer-inline-0.4.11.png
+													210 container
+														211 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prompt-optimizer-inline-0.4.11.png
+															212 文本 
+															213 文本 prompt-optimizer-inline-0.4.11.png
+												214 row prompt-optimizer-inline-0.4.12.png
+													215 container
+														216 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prompt-optimizer-inline-0.4.12.png
+															217 文本 
+															218 文本 prompt-optimizer-inline-0.4.12.png
+												219 row prompt-optimizer-inline-0.4.13.png
+													220 container
+														221 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prompt-optimizer-inline-0.4.13.png
+															222 文本 
+															223 文本 prompt-optimizer-inline-0.4.13.png
+												224 row prompt-optimizer-inline-0.4.14.png
+													225 container
+														226 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prompt-optimizer-inline-0.4.14.png
+															227 文本 
+															228 文本 prompt-optimizer-inline-0.4.14.png
+												229 row prompt-optimizer-inline-0.4.16.png
+													230 container
+														231 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prompt-optimizer-inline-0.4.16.png
+															232 文本 
+															233 文本 prompt-optimizer-inline-0.4.16.png
+												234 row prompt-optimizer-inline-live.json
+													235 container
+														236 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prompt-optimizer-inline-live.json
+															237 文本 
+															238 文本 prompt-optimizer-inline-live.json
+												239 row prompt-optimizer-inline-ui.json
+													240 container
+														241 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/prompt-optimizer-inline-ui.json
+															242 文本 
+															243 文本 prompt-optimizer-inline-ui.json
+											244 container
+												245 row audit
+													246 container
+														247 文本 
+														248 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit
+															249 文本 audit
+												250 row Kicad-extension
+													251 container
+														252 文本 
+														253 container ~/Downloads/Kicad/tools/ai/Kicad-extension • 包含强调项
+															254 文本 Kicad-extension
+															255 文本 
+												256 row ai
+													257 container
+														258 文本 
+														259 container ~/Downloads/Kicad/tools/ai • 包含强调项
+															260 文本 ai
+															261 文本 
+												262 row tools
+													263 container
+														264 文本 
+														265 container ~/Downloads/Kicad/tools • 包含强调项
+															266 文本 tools
+															267 文本 
+												268 row Kicad
+													269 container
+														270 文本 
+														271 container ~/Downloads/Kicad • 包含强调项
+															272 文本 Kicad
+															273 文本 
+									274 按钮 大纲部分
+										275 文本 
+										276 标题 大纲, Value: 3
+											277 文本 大纲
+									278 按钮 时间线部分
+										279 文本 
+										280 标题 时间线, Value: 3
+											281 文本 时间线
+							282 container
+								283 container
+								284 container
+									285 container
+										286 container
+											287 标签组
+												288 标签 (settable, integer) Description: project_integrations.md, Value: 0
+													289 container ~/.claude/projects/-Users-mosc-Downloads-Kicad/memory/project_integrations.md
+														290 文本 
+														291 文本 project_integrations.md
+													292 工具栏 选项卡操作
+														293 按钮 关闭 (⌘W)
+															294 文本 
+												295 标签 (settable, integer) Description: project_architecture.md, Value: 0
+													296 container ~/.claude/projects/-Users-mosc-Downloads-Kicad/memory/project_architecture.md
+														297 文本 
+														298 文本 project_architecture.md
+													299 工具栏 选项卡操作
+														300 按钮 关闭 (⌘W)
+															301 文本 
+												302 标签 (settable, integer) Description: project_overview.md, Value: 0
+													303 container ~/.claude/projects/-Users-mosc-Downloads-Kicad/memory/project_overview.md
+														304 文本 
+														305 文本 project_overview.md
+													306 工具栏 选项卡操作
+														307 按钮 关闭 (⌘W)
+															308 文本 
+												309 标签 (settable, integer) Description: npx秘钥更新.md, Value: 0
+													310 container ~/Downloads/Kicad/npx秘钥更新.md • 未跟踪的
+														311 文本 
+														312 文本 npx秘钥更新.md
+														313 文本 U
+													314 工具栏 选项卡操作
+														315 按钮 关闭 (⌘W)
+															316 文本 
+												317 标签 (selected) Description: Kicad-0.4.11.code-workspace, Value: 1
+													318 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.11.code-workspace
+														319 文本 
+														320 文本 Kicad-0.4.11.code-workspace
+													321 工具栏 选项卡操作
+														322 按钮 关闭 (⌘W)
+															323 文本 
+											324 工具栏 编辑器操作
+												325 按钮 Claude Code: Open
+												326 按钮 Open Codex Sidebar
+												327 按钮 打开设置 (ui)
+													328 文本 
+												329 按钮 打开更改
+													330 文本 
+												331 按钮 向右拆分编辑器 (⌘\) [⌥] 向下拆分编辑器
+													332 文本 
+												333 弹出式按钮 更多操作...
+													334 文本 
+										335 内容列表
+											336 container
+												337 container ~/Downloads/Kicad/tools • 包含强调项
+													338 文本 tools
+												339 文本 
+											340 container
+												341 container ~/Downloads/Kicad/tools/ai • 包含强调项
+													342 文本 ai
+												343 文本 
+											344 container
+												345 container ~/Downloads/Kicad/tools/ai/Kicad-extension • 包含强调项
+													346 文本 Kicad-extension
+												347 文本 
+											348 container
+												349 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit
+													350 文本 audit
+												351 文本 
+											352 container
+												353 container ~/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.11.code-workspace
+													354 文本 
+													355 文本 Kicad-0.4.11.code-workspace
+												356 文本 
+											357 文本 …
+										358 container Kicad-0.4.11.code-workspace
+											359 container
+												360 编辑器 (settable) Description: Kicad-0.4.11.code-workspace, Value: {
+  "folders": [
+    {
+      "path": "/Users/mosc/Downloads/Kicad",
+      "name": "Kicad"
+    }
+  ],
+  "settings": {
+    "window.title": "Kicad · 原生工具",
+    "kicadAgent.openCode.args": [
+      "--model",
+      "kicad-deepseek/deepseek-flash"
+    ],
+    "kicadAgent.openCode.path": "/Users/mosc/.local/bin/kicad-terminal",
+    "kicadAgent.kicadCli": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli"
+  }
+}
+
+													361 文本 {
+  "folders": [
+    {
+      "path": "/Users/mosc/Downloads/Kicad",
+      "name": "Kicad"
+    }
+  ],
+  "settings": {
+    "window.title": "Kicad · 原生工具",
+    "kicadAgent.openCode.args": [
+      "--model",
+      "kicad-deepseek/deepseek-flash"
+    ],
+    "kicadAgent.openCode.path": "/Users/mosc/.local/bin/kicad-terminal",
+    "kicadAgent.kicadCli": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli"
+  }
+}
+
+												362 工具栏
+													363 按钮 打开工作区
+								364 container
+									365 标签组 活动视图切换器
+										366 标签 (settable, integer) 问题 (⇧⌘M), Value: 0
+											367 container 问题 (⇧⌘M)
+												368 文本 问题
+										369 标签 (settable, integer) 输出 (⇧⌘U), Value: 0
+											370 container 输出 (⇧⌘U)
+												371 文本 输出
+										372 标签 (settable, integer) Description: 调试控制台 (⇧⌘Y), Value: 0
+											373 container 调试控制台 (⇧⌘Y)
+												374 文本 调试控制台
+										375 标签 (selected) 终端 (⌃`), Value: 1
+											376 container 终端 (⌃`)
+												377 文本 终端
+										378 标签 (settable, integer) 端口, Value: 0
+											379 container 端口
+												380 文本 端口
+									381 工具栏 终端操作
+										382 按钮 新建终端 (⌃⇧`) [⌥] 拆分终端 (⌘\)
+											383 按钮 新建终端 (⌃⇧`) [⌥] 拆分终端 (⌘\)
+										384 弹出式按钮 启动配置文件...
+										385 弹出式按钮 视图和更多操作…
+									386 工具栏
+										387 切换按钮 Description: 最大化面板, Value: 0
+											388 文本 
+										389 按钮 隐藏面板 (⌘J)
+											390 文本 
+									391 container
+										392 container
+											393 container
+												394 container
+													395 内容列表
+														396 文本                   █  ▄▀ ▄               █                  
+														397 文本                   █▄▀   ▄  █▀▀▀ ▀▀▀█ █▀▀█                  
+														398 文本                   █▀▄   █  █    █▀▀█ █  █                  
+														399 文本                   █  ▀▄ █  ▀▀▀▀ ▀▀▀▀ ▀▀▀▀                  
+														400 文本                   /update to upgrade the                   
+														401 文本                   runtime to 2.0                           
+														402 文本   ┃                                                        
+														403 文本   ┃  Ask anything… "Fix broken tests"                      
+														404 文本   ┃                                                        
+														405 文本   ┃  Build · DeepSeek Flash DeepSeek                       
+														406 文本   ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  
+														407 文本                               tab agents  ctrl+p commands  
+														408 文本   ● Tip Use /timeline or ctrl+x g to jump to specific      
+														409 文本         messages                                           
+														410 文本   ~/Downloads/Kicad:feature/ai-automation    Kicad 1.19.3  
+													411 文本栏 (settable) 终端 2，Kicad 终端 使用 ⌥F1 获取终端辅助功能帮助
+											412 内容列表 终端选项卡
+												413 container
+													414 container 终端1 zsh
+														415 container $(terminal) zsh
+															416 container
+																417 text   zsh
+															418 文本 
+													419 container 终端2 Kicad 终端
+														420 container $(terminal) Kicad 终端
+															421 container
+																422 text   Kicad 终端
+							423 container
+								424 标签组 活动视图切换器
+									425 标签 (settable, integer) 聊天 (⌃⌘I), Value: 0
+										426 container 聊天 (⌃⌘I)
+											427 文本 聊天
+									428 标签 (settable, integer) Description: Codex, Value: 0
+										429 container Codex
+											430 文本 Codex
+									431 标签 (settable, integer) Description: Claude Code, Value: 0
+										432 container Claude Code
+											433 文本 Claude Code
+									434 标签 (selected) Description: Kicad, Value: 1
+										435 container Kicad
+											436 文本 Kicad
+								437 工具栏 Kicad操作
+									438 按钮 Kicad: 打开终端
+									439 按钮 Kicad: Settings
+								440 工具栏
+									441 切换按钮 Description: 最大化辅助侧栏, Value: 0
+										442 文本 
+									443 按钮 隐藏辅助侧栏 (⌥⌘B)
+										444 文本 
+								445 container
+						446 container
+							447 container remote
+								448 按钮 remote
+							449 container Kicad (Git) - feature/ai-automation*+, 签出分支/标记...
+								450 按钮 Kicad (Git) - feature/ai-automation*+, 签出分支/标记...
+									451 文本 
+									452 文本  feature/ai-automation*+
+							453 container Kicad (Git) - 发布分支
+								454 按钮 Kicad (Git) - 发布分支
+							455 container comment-discussion Kimi, Open Kimi
+								456 按钮 comment-discussion Kimi, Open Kimi
+									457 文本 
+									458 文本  Kimi
+							459 container 没有问题
+								460 按钮 没有问题
+									461 文本 
+									462 文本  0 
+									463 文本 
+									464 文本  0
+							465 container circuit-board Kicad · IPC 未连接, 点击刷新。内部工具可用与 KiCad 文档可操作是独立状态。
+								466 按钮 circuit-board Kicad · IPC 未连接, 点击刷新。内部工具可用与 KiCad 文档可操作是独立状态。
+									467 文本 
+									468 文本  Kicad · IPC 未连接
+							469 container 通知
+								470 按钮 通知
+							471 container ✻ Claude Code, Open Claude Code
+								472 按钮 ✻ Claude Code, Open Claude Code
+							473 container Copilot 状态
+								474 按钮 Copilot 状态
+							475 container JSON with Comments
+								476 按钮 JSON with Comments
+							477 container 编辑器语言状态: 已验证架构，已配置 JSON 架构, next: $(copilot) 无内联建议可用，内联建议
+								478 按钮 编辑器语言状态: 已验证架构，已配置 JSON 架构, next: $(copilot) 无内联建议可用，内联建议
+							479 container LF
+								480 按钮 LF
+							481 container UTF-8
+								482 按钮 UTF-8
+							483 container 空格: 2
+								484 按钮 空格: 2
+							485 container 行 1，列 1
+								486 按钮 行 1，列 1
+							487 container 已为屏幕阅读器优化
+								488 按钮 已为屏幕阅读器优化
+					489 文本 命令成功
+					490 HTML 内容 vscode-webview://0e886b3ctmj5ummktr0u5udl35ko0vlqk2b8nqu474gf6bhp09ck/index.html?id=39c8f8f5-78df-4d97-b39b-e690a64e7a0f&parentId=4&origin=62396229-11c8-47a0-93a7-d091149b7f0e&swVersion=6&extensionId=kicad-agent.kicad&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app&purpose=webviewView
+						491 container Kicad
+							492 HTML 内容 Claudex Chat, URL: vscode-webview://0e886b3ctmj5ummktr0u5udl35ko0vlqk2b8nqu474gf6bhp09ck/index.html?id=39c8f8f5-78df-4d97-b39b-e690a64e7a0f&parentId=4&origin=62396229-11c8-47a0-93a7-d091149b7f0e&swVersion=6&extensionId=kicad-agent.kicad&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app&purpose=webviewView
+								493 container
+									494 container
+										495 按钮 
+										496 标题 New Conversation, Value: 2
+											497 文本 New Conversation
+										498 按钮 , Help: 新开对话
+										499 container
+											500 图像 Kicad
+											501 文本 One person's slop is another one's treasure.
+										502 container
+											503 文本输入区 (settable) Plan, @ for context, / for commands...
+												504 文本 Plan, @ for context, / for commands...
+											505 container
+												506 text  Agent 
+											507 按钮 选择模型
+												508 文本 DeepSeek Flash
+												509 文本 
+											510 文本 0%
+											511 按钮 选择推理强度
+												512 container 推理强度：自动
+													513 text  自动 
+											514 按钮 (disabled) 优化提示词
+											515 按钮 
+											516 按钮 (disabled) 
+									517 图像
+					518 container 点击刷新。内部工具可用与 KiCad 文档可操作是独立状态。
+						519 文本 点击刷新。内部工具可用与 KiCad 文档可操作是独立状态。
+	520 关闭按钮
+	521 全屏幕按钮 Help: 此按钮也可以执行缩放窗口的操作, Secondary Actions: 缩放窗口
+	522 最小化按钮
+523 menu bar
+	524 Code
+	525 文件
+	526 编辑
+	527 选择
+	528 查看
+	529 转到
+	530 运行
+	531 终端
+	532 窗口
+	533 帮助
+
+The focused UI element is 466 按钮 circuit-board Kicad · IPC 未连接, 点击刷新。内部工具可用与 KiCad 文档可操作是独立状态。

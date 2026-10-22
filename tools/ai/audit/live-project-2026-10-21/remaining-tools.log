@@ -1,0 +1,13 @@
+board.decap.place PASS
+board.decap.check PASS
+board.via.create PASS
+board.plane.create PASS
+board.plane.verify PASS
+board.impedance.calculate PASS
+board.items.create PASS
+board.impedance.check PASS
+document.save PASS
+board.export.step PASS
+external.step.meshcheck PASS
+external.step.meshcheck STEP_COLLISIONS
+board.check.unified PASS

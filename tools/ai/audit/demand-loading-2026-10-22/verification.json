@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "extensionVersion": "0.4.36",
+  "installed": [
+    {
+      "client": ".vscode",
+      "version": "0.4.36",
+      "bundleSha256": "4a742a7faad35a8995d398cb0ac89e8b7f344262737a96abbe6e51475f670646"
+    },
+    {
+      "client": ".cursor",
+      "version": "0.4.36",
+      "bundleSha256": "4a742a7faad35a8995d398cb0ac89e8b7f344262737a96abbe6e51475f670646"
+    }
+  ],
+  "initialExtensionCapabilities": [
+    "capability_search",
+    "capability_call"
+  ],
+  "searchPageLimit": 5,
+  "externalMcpUnselectedNotStarted": true,
+  "skillsBodyOnlyAfterSelection": true,
+  "sameTurnDiscoveryAndCall": true,
+  "tests": {
+    "shared": {
+      "passed": 16,
+      "failed": 0
+    },
+    "claudePackagedCli": {
+      "sameTurnRequests": 7,
+      "capabilitiesPerRequest": 2,
+      "mcpFixture": "passed",
+      "skillFixture": "passed"
+    },
+    "nativeTerminal": "8 model requests; selected MCP only; skill body after call",
+    "codexLocalMembership": "actual search and call succeeded in plan mode",
+    "diagnostics": "large JSON grep, exit 7, HTTP 401 and redaction passed"
+  },
+  "verificationLimits": [
+    "External MCP lifecycle used local fixtures; real remote services were not individually invoked.",
+    "Existing running windows and terminal sessions need reload/restart to use the installed build."
+  ]
+}

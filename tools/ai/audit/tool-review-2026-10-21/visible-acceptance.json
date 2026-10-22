@@ -1,0 +1,7 @@
+{
+  "chatVisible": true,
+  "terminalVisible": true,
+  "keychainMissingDialog": false,
+  "currentWorkspaceIPCConnected": false,
+  "note": "Current workspace has no connected native document. Native editing and readback passed in isolated fixture projects."
+}

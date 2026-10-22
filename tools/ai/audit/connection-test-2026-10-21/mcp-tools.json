@@ -1,0 +1,233 @@
+{
+  "timestamp": "2026-10-21T12:11:53-07:00",
+  "tools": [
+    {
+      "tool": "kicad_health",
+      "calls": [
+        "system.health"
+      ],
+      "status": "PARTIAL",
+      "ok": true,
+      "evidence": "CLI 10.99.0, IPC ping ok, 9 external tools; documents subcheck failed: UNHANDLED GetOpenDocuments",
+      "notes": "Health call itself works; document discovery is broken."
+    },
+    {
+      "tool": "kicad_actions",
+      "calls": [
+        "catalog (333)",
+        "search connectivity (17)"
+      ],
+      "status": "PASS",
+      "ok": true
+    },
+    {
+      "tool": "kicad_call",
+      "calls": [
+        "system.ping"
+      ],
+      "status": "PASS",
+      "ok": true
+    },
+    {
+      "tool": "kicad_system",
+      "calls": [
+        "system.capabilities",
+        "system.paths",
+        "kicad.cli.run version"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "API 11.0; 8 paths; kicad-cli stdout 10.99.0"
+    },
+    {
+      "tool": "kicad_project",
+      "calls": [
+        "project.list",
+        "project.info"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "16 project-like entries incl. backup; RK3308B project has 8 sheets",
+      "path": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pro"
+    },
+    {
+      "tool": "kicad_document",
+      "calls": [
+        "document.list"
+      ],
+      "status": "FAIL",
+      "ok": false,
+      "error": "UNHANDLED: no handler available for request of type kiapi.common.commands.GetOpenDocuments"
+    },
+    {
+      "tool": "kicad_board",
+      "calls": [
+        "board.list",
+        "board.export.gerbers",
+        "board.export.bom",
+        "board.export.drill",
+        "board.export.position",
+        "board.export.step",
+        "board.drc.run",
+        "pcb.board.info",
+        "board.connectivity.prove"
+      ],
+      "status": "PARTIAL",
+      "ok": true,
+      "evidence": "CLI checks/exports passed; live IPC pcb.board.info and board.connectivity.prove failed UNHANDLED",
+      "failures": [
+        "pcb.board.info: UNHANDLED GetItems",
+        "board.connectivity.prove: UNHANDLED ProveConnectivity"
+      ]
+    },
+    {
+      "tool": "kicad_schematic",
+      "calls": [
+        "schematic.hierarchy.get",
+        "schematic.items.get",
+        "schematic.erc.run"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "8 hierarchy pages; 481 symbol items; ERC 1235 violations"
+    },
+    {
+      "tool": "kicad_library",
+      "calls": [
+        "library.search.symbols LM358"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "2 symbols: Amplifier_Operational:LM358, LM358_DFN; 8/9 pins"
+    },
+    {
+      "tool": "kicad_gerber",
+      "calls": [
+        "gerber.info Top Layer.gtl"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "28 apertures, 1179 items, copper area 944.679654 mm2, bbox 29.393 x 44.268 mm"
+    },
+    {
+      "tool": "kicad_external",
+      "calls": [
+        "external.tools.list",
+        "external.ngspice.run",
+        "external.step.meshcheck"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "9 tools available; ngspice RC deck exit 0; STEP meshcheck exit 0 (1 solid, 0 collisions)",
+      "limitations": [
+        "Freerouting installed but not executed this pass",
+        "STEP contains 1 solid because all EASYEDA_MODELS 3D files are missing"
+      ]
+    },
+    {
+      "tool": "kicad_audit",
+      "calls": [
+        "audit.rules"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "policy version 2026-10-20.2; nativeScope and evidence requirements returned",
+      "limitations": [
+        "audit.run / release.check not executed this pass; prior audit evidence remains"
+      ]
+    },
+    {
+      "tool": "kicad_reference",
+      "calls": [
+        "reference.search",
+        "reference.get routing",
+        "reference.plan stage=route"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "2 search topics; routing card 5 rules; plan returned highspeed card 4 rules",
+      "notes": "Invalid stage=layout correctly returned BAD_INPUT"
+    },
+    {
+      "tool": "kicad_web",
+      "calls": [
+        "web.search"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "3 results; source html.duckduckgo.com; untrustedContent=true"
+    },
+    {
+      "tool": "kicad_workflow",
+      "calls": [
+        "workflow.status"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "13 stages pending; readyForFabrication=false; readyForProduction=false"
+    },
+    {
+      "tool": "kicad_pipeline",
+      "calls": [
+        "pipeline.status",
+        "pipeline.run dryRun stages=[spec]"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "status not-started; dry-run planned spec stage, returned ok=true without execution"
+    },
+    {
+      "tool": "kicad_spec_validate",
+      "calls": [
+        "spec.validate acceptance-spec.json"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "spec parsed; 3 INFO issues, 0 errors"
+    },
+    {
+      "tool": "kicad_native_tools",
+      "calls": [
+        "editor.native.categories",
+        "editor.native.search drc"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "13 categories; 2 DRC GUI tools found"
+    },
+    {
+      "tool": "kicad_blocks",
+      "calls": [
+        "blocks.list",
+        "blocks.search power supply"
+      ],
+      "status": "PASS",
+      "ok": true,
+      "evidence": "0 blocks; 0 matches",
+      "limitations": [
+        "Block library directory exists but is empty; this is missing data, not a call failure"
+      ]
+    },
+    {
+      "tool": "kicad_editor",
+      "calls": [
+        "editor.native.categories",
+        "editor.native.search",
+        "editor.selection.get"
+      ],
+      "status": "PARTIAL",
+      "ok": true,
+      "evidence": "Native catalog queries passed; live selection failed UNHANDLED GetSelection",
+      "failures": [
+        "editor.selection.get: UNHANDLED GetSelection"
+      ]
+    }
+  ],
+  "summary": {
+    "total": 20,
+    "pass": 16,
+    "partial": 3,
+    "fail": 1,
+    "note": "19/20 tools returned at least one successful result; kicad_document had no successful call."
+  }
+}

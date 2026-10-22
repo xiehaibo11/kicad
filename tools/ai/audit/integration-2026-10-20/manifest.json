@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "action": "system.manifest",
+  "data": {
+    "actionCount": 247,
+    "agentVersion": "0.2.0",
+    "arch": "arm64",
+    "catalogSha256": "80411e42d8c00a446a6e5cfddf7faf66ebae5fbc19bb8f26372f1d4fb934d90c",
+    "goVersion": "go1.27.2",
+    "mcpToolCount": 19,
+    "mcpTools": [
+      "kicad_health",
+      "kicad_actions",
+      "kicad_call",
+      "kicad_spec_validate",
+      "kicad_blocks",
+      "kicad_workflow",
+      "kicad_pipeline",
+      "kicad_native_tools",
+      "kicad_system",
+      "kicad_project",
+      "kicad_document",
+      "kicad_schematic",
+      "kicad_board",
+      "kicad_library",
+      "kicad_external",
+      "kicad_editor",
+      "kicad_audit",
+      "kicad_web",
+      "kicad_gerber"
+    ],
+    "nativeToolCount": 971,
+    "os": "darwin",
+    "schemaVersion": 1
+  }
+}

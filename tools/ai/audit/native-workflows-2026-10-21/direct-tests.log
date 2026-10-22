@@ -1,0 +1,71 @@
+✔ provider loop dispatches tools in-process and emits the verified final answer (44.0995ms)
+✔ provider loop retains unresolved tool failures even if the model claims completion (11.229625ms)
+✔ already-cancelled provider loop never dispatches an action (3.279458ms)
+✔ in-process tools call the shared runtime, preserve write permission and validate input before execution (12.220042ms)
+✔ in-process composite tools serialize and queued cancellation never starts an edit (15.319167ms)
+✔ stdio compatibility handles fragmented UTF8, domain errors, real catalog and cancellation (6.211167ms)
+✔ all 57 native CLI schemas accept required paths and reject unknown options (8.502334ms)
+✔ typed CLI flags preserve commas, repeated defines, booleans and literal shell metacharacters (0.305708ms)
+✔ native rule summaries count every DRC group and every ERC sheet, preserving full reports (3.380833ms)
+✔ process wrapper preserves split UTF8 and supports real deadline/cancellation without a shell (225.656542ms)
+✔ pipeline filters stages before dispatch and dry-run dispatches no actions or saves (6.624584ms)
+✔ layer dry-run never invokes saveFirst and edits preserve all other bytes (3.07725ms)
+✔ plane verification failure rolls back only its created zone (0.278ms)
+✔ partial creation and missing readback retain IDs and fail instead of claiming success (0.407667ms)
+✔ grid planner detours copper and validates clearance to zone holes and all layers (13.019167ms)
+✔ arcs use sweep length rather than the endpoint chord (0.792625ms)
+✔ native audits require complete severity scope and cannot trust success/status alone (0.791375ms)
+✔ workflow cannot skip earlier gates or promote verified; snapshots bind the saved design (8.52725ms)
+✔ web destination policy rejects local, link-local, reserved and IPv6-mapped private addresses (6.667959ms)
+✔ all 335 actions and 130 IPC mappings have registered native commands (1.967667ms)
+✔ Any URLs use the canonical native namespace, preserving 64-bit coordinates (27.25625ms)
+✔ native per-item failures fail the whole request and retain partial evidence (7.106625ms)
+✔ 20 unique MCP tools restrict domains and annotate mixed tools as mutating (0.491666ms)
+✔ footprint translator builds schema-valid nested native items and refuses unsupported pads (17.417167ms)
+✔ circuit preflight rejects ambiguous units, duplicate nets and multiply assigned pins (0.255792ms)
+✔ every catalog action reaches an implementation and async exceptions become structured failures (85.044833ms)
+✔ in-process default project discovery uses the frontend workspace directory (1.189958ms)
+✔ standalone entry executes through symlink paths including macOS /var aliases (328.602333ms)
+✔ importing the shared module never runs its command entry (204.272458ms)
+✔ native board workflows: images, silk, netclasses, constraints, layer hop, cleanup, DSN/SES and reports (9405.071959ms)
+✔ native parser loads generated symbol library and selects child sheet IPC context (1717.17675ms)
+✖ native schematic workflows preserve fields and pin geometry, save and export (11245.656709ms)
+✔ all 79 original deferred handlers have concrete in-process native workflows (1.134375ms)
+✔ native file workflows preserve hierarchy, libraries, project settings and recoverable deletions (46.403416ms)
+✔ isolated native KiCad: direct IPC writes/readback/delete, temporary live DRC and CLI export (6627.915583ms)
+✔ isolated native schematic generation resolves library pins, creates labels and saves (4188.74975ms)
+✔ fragmented IPC frames preserve UTF8, reuse a single socket and serialize requests (15.445875ms)
+✔ rejects malformed wrong-id (1.470458ms)
+✔ rejects malformed oversize (1.186208ms)
+✔ rejects malformed bad-handshake (1.20625ms)
+✔ deadline and cancellation do not replay a submitted edit (47.619542ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 40
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14209.2005
+
+✖ failing tests:
+
+test at tools/ai/direct/test/native-schematic-workflows.test.mjs:12:1
+✖ native schematic workflows preserve fields and pin geometry, save and export (11245.656709ms)
+  AssertionError [ERR_ASSERTION]: schematic.page.open: {"ok":false,"action":"schematic.page.open","error":{"code":"BAD_INPUT","message":"Native hierarchy did not resolve one sheet instance"}}
+  
+  
+  false !== true
+  
+      at check (file:///Users/mosc/Downloads/Kicad/tools/ai/direct/test/native-schematic-workflows.test.mjs:19:97)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/mosc/Downloads/Kicad/tools/ai/direct/test/native-schematic-workflows.test.mjs:38:102)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

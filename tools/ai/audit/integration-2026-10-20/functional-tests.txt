@@ -1,0 +1,25 @@
+== headless CLI checks ==
+== IPC checks ==
+  PASS  version
+  PASS  kicad-cli detected
+  PASS  action catalog >= 70
+  PASS  spec validation
+  PASS  block library
+  PASS  impedance synthesis
+  PASS  DRC cooperative timeout exit 8
+  PASS  ERC runs
+  PASS  ERC report exists
+  PASS  IPC connected
+  PASS  stackup read
+  PASS  connectivity prove
+  PASS  grid router (multi-layer)
+  PASS  capabilities are session-filtered
+  PASS  job status RPC
+  PASS  DFM analyze finds width issue
+  PASS  DFM fix applies
+  PASS  fanout dry-run plans a via
+  PASS  structural check
+  PASS  STEP self-test detects overlap
+  PASS  STEP meshcheck action
+
+All functional checks passed

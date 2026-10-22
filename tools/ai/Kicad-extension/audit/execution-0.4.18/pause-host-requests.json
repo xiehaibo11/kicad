@@ -1,0 +1,24 @@
+{
+  "status": "verified",
+  "requests": [
+    {
+      "model": "deepseek-flash",
+      "main": true,
+      "resend": false,
+      "delegate": true
+    },
+    {
+      "model": "deepseek-flash",
+      "main": false,
+      "resend": false,
+      "delegate": false
+    },
+    {
+      "model": "deepseek-flash",
+      "main": true,
+      "resend": true,
+      "delegate": false
+    }
+  ],
+  "fixture": "Actual VS Code extension and pinned SDK/CLI against localhost Messages API; no external model"
+}

@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "bundleSha256": "0b6ccafd1bd4ba0b634cba14a34336baf715806ddc55f9918b13e0e15a0eec90",
+  "copies": [
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/dist/kicad-direct.mjs",
+      "sha256": "0b6ccafd1bd4ba0b634cba14a34336baf715806ddc55f9918b13e0e15a0eec90"
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/vscode-extension/resources/kicad-direct.mjs",
+      "sha256": "0b6ccafd1bd4ba0b634cba14a34336baf715806ddc55f9918b13e0e15a0eec90"
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/npm/resources/kicad-direct.mjs",
+      "sha256": "0b6ccafd1bd4ba0b634cba14a34336baf715806ddc55f9918b13e0e15a0eec90"
+    },
+    {
+      "path": "/Users/mosc/.local/share/kicad-terminal/kicad-direct.mjs",
+      "sha256": "0b6ccafd1bd4ba0b634cba14a34336baf715806ddc55f9918b13e0e15a0eec90"
+    },
+    {
+      "path": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.26/resources/kicad/kicad-direct.mjs",
+      "sha256": "0b6ccafd1bd4ba0b634cba14a34336baf715806ddc55f9918b13e0e15a0eec90"
+    },
+    {
+      "path": "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/resources/kicad-direct.mjs",
+      "sha256": "0b6ccafd1bd4ba0b634cba14a34336baf715806ddc55f9918b13e0e15a0eec90"
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-direct.mjs",
+      "sha256": "0b6ccafd1bd4ba0b634cba14a34336baf715806ddc55f9918b13e0e15a0eec90"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/dist/kicad-0.4.26.vsix",
+      "bytes": 34316628,
+      "sha256": "78fa63ae07c36fb669b19b48a76eb4e45e5bbf9de087c1f9f22101e8bf3dfbfa",
+      "entries": 1219,
+      "retiredRelayEntries": []
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/vscode-extension/kicad-agent-vscode-0.1.1.vsix",
+      "bytes": 392547,
+      "sha256": "9fd0fba513cca1b580a7dcccc560cb45c70333a26aa0b0416f8c9a6257b4a364",
+      "entries": 14,
+      "retiredRelayEntries": []
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/npm/-kicadai-kicad-code-0.1.1.tgz",
+      "bytes": 47325372,
+      "sha256": "65a2599dcfcef659357d8651a192896205180f920885475823c53b5ed10e5971"
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/direct/dist/kicad-native-tools.zip",
+      "bytes": 375731,
+      "sha256": "42ed07ac3aad2be233f14e8f7e3d491a641beb5c3351bdf7dbcbb31518a4f711",
+      "entries": 10,
+      "retiredRelayEntries": []
+    },
+    {
+      "path": "/Users/mosc/Downloads/hardware/tools/easyeda-agent-release/easyeda-agent-connector.eext",
+      "bytes": 375731,
+      "sha256": "42ed07ac3aad2be233f14e8f7e3d491a641beb5c3351bdf7dbcbb31518a4f711",
+      "entries": 10,
+      "retiredRelayEntries": []
+    },
+    {
+      "path": "/Users/mosc/Downloads/hardware/tools/easyeda-agent-release/kicad-native-tools.zip",
+      "bytes": 375731,
+      "sha256": "42ed07ac3aad2be233f14e8f7e3d491a641beb5c3351bdf7dbcbb31518a4f711",
+      "entries": 10,
+      "retiredRelayEntries": []
+    }
+  ],
+  "legacyExecutableProcesses": [],
+  "nativeProcesses": [
+    {
+      "pid": 88540,
+      "ppid": 1,
+      "command": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli"
+    },
+    {
+      "pid": 80695,
+      "ppid": 73631,
+      "command": "/Users/mosc/.local/bin/kicad-terminal"
+    }
+  ],
+  "sourceGoFiles": [],
+  "preserved": "Native C++ EasyEDA importers, original-design migration backups, attribution/licenses and unrelated global EasyEDA tools are not KiCad tool relays."
+}

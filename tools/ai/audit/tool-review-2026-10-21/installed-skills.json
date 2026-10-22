@@ -1,0 +1,38 @@
+[
+  {
+    "updated": "/Users/mosc/.claude/skills/kicad-agent/SKILL.md",
+    "backup": "/Users/mosc/Downloads/Kicad-retired-artifacts-2026-10-21/installed-skills/.claude/kicad-agent/SKILL.md",
+    "beforeSha256": "30c100604fa003c08bd7a765983aeb85db6944b69e88113e272b39e6dd26d0f6",
+    "afterSha256": "776ffe1f9971fad177f856fd6689cd82d006f0ad8d7125b369fb382a43c8456b"
+  },
+  {
+    "updated": "/Users/mosc/.claude/skills/kicad-engineering/SKILL.md",
+    "backup": "/Users/mosc/Downloads/Kicad-retired-artifacts-2026-10-21/installed-skills/.claude/kicad-engineering/SKILL.md",
+    "beforeSha256": "00d156f7e0073ab0ffc8a896ebb440f00982ea7d03e7702e0c7892a83dcfedff",
+    "afterSha256": "05d4017cf86e40df6725f4ae326ab33f14ac6c8bd69a77feb028cb03a998b247"
+  },
+  {
+    "updated": "/Users/mosc/.claude/skills/kicad-engineering/references/release-evidence.md",
+    "backup": "/Users/mosc/Downloads/Kicad-retired-artifacts-2026-10-21/installed-skills/.claude/kicad-engineering/references/release-evidence.md",
+    "beforeSha256": "91f55c63fc2fb2291a8f81fca477cdc791eb7fb6fd6d8a8b74538dc557c3f681",
+    "afterSha256": "5572840e8fb877fcbb48f58845bdf29b35d59cf8d58f2d7f5c8acedd54566fa4"
+  },
+  {
+    "updated": "/Users/mosc/.claude/skills/kicad-environment/SKILL.md",
+    "backup": "/Users/mosc/Downloads/Kicad-retired-artifacts-2026-10-21/installed-skills/.claude/kicad-environment/SKILL.md",
+    "beforeSha256": "b4626c9a9d48ce079fbaf4ef05818def471c85d3a593172a0578b5beee043e2d",
+    "afterSha256": "972e693eb8e86952953d52ea7b2948483e18e8526338868c7a8efa48a8541b1b"
+  },
+  {
+    "updated": "/Users/mosc/.codex/skills/kicad-engineering/SKILL.md",
+    "backup": "/Users/mosc/Downloads/Kicad-retired-artifacts-2026-10-21/installed-skills/.codex/kicad-engineering/SKILL.md",
+    "beforeSha256": "00d156f7e0073ab0ffc8a896ebb440f00982ea7d03e7702e0c7892a83dcfedff",
+    "afterSha256": "05d4017cf86e40df6725f4ae326ab33f14ac6c8bd69a77feb028cb03a998b247"
+  },
+  {
+    "updated": "/Users/mosc/.codex/skills/kicad-engineering/references/release-evidence.md",
+    "backup": "/Users/mosc/Downloads/Kicad-retired-artifacts-2026-10-21/installed-skills/.codex/kicad-engineering/references/release-evidence.md",
+    "beforeSha256": "91f55c63fc2fb2291a8f81fca477cdc791eb7fb6fd6d8a8b74538dc557c3f681",
+    "afterSha256": "5572840e8fb877fcbb48f58845bdf29b35d59cf8d58f2d7f5c8acedd54566fa4"
+  }
+]

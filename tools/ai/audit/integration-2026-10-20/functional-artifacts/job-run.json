@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "action": "board.jobs.svg",
+  "data": {
+    "diagnostics": [],
+    "elapsedMs": "30",
+    "jobId": "42a28965-059f-45ce-b901-71166d1211c8",
+    "message": "",
+    "outputPath": [
+      "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/tmp.z5mScbT6Pm/job.svg"
+    ],
+    "resultJson": "",
+    "status": "JS_SUCCESS"
+  },
+  "elapsedMs": 35
+}

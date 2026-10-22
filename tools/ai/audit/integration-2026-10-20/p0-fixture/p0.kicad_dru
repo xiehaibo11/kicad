@@ -1,0 +1,11 @@
+(version 2)
+
+(rule "T1_clearance"
+	(condition "A.insideArea('T1')")
+	(constraint clearance (min 0.2mm))
+)
+
+(rule "T1_track_width"
+	(condition "A.insideArea('T1')")
+	(constraint track_width (min 0.25mm))
+)

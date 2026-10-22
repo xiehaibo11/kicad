@@ -1,0 +1,32 @@
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                       ╭─────────────────────────────────────────────────────────────────────────╮                      
+                       │ Ki Kicad · AI design terminal for KiCad                          v0.2.1 │                      
+                       │                                                                         │                      
+                       │ KiCad                                Quick tasks                        │                      
+                       │ ○ IPC       checking…                /kicad-health Connection check     │                      
+                       │ ○ kicad-cli checking…                /kicad-drc    DRC & ERC review     │                      
+                       │   open a project in KiCad            /kicad-fab    Fabrication outputs  │                      
+                       │                                      /kicad-route  Fanout & routing     │                      
+                       │                                      /kicad-step   3D / STEP collisions │                      
+                       ╰─────────────────────────────────────────────────────────────────────────╯                      
+                                                                                                                        
+                                                                                                                        
+                       ┃                                                                                                
+                       ┃  Describe a KiCad task… "Run DRC on the                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        

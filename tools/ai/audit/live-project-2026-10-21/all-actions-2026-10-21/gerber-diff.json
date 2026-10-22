@@ -1,0 +1,29 @@
+{
+  "additions": {
+    "area": 0.00017175585000000002,
+    "percent": 1.8181385777979187e-05
+  },
+  "comparison": {
+    "area": 944.6796706152
+  },
+  "comparison_file": "RK3308B_IPC 摄像头模块-Top Layer.gbr",
+  "max_diff_percent": 0.0,
+  "net_change": {
+    "area": 2.9044500000000023e-05,
+    "percent": 3.074534341791076e-06
+  },
+  "overlap": {
+    "area": 944.67949885935
+  },
+  "reference": {
+    "area": 944.6796415707
+  },
+  "reference_file": "RK3308B_IPC 摄像头模块-Top Layer.gtl",
+  "removals": {
+    "area": 0.00014271135,
+    "percent": 1.510685143618811e-05
+  },
+  "total_diff_percent": 3.32882372141673e-05,
+  "units": "mm",
+  "within_threshold": false
+}

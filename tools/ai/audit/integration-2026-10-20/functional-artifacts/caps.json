@@ -1,0 +1,250 @@
+{
+  "ok": true,
+  "action": "system.capabilities",
+  "data": {
+    "apiVersion": "11.0",
+    "capabilities": [
+      {
+        "cliCommand": "",
+        "description": "Return the KiCad build version",
+        "experimental": false,
+        "id": "common.version",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.GetVersion",
+        "responseType": "kiapi.common.commands.GetVersionResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Liveness check",
+        "experimental": false,
+        "id": "common.ping",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.Ping",
+        "responseType": "google.protobuf.Empty",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Return well-known KiCad filesystem paths",
+        "experimental": false,
+        "id": "common.paths",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.GetPaths",
+        "responseType": "kiapi.common.commands.GetPathsResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Enumerate automation capabilities (this command)",
+        "experimental": false,
+        "id": "common.capabilities",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.GetCapabilities",
+        "responseType": "kiapi.common.commands.GetCapabilitiesResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Return the state and timing of a dispatched job",
+        "experimental": false,
+        "id": "common.jobs.status",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.GetJobStatus",
+        "responseType": "kiapi.common.commands.JobStatusResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Request cooperative cancellation of a running job",
+        "experimental": false,
+        "id": "common.jobs.cancel",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.CancelJob",
+        "responseType": "kiapi.common.commands.CancelJobResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Create items from serialized protobuf messages",
+        "experimental": false,
+        "id": "common.items.create",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.CreateItems",
+        "responseType": "kiapi.common.commands.CreateItemsResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Update items by KIID",
+        "experimental": false,
+        "id": "common.items.update",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.UpdateItems",
+        "responseType": "kiapi.common.commands.UpdateItemsResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Delete items by KIID",
+        "experimental": false,
+        "id": "common.items.delete",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.DeleteItems",
+        "responseType": "kiapi.common.commands.DeleteItemsResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Enumerate items by type",
+        "experimental": false,
+        "id": "common.items.get",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.GetItems",
+        "responseType": "kiapi.common.commands.GetItemsResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Save the active document",
+        "experimental": false,
+        "id": "common.document.save",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.SaveDocument",
+        "responseType": "google.protobuf.Empty",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Serialize the active document to s-expression text",
+        "experimental": false,
+        "id": "common.document.save_to_string",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.SaveDocumentToString",
+        "responseType": "kiapi.common.commands.SavedDocumentResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Read the board stackup",
+        "experimental": false,
+        "id": "board.stackup.read",
+        "layer": "api",
+        "requestType": "kiapi.board.commands.GetBoardStackup",
+        "responseType": "kiapi.board.commands.BoardStackupResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Update stackup thicknesses and dielectric properties (layer count is fixed)",
+        "experimental": false,
+        "id": "board.stackup.write",
+        "layer": "api",
+        "requestType": "kiapi.board.commands.UpdateBoardStackup",
+        "responseType": "kiapi.board.commands.BoardStackupResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Enumerate board nets",
+        "experimental": false,
+        "id": "board.nets.read",
+        "layer": "api",
+        "requestType": "kiapi.board.commands.GetNets",
+        "responseType": "kiapi.board.commands.NetsResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Refill copper zones",
+        "experimental": false,
+        "id": "board.zones.refill",
+        "layer": "api",
+        "requestType": "kiapi.board.commands.RefillZones",
+        "responseType": "google.protobuf.Empty",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Import a netlist and update footprints",
+        "experimental": false,
+        "id": "board.netlist.import",
+        "layer": "api",
+        "requestType": "kiapi.board.commands.ImportNetlist",
+        "responseType": "kiapi.board.commands.ImportNetlistResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Prove pad/via connections including filled zones and inner-layer planes",
+        "experimental": false,
+        "id": "board.connectivity.prove",
+        "layer": "api",
+        "requestType": "kiapi.board.commands.ProveConnectivity",
+        "responseType": "kiapi.board.commands.ConnectivityProof",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Automatically place footprints using KiCad's autoplacer",
+        "experimental": false,
+        "id": "board.place.autoplace",
+        "layer": "api",
+        "requestType": "kiapi.board.commands.AutoPlaceFootprints",
+        "responseType": "kiapi.board.commands.AutoPlaceFootprintsResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Create a net-bound copper zone on inner layers",
+        "experimental": false,
+        "id": "board.plane.create",
+        "layer": "api",
+        "requestType": "kiapi.board.commands.CreatePlane",
+        "responseType": "kiapi.board.commands.CreatePlaneResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Verify a plane's fill and pad/via connectivity",
+        "experimental": false,
+        "id": "board.plane.verify",
+        "layer": "api",
+        "requestType": "kiapi.board.commands.VerifyPlane",
+        "responseType": "kiapi.board.commands.VerifyPlaneResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "pcb drc",
+        "description": "Run design rule checks (supports --timeout)",
+        "experimental": false,
+        "id": "board.drc.run",
+        "layer": "cli",
+        "requestType": "",
+        "responseType": "",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "",
+        "description": "Create an empty schematic document (headless API server)",
+        "experimental": false,
+        "id": "schematic.create",
+        "layer": "api",
+        "requestType": "kiapi.common.commands.CreateDocument",
+        "responseType": "kiapi.common.commands.OpenDocumentResponse",
+        "since": "11.0"
+      },
+      {
+        "cliCommand": "sch erc",
+        "description": "Run electrical rules checks (supports --timeout)",
+        "experimental": false,
+        "id": "schematic.erc.run",
+        "layer": "cli",
+        "requestType": "",
+        "responseType": "",
+        "since": "11.0"
+      }
+    ]
+  },
+  "elapsedMs": 4
+}

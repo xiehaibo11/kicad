@@ -1,0 +1,182 @@
+{
+  "ok": true,
+  "persistedSession": true,
+  "processStopped": true,
+  "resendResult": "success",
+  "sameModel": true,
+  "samePermissions": true,
+  "sameEffort": true,
+  "continuedToolWrite": true,
+  "hostModelPreferencePersists": true,
+  "reopenedEditedRequestAppearsOnce": true,
+  "sdkPersistsClientMessageUuid": true,
+  "events": [
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "system",
+      "parent": false
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "assistant",
+      "parent": false
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "system",
+      "parent": false
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "io_message",
+      "messageType": "user",
+      "parent": true
+    },
+    {
+      "channelId": "pause-fixture",
+      "type": "close_channel",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "system",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "assistant",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "user",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "assistant",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "stream_event",
+      "parent": false
+    },
+    {
+      "channelId": "resend-fixture",
+      "type": "io_message",
+      "messageType": "result",
+      "parent": false
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+
+> @-kicadai/kicad-code@0.1.1 test
+> node --test test/*.test.mjs
+
+✔ JSONC retains model, provider, MCP, plugin, skills and compaction choices (2.128208ms)
+✔ malformed inherited settings fail without silently dropping user data (0.408417ms)
+✔ bundle carries full backend; optional credentials are read only; override wins (0.813292ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.291916

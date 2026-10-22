@@ -1,0 +1,99 @@
+{
+  "timestamp": "2026-10-21T12:11:53-07:00",
+  "kicad": "10.99.0 (10.99.0-3837-g63c27cc5ad-dirty)",
+  "cli": {
+    "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli",
+    "version": "10.99.0",
+    "ok": true
+  },
+  "ipc": {
+    "socket": "/tmp/kicad/api.sock",
+    "socketPresent": true,
+    "socketMtime": "2026-10-21T11:22",
+    "ping": true,
+    "handlers": {
+      "GetOpenDocuments": "UNHANDLED",
+      "GetItems(pcb)": "UNHANDLED",
+      "ProveConnectivity": "UNHANDLED",
+      "GetSelection": "UNHANDLED"
+    },
+    "note": "GUI process 86041 running since 11:22; binary mtime 2026-10-20 19:51 while kicad-cli was rebuilt 2026-10-21 10:55. No active editor handler set observed; project files were not opened or modified by this test."
+  },
+  "externalTools": [
+    {
+      "name": "kicad-cli",
+      "available": true
+    },
+    {
+      "name": "freerouting",
+      "available": true
+    },
+    {
+      "name": "java",
+      "available": true
+    },
+    {
+      "name": "ngspice",
+      "available": true
+    },
+    {
+      "name": "gerbv",
+      "available": true
+    },
+    {
+      "name": "openscad",
+      "available": true
+    },
+    {
+      "name": "FreeCAD",
+      "available": true
+    },
+    {
+      "name": "python3",
+      "available": true
+    },
+    {
+      "name": "kicad-stepcheck",
+      "available": true
+    }
+  ],
+  "catalog": {
+    "actionCount": 333,
+    "mcpToolCount": 20,
+    "apiVersion": "11.0",
+    "domains": {
+      "board": 169,
+      "schematic": 61,
+      "library": 20,
+      "editor": 16,
+      "system": 13,
+      "project": 13,
+      "document": 9,
+      "external": 6,
+      "audit": 6,
+      "workflow": 5,
+      "reference": 4,
+      "blocks": 3,
+      "gerber": 3,
+      "pipeline": 2,
+      "web": 2,
+      "spec": 1
+    }
+  },
+  "isolatedRuntimeTests": {
+    "command": "KICAD_TEST_CLI=<build>/kicad-cli node --test test/*.test.mjs",
+    "tests": 54,
+    "pass": 54,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 23109.858,
+    "log": "tools/ai/audit/connection-test-2026-10-21/direct-tests.log"
+  },
+  "verdict": {
+    "cli": "PASS",
+    "externalTools": "PASS",
+    "ipcLiveness": "PASS",
+    "ipcEditorHandlers": "FAIL",
+    "mcpTools": "19/20 tools at least one successful call; kicad_document failed"
+  }
+}

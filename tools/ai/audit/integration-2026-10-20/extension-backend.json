@@ -1,0 +1,27 @@
+{
+  "ok": true,
+  "fixture": "installed production extension in real VS Code host; real MCP, no model calls",
+  "toolCount": 19,
+  "toolNames": [
+    "mcp__kicad__kicad_health",
+    "mcp__kicad__kicad_actions",
+    "mcp__kicad__kicad_call",
+    "mcp__kicad__kicad_spec_validate",
+    "mcp__kicad__kicad_blocks",
+    "mcp__kicad__kicad_workflow",
+    "mcp__kicad__kicad_pipeline",
+    "mcp__kicad__kicad_native_tools",
+    "mcp__kicad__kicad_system",
+    "mcp__kicad__kicad_project",
+    "mcp__kicad__kicad_document",
+    "mcp__kicad__kicad_schematic",
+    "mcp__kicad__kicad_board",
+    "mcp__kicad__kicad_library",
+    "mcp__kicad__kicad_external",
+    "mcp__kicad__kicad_editor",
+    "mcp__kicad__kicad_audit",
+    "mcp__kicad__kicad_web",
+    "mcp__kicad__kicad_gerber"
+  ],
+  "healthCommandRegistered": true
+}

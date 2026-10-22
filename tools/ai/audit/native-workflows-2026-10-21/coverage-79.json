@@ -1,0 +1,886 @@
+{
+  "total": 79,
+  "passed": 79,
+  "actions": [
+    {
+      "action": "project.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "project.create",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.pages.list",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.pages.list",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.open",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.page.open",
+          "ok": true,
+          "mode": "native-child-sheet-ipc",
+          "symbolLibraryParsed": true
+        },
+        {
+          "action": "schematic.page.open",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.page.create",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.rename",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.page.rename",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.delete",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.page.delete",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.page.clear",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.page.clear",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.rename",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.rename",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.list",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "board.list",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.current",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "board.current",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "board.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "board.create",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.new_pcb",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "board.new_pcb",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.rename",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "board.rename",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.copy",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "board.copy",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.delete",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "board.delete",
+          "ok": true,
+          "mode": "native-files"
+        },
+        {
+          "action": "board.delete",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "board.rebind",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "board.rebind",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.list",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.list",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.footprint.create",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.get",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.footprint.get",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.copy",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.footprint.copy",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.delete",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.footprint.delete",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.build",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.footprint.build",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.footprint.region_create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.footprint.region_create",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.symbol.create",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.build",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.symbol.build",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.export_source",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.symbol.export_source",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "library.symbol.delete",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "library.symbol.delete",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "schematic.titleblock.get",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.titleblock.get",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.titleblock.modify",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.titleblock.modify",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.attribute.inspect",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.attribute.inspect",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.attribute.move",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.attribute.move",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.designators.list",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.designators.list",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.image.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.image.create",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.image.list",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.image.list",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.image.modify",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.image.modify",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.group.move",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.group.move",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.pin.disconnect",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.pin.disconnect",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.check",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.check",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.bridgeCheck",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.bridgeCheck",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.export.image",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.export.image",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.power.connect_pin",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.power.connect_pin",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.rebind.footprint",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.rebind.footprint",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.rebind.symbol",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.rebind.symbol",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.component.replace",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.component.replace",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "schematic.visible_text.bboxes",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "schematic.visible_text.bboxes",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.net_class.list",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.net_class.list",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.net_class.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.net_class.create",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.constraint.list",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.constraint.list",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.differential_pair.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.differential_pair.create",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.differential_pair.delete",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.differential_pair.delete",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.differential_pair.rename",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.differential_pair.rename",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.equal_length_group.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.equal_length_group.create",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.equal_length_group.add_nets",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.equal_length_group.add_nets",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.equal_length_group.delete",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.equal_length_group.delete",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.route.via_hop",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.route.via_hop",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.pour.rebuild",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.pour.rebuild",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.beautify",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.beautify",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.export.dsn",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.export.dsn",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.import_autoroute",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.import_autoroute",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.stackup.set",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.stackup.set",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.silk.align",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.silk.align",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.silk.import_svg",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.silk.import_svg",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.image.create",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.image.create",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.image.list",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.image.list",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.image.modify",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.image.modify",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.image.delete",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.image.delete",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.silk.netnames",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.silk.netnames",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.silk.label_pads",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.silk.label_pads",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.report",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.report",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.board.info",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.board.info",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "system.notify",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "system.notify",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.import_changes",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.import_changes",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.component.attrs_backfill",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.component.attrs_backfill",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.page.clear",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.page.clear",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.components.arrange",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.components.arrange",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    },
+    {
+      "action": "pcb.config.set",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.config.set",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "pcb.net.color.set",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.net.color.set",
+          "ok": true,
+          "mode": "native-files"
+        }
+      ]
+    },
+    {
+      "action": "pcb.view.filter.get",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.view.filter.get",
+          "ok": true,
+          "mode": "native-gui-ipc"
+        }
+      ]
+    },
+    {
+      "action": "pcb.snapshot",
+      "passed": true,
+      "evidence": [
+        {
+          "action": "pcb.snapshot",
+          "ok": true,
+          "mode": "native-ipc/cli"
+        }
+      ]
+    }
+  ]
+}

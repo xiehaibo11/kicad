@@ -1,0 +1,27 @@
+{
+  "fixture": "real bundled Claude CLI plus SDK; isolated local Anthropic-compatible endpoint; no external model calls",
+  "results": 2,
+  "requests": [
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-flash",
+      "lastUserText": "[{\"type\":\"text\",\"text\":\"Reply FIXTURE_OK. No tools.\",\"cache_control\":{\"type\":\"ephemeral\"}}]"
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-flash",
+      "lastUserText": "[{\"type\":\"text\",\"text\":\"Warmup\",\"cache_control\":{\"type\":\"ephemeral\"}}]"
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-flash",
+      "lastUserText": "[{\"type\":\"text\",\"text\":\"Warmup\",\"cache_control\":{\"type\":\"ephemeral\"}}]"
+    },
+    {
+      "path": "/v1/messages?beta=true",
+      "model": "deepseek-flash",
+      "lastUserText": "[{\"type\":\"text\",\"text\":\"Again reply FIXTURE_OK. No tools.\",\"cache_control\":{\"type\":\"ephemeral\"}}]"
+    }
+  ],
+  "errors": []
+}

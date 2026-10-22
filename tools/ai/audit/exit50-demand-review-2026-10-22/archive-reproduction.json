@@ -1,0 +1,40 @@
+{
+  "source": "/Users/mosc/Downloads/RK3308B 四核 CPU 开发板/backup/RK3308B_IPC_before_reroute_20261019-1555.epro2",
+  "sourceUnchanged": true,
+  "sourceSha256": "83b1df03019ad2f3d723d28ec5347b1ff9129e3eee28582c112be9637c623d2c",
+  "freeBytes": 530815000576,
+  "extractedDirectory": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-exit50-repaired-hv5kxkjo/ditto",
+  "commands": [
+    {
+      "program": "system_unzip",
+      "exitCode": 50,
+      "stderr": "/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-exit50-repaired-hv5kxkjo/unzip/RK3308B_IPC �������񦵿����.epru:  write error (disk full?).  Continue? (y/n/^C) fchmod (file attributes) error: Bad file descriptor\nwarning:  cannot set modif./access times for /private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-exit50-repaired-hv5kxkjo/unzip/RK3308B_IPC �������񦵿����.epru\n          No such file or directory\nwarning:  /private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-exit50-repaired-hv5kxkjo/unzip/RK3308B_IPC �������񦵿����.epru is probably truncated\n"
+    },
+    {
+      "program": "supported_ditto",
+      "exitCode": 0,
+      "stderr": ""
+    }
+  ],
+  "members": [
+    {
+      "name": "IMAGE/",
+      "expectedBytes": 0,
+      "isDirectory": true,
+      "bytesMatch": true
+    },
+    {
+      "name": "project2.json",
+      "expectedBytes": 213,
+      "isDirectory": false,
+      "bytesMatch": true
+    },
+    {
+      "name": "RK3308B_IPC 摄像头模块.epru",
+      "expectedBytes": 7642131,
+      "isDirectory": false,
+      "bytesMatch": true
+    }
+  ],
+  "ok": true
+}

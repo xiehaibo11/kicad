@@ -1,0 +1,67 @@
+{
+  "createdAt": "2026-10-21T18:41:39.226167+00:00",
+  "gitHead": "63c27cc5ad92520e640b339c3509973ce5bc45f5",
+  "nativeBinariesAndRoutingSources": [
+    {
+      "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad",
+      "sha256": "dc39ab72f7f1422580db010cf8aa0984c0a1a2226b1fd04bec0215ee01da46c1",
+      "bytes": 7707048
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli",
+      "sha256": "cbe9953a04cdf2ea1edd3080b64d5eaa5234e121ed83444e76ea455d7959679e",
+      "bytes": 5807800
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/PlugIns/_pcbnew.kiface",
+      "sha256": "51cd3d0d9deab919a1f62996ed36299d2fc6ed8001296edb9e62a740ae42a923",
+      "bytes": 46427920
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/PlugIns/_eeschema.kiface",
+      "sha256": "8093f600c56570af37510b2198aaa14b62076646302d1625b74dbe1a38fe601f",
+      "bytes": 41580160
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-stepcheck",
+      "sha256": "28d0a7a2a17cecd9c791a77a210a47e850d32934009bca293776da142ad2f32d",
+      "bytes": 147696
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/overlay/kicadRuntime.ts",
+      "sha256": "6b23a5c3c63f1bb6b123afa47c584cd7c620220ce452efb5bac3ecb658fdd5a3",
+      "bytes": 7438
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/overlay/kicadIntegration.ts",
+      "sha256": "8b469eeb48381ef8e62f707a5aa9bab07a4da46b55c5a92b6584512a46c143fb",
+      "bytes": 4298
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/overlay/session-runtime.ts",
+      "sha256": "e2e785833f26eaf18e996256d7fa1b6344f015d19e89d6ee3c5f1fb2396873f0",
+      "bytes": 5763
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/direct/ipc.mjs",
+      "sha256": "54050413ef1b46600286c2e3b31a238db434b2bf3ba2c6ca0737552f56c248c2",
+      "bytes": 14363
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/tools/ai/direct/live.mjs",
+      "sha256": "abdb614eb9b421da51cf6809b4b742aef0a7218b081d9ee50332085d76b1c8cb",
+      "bytes": 2901
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/eeschema/api/sch_api_save.cpp",
+      "sha256": "9ba2c6596170c6c4a41cc9b2d85e5823c7d98298c9358e9ce0e3c41aef6240c4",
+      "bytes": 8037
+    },
+    {
+      "path": "/Users/mosc/Downloads/Kicad/pcbnew/api/api_handler_board.cpp",
+      "sha256": "3bc1db566efdc3ffe5499344a413aae0fd627d1bbc7b9435564406b63679075c",
+      "bytes": 48743
+    }
+  ],
+  "nativeIpcEnabled": true
+}

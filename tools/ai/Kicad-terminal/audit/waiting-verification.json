@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-10-20T16:19:38.442411-07:00",
+  "runtimeVersion": "1.19.3",
+  "waitingOverlayRevision": 2,
+  "installedBinary": "/Users/mosc/.local/bin/kicad-terminal",
+  "sha256": "1e9028b3ce6867d7d98f314293c3a9797726da072d3406ddab52664c7fca55e7",
+  "typechecks": [
+    "tui",
+    "opencode"
+  ],
+  "tuiTests": {
+    "pass": 205,
+    "skip": 1,
+    "fail": 0,
+    "snapshots": 8,
+    "assertions": 539
+  },
+  "cliCommandsPreserved": [
+    "completion",
+    "acp",
+    "mcp",
+    "[project]",
+    "attach",
+    "run",
+    "debug",
+    "providers",
+    "agent",
+    "upgrade",
+    "uninstall",
+    "serve",
+    "web",
+    "models",
+    "stats",
+    "export",
+    "import",
+    "github",
+    "pr",
+    "session",
+    "plugin",
+    "db"
+  ],
+  "nativeCodeSignatureVerified": true,
+  "embeddedWebUi": "Full native build includes rebuilt Web UI",
+  "packagedPty": {
+    "fixture": "Packaged native binary; real PTY; local HTTP model fixture; isolated configuration and sessions",
+    "externalModelCalls": 0,
+    "toolsCalled": 0,
+    "checks": [
+      "one blue Ki waiting badge below user message in transcript",
+      "assistant Build/model metadata row removed",
+      "no waiting badge in bottom toolbar; Esc controls retained",
+      "waiting persists during streamed reply",
+      "provider retries 429 and completes normally",
+      "completed turn removes busy indicator",
+      "two Esc keypresses interrupt normally and remove waiting indicator"
+    ],
+    "passed": true,
+    "localHttpRequests": [
+      {
+        "path": "/v1/chat/completions",
+        "stream": true,
+        "status": 429
+      },
+      {
+        "path": "/v1/chat/completions",
+        "stream": true,
+        "status": 200
+      },
+      {
+        "path": "/v1/chat/completions",
+        "stream": true,
+        "status": 200
+      },
+      {
+        "path": "/v1/chat/completions",
+        "stream": true,
+        "status": 200
+      }
+    ]
+  },
+  "kiCadMcp": "connected",
+  "openedVsCodeTerminal": {
+    "pid": 87403,
+    "process": "87403 73631 ttys002  Tue Oct 20 16:19:39 2026     /Users/mosc/.local/bin/kicad-terminal --model kicad-deepseek/deepseek-flash",
+    "model": "kicad-deepseek/deepseek-flash"
+  }
+}

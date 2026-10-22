@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "action": "board.fanout.run",
+  "data": {
+    "footprint": "P1",
+    "style": "via-in-pad",
+    "padCount": 1,
+    "viaCount": 1,
+    "trackCount": 0,
+    "created": 0,
+    "failed": 0,
+    "skipped": 0,
+    "dryRun": true
+  }
+}

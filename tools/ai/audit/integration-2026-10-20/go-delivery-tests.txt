@@ -1,0 +1,36 @@
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/cmd/kicad-agent	[no test files]
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/impedance.test
+ld: warning: ignoring duplicate libraries: '-lm', '-lpthread', '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/pipeline.test
+ld: warning: ignoring duplicate libraries: '-lm', '-lpthread', '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/designaudit.test
+ld: warning: ignoring duplicate libraries: '-lm', '-lpthread', '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/project.test
+ld: warning: ignoring duplicate libraries: '-lm', '-lpthread', '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/web.test
+ld: warning: ignoring duplicate libraries: '-lm', '-lpthread', '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/ai.test
+ld: warning: ignoring duplicate libraries: '-lm', '-lpthread', '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/backend.test
+ld: warning: ignoring duplicate libraries: '-lm', '-lpthread', '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/ai	4.113s
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/backend	(cached)
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/boardops	[no test files]
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/commands	[no test files]
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/designaudit	0.328s
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/dfm	[no test files]
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/external	[no test files]
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/fanout	[no test files]
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/impedance	0.594s
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/kicadactions	(cached)
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/kicadproto	[no test files]
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/kicadproto/schematic	[no test files]
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/library	[no test files]
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/llm	(cached)
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/mcp	(cached)
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/pipeline	1.161s
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/project	(cached)
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/routing	[no test files]
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/schematic	[no test files]
+?   	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/structural	[no test files]
+ok  	github.com/zhoushoujianwork/easyeda-agent/kicad-agent/internal/web	0.881s

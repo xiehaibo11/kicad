@@ -1,0 +1,14 @@
+{
+  "version": "0.4.11",
+  "labels": [
+    "Kicad",
+    "Kicad",
+    "Kicad"
+  ],
+  "installedMatchesVsix": true,
+  "sha256": {
+    "dist/extension.cjs": "e33dba37febd9c4856dfa3632623a55fb9d1b03633e03338ad1e32c658b330ff",
+    "dist/media/main.js": "c4239a8aa6ed58efd428ba2bd08db9f3b27bf67cd2fc0afe30c19fca8c68e084",
+    "dist/media/style.css": "787e8bfc496947a0a425964ad08a365ea5b5ccc6cf01e51a4b6f2616f3758c47"
+  }
+}

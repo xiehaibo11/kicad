@@ -1,0 +1,21 @@
+{
+  "context7": {
+    "ok": true,
+    "library": "/reactjs/react.dev",
+    "snippets": 5
+  },
+  "memory": {
+    "persistedAcrossPluginReload": true,
+    "privateMode": true
+  },
+  "tools": [
+    "context7",
+    "session_history",
+    "local_memory"
+  ],
+  "permissions": [
+    "context7",
+    "context7",
+    "local_memory"
+  ]
+}

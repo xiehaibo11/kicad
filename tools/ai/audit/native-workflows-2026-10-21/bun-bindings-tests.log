@@ -1,0 +1,14 @@
+bun test v1.3.14 (0d9b296a)
+
+tools/ai/direct/test/entry.test.mjs:
+(pass) standalone entry executes through symlink paths including macOS /var aliases [96.89ms]
+(pass) importing the shared module never runs its command entry [58.82ms]
+
+tools/ai/direct/test/bindings.test.mjs:
+(pass) in-process tools call the shared runtime, preserve write permission and validate input before execution [6.84ms]
+(pass) in-process composite tools serialize and queued cancellation never starts an edit [1.60ms]
+(pass) stdio compatibility handles fragmented UTF8, domain errors, real catalog and cancellation [5.04ms]
+
+ 5 pass
+ 0 fail
+Ran 5 tests across 2 files. [629.00ms]

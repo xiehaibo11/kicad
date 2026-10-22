@@ -1,0 +1,3946 @@
+{
+  "sessionId": "ses_ea0434eeeffen6xkzkNecJiMh8",
+  "boundary": "First acceptance prompt only; subsequent human prompts excluded.",
+  "exclusiveEndUnixMs": 1792607721680,
+  "tools": [
+    {
+      "timestamp": "2026-10-21T18:32:48.832000+00:00",
+      "tool": "kicad_health",
+      "input": {},
+      "status": "completed",
+      "result": {
+        "ok": true,
+        "action": "system.health",
+        "data": {
+          "cli": {
+            "ok": true,
+            "action": "system.version",
+            "data": {
+              "version": "10.99.0"
+            }
+          },
+          "kicadCli": {
+            "available": true,
+            "version": "10.99.0"
+          },
+          "compiledCapabilities": {
+            "actionCount": 333,
+            "mcpToolCount": 20
+          },
+          "externalTools": [
+            {
+              "name": "kicad-cli",
+              "available": true,
+              "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli"
+            },
+            {
+              "name": "freerouting",
+              "available": true,
+              "path": "/Users/mosc/.local/bin/freerouting"
+            },
+            {
+              "name": "java",
+              "available": true,
+              "path": "/Volumes/Macintosh HD/Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java"
+            },
+            {
+              "name": "ngspice",
+              "available": true,
+              "path": "/opt/homebrew/bin/ngspice"
+            },
+            {
+              "name": "gerbv",
+              "available": true,
+              "path": "/opt/homebrew/bin/gerbv"
+            },
+            {
+              "name": "openscad",
+              "available": true,
+              "path": "/opt/homebrew/bin/openscad"
+            },
+            {
+              "name": "FreeCAD",
+              "available": true,
+              "path": "/Users/mosc/.local/bin/FreeCAD"
+            },
+            {
+              "name": "python3",
+              "available": true,
+              "path": "/opt/homebrew/bin/python3"
+            },
+            {
+              "name": "kicad-stepcheck",
+              "available": true,
+              "path": "/Users/mosc/.local/bin/kicad-stepcheck"
+            }
+          ],
+          "ipc": {
+            "available": true,
+            "socket": "/tmp/kicad/api.sock",
+            "result": {
+              "ok": true,
+              "action": "system.ping",
+              "data": {}
+            }
+          },
+          "documents": {
+            "ok": true,
+            "action": "document.list",
+            "data": {
+              "documents": [
+                {
+                  "type": "DOCTYPE_PCB",
+                  "boardFilename": "RK3308B_IPC 摄像头模块.kicad_pcb",
+                  "project": {
+                    "name": "RK3308B_IPC 摄像头模块",
+                    "path": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块"
+                  }
+                }
+              ]
+            }
+          },
+          "tools": [
+            {
+              "name": "kicad-cli",
+              "available": true,
+              "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli"
+            },
+            {
+              "name": "freerouting",
+              "available": true,
+              "path": "/Users/mosc/.local/bin/freerouting"
+            },
+            {
+              "name": "java",
+              "available": true,
+              "path": "/Volumes/Macintosh HD/Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java"
+            },
+            {
+              "name": "ngspice",
+              "available": true,
+              "path": "/opt/homebrew/bin/ngspice"
+            },
+            {
+              "name": "gerbv",
+              "available": true,
+              "path": "/opt/homebrew/bin/gerbv"
+            },
+            {
+              "name": "openscad",
+              "available": true,
+              "path": "/opt/homebrew/bin/openscad"
+            },
+            {
+              "name": "FreeCAD",
+              "available": true,
+              "path": "/Users/mosc/.local/bin/FreeCAD"
+            },
+            {
+              "name": "python3",
+              "available": true,
+              "path": "/opt/homebrew/bin/python3"
+            },
+            {
+              "name": "kicad-stepcheck",
+              "available": true,
+              "path": "/Users/mosc/.local/bin/kicad-stepcheck"
+            }
+          ],
+          "designReady": true
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:32:51.658000+00:00",
+      "tool": "kicad_document",
+      "input": {
+        "action": "document.list",
+        "payload": {
+          "type": "pcb"
+        }
+      },
+      "status": "completed",
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "type": "DOCTYPE_PCB",
+              "boardFilename": "RK3308B_IPC 摄像头模块.kicad_pcb",
+              "project": {
+                "name": "RK3308B_IPC 摄像头模块",
+                "path": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:32:51.774000+00:00",
+      "tool": "kicad_document",
+      "input": {
+        "action": "document.list",
+        "payload": {
+          "type": "schematic"
+        }
+      },
+      "status": "completed",
+      "result": {
+        "ok": true,
+        "action": "document.list",
+        "data": {
+          "documents": [
+            {
+              "type": "DOCTYPE_SCHEMATIC",
+              "sheetPath": {
+                "path": [
+                  {
+                    "value": "4d8b9ae3-79ef-4159-9b55-b392b946c8bc"
+                  }
+                ],
+                "pathHumanReadable": "/"
+              },
+              "project": {
+                "name": "RK3308B_IPC 摄像头模块",
+                "path": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:32:53.947000+00:00",
+      "tool": "kicad_board",
+      "input": {
+        "action": "board.drc.live",
+        "payload": {
+          "severityAll": true,
+          "schematicParity": true,
+          "output": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/drc.json"
+        }
+      },
+      "status": "completed",
+      "result": {
+        "ok": false,
+        "action": "board.drc.live",
+        "error": {
+          "code": "BAD_INPUT",
+          "message": "document is required"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:32:56.181000+00:00",
+      "tool": "kicad_actions",
+      "input": {
+        "search": "board.drc.live"
+      },
+      "status": "completed",
+      "result": {
+        "ok": true,
+        "data": {
+          "actions": [
+            {
+              "name": "board.via.create",
+              "domain": "board",
+              "backend": "composite",
+              "mutates": true,
+              "description": "Create vias (through/blind/buried/micro) at positions or in the pads of a footprint (via-in-pad), with drill/diameter and IPC-4761 filled/capped/plugged/covered settings; every via is read back and checked.",
+              "inputs": [
+                "document (board path; must be open in KiCad for IPC steps)",
+                "positions[] {xMm,yMm,net?} | position | reference + pads[]/nets[] (via-in-pad)",
+                "net optional",
+                "drillMm optional (0.3)",
+                "diameterMm optional (0.6)",
+                "type optional (through|blind|buried|micro)",
+                "startLayer/endLayer optional",
+                "filled optional",
+                "capped optional",
+                "plugged optional (none|front|back|both)",
+                "covered optional (none|front|back|both)",
+                "dryRun optional"
+              ],
+              "outputs": [
+                "createdIds",
+                "verified",
+                "mismatches"
+              ],
+              "verifyWith": [
+                "board.drc.live",
+                "board.connectivity.prove"
+              ],
+              "keywords": [
+                "添加过孔",
+                "打过孔",
+                "盘中孔",
+                "填充过孔",
+                "塞孔",
+                "盖油",
+                "via-in-pad",
+                "filled via",
+                "capped via",
+                "缝合孔"
+              ]
+            },
+            {
+              "name": "board.plane.build",
+              "domain": "board",
+              "backend": "composite",
+              "mutates": true,
+              "description": "Build a verified plane for ANY net: create a net-bound zone on the given layers, fill it, require real filled copper on every layer, no unconnected pads/vias and a zone-aware connectivity proof; optionally mark the inner layers as power. An unverified plane is removed (keepOnFailure=false) so no fake pour remains.",
+              "inputs": [
+                "document (board path; must be open in KiCad for IPC steps)",
+                "net",
+                "layers[]",
+                "outline[] optional (default: board outline)",
+                "clearanceMm optional",
+                "minThicknessMm optional",
+                "priority optional",
+                "name optional",
+                "layerType optional (power|mixed)",
+                "keepOnFailure optional"
+              ],
+              "outputs": [
+                "zone",
+                "verify",
+                "connectivity",
+                "verified"
+              ],
+              "verifyWith": [
+                "board.drc.live"
+              ],
+              "keywords": [
+                "内电层",
+                "电源平面",
+                "地平面",
+                "铺铜",
+                "平面分割",
+                "power plane",
+                "ground plane",
+                "pour"
+              ]
+            },
+            {
+              "name": "board.rule_area.create",
+              "domain": "board",
+              "backend": "composite",
+              "mutates": true,
+              "description": "Create a named rule area (keepout and/or region for custom rules such as T1/T2) from outline points, a box, or a footprint's bounding box/pads plus margin; read back to verify name, layers and keepout flags.",
+              "inputs": [
+                "document (board path; must be open in KiCad for IPC steps)",
+                "name",
+                "outline[] {xMm,yMm} | box {x1Mm,y1Mm,x2Mm,y2Mm} | reference + marginMm + pads[]",
+                "layers[] optional (default all copper)",
+                "keepout {tracks,vias,pads,copper,footprints} optional",
+                "dryRun optional"
+              ],
+              "outputs": [
+                "zone",
+                "verified"
+              ],
+              "verifyWith": [
+                "board.drc.live"
+              ],
+              "keywords": [
+                "禁布区",
+                "规则区域",
+                "区域规则",
+                "keepout",
+                "rule area"
+              ]
+            },
+            {
+              "name": "board.rules.region.set",
+              "domain": "board",
+              "backend": "composite",
+              "mutates": true,
+              "description": "Write named custom DRC rules scoped to a rule area (A.insideArea('T1')): clearance, track width, via diameter, hole size, annular width, hole clearance, or raw rules[]; same-name rules are replaced, then read back.",
+              "inputs": [
+                "document (board path; must be open in KiCad for IPC steps)",
+                "area",
+                "clearanceMm/trackWidthMm/trackWidthMaxMm/viaDiameterMm/holeSizeMm/annularWidthMm/holeClearanceMm optional",
+                "condition optional",
+                "rules[] optional (CustomRule proto JSON)",
+                "dryRun optional"
+              ],
+              "outputs": [
+                "added",
+                "replaced",
+                "verified"
+              ],
+              "verifyWith": [
+                "board.drc.live"
+              ],
+              "keywords": [
+                "区域规则",
+                "BGA区规则",
+                "分区规则",
+                "间距矩阵",
+                "region rules",
+                "custom rules"
+              ]
+            },
+            {
+              "name": "board.drc.live",
+              "domain": "board",
+              "backend": "composite",
+              "mutates": false,
+              "description": "Native KiCad DRC of the OPEN board including unsaved edits (KiCad saves a temporary copy with its project rules; kicad-cli checks it). Configurable timeoutMs; the same as board.drc.run with document instead of input.",
+              "inputs": [
+                "document (board path; must be open in KiCad for IPC steps)",
+                "timeoutMs optional",
+                "refillZones optional",
+                "severityAll optional",
+                "schematicParity optional",
+                "units optional"
+              ],
+              "outputs": [
+                "status",
+                "reportJson",
+                "checkedCopy"
+              ],
+              "keywords": [
+                "实时DRC",
+                "未保存DRC",
+                "DRC超时",
+                "live drc"
+              ]
+            },
+            {
+              "name": "board.dfm.full",
+              "domain": "board",
+              "backend": "composite",
+              "mutates": true,
+              "description": "Full DFM pass: narrow tracks, off-45° and zero-length segments, dangling track stubs, acute junctions and wrongly mirrored silk text. fix=true widens tracks, removes stubs (restored if connectivity gets worse) and corrects silk mirroring, then re-analyzes.",
+              "inputs": [
+                "document (board path; must be open in KiCad for IPC steps)",
+                "fix optional",
+                "minWidthMm optional (0.15)",
+                "acuteDeg optional (90)"
+              ],
+              "outputs": [
+                "issues",
+                "findings",
+                "remaining"
+              ],
+              "verifyWith": [
+                "board.drc.live"
+              ],
+              "keywords": [
+                "可制造性",
+                "DFM修复",
+                "批量修复",
+                "线宽",
+                "锐角",
+                "悬空走线",
+                "丝印镜像",
+                "fix all"
+              ]
+            },
+            {
+              "name": "board.route.length_match",
+              "domain": "board",
+              "backend": "composite",
+              "mutates": true,
+              "description": "Length-match a group of nets: measure, choose the target (targetMm or the longest), serpentine-tune the short nets and re-measure; passes only if every net is within toleranceMm. Dry-run unless apply=true.",
+              "inputs": [
+                "document (board path; must be open in KiCad for IPC steps)",
+                "nets[]",
+                "targetMm optional",
+                "toleranceMm optional (0.5)",
+                "amplitudeMm optional",
+                "spacingMm optional",
+                "apply optional"
+              ],
+              "outputs": [
+                "nets",
+                "after",
+                "verified"
+              ],
+              "verifyWith": [
+                "board.drc.live"
+              ],
+              "keywords": [
+                "等长",
+                "等长组",
+                "长度匹配",
+                "DDR",
+                "length match",
+                "bus"
+              ]
+            }
+          ],
+          "count": 7
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:32:58.466000+00:00",
+      "tool": "kicad_board",
+      "input": {
+        "action": "board.drc.live",
+        "payload": {
+          "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pcb",
+          "severityAll": true,
+          "schematicParity": true,
+          "output": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/drc.json"
+        }
+      },
+      "status": "completed",
+      "result": {
+        "ok": true,
+        "action": "board.drc.live",
+        "data": {
+          "status": "violations",
+          "exitCode": 5,
+          "report": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/drc.json",
+          "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/drc.json",
+          "summary": {
+            "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/drc.json",
+            "total": 1543,
+            "bySeverity": {
+              "error": 1068,
+              "warning": 475
+            },
+            "byType": {
+              "clearance": 499,
+              "shorting_items": 7,
+              "hole_clearance": 3,
+              "courtyards_overlap": 18,
+              "copper_edge_clearance": 34,
+              "drill_out_of_range": 77,
+              "track_width": 199,
+              "starved_thermal": 12,
+              "via_diameter": 77,
+              "solder_mask_bridge": 10,
+              "track_dangling": 1,
+              "text_height": 90,
+              "silk_overlap": 21,
+              "silk_over_copper": 1,
+              "unconnected_items": 132,
+              "missing_footprint": 8,
+              "footprint_symbol_mismatch": 155,
+              "net_conflict": 199
+            },
+            "violations": 1049,
+            "unconnected_items": 132,
+            "schematic_parity": 362,
+            "ignoredChecks": [
+              {
+                "description": "Footprint has no courtyard defined",
+                "key": "missing_courtyard"
+              },
+              {
+                "description": "Track endpoint not centered on via",
+                "key": "track_not_centered_on_via"
+              },
+              {
+                "description": "Tuning profile track geometries",
+                "key": "tuning_profile_track_geometries"
+              },
+              {
+                "description": "Footprint doesn't match symbol's footprint filters",
+                "key": "footprint_filters_mismatch"
+              },
+              {
+                "description": "Footprint component type doesn't match footprint pads",
+                "key": "footprint_type_mismatch"
+              }
+            ]
+          },
+          "reportJsonOmitted": true,
+          "reportBytes": 1061186,
+          "sampleViolations": [
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0395 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 2.2755 mm",
+                  "pos": {
+                    "x": 151.486,
+                    "y": 121.26
+                  },
+                  "uuid": "6092c6d2-3305-4aa5-8296-86137cb84ea8"
+                },
+                {
+                  "description": "Pad 2 [GND] of C107 on Bottom Layer",
+                  "pos": {
+                    "x": 152.325,
+                    "y": 121.76
+                  },
+                  "uuid": "9db4f8c3-431a-4a46-960b-4fc1d7a96471"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1240 mm)",
+              "items": [
+                {
+                  "description": "Pad 2 [GND] of C108 on Bottom Layer",
+                  "pos": {
+                    "x": 163.704,
+                    "y": 118.509
+                  },
+                  "uuid": "2576cbe2-d6bb-4581-9156-d76568dc1084"
+                },
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 0.3882 mm",
+                  "pos": {
+                    "x": 162.865,
+                    "y": 118.509
+                  },
+                  "uuid": "5d9edb02-5ee9-4544-809d-d0a2ba758b9a"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1613 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 0.3539 mm",
+                  "pos": {
+                    "x": 160.5895,
+                    "y": 119.883
+                  },
+                  "uuid": "609052aa-7dbe-4cf6-a96a-982169471f98"
+                },
+                {
+                  "description": "Via [DDR_DM0] on Top Layer - Bottom Layer",
+                  "pos": {
+                    "x": 160.0025,
+                    "y": 119.195
+                  },
+                  "uuid": "9a7288cf-630e-4dc9-b1e9-dc0611a08a01"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0945 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 1.8775 mm",
+                  "pos": {
+                    "x": 151.158,
+                    "y": 124.676
+                  },
+                  "uuid": "76fbe546-5b2a-42e6-92e8-88cf97305e58"
+                },
+                {
+                  "description": "Pad 2 [GND] of C6 on Bottom Layer",
+                  "pos": {
+                    "x": 153.159,
+                    "y": 123.716
+                  },
+                  "uuid": "b6187a06-7460-4a7a-9a3b-0909eae59cbb"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1031 mm)",
+              "items": [
+                {
+                  "description": "Track [USB_CON_DM] on Top Layer, length 3.3145 mm",
+                  "pos": {
+                    "x": 149.8935,
+                    "y": 122.296
+                  },
+                  "uuid": "2a76d540-c37f-44bf-9ecd-7cd5e4cb44f6"
+                },
+                {
+                  "description": "Zone [GND] on Top Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0945 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 0.6392 mm",
+                  "pos": {
+                    "x": 153.0355,
+                    "y": 124.676
+                  },
+                  "uuid": "6f71a307-cd2d-429f-b33d-217e4a46a0fd"
+                },
+                {
+                  "description": "Pad 2 [GND] of C6 on Bottom Layer",
+                  "pos": {
+                    "x": 153.159,
+                    "y": 123.716
+                  },
+                  "uuid": "b6187a06-7460-4a7a-9a3b-0909eae59cbb"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1042 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 0.1930 mm",
+                  "pos": {
+                    "x": 158.3135,
+                    "y": 113.132
+                  },
+                  "uuid": "60339f1e-9a21-4263-9fd2-82d6816af41b"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1003 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 0.9070 mm",
+                  "pos": {
+                    "x": 151.158,
+                    "y": 123.716
+                  },
+                  "uuid": "6346faa3-b3e4-417e-9577-3b0022299a16"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1008 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 2.2755 mm",
+                  "pos": {
+                    "x": 151.486,
+                    "y": 121.26
+                  },
+                  "uuid": "6092c6d2-3305-4aa5-8296-86137cb84ea8"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1042 mm)",
+              "items": [
+                {
+                  "description": "Track [USB_CON_DM] on Top Layer, length 2.2985 mm",
+                  "pos": {
+                    "x": 145.418,
+                    "y": 118.913
+                  },
+                  "uuid": "334cded3-75d6-4782-b50f-09cc29e41a41"
+                },
+                {
+                  "description": "Zone [GND] on Top Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1006 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 0.6392 mm",
+                  "pos": {
+                    "x": 153.0355,
+                    "y": 124.676
+                  },
+                  "uuid": "6f71a307-cd2d-429f-b33d-217e4a46a0fd"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0400 mm)",
+              "items": [
+                {
+                  "description": "Pad 2 [GND] of C110 on Bottom Layer",
+                  "pos": {
+                    "x": 159.1525,
+                    "y": 120.1345
+                  },
+                  "uuid": "c8128942-df80-4d36-a44c-4f61778f3d79"
+                },
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 2.5220 mm",
+                  "pos": {
+                    "x": 159.032,
+                    "y": 119.634
+                  },
+                  "uuid": "fea783ec-1cb0-417c-b2c5-d6089b9826ae"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1031 mm)",
+              "items": [
+                {
+                  "description": "Track [USB_CON_DM] on Top Layer, length 1.1278 mm",
+                  "pos": {
+                    "x": 149.096,
+                    "y": 123.0935
+                  },
+                  "uuid": "e7a30725-b5b0-41d6-be6b-f10f8c9c1af7"
+                },
+                {
+                  "description": "Zone [GND] on Top Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1032 mm)",
+              "items": [
+                {
+                  "description": "Track [XIN_24M] on Bottom Layer, length 0.9040 mm",
+                  "pos": {
+                    "x": 150.889,
+                    "y": 95.941
+                  },
+                  "uuid": "eda9da4d-9c7e-451b-8d20-ad0a569929a4"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1034 mm)",
+              "items": [
+                {
+                  "description": "Track [XOUT_24M] on Bottom Layer, length 0.9300 mm",
+                  "pos": {
+                    "x": 154.521,
+                    "y": 93.546
+                  },
+                  "uuid": "1b35181d-fdbc-422c-b4d1-0fa13e93bc52"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1035 mm)",
+              "items": [
+                {
+                  "description": "Track [XIN_24M] on Bottom Layer, length 0.2768 mm",
+                  "pos": {
+                    "x": 151.793,
+                    "y": 95.941
+                  },
+                  "uuid": "f27363e1-f4e8-4f37-a63b-e21b250d3ec2"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1537 mm)",
+              "items": [
+                {
+                  "description": "Pad 2 [GND] of U5 on Bottom Layer",
+                  "pos": {
+                    "x": 158.9455,
+                    "y": 93.1855
+                  },
+                  "uuid": "5fafb027-1aa5-475d-af30-6c066d1a0c10"
+                },
+                {
+                  "description": "Track [SW_CORE] on Bottom Layer, length 0.6500 mm",
+                  "pos": {
+                    "x": 159.7255,
+                    "y": 94.135
+                  },
+                  "uuid": "cc767211-60ad-4e42-a989-4e07087141e6"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1537 mm)",
+              "items": [
+                {
+                  "description": "Track [SW_CORE] on Bottom Layer, length 1.0706 mm",
+                  "pos": {
+                    "x": 159.7255,
+                    "y": 93.485
+                  },
+                  "uuid": "2e0e9188-6b3a-4fbc-b31e-0d4bc12b234a"
+                },
+                {
+                  "description": "Pad 2 [GND] of U5 on Bottom Layer",
+                  "pos": {
+                    "x": 158.9455,
+                    "y": 93.1855
+                  },
+                  "uuid": "5fafb027-1aa5-475d-af30-6c066d1a0c10"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1754 mm)",
+              "items": [
+                {
+                  "description": "Pad 2 [GND] of U7 on Bottom Layer",
+                  "pos": {
+                    "x": 149.344,
+                    "y": 127.323
+                  },
+                  "uuid": "262e44c8-b196-49a2-b421-4257950b5c56"
+                },
+                {
+                  "description": "Track [SW_DDR] on Bottom Layer, length 0.9984 mm",
+                  "pos": {
+                    "x": 150.1245,
+                    "y": 127.724
+                  },
+                  "uuid": "fd6c2015-1c8f-4803-9ece-a9a957955576"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1754 mm)",
+              "items": [
+                {
+                  "description": "Pad 2 [GND] of U7 on Bottom Layer",
+                  "pos": {
+                    "x": 149.344,
+                    "y": 127.323
+                  },
+                  "uuid": "262e44c8-b196-49a2-b421-4257950b5c56"
+                },
+                {
+                  "description": "Track [SW_DDR] on Bottom Layer, length 0.5490 mm",
+                  "pos": {
+                    "x": 150.1245,
+                    "y": 128.273
+                  },
+                  "uuid": "f9dd8179-0812-45d2-b2d2-257f8a5176e6"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1648 mm)",
+              "items": [
+                {
+                  "description": "Pad 2 [VDD_LOG] of R3 on Bottom Layer",
+                  "pos": {
+                    "x": 138.4345,
+                    "y": 90.569
+                  },
+                  "uuid": "93374c34-663d-4bf8-abd4-638af5bc6962"
+                },
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 2.2355 mm",
+                  "pos": {
+                    "x": 136.9265,
+                    "y": 91.242
+                  },
+                  "uuid": "ac12e852-1572-46b4-bdc3-c3b301ec6b75"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1716 mm)",
+              "items": [
+                {
+                  "description": "Pad 2 [SW_LOG] of L2 on Bottom Layer",
+                  "pos": {
+                    "x": 140.798,
+                    "y": 92.855
+                  },
+                  "uuid": "9354a37d-8e8c-4492-b9b3-b62aa210f68b"
+                },
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 0.1690 mm",
+                  "pos": {
+                    "x": 141.661,
+                    "y": 90.9575
+                  },
+                  "uuid": "a42b1b0a-bcd3-43b6-ba09-3842b44fbf70"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1610 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 0.3539 mm",
+                  "pos": {
+                    "x": 160.5895,
+                    "y": 119.883
+                  },
+                  "uuid": "609052aa-7dbe-4cf6-a96a-982169471f98"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1019 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 1.8775 mm",
+                  "pos": {
+                    "x": 151.158,
+                    "y": 124.676
+                  },
+                  "uuid": "76fbe546-5b2a-42e6-92e8-88cf97305e58"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1010 mm)",
+              "items": [
+                {
+                  "description": "Track [DBG_TX_C] on Top Layer, length 0.1004 mm",
+                  "pos": {
+                    "x": 157.295,
+                    "y": 131.6585
+                  },
+                  "uuid": "b3e7f30f-e2f4-438d-aaaa-5e107f3d691c"
+                },
+                {
+                  "description": "Zone [GND] on Top Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1562 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 3.7565 mm",
+                  "pos": {
+                    "x": 141.7805,
+                    "y": 91.077
+                  },
+                  "uuid": "76827cc8-a131-4ec3-8bcf-a29a323b3468"
+                },
+                {
+                  "description": "Pad 2 [SW_LOG] of L2 on Bottom Layer",
+                  "pos": {
+                    "x": 140.798,
+                    "y": 92.855
+                  },
+                  "uuid": "9354a37d-8e8c-4492-b9b3-b62aa210f68b"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1049 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 2.5220 mm",
+                  "pos": {
+                    "x": 159.032,
+                    "y": 119.634
+                  },
+                  "uuid": "fea783ec-1cb0-417c-b2c5-d6089b9826ae"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0998 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 0.1690 mm",
+                  "pos": {
+                    "x": 141.661,
+                    "y": 90.9575
+                  },
+                  "uuid": "a42b1b0a-bcd3-43b6-ba09-3842b44fbf70"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1279 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 2.2355 mm",
+                  "pos": {
+                    "x": 136.9265,
+                    "y": 91.242
+                  },
+                  "uuid": "ac12e852-1572-46b4-bdc3-c3b301ec6b75"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1613 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 2.2145 mm",
+                  "pos": {
+                    "x": 139.4465,
+                    "y": 90.9575
+                  },
+                  "uuid": "16c02338-bda3-409d-8e70-6a41652104bf"
+                },
+                {
+                  "description": "Pad 2 [SW_LOG] of L2 on Bottom Layer",
+                  "pos": {
+                    "x": 140.798,
+                    "y": 92.855
+                  },
+                  "uuid": "9354a37d-8e8c-4492-b9b3-b62aa210f68b"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1035 mm)",
+              "items": [
+                {
+                  "description": "Track [XIN_24M] on Bottom Layer, length 0.8305 mm",
+                  "pos": {
+                    "x": 152.8195,
+                    "y": 95.7455
+                  },
+                  "uuid": "44a4c106-fa3a-44a7-8b34-856a002c5f5d"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0998 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 3.7565 mm",
+                  "pos": {
+                    "x": 141.7805,
+                    "y": 91.077
+                  },
+                  "uuid": "76827cc8-a131-4ec3-8bcf-a29a323b3468"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1016 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 0.7563 mm",
+                  "pos": {
+                    "x": 141.7805,
+                    "y": 94.8335
+                  },
+                  "uuid": "722fdf03-e192-4b17-8036-9482df6d1d0c"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0978 mm)",
+              "items": [
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 1.3700 mm",
+                  "pos": {
+                    "x": 153.749,
+                    "y": 119.634
+                  },
+                  "uuid": "fe98669e-44cc-4356-a6e5-20edf2d7a6e5"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1279 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 0.6730 mm",
+                  "pos": {
+                    "x": 136.9265,
+                    "y": 90.569
+                  },
+                  "uuid": "7b74216b-99f1-4783-923e-86c310aff8b5"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1359 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 2.2145 mm",
+                  "pos": {
+                    "x": 139.4465,
+                    "y": 90.9575
+                  },
+                  "uuid": "16c02338-bda3-409d-8e70-6a41652104bf"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1037 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 0.9930 mm",
+                  "pos": {
+                    "x": 136.9265,
+                    "y": 91.242
+                  },
+                  "uuid": "339220d4-6729-49e3-82e9-74a06fd66e4a"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1028 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_LOG] on Bottom Layer, length 0.6630 mm",
+                  "pos": {
+                    "x": 141.2445,
+                    "y": 96.03
+                  },
+                  "uuid": "80afc1f8-d948-4ed1-bb7d-04f1fc2eb4a6"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1037 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_CORE] on Bottom Layer, length 1.5060 mm",
+                  "pos": {
+                    "x": 157.2465,
+                    "y": 90.569
+                  },
+                  "uuid": "dca0485a-86d7-4107-95be-b02283202891"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1030 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_3V3] on Bottom Layer, length 0.8610 mm",
+                  "pos": {
+                    "x": 136.4185,
+                    "y": 112.822
+                  },
+                  "uuid": "2f5efd97-78d4-4d30-b9a5-ca2566021d1b"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1040 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_DDR] on Bottom Layer, length 0.6325 mm",
+                  "pos": {
+                    "x": 151.2775,
+                    "y": 130.193
+                  },
+                  "uuid": "58030cc2-dedb-4b35-9722-b7dce8fbdcff"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1663 mm)",
+              "items": [
+                {
+                  "description": "Pad 2 [GND] of U6 on Bottom Layer",
+                  "pos": {
+                    "x": 139.311,
+                    "y": 93.1855
+                  },
+                  "uuid": "e866a68f-db72-4b1d-9837-a25d78490b0f"
+                },
+                {
+                  "description": "Track [SW_LOG] on Bottom Layer, length 0.5740 mm",
+                  "pos": {
+                    "x": 140.0915,
+                    "y": 94.135
+                  },
+                  "uuid": "f205e035-1d54-4aa1-a386-9abb62043a41"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1663 mm)",
+              "items": [
+                {
+                  "description": "Track [SW_LOG] on Bottom Layer, length 0.9984 mm",
+                  "pos": {
+                    "x": 140.0915,
+                    "y": 93.561
+                  },
+                  "uuid": "e49a0489-39a7-4ccb-bd4e-c7c4be6fc845"
+                },
+                {
+                  "description": "Pad 2 [GND] of U6 on Bottom Layer",
+                  "pos": {
+                    "x": 139.311,
+                    "y": 93.1855
+                  },
+                  "uuid": "e866a68f-db72-4b1d-9837-a25d78490b0f"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1002 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_DDR] on Bottom Layer, length 0.4240 mm",
+                  "pos": {
+                    "x": 147.5235,
+                    "y": 126.797
+                  },
+                  "uuid": "ad5fb4e0-d63a-4331-a072-1c6e51edf1f2"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1017 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_DDR] on Bottom Layer, length 1.6410 mm",
+                  "pos": {
+                    "x": 146.9595,
+                    "y": 124.732
+                  },
+                  "uuid": "100424d9-e043-4902-b86b-bbce1e88010a"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1030 mm)",
+              "items": [
+                {
+                  "description": "Track [FB_3V3] on Bottom Layer, length 0.3592 mm",
+                  "pos": {
+                    "x": 136.1645,
+                    "y": 112.568
+                  },
+                  "uuid": "9eaa6f03-72cf-4302-b501-8895f29f1e20"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1823 mm)",
+              "items": [
+                {
+                  "description": "Pad 2 [GND] of R102 on Bottom Layer",
+                  "pos": {
+                    "x": 154.614,
+                    "y": 118.509
+                  },
+                  "uuid": "4669a295-9469-450d-b11a-dc02341ed5a4"
+                },
+                {
+                  "description": "Track [VREF_DDR] on Bottom Layer, length 0.3760 mm",
+                  "pos": {
+                    "x": 153.749,
+                    "y": 118.0085
+                  },
+                  "uuid": "d06eda3c-0959-4a60-a5bc-33ebc05f1db7"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1243 mm)",
+              "items": [
+                {
+                  "description": "Track [VREF_DDR] on Bottom Layer, length 0.8835 mm",
+                  "pos": {
+                    "x": 153.749,
+                    "y": 119.0095
+                  },
+                  "uuid": "cf619d22-a39b-4aba-b355-4d7abf39dc95"
+                },
+                {
+                  "description": "Track [VDD_DDR] on Bottom Layer, length 1.3700 mm",
+                  "pos": {
+                    "x": 153.749,
+                    "y": 119.634
+                  },
+                  "uuid": "fe98669e-44cc-4356-a6e5-20edf2d7a6e5"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1037 mm)",
+              "items": [
+                {
+                  "description": "Track [ISET_CAM] on Bottom Layer, length 0.1146 mm",
+                  "pos": {
+                    "x": 140.701,
+                    "y": 123.9775
+                  },
+                  "uuid": "efe51525-6213-4415-9db7-003689bb2034"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            },
+            {
+              "group": "violations",
+              "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1037 mm)",
+              "items": [
+                {
+                  "description": "Track [ISET_CAM] on Bottom Layer, length 0.6630 mm",
+                  "pos": {
+                    "x": 141.364,
+                    "y": 123.9775
+                  },
+                  "uuid": "a7d555f7-ab01-47f9-911c-dbe16e8547c0"
+                },
+                {
+                  "description": "Zone [GND] on Bottom Layer, priority 500",
+                  "pos": {
+                    "x": 135.38,
+                    "y": 132.1185
+                  },
+                  "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+                }
+              ],
+              "severity": "error",
+              "type": "clearance"
+            }
+          ],
+          "next": "Read reportPath for the complete report, or use full=true.",
+          "source": "live",
+          "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pcb",
+          "checkedCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-H42l2F/RK3308B_IPC 摄像头模块.kicad_pcb"
+        },
+        "artifacts": [
+          "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/drc.json"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:33:06.847000+00:00",
+      "tool": "kicad_actions",
+      "input": {
+        "search": "schematic.erc.live"
+      },
+      "status": "completed",
+      "result": {
+        "ok": true,
+        "data": {
+          "actions": [
+            {
+              "name": "schematic.erc.live",
+              "domain": "schematic",
+              "backend": "composite",
+              "mutates": false,
+              "description": "Native ERC of the OPEN schematic including unsaved edits (via a temporary copy).",
+              "inputs": [
+                "document (schematic path)",
+                "timeoutMs optional",
+                "severityAll optional"
+              ],
+              "outputs": [
+                "status",
+                "reportJson"
+              ],
+              "keywords": [
+                "实时ERC",
+                "live erc"
+              ]
+            }
+          ],
+          "count": 1
+        }
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:33:08.915000+00:00",
+      "tool": "kicad_schematic",
+      "input": {
+        "action": "schematic.erc.live",
+        "payload": {
+          "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_sch",
+          "severityAll": true,
+          "output": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/erc.json"
+        }
+      },
+      "status": "completed",
+      "result": {
+        "ok": true,
+        "action": "schematic.erc.live",
+        "data": {
+          "status": "violations",
+          "exitCode": 5,
+          "report": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/erc.json",
+          "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/erc.json",
+          "summary": {
+            "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/erc.json",
+            "total": 1235,
+            "bySeverity": {
+              "error": 176,
+              "warning": 1059
+            },
+            "byType": {
+              "power_pin_not_driven": 13,
+              "pin_not_driven": 27,
+              "pin_not_connected": 136,
+              "same_local_global_label": 10,
+              "lib_symbol_mismatch": 275,
+              "pin_to_pin": 454,
+              "footprint_link_issues": 157,
+              "isolated_pin_label": 163
+            },
+            "violations": 1235,
+            "unconnected_items": 0,
+            "schematic_parity": 0,
+            "ignoredChecks": [
+              {
+                "description": "Global label only appears once in the schematic",
+                "key": "single_global_label"
+              },
+              {
+                "description": "Four connection points are joined together",
+                "key": "four_way_junction"
+              },
+              {
+                "description": "SPICE model issue",
+                "key": "simulation_model_issue"
+              },
+              {
+                "description": "Assigned footprint doesn't match footprint filters",
+                "key": "footprint_filter"
+              }
+            ]
+          },
+          "reportJsonOmitted": true,
+          "reportBytes": 970179,
+          "sampleViolations": [
+            {
+              "group": "violations",
+              "description": "Input Power pin not driven by any Output Power pins",
+              "items": [
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 0.1143,
+                    "y": 0.1524
+                  },
+                  "uuid": "8b8f86d0-0f1f-4c2f-bd4b-304a9062128d"
+                }
+              ],
+              "severity": "error",
+              "type": "power_pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Input pin not driven by any Output pins",
+              "items": [
+                {
+                  "description": "Symbol R9 Pin 1 [1, Input, Line]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 0.8255
+                  },
+                  "uuid": "b68a3a04-585e-4c91-aef7-c413e08f338a"
+                }
+              ],
+              "severity": "error",
+              "type": "pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Input Power pin not driven by any Output Power pins",
+              "items": [
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 1.143,
+                    "y": 0.2286
+                  },
+                  "uuid": "21998fd0-62e6-4b83-95f4-613333c75e6b"
+                }
+              ],
+              "severity": "error",
+              "type": "power_pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Input pin not driven by any Output pins",
+              "items": [
+                {
+                  "description": "Symbol R1 Pin 1 [1, Input, Line]",
+                  "pos": {
+                    "x": 1.3716,
+                    "y": 0.2794
+                  },
+                  "uuid": "b0f297f8-1c88-4392-9529-dbdb84ebc2c3"
+                }
+              ],
+              "severity": "error",
+              "type": "pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Input pin not driven by any Output pins",
+              "items": [
+                {
+                  "description": "Symbol R6 Pin 1 [1, Input, Line]",
+                  "pos": {
+                    "x": 1.4224,
+                    "y": 0.8001
+                  },
+                  "uuid": "ef5bbf16-4c69-4d05-81cb-e5a8495a09a1"
+                }
+              ],
+              "severity": "error",
+              "type": "pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Pin not connected",
+              "items": [
+                {
+                  "description": "Symbol U9 Pin 4 [NC, 未指定, Line]",
+                  "pos": {
+                    "x": 1.4605,
+                    "y": 1.3589
+                  },
+                  "uuid": "487b930c-a881-498e-a963-f1aaabcb177b"
+                }
+              ],
+              "severity": "error",
+              "type": "pin_not_connected"
+            },
+            {
+              "group": "violations",
+              "description": "Input Power pin not driven by any Output Power pins",
+              "items": [
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 1.6129,
+                    "y": 1.2573
+                  },
+                  "uuid": "035a6e95-9807-4a59-a94b-bd383900c1e6"
+                }
+              ],
+              "severity": "error",
+              "type": "power_pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Input Power pin not driven by any Output Power pins",
+              "items": [
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 1.6764,
+                    "y": 0.3556
+                  },
+                  "uuid": "5fa8c15c-877f-4f0f-855e-7b2cfaf01964"
+                }
+              ],
+              "severity": "error",
+              "type": "power_pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Input Power pin not driven by any Output Power pins",
+              "items": [
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 2.4638,
+                    "y": 1.3335
+                  },
+                  "uuid": "c572872c-d9e9-44a9-9700-8497dcf7af4c"
+                }
+              ],
+              "severity": "error",
+              "type": "power_pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Input pin not driven by any Output pins",
+              "items": [
+                {
+                  "description": "Symbol R3 Pin 1 [1, Input, Line]",
+                  "pos": {
+                    "x": 2.5019,
+                    "y": 0.2794
+                  },
+                  "uuid": "876d3de9-a584-4d03-bb14-7221d74270e0"
+                }
+              ],
+              "severity": "error",
+              "type": "pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Input pin not driven by any Output pins",
+              "items": [
+                {
+                  "description": "Symbol R10 Pin 2 [2, Input, Line]",
+                  "pos": {
+                    "x": 2.6162,
+                    "y": 1.3081
+                  },
+                  "uuid": "09f15b27-2b88-42c8-9c45-ce2def9d24ba"
+                }
+              ],
+              "severity": "error",
+              "type": "pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Input Power pin not driven by any Output Power pins",
+              "items": [
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 2.8067,
+                    "y": 0.3556
+                  },
+                  "uuid": "37ab27e3-15b2-4121-aa3a-745474729624"
+                }
+              ],
+              "severity": "error",
+              "type": "power_pin_not_driven"
+            },
+            {
+              "group": "violations",
+              "description": "Local and global labels have same name",
+              "items": [
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 0.1143,
+                    "y": 0.1524
+                  },
+                  "uuid": "8b8f86d0-0f1f-4c2f-bd4b-304a9062128d"
+                },
+                {
+                  "description": "Label '+5V_IN'",
+                  "pos": {
+                    "x": 0.7366,
+                    "y": 0.5842
+                  },
+                  "uuid": "f19a9709-4114-445c-a1c3-073331130e29"
+                }
+              ],
+              "severity": "warning",
+              "type": "same_local_global_label"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'Power-5V' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol #PWR? [Power-5V]",
+                  "pos": {
+                    "x": 0.1143,
+                    "y": 0.1524
+                  },
+                  "uuid": "87881f5e-0911-41bf-9f56-e09625271e1c"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'Power-5V' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol #PWR? [Power-5V]",
+                  "pos": {
+                    "x": 0.1143,
+                    "y": 0.3556
+                  },
+                  "uuid": "9fe8d075-ae02-4aee-a62f-f4b4b429fff1"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Power input are connected",
+              "items": [
+                {
+                  "description": "Symbol D2 Pin 1 [K, 未指定, Line]",
+                  "pos": {
+                    "x": 0.1905,
+                    "y": 0.2032
+                  },
+                  "uuid": "476ed5ce-dca0-439c-bcb1-86e323616371"
+                },
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 0.1143,
+                    "y": 0.1524
+                  },
+                  "uuid": "8b8f86d0-0f1f-4c2f-bd4b-304a9062128d"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'SMAJ5.0A' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol D2 [SMAJ5.0A]",
+                  "pos": {
+                    "x": 0.1905,
+                    "y": 0.254
+                  },
+                  "uuid": "58593e81-427c-4d19-9d01-76975141f948"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol D2 [SMAJ5.0A]",
+                  "pos": {
+                    "x": 0.1905,
+                    "y": 0.254
+                  },
+                  "uuid": "58593e81-427c-4d19-9d01-76975141f948"
+                }
+              ],
+              "severity": "warning",
+              "type": "footprint_link_issues"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Power input are connected",
+              "items": [
+                {
+                  "description": "Symbol D2 Pin 2 [A, 未指定, Line]",
+                  "pos": {
+                    "x": 0.1905,
+                    "y": 0.3048
+                  },
+                  "uuid": "28c463f0-8e42-4a87-bd97-fe122d063c1c"
+                },
+                {
+                  "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                  "pos": {
+                    "x": 0.1905,
+                    "y": 0.3302
+                  },
+                  "uuid": "49362f4e-a524-4989-a9a8-8159d3b511a1"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'Power-5V' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol #PWR? [Power-5V]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 0.6985
+                  },
+                  "uuid": "daf7f352-8c78-48c9-afd6-bef6dd2f0f02"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'RC0603FR-071KL' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol R9 [RC0603FR-071KL]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 0.7747
+                  },
+                  "uuid": "790c611c-274f-4cca-a08e-10f7dd3aae32"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol R9 [RC0603FR-071KL]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 0.7747
+                  },
+                  "uuid": "790c611c-274f-4cca-a08e-10f7dd3aae32"
+                }
+              ],
+              "severity": "warning",
+              "type": "footprint_link_issues"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Input are connected",
+              "items": [
+                {
+                  "description": "Symbol LED1 Pin 2 [A, 未指定, Line]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 0.9017
+                  },
+                  "uuid": "ba37d9c8-ad82-4eee-bb16-e02f127d26a9"
+                },
+                {
+                  "description": "Symbol R9 Pin 1 [1, Input, Line]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 0.8255
+                  },
+                  "uuid": "b68a3a04-585e-4c91-aef7-c413e08f338a"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'LED-0603R' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol LED1 [LED-0603R]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 0.9525
+                  },
+                  "uuid": "3c1b113b-e1d4-4895-af62-f65c6a73a37e"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol LED1 [LED-0603R]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 0.9525
+                  },
+                  "uuid": "3c1b113b-e1d4-4895-af62-f65c6a73a37e"
+                }
+              ],
+              "severity": "warning",
+              "type": "footprint_link_issues"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Power input are connected",
+              "items": [
+                {
+                  "description": "Symbol LED1 Pin 1 [K, 未指定, Line]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 1.0033
+                  },
+                  "uuid": "cb0c1a52-3686-40f5-8d44-9eebff2d9b7c"
+                },
+                {
+                  "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                  "pos": {
+                    "x": 0.2032,
+                    "y": 1.0287
+                  },
+                  "uuid": "0918c8e6-5705-42ca-add8-b87ad4cdd45c"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Power input are connected",
+              "items": [
+                {
+                  "description": "Symbol C13 Pin 1 [1, 未指定, Line]",
+                  "pos": {
+                    "x": 0.2286,
+                    "y": 0.4318
+                  },
+                  "uuid": "6b735ab3-82b4-4381-80cc-b97a90d6732e"
+                },
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 0.1143,
+                    "y": 0.3556
+                  },
+                  "uuid": "83af021a-9bb9-4f1e-9ddf-b71a65444dc0"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol '22uF-C0805_L' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol C13 [22uF-C0805_L]",
+                  "pos": {
+                    "x": 0.2286,
+                    "y": 0.4826
+                  },
+                  "uuid": "8ccfed98-a703-430b-83c4-acc21ad99aa8"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol C13 [22uF-C0805_L]",
+                  "pos": {
+                    "x": 0.2286,
+                    "y": 0.4826
+                  },
+                  "uuid": "8ccfed98-a703-430b-83c4-acc21ad99aa8"
+                }
+              ],
+              "severity": "warning",
+              "type": "footprint_link_issues"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Power input are connected",
+              "items": [
+                {
+                  "description": "Symbol C13 Pin 2 [2, 未指定, Line]",
+                  "pos": {
+                    "x": 0.2286,
+                    "y": 0.5334
+                  },
+                  "uuid": "240028c6-cba2-4f7a-a77b-b0b157e2b9f6"
+                },
+                {
+                  "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                  "pos": {
+                    "x": 0.2286,
+                    "y": 0.5588
+                  },
+                  "uuid": "9b70691e-6520-4d8f-a56a-5ede502fef59"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and 未指定 are connected",
+              "items": [
+                {
+                  "description": "Symbol D1 Pin 2 [A, 未指定, Line]",
+                  "pos": {
+                    "x": 0.3048,
+                    "y": 0.1778
+                  },
+                  "uuid": "02f975cb-55c7-4a06-acce-680543708692"
+                },
+                {
+                  "description": "Symbol D2 Pin 1 [K, 未指定, Line]",
+                  "pos": {
+                    "x": 0.1905,
+                    "y": 0.2032
+                  },
+                  "uuid": "476ed5ce-dca0-439c-bcb1-86e323616371"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'SS34' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol D1 [SS34]",
+                  "pos": {
+                    "x": 0.3556,
+                    "y": 0.1778
+                  },
+                  "uuid": "f2096f70-baeb-437e-bfd2-6d35a8323885"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol D1 [SS34]",
+                  "pos": {
+                    "x": 0.3556,
+                    "y": 0.1778
+                  },
+                  "uuid": "f2096f70-baeb-437e-bfd2-6d35a8323885"
+                }
+              ],
+              "severity": "warning",
+              "type": "footprint_link_issues"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Power input are connected",
+              "items": [
+                {
+                  "description": "Symbol D1 Pin 1 [K, 未指定, Line]",
+                  "pos": {
+                    "x": 0.4064,
+                    "y": 0.1778
+                  },
+                  "uuid": "9b6d2e18-81a4-476e-ad42-d5e115b16e2e"
+                },
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 0.508,
+                    "y": 0.1524
+                  },
+                  "uuid": "4e6a58e5-3329-4d11-bfcd-e571483a150b"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and 未指定 are connected",
+              "items": [
+                {
+                  "description": "Symbol C14 Pin 1 [1, 未指定, Line]",
+                  "pos": {
+                    "x": 0.4318,
+                    "y": 0.4318
+                  },
+                  "uuid": "e2b7f69e-af8b-44e4-9efd-bc8de276a550"
+                },
+                {
+                  "description": "Symbol D1 Pin 1 [K, 未指定, Line]",
+                  "pos": {
+                    "x": 0.4064,
+                    "y": 0.1778
+                  },
+                  "uuid": "9b6d2e18-81a4-476e-ad42-d5e115b16e2e"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol '100nF/0603/50V' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol C14 [100nF/0603/50V]",
+                  "pos": {
+                    "x": 0.4318,
+                    "y": 0.4826
+                  },
+                  "uuid": "8415ae1a-4f6c-4f41-84d2-14fba8ecbc8d"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol C14 [100nF/0603/50V]",
+                  "pos": {
+                    "x": 0.4318,
+                    "y": 0.4826
+                  },
+                  "uuid": "8415ae1a-4f6c-4f41-84d2-14fba8ecbc8d"
+                }
+              ],
+              "severity": "warning",
+              "type": "footprint_link_issues"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Power input are connected",
+              "items": [
+                {
+                  "description": "Symbol C14 Pin 2 [2, 未指定, Line]",
+                  "pos": {
+                    "x": 0.4318,
+                    "y": 0.5334
+                  },
+                  "uuid": "78e52737-1df7-4992-b45b-d9be63859826"
+                },
+                {
+                  "description": "Symbol #PWR? Pin 1 [GND, Power input, Line]",
+                  "pos": {
+                    "x": 0.4318,
+                    "y": 0.5588
+                  },
+                  "uuid": "5510bf61-d415-4a36-995f-064b35435ca2"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'Power-5V' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol #PWR? [Power-5V]",
+                  "pos": {
+                    "x": 0.508,
+                    "y": 0.1524
+                  },
+                  "uuid": "ffae015e-1648-405d-85c0-d47c8320c1a0"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'CAPCER10UF25VX5R0805' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol C1 [CAPCER10UF25VX5R0805]",
+                  "pos": {
+                    "x": 0.7366,
+                    "y": 0.381
+                  },
+                  "uuid": "74d4c9ae-46b0-4588-be9f-50cc899ceb43"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol C1 [CAPCER10UF25VX5R0805]",
+                  "pos": {
+                    "x": 0.7366,
+                    "y": 0.381
+                  },
+                  "uuid": "74d4c9ae-46b0-4588-be9f-50cc899ceb43"
+                }
+              ],
+              "severity": "warning",
+              "type": "footprint_link_issues"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'CAPCER10UF25VX5R0805' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol C5 [CAPCER10UF25VX5R0805]",
+                  "pos": {
+                    "x": 0.7366,
+                    "y": 0.9271
+                  },
+                  "uuid": "96c1ca10-4ff7-476f-91cc-837413ee6f84"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "The current configuration does not include the footprint library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol C5 [CAPCER10UF25VX5R0805]",
+                  "pos": {
+                    "x": 0.7366,
+                    "y": 0.9271
+                  },
+                  "uuid": "96c1ca10-4ff7-476f-91cc-837413ee6f84"
+                }
+              ],
+              "severity": "warning",
+              "type": "footprint_link_issues"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'Power-5V' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol #PWR? [Power-5V]",
+                  "pos": {
+                    "x": 0.8128,
+                    "y": 0.254
+                  },
+                  "uuid": "01d78143-1368-4003-87c7-ac1a164d3b81"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'Power-5V' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol #PWR? [Power-5V]",
+                  "pos": {
+                    "x": 0.8128,
+                    "y": 0.8001
+                  },
+                  "uuid": "7a257cb8-014c-4e98-a316-06efc0879218"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Input are connected",
+              "items": [
+                {
+                  "description": "Symbol U5 Pin 5 [FB, 未指定, Line]",
+                  "pos": {
+                    "x": 0.889,
+                    "y": 0.254
+                  },
+                  "uuid": "08f804b6-d133-4f30-b365-5f3fbcb76da5"
+                },
+                {
+                  "description": "Symbol R1 Pin 1 [1, Input, Line]",
+                  "pos": {
+                    "x": 1.3716,
+                    "y": 0.2794
+                  },
+                  "uuid": "b0f297f8-1c88-4392-9529-dbdb84ebc2c3"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Power input are connected",
+              "items": [
+                {
+                  "description": "Symbol U5 Pin 4 [IN, 未指定, Line]",
+                  "pos": {
+                    "x": 0.889,
+                    "y": 0.3048
+                  },
+                  "uuid": "6e6fb878-0e4e-4fd3-8bd8-414d51d942c3"
+                },
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 0.8128,
+                    "y": 0.254
+                  },
+                  "uuid": "c55eab94-deed-4177-a318-410c9a71f221"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Input are connected",
+              "items": [
+                {
+                  "description": "Symbol U7 Pin 5 [FB, 未指定, Line]",
+                  "pos": {
+                    "x": 0.889,
+                    "y": 0.8001
+                  },
+                  "uuid": "243d471d-e371-4988-8482-048301e5b9a0"
+                },
+                {
+                  "description": "Symbol R6 Pin 1 [1, Input, Line]",
+                  "pos": {
+                    "x": 1.4224,
+                    "y": 0.8001
+                  },
+                  "uuid": "ef5bbf16-4c69-4d05-81cb-e5a8495a09a1"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Pins of type 未指定 and Power input are connected",
+              "items": [
+                {
+                  "description": "Symbol U7 Pin 4 [IN, 未指定, Line]",
+                  "pos": {
+                    "x": 0.889,
+                    "y": 0.8509
+                  },
+                  "uuid": "7e16c0ef-b6f0-4c7e-83d2-424ab58f90ca"
+                },
+                {
+                  "description": "Symbol #PWR? Pin 1 [+5V_IN, Power input, Line]",
+                  "pos": {
+                    "x": 0.8128,
+                    "y": 0.8001
+                  },
+                  "uuid": "284d98a1-183c-482d-8cea-301222651be5"
+                }
+              ],
+              "severity": "warning",
+              "type": "pin_to_pin"
+            },
+            {
+              "group": "violations",
+              "description": "Symbol 'CAPCER10UF25VX5R0805' doesn't match copy in library 'RK3308B_IPC 摄像头模块-import-syms'",
+              "items": [
+                {
+                  "description": "Symbol C9 [CAPCER10UF25VX5R0805]",
+                  "pos": {
+                    "x": 0.9779,
+                    "y": 1.3843
+                  },
+                  "uuid": "8c08ec71-1d67-494d-89a9-db3665243ce4"
+                }
+              ],
+              "severity": "warning",
+              "type": "lib_symbol_mismatch"
+            }
+          ],
+          "next": "Read reportPath for the complete report, or use full=true.",
+          "source": "live",
+          "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_sch",
+          "checkedCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-KFBLqg/RK3308B_IPC 摄像头模块.kicad_sch"
+        },
+        "artifacts": [
+          "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/erc.json"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:33:17.457000+00:00",
+      "tool": "kicad_board",
+      "input": {
+        "action": "pcb.snapshot",
+        "payload": {
+          "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pcb",
+          "output": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/board.svg"
+        }
+      },
+      "status": "completed",
+      "result": {
+        "ok": true,
+        "action": "pcb.snapshot",
+        "data": {
+          "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pcb",
+          "counts": {
+            "FootprintInstance": 155,
+            "Pad": 837,
+            "BoardGraphicShape": 104,
+            "BoardText": 10,
+            "Track": 1329,
+            "Via": 77,
+            "Zone": 3
+          },
+          "nets": {
+            "nets": [
+              {
+                "code": {
+                  "value": 0
+                },
+                "name": ""
+              },
+              {
+                "code": {
+                  "value": 30
+                },
+                "name": "$4N75"
+              },
+              {
+                "code": {
+                  "value": 65
+                },
+                "name": "+1V8"
+              },
+              {
+                "code": {
+                  "value": 8
+                },
+                "name": "+3V3"
+              },
+              {
+                "code": {
+                  "value": 114
+                },
+                "name": "+5V"
+              },
+              {
+                "code": {
+                  "value": 4
+                },
+                "name": "+5V_CAM"
+              },
+              {
+                "code": {
+                  "value": 112
+                },
+                "name": "+5V_IN"
+              },
+              {
+                "code": {
+                  "value": 5
+                },
+                "name": "ANT_MOD"
+              },
+              {
+                "code": {
+                  "value": 105
+                },
+                "name": "AOUT"
+              },
+              {
+                "code": {
+                  "value": 109
+                },
+                "name": "AOUT_C"
+              },
+              {
+                "code": {
+                  "value": 97
+                },
+                "name": "AVCM"
+              },
+              {
+                "code": {
+                  "value": 99
+                },
+                "name": "AVCMH"
+              },
+              {
+                "code": {
+                  "value": 7
+                },
+                "name": "BT_HOST_WAKE"
+              },
+              {
+                "code": {
+                  "value": 22
+                },
+                "name": "BT_REG_ON"
+              },
+              {
+                "code": {
+                  "value": 23
+                },
+                "name": "BT_UART_CTS"
+              },
+              {
+                "code": {
+                  "value": 26
+                },
+                "name": "BT_UART_RTS"
+              },
+              {
+                "code": {
+                  "value": 24
+                },
+                "name": "BT_UART_RX"
+              },
+              {
+                "code": {
+                  "value": 25
+                },
+                "name": "BT_UART_TX"
+              },
+              {
+                "code": {
+                  "value": 6
+                },
+                "name": "BT_WAKE"
+              },
+              {
+                "code": {
+                  "value": 49
+                },
+                "name": "DBG_RX"
+              },
+              {
+                "code": {
+                  "value": 28
+                },
+                "name": "DBG_RX_C"
+              },
+              {
+                "code": {
+                  "value": 37
+                },
+                "name": "DBG_TX"
+              },
+              {
+                "code": {
+                  "value": 110
+                },
+                "name": "DBG_TX_C"
+              },
+              {
+                "code": {
+                  "value": 42
+                },
+                "name": "DDR_A0"
+              },
+              {
+                "code": {
+                  "value": 33
+                },
+                "name": "DDR_A1"
+              },
+              {
+                "code": {
+                  "value": 55
+                },
+                "name": "DDR_A10"
+              },
+              {
+                "code": {
+                  "value": 43
+                },
+                "name": "DDR_A11"
+              },
+              {
+                "code": {
+                  "value": 44
+                },
+                "name": "DDR_A12"
+              },
+              {
+                "code": {
+                  "value": 61
+                },
+                "name": "DDR_A13"
+              },
+              {
+                "code": {
+                  "value": 47
+                },
+                "name": "DDR_A14"
+              },
+              {
+                "code": {
+                  "value": 32
+                },
+                "name": "DDR_A2"
+              },
+              {
+                "code": {
+                  "value": 69
+                },
+                "name": "DDR_A3"
+              },
+              {
+                "code": {
+                  "value": 45
+                },
+                "name": "DDR_A4"
+              },
+              {
+                "code": {
+                  "value": 41
+                },
+                "name": "DDR_A5"
+              },
+              {
+                "code": {
+                  "value": 34
+                },
+                "name": "DDR_A6"
+              },
+              {
+                "code": {
+                  "value": 31
+                },
+                "name": "DDR_A7"
+              },
+              {
+                "code": {
+                  "value": 35
+                },
+                "name": "DDR_A8"
+              },
+              {
+                "code": {
+                  "value": 70
+                },
+                "name": "DDR_A9"
+              },
+              {
+                "code": {
+                  "value": 40
+                },
+                "name": "DDR_BA0"
+              },
+              {
+                "code": {
+                  "value": 54
+                },
+                "name": "DDR_BA1"
+              },
+              {
+                "code": {
+                  "value": 60
+                },
+                "name": "DDR_BA2"
+              },
+              {
+                "code": {
+                  "value": 62
+                },
+                "name": "DDR_CASN"
+              },
+              {
+                "code": {
+                  "value": 46
+                },
+                "name": "DDR_CKE"
+              },
+              {
+                "code": {
+                  "value": 52
+                },
+                "name": "DDR_CLK"
+              },
+              {
+                "code": {
+                  "value": 51
+                },
+                "name": "DDR_CLKN"
+              },
+              {
+                "code": {
+                  "value": 39
+                },
+                "name": "DDR_CS0N"
+              },
+              {
+                "code": {
+                  "value": 79
+                },
+                "name": "DDR_DM0"
+              },
+              {
+                "code": {
+                  "value": 92
+                },
+                "name": "DDR_DM1"
+              },
+              {
+                "code": {
+                  "value": 86
+                },
+                "name": "DDR_DQ0"
+              },
+              {
+                "code": {
+                  "value": 81
+                },
+                "name": "DDR_DQ1"
+              },
+              {
+                "code": {
+                  "value": 93
+                },
+                "name": "DDR_DQ10"
+              },
+              {
+                "code": {
+                  "value": 58
+                },
+                "name": "DDR_DQ11"
+              },
+              {
+                "code": {
+                  "value": 91
+                },
+                "name": "DDR_DQ12"
+              },
+              {
+                "code": {
+                  "value": 76
+                },
+                "name": "DDR_DQ13"
+              },
+              {
+                "code": {
+                  "value": 94
+                },
+                "name": "DDR_DQ14"
+              },
+              {
+                "code": {
+                  "value": 89
+                },
+                "name": "DDR_DQ15"
+              },
+              {
+                "code": {
+                  "value": 84
+                },
+                "name": "DDR_DQ2"
+              },
+              {
+                "code": {
+                  "value": 90
+                },
+                "name": "DDR_DQ3"
+              },
+              {
+                "code": {
+                  "value": 66
+                },
+                "name": "DDR_DQ4"
+              },
+              {
+                "code": {
+                  "value": 75
+                },
+                "name": "DDR_DQ5"
+              },
+              {
+                "code": {
+                  "value": 67
+                },
+                "name": "DDR_DQ6"
+              },
+              {
+                "code": {
+                  "value": 87
+                },
+                "name": "DDR_DQ7"
+              },
+              {
+                "code": {
+                  "value": 77
+                },
+                "name": "DDR_DQ8"
+              },
+              {
+                "code": {
+                  "value": 80
+                },
+                "name": "DDR_DQ9"
+              },
+              {
+                "code": {
+                  "value": 85
+                },
+                "name": "DDR_DQS0"
+              },
+              {
+                "code": {
+                  "value": 88
+                },
+                "name": "DDR_DQS0N"
+              },
+              {
+                "code": {
+                  "value": 82
+                },
+                "name": "DDR_DQS1"
+              },
+              {
+                "code": {
+                  "value": 83
+                },
+                "name": "DDR_DQS1N"
+              },
+              {
+                "code": {
+                  "value": 53
+                },
+                "name": "DDR_ODT0"
+              },
+              {
+                "code": {
+                  "value": 59
+                },
+                "name": "DDR_RASN"
+              },
+              {
+                "code": {
+                  "value": 68
+                },
+                "name": "DDR_RESET"
+              },
+              {
+                "code": {
+                  "value": 71
+                },
+                "name": "DDR_WEN"
+              },
+              {
+                "code": {
+                  "value": 116
+                },
+                "name": "DDR_ZQ"
+              },
+              {
+                "code": {
+                  "value": 121
+                },
+                "name": "FB_3V3"
+              },
+              {
+                "code": {
+                  "value": 122
+                },
+                "name": "FB_CORE"
+              },
+              {
+                "code": {
+                  "value": 119
+                },
+                "name": "FB_DDR"
+              },
+              {
+                "code": {
+                  "value": 123
+                },
+                "name": "FB_LOG"
+              },
+              {
+                "code": {
+                  "value": 96
+                },
+                "name": "FLASH_SEL"
+              },
+              {
+                "code": {
+                  "value": 2
+                },
+                "name": "GND"
+              },
+              {
+                "code": {
+                  "value": 98
+                },
+                "name": "IRCUTA"
+              },
+              {
+                "code": {
+                  "value": 108
+                },
+                "name": "IRCUTA_C"
+              },
+              {
+                "code": {
+                  "value": 117
+                },
+                "name": "ISET_CAM"
+              },
+              {
+                "code": {
+                  "value": 101
+                },
+                "name": "J2_IO1"
+              },
+              {
+                "code": {
+                  "value": 111
+                },
+                "name": "J2_IO1_C"
+              },
+              {
+                "code": {
+                  "value": 104
+                },
+                "name": "J2_IO2"
+              },
+              {
+                "code": {
+                  "value": 27
+                },
+                "name": "J2_IO2_C"
+              },
+              {
+                "code": {
+                  "value": 113
+                },
+                "name": "LED_PWR"
+              },
+              {
+                "code": {
+                  "value": 38
+                },
+                "name": "RECOVERY"
+              },
+              {
+                "code": {
+                  "value": 50
+                },
+                "name": "RESET_N"
+              },
+              {
+                "code": {
+                  "value": 16
+                },
+                "name": "SDIO_CLK"
+              },
+              {
+                "code": {
+                  "value": 15
+                },
+                "name": "SDIO_CMD"
+              },
+              {
+                "code": {
+                  "value": 17
+                },
+                "name": "SDIO_D0"
+              },
+              {
+                "code": {
+                  "value": 18
+                },
+                "name": "SDIO_D1"
+              },
+              {
+                "code": {
+                  "value": 13
+                },
+                "name": "SDIO_D2"
+              },
+              {
+                "code": {
+                  "value": 14
+                },
+                "name": "SDIO_D3"
+              },
+              {
+                "code": {
+                  "value": 29
+                },
+                "name": "SPI_CLK"
+              },
+              {
+                "code": {
+                  "value": 102
+                },
+                "name": "SPI_CS0"
+              },
+              {
+                "code": {
+                  "value": 107
+                },
+                "name": "SPI_IO2"
+              },
+              {
+                "code": {
+                  "value": 106
+                },
+                "name": "SPI_IO3"
+              },
+              {
+                "code": {
+                  "value": 103
+                },
+                "name": "SPI_MISO"
+              },
+              {
+                "code": {
+                  "value": 100
+                },
+                "name": "SPI_MOSI"
+              },
+              {
+                "code": {
+                  "value": 120
+                },
+                "name": "SW_3V3"
+              },
+              {
+                "code": {
+                  "value": 125
+                },
+                "name": "SW_CORE"
+              },
+              {
+                "code": {
+                  "value": 124
+                },
+                "name": "SW_DDR"
+              },
+              {
+                "code": {
+                  "value": 118
+                },
+                "name": "SW_LOG"
+              },
+              {
+                "code": {
+                  "value": 1
+                },
+                "name": "USB_CON_DM"
+              },
+              {
+                "code": {
+                  "value": 3
+                },
+                "name": "USB_CON_DP"
+              },
+              {
+                "code": {
+                  "value": 56
+                },
+                "name": "USB_DET"
+              },
+              {
+                "code": {
+                  "value": 36
+                },
+                "name": "USB_DM"
+              },
+              {
+                "code": {
+                  "value": 48
+                },
+                "name": "USB_DP"
+              },
+              {
+                "code": {
+                  "value": 57
+                },
+                "name": "USB_EXTR"
+              },
+              {
+                "code": {
+                  "value": 63
+                },
+                "name": "V1P0_USB"
+              },
+              {
+                "code": {
+                  "value": 64
+                },
+                "name": "V1P8_ANA"
+              },
+              {
+                "code": {
+                  "value": 95
+                },
+                "name": "VDD_CORE"
+              },
+              {
+                "code": {
+                  "value": 72
+                },
+                "name": "VDD_DDR"
+              },
+              {
+                "code": {
+                  "value": 78
+                },
+                "name": "VDD_LOG"
+              },
+              {
+                "code": {
+                  "value": 115
+                },
+                "name": "VREF_DDR"
+              },
+              {
+                "code": {
+                  "value": 21
+                },
+                "name": "WIFI_32K"
+              },
+              {
+                "code": {
+                  "value": 11
+                },
+                "name": "WIFI_REG_ON"
+              },
+              {
+                "code": {
+                  "value": 12
+                },
+                "name": "WIFI_WAKE_HOST"
+              },
+              {
+                "code": {
+                  "value": 19
+                },
+                "name": "WL_BUCK_LX"
+              },
+              {
+                "code": {
+                  "value": 20
+                },
+                "name": "WL_VIN_LDO"
+              },
+              {
+                "code": {
+                  "value": 9
+                },
+                "name": "WL_XTAL_IN"
+              },
+              {
+                "code": {
+                  "value": 10
+                },
+                "name": "WL_XTAL_OUT"
+              },
+              {
+                "code": {
+                  "value": 73
+                },
+                "name": "XIN_24M"
+              },
+              {
+                "code": {
+                  "value": 74
+                },
+                "name": "XOUT_24M"
+              }
+            ]
+          },
+          "layers": {
+            "copperLayerCount": 4,
+            "layers": [
+              "BL_F_Cu",
+              "BL_F_Mask",
+              "BL_B_Cu",
+              "BL_B_Mask",
+              "BL_In1_Cu",
+              "BL_F_SilkS",
+              "BL_In2_Cu",
+              "BL_B_SilkS",
+              "BL_F_Adhes",
+              "BL_B_Adhes",
+              "BL_F_Paste",
+              "BL_B_Paste",
+              "BL_Dwgs_User",
+              "BL_Cmts_User",
+              "BL_Eco1_User",
+              "BL_Eco2_User",
+              "BL_Edge_Cuts",
+              "BL_Margin",
+              "BL_B_CrtYd",
+              "BL_F_CrtYd",
+              "BL_B_Fab",
+              "BL_F_Fab",
+              "BL_User_1",
+              "BL_User_2",
+              "BL_User_3",
+              "BL_User_4",
+              "BL_User_5",
+              "BL_User_6",
+              "BL_User_7"
+            ]
+          },
+          "stackup": {
+            "stackup": {
+              "finish": {
+                "typeName": "None"
+              },
+              "impedance": {
+                "isControlled": false
+              },
+              "edge": {
+                "connector": {
+                  "type": "BECT_NONE"
+                },
+                "castellation": null,
+                "plating": {
+                  "hasEdgePlating": false
+                }
+              },
+              "layers": [
+                {
+                  "thickness": {
+                    "valueNm": "0"
+                  },
+                  "layer": "BL_F_SilkS",
+                  "enabled": true,
+                  "type": "BSLT_SILKSCREEN",
+                  "silkscreen": {
+                    "materialName": "Not specified"
+                  },
+                  "color": null,
+                  "materialName": "",
+                  "userName": "Top Silkscreen Layer"
+                },
+                {
+                  "thickness": {
+                    "valueNm": "0"
+                  },
+                  "layer": "BL_F_Paste",
+                  "enabled": true,
+                  "type": "BSLT_SOLDERPASTE",
+                  "color": null,
+                  "materialName": "",
+                  "userName": "Top Paste Mask Layer"
+                },
+                {
+                  "thickness": {
+                    "valueNm": "10000"
+                  },
+                  "layer": "BL_F_Mask",
+                  "enabled": true,
+                  "type": "BSLT_SOLDERMASK",
+                  "soldermask": {
+                    "epsilonR": 3.3,
+                    "lossTangent": 0,
+                    "materialName": "Not specified",
+                    "thickness": {
+                      "valueNm": "10000"
+                    }
+                  },
+                  "color": null,
+                  "materialName": "",
+                  "userName": "Top Solder Mask Layer"
+                },
+                {
+                  "thickness": {
+                    "valueNm": "35000"
+                  },
+                  "layer": "BL_F_Cu",
+                  "enabled": true,
+                  "type": "BSLT_COPPER",
+                  "color": null,
+                  "materialName": "copper",
+                  "userName": "Top Layer"
+                },
+                {
+                  "thickness": {
+                    "valueNm": "480000"
+                  },
+                  "layer": "BL_UNDEFINED",
+                  "enabled": true,
+                  "type": "BSLT_DIELECTRIC",
+                  "dielectric": {
+                    "layer": [
+                      {
+                        "epsilonR": 4.5,
+                        "lossTangent": 0.02,
+                        "materialName": "FR4",
+                        "thickness": {
+                          "valueNm": "480000"
+                        },
+                        "thicknessLocked": false,
+                        "specFrequency": 1000000000,
+                        "dielectricModel": "DM_CONSTANT"
+                      }
+                    ],
+                    "type": "BSDT_CORE"
+                  },
+                  "color": null,
+                  "materialName": "",
+                  "userName": ""
+                },
+                {
+                  "thickness": {
+                    "valueNm": "35000"
+                  },
+                  "layer": "BL_In1_Cu",
+                  "enabled": true,
+                  "type": "BSLT_COPPER",
+                  "color": null,
+                  "materialName": "copper",
+                  "userName": "Inner1"
+                },
+                {
+                  "thickness": {
+                    "valueNm": "480000"
+                  },
+                  "layer": "BL_UNDEFINED",
+                  "enabled": true,
+                  "type": "BSLT_DIELECTRIC",
+                  "dielectric": {
+                    "layer": [
+                      {
+                        "epsilonR": 4.5,
+                        "lossTangent": 0.02,
+                        "materialName": "FR4",
+                        "thickness": {
+                          "valueNm": "480000"
+                        },
+                        "thicknessLocked": false,
+                        "specFrequency": 1000000000,
+                        "dielectricModel": "DM_CONSTANT"
+                      }
+                    ],
+                    "type": "BSDT_PREPREG"
+                  },
+                  "color": null,
+                  "materialName": "",
+                  "userName": ""
+                },
+                {
+                  "thickness": {
+                    "valueNm": "35000"
+                  },
+                  "layer": "BL_In2_Cu",
+                  "enabled": true,
+                  "type": "BSLT_COPPER",
+                  "color": null,
+                  "materialName": "copper",
+                  "userName": "Inner2"
+                },
+                {
+                  "thickness": {
+                    "valueNm": "480000"
+                  },
+                  "layer": "BL_UNDEFINED",
+                  "enabled": true,
+                  "type": "BSLT_DIELECTRIC",
+                  "dielectric": {
+                    "layer": [
+                      {
+                        "epsilonR": 4.5,
+                        "lossTangent": 0.02,
+                        "materialName": "FR4",
+                        "thickness": {
+                          "valueNm": "480000"
+                        },
+                        "thicknessLocked": false,
+                        "specFrequency": 1000000000,
+                        "dielectricModel": "DM_CONSTANT"
+                      }
+                    ],
+                    "type": "BSDT_CORE"
+                  },
+                  "color": null,
+                  "materialName": "",
+                  "userName": ""
+                },
+                {
+                  "thickness": {
+                    "valueNm": "35000"
+                  },
+                  "layer": "BL_B_Cu",
+                  "enabled": true,
+                  "type": "BSLT_COPPER",
+                  "color": null,
+                  "materialName": "copper",
+                  "userName": "Bottom Layer"
+                },
+                {
+                  "thickness": {
+                    "valueNm": "10000"
+                  },
+                  "layer": "BL_B_Mask",
+                  "enabled": true,
+                  "type": "BSLT_SOLDERMASK",
+                  "soldermask": {
+                    "epsilonR": 3.3,
+                    "lossTangent": 0,
+                    "materialName": "Not specified",
+                    "thickness": {
+                      "valueNm": "10000"
+                    }
+                  },
+                  "color": null,
+                  "materialName": "",
+                  "userName": "Bottom Solder Mask Layer"
+                },
+                {
+                  "thickness": {
+                    "valueNm": "0"
+                  },
+                  "layer": "BL_B_Paste",
+                  "enabled": true,
+                  "type": "BSLT_SOLDERPASTE",
+                  "color": null,
+                  "materialName": "",
+                  "userName": "Bottom Paste Mask Layer"
+                },
+                {
+                  "thickness": {
+                    "valueNm": "0"
+                  },
+                  "layer": "BL_B_SilkS",
+                  "enabled": true,
+                  "type": "BSLT_SILKSCREEN",
+                  "silkscreen": {
+                    "materialName": "Not specified"
+                  },
+                  "color": null,
+                  "materialName": "",
+                  "userName": "Bottom Silkscreen Layer"
+                }
+              ]
+            }
+          },
+          "source": "native live document",
+          "checkedCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-oGI1C7/RK3308B_IPC 摄像头模块.kicad_pcb",
+          "sourceSha256": "0423ecb5158f4e5d0386396c6adb970a17cf1f4c8f268fac27d3f0eda2b7b742",
+          "output": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/board.svg",
+          "sha256": "0b214d896d7218be4d51653531d6c18a4042aeafbb53bf6585f1da81294b28d2",
+          "imageKind": "native board render; not a viewport screenshot"
+        },
+        "artifacts": [
+          "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/board.svg",
+          "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-oGI1C7/RK3308B_IPC 摄像头模块.kicad_pcb"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:33:21.316000+00:00",
+      "tool": "kicad_schematic",
+      "input": {
+        "action": "schematic.export.netlist",
+        "payload": {
+          "input": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-KFBLqg/RK3308B_IPC 摄像头模块.kicad_sch",
+          "output": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/schematic.net"
+        }
+      },
+      "status": "completed",
+      "result": {
+        "ok": true,
+        "action": "schematic.export.netlist",
+        "data": {
+          "exitCode": 0,
+          "signal": null,
+          "stdout": "Warning: schematic has annotation errors, please use the schematic editor to fix them",
+          "stderr": ""
+        },
+        "artifacts": [
+          "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/schematic.net"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-10-21T18:33:24.495000+00:00",
+      "tool": "kicad_board",
+      "input": {
+        "action": "board.connectivity.prove",
+        "payload": {
+          "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pcb"
+        }
+      },
+      "status": "completed",
+      "result": "\n\n...4061331 bytes truncated...\n\nThe tool call succeeded but the output was truncated. Full output saved to: /Users/mosc/.local/share/opencode/tool-output/tool_15fbd51fd001ipIGzGUKfq2x7z\nUse the Task tool to have explore agent process this file with Grep and Read (with offset/limit). Do NOT read the full file yourself - delegate to save context."
+    },
+    {
+      "timestamp": "2026-10-21T18:33:27.983000+00:00",
+      "tool": "bash",
+      "input": {
+        "command": "python3 - <<'EOF'\nimport json\np=\"/Users/mosc/.local/share/opencode/tool-output/tool_15fbd51fd001ipIGzGUKfq2x7z\"\nd=json.load(open(p))\ndef walk(o,pre=\"\"):\n    if isinstance(o,dict):\n        for k,v in o.items():\n            if isinstance(v,(dict,list)):\n                print(pre+k, type(v).__name__, len(v))\n                if pre.count('.')<2: walk(v,pre+k+\".\")\n            else:\n                s=str(v)\n                print(pre+k,\"=\",s[:200])\n    elif isinstance(o,list) and o:\n        print(pre+\"[0]\", type(o[0]).__name__)\n        if pre.count('.')<2: walk(o[0],pre+\"[0].\")\nwalk(d)\nEOF"
+      },
+      "status": "completed",
+      "result": "ok = False\naction = board.connectivity.prove\nerror dict 3\nerror.code = CONNECTIVITY_UNPROVEN\nerror.message = Native connectivity proof failed\nerror.detail dict 5\nerror.detail.ok = False\nerror.detail.endpoints list 914\nerror.detail.unconnectedNets list 80\nerror.detail.unconnectedCount = 132\nerror.detail.danglingItems list 0\n"
+    },
+    {
+      "timestamp": "2026-10-21T18:33:31.314000+00:00",
+      "tool": "bash",
+      "input": {
+        "command": "python3 - <<'EOF'\nimport json\np=\"/Users/mosc/.local/share/opencode/tool-output/tool_15fbd51fd001ipIGzGUKfq2x7z\"\nd=json.load(open(p))[\"error\"][\"detail\"]\nnets=d.get(\"unconnectedNets\",[])\nprint(\"unconnectedNets\",len(nets))\nprint(json.dumps(nets[:10],ensure_ascii=False)[:1500])\nprint(\"endpoints\",len(d.get(\"endpoints\",[])))\nprint(json.dumps(d.get(\"endpoints\",[])[:3],ensure_ascii=False)[:800])\nEOF"
+      },
+      "status": "completed",
+      "result": "unconnectedNets 80\n[\"USB_CON_DM\", \"GND\", \"+5V_CAM\", \"BT_WAKE\", \"BT_HOST_WAKE\", \"+3V3\", \"WIFI_REG_ON\", \"SDIO_D3\", \"SDIO_CMD\", \"SDIO_D1\"]\nendpoints 914\n[{\"item\": {\"value\": \"a0302f33-8024-423a-8dba-d97d696743cd\"}, \"itemType\": \"pad\", \"reference\": \"U22\", \"padNumber\": \"1\", \"net\": \"USB_CON_DM\", \"hasCopperConnection\": true, \"connectedItems\": [{\"value\": \"334cded3-75d6-4782-b50f-09cc29e41a41\"}, {\"value\": \"fe64590a-ad18-4737-97d8-a82599845abf\"}], \"zoneIslands\": [], \"insideFilledZone\": false}, {\"item\": {\"value\": \"c380abb1-d634-4c6b-a115-21c8df60929d\"}, \"itemType\": \"pad\", \"reference\": \"U22\", \"padNumber\": \"2\", \"net\": \"GND\", \"hasCopperConnection\": true, \"connectedItems\": [{\"value\": \"68bb60aa-5924-470d-a26d-fa7785319988\"}, {\"value\": \"68bb60aa-5924-470d-a26d-fa7785319988\"}, {\"value\": \"68bb60aa-5924-470d-a26d-fa7785319988\"}, {\"value\": \"68bb60aa-5924-470d-a26d-fa7785319988\"}, {\"value\": \"68bb60aa-5924-470d-a26d-fa7785319988\"}, {\"value\": \"68bb60aa-5924-470d\n"
+    },
+    {
+      "timestamp": "2026-10-21T18:33:33.814000+00:00",
+      "tool": "bash",
+      "input": {
+        "command": "python3 - <<'EOF'\nimport json\np=\"/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/erc.json\"\nd=json.load(open(p))\nprint(type(d).__name__)\nprint(list(d.keys())[:20])\nfor k,v in d.items():\n    if isinstance(v,list): print(k,len(v))\n    elif isinstance(v,dict): print(k,\"dict\",list(v.keys())[:12])\n    else: print(k,str(v)[:120])\nEOF"
+      },
+      "status": "completed",
+      "result": "dict\n['$schema', 'coordinate_units', 'date', 'ignored_checks', 'included_severities', 'kicad_version', 'sheets', 'source']\n$schema https://schemas.kicad.org/erc.v1.json\ncoordinate_units mm\ndate 2026-10-21T11:33:12\nignored_checks 4\nincluded_severities 3\nkicad_version 10.99.0\nsheets 8\nsource RK3308B_IPC 摄像头模块.kicad_sch\n"
+    },
+    {
+      "timestamp": "2026-10-21T18:33:36.141000+00:00",
+      "tool": "bash",
+      "input": {
+        "command": "python3 - <<'EOF'\nimport json,collections\np=\"/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/erc.json\"\nd=json.load(open(p))\ntot=0\nfor i,s in enumerate(d[\"sheets\"],1):\n    vs=s.get(\"violations\",[])\n    c=collections.Counter(v.get(\"severity\") for v in vs)\n    types=collections.Counter(v.get(\"type\") for v in vs)\n    tot+=len(vs)\n    print(i, s.get(\"path\"), \"violations\",len(vs), dict(c))\nprint(\"total\",tot)\nEOF"
+      },
+      "status": "completed",
+      "result": "1 / violations 669 {'error': 12, 'warning': 657}\n2 /SoC_U1.1/ violations 154 {'error': 22, 'warning': 132}\n3 /DDR/ violations 97 {'error': 8, 'warning': 89}\n4 /Flash/ violations 14 {'error': 4, 'warning': 10}\n5 /WiFi/ violations 53 {'error': 23, 'warning': 30}\n6 /IO/ violations 55 {'error': 10, 'warning': 45}\n7 /SoC_U1.3/ violations 107 {'error': 75, 'warning': 32}\n8 /SoC_U1.2/ violations 86 {'error': 22, 'warning': 64}\ntotal 1235\n"
+    },
+    {
+      "timestamp": "2026-10-21T18:33:39.134000+00:00",
+      "tool": "bash",
+      "input": {
+        "command": "ls -l \"/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/terminal-final/\""
+      },
+      "status": "completed",
+      "result": "total 5640\n-rw-r--r--@ 1 mosc  staff   354942 Oct 21 11:33 board.svg\n-rw-r--r--@ 1 mosc  staff  1061186 Oct 21 11:33 drc.json\n-rw-r--r--@ 1 mosc  staff   970179 Oct 21 11:33 erc.json\n-rw-------@ 1 mosc  staff   481223 Oct 21 11:33 schematic.net\n"
+    }
+  ]
+}

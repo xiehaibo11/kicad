@@ -1,0 +1,41 @@
+{
+  "version": "0.4.7",
+  "vsixSha256": "78e27588c6e7daf53a58300f161c86d19d12c4205db492b6b0664f3758837d44",
+  "installedBundleMatchesVsix": true,
+  "backendTypesPassed": true,
+  "frontendTypesPassed": true,
+  "optimizerBoundaryTestsPassed": true,
+  "packageLoadCheckPassed": true,
+  "liveRequest": {
+    "version": "0.4.7",
+    "liveModel": "deepseek-flash",
+    "original": "请通过 kicad-agent MCP 工具检查 PCB 和原理图，先只检查，不修改文件，列出问题和验证方法。",
+    "optimized": "请使用 kicad-agent MCP 工具检查当前 PCB 和原理图。本次只做只读检查，不修改任何文件。请列出发现的问题，并给出每个问题的验证方法。",
+    "requestRoute": "optimize_prompt",
+    "chatMessagesSent": 0
+  },
+  "ui": {
+    "version": "0.4.7",
+    "fixture": "Installed production frontend, mock host responses",
+    "checks": [
+      "empty input disabled",
+      "selected model forwarded",
+      "preview preserves draft",
+      "editable result",
+      "replace without sending",
+      "Escape preserves draft",
+      "in-flight cancel",
+      "late result ignored",
+      "error and retry",
+      "stale draft protected"
+    ],
+    "chatMessagesSent": 0,
+    "pageErrors": []
+  },
+  "normalVSCode": {
+    "window": "kicad · 提示词优化检查",
+    "mounted": "2026-10-20 11:02:35.110 [info] [kicad] Webview frontend mounted: sidebar:chat:",
+    "runtime": "2026-10-20 11:02:35.398 [info]   - CLI Path: /Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.7/resources/claude-code/cli.js",
+    "log": "/Users/mosc/Library/Application Support/Code/logs/20261018T143837/window8/exthost/kicad-agent.kicad/Claudix.log"
+  }
+}

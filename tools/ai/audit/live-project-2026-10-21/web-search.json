@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "action": "web.search",
+  "data": {
+    "query": "KiCad native IPC API",
+    "results": [
+      {
+        "title": "KiCad IPC API | Developer Documentation | KiCad",
+        "url": "https://dev-docs.kicad.org/en/apis-and-binding/ipc-api/"
+      },
+      {
+        "title": "IPC API Documentation | Documentation | KiCad",
+        "url": "https://docs.kicad.org/kicad-python/"
+      },
+      {
+        "title": "kicad-api-doc/docs/ipc-api/kicad-ipc-api-reference.md at main - GitHub",
+        "url": "https://github.com/AskStr/kicad-api-doc/blob/main/docs/ipc-api/kicad-ipc-api-reference.md"
+      },
+      {
+        "title": "Developers guide to the KiCad Protobuf-based IPC API for plugins",
+        "url": "https://gist.github.com/kbralten/52ad5a56d09ff01cf42e4d338f57e022"
+      },
+      {
+        "title": "How to learn IPC API? - External Plugins - KiCad.info Forums",
+        "url": "https://forum.kicad.info/t/how-to-learn-ipc-api/71753"
+      }
+    ],
+    "source": "https://html.duckduckgo.com/html/?q=KiCad%20native%20IPC%20API",
+    "untrustedContent": true
+  }
+}

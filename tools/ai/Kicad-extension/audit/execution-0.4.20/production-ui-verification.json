@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "version": "0.4.20",
+  "checks": [
+    "default collapsed per request",
+    "click and keyboard expand/collapse",
+    "full tool outputs and child logs retained",
+    "child result never settles main turn",
+    "important findings visible",
+    "error summary visible, raw error in details",
+    "permission prompt available",
+    "final only, no intermediate progress promotion",
+    "320px no horizontal overflow",
+    "pause and immediate resend restores session",
+    "late retired result and close cannot stop resend",
+    "one send per explicit message",
+    "new chat resets execution and agents",
+    "ordinary chat streams normally"
+  ],
+  "pageErrors": []
+}

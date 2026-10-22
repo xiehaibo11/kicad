@@ -1,0 +1,103 @@
+KiCad 内部工具迁移与验收记录
+日期：2026-10-21
+工作区：/Users/mosc/Downloads/Kicad
+
+当前调用链
+
+终端原生插件工具 / 扩展 SDK 进程内工具
+  -> tools/ai/direct 中共用的 JS handlers / Runtime.dispatch
+  -> KiCad C++ 编辑器的原生 IPC，或原生 kicad-cli 作业
+
+IPC 直接连接持有文档的 C++ 编辑器进程；没有额外 Go、WebSocket 或嘉立创连接器。
+布线、扇出、铺铜、原理图生成、流水线、审计与交付证据逻辑放在共用 JS 模块。
+导出、DRC/ERC 等原生作业仍调用 KiCad 自己的 CLI。可选外部工具直接启动其原生程序。
+扩展的健康检查和工具目录读取也已经改为进程内调用。
+轻量旧扩展的动作和可选模型循环同样导入共用模块。
+
+改动与兼容边界
+
+- 删除 tools/ai/kicad-agent 的 Go 源码、测试、生成的 Go protobuf 和旧构建目标。
+- 移除原 easyeda-agent 子模块工作目录、连接器构建脚本和活动调用配置。
+- 原生构建、终端、主扩展及轻量旧扩展均使用共用 JS 模块。
+- 终端在最终配置合并后移除遗留 kicad/easyeda MCP 连接器，保留其他用户配置。
+- 主扩展通过 SDK 的进程内 server 接口注册工具，不启动 stdio MCP 路由进程。
+  mcp__kicad__ 前缀是 SDK 工具命名形式，不表示存在外部 MCP 子进程。
+- 独立 stdio MCP 仅保留给用户显式配置的外部客户端，内置两端不启动它。
+- 安装 ID kicad-agent.kicad 和旧状态目录名保留，用于升级与状态兼容。
+- 工作区原有 C++ 等并行修改保留，未执行 reset、clean、stash 或提交。
+
+工具审查
+
+共用目录：254 个动作，20 个内部工具；971 个原生 GUI 动作描述。
+动作后端：128 IPC、57 CLI、26 本地、36 组合工作流、7 可选外部工具。
+检查了 164 个 C++ 请求注册位置。动作映射和 protobuf 描述从当前源码生成。
+971 个 GUI 动作是可发现目录，提交动作不等于执行完成，也未逐个在 GUI 中运行。
+254 个动作均检查分发入口和映射；此检查不代表每个动作的全部业务语义经过实机验证。
+
+原连接器 1.14.0 的 170 个 handler 均在 connector-audit.json 中登记：
+- 72 项找到 KiCad 原生能力对应；仍须使用原生参数、单位和验证方法。
+- 19 项嘉立创平台身份、源格式或客户端生命周期接口移除。
+- 79 项无已审定的一对一映射，需改用原生 KiCad 工作流。
+这些是审计分类，不是已实现的旧接口别名，也不声称 170 项全部等价迁移。
+原连接器 JavaScript 不在当前运行包内执行。
+
+指定外部归档
+
+已替换：
+/Users/mosc/Downloads/hardware/tools/easyeda-agent-release/easyeda-agent-connector.eext
+
+同内容、建议使用的新名称：
+/Users/mosc/Downloads/hardware/tools/easyeda-agent-release/kicad-native-tools.zip
+
+保留 .eext 名称是原路径兼容；其内容现在是 KiCad 原生工具 ZIP，不能再作为嘉立创扩展导入。
+归档包含共用模块、入口元数据、许可证及审计清单，不含旧 extension.json 和连接器入口。
+从实际替换归档中解压、导入并执行 manifest/reference.plan 已通过。
+归档中的模块与终端、主扩展、旧扩展、npm 包及 CMake 构建目录的模块 SHA256 一致。
+共用模块 SHA256：8c77c360186e943761633ce78a2d12aa31116220ba3bc4bbb918842dfc4bce8b
+归档 SHA256：73c4482e21ae8ee81bc76f290765da590c7d09301f8dad054ea932857e09c8e4
+
+通过的验证
+
+1. Node：36 通过、0 失败、0 跳过；包括真实原生 PCB 与原理图测试。
+   临时板上进行创建、读取、修改、删除、封装放置、规则区、规则、保存副本 DRC 和 SVG 导出。
+   原始板文件逐字节不变；原理图测试解析原生库引脚、放置标签、保存并导出网表/ERC。
+   另覆盖 NNG 分片、UTF8、连接复用、请求 ID、超时、取消、无编辑重放、部分失败证据、
+   工具域限制、权限、串行化、布线障碍、流水线预览及审计证据门槛。
+2. Bun：5 通过、0 失败；包括两项真实原生测试。
+3. 完整终端构建：类型检查通过；206 测试通过、1 跳过、0 失败；原生 arm64 版本 1.19.3。
+4. 原生终端服务：注册 20 个内部 KiCad 工具，健康检查直接执行，自动 MCP 中无 KiCad 连接器。
+   本地流式模型夹具的完整、截断、过滤三种结果处理通过，未写入聊天历史。
+5. 主扩展：TypeScript/Vue 检查、构建脚本内的回归测试、真实 SDK 注册及 VSIX 加载检查通过。
+   最后补测工具目录直接读取 schemas/access、预先取消以及预测请求不加载工具。
+6. 最终 VSIX 在真实 VS Code 扩展宿主中激活并通过健康检查和 20 工具目录读取。
+   兼容 Node 路径刻意设为不存在，仍能得到原生 KiCad CLI 10.99.0 的结果。
+   夹具故意指向不存在的 IPC socket，因此 IPC 未连接是预期结果。
+7. 轻量旧扩展编译及编译后宿主测试通过：实际 ESM 导入、254 动作、规范查询、相对路径和取消。
+8. npm 包通过干净缓存 npx 和隔离全局前缀安装验收：32 个大小写命令别名、22 个原终端命令、
+   580 个包文件、内置插件/规范资源、含空格路径，以及合并后删除旧全局连接器均检查通过。
+9. 最终构建清单、跨包模块哈希和 git diff --check 通过；详见 JSON 与日志证据。
+
+实际宿主测试的限制
+
+完整聊天面板测试未通过前端 mounted 等待，不能作为完整 UI 验收。
+一次扩展内创建终端的宿主测试在访问 SecretStorage 时触发 macOS “Code Key”钥匙串提示并超时。
+该测试明确记为未完成，未重置或修改系统钥匙串；对应隔离 VS Code 进程已退出。
+最后的宿主测试仅验证激活、健康和工具目录，不访问凭据存储，结果为通过。
+终端可执行文件、服务及 npm 安装分别通过验收；尚不代表扩展内终端入口完整验收通过。
+未运行真实付费模型的设计任务，未测量性能增益，未全局安装或发布本次产物。
+
+当前产物
+
+- tools/ai/Kicad-extension/dist/kicad-0.4.25.vsix
+- tools/ai/Kicad-terminal/npm/-kicadai-kicad-code-0.1.1.tgz
+- tools/ai/direct/dist/kicad-native-tools.zip
+- build/bin/kicad-direct.mjs 与原生 kicad-cli agent 入口
+各产物大小和完整 SHA256 见 artifact-checksums.json。
+
+原文件备份
+
+/Users/mosc/Downloads/Kicad-migration-backup-2026-10-21.zip
+包含移除前 Go 工作区、原始连接器、旧上游快照及校验记录。
+备份 ZIP CRC 检查通过，原连接器内容 SHA256 验证通过。
+备份 SHA256：2b39feb23fbc7499c3e7c9877da9f1b304d7f641bf14d88c7a53c3608a1b24f2
+原连接器 SHA256：1c162989e161016d004a3f3fcc32b93a32281566c8dcf0b2bdb37439ffd22be9

@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "action": "system.version",
+  "data": {
+    "version": "10.99.0"
+  }
+}

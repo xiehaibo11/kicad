@@ -1,0 +1,63 @@
+
+> @kicad/direct@0.1.0 test
+> node --test test/*.test.mjs
+
+✔ provider loop dispatches tools in-process and emits the verified final answer (37.390125ms)
+✔ provider loop retains unresolved tool failures even if the model claims completion (16.378916ms)
+✔ already-cancelled provider loop never dispatches an action (3.010666ms)
+✔ in-process tools call the shared runtime, preserve write permission and validate input before execution (4.079084ms)
+✔ in-process composite tools serialize and queued cancellation never starts an edit (1.959667ms)
+✔ CLI file outputs create parents, multi-file outputs create directories, import validates project extension (4.10675ms)
+✔ jobset destination ID survives working directory resolution in direct runtime (1.644625ms)
+✔ all 57 native CLI schemas accept required paths and reject unknown options (6.04275ms)
+✔ typed CLI flags preserve commas, repeated defines, booleans and literal shell metacharacters (0.305792ms)
+✔ native rule summaries count every DRC group and every ERC sheet, preserving full reports (2.574125ms)
+✔ process wrapper preserves split UTF8 and supports real deadline/cancellation without a shell (243.763792ms)
+✔ pipeline filters stages before dispatch and dry-run dispatches no actions or saves (5.111584ms)
+✔ layer dry-run never invokes saveFirst and edits preserve all other bytes (2.166583ms)
+✔ plane verification failure rolls back only its created zone (0.27275ms)
+✔ partial creation and missing readback retain IDs and fail instead of claiming success (0.399833ms)
+✔ grid planner detours copper and validates clearance to zone holes and all layers (6.364584ms)
+✔ arcs use sweep length rather than the endpoint chord (0.570042ms)
+✔ native audits require complete severity scope and cannot trust success/status alone (0.427125ms)
+✔ workflow cannot skip earlier gates or promote verified; snapshots bind the saved design (4.816791ms)
+✔ web destination policy rejects local, link-local, reserved and IPv6-mapped private addresses (5.343834ms)
+✔ 333 supported actions and 130 IPC mappings have registered native commands (6.414083ms)
+✔ Any URLs use the canonical native namespace, preserving 64-bit coordinates (6.722292ms)
+✔ native per-item failures fail the whole request and retain partial evidence (5.780959ms)
+✔ 20 unique MCP tools restrict domains and annotate mixed tools as mutating (0.596875ms)
+✔ footprint translator builds schema-valid nested native items and refuses unsupported pads (14.323583ms)
+✔ circuit preflight rejects ambiguous units, duplicate nets and multiply assigned pins (0.580666ms)
+✔ every catalog action reaches an implementation and async exceptions become structured failures (30.47875ms)
+✔ in-process default project discovery uses the frontend workspace directory (4.862917ms)
+✔ standalone entry executes through symlink paths including macOS /var aliases (235.946958ms)
+✔ importing the shared module never runs its command entry (218.74175ms)
+✔ empty terminal socket configuration uses the native default (0.585458ms)
+✔ nested job settings retain document/output/timeout aliases together (0.619167ms)
+✔ document listing preserves native library editor types and rejects unknown types (0.428ms)
+✔ retired EDA relay commands cannot return through renamed merged configuration (1.285917ms)
+✔ native snapshot library paths retain source project resolution (2.365583ms)
+✔ removed native formats return explicit alternatives without executing (0.62975ms)
+✔ native board workflows: images, silk, netclasses, constraints, layer hop, cleanup, DSN/SES and reports (16535.940584ms)
+✔ native decap placement clears reference text, respects distance and restores on DRC regression (20095.527792ms)
+✔ native parser loads generated symbol library and selects child sheet IPC context (2486.25075ms)
+✔ native schematic workflows preserve fields and pin geometry, save and export (22234.887666ms)
+✔ all 79 original deferred handlers have concrete in-process native workflows (1.231542ms)
+✔ native file workflows preserve hierarchy, libraries, project settings and recoverable deletions (43.00875ms)
+✔ isolated native KiCad: direct IPC writes/readback/delete, temporary live DRC and CLI export (12278.443458ms)
+✔ isolated native schematic generation resolves library pins, creates labels and saves (9011.856459ms)
+✔ footprint placement and search use the document project table and library nickname (7.473084ms)
+✔ fragmented IPC frames preserve UTF8, reuse a single socket and serialize requests (16.040125ms)
+✔ rejects malformed wrong-id (1.530333ms)
+✔ rejects malformed oversize (2.290708ms)
+✔ rejects malformed bad-handshake (1.03375ms)
+✔ deadline and cancellation do not replay a submitted edit (43.617708ms)
+✔ fake-IP DNS is resolved publicly, while returned private/mixed addresses remain blocked (7.826667ms)
+ℹ tests 51
+ℹ suites 0
+ℹ pass 51
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25151.741666

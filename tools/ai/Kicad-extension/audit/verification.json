@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-20",
+  "scope": "VS Code Claudix overlay plus native OpenCode terminal; source audit of KiCad automation",
+  "artifact": {
+    "path": "/Users/mosc/Downloads/kicad/tools/ai/claudix-kicad/dist/kicad-agent-claudix-0.4.0.vsix",
+    "bytes": 27678805,
+    "sha256": "52bd7b212aff916e6e9138b98471ab3d7cc8766d1b18117d1cce48f84c65e239",
+    "version": "0.4.0",
+    "upstreamVersion": "0.3.9"
+  },
+  "checks": {
+    "typescriptFullExtension": "passed: pnpm exec tsc --noEmit",
+    "overlayBoundaries": "passed: native executable/argv, workspace selection, config preservation, trust, missing executables, disabled MCP injection and SDK syntax",
+    "productionBuild": "passed: Vue/Vite and extension esbuild",
+    "vsixContents": "passed: commands, chat assets, Claude CLI, AGPL license and architecture review",
+    "goDefault": "passed: go test ./...",
+    "goNNG": "passed: CGO_ENABLED=1 go test -tags nng ./... with static NNG library",
+    "mcpDirect": "passed: initialize, tools/list (14 tools), tools/call kicad_actions (84 actions)",
+    "realOpenCodeVersion": {
+      "exitCode": 0,
+      "stdout": "1.19.3\n",
+      "stderr": ""
+    },
+    "realOpenCodeMcpList": {
+      "exitCode": 0,
+      "stdout": "┌  MCP Servers\n│\n●  ✓ kicad \u001b[90mconnected\n│      \u001b[90m/Users/mosc/Downloads/kicad/build/bin/kicad-agent mcp\n│\n└  1 server(s)\n\n",
+      "stderr": "\u001b[0m\n"
+    },
+    "gitDiffCheck": "passed",
+    "upstreamClaudixWorktree": "clean"
+  },
+  "notVerified": [
+    "VS Code GUI extension activation and terminal keyboard/session behavior",
+    "Real model conversation calling KiCad tools",
+    "End-to-end adaptation of every native KiCad tool",
+    "Windows terminal behavior"
+  ],
+  "inventory": {
+    "literalNamedNativeActions": 970,
+    "typedAutomationActions": 84,
+    "mcpTools": 14,
+    "apiRegistrationSites": 162,
+    "coverageRatio": "not comparable; requires semantic mapping"
+  },
+  "installation": "VSIX generated, not installed into the user editor. OpenCode 1.19.3 was temporarily installed under /tmp only for validation. User global configuration was not changed.",
+  "designChanges": "No hardware design documents modified."
+}

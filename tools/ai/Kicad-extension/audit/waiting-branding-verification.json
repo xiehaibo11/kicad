@@ -1,0 +1,33 @@
+{
+  "version": "0.4.6",
+  "fixture": "Installed production frontend with isolated mock VS Code transport; no model API call",
+  "nativeIcon": {
+    "width": 128,
+    "height": 128,
+    "renderedWidth": 16,
+    "renderedHeight": 16,
+    "src": "http://127.0.0.1:59663/kicad.png",
+    "animation": "kicad-wait-pulse-f70922c3"
+  },
+  "waitingText": "Forging...",
+  "removedClaudeSpinner": true,
+  "reducedMotionRespected": true,
+  "pageErrors": [],
+  "sentMessage": true,
+  "screenshot": "/Users/mosc/Downloads/kicad/tools/ai/claudix-kicad/audit/waiting-0.4.6.png",
+  "normalVSCode": {
+    "window": "kicad · 状态图标检查",
+    "log": "/Users/mosc/Library/Application Support/Code/logs/20261018T143837/window7/exthost/kicad-agent.kicad/Claudix.log",
+    "mounted": "2026-10-20 10:54:10.398 [info] [kicad] Webview frontend mounted: sidebar:chat:",
+    "runtimePath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.6"
+  },
+  "checks": [
+    "TypeScript noEmit",
+    "overlay checks",
+    "frontend and extension production build",
+    "packaged extension load check",
+    "installed frontend waiting-state rendering"
+  ],
+  "vsixSha256": "e8245665a2fa202b612c30d1e626fdf9b72dd38d286d4d641ddd6fb0af56976f",
+  "nativeIconSha256": "375a4486619c52f8d710d5ad33b2c4f53a9bc102e31aa9cdaf7e37beb2ce08cb"
+}

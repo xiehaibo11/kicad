@@ -1,0 +1,1274 @@
+{
+  "ok": true,
+  "action": "board.drc.live",
+  "data": {
+    "status": "violations",
+    "exitCode": 5,
+    "report": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/drc-complete-1.json",
+    "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/drc-complete-1.json",
+    "summary": {
+      "reportPath": "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/drc-complete-1.json",
+      "total": 1572,
+      "bySeverity": {
+        "error": 1097,
+        "warning": 475
+      },
+      "byType": {
+        "clearance": 499,
+        "shorting_items": 13,
+        "hole_clearance": 26,
+        "courtyards_overlap": 18,
+        "copper_edge_clearance": 34,
+        "drill_out_of_range": 77,
+        "track_width": 199,
+        "starved_thermal": 12,
+        "via_diameter": 77,
+        "solder_mask_bridge": 10,
+        "track_dangling": 1,
+        "text_height": 90,
+        "silk_overlap": 21,
+        "silk_over_copper": 1,
+        "unconnected_items": 132,
+        "missing_footprint": 8,
+        "footprint_symbol_mismatch": 155,
+        "net_conflict": 199
+      },
+      "violations": 1078,
+      "unconnected_items": 132,
+      "schematic_parity": 362,
+      "ignoredChecks": [
+        {
+          "description": "Footprint has no courtyard defined",
+          "key": "missing_courtyard"
+        },
+        {
+          "description": "Track endpoint not centered on via",
+          "key": "track_not_centered_on_via"
+        },
+        {
+          "description": "Tuning profile track geometries",
+          "key": "tuning_profile_track_geometries"
+        },
+        {
+          "description": "Footprint doesn't match symbol's footprint filters",
+          "key": "footprint_filters_mismatch"
+        },
+        {
+          "description": "Footprint component type doesn't match footprint pads",
+          "key": "footprint_type_mismatch"
+        }
+      ]
+    },
+    "reportJsonOmitted": true,
+    "reportBytes": 1086661,
+    "sampleViolations": [
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1916 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Top Layer, length 0.1114 mm",
+            "pos": {
+              "x": 139.972,
+              "y": 129.543
+            },
+            "uuid": "8974ad0f-cf90-4410-a9fa-763227224667"
+          },
+          {
+            "description": "Via [LED_PWR] on Top Layer - Bottom Layer",
+            "pos": {
+              "x": 139.8755,
+              "y": 130.056
+            },
+            "uuid": "fa6c91fd-f715-4af9-a17c-9c0f9477f743"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1542 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 1.1290 mm",
+            "pos": {
+              "x": 153.2285,
+              "y": 122.2605
+            },
+            "uuid": "1219feab-7273-4450-bce1-01f3c149f356"
+          },
+          {
+            "description": "Pad 1 [VDD_DDR] of C101 on Bottom Layer",
+            "pos": {
+              "x": 153.761,
+              "y": 121.76
+            },
+            "uuid": "78bd377c-3542-4e46-9ca4-4c716226626d"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0558 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.5005 mm",
+            "pos": {
+              "x": 159.1515,
+              "y": 100.983
+            },
+            "uuid": "53b1b7fc-55cc-4863-a0b5-4f0ce8f004c8"
+          },
+          {
+            "description": "Track [+1V8] on Bottom Layer, length 1.5892 mm",
+            "pos": {
+              "x": 160.1065,
+              "y": 100.983
+            },
+            "uuid": "c136363c-2ce7-4a93-a010-355ba536aa30"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1042 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DM] on Top Layer, length 2.2985 mm",
+            "pos": {
+              "x": 145.418,
+              "y": 118.913
+            },
+            "uuid": "334cded3-75d6-4782-b50f-09cc29e41a41"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0677 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.4825 mm",
+            "pos": {
+              "x": 159.1515,
+              "y": 100.983
+            },
+            "uuid": "4e4dffaf-cb7c-41a1-8147-2a6ef60e8858"
+          },
+          {
+            "description": "Track [+1V8] on Bottom Layer, length 1.5892 mm",
+            "pos": {
+              "x": 160.1065,
+              "y": 100.983
+            },
+            "uuid": "c136363c-2ce7-4a93-a010-355ba536aa30"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0674 mm)",
+        "items": [
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.7184 mm",
+            "pos": {
+              "x": 155.5905,
+              "y": 102.1005
+            },
+            "uuid": "e36acd2c-d012-4677-9bcd-840223c4c38b"
+          },
+          {
+            "description": "Track [+3V3] on Bottom Layer, length 0.7078 mm",
+            "pos": {
+              "x": 155.555,
+              "y": 102.6085
+            },
+            "uuid": "f360fd19-d55b-4299-96ce-dc888ef0a5f6"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1031 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DM] on Top Layer, length 3.3145 mm",
+            "pos": {
+              "x": 149.8935,
+              "y": 122.296
+            },
+            "uuid": "2a76d540-c37f-44bf-9ecd-7cd5e4cb44f6"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1031 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DM] on Top Layer, length 1.1278 mm",
+            "pos": {
+              "x": 149.096,
+              "y": 123.0935
+            },
+            "uuid": "e7a30725-b5b0-41d6-be6b-f10f8c9c1af7"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1014 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 0.7670 mm",
+            "pos": {
+              "x": 146.368,
+              "y": 118.913
+            },
+            "uuid": "c759ee96-4d4a-4d54-9401-a6298e020634"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1015 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 0.5066 mm",
+            "pos": {
+              "x": 151.0945,
+              "y": 122.304
+            },
+            "uuid": "ec1e16f5-4ecc-4cda-a454-67527af9b64f"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Items shorting two nets (nets +5V_CAM and USB_CON_DM)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 0.9914 mm",
+            "pos": {
+              "x": 150.7365,
+              "y": 118.847
+            },
+            "uuid": "9f45cc91-8365-49e8-9f64-653f72e5f007"
+          },
+          {
+            "description": "Pad 1 [USB_CON_DM] of L31 on Top Layer",
+            "pos": {
+              "x": 149.892,
+              "y": 118.9815
+            },
+            "uuid": "bb8f2ea9-c963-4aba-b4eb-10fd5fa10db8"
+          }
+        ],
+        "severity": "error",
+        "type": "shorting_items"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1605 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [USB_DM] of L31 on Top Layer",
+            "pos": {
+              "x": 149.892,
+              "y": 117.2815
+            },
+            "uuid": "0de3457c-7de4-440a-9af4-f87c36d9d97d"
+          },
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 0.9914 mm",
+            "pos": {
+              "x": 150.7365,
+              "y": 118.847
+            },
+            "uuid": "9f45cc91-8365-49e8-9f64-653f72e5f007"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1025 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DP] on Top Layer, length 0.8715 mm",
+            "pos": {
+              "x": 147.318,
+              "y": 121.2115
+            },
+            "uuid": "ca59a415-450d-43f7-9c37-a975f1600dd6"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1315 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 3.6675 mm",
+            "pos": {
+              "x": 150.0355,
+              "y": 118.146
+            },
+            "uuid": "4faa2183-17bd-4b2f-995a-9a5137749691"
+          },
+          {
+            "description": "Pad 4 [USB_CON_DP] of L31 on Top Layer",
+            "pos": {
+              "x": 149.092,
+              "y": 118.9815
+            },
+            "uuid": "d8708f6e-f44c-4e5e-bd1d-dd0e6fe7b599"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1315 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 3.6675 mm",
+            "pos": {
+              "x": 150.0355,
+              "y": 118.146
+            },
+            "uuid": "4faa2183-17bd-4b2f-995a-9a5137749691"
+          },
+          {
+            "description": "Pad 1 [USB_CON_DM] of L31 on Top Layer",
+            "pos": {
+              "x": 149.892,
+              "y": 118.9815
+            },
+            "uuid": "bb8f2ea9-c963-4aba-b4eb-10fd5fa10db8"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1021 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 3.0985 mm",
+            "pos": {
+              "x": 150.7365,
+              "y": 121.9455
+            },
+            "uuid": "f9eaa549-eacc-4457-96fa-de7f522c1ed6"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1605 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [USB_DM] of L31 on Top Layer",
+            "pos": {
+              "x": 149.892,
+              "y": 117.2815
+            },
+            "uuid": "0de3457c-7de4-440a-9af4-f87c36d9d97d"
+          },
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 3.6675 mm",
+            "pos": {
+              "x": 150.0355,
+              "y": 118.146
+            },
+            "uuid": "4faa2183-17bd-4b2f-995a-9a5137749691"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1605 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 3.6675 mm",
+            "pos": {
+              "x": 150.0355,
+              "y": 118.146
+            },
+            "uuid": "4faa2183-17bd-4b2f-995a-9a5137749691"
+          },
+          {
+            "description": "Pad 3 [USB_DP] of L31 on Top Layer",
+            "pos": {
+              "x": 149.092,
+              "y": 117.2815
+            },
+            "uuid": "5b6d7519-63fd-43fd-87a5-3356d152e0b5"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Items shorting two nets (nets +5V_CAM and USB_CON_DP)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 3.6675 mm",
+            "pos": {
+              "x": 150.0355,
+              "y": 118.146
+            },
+            "uuid": "4faa2183-17bd-4b2f-995a-9a5137749691"
+          },
+          {
+            "description": "Pad 4 [USB_CON_DP] of U22 on Top Layer",
+            "pos": {
+              "x": 147.3165,
+              "y": 118.9135
+            },
+            "uuid": "50813cbc-e0f2-44d3-a3b6-b428f2cb43b6"
+          }
+        ],
+        "severity": "error",
+        "type": "shorting_items"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1030 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DP] on Top Layer, length 0.6805 mm",
+            "pos": {
+              "x": 149.093,
+              "y": 118.9815
+            },
+            "uuid": "537c9943-ccee-4dce-acca-5f01284429ce"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1330 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DP] on Top Layer, length 0.7670 mm",
+            "pos": {
+              "x": 147.318,
+              "y": 118.913
+            },
+            "uuid": "e549a48e-eedf-47e1-8cb9-804a13ea2ef5"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1014 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 3.6675 mm",
+            "pos": {
+              "x": 150.0355,
+              "y": 118.146
+            },
+            "uuid": "4faa2183-17bd-4b2f-995a-9a5137749691"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1044 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 0.9914 mm",
+            "pos": {
+              "x": 150.7365,
+              "y": 118.847
+            },
+            "uuid": "9f45cc91-8365-49e8-9f64-653f72e5f007"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1668 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [$4N75] of R32 on Top Layer",
+            "pos": {
+              "x": 138.4175,
+              "y": 112.361
+            },
+            "uuid": "7f30b038-397a-4a0f-a5f1-c9cf3c755042"
+          },
+          {
+            "description": "Track [ANT_MOD] on Top Layer, length 1.5850 mm",
+            "pos": {
+              "x": 138.9305,
+              "y": 113.213
+            },
+            "uuid": "844526be-d516-4801-929e-9bc9236c9f24"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1015 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Top Layer, length 1.9810 mm",
+            "pos": {
+              "x": 151.0945,
+              "y": 124.285
+            },
+            "uuid": "33c79d28-4e80-4c0d-88c2-eba99ad840e1"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0994 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DP] on Top Layer, length 1.7575 mm",
+            "pos": {
+              "x": 149.0755,
+              "y": 119.68
+            },
+            "uuid": "d778f3f6-21c1-4bdf-b8cc-f29b43f368a1"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1578 mm)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.5926 mm",
+            "pos": {
+              "x": 150.1955,
+              "y": 95.103
+            },
+            "uuid": "876252b0-cb30-47b4-a869-256121a55b90"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Items shorting two nets (nets +5V and GND)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          },
+          {
+            "description": "Pad 2 [GND] of C13 on Bottom Layer",
+            "pos": {
+              "x": 148.841,
+              "y": 95.522
+            },
+            "uuid": "f9e7cba3-dfec-402a-9098-d83e191fefec"
+          }
+        ],
+        "severity": "error",
+        "type": "shorting_items"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1765 mm)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          },
+          {
+            "description": "Pad 4 [GND] of Y1 on Bottom Layer",
+            "pos": {
+              "x": 154.52,
+              "y": 95.7455
+            },
+            "uuid": "8b9cecaa-bde9-4152-8bd3-ecb4e06f7641"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Items shorting two nets (nets GND and +5V)",
+        "items": [
+          {
+            "description": "Pad 2 [GND] of C50 on Bottom Layer",
+            "pos": {
+              "x": 150.889,
+              "y": 95.102
+            },
+            "uuid": "241abdfd-0aa8-4f29-ab98-43f4e626e1a3"
+          },
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          }
+        ],
+        "severity": "error",
+        "type": "shorting_items"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1578 mm)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.6935 mm",
+            "pos": {
+              "x": 150.889,
+              "y": 95.103
+            },
+            "uuid": "f6b73fde-2399-472a-a42d-45f60a3a96f8"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Items shorting two nets (nets +5V and +5V_IN)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          },
+          {
+            "description": "Via [+5V_IN] on Top Layer - Bottom Layer",
+            "pos": {
+              "x": 151.8515,
+              "y": 94.1655
+            },
+            "uuid": "f8d7199f-d390-4052-9212-adb1d305dd0d"
+          }
+        ],
+        "severity": "error",
+        "type": "shorting_items"
+      },
+      {
+        "group": "violations",
+        "description": "Hole clearance violation (board setup constraints hole clearance 0.2500 mm; actual 0.0965 mm)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          },
+          {
+            "description": "Via [+5V_IN] on Top Layer - Bottom Layer",
+            "pos": {
+              "x": 151.8515,
+              "y": 94.1655
+            },
+            "uuid": "f8d7199f-d390-4052-9212-adb1d305dd0d"
+          }
+        ],
+        "severity": "error",
+        "type": "hole_clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1765 mm)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          },
+          {
+            "description": "Pad 1 [XIN_24M] of Y1 on Bottom Layer",
+            "pos": {
+              "x": 152.82,
+              "y": 95.7455
+            },
+            "uuid": "5dc9030b-038b-4a26-9478-fd8992606521"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1155 mm)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          },
+          {
+            "description": "Pad 2 [GND] of Y1 on Bottom Layer",
+            "pos": {
+              "x": 152.82,
+              "y": 93.5455
+            },
+            "uuid": "51bb8ed8-d59c-4f31-9795-9831e8d848cf"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1155 mm)",
+        "items": [
+          {
+            "description": "Pad 3 [XOUT_24M] of Y1 on Bottom Layer",
+            "pos": {
+              "x": 154.52,
+              "y": 93.5455
+            },
+            "uuid": "33acf284-3aa5-4200-8fd1-864f22c21518"
+          },
+          {
+            "description": "Track [+5V] on Bottom Layer, length 8.2450 mm",
+            "pos": {
+              "x": 155.085,
+              "y": 94.615
+            },
+            "uuid": "41ca01a1-7b21-41eb-8895-ca694666fa45"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0994 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DP] on Top Layer, length 0.0251 mm",
+            "pos": {
+              "x": 149.093,
+              "y": 119.662
+            },
+            "uuid": "659ad3d3-c103-4c1b-b983-eb1d4fae2fa9"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1042 mm)",
+        "items": [
+          {
+            "description": "Track [USB_CON_DP] on Top Layer, length 1.5315 mm",
+            "pos": {
+              "x": 147.318,
+              "y": 121.2115
+            },
+            "uuid": "ff8b4a93-946f-45d8-9c97-9738ad13b7b4"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0843 mm)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 0.0940 mm",
+            "pos": {
+              "x": 148.415,
+              "y": 127.4775
+            },
+            "uuid": "3ac98ba7-13f6-4c6d-89ba-5bc9ea663c75"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.8150 mm",
+            "pos": {
+              "x": 148.565,
+              "y": 127.864
+            },
+            "uuid": "9bf2389f-c83c-4f1e-9726-6601292beecf"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1250 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [GND] of U7 on Bottom Layer",
+            "pos": {
+              "x": 149.344,
+              "y": 127.323
+            },
+            "uuid": "262e44c8-b196-49a2-b421-4257950b5c56"
+          },
+          {
+            "description": "Track [+5V] on Bottom Layer, length 0.0940 mm",
+            "pos": {
+              "x": 148.415,
+              "y": 127.4775
+            },
+            "uuid": "3ac98ba7-13f6-4c6d-89ba-5bc9ea663c75"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.0491 mm)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 0.0940 mm",
+            "pos": {
+              "x": 148.415,
+              "y": 127.4775
+            },
+            "uuid": "3ac98ba7-13f6-4c6d-89ba-5bc9ea663c75"
+          },
+          {
+            "description": "Track [GND] on Bottom Layer, length 0.7651 mm",
+            "pos": {
+              "x": 149.106,
+              "y": 127.323
+            },
+            "uuid": "d5e5d23e-87a4-4e96-bc49-b1b1153648aa"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1031 mm)",
+        "items": [
+          {
+            "description": "Track [ANT_MOD] on Top Layer, length 1.5850 mm",
+            "pos": {
+              "x": 138.9305,
+              "y": 113.213
+            },
+            "uuid": "844526be-d516-4801-929e-9bc9236c9f24"
+          },
+          {
+            "description": "Zone [GND] on Top Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "68bb60aa-5924-470d-a26d-fa7785319988"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1537 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [GND] of U5 on Bottom Layer",
+            "pos": {
+              "x": 158.9455,
+              "y": 93.1855
+            },
+            "uuid": "5fafb027-1aa5-475d-af30-6c066d1a0c10"
+          },
+          {
+            "description": "Track [SW_CORE] on Bottom Layer, length 0.6500 mm",
+            "pos": {
+              "x": 159.7255,
+              "y": 94.135
+            },
+            "uuid": "cc767211-60ad-4e42-a989-4e07087141e6"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1537 mm)",
+        "items": [
+          {
+            "description": "Track [SW_CORE] on Bottom Layer, length 1.0706 mm",
+            "pos": {
+              "x": 159.7255,
+              "y": 93.485
+            },
+            "uuid": "2e0e9188-6b3a-4fbc-b31e-0d4bc12b234a"
+          },
+          {
+            "description": "Pad 2 [GND] of U5 on Bottom Layer",
+            "pos": {
+              "x": 158.9455,
+              "y": 93.1855
+            },
+            "uuid": "5fafb027-1aa5-475d-af30-6c066d1a0c10"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1754 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [GND] of U7 on Bottom Layer",
+            "pos": {
+              "x": 149.344,
+              "y": 127.323
+            },
+            "uuid": "262e44c8-b196-49a2-b421-4257950b5c56"
+          },
+          {
+            "description": "Track [SW_DDR] on Bottom Layer, length 0.9984 mm",
+            "pos": {
+              "x": 150.1245,
+              "y": 127.724
+            },
+            "uuid": "fd6c2015-1c8f-4803-9ece-a9a957955576"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1754 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [GND] of U7 on Bottom Layer",
+            "pos": {
+              "x": 149.344,
+              "y": 127.323
+            },
+            "uuid": "262e44c8-b196-49a2-b421-4257950b5c56"
+          },
+          {
+            "description": "Track [SW_DDR] on Bottom Layer, length 0.5490 mm",
+            "pos": {
+              "x": 150.1245,
+              "y": 128.273
+            },
+            "uuid": "f9dd8179-0812-45d2-b2d2-257f8a5176e6"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1648 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [VDD_LOG] of R3 on Bottom Layer",
+            "pos": {
+              "x": 138.4345,
+              "y": 90.569
+            },
+            "uuid": "93374c34-663d-4bf8-abd4-638af5bc6962"
+          },
+          {
+            "description": "Track [FB_LOG] on Bottom Layer, length 2.2355 mm",
+            "pos": {
+              "x": 136.9265,
+              "y": 91.242
+            },
+            "uuid": "ac12e852-1572-46b4-bdc3-c3b301ec6b75"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1019 mm)",
+        "items": [
+          {
+            "description": "Track [+5V_CAM] on Bottom Layer, length 0.1880 mm",
+            "pos": {
+              "x": 137.6075,
+              "y": 123.8965
+            },
+            "uuid": "b0e37460-580f-4ad0-a335-23ba84042467"
+          },
+          {
+            "description": "Zone [GND] on Bottom Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1716 mm)",
+        "items": [
+          {
+            "description": "Pad 2 [SW_LOG] of L2 on Bottom Layer",
+            "pos": {
+              "x": 140.798,
+              "y": 92.855
+            },
+            "uuid": "9354a37d-8e8c-4492-b9b3-b62aa210f68b"
+          },
+          {
+            "description": "Track [FB_LOG] on Bottom Layer, length 0.1690 mm",
+            "pos": {
+              "x": 141.661,
+              "y": 90.9575
+            },
+            "uuid": "a42b1b0a-bcd3-43b6-ba09-3842b44fbf70"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      },
+      {
+        "group": "violations",
+        "description": "Clearance violation ( clearance 0.2000 mm; actual 0.1053 mm)",
+        "items": [
+          {
+            "description": "Track [+5V] on Bottom Layer, length 0.0940 mm",
+            "pos": {
+              "x": 148.415,
+              "y": 127.4775
+            },
+            "uuid": "3ac98ba7-13f6-4c6d-89ba-5bc9ea663c75"
+          },
+          {
+            "description": "Zone [GND] on Bottom Layer, priority 500",
+            "pos": {
+              "x": 135.38,
+              "y": 132.1185
+            },
+            "uuid": "631d0ede-e42c-44e3-965a-8924573ccf96"
+          }
+        ],
+        "severity": "error",
+        "type": "clearance"
+      }
+    ],
+    "next": "Read reportPath for the complete report, or use full=true.",
+    "source": "live",
+    "document": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块.kicad_pcb",
+    "checkedCopy": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-live-H33m4Q/RK3308B_IPC 摄像头模块.kicad_pcb"
+  },
+  "artifacts": [
+    "/Users/mosc/Downloads/Kicad/tools/ai/audit/live-project-2026-10-21/drc-complete-1.json"
+  ]
+}

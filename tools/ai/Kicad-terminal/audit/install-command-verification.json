@@ -1,0 +1,75 @@
+{
+  "ok": true,
+  "command": "Kicad",
+  "installScript": "bash tools/ai/Kicad-terminal/install.sh",
+  "installedPath": "/Users/mosc/.local/bin/Kicad",
+  "cli": {
+    "ok": true,
+    "publicCommand": "Kicad",
+    "runtimeVersion": "1.19.3",
+    "commandCount": 22,
+    "commands": [
+      "completion",
+      "acp",
+      "mcp",
+      "[project]",
+      "attach",
+      "run",
+      "debug",
+      "providers",
+      "agent",
+      "upgrade",
+      "uninstall",
+      "serve",
+      "web",
+      "models",
+      "stats",
+      "export",
+      "import",
+      "github",
+      "pr",
+      "session",
+      "plugin",
+      "db"
+    ],
+    "commandInventoryPreserved": true,
+    "helpForCommands": [
+      "run",
+      "mcp",
+      "providers",
+      "session",
+      "serve",
+      "web"
+    ],
+    "completionUsesKicad": true
+  },
+  "installerRegression": {
+    "realRuntime": true,
+    "repeatInstall": true,
+    "spaceInPrefix": true,
+    "legacySymlinkDoesNotOverwriteNativeCLI": true,
+    "legacyLowercaseCommand": true,
+    "modelConfigPreserved": true
+  },
+  "tuiSuite": {
+    "passed": 206,
+    "skipped": 1,
+    "failed": 0
+  },
+  "installed": {
+    "terminalCommand": "Kicad",
+    "terminalVersion": "1.19.3",
+    "terminalSha256": "b66ec25a48bf4c3990c7699b66bbec600c0a91869db243284f2244928fea8f54",
+    "extensionVersion": "0.4.22",
+    "mcpToolCount": 19
+  },
+  "backendWrappersUnchanged": true,
+  "scope": "Public terminal command, installer and presentation only. No external publication performed.",
+  "interactiveStartup": {
+    "passed": true,
+    "observedTitle": "Kicad 终端",
+    "observedVersion": "Kicad 1.19.3",
+    "mcpServers": 2,
+    "submittedTask": false
+  }
+}

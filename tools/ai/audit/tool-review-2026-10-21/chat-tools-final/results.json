@@ -1,0 +1,353 @@
+{
+  "status": 0,
+  "requests": [
+    {
+      "tools": [],
+      "resultCount": 0
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "tools": [
+        "Agent",
+        "AskUserQuestion",
+        "Bash",
+        "CronCreate",
+        "CronDelete",
+        "CronList",
+        "Edit",
+        "EnterPlanMode",
+        "EnterWorktree",
+        "ExitPlanMode",
+        "ExitWorktree",
+        "Glob",
+        "Grep",
+        "mcp__kicad__kicad_actions",
+        "mcp__kicad__kicad_audit",
+        "mcp__kicad__kicad_blocks",
+        "mcp__kicad__kicad_board",
+        "mcp__kicad__kicad_call",
+        "mcp__kicad__kicad_document",
+        "mcp__kicad__kicad_editor",
+        "mcp__kicad__kicad_external",
+        "mcp__kicad__kicad_gerber",
+        "mcp__kicad__kicad_health",
+        "mcp__kicad__kicad_library",
+        "mcp__kicad__kicad_native_tools",
+        "mcp__kicad__kicad_pipeline",
+        "mcp__kicad__kicad_project",
+        "mcp__kicad__kicad_reference",
+        "mcp__kicad__kicad_schematic",
+        "mcp__kicad__kicad_spec_validate",
+        "mcp__kicad__kicad_system",
+        "mcp__kicad__kicad_web",
+        "mcp__kicad__kicad_workflow",
+        "NotebookEdit",
+        "Read",
+        "Skill",
+        "TaskOutput",
+        "TaskStop",
+        "TodoWrite",
+        "WebFetch",
+        "WebSearch",
+        "Write"
+      ],
+      "resultCount": 0
+    },
+    {
+      "tools": [],
+      "resultCount": 0
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "tools": [
+        "Agent",
+        "AskUserQuestion",
+        "Bash",
+        "CronCreate",
+        "CronDelete",
+        "CronList",
+        "Edit",
+        "EnterPlanMode",
+        "EnterWorktree",
+        "ExitPlanMode",
+        "ExitWorktree",
+        "Glob",
+        "Grep",
+        "mcp__kicad__kicad_actions",
+        "mcp__kicad__kicad_audit",
+        "mcp__kicad__kicad_blocks",
+        "mcp__kicad__kicad_board",
+        "mcp__kicad__kicad_call",
+        "mcp__kicad__kicad_document",
+        "mcp__kicad__kicad_editor",
+        "mcp__kicad__kicad_external",
+        "mcp__kicad__kicad_gerber",
+        "mcp__kicad__kicad_health",
+        "mcp__kicad__kicad_library",
+        "mcp__kicad__kicad_native_tools",
+        "mcp__kicad__kicad_pipeline",
+        "mcp__kicad__kicad_project",
+        "mcp__kicad__kicad_reference",
+        "mcp__kicad__kicad_schematic",
+        "mcp__kicad__kicad_spec_validate",
+        "mcp__kicad__kicad_system",
+        "mcp__kicad__kicad_web",
+        "mcp__kicad__kicad_workflow",
+        "NotebookEdit",
+        "Read",
+        "Skill",
+        "TaskOutput",
+        "TaskStop",
+        "TodoWrite",
+        "WebFetch",
+        "WebSearch",
+        "Write"
+      ],
+      "resultCount": 20
+    }
+  ],
+  "tools": [
+    {
+      "name": "kicad_health",
+      "args": {},
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"system.health\",\"data\":{\"cli\":{\"ok\":true,\"action\":\"system.version\",\"data\":{\"version\":\"10.99.0\"}},\"kicadCli\":{\"available\":true,\"version\":\"10.99.0\"},\"compiledCapabilities\":{\"actionCount\":335,\"mcpToolCount\":20},\"externalTools\":[{\"name\":\"kicad-cli\",\"available\":true,\"path\":\"/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli\"},{\"name\":\"freerouting\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/freerouting\"},{\"name\":\"java\",\"available\":true,\"path\":\"/usr/bin/java\"},{\"name\":\"ngspice\",\"available\":true,\"path\":\"/opt/homebrew/bin/ngspice\"},{\"name\":\"gerbv\",\"available\":true,\"path\":\"/opt/homebrew/bin/gerbv\"},{\"name\":\"openscad\",\"available\":true,\"path\":\"/opt/homebrew/bin/openscad\"},{\"name\":\"FreeCAD\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/FreeCAD\"},{\"name\":\"python3\",\"available\":true,\"path\":\"/usr/bin/python3\"},{\"name\":\"kicad-stepcheck\",\"available\":false,\"error\":\"not found\"}],\"ipc\":{\"available\":true,\"socket\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/api.sock\",\"result\":{\"ok\":true,\"action\":\"system.ping\",\"data\":{}}},\"documents\":{\"ok\":true,\"action\":\"document.list\",\"data\":{\"documents\":[{\"type\":\"DOCTYPE_PCB\",\"boardFilename\":\"fixture.kicad_pcb\",\"project\":{\"name\":\"fixture\",\"path\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur\"}}]}},\"tools\":[{\"name\":\"kicad-cli\",\"available\":true,\"path\":\"/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli\"},{\"name\":\"freerouting\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/freerouting\"},{\"name\":\"java\",\"available\":true,\"path\":\"/usr/bin/java\"},{\"name\":\"ngspice\",\"available\":true,\"path\":\"/opt/homebrew/bin/ngspice\"},{\"name\":\"gerbv\",\"available\":true,\"path\":\"/opt/homebrew/bin/gerbv\"},{\"name\":\"openscad\",\"available\":true,\"path\":\"/opt/homebrew/bin/openscad\"},{\"name\":\"FreeCAD\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/FreeCAD\"},{\"name\":\"python3\",\"available\":true,\"path\":\"/usr/bin/python3\"},{\"name\":\"kicad-stepcheck\",\"available\":false,\"error\":\"not found\"}],\"designReady\":true}}"
+      }
+    },
+    {
+      "name": "kicad_actions",
+      "args": {
+        "search": "board.via.create"
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"data\":{\"actions\":[{\"name\":\"board.via.create\",\"domain\":\"board\",\"backend\":\"composite\",\"mutates\":true,\"description\":\"Create vias (through/blind/buried/micro) at positions or in the pads of a footprint (via-in-pad), with drill/diameter and IPC-4761 filled/capped/plugged/covered settings; every via is read back and checked.\",\"inputs\":[\"document (board path; must be open in KiCad for IPC steps)\",\"positions[] {xMm,yMm,net?} | position | reference + pads[]/nets[] (via-in-pad)\",\"net optional\",\"drillMm optional (0.3)\",\"diameterMm optional (0.6)\",\"type optional (through|blind|buried|micro)\",\"startLayer/endLayer optional\",\"filled optional\",\"capped optional\",\"plugged optional (none|front|back|both)\",\"covered optional (none|front|back|both)\",\"dryRun optional\"],\"outputs\":[\"createdIds\",\"verified\",\"mismatches\"],\"verifyWith\":[\"board.drc.live\",\"board.connectivity.prove\"],\"keywords\":[\"添加过孔\",\"打过孔\",\"盘中孔\",\"填充过孔\",\"塞孔\",\"盖油\",\"via-in-pad\",\"filled via\",\"capped via\",\"缝合孔\"]}],\"count\":1}}"
+      }
+    },
+    {
+      "name": "kicad_call",
+      "args": {
+        "action": "board.via.create",
+        "payload": {
+          "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/fixture.kicad_pcb",
+          "position": {
+            "xMm": 10,
+            "yMm": 12
+          },
+          "diameterMm": 0.6,
+          "drillMm": 0.3
+        }
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"board.via.create\",\"data\":{\"requested\":1,\"sites\":[{\"position\":{\"xNm\":10000000,\"yNm\":12000000},\"net\":\"\"}],\"verified\":true,\"createdIds\":[\"d5e96527-186c-4468-b3fc-767e3535c993\"],\"verifiedCount\":1,\"mismatches\":{},\"next\":\"Run board.drc.live and board.connectivity.prove\"}}"
+      }
+    },
+    {
+      "name": "kicad_spec_validate",
+      "args": {
+        "file": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/spec.json"
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"spec.validate\",\"data\":{\"spec\":{\"modules\":[{\"name\":\"Power\",\"kind\":\"POWER\"}]},\"issues\":[{\"level\":\"INFO\",\"field\":\"flow\",\"message\":\"No signal flow declared; flow-order dimension is skipped\"},{\"level\":\"INFO\",\"field\":\"modules[0].parts\",\"message\":\"Module declares neither parts nor a block\"}]}}"
+      }
+    },
+    {
+      "name": "kicad_blocks",
+      "args": {
+        "operation": "show",
+        "id": "block.ams1117_ldo_3v3"
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"blocks.show\",\"data\":{\"id\":\"block.ams1117_ldo_3v3\",\"desc\":\"AMS1117-3.3 线性稳压 5V→3.3V(最小系统主控供电);输入/输出去耦 + 旁路电容\",\"category\":\"power\",\"author\":\"@zhoushoujianwork\",\"contributors\":[],\"added\":\"v0.9.0\",\"updated\":\"v0.9.0\",\"source\":\"datasheet:AMS1117 (Advanced Monolithic Systems, LCSC C6186 https://item.szlcsc.com/datasheet/AMS1117-3.3/6652.html ; PDF https://atta.szlcsc.com/upload/public/pdf/source/20180727/C6186_7A095716F0823C02F1997A905E26C086.pdf ; 第1页引脚定义, 第4页 Stability/典型可调电路, 第5页固定版与散热说明)。本块为固定3.3V版本,不使用可调版R1/R2/CADJ；10µF输入及100nF旁路为项目选值,不是手册给出的固定版典型BOM。\",\"parts\":{\"C_BYP\":{\"part\":\"cap.100nf_0402\",\"qty\":1,\"note\":\"100nF高频旁路为项目选值,与C_OUT并联接在VOUT和GND之间；不能替代手册要求的输出补偿电容。\"},\"C_IN\":{\"part\":\"cap.10uf_0805\",\"qty\":1,\"note\":\"10µF输入去耦为项目选值,靠近U.VIN接到GND。手册第4页图2示出输入电容但未标容量,不能据此声称输入≥10µF是稳定性保证。\"},\"C_OUT\":{\"part\":\"cap.22uf_0805\",\"qty\":1,\"note\":\"输出补偿电容,靠近U.VOUT接到GND。手册第4页明确22µF固体钽可保证所有工作条件的稳定性；本块现存22µF 0805陶瓷选型不是该保证的等价替代,须校核有效容量/ESR并做负载瞬态及振荡测试后才能判定硬件稳定。\"},\"U\":{\"part\":\"ldo.ams1117_3v3\",\"alt\":[\"ldo.ams1117_3v3\"],\"qty\":1,\"note\":\"AMS1117-3.3 固定3.3V线性稳压,SOT-223,标称1A且受散热限制。手册第1页:1=GND(可调版为ADJ),2=VOUT,3=VIN；散热片同属VOUT,本器件库将其编号为4。pin2与pin4必须同连3V3。手册第3页压差1.1V典型/1.3V最大是在0.8A条件下,超过0.8A时压差更高；须按负载和热条件校核5V输入余量。\"}},\"ports\":{\"3V3\":{\"dir\":\"out\",\"at\":\"U.VOUT*\",\"desc\":\"稳压 3.3V 输出, 供 MCU 模组及 3V3 外设(接 block.esp32s3_wroom1_module 的 3V3 port)\",\"default_net\":\"+3V3\"},\"GND\":{\"dir\":\"bidir\",\"at\":\"U.GND\",\"desc\":\"参考地(汇集输入/输出电容负端)\",\"default_net\":\"GND\"},\"VIN_5V\":{\"dir\":\"in\",\"at\":\"U.VIN\",\"desc\":\"5V 输入(来自 USB 5V / 5V 端子 / 上游 buck 的 +5V 轨)\",\"default_net\":\"+5V\"}},\"validation\":{\"platform\":\"KiCad\",\"status\":\"unverified\",\"libraryResolutionRequired\":true,\"note\":\"Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project.\"}}}"
+      }
+    },
+    {
+      "name": "kicad_workflow",
+      "args": {
+        "operation": "init",
+        "project": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur"
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"workflow.init\",\"data\":{\"project\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur\",\"stages\":{\"spec\":\"pending\",\"schematic\":\"pending\",\"netlist\":\"pending\",\"board\":\"pending\",\"place\":\"pending\",\"planes\":\"pending\",\"fanout\":\"pending\",\"route\":\"pending\",\"dfm\":\"pending\",\"drc\":\"pending\",\"connectivity\":\"pending\",\"manufacturing\":\"pending\",\"verified\":\"pending\"},\"confirmed\":{},\"scope\":\"Task tracking only. Confirmations are operator notes, not authenticated approvals. Use release.check for current evidence; final release requires accountable engineering/quality/manufacturer review.\",\"readyForFabrication\":false,\"readyForProduction\":false,\"updatedAt\":\"2026-10-21T18:07:48.417Z\"}}"
+      }
+    },
+    {
+      "name": "kicad_pipeline",
+      "args": {
+        "operation": "run",
+        "project": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur",
+        "stages": [
+          "health"
+        ]
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"pipeline.run\",\"data\":{\"project\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur\",\"dryRun\":false,\"startedAt\":\"2026-10-21T18:07:48.420Z\",\"stages\":[{\"name\":\"health\",\"action\":\"system.health\",\"status\":\"ok\",\"result\":{\"ok\":true,\"action\":\"system.health\",\"data\":{\"cli\":{\"ok\":true,\"action\":\"system.version\",\"data\":{\"version\":\"10.99.0\"}},\"kicadCli\":{\"available\":true,\"version\":\"10.99.0\"},\"compiledCapabilities\":{\"actionCount\":335,\"mcpToolCount\":20},\"externalTools\":[{\"name\":\"kicad-cli\",\"available\":true,\"path\":\"/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli\"},{\"name\":\"freerouting\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/freerouting\"},{\"name\":\"java\",\"available\":true,\"path\":\"/usr/bin/java\"},{\"name\":\"ngspice\",\"available\":true,\"path\":\"/opt/homebrew/bin/ngspice\"},{\"name\":\"gerbv\",\"available\":true,\"path\":\"/opt/homebrew/bin/gerbv\"},{\"name\":\"openscad\",\"available\":true,\"path\":\"/opt/homebrew/bin/openscad\"},{\"name\":\"FreeCAD\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/FreeCAD\"},{\"name\":\"python3\",\"available\":true,\"path\":\"/usr/bin/python3\"},{\"name\":\"kicad-stepcheck\",\"available\":false,\"error\":\"not found\"}],\"ipc\":{\"available\":true,\"socket\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/api.sock\",\"result\":{\"ok\":true,\"action\":\"system.ping\",\"data\":{}}},\"documents\":{\"ok\":true,\"action\":\"document.list\",\"data\":{\"documents\":[{\"type\":\"DOCTYPE_PCB\",\"boardFilename\":\"fixture.kicad_pcb\",\"project\":{\"name\":\"fixture\",\"path\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur\"}}]}},\"tools\":[{\"name\":\"kicad-cli\",\"available\":true,\"path\":\"/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli\"},{\"name\":\"freerouting\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/freerouting\"},{\"name\":\"java\",\"available\":true,\"path\":\"/usr/bin/java\"},{\"name\":\"ngspice\",\"available\":true,\"path\":\"/opt/homebrew/bin/ngspice\"},{\"name\":\"gerbv\",\"available\":true,\"path\":\"/opt/homebrew/bin/gerbv\"},{\"name\":\"openscad\",\"available\":true,\"path\":\"/opt/homebrew/bin/openscad\"},{\"name\":\"FreeCAD\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/FreeCAD\"},{\"name\":\"python3\",\"available\":true,\"path\":\"/usr/bin/python3\"},{\"name\":\"kicad-stepcheck\",\"available\":false,\"error\":\"not found\"}],\"designReady\":true}},\"elapsedMs\":292}],\"complete\":false,\"readyForFabrication\":false,\"readyForProduction\":false,\"ok\":true,\"finishedAt\":\"2026-10-21T18:07:48.712Z\"}}"
+      }
+    },
+    {
+      "name": "kicad_native_tools",
+      "args": {
+        "operation": "list",
+        "editor": "pcbnew",
+        "limit": 2
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"editor.native.list\",\"data\":{\"count\":406,\"tools\":[{\"name\":\"pcbnew.TableEditor.editTable\",\"symbol\":\"ACTIONS::editTable\",\"source\":\"common/tool/actions.cpp\",\"line\":561,\"editor\":\"pcbnew\",\"class\":\"TableEditor\",\"action\":\"editTable\",\"interactiveActivation\":false,\"mutates\":true,\"friendlyName\":\"Edit Table...\",\"zhName\":\"编辑表格...\",\"category\":\"edit\"},{\"name\":\"pcbnew.PointEditor.arcKeepCenter\",\"symbol\":\"ACTIONS::pointEditorArcKeepCenter\",\"source\":\"common/tool/actions.cpp\",\"line\":582,\"editor\":\"pcbnew\",\"class\":\"PointEditor\",\"action\":\"arcKeepCenter\",\"interactiveActivation\":false,\"mutates\":true,\"friendlyName\":\"Keep Arc Center, Adjust Radius\",\"tooltip\":\"Switch arc editing mode to keep center, adjust radius and endpoints\",\"zhName\":\"保持弧线中心, 调整半径\",\"zhTooltip\":\"切换弧线编辑模式, 保持圆心不变, 调整半径和端点位置\",\"category\":\"drawing\"}]}}"
+      }
+    },
+    {
+      "name": "kicad_system",
+      "args": {
+        "action": "system.ping"
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"system.ping\",\"data\":{}}"
+      }
+    },
+    {
+      "name": "kicad_project",
+      "args": {
+        "action": "project.info",
+        "payload": {
+          "project": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur"
+        }
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"project.info\",\"data\":{\"source\":\"file\",\"name\":\"fixture\",\"directory\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur\",\"documents\":{\"project\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/fixture.kicad_pro\",\"board\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/fixture.kicad_pcb\",\"schematic\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/fixture.kicad_sch\"},\"meta\":{\"filename\":\"fixture.kicad_pro\",\"version\":3},\"sheets\":[[\"f3e43a1b-f38d-4bc8-bc99-a060c3a41380\",\"\"]],\"textVariables\":{},\"netSettings\":{\"classes\":[{\"bus_width\":12,\"clearance\":0.2,\"diff_pair_gap\":0.25,\"diff_pair_via_gap\":0.25,\"diff_pair_width\":0.2,\"line_style\":0,\"microvia_diameter\":0.3,\"microvia_drill\":0.1,\"name\":\"Default\",\"pcb_color\":\"rgba(0, 0, 0, 0.000)\",\"priority\":2147483647,\"schematic_color\":\"rgba(0, 0, 0, 0.000)\",\"track_width\":0.2,\"tuning_profile\":\"\",\"via_diameter\":0.6,\"via_drill\":0.3,\"wire_width\":6}],\"meta\":{\"version\":5},\"net_chain_classes\":{},\"net_chain_netclasses\":{},\"net_colors\":{},\"netclass_assignments\":{},\"netclass_patterns\":[]},\"designRules\":{\"max_error\":0.005,\"min_clearance\":0,\"min_connection\":0,\"min_copper_edge_clearance\":0.5,\"min_groove_width\":0,\"min_hole_clearance\":0.25,\"min_hole_to_hole\":0.25,\"min_microvia_diameter\":0.2,\"min_microvia_drill\":0.1,\"min_resolved_spokes\":2,\"min_silk_clearance\":0,\"min_text_height\":0.8,\"min_text_thickness\":0.08,\"min_through_hole_diameter\":0.3,\"min_track_width\":0.2,\"min_via_annular_width\":0.1,\"min_via_diameter\":0.5,\"solder_mask_to_copper_clearance\":0,\"use_height_for_length_calcs\":true}}}"
+      }
+    },
+    {
+      "name": "kicad_document",
+      "args": {
+        "action": "document.list"
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"document.list\",\"data\":{\"documents\":[{\"type\":\"DOCTYPE_PCB\",\"boardFilename\":\"fixture.kicad_pcb\",\"project\":{\"name\":\"fixture\",\"path\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur\"}}]}}"
+      }
+    },
+    {
+      "name": "kicad_schematic",
+      "args": {
+        "action": "schematic.export.netlist",
+        "payload": {
+          "input": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/fixture.kicad_sch",
+          "output": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/frontend.net"
+        }
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"schematic.export.netlist\",\"data\":{\"exitCode\":0,\"signal\":null,\"stdout\":\"\",\"stderr\":\"\"},\"artifacts\":[\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/frontend.net\"]}"
+      }
+    },
+    {
+      "name": "kicad_board",
+      "args": {
+        "action": "board.items.get",
+        "payload": {
+          "document": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/fixture.kicad_pcb",
+          "types": [
+            "via"
+          ]
+        }
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"board.items.get\",\"data\":{\"header\":null,\"status\":\"IRS_OK\",\"items\":[{\"@type\":\"type.googleapis.com/kiapi.board.types.Via\",\"id\":{\"value\":\"d5e96527-186c-4468-b3fc-767e3535c993\"},\"position\":{\"xNm\":\"10000000\",\"yNm\":\"12000000\"},\"padStack\":{\"type\":\"PST_NORMAL\",\"layers\":[\"BL_F_Cu\",\"BL_B_Cu\"],\"drill\":{\"startLayer\":\"BL_F_Cu\",\"endLayer\":\"BL_B_Cu\",\"diameter\":{\"xNm\":\"300000\",\"yNm\":\"300000\"},\"shape\":\"DS_CIRCLE\",\"capped\":\"VDCM_UNKNOWN\",\"filled\":\"VDFM_UNKNOWN\"},\"unconnectedLayerRemoval\":\"ULR_KEEP\",\"copperLayers\":[{\"layer\":\"BL_F_Cu\",\"shape\":\"PSS_CIRCLE\",\"size\":{\"xNm\":\"600000\",\"yNm\":\"600000\"},\"cornerRoundingRatio\":0,\"chamferRatio\":0,\"chamferedCorners\":null,\"customShapes\":[],\"customAnchorShape\":\"PSS_CIRCLE\",\"zoneSettings\":null,\"trapezoidDelta\":null,\"offset\":{\"xNm\":\"0\",\"yNm\":\"0\"}}],\"angle\":{\"valueDegrees\":0},\"frontOuterLayers\":null,\"backOuterLayers\":null,\"zoneSettings\":{\"zoneConnection\":\"ZCS_INHERITED\",\"thermalSpokes\":{\"width\":null,\"angle\":{\"valueDegrees\":45},\"gap\":null}},\"secondaryDrill\":null,\"tertiaryDrill\":null,\"frontPostMachining\":null,\"backPostMachining\":null},\"locked\":\"LS_UNLOCKED\",\"net\":{\"code\":null,\"name\":\"\"},\"type\":\"VT_THROUGH\",\"parent\":{\"value\":\"7a3bee9d-8b49-4d28-b3ea-ba49e9c6193e\"},\"teardrop\":{\"mode\":\"PTM_DISABLED\",\"curvedEdges\":false,\"allowMultipleTrackSegments\":true,\"preferZoneConnection\":true,\"maxLength\":{\"valueNm\":\"1000000\"},\"maxWidth\":{\"valueNm\":\"2000000\"},\"bestLengthRatio\":0.5,\"bestWidthRatio\":1,\"maxTrackWidthRatio\":0.9},\"zoneLayerOverrides\":[],\"isFree\":false,\"customProperties\":[]}]}}"
+      }
+    },
+    {
+      "name": "kicad_library",
+      "args": {
+        "action": "library.list",
+        "payload": {
+          "project": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur"
+        }
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"library.list\",\"data\":{\"libraries\":[{\"name\":\"Device\",\"type\":\"KiCad\",\"uri\":\"/Users/mosc/Downloads/Kicad/qa/data/libraries/Device.kicad_sym\",\"table\":\"/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/sym-lib-table\"}]}}"
+      }
+    },
+    {
+      "name": "kicad_external",
+      "args": {
+        "action": "external.tools.list"
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"external.tools.list\",\"data\":{\"tools\":[{\"name\":\"kicad-cli\",\"available\":true,\"path\":\"/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli\"},{\"name\":\"freerouting\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/freerouting\"},{\"name\":\"java\",\"available\":true,\"path\":\"/usr/bin/java\"},{\"name\":\"ngspice\",\"available\":true,\"path\":\"/opt/homebrew/bin/ngspice\"},{\"name\":\"gerbv\",\"available\":true,\"path\":\"/opt/homebrew/bin/gerbv\"},{\"name\":\"openscad\",\"available\":true,\"path\":\"/opt/homebrew/bin/openscad\"},{\"name\":\"FreeCAD\",\"available\":true,\"path\":\"/Users/mosc/.local/bin/FreeCAD\"},{\"name\":\"python3\",\"available\":true,\"path\":\"/usr/bin/python3\"},{\"name\":\"kicad-stepcheck\",\"available\":false,\"error\":\"not found\"}]}}"
+      }
+    },
+    {
+      "name": "kicad_editor",
+      "args": {
+        "action": "editor.native.categories"
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"editor.native.categories\",\"data\":[\"annotation\",\"drawing\",\"edit\",\"file\",\"inspection\",\"library\",\"other\",\"placement\",\"routing\",\"selection\",\"simulation\",\"view\",\"zone\"]}"
+      }
+    },
+    {
+      "name": "kicad_reference",
+      "args": {
+        "action": "reference.plan",
+        "payload": {
+          "query": "schematic power"
+        }
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"reference.plan\",\"data\":{\"version\":\"2026-10-20.1\",\"matchKind\":\"topic-match\",\"policy\":\"本库是项目工程约束与检查方法，不是付费标准全文或工业认证。资料按需加载，任何未知参数都不生成通用安全默认值。\",\"authorityOrder\":[\"适用法规/合同及经授权取得的标准\",\"准确器件数据表/勘误/硬件指南\",\"订单对应制造/装配能力\",\"KiCad 官方工具及库文档\",\"专家教学/示例（非强制约束）\"],\"count\":2,\"topics\":[{\"id\":\"schematic\",\"title\":\"原理图拓扑与电气审查\",\"stage\":\"schematic\",\"aliases\":[\"原理图\",\"schematic\",\"电路\",\"层次\",\"总线\"],\"requiredInputs\":[\"完整器件数据表/勘误\",\"功能框图与接口定义\",\"电源树/时序/电平\"],\"rules\":[{\"id\":\"SCHEMATIC-01\",\"kind\":\"project-engineering-policy\",\"requirement\":\"依据实际功能和数据表设计电路，不依靠名称猜测引脚或参考值\",\"verification\":\"逐网络核对方向、电气类型、供电域、绝对最大值与工作范围\",\"sourceIds\":[\"kicad-sch\",\"phils-lab\"]},{\"id\":\"SCHEMATIC-02\",\"kind\":\"project-engineering-policy\",\"requirement\":\"层次页、全局标签、总线成员和多单元器件必须完整一致\",\"verification\":\"检查所有子页、跨页网络、共用编号、隐藏电源引脚和未连接脚的意图\",\"sourceIds\":[\"kicad-sch\",\"phils-lab\"]},{\"id\":\"SCHEMATIC-03\",\"kind\":\"project-engineering-policy\",\"requirement\":\"启动、复位、boot、调试和时钟应覆盖上电/掉电与异常状态\",\"verification\":\"审查上拉下拉、strap 采样、时序、调试连接及恢复通道\",\"sourceIds\":[\"kicad-sch\",\"phils-lab\"]},{\"id\":\"SCHEMATIC-04\",\"kind\":\"project-engineering-policy\",\"requirement\":\"ERC 运行全部级别并复核例外；禁止靠改引脚类型、PWR_FLAG 或屏蔽错误伪造通过\",\"verification\":\"每个 no-connect、PWR_FLAG 和例外有电路依据和审查证据\",\"sourceIds\":[\"kicad-sch\",\"phils-lab\"]},{\"id\":\"SCHEMATIC-05\",\"kind\":\"project-engineering-policy\",\"requirement\":\"仿真按模型适用范围和边界条件执行，仿真与实物分别验收\",\"verification\":\"保留模型来源/版本、测试平台、角落条件及实测差异\",\"sourceIds\":[\"kicad-sch\",\"phils-lab\"]}],\"sourceIds\":[\"kicad-sch\",\"phils-lab\"],\"tools\":[\"schematic.generate\",\"schematic.erc.run\",\"project.info\"],\"requiredEvidence\":[\"schematic-review\",\"erc-report\",\"simulation-where-applicable\"]},{\"id\":\"power\",\"title\":\"电源树、开关电源与保护\",\"stage\":\"schematic\",\"aliases\":[\"电源\",\"power\",\"DC/DC\",\"buck\",\"boost\",\"LDO\",\"PDN\"],\"requiredInputs\":[\"各轨电压/瞬态电流/纹波/时序\",\"芯片 EVM 和布局指南\",\"输入浪涌与保护等级\"],\"rules\":[{\"id\":\"POWER-01\",\"kind\":\"project-engineering-policy\",\"requirement\":\"验证启动、稳态、负载跳变、掉电、反灌和故障的电源预算\",\"verification\":\"保留效率、压降、浪涌、限流、保持时间和稳定性计算/测量\",\"sourceIds\":[\"ti-power\",\"adi-decouple\",\"kicad-pcb\"]},{\"id\":\"POWER-02\",\"kind\":\"project-engineering-policy\",\"requirement\":\"开关电源高 di/dt 回路紧凑，反馈和敏感信号远离高 dv/dt 节点\",\"verification\":\"逐一标出输入热回路、续流路径、反馈 Kelvin 点和 PGND/AGND 连接\",\"sourceIds\":[\"ti-power\",\"adi-decouple\",\"kicad-pcb\"]},{\"id\":\"POWER-03\",\"kind\":\"project-engineering-policy\",\"requirement\":\"去耦以器件指南、回路电感和 PDN 目标阻抗决定\",\"verification\":\"核查电容偏压/ESR/ESL/反谐振及电源地过孔回路，不只按距离摆电容\",\"sourceIds\":[\"ti-power\",\"adi-decouple\",\"kicad-pcb\"]},{\"id\":\"POWER-04\",\"kind\":\"project-engineering-policy\",\"requirement\":\"电源铜、过孔、连接器和热路径按实际电流及温升验算\",\"verification\":\"使用经确认叠层、铜厚和散热边界，不能把线宽经验数值当保证\",\"sourceIds\":[\"ti-power\",\"adi-decouple\",\"kicad-pcb\"]},{\"id\":\"POWER-05\",\"kind\":\"project-engineering-policy\",\"requirement\":\"输入保护涵盖反接、过压、过流和接口瞬态\",\"verification\":\"核查保险/TVS 选型与协调、接地路径、能量及失效状态\",\"sourceIds\":[\"ti-power\",\"adi-decouple\",\"kicad-pcb\"]}],\"sourceIds\":[\"ti-power\",\"adi-decouple\",\"kicad-pcb\"],\"tools\":[\"board.stackup.read\",\"board.drc.run\",\"web.fetch\"],\"requiredEvidence\":[\"power-review\",\"power-transient-measurement\",\"pdn-analysis\"]}],\"sources\":[{\"id\":\"kicad-sch\",\"title\":\"KiCad Schematic Editor\",\"url\":\"https://docs.kicad.org/10.0/en/eeschema/eeschema.html\",\"authority\":\"official-documentation\",\"version\":\"10.0\",\"checkedAt\":\"2026-10-20\",\"accessScope\":\"manual\",\"limitations\":\"本机 10.99 开发版须同时核对本机帮助和实际 API；ERC 不证明电路功能。\"},{\"id\":\"kicad-pcb\",\"title\":\"KiCad PCB Editor\",\"url\":\"https://docs.kicad.org/10.0/en/pcbnew/pcbnew.html\",\"authority\":\"official-documentation\",\"version\":\"10.0\",\"checkedAt\":\"2026-10-20\",\"accessScope\":\"manual\",\"limitations\":\"规则必须由产品和板厂确认；软件功能不等于制造能力。\"},{\"id\":\"adi-decouple\",\"title\":\"ADI MT-101 Decoupling Techniques\",\"url\":\"https://www.analog.com/media/en/training-seminars/tutorials/MT-101.pdf\",\"authority\":\"semiconductor-manufacturer\",\"version\":\"Rev 0, 2009\",\"checkedAt\":\"2026-10-20\",\"accessScope\":\"tutorial\",\"limitations\":\"电容值、封装、自谐振与网络阻抗须结合实际 PDN 和器件要求。\"},{\"id\":\"ti-power\",\"title\":\"TI PCB layout guidelines to optimize power supply performance\",\"url\":\"https://www.ti.com/video/6245175641001\",\"authority\":\"semiconductor-manufacturer\",\"version\":\"training video\",\"checkedAt\":\"2026-10-20\",\"accessScope\":\"public training page\",\"limitations\":\"教程不可替代具体电源芯片 EVM、数据表和稳定性实测；未声称观看全部视频。\"},{\"id\":\"phils-lab\",\"title\":\"Phil’s Lab #65 KiCad STM32 PCB design workflow\",\"url\":\"https://www.youtube.com/watch?v=aVUqaB0IMh4\",\"authority\":\"expert-teaching\",\"version\":\"2022-07-05, KiCad 6\",\"checkedAt\":\"2026-10-20\",\"accessScope\":\"video description and chapter metadata only\",\"limitations\":\"教学来源，不是行业标准；未声称观看全部视频。03:54 MCU、26:59 晶振、42:54 ERC、49:25 封装、57:03 布局、1:32:45 DRC、1:35:21 制造输出。\"}],\"unknownInputPolicy\":\"Do independent work first; list unresolved design decisions. Never invent safety/manufacturing/interface constraints or mark unknown evidence passed.\",\"releasePolicy\":\"Use release.template/snapshot/check; workflow flags are task tracking only. Fabrication evidence and production qualification are separate.\"}}"
+      }
+    },
+    {
+      "name": "kicad_audit",
+      "args": {
+        "action": "audit.rules"
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"audit.rules\",\"data\":{\"evidenceRequiredBeyondDrc\":[\"manufacturer process limits and stackup\",\"datasheet-based footprint/pin/electrical review\",\"mechanical/assembly fit\",\"design-specific power, thermal, high-speed and safety constraints where applicable\"],\"execution\":\"backend-only; frontend displays results, never evaluates engineering rules\",\"footprintCategories\":[\"pad geometry and drill/copper-layer consistency\",\"courtyard/fabrication/reference definitions\",\"datasheet pin mapping and exposed-pad identity\",\"package dimensions and assembly orientation\",\"3D/mechanical fit\"],\"manufacturingProfile\":{\"comparison\":\"project global minima must meet the profile; custom-rule overrides require review too\",\"format\":\"JSON object\",\"requiredPositiveMm\":[\"minClearanceMm\",\"minTrackWidthMm\",\"minDrillMm\",\"minAnnularWidthMm\",\"minCopperEdgeClearanceMm\"],\"source\":\"manufacturer process specification; never invented defaults\"},\"nativeScope\":[\"all enabled native DRC providers\",\"all track errors\",\"all severities including exclusions\",\"zone refill in memory without saving\",\"board/schematic parity\",\"schematic ERC\",\"disabled-check inventory\",\"project rule and custom .kicad_dru provenance\"],\"pcbCategories\":[\"shorts and connectivity\",\"clearance and creepage\",\"track widths\",\"via/drill/annulus and hole spacing\",\"copper/board edges and outlines\",\"solder mask and paste\",\"silkscreen\",\"zones and thermal connections\",\"courtyard and footprint geometry\",\"library and schematic parity\",\"length/differential-pair constraints from the project\"],\"policy\":\"Never equate zero DRC with fabrication readiness. Missing reports, ignored checks, unknown limits and unverified datasheet/mechanical assumptions remain explicit blockers. Never relax or disable project rules automatically.\",\"sources\":[\"https://docs.kicad.org/master/en/cli/cli.html#pcb_drc\",\"https://docs.kicad.org/master/en/cli/cli.html#schematic_erc\",\"https://klc.kicad.org/footprint/\"],\"version\":\"2026-10-20.2\"}}"
+      }
+    },
+    {
+      "name": "kicad_web",
+      "args": {
+        "action": "web.fetch",
+        "payload": {
+          "url": "https://1.1.1.1/cdn-cgi/trace",
+          "timeoutMs": 20000
+        }
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"web.fetch\",\"data\":{\"url\":\"https://1.1.1.1/cdn-cgi/trace\",\"contentType\":\"text/plain\",\"bytes\":198,\"untrustedContent\":true,\"text\":\"fl=464f225 h=1.1.1.1 ip=43.172.79.196 ts=1792606070.000 visit_scheme=https uag=KiCad-Direct/1.0 colo=SJC sliver=none http=http/1.1 loc=US tls=TLSv1.3 sni=off warp=off gateway=off rbi=off kex=X25519\"}}"
+      }
+    },
+    {
+      "name": "kicad_gerber",
+      "args": {
+        "action": "gerber.info",
+        "payload": {
+          "input": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-tools-acceptance-bNc9Ur/fixture.gbr",
+          "format": "json"
+        }
+      },
+      "result": {
+        "isError": false,
+        "text": "{\"ok\":true,\"action\":\"gerber.info\",\"data\":{\"exitCode\":0,\"signal\":null,\"stdout\":\"{\\n  \\\"aperture_count\\\": 1,\\n  \\\"bounding_box\\\": {\\n    \\\"height\\\": 1.00001,\\n    \\\"origin_x\\\": 9.5,\\n    \\\"origin_y\\\": -10.500010000000001,\\n    \\\"width\\\": 1.00001\\n  },\\n  \\\"filename\\\": \\\"fixture.gbr\\\",\\n  \\\"item_count\\\": 1,\\n  \\\"type\\\": \\\"Gerber\\\",\\n  \\\"units\\\": \\\"mm\\\"\\n}\",\"stderr\":\"\"}}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "date": "2026-10-21T11:44:27",
+    "generator": "KiCad 10.99.0-3837-g63c27cc5ad-dirty",
+    "project": "RK3308B_IPC 摄像头模块",
+    "board_name": "RK3308B_IPC 摄像头模块"
+  },
+  "board": {
+    "has_outline": true,
+    "width": "30.0020 mm",
+    "height": "44.9990 mm",
+    "area": "1346.537 mm²",
+    "front_component_density": "71.09",
+    "back_component_density": "44.38",
+    "front_copper_area": "1009.087 mm²",
+    "back_copper_area": "1124.202 mm²",
+    "min_track_clearance": "0.0000 mm",
+    "min_track_width": "0.1015 mm",
+    "min_drill_diameter": "0.1980 mm",
+    "board_thickness": "1.6000 mm",
+    "front_footprint_area": "957.298 mm²",
+    "back_footprint_area": "597.544 mm²",
+    "front_footprint_density": "71.09",
+    "back_footprint_density": "44.38"
+  },
+  "pads": {
+    "through_hole": 0,
+    "smd": 837,
+    "connector": 0,
+    "npth": 0,
+    "castellated": 0,
+    "press_fit": 0
+  },
+  "vias": {
+    "through": 77,
+    "blind": 0,
+    "buried": 0,
+    "micro": 0
+  },
+  "components": {
+    "tht": {
+      "front": 0,
+      "back": 0,
+      "total": 0
+    },
+    "smd": {
+      "front": 0,
+      "back": 0,
+      "total": 0
+    },
+    "unspecified": {
+      "front": 38,
+      "back": 117,
+      "total": 155
+    },
+    "total": {
+      "front": 38,
+      "back": 117,
+      "total": 155
+    }
+  },
+  "drill_holes": [
+    {
+      "count": 77,
+      "shape": "Round",
+      "x_size": "0.1980 mm",
+      "y_size": "0.1980 mm",
+      "plated": true,
+      "source": "Via",
+      "start_layer": "Top Layer",
+      "stop_layer": "Bottom Layer"
+    }
+  ]
+}

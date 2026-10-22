@@ -1,0 +1,32 @@
+                                                                                                                        
+  ┃                                                                                                                     
+  ┃  UI fixture only. Reply WAITING_FIXTURE_OK. Do not use tools.                                                       
+  ┃                                                                                                                     
+                                                                                                                        
+     WAITING_FIXTURE_OK                                                                                                 
+                                                                                                                        
+     Ki Working...                                                                                                      
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+  ┃                                                                                                                     
+  ┃                                                                                                                     
+  ┃                                                                                                                     
+  ┃  Build · Waiting UI fixture Local waiting fixture                                                        ○ KiCad    
+  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  
+   esc interrupt                                                                           tab agents  ctrl+p commands  
+                                                                                                                        

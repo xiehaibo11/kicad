@@ -1,0 +1,46 @@
+                                                                                                                                                                
+  ┃                                                                                                                     Workbench fixture                       
+  ┃  Check the KiCad connection, then run DRC on the board and export an SVG.                                                                                   
+  ┃                                                                                                                     KiCad                                   
+                                                                                                                        ● connected · CLI 10.99.0               
+     ✓ KiCad system.health — CLI 10.99.0 · IPC connected · 1 open document                                              PCB ecc83-pp.kicad_pcb                  
+     ! KiCad board.drc.run ecc83-pp.kicad_pcb — 2 issues · 2 warnings                                                                                           
+     ✓ KiCad board.export.svg ecc83-pp.kicad_pcb → board.svg                                                            Checks                                  
+                                                                                                                        ! DRC 2 issues · 2 warnings             
+     WORKBENCH_FIXTURE_OK                                                                                                                                       
+                                                                                                                        Outputs                                 
+                                                                                                                        report.json                             
+                                                                                                                        board.svg                               
+                                                                                                                                                                
+                                                                                                                        Context                                 
+                                                                                                                        0 tokens                                
+                                                                                                                        0% used                                 
+                                                                                                                        $0.00 spent                             
+                                                                                                                                                                
+                                                                                                                        LSP                                     
+                                                                                                                        LSPs are disabled                       
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+  ┃                                                                                                                                                             
+  ┃                                                                                                                                                             
+  ┃                                                                                                                     /private/var/folders/v8/                
+  ┃  Build · Workbench fixture Local fixture                                            ● KiCad ecc83-pp.kicad_pcb      t1mlv9kd4s7b5z6r8s65vbym0000gn/T/       
+  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    Kicad-workbench-u8u3dhr_/ecc83          
+   /private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-workbench-u8u3dhr_/ecc83ab agents ctrl+p commands                                             
+                                                                                                                        • Kicad 0.2.1                           
+                                                                                                                                                                

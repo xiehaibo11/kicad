@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "scope": "new packages, isolated native documents and real VS Code test host",
+  "actionCount": 335,
+  "nativeWorkflowCount": 79,
+  "nativeWorkflowsPassed": 79,
+  "ipcMappings": 130,
+  "nativeRequests": 125,
+  "frontendTools": 20,
+  "nodeTests": {
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0
+  },
+  "bunBindingsTests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "tuiTests": {
+    "passed": 206,
+    "failed": 0,
+    "skipped": 1
+  },
+  "nativeSesCopperImportPassed": true,
+  "editorStartup": {
+    "ok": true,
+    "version": "0.4.25",
+    "displayName": "Kicad",
+    "active": true,
+    "webviews": {
+      "resolved": 2,
+      "mounted": 2
+    },
+    "nativeTerminal": {
+      "name": "Kicad 终端",
+      "pid": 42898,
+      "binary": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/dist/kicad-terminal"
+    },
+    "nativeToolPluginEnabled": true,
+    "inProcessHealth": {
+      "ok": true,
+      "action": "system.health",
+      "cliAvailable": true
+    },
+    "availableTerminalProviders": []
+  },
+  "npmAcceptancePassed": true,
+  "artifactConsistencyPassed": true,
+  "sharedBundleSha256": "0624b8a1e4cdd9304aaac28c07160d31f684f558f53220aa499f85d48d4dd151",
+  "noGlobalProfileInstallation": true,
+  "onlineProviderConversationTested": false
+}

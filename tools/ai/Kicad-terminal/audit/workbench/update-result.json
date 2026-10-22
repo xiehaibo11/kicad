@@ -1,0 +1,16 @@
+{
+  "fixture": "local scoped registry; packed package republished as 0.2.2",
+  "checks": [
+    "standalone: --check reports the newer release",
+    "standalone: tampered tarball rejected by sha512, installation unchanged",
+    "standalone: runtime, launcher, resources and skills replaced from the verified tarball",
+    "npm global: upgrade runs npm install -g for the newer release in the same prefix"
+  ],
+  "passed": true,
+  "registryRequests": [
+    "/-kicadai-kicad-code-0.2.2.tgz",
+    "/@-kicadai/kicad-code",
+    "/@-kicadai/kicad-code/0.2.2",
+    "/@-kicadai/kicad-code/latest"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-21",
+  "migration": "in-process shared JavaScript tools with native KiCad IPC/CLI",
+  "sourceBuildVerification": [
+    {
+      "verified": true,
+      "kind": "terminal",
+      "version": "1.19.3"
+    },
+    {
+      "verified": true,
+      "kind": "extension",
+      "version": "0.4.25"
+    }
+  ],
+  "gitDiffCheck": true,
+  "goRuntimeAndSourcesRemoved": true,
+  "automaticConnectorConfigRemoved": true,
+  "unitAndNativeTests": {
+    "node": {
+      "pass": 36,
+      "fail": 0,
+      "skip": 0
+    },
+    "bun": {
+      "pass": 5,
+      "fail": 0
+    },
+    "terminal": {
+      "pass": 206,
+      "fail": 0,
+      "skip": 1
+    }
+  },
+  "extensionNativeHost": {
+    "pass": true,
+    "tools": 20,
+    "compatibilityNodePathInvalid": true
+  },
+  "extensionFullChatUi": "not completed: frontend mount wait",
+  "extensionTerminalCreation": "not completed: SecretStorage/keychain prompt timeout",
+  "npmIsolatedInstall": true,
+  "externalArchiveImport": true,
+  "globalInstallOrPublication": false,
+  "realProviderDesignTask": false,
+  "performanceMeasured": false
+}

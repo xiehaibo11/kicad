@@ -1,0 +1,41 @@
+
+> kicad-agent-vscode@0.1.2 package
+> vsce package --allow-missing-repository
+
+Executing prepublish script 'npm run vscode:prepublish'...
+
+> kicad-agent-vscode@0.1.2 vscode:prepublish
+> node ../direct/build.mjs && mkdir -p resources && cp ../direct/dist/kicad-direct.mjs ../direct/dist/LICENSE-protobufjs.txt ../direct/dist/LICENSE-blocks-MIT.txt resources/ && cp ../../../LICENSE resources/LICENSE-KiCad-GPL.txt && npm run compile && node test-native.cjs
+
+Bundled 100 modules in 38ms
+
+  kicad-direct.mjs  1.89 MB  (entry point)
+
+
+> kicad-agent-vscode@0.1.2 compile
+> tsc -p ./
+
+Legacy extension native tools: compiled host imports shared ESM, 333 actions, real reference call, relative paths and cancellation passed.
+ INFO  Files included in the VSIX:
+kicad-agent-vscode-0.1.2.vsix
+├─ [Content_Types].xml 
+├─ extension.vsixmanifest 
+└─ extension/
+   ├─ .gitignore [0.03 KB]
+   ├─ LICENSE.txt [1 KB]
+   ├─ package.json [5.36 KB]
+   ├─ readme.md [1.42 KB]
+   ├─ test-native.cjs [1.98 KB]
+   ├─ out/
+   │  ├─ extension.js [39.31 KB]
+   │  └─ extension.js.map [30.12 KB]
+   └─ resources/
+      ├─ LICENSE-KiCad-GPL.txt [34.33 KB]
+      ├─ LICENSE-blocks-MIT.txt [2.06 KB]
+      ├─ LICENSE-protobufjs.txt [1.89 KB]
+      ├─ kicad-direct.mjs [1.8 MB]
+      └─ kicad.svg [0.46 KB]
+
+The file extension/resources/kicad-direct.mjs is large (1.8 MB)
+
+ DONE  Packaged: /Users/mosc/Downloads/Kicad/tools/ai/vscode-extension/kicad-agent-vscode-0.1.2.vsix (14 files, 384.2 KB)

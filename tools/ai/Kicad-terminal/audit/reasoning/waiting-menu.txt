@@ -1,0 +1,32 @@
+                                                                                                                        
+  ┃                                                                                                                     
+  ┃  KICAD_TERMINAL_EFFORT max. Reply with a short acknowledgement without tools.                                       
+  ┃                                                                                                                     
+                                                                                                                        
+     EFFORT_FIXTURE_MAX_OK                                                                                              
+                                                                                                                        
+  ┃                                                                                                                     
+  ┃  KICAD_TERMINAL_EFFORT low                                                                                          
+  ┃                               Reasoning effort · current model                 esc                                  
+                                                                                                                        
+     EFFORT_FIXTURE_LOW_OK        Search                                                                                
+                                                                                                                        
+                                  Auto · model default default                                                          
+                                  Thinking off off                                                                      
+                                ● Low low                                                                               
+                                  High high                                                                             
+                                  Max max                                                                               
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+  ┃                                                                                                                     
+  ┃                                                                                                                     
+  ┃                                                                                                                     
+  ┃  Build · DeepSeek effort fixture Local effort fixture · low                                              ○ KiCad    
+  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀  
+   /private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-effort-gobwob9k             13 (0%)  ctrl+p commands  
+                                                                                                                        

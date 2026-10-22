@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "version": "0.4.19",
+  "checks": [
+    "selection never starts or sends a chat",
+    "late SDK discovery never changes selection",
+    "historical editor and main input share model and permission",
+    "model selection works inside history editor",
+    "edited message really sends exactly once",
+    "new chat retains selected model",
+    "reload restores host preference without sending",
+    "failed save retains previous model",
+    "explicit Default retained",
+    "only explicit selection changes preference"
+  ],
+  "pageErrors": [],
+  "source": "Production Vue bundle with deterministic host"
+}

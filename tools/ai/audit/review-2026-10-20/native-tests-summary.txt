@@ -1,0 +1,19 @@
+it using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/tmp/Kicad-terminal-1.19.3/packages/core/src/util/flock.ts:345:18)
+,
+}
+
+ 205 pass
+ 1 skip
+ 0 fail
+ 8 snapshots, 539 expect() calls
+Ran 206 tests across 48 files. [10.01s]

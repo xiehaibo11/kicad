@@ -1,0 +1,278 @@
+[
+  {
+    "path": "Test.pretty/Test.kicad_mod",
+    "bytes": 137
+  },
+  {
+    "path": "board.diff/output.json",
+    "bytes": 155
+  },
+  {
+    "path": "board.drc.run/output.out",
+    "bytes": 1065
+  },
+  {
+    "path": "board.export.3dpdf/output.3dpdf",
+    "bytes": 3206
+  },
+  {
+    "path": "board.export.bom/output.csv",
+    "bytes": 64
+  },
+  {
+    "path": "board.export.brep/output.brep",
+    "bytes": 1661
+  },
+  {
+    "path": "board.export.drill/output/fixture.drl",
+    "bytes": 310
+  },
+  {
+    "path": "board.export.dxf/output.dxf/fixture-Edge_Cuts.dxf",
+    "bytes": 6913
+  },
+  {
+    "path": "board.export.dxf/output.dxf/fixture-F_Cu.dxf",
+    "bytes": 6885
+  },
+  {
+    "path": "board.export.dxf/output.dxf/fixture-f_silkscreen.dxf",
+    "bytes": 9190
+  },
+  {
+    "path": "board.export.gencad/output.gencad",
+    "bytes": 1417
+  },
+  {
+    "path": "board.export.gerbers/output/fixture-Edge_Cuts.gm1",
+    "bytes": 650
+  },
+  {
+    "path": "board.export.gerbers/output/fixture-F_Cu.gtl",
+    "bytes": 630
+  },
+  {
+    "path": "board.export.gerbers/output/fixture-f_silkscreen.gto",
+    "bytes": 1293
+  },
+  {
+    "path": "board.export.gerbers/output/fixture-job.gbrjob",
+    "bytes": 1730
+  },
+  {
+    "path": "board.export.glb/output.glb",
+    "bytes": 3704
+  },
+  {
+    "path": "board.export.ipc2581/output.ipc2581",
+    "bytes": 15556
+  },
+  {
+    "path": "board.export.ipcd356/output.ipcd356",
+    "bytes": 121
+  },
+  {
+    "path": "board.export.odb/output.odb",
+    "bytes": 12415
+  },
+  {
+    "path": "board.export.pdf/output.pdf",
+    "bytes": 4873
+  },
+  {
+    "path": "board.export.ply/output.ply",
+    "bytes": 1310
+  },
+  {
+    "path": "board.export.png/output.png/fixture-Edge_Cuts.png",
+    "bytes": 82751
+  },
+  {
+    "path": "board.export.png/output.png/fixture-F_Cu.png",
+    "bytes": 82847
+  },
+  {
+    "path": "board.export.png/output.png/fixture-f_silkscreen.png",
+    "bytes": 83568
+  },
+  {
+    "path": "board.export.position/output.csv",
+    "bytes": 322
+  },
+  {
+    "path": "board.export.ps/output.ps/fixture-Edge_Cuts.ps",
+    "bytes": 2125
+  },
+  {
+    "path": "board.export.ps/output.ps/fixture-F_Cu.ps",
+    "bytes": 2139
+  },
+  {
+    "path": "board.export.ps/output.ps/fixture-f_silkscreen.ps",
+    "bytes": 3034
+  },
+  {
+    "path": "board.export.stackup/output.stackup",
+    "bytes": 617
+  },
+  {
+    "path": "board.export.stats/output.stats",
+    "bytes": 1126
+  },
+  {
+    "path": "board.export.step/output.step",
+    "bytes": 8877
+  },
+  {
+    "path": "board.export.stl/output.stl",
+    "bytes": 3052
+  },
+  {
+    "path": "board.export.stpz/output.stpz",
+    "bytes": 2608
+  },
+  {
+    "path": "board.export.svg/output.svg",
+    "bytes": 67916
+  },
+  {
+    "path": "board.export.u3d/output.u3d",
+    "bytes": 1096
+  },
+  {
+    "path": "board.export.vrml/output.vrml",
+    "bytes": 14726
+  },
+  {
+    "path": "board.export.xao/output.xao",
+    "bytes": 3416
+  },
+  {
+    "path": "board.import/output.kicad_pcb",
+    "bytes": 3041
+  },
+  {
+    "path": "board.render/render.png",
+    "bytes": 520
+  },
+  {
+    "path": "board.upgrade/fixture.kicad_pcb",
+    "bytes": 3041
+  },
+  {
+    "path": "board.upgrade/fixture.kicad_prl",
+    "bytes": 2421
+  },
+  {
+    "path": "gerber.convert_png/output.png",
+    "bytes": 184
+  },
+  {
+    "path": "gerber.diff/output.json",
+    "bytes": 237
+  },
+  {
+    "path": "library.footprint.diff/output.json",
+    "bytes": 146
+  },
+  {
+    "path": "library.footprint.export_svg/output/Test.svg",
+    "bytes": 907
+  },
+  {
+    "path": "library.footprint.upgrade/Upgraded.pretty/Test.kicad_mod",
+    "bytes": 969
+  },
+  {
+    "path": "library.symbol.diff/output.json",
+    "bytes": 154
+  },
+  {
+    "path": "library.symbol.export_svg/output/R_unit1.svg",
+    "bytes": 3636
+  },
+  {
+    "path": "library.symbol.upgrade/output.upgrade",
+    "bytes": 2660447
+  },
+  {
+    "path": "project.import/Imported.kicad_pcb",
+    "bytes": 3041
+  },
+  {
+    "path": "project.import/Imported.kicad_prl",
+    "bytes": 2422
+  },
+  {
+    "path": "project.import/Imported.kicad_pro",
+    "bytes": 2231
+  },
+  {
+    "path": "project.jobset.run/job-output/native-drc.txt",
+    "bytes": 490
+  },
+  {
+    "path": "project.jobset.run/native.kicad_jobset",
+    "bytes": 384
+  },
+  {
+    "path": "project.mergetool/output.kicad_pcb",
+    "bytes": 3041
+  },
+  {
+    "path": "schematic.diff/output.json",
+    "bytes": 155
+  },
+  {
+    "path": "schematic.erc.run/output.out",
+    "bytes": 2191
+  },
+  {
+    "path": "schematic.export.bom/output.csv",
+    "bytes": 58
+  },
+  {
+    "path": "schematic.export.dxf/output/fixture.dxf",
+    "bytes": 262722
+  },
+  {
+    "path": "schematic.export.netlist/output.net",
+    "bytes": 2629
+  },
+  {
+    "path": "schematic.export.pdf/output.pdf",
+    "bytes": 30562
+  },
+  {
+    "path": "schematic.export.png/output/fixture.png",
+    "bytes": 88879
+  },
+  {
+    "path": "schematic.export.ps/output/fixture.ps",
+    "bytes": 76528
+  },
+  {
+    "path": "schematic.export.pythonbom/output.xml",
+    "bytes": 2629
+  },
+  {
+    "path": "schematic.export.svg/output/fixture.svg",
+    "bytes": 71569
+  },
+  {
+    "path": "schematic.import/output-eagle-import.kicad_sym",
+    "bytes": 5596
+  },
+  {
+    "path": "schematic.import/output.kicad_sch",
+    "bytes": 9939
+  },
+  {
+    "path": "schematic.import/sym-lib-table",
+    "bytes": 155
+  },
+  {
+    "path": "schematic.upgrade/fixture.kicad_sch",
+    "bytes": 3847
+  }
+]

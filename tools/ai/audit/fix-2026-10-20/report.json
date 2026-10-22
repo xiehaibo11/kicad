@@ -1,0 +1,154 @@
+{
+  "createdAt": "2026-10-20T23:58:44.467065+00:00",
+  "status": "All six previously confirmed findings fixed, relevant tests passed, both components installed and launched",
+  "installed": {
+    "extensionVersion": "0.4.12",
+    "extensionPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.12",
+    "terminalVersion": "1.19.3",
+    "terminalSha256": "b3b3f2f1b401a505cba303014f9ab0460cfc314d20b0dd6510ae3e73b0f33618"
+  },
+  "backend": {
+    "actionCount": 125,
+    "agentVersion": "0.2.0",
+    "arch": "arm64",
+    "catalogSha256": "5eadc691168c3ecd13ccec27df552eb46236d3c47d1547fb83540471234fd041",
+    "goVersion": "go1.27.2",
+    "mcpToolCount": 18,
+    "mcpTools": [
+      "kicad_health",
+      "kicad_actions",
+      "kicad_call",
+      "kicad_spec_validate",
+      "kicad_blocks",
+      "kicad_workflow",
+      "kicad_pipeline",
+      "kicad_native_tools",
+      "kicad_system",
+      "kicad_project",
+      "kicad_document",
+      "kicad_schematic",
+      "kicad_board",
+      "kicad_library",
+      "kicad_external",
+      "kicad_editor",
+      "kicad_audit",
+      "kicad_web"
+    ],
+    "nativeToolCount": 970,
+    "os": "darwin",
+    "schemaVersion": 1
+  },
+  "fixes": [
+    {
+      "id": "F1",
+      "problem": "已安装 agent 与源码能力不一致",
+      "status": "fixed",
+      "resolution": "Install rebuilds current agent and validates source/artifact/installed hashes plus actual MCP tools",
+      "evidence": "install-verification.json"
+    },
+    {
+      "id": "F2",
+      "problem": "已有会话跨服务商切换模型未刷新端点和凭据",
+      "status": "fixed",
+      "resolution": "Restart provider-dependent SDK environment and resume the same session; actual installed service completed three models across two local provider servers",
+      "evidence": "model-routing-host.json"
+    },
+    {
+      "id": "F3",
+      "problem": "优化等待期间新增的附件会在回填时丢失",
+      "status": "fixed",
+      "resolution": "Track attachments and draft revisions; preserve parts and reject late optimization after attachment changes",
+      "evidence": "terminal-build.log"
+    },
+    {
+      "id": "F4",
+      "problem": "终端把模型截断输出作为成功优化结果",
+      "status": "fixed",
+      "resolution": "Native composer rejects length/content-filter/missing final completion; preserves original draft",
+      "evidence": "terminal-provider-regression.json"
+    },
+    {
+      "id": "F5",
+      "problem": "用户配置文件中的自定义 DeepSeek baseUrl 被默认值遮蔽",
+      "status": "fixed",
+      "resolution": "Explicit endpoint setting > user credential file > default; HTTP(S) validation and normalized v1 suffix",
+      "evidence": "extension-build.log"
+    },
+    {
+      "id": "F6",
+      "problem": "下一句建议失败后错误信息未显示",
+      "status": "fixed",
+      "resolution": "Prediction errors are visible beside the input; persistent suggestion setting remains outside composer",
+      "evidence": "prediction-error-ui.json"
+    }
+  ],
+  "optimizations": [
+    "native-tools.json is a CMake dependency for go:embed rebuilding",
+    "Capability audit reads all action files and verifies compiled action inventory",
+    "Separate backend catalog, CLI, IPC, document and optional-tool state in both clients",
+    "Bound suggestion history before client serialization; persistent setting without composer controls",
+    "Committed dependency lockfile, frozen install, build manifests and visible VSIX install errors",
+    "Standalone launcher merges inherited JSON/JSONC while retaining explicit MCP/provider entries",
+    "Shared selected-model optimizer prompt, cancellation, undo and no automatic sending"
+  ],
+  "newBackendAPIs": {
+    "audit.rules": "Backend policy, native DRC/ERC scope and required engineering evidence",
+    "audit.run": "Saved-file audit: full-severity native DRC/ERC, all-track errors, memory-only refill, parity, project/manufacturer limits, snapshot hashes, native artifacts and explicit pending evidence",
+    "audit.footprint": "Bounded footprint parser with finite pad/drill geometry, layers, annulus and required-definition checks; datasheet/assembly evidence remains explicit",
+    "web.search": "Public Exa MCP search, as supported by upstream terminal, returns source URLs and text; tested against real public search",
+    "web.fetch": "Public page text/links and PDF artifacts, retrieval timestamp and hash; verified KiCad official documentation",
+    "system.manifest": "Compiled action/MCP/native catalog counts and catalog SHA-256"
+  },
+  "validation": {
+    "terminalTui": {
+      "passed": 206,
+      "skipped": 1,
+      "failed": 0,
+      "files": 48
+    },
+    "terminalCompleteness": {
+      "originalCliEntries": 22,
+      "embeddedWebUiAndJavaScript": "passed"
+    },
+    "extension": "TypeScript + Vue typechecks, five overlay/boundary suites, packaged bundle assertions, installed production UI regressions and real VS Code host",
+    "providerRouting": "Actual installed extension service, bundled CLI/SDK and two isolated local providers; same conversation across deepseek-flash/sonnet/deepseek-v4-pro; no external model calls for this regression",
+    "nativeComposer": "Installed binary + local streaming provider + actual MCP; normal stop succeeds, length/content-filter rejected, no chat-session writes, 18 actual MCP tools",
+    "backend": "go test -tags nng ./... passed, including actual IPC-enabled link configuration",
+    "nativeKicad": "Real native DRC/ERC on copied QA fixture; violations correctly reported; hashes unchanged. Real headless IPC on copied board; document list and board-item reads passed",
+    "research": "Real public search returned three source URLs; official KiCad documentation fetched with source/hash/time metadata",
+    "installation": "Installed native hash and packaged extension/JS/bundled CLI hashes match build artifacts; compiled MCP catalog matches capability manifest"
+  },
+  "launch": {
+    "vscodeWindow": "Kicad · 检查窗口",
+    "chat": "Visibly rendered with Kicad icon, Kicad tab and Agent mode",
+    "terminal": "Kicad 终端 created through extension button; actual native PTY process remains running",
+    "priorUserWindows": "Preserved; no reload or restart of existing user windows",
+    "terminalAppVisual": "macOS Terminal app is unavailable to the computer-use tool; native terminal was additionally verified in the real VS Code host and through actual server APIs"
+  },
+  "engineeringLimits": [
+    "970 native GUI actions are discoverable; actions depending on selection, dialogs or mouse interaction still require a live KiCad editor. A RunAction acknowledgement is not completion proof.",
+    "Native DRC/ERC use project rules. Zero violations alone cannot certify fabrication readiness; missing manufacturer/stackup, datasheet, mechanical or application-specific evidence remains pending.",
+    "Optional Freerouting, gerbv, OpenSCAD and FreeCAD were not found on this host. Their integration commands are retained and health reports the dependency status accurately.",
+    "Read-only IPC regression used a temporary copied board. Opening the AI chat alone does not assert a live connection to the user design."
+  ],
+  "receipts": [
+    "install-verification.json",
+    "model-routing-host.json",
+    "model-routing-requests.json",
+    "installed-host.json",
+    "installed-backend-host.json",
+    "terminal-provider-regression.json",
+    "terminal-completeness.json",
+    "optimizer-ui.json",
+    "composer-ui.json",
+    "prediction-error-ui.json",
+    "ipc-regression.json",
+    "native-design-audit.json",
+    "web-search.json",
+    "go-tests.log",
+    "terminal-build.log",
+    "extension-build.log",
+    "install.log",
+    "web-fetch-metadata.json"
+  ]
+}

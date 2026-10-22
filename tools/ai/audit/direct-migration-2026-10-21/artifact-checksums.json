@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/dist/kicad-0.4.25.vsix",
+    "bytes": 34266137,
+    "sha256": "1be8d2a9f2893624905ffe43d2ba41c7be0c84b966cf929eb08569a87e5493c7"
+  },
+  {
+    "path": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/npm/-kicadai-kicad-code-0.1.1.tgz",
+    "bytes": 47257098,
+    "sha256": "02eb1c21d4e5ea1772594b2d585665bf184751627151b60f32cafb0e2a0c7f70"
+  },
+  {
+    "path": "/Users/mosc/Downloads/Kicad/tools/ai/direct/dist/kicad-native-tools.zip",
+    "bytes": 348168,
+    "sha256": "73c4482e21ae8ee81bc76f290765da590c7d09301f8dad054ea932857e09c8e4"
+  },
+  {
+    "path": "/Users/mosc/Downloads/hardware/tools/easyeda-agent-release/easyeda-agent-connector.eext",
+    "bytes": 348168,
+    "sha256": "73c4482e21ae8ee81bc76f290765da590c7d09301f8dad054ea932857e09c8e4"
+  },
+  {
+    "path": "/Users/mosc/Downloads/hardware/tools/easyeda-agent-release/kicad-native-tools.zip",
+    "bytes": 348168,
+    "sha256": "73c4482e21ae8ee81bc76f290765da590c7d09301f8dad054ea932857e09c8e4"
+  },
+  {
+    "path": "/Users/mosc/Downloads/Kicad-migration-backup-2026-10-21.zip",
+    "bytes": 33854960,
+    "sha256": "2b39feb23fbc7499c3e7c9877da9f1b304d7f641bf14d88c7a53c3608a1b24f2"
+  }
+]

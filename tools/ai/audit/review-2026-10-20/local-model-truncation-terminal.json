@@ -1,0 +1,16 @@
+{
+  "fixture": "real installed native server, isolated local model with finish_reason=length",
+  "status": 200,
+  "response": {
+    "text": "只检查 U1。",
+    "model": "review/fixture"
+  },
+  "requests": [
+    {
+      "model": "fixture",
+      "stream": true,
+      "tools": 0
+    }
+  ],
+  "truncatedOutputAccepted": true
+}

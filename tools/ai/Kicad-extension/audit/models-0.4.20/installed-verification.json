@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "version": "0.4.20",
+  "installedPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.20",
+  "files": {
+    "dist/extension.cjs": "e003f85e2463938c4816e53516babf71f53b2916ac816ff63c891335d282dec8",
+    "dist/media/main.js": "98d60239a0135974745cdd4a6044157f8c23565979832a84234b1b93359dc344",
+    "dist/media/style.css": "9585c9aa6ad24abc7b73f4c9fa1c8c5f0906a595a18b7e37e2ed91f15dc075ac",
+    "resources/claude-code/cli.js": "e19a27df55b31271c82c7b39c49f6b221c9809e0be2af0b83c4cc6f1a9163c06"
+  }
+}

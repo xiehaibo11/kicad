@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "action": "board.impedance.calculate",
+  "data": {
+    "layer": "F.Cu",
+    "kind": "microstrip",
+    "er": 4.5,
+    "heightMm": 1.44,
+    "planeSpacingMm": 1.44,
+    "copperThicknessMm": 0.035,
+    "widthMm": 2.6181829860690113,
+    "gapMm": 0.2,
+    "z0Ohm": 50,
+    "targetOhm": 50
+  }
+}

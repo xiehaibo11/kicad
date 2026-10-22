@@ -1,0 +1,361 @@
+{
+  "ok": true,
+  "version": "0.4.22",
+  "fixture": "actual extension SDK/CLI + local controlled model",
+  "ambiguousToolBlocked": true,
+  "genericYesNotAnAnswer": true,
+  "actualAnswerAllowsTask": true,
+  "clearTaskWrites": true,
+  "automaticCompaction": true,
+  "checkpointPreservesRequestAndActions": true,
+  "sessionId": "bca91378-3608-44dc-93eb-07a685e22915",
+  "prompts": [
+    {
+      "channel": "generic-yes",
+      "tool": "AskUserQuestion"
+    },
+    {
+      "channel": "answered",
+      "tool": "AskUserQuestion"
+    }
+  ],
+  "events": [
+    {
+      "channel": "ambiguous",
+      "type": "system",
+      "subtype": "init"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "assistant"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "user"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "assistant"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "stream_event"
+    },
+    {
+      "channel": "ambiguous",
+      "type": "result",
+      "subtype": "success"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "system",
+      "subtype": "init"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "assistant"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "user"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "assistant"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "stream_event"
+    },
+    {
+      "channel": "generic-yes",
+      "type": "result",
+      "subtype": "success"
+    },
+    {
+      "channel": "answered",
+      "type": "system",
+      "subtype": "init"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "assistant"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered"
+    },
+    {
+      "channel": "answered",
+      "type": "user"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "assistant"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "user"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "assistant"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "stream_event"
+    },
+    {
+      "channel": "answered",
+      "type": "result",
+      "subtype": "success"
+    },
+    {
+      "channel": "compact",
+      "type": "system",
+      "subtype": "init"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "assistant"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "user"
+    },
+    {
+      "channel": "compact",
+      "type": "system",
+      "subtype": "status"
+    },
+    {
+      "channel": "compact",
+      "type": "system",
+      "subtype": "status"
+    },
+    {
+      "channel": "compact",
+      "type": "system",
+      "subtype": "compact_boundary"
+    },
+    {
+      "channel": "compact",
+      "type": "user"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "assistant"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "stream_event"
+    },
+    {
+      "channel": "compact",
+      "type": "result",
+      "subtype": "success"
+    }
+  ]
+}

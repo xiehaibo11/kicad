@@ -1,0 +1,237 @@
+{
+  "note": "All PCB/SCH changes have mtime 2026-10-21T18:17:55Z, before online chat (18:18:36Z) and terminal (18:18:37Z) sessions. Opening/restoring editor state or concurrent design work is not yet distinguished. Original and current snapshots preserved; no restoration attempted.",
+  "files": {
+    "~RK3308B_IPC 摄像头模块.kicad_pcb.lck": {
+      "sha256": "26a810d01c9a8397a8ee9f19252dcee6839a33d4eb2f9d6335d2c15e2cd0d18e",
+      "mtime": "2026-10-21T18:22:42.792615+00:00"
+    },
+    "RK3308B_IPC 摄像头模块.kicad_sch": {
+      "sha256": "9c5cc7688ec26011263b41430da828d5745473d6ddf7ce76b8d48a0e2edab874",
+      "mtime": "2026-10-21T18:17:55.761596+00:00"
+    },
+    "迁移说明.txt": {
+      "sha256": "00e878a9c8eb89ed1b7ea0d18bfee9f4b5c042f5f5d1f4f23ce7ef9aa2c37596",
+      "mtime": "2026-10-21T04:04:10.666018+00:00"
+    },
+    "8_SoC_U1.2.kicad_sch": {
+      "sha256": "6407c737f9e013b3226a6f7e51aeb607d0555f23bfe02b3adaeb0f430a12365b",
+      "mtime": "2026-10-21T18:17:55.762941+00:00"
+    },
+    "5_WiFi.kicad_sch": {
+      "sha256": "d9afe0ad2eb63ed8b4e30e8c210aa7f3dbd64de17ac7440b6ff5dd266226ece9",
+      "mtime": "2026-10-21T18:17:55.765081+00:00"
+    },
+    "RK3308B_IPC 摄像头模块.kicad_pro": {
+      "sha256": "6104776f4e61d0760ff3bc0c7075809ff5e6605a0e328b7db7a5a2b79ae5273c",
+      "mtime": "2026-10-21T03:56:54.121541+00:00"
+    },
+    "fp-lib-table": {
+      "sha256": "be55f5565dc1c1ff9b8f3ccc26b62e44b814a41a1edb61179e7208f35bc582b3",
+      "mtime": "2026-10-21T03:48:58.545570+00:00"
+    },
+    "2_SoC_U1.1.kicad_sch": {
+      "sha256": "9b4741f6325e6fab5cf841e63e38b04309ff9bd20854c96c0be269dda5c00dc4",
+      "mtime": "2026-10-21T18:17:55.769130+00:00"
+    },
+    "~RK3308B_IPC 摄像头模块.kicad_pro.lck": {
+      "sha256": "9e048bc7c4f1cc5679a2deab2a48005c97ec5b121ff00ec1538696d3a6a340bd",
+      "mtime": "2026-10-21T18:22:41.790326+00:00"
+    },
+    "~RK3308B_IPC 摄像头模块.kicad_sch.lck": {
+      "sha256": "54aede2a0d77a100ef497e4729eb25286a522e8d1f7c11e8d310e8a2896b5765",
+      "mtime": "2026-10-21T18:22:46.389311+00:00"
+    },
+    "3_DDR.kicad_sch": {
+      "sha256": "e93393c1d5c10f8defbba7833b1fa6e0e37bb52a588c4ab6af95d5a57eb076f4",
+      "mtime": "2026-10-21T18:17:55.770537+00:00"
+    },
+    "4_Flash.kicad_sch": {
+      "sha256": "8470b9b169d3be1f2ee2ae680472b4495c690d93dd78219352a290638b91abcd",
+      "mtime": "2026-10-21T18:17:55.771604+00:00"
+    },
+    "6_IO.kicad_sch": {
+      "sha256": "e532f4bc9a395d68ea5403e99f7691cc28364001aef44afec9421cbb2b1991d6",
+      "mtime": "2026-10-21T18:17:55.775032+00:00"
+    },
+    "7_SoC_U1.3.kicad_sch": {
+      "sha256": "0515a847a6491d8eaa3dabb5d74b4fbacb65244d6deb8ceccdc8d52b8dc931ef",
+      "mtime": "2026-10-21T18:17:55.776947+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-syms.kicad_sym": {
+      "sha256": "73e3dba0b89a365d890d5d14db7425582ee4952299c46721bf84863666ad0030",
+      "mtime": "2026-10-21T03:56:37.074775+00:00"
+    },
+    "empty.kicad_wks": {
+      "sha256": "12177b959fa42fb9902338b0ed47c13482b98997bf72e4e1eb2387bda11d1c61",
+      "mtime": "2026-10-21T03:55:21.921618+00:00"
+    },
+    "RK3308B_IPC 摄像头模块.kicad_prl": {
+      "sha256": "3607e1f6620cb8c4637c39eb7e9467222912c87cb389e69a951b56707650f74b",
+      "mtime": "2026-10-21T18:22:49.548008+00:00"
+    },
+    "sym-lib-table": {
+      "sha256": "6314a4d6567b9beb7e0cf6edbb0f00ed6ed098e221f393c7fc4e94643df8ac1e",
+      "mtime": "2026-10-21T03:48:57.787699+00:00"
+    },
+    "RK3308B_IPC 摄像头模块.kicad_pcb": {
+      "sha256": "9b25ae98eb8c4e0538f03cedc92ac88b05f14ca183b22ce6b4e71bff3cf458bd",
+      "mtime": "2026-10-21T18:17:55.783152+00:00"
+    },
+    "迁移检查/migration-audit.json": {
+      "sha256": "2f8d0bc5885ff57298e3da4a3eacc2297c519debebe360cc8c05d3ab0bf48000",
+      "mtime": "2026-10-21T04:03:44.940479+00:00"
+    },
+    "迁移检查/kicad-drc.json": {
+      "sha256": "7b5e5d13c88f9d76a42774a7bef4d53aff451f5279a8fc6ccd77ee7d4326eb26",
+      "mtime": "2026-10-21T04:03:14.571048+00:00"
+    },
+    "迁移检查/kicad-netlist.xml": {
+      "sha256": "86d949616b9b85aab98c1e14e778afa52155c7e62c0e396073be0339aac6454a",
+      "mtime": "2026-10-21T04:03:43.355944+00:00"
+    },
+    "迁移检查/source-netlist.enet": {
+      "sha256": "c2f1d7766f8edc81a5b6dfa838e91c81e075f86b0665cc8046e33b69e8b5112c",
+      "mtime": "2026-10-21T03:53:29.875545+00:00"
+    },
+    "迁移检查/交付文件校验.json": {
+      "sha256": "2d52f7d2881707d1d94a6c73c1bf4513c6a3198cf26f52d3955445d97c3d9304",
+      "mtime": "2026-10-21T04:06:03.690183+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BL.kicad_mod": {
+      "sha256": "0538e2780cadd59b3e71323f3da6bbef332b328a79959283fef17d905c5e6781",
+      "mtime": "2026-10-21T03:48:58.522575+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BL.kicad_mod": {
+      "sha256": "7effcd62c662398efe470797c2fafa4e736b24925fd1b21d669eef54dfd21f77",
+      "mtime": "2026-10-21T03:48:58.511928+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/BGA-355_L13.0-W13.0-P0.65_RK3308.kicad_mod": {
+      "sha256": "36012a83aca503ec9fd52d103fb7d3412865f952ab995b5e2a95bca7f784e17b",
+      "mtime": "2026-10-21T03:48:58.396930+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BR.kicad_mod": {
+      "sha256": "b222cf588c0e0e906777ee66d23519a8f35a97b869f650323b91144a01939677",
+      "mtime": "2026-10-21T03:48:58.516770+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/L0603.kicad_mod": {
+      "sha256": "cdf7d408944bfc89efec66b4f29a08b2e68b937a3fb163ca5acea8b7c83673b7",
+      "mtime": "2026-10-21T03:48:58.463182+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/R0402.kicad_mod": {
+      "sha256": "705f32b16fab54f9b45bc3161d12c4ade02ec7a499aeeb69214711f56262ba46",
+      "mtime": "2026-10-21T03:48:58.479973+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/CRYSTAL-SMD_4P-L3.2-W2.5-BL.kicad_mod": {
+      "sha256": "868f695db5088f84cdda2b84193ba6e3d2d432be2a51eb39b080a2a3252bb998",
+      "mtime": "2026-10-21T03:48:58.436603+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/C0402.kicad_mod": {
+      "sha256": "eb9715ef7194b46076c49df0c87361b30e20009e71ce47f373c547f7f5420784",
+      "mtime": "2026-10-21T03:48:58.406859+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/SOT-25_L3.0-W1.6-P0.95-LS2.8-BL.kicad_mod": {
+      "sha256": "e1a3ab662d7f6619aa17612398d97bcc7367ed3479449e4c3a62277a3a1e4dd1",
+      "mtime": "2026-10-21T03:48:58.527854+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/TESTPOINT-SMD_L1.6-W0.8_RCU-0C.kicad_mod": {
+      "sha256": "295ede0d9661a134457958ea283de6cae9ac425eb11120bd2fb65fe8438f006a",
+      "mtime": "2026-10-21T03:48:58.533152+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/LED0603-RD_RED.kicad_mod": {
+      "sha256": "d5c40672d53a805243275f30d929907d6379eff00613e98ea8859d72594a8f2a",
+      "mtime": "2026-10-21T03:48:58.468707+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/FBGA-96_L13.5-W7.5-R16-C6-P0.80-TL.kicad_mod": {
+      "sha256": "69078ad573fc05158a4997e23d6ba4d5d51b628fe2596e4b0d242341884eb831",
+      "mtime": "2026-10-21T03:48:58.444901+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/C0805.kicad_mod": {
+      "sha256": "5168b869c3f3f0b71b9d0a1183cd440232a7ebdcc65e9e06cdd5e10fa18f3299",
+      "mtime": "2026-10-21T03:48:58.419822+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/IND-SMD_L3.0-W3.0.kicad_mod": {
+      "sha256": "993cc96a4f6db8646b7732862578f11054666e9cd8ddd28ea165843245258edb",
+      "mtime": "2026-10-21T03:48:58.456814+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/FILTER-SMD_4P-L2.0-W1.3-BL_DLW21.kicad_mod": {
+      "sha256": "45c1e856523722c45603015b7cb98c8079cd2465faab71968e49a7631a2518c3",
+      "mtime": "2026-10-21T03:48:58.450639+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/SMA_L4.4-W2.6-LS5.0-RD.kicad_mod": {
+      "sha256": "c50547f9e00d1b5b5b1e67b583c0e0626d5ca5eb16cb186347e67fa1857ba74c",
+      "mtime": "2026-10-21T03:48:58.498669+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/R0603.kicad_mod": {
+      "sha256": "0101c62a7f8b263598b987cffe427d17fd6baa0dc5b89d55adff33e250b192cc",
+      "mtime": "2026-10-21T03:48:58.486193+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/CONN-SMD_S4B-PH-SM4-TB-LF-SN.kicad_mod": {
+      "sha256": "745c8f22813d91426120cc524be73df61ac9dd65cf535e961d47c0eeb8db52d0",
+      "mtime": "2026-10-21T03:48:58.429867+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/CONN-SMD_P2.00_S2B-PH-SM4-TB-LF-SN.kicad_mod": {
+      "sha256": "a322932c4571b42f5eb4b4aa2ca7c52d29b9ddb723002b991ffefd0265218f7f",
+      "mtime": "2026-10-21T03:48:58.424681+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/C0603.kicad_mod": {
+      "sha256": "a774c8a941e78699a95ea6bc4d1fd591ae811700c3af208b05b1ea5f39993002",
+      "mtime": "2026-10-21T03:48:58.414037+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/QFN-44_L12.0-W12.0-P0.90-TL_AP6212.kicad_mod": {
+      "sha256": "ab846052f264729e14a3c9cce98b6fb65764fbd2275aadb0162867e6d36053f8",
+      "mtime": "2026-10-21T03:48:58.474075+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/SMA_L4.3-W2.6-LS5.0-RD.kicad_mod": {
+      "sha256": "df65cab5873bcd7e0f147b23b53f9f69428fd777a53c2d70200ce3aa413aedf9",
+      "mtime": "2026-10-21T03:48:58.492230+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/WSON-8_L8.0-W6.0-P1.27-TL-EP-1.kicad_mod": {
+      "sha256": "7039e9a2c7285cd8035c4b0797a39db2c2341b9b9ffbef9f8457d1100be8bff4",
+      "mtime": "2026-10-21T03:48:58.539345+00:00"
+    },
+    "RK3308B_IPC 摄像头模块-import-fps.pretty/SOD-923_L0.8-W0.6-LS1.0-BI.kicad_mod": {
+      "sha256": "9933c4e71b0d5a85d8cccbdc18e3c8d835a8052640038cd71d3e140ab4e401b6",
+      "mtime": "2026-10-21T03:48:58.505761+00:00"
+    },
+    "EASYEDA_MODELS/待补充模型.txt": {
+      "sha256": "2e9047048e5a17fee4b434c3c9c6ae5fd2227390e8e8d6bf6cc528d48b3c841c",
+      "mtime": "2026-10-21T04:04:10.665850+00:00"
+    },
+    "_restore_backup_2026-10-21T11-17-55-760/RK3308B_IPC 摄像头模块.kicad_sch": {
+      "sha256": "9a770dc2bc569e272bc0fdd2abe255f7ea3ed3406f7b64b2cad61f2e9b9c5628",
+      "mtime": "2026-10-21T18:17:55.760766+00:00"
+    },
+    "_restore_backup_2026-10-21T11-17-55-760/8_SoC_U1.2.kicad_sch": {
+      "sha256": "cfbe8c0829e8ab5e5c0e4ea60932e90aa28ea09f78119f64c3c7506237ee94aa",
+      "mtime": "2026-10-21T18:17:55.762150+00:00"
+    },
+    "_restore_backup_2026-10-21T11-17-55-760/5_WiFi.kicad_sch": {
+      "sha256": "9694c99e6afcdf015b4333e8754d1cd67288929c803ca810977f6277d37144c6",
+      "mtime": "2026-10-21T18:17:55.763570+00:00"
+    },
+    "_restore_backup_2026-10-21T11-17-55-760/2_SoC_U1.1.kicad_sch": {
+      "sha256": "e5fe1c7e15354ee55e9477a6066da21016709679f0cdb342d881715fbb44c34d",
+      "mtime": "2026-10-21T18:17:55.766654+00:00"
+    },
+    "_restore_backup_2026-10-21T11-17-55-760/3_DDR.kicad_sch": {
+      "sha256": "7f65bd9ab6068dc6373288a032609454886fbd226156aee43ec2f62390fd496a",
+      "mtime": "2026-10-21T18:17:55.769828+00:00"
+    },
+    "_restore_backup_2026-10-21T11-17-55-760/4_Flash.kicad_sch": {
+      "sha256": "3329eb2e4b43c21ee89e955335bb060234d720c49e05d3c7a71e2b1c0f0bb2be",
+      "mtime": "2026-10-21T18:17:55.770867+00:00"
+    },
+    "_restore_backup_2026-10-21T11-17-55-760/6_IO.kicad_sch": {
+      "sha256": "37d614002b804c18ff59551290dfc688c08246f452d905b951d77a07cf32d6d3",
+      "mtime": "2026-10-21T18:17:55.772243+00:00"
+    },
+    "_restore_backup_2026-10-21T11-17-55-760/7_SoC_U1.3.kicad_sch": {
+      "sha256": "5e62674116353d2a3987f4c7d17dc454c1d33782de7879d2a167800040630449",
+      "mtime": "2026-10-21T18:17:55.775470+00:00"
+    },
+    "_restore_backup_2026-10-21T11-17-55-760/RK3308B_IPC 摄像头模块.kicad_pcb": {
+      "sha256": "594f8bfc057ebbf4425a3165758788b354f16d8aa74515c649f37caf320c7fb5",
+      "mtime": "2026-10-21T18:17:55.779922+00:00"
+    }
+  }
+}

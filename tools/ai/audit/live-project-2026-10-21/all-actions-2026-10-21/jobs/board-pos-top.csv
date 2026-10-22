@@ -1,0 +1,44 @@
+### Footprint positions - created on 2026-10-21T11:45:34 ###
+### Printed by KiCad version 10.99.0-3837-g63c27cc5ad-dirty
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val                    Package                                  PosX       PosY       Rot  Side
+C34       1pF                    C0402                                -10.2870    -2.7940   90.0000  top
+C35       1pF                    C0402                                -11.5570    -5.7150   90.0000  top
+C36       12pF                   C0402                                 -6.4770    -5.9690    0.0000  top
+C37       12pF                   C0402                                 -3.8100    -5.9690    0.0000  top
+C41       1uF                    C0402                                -10.9220    13.4620    0.0000  top
+D3        ESD9B5.0ST5G           SOD-923_L0.8-W0.6-LS1.0-BI            -0.5080    15.4940   90.0000  top
+D4        ESD9B5.0ST5G           SOD-923_L0.8-W0.6-LS1.0-BI            -0.5080    13.8430   90.0000  top
+D5        ESD9B5.0ST5G           SOD-923_L0.8-W0.6-LS1.0-BI           -10.4140    16.7640   90.0000  top
+D6        ESD9B5.0ST5G           SOD-923_L0.8-W0.6-LS1.0-BI           -10.4140    14.9860   90.0000  top
+D7        ESD9B5.0ST5G           SOD-923_L0.8-W0.6-LS1.0-BI             7.8230   -21.1580    0.0000  top
+D8        ESD9B5.0ST5G           SOD-923_L0.8-W0.6-LS1.0-BI            11.6585   -21.1580    0.0000  top
+J1        S2B-PH-SM4-TB(LF)(SN)  CONN-SMD_P2.00_S2B-PH-SM4-TB-LF-SN    -5.6895    17.5260  180.0000  top
+J2        S4B-PH-SM4-TB(LF)(SN)  CONN-SMD_S4B-PH-SM4-TB-LF-SN           6.4010    17.2720    0.0000  top
+J3        S4B-PH-SM4-TB(LF)(SN)  CONN-SMD_S4B-PH-SM4-TB-LF-SN          -1.9050   -17.2720  180.0000  top
+L31       DLW21HN900SQ2L         FILTER-SMD_4P-L2.0-W1.3-BL_DLW21      -0.5080    -8.1315   90.0000  top
+LED1      LED-0603R              LED0603-RD_RED                       -10.8725   -20.8335    0.0000  top
+R9        1kΩ                    R0603                                -10.9220   -18.7960    0.0000  top
+R32       0Ω                     R0402                                -11.5825    -2.7940   90.0000  top
+R42       100Ω                   R0402                                 -0.6350    17.6530   90.0000  top
+R43       100Ω                   R0402                                 -0.6350    20.0660   90.0000  top
+R44       100Ω                   R0402                                -11.6840    15.3670   90.0000  top
+R45       100Ω                   R0402                                  5.9180   -21.1580    0.0000  top
+R46       100Ω                   R0402                                  9.7280   -21.1580    0.0000  top
+TP30      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C       -13.4620    -3.8100   90.0000  top
+TP31      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C       -13.4620    -6.9850   90.0000  top
+TP32      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C         9.3980   -14.0970    0.0000  top
+TP33      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C        12.4460   -14.0970    0.0000  top
+TP34      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C         6.3500   -14.0970    0.0000  top
+TP35      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C        12.4460   -17.7040    0.0000  top
+TP36      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C        -9.9060   -14.2240    0.0000  top
+TP37      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C         6.3500   -17.7040    0.0000  top
+TP38      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C         9.3980   -17.7040    0.0000  top
+TP39      RCU-0C                 TESTPOINT-SMD_L1.6-W0.8_RCU-0C       -12.9540   -14.2240    0.0000  top
+U1        RK3308B                BGA-355_L13.0-W13.0-P0.65_RK3308       7.5945     4.9530   90.0000  top
+U21       2.4GHz                 QFN-44_L12.0-W12.0-P0.90-TL_AP6212    -7.9755     5.7660   90.0000  top
+U22       USBLC6-2SC6            SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BL     -3.6335   -10.0625    0.0000  top
+U60       K4B4G1646E-BYMA        FBGA-96_L13.5-W7.5-R16-C6-P0.80-TL     7.5945    -8.0010  -90.0000  top
+Y2        26MHz                  CRYSTAL-SMD_4P-L3.2-W2.5-BL           -3.9495    -3.0610    0.0000  top
+## End

@@ -1,0 +1,41 @@
+{
+  "version": "0.4.8",
+  "vsixSha256": "a6b0d5047bae6b2b27436909bf31f4f5c14f1d62581e9d3e794e38e74e8067bb",
+  "installedBundleMatchesVsix": true,
+  "backendTypesPassed": true,
+  "frontendTypesPassed": true,
+  "longDraftNoApplicationLimitTestPassed": true,
+  "optimizerBoundaryTestsPassed": true,
+  "normalVSCode": {
+    "window": "kicad · 输入框内优化检查",
+    "log": "/Users/mosc/Library/Application Support/Code/logs/20261018T143837/window9/exthost/kicad-agent.kicad/Claudix.log",
+    "mounted": "2026-10-20 11:09:33.808 [info] [kicad] Webview frontend mounted: sidebar:chat:",
+    "runtime": "2026-10-20 11:09:35.144 [info]   - CLI Path: /Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.8/resources/claude-code/cli.js"
+  },
+  "liveRequest": {
+    "version": "0.4.8",
+    "liveModel": "deepseek-flash",
+    "original": "我只需要了解 PCB 或原理图里的 U1 和 R1（10 kΩ）相关问题，不要修改文件，也不要布线。先用 kicad-agent MCP 检查，再给我验证步骤。",
+    "optimized": "请检查当前工程中 PCB 或原理图里的 U1 与 R1（10 kΩ），只针对这两个元件做了解与排查，并说明它们相关的问题。\n\n限制条件：\n- 只做检查与说明，不要修改任何文件。\n- 不要布线。\n- 只关注 U1 和 R1（10 kΩ），不要扩大到其他元件。\n\n执行顺序：\n1. 先使用 kicad-agent MCP 检查 PCB 或原理图中 U1 与 R1（10 kΩ）的实际情况。\n2. 检查完成后，再给我验证步骤，供我自行核对检查结果。\n\n请说明：你具体检查了哪些内容、从 MCP 得到了什么信息，以及对应的验证步骤。",
+    "requestRoute": "optimize_prompt",
+    "chatMessagesSent": 0
+  },
+  "ui": {
+    "version": "0.4.8",
+    "fixture": "Installed production frontend, mock host responses",
+    "checks": [
+      "empty input disabled",
+      "selected model forwarded",
+      "direct input replacement",
+      "no preview dialog",
+      "undo restores original",
+      "no automatic send",
+      "Enter disabled during optimization",
+      "cancel and late result ignored",
+      "error preserves draft and can retry",
+      "concurrent edit protected"
+    ],
+    "chatMessagesSent": 0,
+    "pageErrors": []
+  }
+}

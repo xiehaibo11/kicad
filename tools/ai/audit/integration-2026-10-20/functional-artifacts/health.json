@@ -1,0 +1,501 @@
+{
+  "ok": true,
+  "action": "system.health",
+  "data": {
+    "compiledCapabilities": {
+      "actionCount": 247,
+      "agentVersion": "0.2.0",
+      "arch": "arm64",
+      "catalogSha256": "80411e42d8c00a446a6e5cfddf7faf66ebae5fbc19bb8f26372f1d4fb934d90c",
+      "goVersion": "go1.27.2",
+      "mcpToolCount": 19,
+      "mcpTools": [
+        "kicad_health",
+        "kicad_actions",
+        "kicad_call",
+        "kicad_spec_validate",
+        "kicad_blocks",
+        "kicad_workflow",
+        "kicad_pipeline",
+        "kicad_native_tools",
+        "kicad_system",
+        "kicad_project",
+        "kicad_document",
+        "kicad_schematic",
+        "kicad_board",
+        "kicad_library",
+        "kicad_external",
+        "kicad_editor",
+        "kicad_audit",
+        "kicad_web",
+        "kicad_gerber"
+      ],
+      "nativeToolCount": 971,
+      "os": "darwin",
+      "schemaVersion": 1
+    },
+    "documents": {
+      "available": true,
+      "pcb": {
+        "available": true,
+        "data": {
+          "documents": [
+            {
+              "boardFilename": "pic_programmer.kicad_pcb",
+              "project": {
+                "name": "pic_programmer",
+                "path": "/tmp/kicad-integration-projects/pic_programmer"
+              },
+              "type": "DOCTYPE_PCB"
+            }
+          ]
+        }
+      },
+      "schematic": {
+        "available": true,
+        "data": {
+          "documents": [
+            {
+              "project": {
+                "name": "pic_programmer",
+                "path": "/tmp/kicad-integration-projects/pic_programmer/"
+              },
+              "sheetPath": {
+                "path": [
+                  {
+                    "value": "2e45d1d2-c73f-46e5-98d6-3a9dc360bff5"
+                  }
+                ],
+                "pathHumanReadable": "/"
+              },
+              "type": "DOCTYPE_SCHEMATIC"
+            }
+          ]
+        }
+      }
+    },
+    "externalTools": [
+      {
+        "name": "kicad-cli",
+        "available": true,
+        "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli",
+        "version": "10.99.0",
+        "hint": "build KiCad or set KICAD_CLI"
+      },
+      {
+        "name": "freerouting",
+        "available": true,
+        "path": "/Users/mosc/.local/bin/freerouting",
+        "version": "2026-10-20 19:15:22.141 INFO   Freerouting CLI v2.5.0 (build-date: 2026-10-05)",
+        "hint": "install Freerouting or set FREEROUTING_JAR"
+      },
+      {
+        "name": "java",
+        "available": true,
+        "path": "/Volumes/Macintosh HD/Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java",
+        "version": "openjdk version \"21.0.10\" 2026-01-20",
+        "hint": "install a JRE (required by Freerouting)"
+      },
+      {
+        "name": "ngspice",
+        "available": true,
+        "path": "/opt/homebrew/bin/ngspice",
+        "version": "******",
+        "hint": "brew install ngspice"
+      },
+      {
+        "name": "gerbv",
+        "available": true,
+        "path": "/opt/homebrew/bin/gerbv",
+        "version": "gerbv version v4.0",
+        "hint": "brew install gerbv"
+      },
+      {
+        "name": "openscad",
+        "available": true,
+        "path": "/opt/homebrew/bin/openscad",
+        "version": "OpenSCAD version 2026.10.11",
+        "hint": "brew install --cask openscad"
+      },
+      {
+        "name": "FreeCAD",
+        "available": true,
+        "path": "/Users/mosc/.local/bin/FreeCAD",
+        "version": "FreeCAD 1.1.4 Revision: 20260928 (Git shallow)",
+        "hint": "install FreeCAD for mechanical checks"
+      },
+      {
+        "name": "python3",
+        "available": true,
+        "path": "/opt/homebrew/bin/python3",
+        "version": "Python 3.14.8",
+        "hint": "install Python 3"
+      }
+    ],
+    "ipc": {
+      "available": true,
+      "capabilities": {
+        "apiVersion": "11.0",
+        "capabilities": [
+          {
+            "cliCommand": "",
+            "description": "Return the KiCad build version",
+            "experimental": false,
+            "id": "common.version",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.GetVersion",
+            "responseType": "kiapi.common.commands.GetVersionResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Liveness check",
+            "experimental": false,
+            "id": "common.ping",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.Ping",
+            "responseType": "google.protobuf.Empty",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Return well-known KiCad filesystem paths",
+            "experimental": false,
+            "id": "common.paths",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.GetPaths",
+            "responseType": "kiapi.common.commands.GetPathsResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Enumerate automation capabilities (this command)",
+            "experimental": false,
+            "id": "common.capabilities",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.GetCapabilities",
+            "responseType": "kiapi.common.commands.GetCapabilitiesResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Return the state and timing of a dispatched job",
+            "experimental": false,
+            "id": "common.jobs.status",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.GetJobStatus",
+            "responseType": "kiapi.common.commands.JobStatusResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Request cooperative cancellation of a running job",
+            "experimental": false,
+            "id": "common.jobs.cancel",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.CancelJob",
+            "responseType": "kiapi.common.commands.CancelJobResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Create items from serialized protobuf messages",
+            "experimental": false,
+            "id": "common.items.create",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.CreateItems",
+            "responseType": "kiapi.common.commands.CreateItemsResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Update items by KIID",
+            "experimental": false,
+            "id": "common.items.update",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.UpdateItems",
+            "responseType": "kiapi.common.commands.UpdateItemsResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Delete items by KIID",
+            "experimental": false,
+            "id": "common.items.delete",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.DeleteItems",
+            "responseType": "kiapi.common.commands.DeleteItemsResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Enumerate items by type",
+            "experimental": false,
+            "id": "common.items.get",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.GetItems",
+            "responseType": "kiapi.common.commands.GetItemsResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Save the active document",
+            "experimental": false,
+            "id": "common.document.save",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.SaveDocument",
+            "responseType": "google.protobuf.Empty",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Serialize the active document to s-expression text",
+            "experimental": false,
+            "id": "common.document.save_to_string",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.SaveDocumentToString",
+            "responseType": "kiapi.common.commands.SavedDocumentResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Read the board stackup",
+            "experimental": false,
+            "id": "board.stackup.read",
+            "layer": "api",
+            "requestType": "kiapi.board.commands.GetBoardStackup",
+            "responseType": "kiapi.board.commands.BoardStackupResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Update stackup thicknesses and dielectric properties (layer count is fixed)",
+            "experimental": false,
+            "id": "board.stackup.write",
+            "layer": "api",
+            "requestType": "kiapi.board.commands.UpdateBoardStackup",
+            "responseType": "kiapi.board.commands.BoardStackupResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Enumerate board nets",
+            "experimental": false,
+            "id": "board.nets.read",
+            "layer": "api",
+            "requestType": "kiapi.board.commands.GetNets",
+            "responseType": "kiapi.board.commands.NetsResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Refill copper zones",
+            "experimental": false,
+            "id": "board.zones.refill",
+            "layer": "api",
+            "requestType": "kiapi.board.commands.RefillZones",
+            "responseType": "google.protobuf.Empty",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Import a netlist and update footprints",
+            "experimental": false,
+            "id": "board.netlist.import",
+            "layer": "api",
+            "requestType": "kiapi.board.commands.ImportNetlist",
+            "responseType": "kiapi.board.commands.ImportNetlistResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Prove pad/via connections including filled zones and inner-layer planes",
+            "experimental": false,
+            "id": "board.connectivity.prove",
+            "layer": "api",
+            "requestType": "kiapi.board.commands.ProveConnectivity",
+            "responseType": "kiapi.board.commands.ConnectivityProof",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Automatically place footprints using KiCad's autoplacer",
+            "experimental": false,
+            "id": "board.place.autoplace",
+            "layer": "api",
+            "requestType": "kiapi.board.commands.AutoPlaceFootprints",
+            "responseType": "kiapi.board.commands.AutoPlaceFootprintsResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Create a net-bound copper zone on inner layers",
+            "experimental": false,
+            "id": "board.plane.create",
+            "layer": "api",
+            "requestType": "kiapi.board.commands.CreatePlane",
+            "responseType": "kiapi.board.commands.CreatePlaneResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Verify a plane's fill and pad/via connectivity",
+            "experimental": false,
+            "id": "board.plane.verify",
+            "layer": "api",
+            "requestType": "kiapi.board.commands.VerifyPlane",
+            "responseType": "kiapi.board.commands.VerifyPlaneResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "pcb drc",
+            "description": "Run design rule checks (supports --timeout)",
+            "experimental": false,
+            "id": "board.drc.run",
+            "layer": "cli",
+            "requestType": "",
+            "responseType": "",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Return the schematic connectivity-derived netlist",
+            "experimental": false,
+            "id": "schematic.netlist.get",
+            "layer": "api",
+            "requestType": "kiapi.schematic.commands.GetSchematicNetlist",
+            "responseType": "kiapi.schematic.commands.SchematicNetlistResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Create an empty schematic document (headless API server)",
+            "experimental": false,
+            "id": "schematic.create",
+            "layer": "api",
+            "requestType": "kiapi.common.commands.CreateDocument",
+            "responseType": "kiapi.common.commands.OpenDocumentResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Search symbol libraries by name, description, keywords, and pin count",
+            "experimental": false,
+            "id": "library.search.symbols",
+            "layer": "api",
+            "requestType": "kiapi.schematic.commands.SearchLibrarySymbolsRequest",
+            "responseType": "kiapi.schematic.commands.SearchLibrarySymbolsResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Load a symbol's embedded definition and pins",
+            "experimental": false,
+            "id": "library.get.symbol",
+            "layer": "api",
+            "requestType": "kiapi.schematic.commands.GetLibrarySymbolRequest",
+            "responseType": "kiapi.schematic.commands.GetLibrarySymbolResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Place a symbol from a library and return absolute pin positions",
+            "experimental": false,
+            "id": "schematic.place.symbol",
+            "layer": "api",
+            "requestType": "kiapi.schematic.commands.PlaceSymbolFromLibraryRequest",
+            "responseType": "kiapi.schematic.commands.PlaceSymbolFromLibraryResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "",
+            "description": "Annotate schematic reference designators",
+            "experimental": false,
+            "id": "schematic.annotate",
+            "layer": "api",
+            "requestType": "kiapi.schematic.commands.AnnotateSchematicRequest",
+            "responseType": "kiapi.schematic.commands.AnnotateSchematicResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "sch export svg",
+            "description": "Export a schematic to SVG",
+            "experimental": false,
+            "id": "schematic.jobs.export.svg",
+            "layer": "api",
+            "requestType": "kiapi.schematic.jobs.RunSchematicJobExportSvg",
+            "responseType": "kiapi.common.types.RunJobResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "sch export dxf",
+            "description": "Export a schematic to DXF",
+            "experimental": false,
+            "id": "schematic.jobs.export.dxf",
+            "layer": "api",
+            "requestType": "kiapi.schematic.jobs.RunSchematicJobExportDxf",
+            "responseType": "kiapi.common.types.RunJobResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "sch export pdf",
+            "description": "Export a schematic to PDF",
+            "experimental": false,
+            "id": "schematic.jobs.export.pdf",
+            "layer": "api",
+            "requestType": "kiapi.schematic.jobs.RunSchematicJobExportPdf",
+            "responseType": "kiapi.common.types.RunJobResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "sch export ps",
+            "description": "Export a schematic to PostScript",
+            "experimental": false,
+            "id": "schematic.jobs.export.ps",
+            "layer": "api",
+            "requestType": "kiapi.schematic.jobs.RunSchematicJobExportPs",
+            "responseType": "kiapi.common.types.RunJobResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "sch export netlist",
+            "description": "Export a schematic netlist",
+            "experimental": false,
+            "id": "schematic.jobs.export.netlist",
+            "layer": "api",
+            "requestType": "kiapi.schematic.jobs.RunSchematicJobExportNetlist",
+            "responseType": "kiapi.common.types.RunJobResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "sch export bom",
+            "description": "Export a schematic BOM",
+            "experimental": false,
+            "id": "schematic.jobs.export.bom",
+            "layer": "api",
+            "requestType": "kiapi.schematic.jobs.RunSchematicJobExportBOM",
+            "responseType": "kiapi.common.types.RunJobResponse",
+            "since": "11.0"
+          },
+          {
+            "cliCommand": "sch erc",
+            "description": "Run electrical rules checks (supports --timeout)",
+            "experimental": false,
+            "id": "schematic.erc.run",
+            "layer": "cli",
+            "requestType": "",
+            "responseType": "",
+            "since": "11.0"
+          }
+        ]
+      },
+      "socket": "/tmp/kicad/api.sock"
+    },
+    "kicadCli": {
+      "available": true,
+      "path": "/Users/mosc/Downloads/Kicad/build/kicad/KiCad.app/Contents/MacOS/kicad-cli",
+      "version": "10.99.0"
+    },
+    "scope": "CLI, IPC, loaded documents and optional tools are independent layers. MCP catalog availability does not imply a live KiCad document."
+  }
+}

@@ -1,0 +1,12 @@
+bun test v1.3.14 (0d9b296a)
+
+test/ripgrep.test.ts:
+(pass) Ripgrep > keeps ignored files out of catch-all find results [53.82ms]
+(pass) Ripgrep > never includes git metadata [25.31ms]
+(pass) Ripgrep > searches compact KiCad JSON reports larger than 64 KiB [7.69ms]
+(pass) Ripgrep > does not split surrogate pairs in oversized line previews [7.93ms]
+
+ 4 pass
+ 0 fail
+ 10 expect() calls
+Ran 4 tests across 1 file. [450.00ms]

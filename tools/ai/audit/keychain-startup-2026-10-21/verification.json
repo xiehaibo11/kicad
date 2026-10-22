@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "extensionVersion": "0.4.25",
+  "actualEditorInstalled": true,
+  "nativeTerminalInstalled": true,
+  "vsixSha256": "a6422216ae7512d796c5f2c8d9142c713b125149f829479eeef7705d5c01651a",
+  "verifiedVsixEntries": 1219,
+  "finalPackageMatchesTestedPackage": true,
+  "installedKeyFilesMatchFinalPackage": true,
+  "startupTestRoot": "/tmp/kn-vs-8n77dxgl",
+  "residualStartupProcesses": [],
+  "normalEditorUsesRealHome": true,
+  "systemKeychainReset": false,
+  "credentialStorageChangedForNormalUse": false,
+  "actualWindow": {
+    "title": "Kicad · 原生工具",
+    "version": "0.4.25",
+    "chatInputVisible": true,
+    "nativeTerminalVisible": true,
+    "terminalVersion": "1.19.3",
+    "keychainDialogPresent": false,
+    "extensionsTemporarilyDisabled": false
+  }
+}

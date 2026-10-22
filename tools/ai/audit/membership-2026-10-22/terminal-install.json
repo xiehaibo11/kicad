@@ -1,0 +1,13 @@
+{
+  "plugin": [
+    {
+      "path": "/Users/mosc/.local/share/kicad-terminal/session-runtime.mjs",
+      "sha256": "bdaf1a30208af72b35ed59a5a5e9e771b9c87fee22269d1297deef6c22d7cd23"
+    },
+    {
+      "path": "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/resources/session-runtime.mjs",
+      "sha256": "bdaf1a30208af72b35ed59a5a5e9e771b9c87fee22269d1297deef6c22d7cd23"
+    }
+  ],
+  "nativeBinaryRebuilt": false
+}

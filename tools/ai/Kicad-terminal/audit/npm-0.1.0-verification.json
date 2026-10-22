@@ -1,0 +1,127 @@
+{
+  "ok": true,
+  "package": "@haiboxie11/kicad@0.1.0",
+  "platform": "darwin-arm64",
+  "runtimeVersion": "1.19.3",
+  "cleanCacheNpx": true,
+  "globalCommand": "Kicad",
+  "all22CommandsPreserved": true,
+  "packageFilesVerified": 934,
+  "bundledSkills": 7,
+  "mcpTools": 19,
+  "actionCount": 247,
+  "NNGBackendBundled": true,
+  "bundledMcpConnected": true,
+  "nativeApiHealth": true,
+  "embeddedWebAndJavaScript": true,
+  "startupCreatesNoTask": true,
+  "existingModelAndSettingsPreserved": true,
+  "prefixWithSpaces": true,
+  "npmPackageName": "@haiboxie11/kicad",
+  "npmPackageVersion": "0.1.0",
+  "npmRegistryPublished": true,
+  "releaseUrl": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-terminal-v0.1.0",
+  "sourceCommit": "ab0e3b26aa4a67be8128b764cff70730a8d346ea",
+  "documentationCommit": "3b389623fc17919ed8602743bfb0f59133e57ee3",
+  "sourceFingerprintMatchesNativeBuild": true,
+  "publicSourceRebuildMatchesBundledBackend": true,
+  "actualNpmLauncherContinuity": {
+    "ok": true,
+    "fixture": "shipped native binary + localhost model + actual installed plugin API",
+    "startupNoModelCalls": true,
+    "ambiguousWriteBlocked": true,
+    "explicitWriteWorks": true,
+    "nativeCompactionArchivesFullHistory": true,
+    "continuedTaskContextRestored": true,
+    "requests": [
+      {
+        "case": "ambiguous",
+        "summary": false,
+        "afterTool": false,
+        "checkpoint": false,
+        "model": "fixture"
+      },
+      {
+        "case": "ambiguous",
+        "summary": false,
+        "afterTool": false,
+        "checkpoint": false,
+        "model": "fixture"
+      },
+      {
+        "case": "ambiguous",
+        "summary": false,
+        "afterTool": true,
+        "checkpoint": false,
+        "model": "fixture"
+      },
+      {
+        "case": "clear",
+        "summary": false,
+        "afterTool": false,
+        "checkpoint": false,
+        "model": "fixture"
+      },
+      {
+        "case": "clear",
+        "summary": false,
+        "afterTool": false,
+        "checkpoint": false,
+        "model": "fixture"
+      },
+      {
+        "case": "clear",
+        "summary": false,
+        "afterTool": true,
+        "checkpoint": false,
+        "model": "fixture"
+      },
+      {
+        "case": "clear",
+        "summary": true,
+        "afterTool": false,
+        "checkpoint": true,
+        "model": "fixture"
+      },
+      {
+        "case": "clear",
+        "summary": false,
+        "afterTool": false,
+        "checkpoint": true,
+        "model": "fixture"
+      },
+      {
+        "case": "clear",
+        "summary": false,
+        "afterTool": true,
+        "checkpoint": true,
+        "model": "fixture"
+      }
+    ]
+  },
+  "nativeTuiTests": {
+    "pass": 206,
+    "skip": 1,
+    "fail": 0
+  },
+  "fullNngBackendTests": "passed",
+  "temporaryNpmCredentialRemoved": true,
+  "sha256": "5579acbf33279430df5279857d8e9f334a4d5d3eaa8efe1a67327d96993efb17",
+  "publicNpxInteractiveStartup": true,
+  "userInstalledPrefix": "/Users/mosc/.local",
+  "userCommand": "/Users/mosc/.local/bin/Kicad",
+  "userCommandTarget": "/Users/mosc/.local/lib/node_modules/@haiboxie11/kicad/bin/Kicad.mjs",
+  "userInstalledAllFilesVerified": true,
+  "nativeWrappersUnchanged": true,
+  "legacyLauncherBackup": "/Users/mosc/.local/share/kicad-terminal/Kicad-before-npm-20261020-195808.sh",
+  "repeatInstallWithoutForce": true,
+  "githubTarball": "https://github.com/xiehaibo11/kicad/releases/download/kicad-terminal-v0.1.0/haiboxie11-kicad-0.1.0.tgz",
+  "npmRegistryUrl": "https://www.npmjs.com/package/@haiboxie11/kicad",
+  "npmRegistryTarball": "https://registry.npmjs.org/@haiboxie11/kicad/-/kicad-0.1.0.tgz",
+  "npmRegistryLatest": "0.1.0",
+  "npmRegistryShasumMatches": true,
+  "officialRegistryCleanCacheAcceptance": true,
+  "officialRegistryLatestNpxInteractiveStartup": true,
+  "userInstalledFromOfficialRegistry": true,
+  "userGitIndexUnchanged": true
+}

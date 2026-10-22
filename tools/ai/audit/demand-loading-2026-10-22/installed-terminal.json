@@ -1,0 +1,34 @@
+[
+  {
+    "path": "/Users/mosc/Downloads/kicad/tools/ai/Kicad-terminal/dist/kicad-terminal",
+    "sha256": "e6eeee35c3722fdd7e2a94a4447b14671a3fc6108f8e6a7cc23aa471653c7f15"
+  },
+  {
+    "path": "/Users/mosc/.local/bin/kicad-terminal",
+    "sha256": "e6eeee35c3722fdd7e2a94a4447b14671a3fc6108f8e6a7cc23aa471653c7f15"
+  },
+  {
+    "path": "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/vendor/darwin-arm64/kicad-terminal",
+    "sha256": "e6eeee35c3722fdd7e2a94a4447b14671a3fc6108f8e6a7cc23aa471653c7f15"
+  },
+  {
+    "path": "/Users/mosc/.local/share/kicad-terminal/session-runtime.mjs",
+    "sha256": "b78fd6b0f569982f196448fedba38617005e900e5b584f7aa801ba821d1f17fe"
+  },
+  {
+    "path": "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/resources/session-runtime.mjs",
+    "sha256": "b78fd6b0f569982f196448fedba38617005e900e5b584f7aa801ba821d1f17fe"
+  },
+  {
+    "path": "/Users/mosc/Downloads/kicad/tools/ai/Kicad-terminal/dist/eda-agent-instructions.md",
+    "sha256": "23cd910a907a79ac4065cbf623bd9b988a8ac8a5ede970360b69bda226c0cd19"
+  },
+  {
+    "path": "/Users/mosc/.local/share/kicad-terminal/eda-agent-instructions.md",
+    "sha256": "23cd910a907a79ac4065cbf623bd9b988a8ac8a5ede970360b69bda226c0cd19"
+  },
+  {
+    "path": "/opt/homebrew/lib/node_modules/@-kicadai/kicad-code/resources/eda-agent-instructions.md",
+    "sha256": "23cd910a907a79ac4065cbf623bd9b988a8ac8a5ede970360b69bda226c0cd19"
+  }
+]

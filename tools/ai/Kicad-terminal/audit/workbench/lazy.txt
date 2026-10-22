@@ -1,0 +1,46 @@
+                                                                                                                                                                
+  ┃                                                                                                                     Workbench fixture                       
+  ┃  LAZY_PROBE: summarize what is in this folder.                                                                                                              
+  ┃                                                                                                                     KiCad                                   
+                                                                                                                        ● connected · CLI 10.99.0               
+     ✓ KiCad tools.load — 20 KiCad tools loaded                                                                         PCB ecc83-pp.kicad_pcb                  
+     ✓ KiCad system.health — CLI 10.99.0 · IPC connected · 1 open document                                                                                      
+                                                                                                                        Context                                 
+     LAZY_FIXTURE_OK                                                                                                    0 tokens                                
+                                                                                                                        0% used                                 
+                                                                                                                        $0.00 spent                             
+                                                                                                                                                                
+                                                                                                                        LSP                                     
+                                                                                                                        LSPs are disabled                       
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+  ┃                                                                                                                                                             
+  ┃                                                                                                                                                             
+  ┃                                                                                                                     /private/var/folders/v8/                
+  ┃  Build · Workbench fixture Local fixture                                            ● KiCad ecc83-pp.kicad_pcb      t1mlv9kd4s7b5z6r8s65vbym0000gn/T/       
+  ╹▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀    Kicad-workbench-u8u3dhr_/ecc83          
+   /private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-workbench-u8u3dhr_/ecc83ab agents ctrl+p commands                                             
+                                                                                                                        • Kicad 0.2.1                           
+                                                                                                                                                                

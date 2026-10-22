@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "version": "0.4.17",
+  "installedPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.17",
+  "installedManifestMatchesExceptInstallerMetadata": true,
+  "installedFileSha256": {
+    "dist/extension.cjs": "48f59a51dfdd8bbf6eeb883a82d4f5128bf4081cee3ad23418cda31f02f11f4f",
+    "dist/media/main.js": "257a164614503c0ab2839bd07867bb06a4f4158fa2a9adcd807b8c8797c630c9",
+    "dist/media/style.css": "651709d4e6308697a1baed12e671b3b8907cf5860dcc8de8653f53629f571560"
+  },
+  "productionUI": {
+    "ok": true,
+    "version": "0.4.17",
+    "selectionLatencyMs": 43,
+    "checks": [
+      "dashboard hidden on launch, draft, ordinary chat and background-only tasks",
+      "dashboard appears only after actual subagent events",
+      "entry below chat and outside composer",
+      "completed agents available for review",
+      "new conversation hides entry again",
+      "local model selection while SDK probe blocked",
+      "no launch or send on selection",
+      "search and keyboard selection",
+      "live tasks correlated without duplicate",
+      "agent progress and failure update",
+      "background tasks separate",
+      "details",
+      "desktop and 320/380/540px layout",
+      "modal focus trap / Escape / focus restoration",
+      "composer Tab unchanged"
+    ],
+    "source": "production Vue bundle with SDK event fixtures; no external model call"
+  },
+  "composerRegression": "passed; Agent, permissions, effort, Tab suggestions, no automatic sending",
+  "nativeVerification": {
+    "window": "Kicad · 0.4.17 · 子代理显示检查",
+    "chatOpened": true,
+    "subagentEntryHiddenOnNewConversation": true
+  },
+  "subagentVisibility": "Actual SDK agent task events; draft keywords and background-only tasks do not show entry",
+  "placement": "below chat, above input, outside input toolbar"
+}

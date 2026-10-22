@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "/Users/mosc/Downloads/Kicad",
+      "name": "Kicad"
+    }
+  ],
+  "settings": {
+    "window.title": "Kicad 扩展 · 0.4.10 检查窗口",
+    "kicadAgent.openCode.args": [
+      "--model",
+      "kicad-deepseek/deepseek-flash"
+    ],
+    "kicadAgent.path": "/Users/mosc/.local/bin/kicad-agent",
+    "kicadAgent.openCode.path": "/Users/mosc/.local/bin/kicad-terminal"
+  }
+}

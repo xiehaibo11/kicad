@@ -1,0 +1,8 @@
+{
+  "version": "0.4.7",
+  "liveModel": "deepseek-flash",
+  "original": "请通过 kicad-agent MCP 工具检查 PCB 和原理图，先只检查，不修改文件，列出问题和验证方法。",
+  "optimized": "请使用 kicad-agent MCP 工具检查当前 PCB 和原理图。本次只做只读检查，不修改任何文件。请列出发现的问题，并给出每个问题的验证方法。",
+  "requestRoute": "optimize_prompt",
+  "chatMessagesSent": 0
+}

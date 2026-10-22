@@ -1,0 +1,18 @@
+{
+  "version": "0.4.7",
+  "fixture": "Installed production frontend, mock host responses",
+  "checks": [
+    "empty input disabled",
+    "selected model forwarded",
+    "preview preserves draft",
+    "editable result",
+    "replace without sending",
+    "Escape preserves draft",
+    "in-flight cancel",
+    "late result ignored",
+    "error and retry",
+    "stale draft protected"
+  ],
+  "chatMessagesSent": 0,
+  "pageErrors": []
+}

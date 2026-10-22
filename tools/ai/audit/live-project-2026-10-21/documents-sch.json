@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "action": "document.list",
+  "data": {
+    "documents": [
+      {
+        "type": "DOCTYPE_SCHEMATIC",
+        "sheetPath": {
+          "path": [
+            {
+              "value": "4d8b9ae3-79ef-4159-9b55-b392b946c8bc"
+            }
+          ],
+          "pathHumanReadable": "/"
+        },
+        "project": {
+          "name": "RK3308B_IPC 摄像头模块",
+          "path": "/Users/mosc/Downloads/Kicad/projects/RK3308B_IPC 摄像头模块/"
+        }
+      }
+    ]
+  }
+}

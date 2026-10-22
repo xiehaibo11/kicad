@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "action": "spec.validate",
+  "data": {
+    "hasErrors": false,
+    "issues": [
+      {
+        "level": "WARN",
+        "field": "flow[1]",
+        "message": "flow stage \"IO\" has no module of that kind on the board"
+      },
+      {
+        "level": "INFO",
+        "field": "modules[0].parts",
+        "message": "module \"MCU\" declares neither parts nor a block"
+      }
+    ],
+    "spec": {
+      "board": {
+        "outline": "compact",
+        "widthMm": 30,
+        "heightMm": 45
+      },
+      "stackup": {
+        "layers": 4,
+        "innerLayers": [
+          "GND"
+        ]
+      },
+      "modules": [
+        {
+          "name": "MCU",
+          "kind": "MCU"
+        }
+      ],
+      "flow": [
+        "MCU",
+        "IO"
+      ]
+    }
+  }
+}

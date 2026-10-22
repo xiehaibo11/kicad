@@ -1,0 +1,28 @@
+{
+  "version": "0.4.4",
+  "active": true,
+  "webviews": {
+    "resolved": 2,
+    "mounted": 2
+  },
+  "nativeTerminal": {
+    "name": "kicad",
+    "pid": 25888,
+    "binary": "/Users/mosc/.local/bin/kicad-terminal"
+  },
+  "kiCadMcpEnabled": true,
+  "verifiedAt": "2026-10-20T10:46:19.743136-07:00",
+  "commandEntry": "/Users/mosc/.local/bin/kicad",
+  "nativeCliVersion": "10.99.0",
+  "terminalRuntimeVersion": "1.19.3",
+  "commandMcpStatus": "kicad Connected",
+  "normalVsCodeWindow": {
+    "workspace": "/Users/mosc/Downloads/kicad/tools/ai/kicad.code-workspace",
+    "frontendMountedLog": "/Users/mosc/Library/Application Support/Code/logs/20261018T143837/window5/exthost/kicad-agent.kicad/Claudix.log",
+    "frontendMountedAt": "2026-10-20 10:45:58.258",
+    "nativeTerminalPid": 27705,
+    "nativeTerminalParentPid": 40889
+  },
+  "vsixSha256": "c18d4e4e094eb298f7ea7ae9db6182c6d01c74e3f29c4cc0b64d45c0f0656ed9",
+  "systemTerminalPid": 24014
+}

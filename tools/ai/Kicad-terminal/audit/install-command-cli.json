@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "publicCommand": "Kicad",
+  "runtimeVersion": "1.19.3",
+  "commandCount": 22,
+  "commands": [
+    "completion",
+    "acp",
+    "mcp",
+    "[project]",
+    "attach",
+    "run",
+    "debug",
+    "providers",
+    "agent",
+    "upgrade",
+    "uninstall",
+    "serve",
+    "web",
+    "models",
+    "stats",
+    "export",
+    "import",
+    "github",
+    "pr",
+    "session",
+    "plugin",
+    "db"
+  ],
+  "commandInventoryPreserved": true,
+  "helpForCommands": [
+    "run",
+    "mcp",
+    "providers",
+    "session",
+    "serve",
+    "web"
+  ],
+  "completionUsesKicad": true
+}

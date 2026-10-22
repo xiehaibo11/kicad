@@ -1,0 +1,4 @@
+[0/2] Re-checking globbed directories...
+[1/2] Building kicad-agent AI automation terminal
+# github.com/zhoushoujianwork/easyeda-agent/kicad-agent/cmd/kicad-agent
+ld: warning: ignoring duplicate libraries: '/Users/mosc/kicad-deps/nng-install/lib/libnng.a'

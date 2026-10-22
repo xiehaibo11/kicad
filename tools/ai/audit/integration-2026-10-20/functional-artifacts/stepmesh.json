@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "action": "external.step.meshcheck",
+  "data": {
+    "checkedPairs": 0,
+    "collisions": [],
+    "errors": 0,
+    "minVolumeMm3": 0.0001,
+    "ok": true,
+    "solids": 1,
+    "step": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/tmp.z5mScbT6Pm/board.step",
+    "truncated": false
+  },
+  "artifacts": [
+    "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/tmp.z5mScbT6Pm/board.step"
+  ]
+}

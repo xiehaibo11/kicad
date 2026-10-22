@@ -1,0 +1,12 @@
+0 标准窗口 Kicad · 原生工具, URL: file:///Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/audit/Kicad-0.4.11.code-workspace, Secondary Actions: Raise
+												120 container Kicad, 0.4.25, 发布者 kicad-agent, Kicad: the Claudix Claude Code chat and native OpenCode terminal wired to KiCad through the shared JavaScript native CLI/IPC runtime. 
+													293 文本栏 (settable) 终端 2，Kicad 终端 使用 ⌥F1 获取终端辅助功能帮助
+													301 container 终端2 Kicad 终端
+														302 container $(terminal) Kicad 终端
+																304 text   Kicad 终端
+							347 container circuit-board Kicad, 检查内部工具、KiCad IPC、文档与可选工具
+								348 按钮 circuit-board Kicad, 检查内部工具、KiCad IPC、文档与可选工具
+										378 标题 New Conversation, Value: 2
+											379 文本 New Conversation
+											385 文本输入区 (settable) Plan, @ for context, / for commands...
+The focused UI element is 293 文本栏 (settable) 终端 2，Kicad 终端 使用 ⌥F1 获取终端辅助功能帮助

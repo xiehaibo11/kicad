@@ -1,0 +1,13 @@
+{
+  "extensionVersion": "0.4.22",
+  "terminalVersion": "1.19.3",
+  "installed": true,
+  "sdk": true,
+  "questionUI": true,
+  "modelPreferenceUI": true,
+  "pauseResendSDK": true,
+  "terminalNative": true,
+  "fixture": "Actual installed SDK/CLI and native terminal with localhost controlled models; packaged production Vue UI; no board edits",
+  "window": "Kicad · 0.4.22 · 需求确认与上下文检查",
+  "terminalPtySession": 20410
+}

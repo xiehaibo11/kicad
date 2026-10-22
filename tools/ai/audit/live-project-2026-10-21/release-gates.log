@@ -1,0 +1,2 @@
+{"action":"audit.run","ok":false,"error":{"code":"AUDIT_NOT_PASSED","message":"Violations or incomplete evidence; see checks and artifacts"},"pendingEvidence":5}
+{"action":"release.check","ok":false,"error":{"code":"RELEASE_EVIDENCE_INCOMPLETE","message":"Missing, stale or failing evidence; no fabrication/production approval conferred"},"pendingEvidence":37}
