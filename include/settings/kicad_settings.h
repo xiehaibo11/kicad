@@ -92,6 +92,9 @@ public:
     /// Outer key is normalized table file path, inner key is library nickname.
     std::map<wxString, std::map<wxString, LIB_OVERRIDE>> m_LibOverrides;
 
+    /// Project browser roots, independent of the currently open design.
+    std::vector<wxString> m_ProjectDirectories;
+
 protected:
     virtual std::string getLegacyFrameName() const override { return "KicadFrame"; }
 };

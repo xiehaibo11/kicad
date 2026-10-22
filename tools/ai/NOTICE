@@ -1,21 +1,12 @@
-kicad-agent
-===========
+KiCad shared native automation
+==============================
 
-This directory contains a downstream KiCad integration that links against
-KiCad's GPLv3-licensed protobuf API definitions and libraries.  The combined
-binary (kicad-agent built with IPC support, and the kicad-cli "agent"
-subcommand) is therefore distributed under the GNU General Public License,
-version 3 or later.  See LICENSE.
+The JavaScript runtime derives its native protocol from KiCad GPLv3+ sources
+and is distributed under GPLv3 or later. No Go program or EDA connector is
+included. See LICENSE and direct/README.md.
 
-Upstream components:
-
-  * easyeda-agent (tools/ai/upstream/easyeda-agent), MIT License,
-    https://github.com/zhoushoujianwork/easyeda-agent
-  * NNG (statically linked when KICAD_BUILD_AI_AGENT_IPC=ON), MIT License,
-    https://nng.nanomutt.org/
-  * Go modules listed in kicad-agent/go.sum (MIT/BSD/Apache-2.0); their
-    license texts are available from the respective module repositories.
-
-The EasyEDA agent's MIT notice applies to its own source files.  KiCad's
-LICENSE.README lists the remaining third-party components used by the
-application.
+Reference circuit-block data is adapted from zhoushoujianwork/easyeda-agent,
+MIT License; its copyright and permission notice is preserved in
+ direct/LICENSE-blocks-MIT.txt. This attribution is not a runtime dependency.
+protobufjs is BSD-3-Clause; its license accompanies the built bundles.
+The terminal and extension retain their own upstream notices and licenses.

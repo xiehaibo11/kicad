@@ -64,7 +64,9 @@ API_HANDLER_BOARD::API_HANDLER_BOARD( std::shared_ptr<BOARD_CONTEXT> aContext,
 {
     wxCHECK( m_context, /* void */ );
 
-    registerHandler<RunAction, RunActionResponse>( &API_HANDLER_BOARD::handleRunAction );
+
+    registerHandler<ExportSpecctraBoard, Empty>( &API_HANDLER_BOARD::handleExportSpecctra );
+    registerHandler<ImportSpecctraRoutes, Empty>( &API_HANDLER_BOARD::handleImportSpecctra );
 
     registerHandler<GetItemsById, GetItemsResponse>( &API_HANDLER_BOARD::handleGetItemsById );
 
@@ -502,26 +504,6 @@ std::vector<KICAD_T> API_HANDLER_BOARD::parseRequestedItemTypes(
     }
 
     return types;
-}
-
-
-HANDLER_RESULT<RunActionResponse> API_HANDLER_BOARD::handleRunAction(
-        const HANDLER_CONTEXT<RunAction>& aCtx )
-{
-    if( std::optional<ApiResponseStatus> headless = checkForHeadless( "RunAction" ) )
-        return tl::unexpected( *headless );
-
-    if( std::optional<ApiResponseStatus> busy = checkForBusy() )
-        return tl::unexpected( *busy );
-
-    RunActionResponse response;
-
-    if( toolManager()->RunAction( aCtx.Request.action(), true ) )
-        response.set_status( RunActionStatus::RAS_OK );
-    else
-        response.set_status( RunActionStatus::RAS_INVALID );
-
-    return response;
 }
 
 
@@ -1225,7 +1207,90 @@ HANDLER_RESULT<CreateItemsResponse> API_HANDLER_BOARD::handleParseAndCreateItems
     if( !documentValidation )
         return tl::unexpected( documentValidation.error() );
 
+    auto invalid = []( const std::string& message ) -> HANDLER_RESULT<CreateItemsResponse>
+    {
+        ApiResponseStatus error;
+        error.set_status( ApiStatusCode::AS_BAD_REQUEST );
+        error.set_error_message( message );
+        return tl::unexpected( error );
+    };
+
+    if( aCtx.Request.contents().empty() || aCtx.Request.contents().size() > 16 * 1024 * 1024 )
+        return invalid( "contents must contain at most 16 MiB of native clipboard data" );
+
+    // Parse in an independent model. The native clipboard format is a board
+    // fragment or footprint; parsing must never replace the active board.
+    CLIPBOARD_IO parser;
+    parser.SetReader( [&]() { return wxString::FromUTF8( aCtx.Request.contents() ); } );
+    std::unique_ptr<BOARD_ITEM> parsed( parser.Parse() );
+
+    if( !parsed )
+        return invalid( "Invalid native board/footprint S-expression" );
+
+    std::vector<BOARD_ITEM*> items;
+
+    if( BOARD* fragment = dynamic_cast<BOARD*>( parsed.get() ) )
+    {
+        const BOARD_ITEM_SET owned = fragment->GetItemSet();
+        items.assign( owned.begin(), owned.end() );
+    }
+    else
+        items.push_back( parsed.get() );
+
+    if( items.empty() )
+        return invalid( "Native clipboard data contains no items" );
+
+    CreateItems request;
+    request.mutable_header()->mutable_document()->CopyFrom( aCtx.Request.document() );
+
+    // Validate the entire fragment before starting a commit. New UUIDs make
+    // repeated imports independent; nets bind by name in the destination board.
+    for( BOARD_ITEM* item : items )
+    {
+        if( item->Type() == PCB_GROUP_T || item->GetParentGroup() )
+            return invalid( "Grouped clipboard items require typed group creation" );
+
+        if( !createItemForType( item->Type(), getDefaultContainer() )
+            || !item->FitsEnabledLayers( board()->GetEnabledLayers(), board()->GetCopperLayerCount() ) )
+            return invalid( "Clipboard contains an unsupported item or disabled layer" );
+
+        bool validNets = true;
+        auto prepare = [&]( BOARD_ITEM* child )
+        {
+            child->ResetUuid();
+
+            if( BOARD_CONNECTED_ITEM* connected = dynamic_cast<BOARD_CONNECTED_ITEM*>( child ) )
+            {
+                wxString name = connected->GetNetname();
+                NETINFO_ITEM* net = name.IsEmpty() ? board()->FindNet( 0 ) : board()->FindNet( name );
+                validNets &= net != nullptr;
+                if( net )
+                    connected->SetNet( net );
+            }
+        };
+        prepare( item );
+        item->RunOnChildren( prepare, RECURSE_MODE::RECURSE );
+
+        if( !validNets )
+            return invalid( "Clipboard net is absent from the destination; create the net explicitly first" );
+
+        item->Serialize( *request.add_items() );
+    }
+
     CreateItemsResponse response;
+    response.mutable_header()->CopyFrom( request.header() );
+    auto result = handleCreateUpdateItemsInternal( true, aCtx.ClientName, request.header(), request.items(),
+            [&]( const ItemStatus& status, const google::protobuf::Any& item )
+            {
+                ItemCreationResult* created = response.add_created_items();
+                created->mutable_status()->CopyFrom( status );
+                created->mutable_item()->CopyFrom( item );
+            } );
+
+    if( !result )
+        return tl::unexpected( result.error() );
+
+    response.set_status( *result );
     return response;
 }
 

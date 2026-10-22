@@ -94,9 +94,6 @@ protected:
             const google::protobuf::RepeatedField<int>& aTypes );
 
 private:
-    HANDLER_RESULT<commands::RunActionResponse> handleRunAction(
-            const HANDLER_CONTEXT<commands::RunAction>& aCtx );
-
     HANDLER_RESULT<commands::GetItemsResponse> handleGetItemsById(
             const HANDLER_CONTEXT<commands::GetItemsById>& aCtx );
 
@@ -162,6 +159,10 @@ private:
 
     HANDLER_RESULT<Empty> handleSetActiveLayer(
             const HANDLER_CONTEXT<SetActiveLayer>& aCtx );
+
+    HANDLER_RESULT<Empty> handleExportSpecctra( const HANDLER_CONTEXT<ExportSpecctraBoard>& aCtx );
+
+    HANDLER_RESULT<Empty> handleImportSpecctra( const HANDLER_CONTEXT<ImportSpecctraRoutes>& aCtx );
 
     std::shared_ptr<BOARD_CONTEXT> m_context;
 };

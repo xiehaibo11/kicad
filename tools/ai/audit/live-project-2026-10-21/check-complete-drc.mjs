@@ -1,0 +1,3 @@
+import fs from 'node:fs';import path from 'node:path';import {Runtime} from '../../direct/runtime.mjs';
+const out=path.dirname(new URL(import.meta.url).pathname),stem=path.resolve('projects/RK3308B_IPC 摄像头模块/RK3308B_IPC 摄像头模块'),runtime=new Runtime({binary:path.resolve('build/kicad/KiCad.app/Contents/MacOS/kicad-cli')});
+try{for(const n of [1,2]){const result=await runtime.dispatch('board.drc.live',{document:stem+'.kicad_pcb',severityAll:true,schematicParity:true,allTrackErrors:true,output:path.join(out,'drc-complete-'+n+'.json'),timeoutMs:120000});fs.writeFileSync(path.join(out,'drc-complete-'+n+'-result.json'),JSON.stringify(result,null,2));console.log(JSON.stringify({n,ok:result.ok,error:result.error,summary:result.data?.summary}));}}finally{runtime.close();}

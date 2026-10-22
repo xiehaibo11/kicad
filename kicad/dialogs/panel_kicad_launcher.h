@@ -23,10 +23,13 @@
 #include "panel_kicad_launcher_base.h"
 
 #include <unordered_map>
+#include <vector>
 
 class TOOL_MANAGER;
 class TOOL_ACTION;
 class KICAD_MANAGER_FRAME;
+class wxListCtrl;
+class wxStaticText;
 
 class PANEL_KICAD_LAUNCHER : public PANEL_KICAD_LAUNCHER_BASE
 {
@@ -36,10 +39,12 @@ public:
     ~PANEL_KICAD_LAUNCHER();
 
     void CreateLaunchers();
+    void RefreshProjects();
 
 private:
     void onThemeChanged( wxSysColourChangedEvent& aEvent );
     void onLauncherButtonClick( wxCommandEvent& aEvent );
+    void updateToolColumns();
 
     KICAD_MANAGER_FRAME* m_frame;
 
@@ -47,6 +52,10 @@ private:
     // handler for the button's asynchronous click event never has to dereference the event
     // object, which CreateLaunchers() may have already destroyed by the time the event arrives.
     std::unordered_map<int, const TOOL_ACTION*> m_actionForId;
+    wxListCtrl* m_recentProjects = nullptr;
+    wxStaticText* m_projectLabel = nullptr;
+    wxStaticText* m_projectPath = nullptr;
+    std::vector<wxString> m_recentPaths;
 
     // Source of never-reused button ids so a stale click cannot alias a rebuilt button's id.
     int                                         m_nextLauncherId = wxID_HIGHEST + 1;

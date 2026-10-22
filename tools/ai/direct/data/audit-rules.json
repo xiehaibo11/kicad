@@ -1,0 +1,58 @@
+{
+  "evidenceRequiredBeyondDrc": [
+    "manufacturer process limits and stackup",
+    "datasheet-based footprint/pin/electrical review",
+    "mechanical/assembly fit",
+    "design-specific power, thermal, high-speed and safety constraints where applicable"
+  ],
+  "execution": "backend-only; frontend displays results, never evaluates engineering rules",
+  "footprintCategories": [
+    "pad geometry and drill/copper-layer consistency",
+    "courtyard/fabrication/reference definitions",
+    "datasheet pin mapping and exposed-pad identity",
+    "package dimensions and assembly orientation",
+    "3D/mechanical fit"
+  ],
+  "manufacturingProfile": {
+    "comparison": "project global minima must meet the profile; custom-rule overrides require review too",
+    "format": "JSON object",
+    "requiredPositiveMm": [
+      "minClearanceMm",
+      "minTrackWidthMm",
+      "minDrillMm",
+      "minAnnularWidthMm",
+      "minCopperEdgeClearanceMm"
+    ],
+    "source": "manufacturer process specification; never invented defaults"
+  },
+  "nativeScope": [
+    "all enabled native DRC providers",
+    "all track errors",
+    "all severities including exclusions",
+    "zone refill in memory without saving",
+    "board/schematic parity",
+    "schematic ERC",
+    "disabled-check inventory",
+    "project rule and custom .kicad_dru provenance"
+  ],
+  "pcbCategories": [
+    "shorts and connectivity",
+    "clearance and creepage",
+    "track widths",
+    "via/drill/annulus and hole spacing",
+    "copper/board edges and outlines",
+    "solder mask and paste",
+    "silkscreen",
+    "zones and thermal connections",
+    "courtyard and footprint geometry",
+    "library and schematic parity",
+    "length/differential-pair constraints from the project"
+  ],
+  "policy": "Never equate zero DRC with fabrication readiness. Missing reports, ignored checks, unknown limits and unverified datasheet/mechanical assumptions remain explicit blockers. Never relax or disable project rules automatically.",
+  "sources": [
+    "https://docs.kicad.org/master/en/cli/cli.html#pcb_drc",
+    "https://docs.kicad.org/master/en/cli/cli.html#schematic_erc",
+    "https://klc.kicad.org/footprint/"
+  ],
+  "version": "2026-10-20.2"
+}

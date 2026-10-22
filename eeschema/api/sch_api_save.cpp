@@ -212,8 +212,45 @@ bool SaveSchematicCopy( SCHEMATIC& aSchematic, PROJECT& aProject, const wxString
     if( schematicFileName.GetFullPath() == rootScreen->GetFileName() )
         return SaveSchematic( aSchematic, aProject );
 
-    if( !SaveSheetToFile( rootSheet, aSchematic, schematicFileName.GetFullPath() ) )
-        return false;
+    // A live ERC/export snapshot must include unsaved subsheets as well as the
+    // root. Never write through an external sheet reference into the live project.
+    SCH_SCREENS screens( aSchematic.Root() );
+    std::vector<std::pair<SCH_SHEET*, wxFileName>> copies;
+    wxFileName sourceRoot( rootScreen->GetFileName() );
+
+    for( size_t i = 0; i < screens.GetCount(); ++i )
+    {
+        SCH_SCREEN* screen = screens.GetScreen( i );
+
+        if( !screen || screen->GetFileName().IsEmpty() )
+            continue; // virtual root
+
+        wxFileName destination( screen->GetFileName() );
+
+        if( screen == rootScreen )
+            destination = schematicFileName;
+        else
+        {
+            if( !destination.MakeRelativeTo( sourceRoot.GetPath() )
+                || destination.IsAbsolute() || destination.GetDirs().Index( ".." ) != wxNOT_FOUND )
+                return false;
+
+            destination.MakeAbsolute( schematicFileName.GetPath() );
+        }
+
+        if( destination.GetFullPath() != screen->GetFileName() )
+            copies.emplace_back( screens.GetSheet( i ), destination );
+    }
+
+    for( const auto& [sheet, destination] : copies )
+    {
+        if( !wxFileName::Mkdir( destination.GetPath(), wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL )
+            && !destination.DirExists() )
+            return false;
+
+        if( !SaveSheetToFile( sheet, aSchematic, destination.GetFullPath() ) )
+            return false;
+    }
 
     if( aCreateProject )
     {

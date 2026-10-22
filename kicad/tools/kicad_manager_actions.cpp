@@ -69,6 +69,13 @@ TOOL_ACTION KICAD_MANAGER_ACTIONS::openProject( TOOL_ACTION_ARGS()
         .FriendlyName( _( "Open Project..." ) )
         .Icon( BITMAPS::open_project ) );
 
+TOOL_ACTION KICAD_MANAGER_ACTIONS::browseProjectDirectory( TOOL_ACTION_ARGS()
+        .Name( "kicad.Control.browseProjectDirectory" )
+        .Scope( AS_GLOBAL )
+        .FriendlyName( _( "Open Project Folder..." ) )
+        .Tooltip( _( "Browse a folder and select a project to open or switch to" ) )
+        .Icon( BITMAPS::open_project ) );
+
 TOOL_ACTION KICAD_MANAGER_ACTIONS::openJobsetFile( TOOL_ACTION_ARGS()
         .Name( "kicad.Control.openJobset" )
         .Scope( AS_GLOBAL )

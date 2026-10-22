@@ -487,6 +487,7 @@ set( PCBNEW_CLASS_SRCS
     edit_zone_helpers.cpp
 
     api/api_handler_board.cpp
+    api/api_handler_specctra.cpp
     api/api_handler_footprint.cpp
     api/api_handler_pcb.cpp
     api/api_handler_pcb_ai.cpp

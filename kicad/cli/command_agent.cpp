@@ -34,19 +34,19 @@
 CLI::AGENT_COMMAND::AGENT_COMMAND() : COMMAND( "agent" )
 {
     m_argParser.add_description(
-            UTF8STDSTR( _( "Run the kicad-agent AI automation terminal.  All arguments are "
-                           "passed through: actions, call, sch, pipeline, workflow, ai, mcp." ) ) );
+            UTF8STDSTR( _( "Run the kicad-direct AI automation terminal.  All arguments are "
+                           "passed through: actions, call, sch, pipeline, workflow, ai." ) ) );
 
     m_argParser.add_argument( "args" )
             .remaining()
-            .help( UTF8STDSTR( _( "Arguments passed to kicad-agent" ) ) );
+            .help( UTF8STDSTR( _( "Arguments passed to kicad-direct" ) ) );
 }
 
 
 #ifdef __WXMSW__
-static constexpr const char* AGENT_EXE_NAME = "kicad-agent.exe";
+static constexpr const char* AGENT_EXE_NAME = "kicad-direct.mjs";
 #else
-static constexpr const char* AGENT_EXE_NAME = "kicad-agent";
+static constexpr const char* AGENT_EXE_NAME = "kicad-direct.mjs";
 #endif
 
 
@@ -54,7 +54,7 @@ int CLI::AGENT_COMMAND::doPerform( KIWAY& aKiway )
 {
     wxString agentPath;
 
-    if( !wxGetEnv( wxT( "KICAD_AGENT" ), &agentPath ) || agentPath.IsEmpty() )
+    if( !wxGetEnv( wxT( "KICAD_DIRECT" ), &agentPath ) || agentPath.IsEmpty() )
         agentPath = FindKicadFile( AGENT_EXE_NAME );
 
     // Build trees put the agent in <build>/bin, which FindKicadFile() does not
@@ -82,8 +82,8 @@ int CLI::AGENT_COMMAND::doPerform( KIWAY& aKiway )
     if( agentPath.IsEmpty() || !wxFileName::FileExists( agentPath ) )
     {
         wxFprintf( stderr,
-                   _( "kicad-agent was not found.  Build it with "
-                      "-DKICAD_BUILD_AI_AGENT=ON or set KICAD_AGENT to its path.\n" ) );
+                   _( "kicad-direct was not found.  Build it with "
+                      "-DKICAD_BUILD_AI_AGENT=ON or set KICAD_DIRECT to its path.\n" ) );
         return EXIT_CODES::ERR_UNKNOWN;
     }
 
@@ -91,6 +91,10 @@ int CLI::AGENT_COMMAND::doPerform( KIWAY& aKiway )
     wxSetEnv( wxT( "KICAD_CLI" ), wxStandardPaths::Get().GetExecutablePath() );
 
     std::vector<std::string> argStore;
+    wxString nodePath;
+    if( !wxGetEnv( wxT( "KICAD_NODE" ), &nodePath ) || nodePath.IsEmpty() )
+        nodePath = wxT( "node" );
+    argStore.push_back( nodePath.ToUTF8().data() );
     argStore.push_back( agentPath.ToUTF8().data() );
 
     if( m_argParser.is_used( "args" ) )
@@ -111,7 +115,7 @@ int CLI::AGENT_COMMAND::doPerform( KIWAY& aKiway )
 
     if( exitCode < 0 )
     {
-        wxFprintf( stderr, _( "Failed to start kicad-agent.\n" ) );
+        wxFprintf( stderr, _( "Failed to start kicad-direct.\n" ) );
         return EXIT_CODES::ERR_UNKNOWN;
     }
 

@@ -1,0 +1,9 @@
+{
+  "package": "@-kicadai/kicad-code",
+  "version": "0.1.1",
+  "npmRegistryPublished": false,
+  "registryDistTagLatestAtCheck": "0.1.0",
+  "reason": "npm 403: publishing requires two-factor authentication or an appropriately authorized granular access token",
+  "localAcceptance": true,
+  "githubReleaseTag": "kicad-code-v0.1.1"
+}

@@ -1419,10 +1419,14 @@ SCH_SCREEN* API_HANDLER_SCH::resolveScreenFromDocument( const DocumentSpecifier&
     if( std::optional<SCH_SHEET_PATH> current = m_context->GetCurrentSheet() )
         return current->LastScreen();
 
-    // Headless mode has no current sheet; the root sheet is the implicit target.
-    SCH_SHEET_PATH path;
-    path.push_back( &schematic()->Root() );
-    return path.LastScreen();
+    // Root() is virtual and is not serialized as a schematic sheet.  Headless
+    // requests without a sheet path can target the sole real top-level sheet.
+    const auto& sheets = schematic()->GetTopLevelSheets();
+
+    if( sheets.size() == 1 )
+        return sheets.front()->GetScreen();
+
+    return nullptr;
 }
 
 

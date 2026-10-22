@@ -1,0 +1,9 @@
+当前架构（2026-10-21）
+
+终端：原生 OpenCode 工具插件 → 共享 JavaScript → KiCad 原生 IPC/CLI。
+扩展：SDK 进程内工具 → 同一共享 JavaScript → KiCad 原生 IPC/CLI。
+
+Go CLI/daemon、外部 EDA 客户端、WebSocket 连接器和 eext 扩展已从调用链移除。
+20 个工具由同一个目录生成，原 254 个 KiCad 动作保留；修改动作经过原生权限流程。
+详见 tools/ai/direct/README.md 和 data/connector-audit.json。
+旧版审查记录与已发布包可能描述历史实现，不代表当前调用链。

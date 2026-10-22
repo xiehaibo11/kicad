@@ -18,8 +18,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <algorithm>
 #include <ranges>
 #include <tuple>
+#include <vector>
 
 #include <api/api_handler_common.h>
 #include <api/api_server.h>
@@ -39,6 +41,11 @@
 #include <project/project_file.h>
 #include <settings/settings_manager.h>
 #include <wx/string.h>
+#include <eda_base_frame.h>
+#include <kiway.h>
+#include <kiway_player.h>
+#include <tool/tool_manager.h>
+#include <wx/toplevel.h>
 
 using namespace kiapi::common::commands;
 using namespace kiapi::common::types;
@@ -48,6 +55,7 @@ using google::protobuf::Empty;
 API_HANDLER_COMMON::API_HANDLER_COMMON() :
         API_HANDLER()
 {
+    registerHandler<RunAction, RunActionResponse>( &API_HANDLER_COMMON::handleRunAction );
     registerHandler<commands::GetVersion, GetVersionResponse>( &API_HANDLER_COMMON::handleGetVersion );
     registerHandler<GetKiCadBinaryPath, PathResponse>(
             &API_HANDLER_COMMON::handleGetKiCadBinaryPath );
@@ -80,6 +88,113 @@ API_HANDLER_COMMON::API_HANDLER_COMMON() :
             &API_HANDLER_COMMON::handleCloseAllDocuments );
     registerHandler<CreateDocument, OpenDocumentResponse>(
             &API_HANDLER_COMMON::handleCreateDocument );
+}
+
+
+HANDLER_RESULT<RunActionResponse> API_HANDLER_COMMON::handleRunAction(
+        const HANDLER_CONTEXT<RunAction>& aCtx )
+{
+    wxString action = wxString::FromUTF8( aCtx.Request.action() );
+    wxString editor = wxString::FromUTF8( aCtx.Request.editor() ).Lower();
+
+    if( editor.IsEmpty() && !action.StartsWith( wxS( "common." ) ) )
+        editor = action.BeforeFirst( '.' ).Lower();
+
+    auto matches = [&]( FRAME_T type )
+    {
+        if( editor.IsEmpty() )
+            return true;
+        if( editor == wxS( "pcbnew" ) || editor == wxS( "pcb" ) )
+            return type == FRAME_PCB_EDITOR;
+        if( editor == wxS( "eeschema" ) || editor == wxS( "schematic" ) )
+            return type == FRAME_SCH;
+        if( editor == wxS( "symbol_editor" ) )
+            return type == FRAME_SCH_SYMBOL_EDITOR;
+        if( editor == wxS( "footprint_editor" ) )
+            return type == FRAME_FOOTPRINT_EDITOR;
+        if( editor == wxS( "gerbview" ) )
+            return type == FRAME_GERBER;
+        if( editor == wxS( "3d-viewer" ) || editor == wxS( "3dviewer" ) )
+            return type == FRAME_PCB_DISPLAY3D;
+        if( editor == wxS( "cvpcb" ) )
+            return type == FRAME_CVPCB;
+        if( editor == wxS( "pl_editor" ) || editor == wxS( "pleditor" )
+            || editor == wxS( "pagelayout_editor" ) )
+            return type == FRAME_PL_EDITOR;
+        if( editor == wxS( "kicad" ) )
+            return type == KICAD_MAIN_FRAME_T;
+        return false;
+    };
+
+    std::vector<EDA_BASE_FRAME*> candidates;
+
+    auto addCandidate = [&]( EDA_BASE_FRAME* frame )
+    {
+        if( frame && !frame->IsBeingDeleted() && frame->GetToolManager()
+            && matches( frame->GetFrameType() )
+            && std::find( candidates.begin(), candidates.end(), frame ) == candidates.end() )
+        {
+            candidates.push_back( frame );
+        }
+    };
+
+    for( wxWindow* window : wxTopLevelWindows )
+    {
+        EDA_BASE_FRAME* frame = dynamic_cast<EDA_BASE_FRAME*>( window );
+
+        if( !frame || frame->IsBeingDeleted() )
+            continue;
+
+        addCandidate( frame );
+
+        // On macOS each KIFACE has hidden C++ RTTI. A dynamic_cast from the
+        // manager cannot identify editor classes in another module. KIWAY is
+        // the supported cross-module interface and returns typed player bases.
+        if( frame->HasKiway() )
+        {
+            for( int type = 0; type < KIWAY_PLAYER_COUNT; ++type )
+                addCandidate( frame->Kiway().Player( static_cast<FRAME_T>( type ), false ) );
+        }
+    }
+
+    RunActionResponse response;
+
+    if( candidates.empty() )
+    {
+        // Give other KIFACEs' common handlers a chance. Some associated
+        // windows (notably the 3D viewer) are owned directly by their editor,
+        // rather than being registered as KIWAY players.
+        ApiResponseStatus error;
+        error.set_status( ApiStatusCode::AS_UNHANDLED );
+        error.set_error_message( "The requested editor frame is not available in this module" );
+        return tl::unexpected( error );
+    }
+
+    // Never send a common action to whichever editor happened to register
+    // first. Require a target if multiple frames could receive the request.
+    if( candidates.size() > 1 )
+    {
+        ApiResponseStatus error;
+        error.set_status( ApiStatusCode::AS_BAD_REQUEST );
+        error.set_error_message( "Several editor frames match; specify editor explicitly and close duplicate frames" );
+        return tl::unexpected( error );
+    }
+
+    EDA_BASE_FRAME* frame = candidates.front();
+
+    if( !frame->IsEnabled() )
+    {
+        ApiResponseStatus error;
+        error.set_status( ApiStatusCode::AS_BUSY );
+        error.set_error_message( "The target editor is blocked by a dialog" );
+        return tl::unexpected( error );
+    }
+
+    // Keep each TOOL_ACTION's default parameter. Passing a boolean here is a
+    // tool parameter, not an "immediate" flag (and breaks typed GUI actions).
+    response.set_status( frame->GetToolManager()->RunAction( action.ToStdString() )
+                                 ? RunActionStatus::RAS_OK : RunActionStatus::RAS_INVALID );
+    return response;
 }
 
 

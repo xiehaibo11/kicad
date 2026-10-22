@@ -1,0 +1,214 @@
+KiCad 接入进度与验收报告
+验收日期：2026-10-20
+工作区：/Users/mosc/Downloads/Kicad
+平台：macOS arm64；KiCad 10.99.0；Agent 0.2.0；终端 1.19.3；扩展 0.4.22
+
+进度口径
+========
+按本次需求拆成的 9 项等权交付检查：8 项通过，1 项部分通过，通过项占比 88.9%。
+这不是原生工具的自动完成覆盖率。247 个类型化动作、971 个原生工具索引与
+“971 项全部具备参数、交互及设计结果验收”是不同层次，后者尚未全部完成。
+
+1. API 默认开启：通过。源码默认 enable_server=true，当前用户配置为 true，
+   真实 GUI IPC 握手可用，已读取到 pic_programmer 的 PCB、原理图。
+2. 外部工具默认允许：通过。AI 默认 AllowExternal=true；显式
+   --allow-external=false 仍可关闭。检测到的 8 个程序全部可用。
+3. EDA Agent Connector 打包：通过。终端和 VSIX 均包含 easyeda-mcp.mjs，
+   实际安装文件与构建产物哈希一致；真实 tools/list 返回 12 组 Connector 工具。
+4. 终端自然语言调用：通过。真实模型收到普通中文后调用 KiCad health、project.list，
+   不需要 / 命令。
+5. 扩展自然语言调用：通过。已安装 0.4.22；真实 VS Code 宿主中的聊天、设置页面、
+   内置终端、19 组 MCP 以及真实模型工具调用均通过。
+6. 工程目录查看和切换：通过。GUI 常驻“所有工程 / 工程设计”导航，可添加并记住
+   总目录、搜索子工程、查看完整工程文件树和切换工程；CLI/MCP 提供
+   project.list、project.resolve、project.switch。
+7. 当前工程窗口保留：通过。重复选择当前工程仅激活窗口，不再先关闭编辑器；
+   标题点击、重复打开、/tmp 与 /private/tmp 别名回归均验证窗口保留。
+8. 工具入口和编辑器路由扩充：通过。247 个类型化动作通过 19 组 MCP 暴露，
+   971 项原生工具具备名称、来源、分类及检索。9 类窗口已完成代表性调用。
+9. 全部原生工具逐项语义验收：部分通过。工具名称接入和调用通道已提供；
+   仍有依赖选点、选择对象、类型参数或原生对话框的工具，不能仅用 RunAction
+   返回成功就算设计操作完成。没有把未逐项验收的工具计为全部完成。
+
+本轮继续完成的修复
+==================
+- 修复同工程重复 LoadProject 的关闭窗口路径：在处理项目锁和 CloseProject 前
+  判断是否已是当前工程，直接激活并返回。
+- 新增 File → Open Project Folder...，后续按参考图升级为常驻工程目录导航。
+  选择总目录后在左侧列出子工程，双击或回车打开，不再使用临时工程选择弹窗。
+- 工程解析优先完整 .kicad_pro，不因目录中还有子页原理图而随机打开 PCB。
+  多个工程返回 PROJECT_AMBIGUOUS 和候选路径。显式文件路径仍可直接打开。
+- GUI 拒绝切换时不再另起隐藏会话；无 API 时才允许启动 headless 服务。
+  headless 默认使用标准 socket，并等待真实 API 握手，不以 socket 文件存在冒充就绪。
+- 原生 RunAction 增加 editor 目标；适配 macOS KIFACE 模块间 RTTI，
+  用 KIWAY 获取编辑器；多个匹配窗口或对话框阻塞返回明确错误。
+- 保留 TOOL_ACTION 的默认类型参数，修正原来把 bool 当作工具参数的调用。
+- Gerber 和图纸编辑器通过同一 KIWAY 打开，避免另起进程后无法定向调用。
+- 3D 查看器由 PCB 所属模块解析和派发，修复能打开、但不能调用其视角工具的问题。
+- 原生调用明确返回 execution=submitted、completionVerified=false。
+  外层 ok 不再被解释成最终几何、连通或业务验收成功。
+- 补上 Gerber MCP 分组，修复原生搜索的 editor/category/limit 转发；
+  移除过时的 970 条搜索上限，当前工具总数为 971。
+- 统一 3DViewer/3d-viewer 与 plEditor/pl_editor/pagelayout_editor 的筛选别名，
+  原始动作名称不变；CLI 和真实 MCP 验证分别能找到 41 项和 10 项工具。
+- 修复原生工具文字生成器跨定义读取的问题，避免把下一项菜单文字附到上一项工具。
+- 修复直接打开本地构建 KiCad.app 时找不到 images.tar.gz 的构建目录识别问题。
+- 按当前工作区重新构建并安装终端和扩展 0.4.22，核对源码与安装文件指纹。
+- 更新 README 中外部工具仍需显式 --allow-external 的旧说明。
+
+当前可用入口
+============
+终端：在工程目录执行 Kicad，直接输入中文需求；小写 kicad 兼容。
+GUI：kicad-eda /完整路径/工程.kicad_pro
+GUI 选择目录：开始页或“所有工程”中的“添加工程目录…”，也可使用菜单入口。
+扩展：Kicad 聊天面板，直接输入需求。
+例如：检查 KiCad API 连接，然后列出当前目录的工程及完整路径，只读取。
+例如：切换到 /完整路径/pic_programmer.kicad_pro，并打开 PCB。
+原有 /kicad-* 入口仍可作为别名，日常自动选工具不依赖斜杠。
+修改设计的操作仍遵循当前选择的权限模式。
+
+实际工具数量
+============
+247 个类型化动作：128 IPC、57 CLI、35 composite、20 offline、7 external。
+19 组 KiCad MCP：health、actions、call、spec_validate、blocks、workflow、pipeline、
+native_tools、system、project、document、schematic、board、library、external、
+editor、audit、web、gerber。
+971 个原生 TOOL_ACTION 索引，来自当前源码的 8 组动作定义文件，未解析定义为 0。
+12 组 EDA Agent Connector MCP 工具，终端和扩展均已注册。
+8/8 个外部程序检测可用：kicad-cli、Freerouting、Java、ngspice、gerbv、OpenSCAD、
+FreeCAD、Python 3。可执行文件检测与具体业务流程验收分别记录。
+Connector 的实际设计编辑仍取决于对应 EDA 客户端连接，本轮未修改 RK3308B 原工程。
+
+已执行的验收
+============
+- go test ./... 和 go test -tags nng ./... 通过；最终修改的 backend、project、
+  mcp 定向测试通过。
+- 原生 kicad、kicad-cli、kicad-agent、pcbnew、eeschema、gerbview、pl_editor、
+  cvpcb_kiface 构建成功；3D 修复后的 PCB 模块重新构建并重新启动 GUI 验收。
+- 终端完整构建、类型检查、206 个测试通过，1 个跳过；扩展检查与打包通过。
+- 两个组件 build-manifest 源码及产物校验通过；安装文件、共享指令、Connector、
+  session-runtime 和 VSIX 文件哈希校验通过。最终安装的 Kicad 入口再次通过真实模型调用。
+- 真实扩展宿主：0.4.22；聊天与设置两个 Webview mounted；内置原生终端启动；
+  19 组 MCP 工具发现通过。
+- 真实终端及扩展模型调用：普通中文触发 health 与 project.list，均无斜杠。
+  测试用宿主仅允许只读调用，未在生产权限逻辑中加入绕过。
+- GUI 工程回归 18 次调用：完整工程打开、PCB/原理图读取、相同工程保留、
+  歧义拒绝、切到 ecc83 再切回 pic_programmer。
+- 查看器/库编辑器 10 次调用通过；另有封装分配器调用通过。
+  实际覆盖工程管理器、PCB、原理图、符号编辑器、封装编辑器、Gerber、图纸、
+  3D、封装分配器 9 类窗口。界面确认上述窗口仍存在，并看到 3D 板卡。
+- 功能集成检查 21 项全部通过：包括真实 DRC 协作超时返回 8、ERC、叠层读取、
+  实际连通证明、网格布线 dry-run、异步导出任务、DFM 分析和修复、扇出 dry-run、
+  结构检查、STEP 相交自测及 meshcheck。dry-run 没有计为真实布线或扇出完成。
+- 独立四层测试板 13 次工程调用验收：两个通孔焊盘、四个 GND 过孔、两层内电层。
+  验证内层类型修改及持久化、填充封帽过孔创建/批量修改、两层实体铺铜、
+  每层连接 2 个焊盘与 4 个过孔、区域禁布及区域规则、保存重载和原生连通回读。
+  另有板框外无实体铺铜负例：返回 PLANE_UNVERIFIED，并回滚；保存文件中已无该区域。
+  最终原生 DRC：退出码 0，错误 0、警告 0、未连接 0。
+  最初仅一层连接且没有焊盘的夹具产生 5 条警告，保留在 initial 证据中；
+  补全测试夹具后重新原生验收，未关闭或忽略这些告警检查。
+
+与 短板.md 的 30 项对照
+======================
+该文档描述的是 EasyEDA/RK3308B 工程问题。以下是 KiCad 对应能力和本轮证据，
+不代表原 RK3308B 板已迁移、DRC 清零或具备投板条件。原文未覆盖重写。
+
+01 内层 PLANE：board.layers.type.set/get；四层板 power 类型保存、重载、live 回读通过。
+02 过孔到平面连通：board.plane.build/verify、board.connectivity.prove；
+   两层实体铺铜、每层 2 焊盘和 4 过孔证明通过，原生 DRC 为 0。
+03 BGA 扇出：board.fanout.run 已接入；功能测试证明 dry-run 能规划孔；
+   未在真实 BGA 密集区域完成全局逃线及 DRC 验收。
+04 自动布线：board.route.autoroute 及 external.freerouting.run；
+   多层 grid dry-run 通过，Freerouting 程序可用；未声称任意板自动布完且 DRC 为 0。
+05 DRC 超时：board.drc.run/live 支持 timeoutMs；实际超时退出 8 和 60 秒预算运行通过。
+06 任意网络内层：board.plane.build 接受存在的网络名；GND 实体平面验证通过；
+   多电源/拆分平面板仍需对应夹具。
+07 pour 假成功：同时检查 filled、hasFilledPolygons、实体面积和实际连通；正负例通过。
+08 pour-fit 假连接：zone-aware 连通回读通过；无实体铜负例返回失败并回滚。
+09 check 与 DRC 口径：board.check.unified/live 提供统一入口；原生 DRC 已测试；
+   全部诊断类别与历史 EasyEDA 检查器不作逐项等价保证。
+10 net-path 忽略平面：board.connectivity.prove 包含实体 zone 岛；本轮连接证据通过。
+11 网表导入错误：board.netlist.import 已接入；未在本轮对复杂网表变更作语义验收。
+12 规则矩阵限制：board.rules.*、board.rules.custom.* 已接入；区域规则写入回读通过；
+   全部规则组合尚未逐项测试。
+13 via-in-pad/filled/capped：board.via.create/modify 已接入；填充封帽创建及批量修改
+   经真实读回、保存和原生 DRC 验证；真实 BGA 盘中孔仍需具体封装夹具。
+14 dog-bone/via-in-pad 扇出：同 03；没有把 dry-run 当作 BGA 完成。
+15 任意网络平面：同 06；相邻层先后创建，原有层平面保留。
+16 Rule area/区域规则：board.rule_area.create、board.rules.region.set 实测回读通过。
+17 差分/等长：board.route.diff_pair、tune_length、length_match 已接入；
+   具体差分对的耦合、障碍、连续参考平面与原生 DRC 尚需专用验收。
+18 阻抗：board.impedance.* 已接入；50 欧姆计算/反求测试通过；
+   解析公式不能替代板厂实际叠层、场求解或整板 SI 签核。
+19 DFM 批量修复：board.dfm.analyze/fix/full 已接入；窄线问题分析及修复实测通过；
+   未保证所有角度、丝印、悬空或板厂规则可以一键全部修完。
+20 去耦/Mark：board.decap.check/place、board.fiducial.add 已接入；本轮未在真实板验收。
+21 AP6212 keepout：board.keepout.antenna 支持按 reference/pads 指定，不依赖模块名白名单；
+   规则区域测试通过，真实 U21 天线尺寸和禁布边界未在本轮验证。
+22 3D/结构：board.check.3d、external.step.meshcheck；STEP 相交自测、meshcheck 通过；
+   3D 窗口及视角派发实测通过；未提供实际外壳与完整模型装配碰撞签核。
+23 源码受控回写：层表备份、写入、文档重载及 live 回读通过；
+   不等于任意 KiCad 源文件变更都已具备完整回写语义。
+24 GUI 禁止死角：KiCad 原生 editor.run_action 和 UI 目录选择均可用；
+   EasyEDA 专属技能约束未被当成 KiCad 原生编辑禁令。
+25 窗口 ID 变化：常用会话通过标准 socket 连接，工具按 editor 目标派发；
+   多个独立 KiCad 实例仍应显式选择 --socket，不猜测目标。
+26 reload 前台错乱：PCB/原理图按文档类型与 editor 指定；本轮切换及读回通过。
+27 staleRisk/transition：修改动作采用实际读回；层类型处理未保存状态并支持 saveFirst；
+   对话框阻塞返回 BUSY，不能把等待中的动作误报为完成。
+28 跨层清同网铜：plane.build 创建目标层 zone，不默认清空其他层；
+   本轮 In1/In2 先后创建、保存重载及原生 DRC 通过。
+29 JSON 混杂：Agent 结构化结果与日志分流；真实 CLI/MCP 验收结果均可直接解析 JSON。
+30 工具发现：actions/native-tools 提供参数、来源、分类、中英文检索；
+   MCP 的 category/editor/limit 转发已修复，并补齐 Gerber 分组。
+
+仍未计为全部完成的工作
+======================
+- 971 项原生工具中，交互选点、原生对话框、类型参数和对象选择依赖的逐项业务适配。
+- 复杂 BGA 实际扇出、差分等长、板厂 DFM、完整 STEP 外壳装配等专门夹具验收。
+- 短板.md 所述 RK3308B 工程的实际迁移、布线、规则和投板验收；本轮没有执行这类板级变更。
+不能给出这些范围的可靠完成百分比，也没有把目录条目数量当作已完成数量。
+
+证据位置
+========
+统一目录：tools/ai/audit/integration-2026-10-20/
+summary.json                     机器可读进度与关键构建 SHA-256
+install-verification.json         已安装扩展、终端、指令、Connector 文件校验
+delivery-verification.json        最终交付复核及已解决的早期启动/环境检查问题
+go-delivery-tests.txt            最后一次全量 NNG 测试通过日志
+terminal-build-manifest.json      终端源码及产物指纹
+extension-build-manifest.json     扩展源码及产物指纹
+gui-ipc.json                     工程切换与文档回读 18 次
+project-alias.json                路径别名重新打开保留窗口
+native-aliases.json               原生编辑器筛选别名的 CLI/MCP 实测
+viewers.json、cvpcb-*.json         原生查看器、库编辑器、封装分配调用
+terminal-natural.json             真实终端模型自然语言调用
+extension-natural-production.json 真实已安装 0.4.22 的模型调用
+extension-host.json、extension-backend.json 真实 VS Code 宿主与工具发现
+health.json                      当前 API、加载文档与外部工具健康状态
+functional-tests.txt              21 项集成检查通过日志
+functional-artifacts/             集成检查原始结果与测试副本配置
+p0-engineering.json               最终 13 次工程验收（包含预期失败负例）
+p0-engineering-initial.json       初始简化夹具的 5 条原生警告
+p0-drc.json                       最终原生 0 错误/0 警告报告
+p0-fixture/                       最终保存的四层测试板及规则
+原生工具总目录：tools/ai/audit/installed-tools.json
+
+参考图界面改造与验收（后续补充）
+================================
+- 主窗口左侧增加“所有工程 / 工程设计”两种导航；中心永久保留开始页。
+- 开始页提供当前工程及路径、新建/打开/添加目录、9 类设计工具和最近工程表格。
+- 工程总目录持久化到 workspace.project_directories；后台扫描支持 .kicad_pro
+  及旧版 .pro，名称与路径搜索不切换当前工程；当前工程加粗标识。
+- 双击工程进入原生文件树，可继续打开 PCB、原理图、工程库及其他项目文件。
+- 本轮原生 GUI 验证：目录添加、重启保留、搜索正负例、整工程打开、编辑器入口、
+  同工程保留三个窗口、切换其他工程、最近工程表格打开、移除目录保留磁盘文件。
+- 最终原生 kicad 构建与 git diff --check 通过。最终版本已使用正常用户配置打开，
+  已通过界面添加 /Users/mosc/Downloads/Kicad/demos，总目录中识别到 37 个工程。
+- PCB、原理图目前仍使用 KiCad 原生独立编辑窗口；本次没有实现主窗口内嵌文档页签。
+- 目录扫描限制：最多 8 层、100000 条目录项、约 5 秒；跳过隐藏、构建和备份目录。
+  遇到大目录可添加更具体的工程总目录。
+- 本次界面改造没有改变前述 971 项工具逐项语义验收的剩余范围。
+- 新证据：tools/ai/audit/integration-2026-10-20/workspace-ui.json（13 项检查、
+  当前 GUI 二进制 SHA-256）及 workspace-ui-build.txt。
+  summary.json 中的构建指纹仍是本次界面改造之前的集成验收快照。

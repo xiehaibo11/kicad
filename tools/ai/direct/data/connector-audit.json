@@ -1,0 +1,1035 @@
+{
+  "sourceArchiveSha256": "1c162989e161016d004a3f3fcc32b93a32281566c8dcf0b2bdb37439ffd22be9",
+  "sourceVersion": "1.14.0",
+  "originalHandlerCount": 170,
+  "statusCounts": {
+    "removed-platform-contract": 19,
+    "native-capability": 72,
+    "native-workflow": 79
+  },
+  "runtime": "KiCad native JavaScript",
+  "execution": "in-process in terminal and SDK extension; native IPC/CLI only",
+  "aliasesExecuted": false,
+  "actions": [
+    {
+      "originalAction": "system.page_reload",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "project.current",
+      "status": "native-capability",
+      "nativeAction": "project.info",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "project.export_source",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "project.find",
+      "status": "native-capability",
+      "nativeAction": "project.list",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "project.create",
+      "status": "native-workflow",
+      "nativeAction": "project.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "project.open",
+      "status": "native-capability",
+      "nativeAction": "project.open",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "project.export",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "project.import",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "document.current",
+      "status": "native-capability",
+      "nativeAction": "document.list",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "document.source.get",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "document.source.roundtrip",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "document.open",
+      "status": "native-capability",
+      "nativeAction": "project.open",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "document.close",
+      "status": "native-capability",
+      "nativeAction": "document.close",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "view.fit",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "view.zoom",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "view.region",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.pages.list",
+      "status": "native-workflow",
+      "nativeAction": "schematic.pages.list",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.page.open",
+      "status": "native-workflow",
+      "nativeAction": "schematic.page.open",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.page.create",
+      "status": "native-workflow",
+      "nativeAction": "schematic.page.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.page.rename",
+      "status": "native-workflow",
+      "nativeAction": "schematic.page.rename",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.page.delete",
+      "status": "native-workflow",
+      "nativeAction": "schematic.page.delete",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.page.clear",
+      "status": "native-workflow",
+      "nativeAction": "schematic.page.clear",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.primitives.delete",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.rename",
+      "status": "native-workflow",
+      "nativeAction": "schematic.rename",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.titleblock.get",
+      "status": "native-workflow",
+      "nativeAction": "schematic.titleblock.get",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.titleblock.modify",
+      "status": "native-workflow",
+      "nativeAction": "schematic.titleblock.modify",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.components.list",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.attribute.inspect",
+      "status": "native-workflow",
+      "nativeAction": "schematic.attribute.inspect",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.attribute.move",
+      "status": "native-workflow",
+      "nativeAction": "schematic.attribute.move",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.designators.list",
+      "status": "native-workflow",
+      "nativeAction": "schematic.designators.list",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.component.place",
+      "status": "native-capability",
+      "nativeAction": "schematic.place.symbol",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.component.modify",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.component.delete",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.wire.create",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.image.create",
+      "status": "native-workflow",
+      "nativeAction": "schematic.image.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.image.list",
+      "status": "native-workflow",
+      "nativeAction": "schematic.image.list",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.image.modify",
+      "status": "native-workflow",
+      "nativeAction": "schematic.image.modify",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.group.move",
+      "status": "native-workflow",
+      "nativeAction": "schematic.group.move",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.netflag.create",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.pin.set_no_connect",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.pin.disconnect",
+      "status": "native-workflow",
+      "nativeAction": "schematic.pin.disconnect",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.drc.check",
+      "status": "native-capability",
+      "nativeAction": "schematic.erc.live",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.check",
+      "status": "native-workflow",
+      "nativeAction": "schematic.check",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.bridgeCheck",
+      "status": "native-workflow",
+      "nativeAction": "schematic.bridgeCheck",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.read",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.save",
+      "status": "native-capability",
+      "nativeAction": "document.save",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.export.netlist",
+      "status": "native-capability",
+      "nativeAction": "schematic.export.netlist",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.export.image",
+      "status": "native-workflow",
+      "nativeAction": "schematic.export.image",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.export.bom",
+      "status": "native-capability",
+      "nativeAction": "schematic.export.bom",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.power.connect_pin",
+      "status": "native-workflow",
+      "nativeAction": "schematic.power.connect_pin",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.library.search",
+      "status": "native-capability",
+      "nativeAction": "library.search.symbols",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.library.get_by_lcsc",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.list",
+      "status": "native-workflow",
+      "nativeAction": "library.list",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.common.list",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.footprint.create",
+      "status": "native-workflow",
+      "nativeAction": "library.footprint.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.footprint.get",
+      "status": "native-workflow",
+      "nativeAction": "library.footprint.get",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.footprint.copy",
+      "status": "native-workflow",
+      "nativeAction": "library.footprint.copy",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.footprint.delete",
+      "status": "native-workflow",
+      "nativeAction": "library.footprint.delete",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.footprint.build",
+      "status": "native-workflow",
+      "nativeAction": "library.footprint.build",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.footprint.region_create",
+      "status": "native-workflow",
+      "nativeAction": "library.footprint.region_create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.symbol.create",
+      "status": "native-workflow",
+      "nativeAction": "library.symbol.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.symbol.build",
+      "status": "native-workflow",
+      "nativeAction": "library.symbol.build",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.symbol.get",
+      "status": "native-capability",
+      "nativeAction": "library.get.symbol",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "library.symbol.export_source",
+      "status": "native-workflow",
+      "nativeAction": "library.symbol.export_source",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.symbol.delete",
+      "status": "native-workflow",
+      "nativeAction": "library.symbol.delete",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "library.model3d.create",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.model3d.get",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.model3d.search",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.model3d.copy",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.model3d.delete",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.device.create",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.device.get",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.device.set_model3d",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "library.device.delete",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "schematic.rebind.footprint",
+      "status": "native-workflow",
+      "nativeAction": "schematic.rebind.footprint",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.rebind.symbol",
+      "status": "native-workflow",
+      "nativeAction": "schematic.rebind.symbol",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.component.replace",
+      "status": "native-workflow",
+      "nativeAction": "schematic.component.replace",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "schematic.component.resolve_lcsc",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    },
+    {
+      "originalAction": "schematic.text.list",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.text.move",
+      "status": "native-capability",
+      "nativeAction": "schematic.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "schematic.visible_text.bboxes",
+      "status": "native-workflow",
+      "nativeAction": "schematic.visible_text.bboxes",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.documents.list",
+      "status": "native-capability",
+      "nativeAction": "document.list",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.components.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.layers.list",
+      "status": "native-capability",
+      "nativeAction": "board.layers.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.layers.set_current",
+      "status": "native-capability",
+      "nativeAction": "board.layers.active.set",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.layers.visibility",
+      "status": "native-capability",
+      "nativeAction": "board.layers.visible.set",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.view.side",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.stackup.set",
+      "status": "native-workflow",
+      "nativeAction": "pcb.stackup.set",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.silk.align",
+      "status": "native-workflow",
+      "nativeAction": "pcb.silk.align",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.silk.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.silk.add",
+      "status": "native-capability",
+      "nativeAction": "board.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.silk.import_svg",
+      "status": "native-workflow",
+      "nativeAction": "pcb.silk.import_svg",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.image.create",
+      "status": "native-workflow",
+      "nativeAction": "pcb.image.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.image.list",
+      "status": "native-workflow",
+      "nativeAction": "pcb.image.list",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.image.modify",
+      "status": "native-workflow",
+      "nativeAction": "pcb.image.modify",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.image.delete",
+      "status": "native-workflow",
+      "nativeAction": "pcb.image.delete",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.silk.set",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.silk.netnames",
+      "status": "native-workflow",
+      "nativeAction": "pcb.silk.netnames",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.silk.label_pads",
+      "status": "native-workflow",
+      "nativeAction": "pcb.silk.label_pads",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.nets.list",
+      "status": "native-capability",
+      "nativeAction": "board.nets.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.net_class.list",
+      "status": "native-workflow",
+      "nativeAction": "pcb.net_class.list",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.net_class.create",
+      "status": "native-workflow",
+      "nativeAction": "pcb.net_class.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.report",
+      "status": "native-workflow",
+      "nativeAction": "pcb.report",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.constraint.list",
+      "status": "native-workflow",
+      "nativeAction": "pcb.constraint.list",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.differential_pair.create",
+      "status": "native-workflow",
+      "nativeAction": "pcb.differential_pair.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.differential_pair.delete",
+      "status": "native-workflow",
+      "nativeAction": "pcb.differential_pair.delete",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.differential_pair.rename",
+      "status": "native-workflow",
+      "nativeAction": "pcb.differential_pair.rename",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.equal_length_group.create",
+      "status": "native-workflow",
+      "nativeAction": "pcb.equal_length_group.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.equal_length_group.add_nets",
+      "status": "native-workflow",
+      "nativeAction": "pcb.equal_length_group.add_nets",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.equal_length_group.delete",
+      "status": "native-workflow",
+      "nativeAction": "pcb.equal_length_group.delete",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.board.info",
+      "status": "native-workflow",
+      "nativeAction": "pcb.board.info",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "board.list",
+      "status": "native-workflow",
+      "nativeAction": "board.list",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "board.current",
+      "status": "native-workflow",
+      "nativeAction": "board.current",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "board.create",
+      "status": "native-workflow",
+      "nativeAction": "board.create",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "board.new_pcb",
+      "status": "native-workflow",
+      "nativeAction": "board.new_pcb",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "system.notify",
+      "status": "native-workflow",
+      "nativeAction": "system.notify",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "board.rename",
+      "status": "native-workflow",
+      "nativeAction": "board.rename",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "board.copy",
+      "status": "native-workflow",
+      "nativeAction": "board.copy",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "board.delete",
+      "status": "native-workflow",
+      "nativeAction": "board.delete",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "board.rebind",
+      "status": "native-workflow",
+      "nativeAction": "board.rebind",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.import_changes",
+      "status": "native-workflow",
+      "nativeAction": "pcb.import_changes",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.add_component",
+      "status": "native-capability",
+      "nativeAction": "board.footprint.place",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.component.attrs_backfill",
+      "status": "native-workflow",
+      "nativeAction": "pcb.component.attrs_backfill",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.component.modify",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.component.lock",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.component.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.page.clear",
+      "status": "native-workflow",
+      "nativeAction": "pcb.page.clear",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.align",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.distribute",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.grid_snap",
+      "status": "native-capability",
+      "nativeAction": "editor.run_action",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.components.move",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.components.arrange",
+      "status": "native-workflow",
+      "nativeAction": "pcb.components.arrange",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.drc.check",
+      "status": "native-capability",
+      "nativeAction": "board.drc.live",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.drc.rules",
+      "status": "native-capability",
+      "nativeAction": "board.rules.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.drc.rules.set",
+      "status": "native-capability",
+      "nativeAction": "board.rules.set",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.config.get",
+      "status": "native-capability",
+      "nativeAction": "board.rules.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.config.set",
+      "status": "native-workflow",
+      "nativeAction": "pcb.config.set",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.net.color.set",
+      "status": "native-workflow",
+      "nativeAction": "pcb.net.color.set",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.line.create",
+      "status": "native-capability",
+      "nativeAction": "board.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.via.create",
+      "status": "native-capability",
+      "nativeAction": "board.via.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.line.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.via.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.route.rip_up",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.track.lock",
+      "status": "native-capability",
+      "nativeAction": "board.items.update",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.route.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.route.via_hop",
+      "status": "native-workflow",
+      "nativeAction": "pcb.route.via_hop",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.clear_routing",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.pour.create",
+      "status": "native-capability",
+      "nativeAction": "board.plane.build",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.pour.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.poured.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.pour.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.pour.rebuild",
+      "status": "native-workflow",
+      "nativeAction": "pcb.pour.rebuild",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.beautify",
+      "status": "native-workflow",
+      "nativeAction": "pcb.beautify",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.region.create",
+      "status": "native-capability",
+      "nativeAction": "board.rule_area.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.region.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.region.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.fill.create",
+      "status": "native-capability",
+      "nativeAction": "board.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.fill.list",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.fill.delete",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.save",
+      "status": "native-capability",
+      "nativeAction": "document.save",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.export.dsn",
+      "status": "native-workflow",
+      "nativeAction": "pcb.export.dsn",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.import_autoroute",
+      "status": "native-workflow",
+      "nativeAction": "pcb.import_autoroute",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.view.filter.get",
+      "status": "native-workflow",
+      "nativeAction": "pcb.view.filter.get",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.snapshot",
+      "status": "native-workflow",
+      "nativeAction": "pcb.snapshot",
+      "note": "Implemented as an in-process KiCad workflow with native parameters and readback; discover its inputSchema. Native file workflows require closed documents and preserve backups. Original connector code is not loaded."
+    },
+    {
+      "originalAction": "pcb.outline.set",
+      "status": "native-capability",
+      "nativeAction": "board.items.create",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.outline.get",
+      "status": "native-capability",
+      "nativeAction": "board.items.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.outline.clear",
+      "status": "native-capability",
+      "nativeAction": "board.items.delete",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.origin.get",
+      "status": "native-capability",
+      "nativeAction": "board.origin.get",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "pcb.origin.set",
+      "status": "native-capability",
+      "nativeAction": "board.origin.set",
+      "note": "Discover the native schema and translate parameters/units. This is not an executable alias and does not assert equivalent behavior or validation."
+    },
+    {
+      "originalAction": "debug.exec_js",
+      "status": "removed-platform-contract",
+      "nativeAction": null,
+      "note": "External platform identity, source archive, browser JavaScript or client lifecycle contract is not loaded in KiCad."
+    }
+  ]
+}

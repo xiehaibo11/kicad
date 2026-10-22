@@ -44,6 +44,7 @@ public:
     int NewFromRepository( const TOOL_EVENT& aEvent );
     int NewJobsetFile( const TOOL_EVENT& aEvent );
     int OpenProject( const TOOL_EVENT& aEvent );
+    int BrowseProjectDirectory( const TOOL_EVENT& aEvent );
     int OpenDemoProject( const TOOL_EVENT& aEvent );
     int OpenJobsetFile( const TOOL_EVENT& aEvent );
     int CloseProject( const TOOL_EVENT& aEvent );

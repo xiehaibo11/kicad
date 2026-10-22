@@ -1,0 +1,19 @@
+{
+  "sourceBranch": "codex/kicad-npm",
+  "sourceReleaseTagCommit": "abeffeaed53b172b49b8d9c7992934aaf11c6d7e",
+  "homepageCommit": "6080740e34859d9694d338ccbdcf051002de768c",
+  "extensionRelease": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.23",
+  "publicAnonymousVsixDownloadMatchesBuild": true,
+  "vsixSha256": "20c5bfdf6ca229692f414c4dfca3e6e0618a44caca6aed204ed2090ffd77f55e",
+  "localGlobalTerminalPackageVersion": "0.1.1",
+  "localGlobalPayloadFilesVerified": 589,
+  "localGlobalPayloadMismatches": 0,
+  "npmOfficialLatest": "0.1.0",
+  "npmOfficialPublicationBlockedByAuthentication": true,
+  "publicAnonymousBackendDownloadMatchesBuild": true,
+  "publicDownloadedBackendReferencePlanExecuted": true,
+  "backendSha256": "edb3aaa63736da9fdf187b94f483e348864bf2f14c576779dd2df97a8e67d031",
+  "terminalGithubRelease": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.1",
+  "publicGithubCleanCacheNpxAcceptance": true,
+  "terminalTarballSha256": "8badd3c7f065350662941d0e92770d5497dd39fe3a2a18ba14eca0e6ff231ae2"
+}

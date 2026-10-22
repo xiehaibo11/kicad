@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "version": "0.4.23",
+  "validation": "Installed VS Code extension, bundled SDK, configured model and actual MCP; plain Chinese task; read-only permissions",
+  "actions": [
+    "reference.plan",
+    "reference.get",
+    "reference.search",
+    "reference.examples",
+    "reference.get",
+    "reference.get",
+    "reference.get",
+    "reference.examples",
+    "reference.examples",
+    "reference.examples",
+    "reference.examples",
+    "reference.examples"
+  ],
+  "goAllPackages": "passed from release checkout with pinned easyeda-agent submodule",
+  "topics": 20,
+  "rules": 86,
+  "sources": 21,
+  "originalExamplesIndexed": 37,
+  "limitations": [
+    "Inventory counts do not establish execution of every KiCad operation.",
+    "Engineering examples are indexed, not electrically qualified.",
+    "Evidence completeness does not authorize fabrication or production."
+  ],
+  "vsixSha256": "20c5bfdf6ca229692f414c4dfca3e6e0618a44caca6aed204ed2090ffd77f55e",
+  "buildAllOverlayAndBundleTests": "passed",
+  "rebuiltVsixDifferencesFromNaturalLanguageTest": [
+    "extension/README.md.bak",
+    "extension/resources/kicad/easyeda-mcp.mjs",
+    "extension/readme.md"
+  ],
+  "testHostShutdown": "CLI --wait did not exit within 210 seconds after the successful model/tool result; not counted as a passing process-lifecycle check"
+}

@@ -113,7 +113,7 @@ bool HEADLESS_PCB_CONTEXT::SaveBoard()
         pro.SetExt( FILEEXT::ProjectFileExtension );
         pro.MakeAbsolute();
 
-        Pgm().GetSettingsManager().SaveProjectAs( pro.GetFullPath(), m_board->GetProject() );
+        success = Pgm().GetSettingsManager().SaveProjectCopy( pro.GetFullPath(), m_board->GetProject() );
     }
 
     return success;
@@ -135,7 +135,7 @@ bool HEADLESS_PCB_CONTEXT::SavePcbCopy( const wxString& aFileName, bool aCreateP
         pro.SetExt( FILEEXT::ProjectFileExtension );
         pro.MakeAbsolute();
 
-        Pgm().GetSettingsManager().SaveProjectAs( pro.GetFullPath(), m_board->GetProject() );
+        success = Pgm().GetSettingsManager().SaveProjectCopy( pro.GetFullPath(), m_board->GetProject() );
     }
 
     return success;

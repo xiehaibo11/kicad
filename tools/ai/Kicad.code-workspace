@@ -1,0 +1,8 @@
+{
+  "folders": [
+    { "path": "../..", "name": "Kicad" }
+  ],
+  "settings": {
+    "window.title": "Kicad · 检查窗口${separator}${activeEditorShort}"
+  }
+}

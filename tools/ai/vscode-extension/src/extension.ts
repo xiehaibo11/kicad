@@ -1,8 +1,10 @@
 import * as vscode from 'vscode';
-import { execFile, spawn, ChildProcess } from 'child_process';
+import { spawn, ChildProcess } from 'child_process';
 import * as os from 'os';
 import * as fs from 'fs';
 import * as path from 'path';
+import { pathToFileURL } from 'url';
+import * as crypto from 'crypto';
 
 interface AgentError {
   code: string;
@@ -55,13 +57,16 @@ export function activate(context: vscode.ExtensionContext) {
   statusBar.tooltip = 'KiCad Agent: click to check kicad-cli and IPC';
   statusBar.show();
 
-  const tree = new ActionTreeProvider();
+  const chat = new ChatViewProvider(context);
 
   context.subscriptions.push(
     output,
     diagnostics,
     statusBar,
-    vscode.window.registerTreeDataProvider('kicadAgent.actions', tree),
+    chat,
+    vscode.window.registerWebviewViewProvider(ChatViewProvider.viewType, chat, {
+      webviewOptions: { retainContextWhenHidden: true }
+    }),
     vscode.commands.registerCommand('kicadAgent.health', guard(health)),
     vscode.commands.registerCommand('kicadAgent.actions', guard(showActions)),
     vscode.commands.registerCommand('kicadAgent.runAction', guard((name?: string) => runActionCommand(name))),
@@ -74,19 +79,20 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand('kicadAgent.impedance', guard(runImpedance)),
     vscode.commands.registerCommand('kicadAgent.autoroute', guard(runAutoroute)),
     vscode.commands.registerCommand('kicadAgent.structuralCheck', guard(runStructuralCheck)),
-    vscode.commands.registerCommand('kicadAgent.aiPrompt', guard(runAiPrompt)),
-    vscode.commands.registerCommand('kicadAgent.showMcpConfig', guard(showMcpConfig)),
+    vscode.commands.registerCommand('kicadAgent.aiPrompt', guard(async () => {
+      await vscode.commands.executeCommand('kicadAgent.chat.focus');
+    })),
+    vscode.commands.registerCommand('kicadAgent.showMcpConfig', guard(showNativeToolConfig)),
+    vscode.commands.registerCommand('kicadAgent.configure', guard(configureLlm)),
     vscode.commands.registerCommand('kicadAgent.startServer', guard(startApiServer)),
-    vscode.commands.registerCommand('kicadAgent.stopServer', guard(stopApiServer)),
-    vscode.commands.registerCommand('kicadAgent.refreshActions', () => tree.refresh())
+    vscode.commands.registerCommand('kicadAgent.stopServer', guard(stopApiServer))
   );
-
-  // Populate the action tree on activation.
-  tree.refresh();
 }
 
 export function deactivate() {
   stopApiServerProcess();
+  for (const runtime of nativeRuntimes.values()) runtime.close();
+  nativeRuntimes.clear();
   diagnostics?.dispose();
 }
 
@@ -98,13 +104,63 @@ function config(): vscode.WorkspaceConfiguration {
   return vscode.workspace.getConfiguration('kicadAgent');
 }
 
-function agentPath(): string {
-  return config().get<string>('path') || 'kicad-agent';
+function which(binary: string): string | undefined {
+  const dirs = (process.env.PATH ?? '').split(path.delimiter);
+
+  for (const dir of dirs) {
+    if (!dir) {
+      continue;
+    }
+
+    const candidate = path.join(dir, binary);
+
+    try {
+      fs.accessSync(candidate, fs.constants.X_OK);
+      return candidate;
+    } catch {
+      // keep looking
+    }
+  }
+
+  return undefined;
+}
+
+// Resolve a binary from the setting, then PATH, then ~/.local/bin.  VS Code
+// launched from the Dock does not inherit the login shell's PATH, so the last
+// fallback is what makes the installed wrappers work in that case.
+function resolveBinary(configured: string | undefined, names: string[]): string {
+  if (configured && !names.includes(configured)) {
+    return configured;
+  }
+
+  for (const name of names) {
+    const found = which(name);
+    if (found) {
+      return found;
+    }
+  }
+
+  for (const name of names) {
+    const fallback = path.join(os.homedir(), '.local', 'bin', name);
+    if (fs.existsSync(fallback)) {
+      return fallback;
+    }
+  }
+
+  return configured || names[0];
+}
+
+function directEntry(): string {
+  return config().get<string>('directPath') || path.resolve(__dirname, '../resources/kicad-direct.mjs');
+}
+
+function kicadCliPath(): string {
+  return resolveBinary(config().get<string>('kicadCli'), ['kicad-cli']);
 }
 
 function environment(): NodeJS.ProcessEnv {
   const env: NodeJS.ProcessEnv = { ...process.env };
-  const kicadCli = config().get<string>('kicadCli');
+  const kicadCli = kicadCliPath();
 
   if (kicadCli) {
     env.KICAD_CLI = kicadCli;
@@ -133,58 +189,33 @@ function environment(): NodeJS.ProcessEnv {
   return env;
 }
 
-function execCapture(args: string[], cwd?: string): Promise<{ stdout: string; stderr: string; code: number }> {
-  const timeout = config().get<number>('timeoutMs') || 1800000;
-
-  return new Promise(resolve => {
-    execFile(
-      agentPath(),
-      args,
-      { cwd, env: environment(), timeout, maxBuffer: 64 * 1024 * 1024 },
-      (error, stdout, stderr) => {
-        let code = 0;
-
-        if (error) {
-          const raw = (error as NodeJS.ErrnoException & { code?: number | string }).code;
-          code = typeof raw === 'number' ? raw : 1;
-        }
-
-        resolve({
-          stdout: stdout?.toString() ?? '',
-          stderr: stderr?.toString() ?? '',
-          code
-        });
-      }
-    );
-  });
+// Native ESM import must survive this legacy extension's CommonJS compilation.
+const importNative = new Function('url', 'return import(url)') as (url: string) => Promise<any>;
+const nativeRuntimes = new Map<string, any>();
+const nativeQueues = new WeakMap<object, Promise<any>>();
+async function nativeContext(env = environment()) {
+  const direct = await importNative(pathToFileURL(directEntry()).href);
+  const key = JSON.stringify([directEntry(), env.KICAD_CLI, env.KICAD_API_SOCKET]);
+  let runtime = nativeRuntimes.get(key);
+  if (!runtime) {
+    runtime = new direct.Runtime({binary: env.KICAD_CLI, socket: env.KICAD_API_SOCKET});
+    nativeRuntimes.set(key, runtime);
+  }
+  return {direct, runtime};
 }
-
-async function runCli(args: string[], cwd?: string): Promise<AgentResult> {
-  const { stdout, stderr, code } = await execCapture(args, cwd);
-  const text = stdout.trim();
-
-  if (!text) {
-    throw new Error(stderr.trim() || `kicad-agent exited with ${code}`);
-  }
-
-  let parsed: AgentResult;
-
-  try {
-    parsed = JSON.parse(text) as AgentResult;
-  } catch {
-    throw new Error(`kicad-agent returned non-JSON output: ${text.slice(0, 400)}`);
-  }
-
-  if (stderr.trim()) {
-    output.appendLine(stderr.trim());
-  }
-
-  return parsed;
-}
-
-async function runAction(action: string, payload: any, cwd?: string): Promise<AgentResult> {
+async function runAction(action: string, payload: any, cwd = workspaceRoot(), options: any = {}): Promise<AgentResult> {
   output.appendLine(`> ${action} ${JSON.stringify(payload)}`);
-  return runCli(['call', action, '--payload', JSON.stringify(payload)], cwd);
+  const env = options.env ?? environment(), {direct, runtime} = await nativeContext(env);
+  const resolved = direct.resolvePaths({payload}, cwd).payload;
+  const task = (nativeQueues.get(runtime) ?? Promise.resolve()).then(() => runtime.dispatch(action, resolved, {
+    ...options, env, directory: cwd, timeoutMs: options.timeoutMs ?? config().get<number>('timeoutMs') ?? 1800000
+  }));
+  nativeQueues.set(runtime, task.catch(() => {}));
+  return task;
+}
+async function actionCatalog(): Promise<AgentResult> {
+  const {direct} = await nativeContext();
+  return {ok:true,action:'actions',data:{actions:direct.listActions()}};
 }
 
 function guard(fn: (...args: any[]) => Promise<void>): (...args: any[]) => Promise<void> {
@@ -205,7 +236,7 @@ function guard(fn: (...args: any[]) => Promise<void>): (...args: any[]) => Promi
 // ---------------------------------------------------------------------------
 
 async function health(): Promise<void> {
-  const result = await runCli(['health']);
+  const result = await runAction('system.health', {});
   const data = result.data ?? {};
   const cli = data.kicadCli ?? {};
   const ipc = data.ipc ?? {};
@@ -227,7 +258,7 @@ async function health(): Promise<void> {
 }
 
 async function showActions(): Promise<void> {
-  const result = await runCli(['actions']);
+  const result = await actionCatalog();
   const actions: ActionSpec[] = result.data?.actions ?? [];
 
   const picked = await vscode.window.showQuickPick(
@@ -260,7 +291,7 @@ async function runActionCommand(name?: string): Promise<void> {
     return;
   }
 
-  const result = await runCli(['actions']);
+  const result = await actionCatalog();
   const action = (result.data?.actions ?? []).find((a: ActionSpec) => a.name === name) as ActionSpec | undefined;
   const payload = await promptPayload(action);
   if (payload === undefined) {
@@ -321,12 +352,7 @@ async function generateSchematic(): Promise<void> {
     return;
   }
 
-  const result = await runCli([
-    'sch', 'generate',
-    '--spec', picked[0].fsPath,
-    '--project', root,
-    '--new'
-  ], root);
+  const result = await runAction('schematic.generate', {spec:picked[0].fsPath, project:root, new:true}, root);
 
   showResult(result);
 }
@@ -396,7 +422,7 @@ async function startApiServer(): Promise<void> {
 
   stopApiServerProcess();
 
-  const cli = config().get<string>('kicadCli') || 'kicad-cli';
+  const cli = kicadCliPath();
   let socket = config().get<string>('socket') || '';
 
   // Never reuse a socket that another server may still own.
@@ -585,40 +611,49 @@ async function runStructuralCheck(): Promise<void> {
   showResult(result);
 }
 
-async function runAiPrompt(): Promise<void> {
-  const prompt = await vscode.window.showInputBox({
-    prompt: 'Ask the configured model to design or verify something',
-    placeHolder: 'e.g. Generate the schematic and report ERC'
-  });
+async function configureLlm(): Promise<void> {
+  const settingsPath = config().get<string>('settings')
+    || path.join(os.homedir(), '.config', 'kicad-agent', 'settings.json');
 
-  if (!prompt) {
-    return;
-  }
+  fs.mkdirSync(path.dirname(settingsPath), { recursive: true });
 
-  const args = ['ai', '--prompt', prompt];
-  const settings = config().get<string>('settings');
-
-  if (settings) {
-    args.push('--settings', settings);
-  }
-
-  const result = await runCli(args, workspaceRoot());
-  showResult(result);
-  output.appendLine(JSON.stringify(result, null, 2));
-  output.show(true);
-}
-
-async function showMcpConfig(): Promise<void> {
-  const snippet = {
-    mcpServers: {
-      kicad: {
-        command: agentPath(),
-        args: ['mcp'],
-        env: {
-          KICAD_CLI: config().get<string>('kicadCli') || 'kicad-cli',
-          KICAD_API_SOCKET: config().get<string>('socket') || '/tmp/kicad/api.sock'
+  if (!fs.existsSync(settingsPath)) {
+    const template = {
+      default: 'anthropic',
+      providers: {
+        anthropic: {
+          type: 'anthropic',
+          baseUrl: 'https://api.anthropic.com',
+          apiKeyEnv: 'ANTHROPIC_API_KEY',
+          model: 'claude-sonnet-5-5',
+          maxTokens: 8192
+        },
+        openai: {
+          type: 'openai',
+          baseUrl: 'https://api.openai.com/v1',
+          apiKeyEnv: 'OPENAI_API_KEY',
+          model: 'gpt-4o'
         }
       }
+    };
+
+    fs.writeFileSync(settingsPath, `${JSON.stringify(template, null, 2)}\n`, { mode: 0o600 });
+  }
+
+  const document = await vscode.workspace.openTextDocument(settingsPath);
+  await vscode.window.showTextDocument(document);
+  vscode.window.showInformationMessage(
+    'KiCad Agent: 配置已打开。填好 provider 与对应的环境变量后，回到对话框重新发送即可。'
+  );
+}
+
+async function showNativeToolConfig(): Promise<void> {
+  const snippet = {
+    runtime: 'in-process',
+    module: directEntry(),
+    native: {
+      cli: kicadCliPath(),
+      socket: config().get<string>('socket') || '/tmp/kicad/api.sock'
     }
   };
 
@@ -744,85 +779,424 @@ async function publishReport(uri: vscode.Uri, result: AgentResult, source: strin
 }
 
 // ---------------------------------------------------------------------------
-// Action tree
+// Chat view
 // ---------------------------------------------------------------------------
 
-type ActionNode = DomainNode | LeafNode;
-
-interface DomainNode {
-  kind: 'domain';
-  domain: string;
+interface ChatMessage {
+  role: 'user' | 'assistant' | 'tool' | 'error' | 'system';
+  text: string;
+  meta?: { action?: string; ok?: boolean; payload?: any; detail?: string };
 }
 
-interface LeafNode {
-  kind: 'action';
-  action: ActionSpec;
+function buildPrompt(text: string): string {
+  const doc = vscode.window.activeTextEditor?.document;
+  const lines: string[] = [];
+
+  if (doc && /\.kicad_(pcb|sch)$/i.test(doc.fileName)) {
+    lines.push(`当前打开的文件（通过 KiCad API 访问）：${doc.fileName}`);
+  }
+
+  lines.push(`工作区：${workspaceRoot()}`);
+
+  if (lines.length > 0) {
+    return `${lines.join('\n')}\n\n${text}`;
+  }
+
+  return text;
 }
 
-class ActionTreeProvider implements vscode.TreeDataProvider<ActionNode> {
-  private readonly emitter = new vscode.EventEmitter<ActionNode | undefined | void>();
-  readonly onDidChangeTreeData = this.emitter.event;
+async function ensureApiServer(): Promise<string | undefined> {
+  const configured = config().get<string>('socket');
 
-  private actions: ActionSpec[] | undefined;
-
-  refresh(): void {
-    this.actions = undefined;
-    this.emitter.fire();
+  if (configured) {
+    return configured;
   }
 
-  async getChildren(element?: ActionNode): Promise<ActionNode[]> {
-    const actions = await this.load();
-
-    if (!element) {
-      const domains = Array.from(new Set(actions.map(action => action.domain))).sort();
-      return domains.map(domain => ({ kind: 'domain', domain } as DomainNode));
-    }
-
-    if (element.kind === 'domain') {
-      return actions
-        .filter(action => action.domain === element.domain)
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .map(action => ({ kind: 'action', action } as LeafNode));
-    }
-
-    return [];
+  if (process.env.KICAD_API_SOCKET) {
+    return process.env.KICAD_API_SOCKET;
   }
 
-  getTreeItem(element: ActionNode): vscode.TreeItem {
-    if (element.kind === 'domain') {
-      const item = new vscode.TreeItem(
-        DOMAIN_LABELS[element.domain] ?? element.domain,
-        vscode.TreeItemCollapsibleState.Collapsed
-      );
-      item.contextValue = 'kicadAgent.domain';
-      return item;
-    }
+  const doc = vscode.window.activeTextEditor?.document;
 
-    const item = new vscode.TreeItem(element.action.name, vscode.TreeItemCollapsibleState.None);
-    item.description = element.action.mutates ? 'mutates' : '';
-    item.tooltip = element.action.description;
-    item.contextValue = 'kicadAgent.action';
-    item.command = {
-      command: 'kicadAgent.runAction',
-      title: 'Run action',
-      arguments: [element.action.name]
-    };
-    return item;
+  if (!doc || !/\.kicad_(pcb|sch)$/i.test(doc.fileName)) {
+    return undefined;
   }
 
-  private async load(): Promise<ActionSpec[]> {
-    if (this.actions) {
-      return this.actions;
-    }
+  try {
+    await startApiServer();
+  } catch (error) {
+    output.appendLine(`[chat] API server: ${error}`);
+    return undefined;
+  }
 
+  return config().get<string>('socket');
+}
+
+class ChatViewProvider implements vscode.WebviewViewProvider, vscode.Disposable {
+  public static readonly viewType = 'kicadAgent.chat';
+
+  private view?: vscode.WebviewView;
+  private controller?: AbortController;
+  private history: ChatMessage[];
+
+  constructor(private readonly context: vscode.ExtensionContext) {
+    this.history = context.workspaceState.get<ChatMessage[]>('kicadAgent.chatHistory', []);
+  }
+
+  dispose(): void {
+    this.stop();
+  }
+
+  resolveWebviewView(view: vscode.WebviewView): void {
+    this.view = view;
+    view.webview.options = { enableScripts: true };
+    view.webview.html = chatHtml(view.webview);
+    view.webview.onDidReceiveMessage(message => {
+      void this.onMessage(message);
+    });
+    view.onDidDispose(() => {
+      this.view = undefined;
+      this.stop();
+    });
+    this.post({ type: 'history', messages: this.history });
+  }
+
+  private post(message: any): void {
+    void this.view?.webview.postMessage(message);
+  }
+
+  private async onMessage(message: any): Promise<void> {
+    switch (message?.type) {
+      case 'ready':
+        this.post({ type: 'history', messages: this.history });
+        break;
+
+      case 'send':
+        await this.send(String(message.text ?? ''));
+        break;
+
+      case 'stop':
+        this.stop();
+        break;
+
+      case 'clear':
+        this.history = [];
+        this.persist();
+        this.post({ type: 'clear' });
+        break;
+    }
+  }
+
+  private persist(): void {
+    const recent = this.history.slice(-100);
+    void this.context.workspaceState.update('kicadAgent.chatHistory', recent);
+  }
+
+  private append(message: ChatMessage): void {
+    this.history.push(message);
+    this.persist();
+  }
+
+  private explain(text: string): void {
+    if (/settings|provider|environment variable|apiKeyEnv/i.test(text)) {
+      this.post({
+        type: 'system',
+        text: '缺少模型配置：在命令面板运行 “KiCad Agent: Configure Model” 创建 settings.json。'
+      });
+    }
+  }
+
+  private stop(): void {
+    if (this.controller) {
+      this.controller.abort();
+      this.post({ type:'status', text:'正在停止…' });
+    }
+  }
+
+  private async send(text: string): Promise<void> {
+    const trimmed = text.trim();
+    if (!trimmed || this.controller) return;
+    const controller = new AbortController();
+    this.controller = controller;
+    this.append({role:'user', text:trimmed});
+    this.post({type:'user', text:trimmed});
+    this.post({type:'busy', busy:true});
+    this.post({type:'status', text:'正在连接 KiCad…'});
     try {
-      const result = await runCli(['actions']);
-      this.actions = (result.data?.actions ?? []) as ActionSpec[];
+      const socket = await ensureApiServer();
+      if (controller.signal.aborted) return;
+      const env = environment();
+      if (socket) env.KICAD_API_SOCKET = socket;
+      const {direct} = await nativeContext(env);
+      const parameters = {
+        prompt:buildPrompt(trimmed), maxSteps:config().get<number>('maxSteps') || 20,
+        settings:config().get<string>('settings') || undefined,
+        provider:config().get<string>('llmProvider') || undefined,
+        model:config().get<string>('llmModel') || undefined
+      };
+      output.appendLine('[chat] shared JavaScript tools in extension host');
+      const result = await direct.ai(parameters, {
+        dispatch:(action:string,payload:any,options:any) => runAction(action,payload,workspaceRoot(),{...options,env})
+      }, {signal:controller.signal}, (event:any) => {
+        if (event.event === 'start') this.post({type:'status',text:'模型已开始推理'});
+        if (event.event === 'action') this.post({type:'action',action:event.action,payload:event.payload});
+        if (event.event === 'step') {
+          const step=event.step, message:ChatMessage={role:'tool',text:String(step.action),meta:{
+            action:step.action,ok:step.result?.ok === true,detail:JSON.stringify(step.result ?? {},null,2)
+          }};
+          this.append(message); this.post({type:'tool',message});
+        }
+      });
+      if (controller.signal.aborted) return;
+      if (result.data?.final) {
+        const text=String(result.data.final); this.append({role:'assistant',text}); this.post({type:'assistant',text});
+      }
+      if (!result.ok) throw new Error(result.error?.message ?? '模型调用失败');
     } catch (error) {
-      output.appendLine(`Failed to load actions: ${error}`);
-      this.actions = [];
+      if (!controller.signal.aborted) {
+        const text=error instanceof Error ? error.message : String(error);
+        this.append({role:'error',text}); this.post({type:'error',text}); this.explain(text);
+      }
+    } finally {
+      if (this.controller === controller) this.controller = undefined;
+      this.post({type:'busy',busy:false});
+      this.post({type:'status',text:controller.signal.aborted ? '已停止' : '准备就绪'});
     }
-
-    return this.actions;
   }
+}
+
+function chatHtml(webview: vscode.Webview): string {
+  const nonce = crypto.randomBytes(16).toString('base64');
+  const csp = `default-src 'none'; style-src ${webview.cspSource} 'unsafe-inline'; script-src 'nonce-${nonce}';`;
+
+  return `<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="${csp}" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root { color-scheme: light dark; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; display: flex; flex-direction: column;
+    font-family: var(--vscode-font-family); font-size: var(--vscode-font-size);
+    color: var(--vscode-foreground); background: var(--vscode-sideBar-background);
+  }
+  header {
+    display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+    border-bottom: 1px solid var(--vscode-panel-border);
+    font-size: 12px; color: var(--vscode-descriptionForeground);
+  }
+  header .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--vscode-charts-green, #3fb950); }
+  header .dot.busy { background: var(--vscode-charts-yellow, #d29922); animation: pulse 1s infinite alternate; }
+  @keyframes pulse { from { opacity: .35 } to { opacity: 1 } }
+  header .spacer { flex: 1; }
+  header button {
+    background: none; color: var(--vscode-textLink-foreground); border: none;
+    cursor: pointer; font-size: 12px; padding: 2px 4px;
+  }
+  #messages { flex: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+  .msg { max-width: 92%; white-space: pre-wrap; word-break: break-word; line-height: 1.5; }
+  .msg.user {
+    align-self: flex-end; padding: 8px 10px; border-radius: 10px 10px 2px 10px;
+    background: var(--vscode-button-background); color: var(--vscode-button-foreground);
+  }
+  .msg.assistant {
+    align-self: flex-start; padding: 8px 10px; border-radius: 10px 10px 10px 2px;
+    background: var(--vscode-editorWidget-background, rgba(127,127,127,.12));
+  }
+  .msg.error { align-self: flex-start; color: var(--vscode-errorForeground); font-size: 12px; }
+  .msg.system { align-self: center; color: var(--vscode-descriptionForeground); font-size: 11px; }
+  .tool { align-self: flex-start; width: 92%; font-size: 12px; }
+  .tool summary {
+    cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px;
+    color: var(--vscode-descriptionForeground);
+  }
+  .tool summary::-webkit-details-marker { display: none; }
+  .tool .icon { font-weight: 600; }
+  .tool .ok { color: var(--vscode-charts-green, #3fb950); }
+  .tool .fail { color: var(--vscode-errorForeground); }
+  .tool pre {
+    margin: 6px 0 0; padding: 8px; overflow-x: auto; font-size: 11px;
+    background: var(--vscode-textCodeBlock-background, rgba(127,127,127,.1));
+    border-radius: 6px; white-space: pre-wrap; max-height: 240px; overflow-y: auto;
+  }
+  .empty { align-self: center; margin-top: 24px; text-align: center; color: var(--vscode-descriptionForeground); font-size: 12px; line-height: 1.8; }
+  footer {
+    display: flex; gap: 6px; padding: 8px; border-top: 1px solid var(--vscode-panel-border);
+    align-items: flex-end;
+  }
+  #input {
+    flex: 1; resize: none; min-height: 34px; max-height: 160px;
+    padding: 8px 10px; border-radius: 8px; line-height: 1.4;
+    color: var(--vscode-input-foreground); background: var(--vscode-input-background);
+    border: 1px solid var(--vscode-input-border, transparent); outline: none;
+    font-family: inherit; font-size: inherit;
+  }
+  #input:focus { border-color: var(--vscode-focusBorder); }
+  #send, #stop {
+    padding: 8px 14px; border: none; border-radius: 8px; cursor: pointer;
+    background: var(--vscode-button-background); color: var(--vscode-button-foreground);
+    font-size: 12px;
+  }
+  #send:disabled { opacity: .5; cursor: default; }
+  #stop { background: var(--vscode-button-secondaryBackground); color: var(--vscode-button-secondaryForeground); }
+</style>
+</head>
+<body>
+<header>
+  <span class="dot" id="dot"></span>
+  <span id="status">准备就绪</span>
+  <span class="spacer"></span>
+  <button id="clear" title="清空对话">清空</button>
+</header>
+<main id="messages"></main>
+<footer>
+  <textarea id="input" rows="1" placeholder="描述你要设计、修改或检查的内容…"></textarea>
+  <button id="send" title="发送 (Enter)">发送</button>
+  <button id="stop" hidden title="停止">停止</button>
+</footer>
+<script nonce="${nonce}">
+  const vscode = acquireVsCodeApi();
+  const messages = document.getElementById('messages');
+  const input = document.getElementById('input');
+  const send = document.getElementById('send');
+  const stop = document.getElementById('stop');
+  const dot = document.getElementById('dot');
+  const status = document.getElementById('status');
+
+  function esc(text) {
+    return String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function scroll() { messages.scrollTop = messages.scrollHeight; }
+
+  function emptyState() {
+    if (messages.children.length === 0) {
+      const div = document.createElement('div');
+      div.className = 'empty';
+      div.id = 'empty';
+      div.innerHTML = '直接描述你要做什么。<br/>例如：检查当前板子的 DRC 并修复明显问题。';
+      messages.appendChild(div);
+    }
+  }
+
+  function clearEmpty() {
+    document.getElementById('empty')?.remove();
+  }
+
+  function addUser(text) {
+    clearEmpty();
+    const div = document.createElement('div');
+    div.className = 'msg user';
+    div.textContent = text;
+    messages.appendChild(div);
+    scroll();
+  }
+
+  function addAssistant(text) {
+    clearEmpty();
+    const div = document.createElement('div');
+    div.className = 'msg assistant';
+    div.textContent = text;
+    messages.appendChild(div);
+    scroll();
+  }
+
+  function addError(text) {
+    clearEmpty();
+    const div = document.createElement('div');
+    div.className = 'msg error';
+    div.textContent = text;
+    messages.appendChild(div);
+    scroll();
+  }
+
+  function addTool(action, ok, detail) {
+    clearEmpty();
+    const el = document.createElement('details');
+    el.className = 'tool';
+    const summary = document.createElement('summary');
+    const icon = document.createElement('span');
+    icon.className = 'icon ' + (ok ? 'ok' : 'fail');
+    icon.textContent = ok ? '✓' : '✗';
+    const name = document.createElement('span');
+    name.textContent = action || '动作';
+    summary.append(icon, name);
+    el.appendChild(summary);
+    if (detail) {
+      const pre = document.createElement('pre');
+      pre.textContent = detail;
+      el.appendChild(pre);
+    }
+    messages.appendChild(el);
+    scroll();
+  }
+
+  function addSystem(text) {
+    const div = document.createElement('div');
+    div.className = 'msg system';
+    div.textContent = text;
+    messages.appendChild(div);
+    scroll();
+  }
+
+  function renderHistory(history) {
+    messages.innerHTML = '';
+    for (const m of history || []) {
+      if (m.role === 'user') addUser(m.text);
+      else if (m.role === 'assistant') addAssistant(m.text);
+      else if (m.role === 'error') addError(m.text);
+      else if (m.role === 'tool') addTool(m.meta?.action || m.text, m.meta?.ok !== false, m.meta?.detail);
+    }
+    emptyState();
+  }
+
+  window.addEventListener('message', event => {
+    const msg = event.data || {};
+    switch (msg.type) {
+      case 'history': renderHistory(msg.messages); break;
+      case 'user': addUser(msg.text); break;
+      case 'assistant': addAssistant(msg.text); break;
+      case 'error': addError(msg.text); break;
+      case 'tool': addTool(msg.message?.meta?.action || msg.message?.text, msg.message?.meta?.ok !== false, msg.message?.meta?.detail); break;
+      case 'action': break;
+      case 'busy':
+        dot.classList.toggle('busy', !!msg.busy);
+        send.disabled = !!msg.busy;
+        stop.hidden = !msg.busy;
+        break;
+      case 'system': addSystem(msg.text); break;
+      case 'status': status.textContent = msg.text; break;
+      case 'clear': messages.innerHTML = ''; emptyState(); break;
+    }
+  });
+
+  function submit() {
+    const text = input.value.trim();
+    if (!text || send.disabled) return;
+    input.value = '';
+    input.style.height = 'auto';
+    vscode.postMessage({ type: 'send', text });
+  }
+
+  send.addEventListener('click', submit);
+  stop.addEventListener('click', () => vscode.postMessage({ type: 'stop' }));
+  document.getElementById('clear').addEventListener('click', () => vscode.postMessage({ type: 'clear' }));
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); }
+  });
+
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 160) + 'px';
+  });
+
+  emptyState();
+  vscode.postMessage({ type: 'ready' });
+</script>
+</body>
+</html>`;
 }

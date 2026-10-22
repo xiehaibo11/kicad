@@ -777,3 +777,16 @@ message VerifyPlaneResponse
   repeated kiapi.common.types.KIID unconnected_pads = 2;
   repeated kiapi.common.types.KIID unconnected_vias = 3;
 }
+
+// Direct native Specctra workflows, available in PCB editor and headless document contexts.
+message ExportSpecctraBoard
+{
+  kiapi.common.types.DocumentSpecifier board = 1;
+  string output_path = 2;
+}
+
+message ImportSpecctraRoutes
+{
+  kiapi.common.types.DocumentSpecifier board = 1;
+  string session_path = 2;
+}

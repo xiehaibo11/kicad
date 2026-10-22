@@ -1,0 +1,6 @@
+node_modules/
+vendor/
+resources/
+licenses/
+manifest.json
+*.tgz

@@ -1,72 +1,31 @@
-## Install
+# KiCad lightweight extension
 
-```bash
-cd tools/ai/vscode-extension
-npm install
-npm run compile
-npx @vscode/vsce package --no-dependencies
-code --install-extension kicad-agent-vscode-0.1.0.vsix
+This legacy UI now imports the same JavaScript module as the main KiCad
+extension and terminal. Action commands and its optional provider loop execute
+inside the extension host. Only native KiCad jobs start native CLI processes.
+The primary supported chat UI is `../Kicad-extension`.
+
+Build and package with:
+
+```sh
+npm ci --ignore-scripts
+npm run vscode:prepublish
+npm run package
 ```
 
-Configure `kicadAgent.path` (the `kicad-agent` binary), `kicadAgent.kicadCli`,
-and optionally `kicadAgent.symbolDir` / `kicadAgent.footprintDir`.  Open a
-`.kicad_pcb` or `.kicad_sch` file and run **KiCad: Start API Server for Active
-Document**; the socket setting is updated automatically.  **KiCad: Stop API
-Server** shuts it down.
+Configure `kicadAgent.kicadCli` and optionally `kicadAgent.socket`, `symbolDir`
+and `footprintDir`. `kicadAgent.directPath` overrides the bundled shared module.
+For chat, `kicadAgent.settings` selects the provider settings JSON; API keys are
+read from its configured environment variable. Provider calls run in the
+extension host and can be cancelled. No Go installation or daemon is required.
 
-# KiCad Agent for VS Code
+The native API server owns the live document. The extension can start
+`kicad-cli api-server <document> --socket <path>` when explicitly starting the
+server or sending a chat request. The native server is distinct from the removed
+tool routing intermediaries. Commands expose DRC/ERC, library-resolved schematic
+generation, routing previews, fanout, DFM, impedance and STEP workflows. Inspect
+tool results and fresh native verification; heuristic plans are not engineering
+acceptance.
 
-A thin, local front end for the `kicad-agent` terminal.  It does **not** bundle
-KiCad or an LLM: it invokes the configured `kicad-agent` / `kicad-cli` binaries
-and reads their JSON results.
-
-## Features
-
-- **Action tree** — every typed KiCad action, grouped by domain; click to run.
-- **DRC / ERC diagnostics** — run on the active `.kicad_pcb` / `.kicad_sch`
-  and publish findings in the Problems panel, linked to the item UUID.
-- **Schematic generation** — pick a circuit spec and run
-  `kicad-agent sch generate`.
-- **BGA fanout**, **DFM analyze/fix**, **impedance calculation**, **L-router
-  autoroute**, and **2.5D structural check + STEP export**.
-- **Ask the model** — runs the configured `settings.json` provider through the
-  `kicad-agent ai` tool loop.
-- **MCP configuration** — shows a ready-to-paste MCP server stanza.
-
-## Requirements
-
-- `kicad-agent` built from `tools/ai/kicad-agent` (or installed next to
-  `kicad-cli`).
-- `kicad-cli` and the KiCad editor kifaces for GUI-free jobs.
-- For item-level actions, a running API server:
-  `kicad-cli api-server <project-or-board> --socket /tmp/kicad/api.sock`.
-- For **Ask the model**, a `~/.config/kicad-agent/settings.json` with a
-  provider and the provider's API key in the environment.
-
-## Configuration
-
-| Setting | Default | Meaning |
-|---|---|---|
-| `kicadAgent.path` | `kicad-agent` | Path to the terminal executable |
-| `kicadAgent.kicadCli` | `kicad-cli` | Passed as `KICAD_CLI` |
-| `kicadAgent.socket` | empty | Passed as `KICAD_API_SOCKET` |
-| `kicadAgent.settings` | empty | Passed to `kicad-agent ai --settings` |
-| `kicadAgent.timeoutMs` | `1800000` | Per-invocation timeout |
-
-## Development
-
-```bash
-cd tools/ai/vscode-extension
-npm install
-npm run compile
-```
-
-Open the folder in VS Code and press `F5` (Run Extension) to launch an
-Extension Development Host.  `npm run watch` recompiles on change.
-
-## Scope
-
-The extension is a convenience shell.  It inherits the CLI's limits: the
-autorouter is an L-router baseline, DFM fixes only cover width/angle, fanout is
-via-in-pad/dog-bone without escape search, and the structural check is 2.5D
-(bounding boxes plus optional heights), not a mesh-level STEP collision.
+The native tool configuration command displays the imported module and the
+native CLI/socket settings. It does not generate or launch a routing server.

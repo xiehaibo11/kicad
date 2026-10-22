@@ -1,0 +1,627 @@
+[
+  {
+    "request": "kiapi.board.commands.AddEmbeddedFiles",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.AutoPlaceFootprints",
+    "response": "kiapi.board.commands.AutoPlaceFootprintsResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.CheckPadstackPresenceOnLayers",
+    "response": "kiapi.board.commands.PadstackPresenceResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.CreatePlane",
+    "response": "kiapi.board.commands.CreatePlaneResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.ExportSpecctraBoard",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.FlipItems",
+    "response": "kiapi.board.commands.FlipItemsResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.GetActiveLayer",
+    "response": "kiapi.board.commands.BoardLayerResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetBoardDesignRules",
+    "response": "kiapi.board.commands.BoardDesignRulesResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetBoardEditorAppearanceSettings",
+    "response": "kiapi.board.commands.BoardEditorAppearanceSettings",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetBoardEnabledLayers",
+    "response": "kiapi.board.commands.BoardEnabledLayersResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetBoardLayerByName",
+    "response": "kiapi.board.commands.BoardLayerResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetBoardLayerName",
+    "response": "kiapi.board.commands.BoardLayerNameResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetBoardOrigin",
+    "response": "kiapi.common.types.Vector2",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetBoardPlotSettings",
+    "response": "kiapi.board.commands.BoardPlotSettingsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetBoardStackup",
+    "response": "kiapi.board.commands.BoardStackupResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetConnectedItems",
+    "response": "kiapi.common.commands.GetItemsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetCustomDesignRules",
+    "response": "kiapi.board.commands.CustomRulesResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetEmbeddedFiles",
+    "response": "kiapi.common.types.EmbeddedFiles",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetGraphicsDefaults",
+    "response": "kiapi.board.commands.GraphicsDefaultsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetItemsByNet",
+    "response": "kiapi.common.commands.GetItemsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetItemsByNetClass",
+    "response": "kiapi.common.commands.GetItemsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetNetClassForNets",
+    "response": "kiapi.board.commands.NetClassForNetsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetNets",
+    "response": "kiapi.board.commands.NetsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetPadShapeAsPolygon",
+    "response": "kiapi.board.commands.PadShapeAsPolygonResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.GetVisibleLayers",
+    "response": "kiapi.board.commands.BoardLayers",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.ImportNetlist",
+    "response": "kiapi.board.commands.ImportNetlistResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.ImportSpecctraRoutes",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.InjectDrcError",
+    "response": "kiapi.board.commands.InjectDrcErrorResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.InteractiveMoveItems",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.ProveConnectivity",
+    "response": "kiapi.board.commands.ConnectivityProof",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.commands.RefillZones",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.SetActiveLayer",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.SetBoardDesignRules",
+    "response": "kiapi.board.commands.BoardDesignRulesResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.SetBoardEditorAppearanceSettings",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.SetBoardEnabledLayers",
+    "response": "kiapi.board.commands.BoardEnabledLayersResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.SetBoardOrigin",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.SetBoardPlotSettings",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.SetCustomDesignRules",
+    "response": "kiapi.board.commands.CustomRulesResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.SetEmbeddedFiles",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.SetVisibleLayers",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.UpdateBoardStackup",
+    "response": "kiapi.board.commands.BoardStackupResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.commands.VerifyPlane",
+    "response": "kiapi.board.commands.VerifyPlaneResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExport3D",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportDrill",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportDxf",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportGencad",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportGerbers",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportIpc2581",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportIpcD356",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportODB",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportPdf",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportPosition",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportPs",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportRender",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportStats",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.board.jobs.RunBoardJobExportSvg",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.AddToSelection",
+    "response": "kiapi.common.commands.SelectionResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.AddVariant",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.BeginCommit",
+    "response": "kiapi.common.commands.BeginCommitResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.CancelJob",
+    "response": "kiapi.common.commands.CancelJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.ClearSelection",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.CloseAllDocuments",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.CloseDocument",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.CopyVariant",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.CreateDocument",
+    "response": "kiapi.common.commands.OpenDocumentResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.CreateItems",
+    "response": "kiapi.common.commands.CreateItemsResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.CrossProbeAnnounce",
+    "response": "kiapi.common.commands.CrossProbeAnnounceResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.DeleteItems",
+    "response": "kiapi.common.commands.DeleteItemsResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.DeleteVariant",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.EndCommit",
+    "response": "kiapi.common.commands.EndCommitResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.ExpandTextVariables",
+    "response": "kiapi.common.commands.ExpandTextVariablesResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.GetBoundingBox",
+    "response": "kiapi.common.commands.GetBoundingBoxResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetCapabilities",
+    "response": "kiapi.common.commands.GetCapabilitiesResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetCurrentVariant",
+    "response": "kiapi.common.commands.CurrentVariantResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetDocumentModifiedState",
+    "response": "kiapi.common.commands.GetDocumentModifiedStateResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetItems",
+    "response": "kiapi.common.commands.GetItemsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetItemsById",
+    "response": "kiapi.common.commands.GetItemsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetJobStatus",
+    "response": "kiapi.common.commands.JobStatusResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetKiCadBinaryPath",
+    "response": "kiapi.common.commands.PathResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetNetClasses",
+    "response": "kiapi.common.commands.NetClassesResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetOpenDocuments",
+    "response": "kiapi.common.commands.GetOpenDocumentsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetPageSettings",
+    "response": "kiapi.common.types.PageSettings",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetPaths",
+    "response": "kiapi.common.commands.GetPathsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetPluginSettingsPath",
+    "response": "kiapi.common.commands.StringResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetSelection",
+    "response": "kiapi.common.commands.SelectionResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetTextAsShapes",
+    "response": "kiapi.common.commands.GetTextAsShapesResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetTextExtents",
+    "response": "kiapi.common.types.Box2",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetTextVariables",
+    "response": "kiapi.common.project.TextVariables",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetTitleBlockInfo",
+    "response": "kiapi.common.types.TitleBlockInfo",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetVariants",
+    "response": "kiapi.common.commands.VariantsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.GetVersion",
+    "response": "kiapi.common.commands.GetVersionResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.HighlightNets",
+    "response": "kiapi.common.commands.HighlightNetsResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.HitTest",
+    "response": "kiapi.common.commands.HitTestResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.OpenDocument",
+    "response": "kiapi.common.commands.OpenDocumentResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.OpenLibraryItem",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.ParseAndCreateItemsFromString",
+    "response": "kiapi.common.commands.CreateItemsResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.Ping",
+    "response": "google.protobuf.Empty",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.common.commands.RemoveFromSelection",
+    "response": "kiapi.common.commands.SelectionResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.RenameVariant",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.RevertDocument",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.RunAction",
+    "response": "kiapi.common.commands.RunActionResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SaveCopyOfDocument",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SaveDocument",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SaveDocumentToString",
+    "response": "kiapi.common.commands.SavedDocumentResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SaveSelectionToString",
+    "response": "kiapi.common.commands.SavedSelectionResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SetCurrentVariant",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SetNetClasses",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SetPageSettings",
+    "response": "kiapi.common.types.PageSettings",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SetTextVariables",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SetTitleBlockInfo",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SetVariantDescription",
+    "response": "google.protobuf.Empty",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.SyncSelection",
+    "response": "kiapi.common.commands.SyncSelectionResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.common.commands.UpdateItems",
+    "response": "kiapi.common.commands.UpdateItemsResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.schematic.commands.AnnotateSchematicRequest",
+    "response": "kiapi.schematic.commands.AnnotateSchematicResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.schematic.commands.GetLibrarySymbolRequest",
+    "response": "kiapi.schematic.commands.GetLibrarySymbolResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.schematic.commands.GetSchematicHierarchy",
+    "response": "kiapi.schematic.commands.SchematicHierarchyResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.schematic.commands.GetSchematicNetlist",
+    "response": "kiapi.schematic.commands.SchematicNetlistResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.schematic.commands.PlaceSymbolFromLibraryRequest",
+    "response": "kiapi.schematic.commands.PlaceSymbolFromLibraryResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.schematic.commands.SearchLibrarySymbolsRequest",
+    "response": "kiapi.schematic.commands.SearchLibrarySymbolsResponse",
+    "mutates": false
+  },
+  {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportBOM",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportDxf",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportNetlist",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportPdf",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportPs",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  },
+  {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportSvg",
+    "response": "kiapi.common.types.RunJobResponse",
+    "mutates": true
+  }
+]

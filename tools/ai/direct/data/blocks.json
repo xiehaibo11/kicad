@@ -1,0 +1,4143 @@
+[
+  {
+    "id": "block.ams1117_ldo_3v3",
+    "desc": "AMS1117-3.3 线性稳压 5V→3.3V(最小系统主控供电);输入/输出去耦 + 旁路电容",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.9.0",
+    "updated": "v0.9.0",
+    "source": "datasheet:AMS1117 (Advanced Monolithic Systems, LCSC C6186 https://item.szlcsc.com/datasheet/AMS1117-3.3/6652.html ; PDF https://atta.szlcsc.com/upload/public/pdf/source/20180727/C6186_7A095716F0823C02F1997A905E26C086.pdf ; 第1页引脚定义, 第4页 Stability/典型可调电路, 第5页固定版与散热说明)。本块为固定3.3V版本,不使用可调版R1/R2/CADJ；10µF输入及100nF旁路为项目选值,不是手册给出的固定版典型BOM。",
+    "parts": {
+      "C_BYP": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "100nF高频旁路为项目选值,与C_OUT并联接在VOUT和GND之间；不能替代手册要求的输出补偿电容。"
+      },
+      "C_IN": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "10µF输入去耦为项目选值,靠近U.VIN接到GND。手册第4页图2示出输入电容但未标容量,不能据此声称输入≥10µF是稳定性保证。"
+      },
+      "C_OUT": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "输出补偿电容,靠近U.VOUT接到GND。手册第4页明确22µF固体钽可保证所有工作条件的稳定性；本块现存22µF 0805陶瓷选型不是该保证的等价替代,须校核有效容量/ESR并做负载瞬态及振荡测试后才能判定硬件稳定。"
+      },
+      "U": {
+        "part": "ldo.ams1117_3v3",
+        "alt": [
+          "ldo.ams1117_3v3"
+        ],
+        "qty": 1,
+        "note": "AMS1117-3.3 固定3.3V线性稳压,SOT-223,标称1A且受散热限制。手册第1页:1=GND(可调版为ADJ),2=VOUT,3=VIN；散热片同属VOUT,本器件库将其编号为4。pin2与pin4必须同连3V3。手册第3页压差1.1V典型/1.3V最大是在0.8A条件下,超过0.8A时压差更高；须按负载和热条件校核5V输入余量。"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "out",
+        "at": "U.VOUT*",
+        "desc": "稳压 3.3V 输出, 供 MCU 模组及 3V3 外设(接 block.esp32s3_wroom1_module 的 3V3 port)",
+        "default_net": "+3V3"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND",
+        "desc": "参考地(汇集输入/输出电容负端)",
+        "default_net": "GND"
+      },
+      "VIN_5V": {
+        "dir": "in",
+        "at": "U.VIN",
+        "desc": "5V 输入(来自 USB 5V / 5V 端子 / 上游 buck 的 +5V 轨)",
+        "default_net": "+5V"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.ant_2g4_ceramic_pi",
+    "desc": "2.4GHz 陶瓷贴片天线(Johanson 2450AT18A100E 3216)+ π 型匹配(C-L-C:1pF‖-2.7nH串-1pF‖,代表值实配调谐)+ 50Ω 馈线;接 ESP32-S3 裸片 LNA_IN 等 2.4G RF 口",
+    "category": "rf",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.12.1",
+    "updated": "v0.12.1",
+    "source": "datasheet:2450AT18A100E (Johanson Technology,参考应用电路:馈点前置匹配网络 + 板角/板边净空布局建议) + official-ref:Espressif《ESP32-S3 Hardware Design Guidelines》RF 段(LNA_IN 与天线间预留 π 型 CLC 匹配,馈线 50Ω)。天线符号脚名 2026-07-15 在 ceshi 临时页 place C89334 后 sch read 核实:ANT(1)=馈点,2=固定焊盘",
+    "parts": {
+      "ANT": {
+        "part": "ant.ceramic_2g4",
+        "qty": 1,
+        "note": "Johanson 2450AT18A100E 2.4GHz 陶瓷贴片天线 3216(0.5dBi/2W);脚 ANT=馈点,脚 2=机械固定焊盘(datasheet: NC,勿接地勿接铜)"
+      },
+      "C_M1": {
+        "part": "cap.1p_0402",
+        "qty": 1,
+        "note": "π 匹配芯片侧并联 C,1pF C0G 代表值(datasheet 参考电路起步);按整板天线实测(S11/史密斯图)调谐实配,预留可不贴"
+      },
+      "C_M2": {
+        "part": "cap.1p_0402",
+        "qty": 1,
+        "note": "π 匹配天线侧并联 C,1pF C0G 代表值;实测调谐实配,预留可不贴"
+      },
+      "L_M": {
+        "part": "ind.2n7_0402",
+        "qty": 1,
+        "note": "π 匹配串联 L,2.7nH RF 电感(LQG15HS)代表值;实测调谐实配"
+      }
+    },
+    "ports": {
+      "GND": {
+        "dir": "bidir",
+        "at": "C_M1.2",
+        "desc": "匹配网络参考地,须直连完整地平面(短回地,过孔就近)",
+        "default_net": "GND"
+      },
+      "RF_IN": {
+        "dir": "in",
+        "at": "L_M.1",
+        "desc": "50Ω RF 输入,接 MCU/收发器 RF 脚(block.esp32s3r8_chip_minsys 的 LNA_IN port);馈线全程 50Ω 微带",
+        "default_net": "RF_ANT"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.aw8737_classd_spk",
+    "desc": "AW8737A 单声道 D 类/K 类音频功放(内置电荷泵):差分输入 INP/INN 各串 10K,SHDN 脉冲设增益/工作模式,VDD/PVDD 从 5V 供电;C1P/C1N/C2P/C2N 接 2.2uF 飞跨电容,VOP/VON 输出各经 120R@100MHz 磁珠 + 100pF EMI 电容再到 8Ω 喇叭。StickS3 音频功率级",
+    "category": "audio",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_04)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_C1": {
+        "part": "cap.2u2_0805",
+        "qty": 1,
+        "note": "电荷泵飞跨电容 C1P/C1N 之间 2.2uF(StickS3 C46),电荷泵工作必需件。"
+      },
+      "C_C2": {
+        "part": "cap.2u2_0805",
+        "qty": 1,
+        "note": "电荷泵飞跨电容 C2P/C2N 之间 2.2uF(StickS3 C47),电荷泵工作必需件。"
+      },
+      "C_EMI_N": {
+        "part": "cap.100pf_0402",
+        "qty": 1,
+        "note": "SPK_N EMI 电容 100pF/50V(StickS3 C49),磁珠后对地。"
+      },
+      "C_EMI_P": {
+        "part": "cap.100pf_0402",
+        "qty": 1,
+        "note": "SPK_P EMI 电容 100pF/50V(StickS3 C48),磁珠后对地。"
+      },
+      "C_VDD1": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "VDD 去耦体电容 22uF(StickS3 C36),就近 VDD/PVDD 电源脚。"
+      },
+      "C_VDD2": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "VDD 去耦体电容 22uF(StickS3 C37),与 C_VDD1 并联稳 5V。"
+      },
+      "FB_N": {
+        "part": "fb.120r_0603",
+        "qty": 1,
+        "note": "SPK_N 输出磁珠 120R@100MHz(StickS3 FB2),与 FB_P 成对。"
+      },
+      "FB_P": {
+        "part": "fb.120r_0603",
+        "qty": 1,
+        "note": "SPK_P 输出磁珠 120R@100MHz(StickS3 FB1),抑制 D 类开关沿辐射。"
+      },
+      "R_INN": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "INN 差分输入串阻(StickS3 R32);IN_N 来自 codec DAC_L_N。"
+      },
+      "R_INP": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "INP 差分输入串阻(StickS3 R31),与 R_INN 一起设输入阻抗/增益;IN_P 来自 codec DAC_L_P。"
+      },
+      "R_SHDN": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "SHDN 下拉/偏置 100K(StickS3 R30);单纯拉低=关断,脉冲个数设增益/工作模式。"
+      },
+      "U": {
+        "part": "ic.aw8737a",
+        "qty": 1,
+        "note": "AW8737A 单声道 D 类/K 类音频功放,内置电荷泵。差分输入 INP/INN,SHDN 脉冲控制增益/模式,VDD/PVDD 从 5V(VBUS_L0)。引脚名放置前 sch read / --probe 核对真实符号脚。"
+      }
+    },
+    "ports": {
+      "GND": {
+        "dir": "in",
+        "at": "U.GND",
+        "desc": "地;功放 GND/EPAD + VDD 体电容 + 输出 EMI 电容回流公共端",
+        "default_net": "GND"
+      },
+      "IN_N": {
+        "dir": "in",
+        "at": "R_INN.1",
+        "desc": "差分音频输入负,来自 codec DAC_L_N;块内经 R_INN 10K 串阻进 U.INN",
+        "default_net": "DAC_L_N"
+      },
+      "IN_P": {
+        "dir": "in",
+        "at": "R_INP.1",
+        "desc": "差分音频输入正,来自 codec DAC_L_P;块内经 R_INP 10K 串阻进 U.INP",
+        "default_net": "DAC_L_P"
+      },
+      "SHDN": {
+        "dir": "in",
+        "at": "U.SHDN",
+        "desc": "关断/脉冲增益控制(StickS3 PYG3_SPK_Pulse PWM 驱动);脉冲个数设增益/模式,拉低=关断,块内 100K 偏置",
+        "default_net": "SPK_PULSE"
+      },
+      "SPK_N": {
+        "dir": "out",
+        "at": "FB_N.2",
+        "desc": "喇叭差分输出负,经 120R@100MHz 磁珠 + 100pF EMI 电容后引出至 8Ω 喇叭",
+        "default_net": "SPK_N"
+      },
+      "SPK_P": {
+        "dir": "out",
+        "at": "FB_P.2",
+        "desc": "喇叭差分输出正,经 120R@100MHz 磁珠 + 100pF EMI 电容后引出至 8Ω 喇叭",
+        "default_net": "SPK_P"
+      },
+      "VDD": {
+        "dir": "in",
+        "at": "U.VDD",
+        "desc": "功放供电 5V(StickS3 VBUS_L0);VDD 与 PVDD 同接此轨,块内 2×22uF 体电容去耦",
+        "default_net": "5V"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.axp2101_pmu",
+    "desc": "AXP2101 单节锂电 PMU(集成电源心脏):充电+power-path + 多路 DCDC/LDO + 库仑计 + PWRON 电源键『长按硬关机』(硬件行为,需固件使能 0x22[1]);穿戴/M5/ESP32 电池板一颗芯片全包电源树",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "Codex"
+    ],
+    "added": "v0.12.0",
+    "updated": "v1.7.1-dev.11",
+    "source": "datasheet:AXP2101 (X-Powers V1.0, BAT 1µF/VSYS 2×22µF/SDA-SCK 上拉/IRQ 上拉 明文) + official-ref: M5Stack CoreS3 sheet1(主源,rail→load legend 印图上) + M5Stack Core2 v1.1 + LilyGo T-Beam v1.2(PWRON 电源键+ESD+18650) + XPowersLib(lewisxhe) 寄存器源(0x22 PWROFF_EN / 0x27 OFF_ON_LEVEL_CTRL)。多源交叉验证 harvest 2026-07-11",
+    "parts": {
+      "C_BAT": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "datasheet 明文:BAT 脚就近 1µF。"
+      },
+      "C_DCDC1O": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "DCDC1 输出(核心 3V3)体电容 22µF/6.3V(采集值,datasheet 图片给,UNCONFIRMED)。"
+      },
+      "C_PWRON": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "PWRON 去抖电容到 GND。⚠M5 实板用 1nF(库中暂无,先占位 100nF)——长按计时由 PMU 内部完成不需大 RC,验证时改回 ~1nF(UNCONFIRMED)。"
+      },
+      "C_VBUS": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "VBUS 输入去耦(M5/LilyGo 10µF)。"
+      },
+      "C_VMID": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "VMID(内部 RBFET 输出节点)去耦(M5 10µF)。"
+      },
+      "C_VREF": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "VREF 基准去耦(M5 2.2µF / LilyGo 1µF,取 1µF;UNCONFIRMED)。"
+      },
+      "C_VSYS1": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "datasheet 明文:VSYS 脚就近 2×22µF(此为第 1 颗)。"
+      },
+      "C_VSYS2": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "VSYS 第 2 颗 22µF。"
+      },
+      "D_PWRON": {
+        "part": "esd.esd9b5v0_sod923",
+        "qty": 1,
+        "note": "PWRON 按键 ESD 钳位(可选,按键引出到壳外时必装;LilyGo T-Beam 有)。"
+      },
+      "J_BAT": {
+        "part": "conn.ph2_3p_ra",
+        "qty": 1,
+        "note": "单节锂电座:1=VBAT+,2=GND,3=NTC(用电芯 NTC 时接 TS)。裸 18650 座前串 P-MOS 反接保护是可选加固(见 pcb_layout),本 draft 未含。"
+      },
+      "LED_CHG": {
+        "part": "led.yellow_0805",
+        "qty": 1,
+        "note": "CHGLED 充电指示(可选)。阳极接 VSYS,阴极经 R_LED 接 U.CHGLED(开漏下拉点亮)。极性脚名待 sch read 核实。"
+      },
+      "L_DCDC1": {
+        "part": "ind.1uh_1210",
+        "qty": 1,
+        "note": "DCDC1(LX1/FB1)电感→主 3V3 核心轨。M5=1.0µH,LilyGo T-Beam=2.2µH——板级不同,标 UNCONFIRMED,按采集源定。"
+      },
+      "L_SW": {
+        "part": "ind.1uh_1210",
+        "qty": 1,
+        "note": "主 buck(SW/DCDC5)电感,M5 三板均 1.0µH(WPN201610M1R0MT)。L_SW.2 建立系统开关轨(M5 命名 AXP_PS),回喂各 DCDC/LDO 输入——本 draft 把它并入 VSYS 网,精确拓扑待 sch read 核实(UNCONFIRMED)。"
+      },
+      "R_IRQ": {
+        "part": "res.4k7_0402",
+        "qty": 1,
+        "note": "IRQ 开漏低有效,上拉到 VRTC 常开域(便于深睡唤醒)。datasheet 4.7k,板 10k(UNCONFIRMED)。勿悬空。"
+      },
+      "R_LED": {
+        "part": "res.1k_0402",
+        "qty": 1,
+        "note": "CHGLED 限流 1k。"
+      },
+      "R_PWRON": {
+        "part": "res.470r_0402",
+        "qty": 1,
+        "note": "PWRON 串阻(M5/T-Beam≈510Ω,取最接近标称 470Ω;值 UNCONFIRMED)。"
+      },
+      "R_SCK": {
+        "part": "res.4k7_0402",
+        "qty": 1,
+        "note": "SCK/SCL 上拉,同 SDA。"
+      },
+      "R_SDA": {
+        "part": "res.4k7_0402",
+        "qty": 1,
+        "note": "SDA 上拉到核心 3V3。datasheet 建议 2.2k,板上 2.2k~10k;取通用 4.7k(库无 2.2k,电气可用,UNCONFIRMED)。勿悬空。"
+      },
+      "R_TS1": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "无电芯 NTC 时 TS 固定分压上臂(接 VREF)。有 NTC 时删此件、TS 接电芯 10k@25℃ NTC。"
+      },
+      "R_TS2": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "TS 分压下臂(到 GND)。TS 绝不能悬空——否则误报过温挂起充电;固件配合 disableTSPinMeasure()。"
+      },
+      "SW1": {
+        "part": "sw.tact_smd",
+        "qty": 1,
+        "note": "PWRON 电源键(轻触到 GND):长按上电/下电。这是『长按硬关机』的全部硬件,放块内部(非 port)——从数据结构上坐实关机是 PMU 内建行为。功能是电源键,不是 MCU 复位。"
+      },
+      "U": {
+        "part": "pmu.axp2101_qfn40",
+        "qty": 1,
+        "note": "AXP2101 QFN-40 5×5mm(footprint QFN-40_L5.0-W5.0-P0.40-TL-EP3.4,QFN-40 已实测确认非 QFN-41),I2C 7-bit 0x34。5×DCDC(BUCK,需外部电感)+11×LDO(线性,仅需电容)+ 充电/power-path + 库仑计 + PWRON 电源键。脚名经 ceshi `sch read` 实测(pin1-41):CHGLED/VREF/GND(pin3!)/FB3/LX3/VIN3/VIN4/LX4/FB4/CPULDOS/DLDO2·DC4SW/BLDO1/BLDOIN/BLDO2/ALDO4/ALDO3/ALDOIN/ALDO1/ALDO2/DLDO1·DC1SW/FB1/LX1/VIN1/VIN2/LX2/FB2/VBACKUP/VRTC/PWROK/PWRON/TS/GPIO1·FB5·RTC·LDO2/BAT/VSYS/SW/VMID/VBUS/IRQ/SDA/SCK/EP。⚠两个地脚:pin3=GND 与 pin41=EP 都必须接地(漏 pin3=悬空,实测发现)。"
+      }
+    },
+    "ports": {
+      "GND": {
+        "dir": "bidir",
+        "at": "U.EP",
+        "desc": "参考地(含 EP 热焊盘,必须打过孔下沉地平面)",
+        "default_net": "GND"
+      },
+      "I2C_SCL": {
+        "dir": "bidir",
+        "at": "U.SCK",
+        "desc": "I2C 时钟(需上拉)",
+        "default_net": "SCL"
+      },
+      "I2C_SDA": {
+        "dir": "bidir",
+        "at": "U.SDA",
+        "desc": "I2C 数据(7-bit 地址 0x34;需上拉)",
+        "default_net": "SDA"
+      },
+      "IRQ_N": {
+        "dir": "out",
+        "at": "U.IRQ",
+        "desc": "开漏、低有效中断/唤醒(需上拉);兼作 PWRON 短/长/边沿事件上报,接 MCU RTC 脚可深睡唤醒",
+        "default_net": "PMU_IRQ"
+      },
+      "PWROK": {
+        "dir": "out",
+        "at": "U.PWROK",
+        "desc": "电源就绪/复位输出——常直连 MCU EN/CHIP_PU,PMU 电源好后放行 SoC 出复位;可被外部拉低复位 PMU",
+        "default_net": "RSTN"
+      },
+      "RAIL_A": {
+        "dir": "out",
+        "at": "U.ALDO2",
+        "desc": "参数化外设轨(此处示例 ALDO2)——rail→load 是板级约定非芯片固定(LoRa/GPS/摄像头/SD/音频…),按目标板绑定;实例化时须在轨上加本地输出电容",
+        "default_net": "VDDA_3V3"
+      },
+      "TS": {
+        "dir": "in",
+        "at": "U.TS",
+        "desc": "电池热敏输入——接电芯 NTC 或固定分压(本 draft 用 10k/10k 分压),绝不悬空",
+        "default_net": "TS"
+      },
+      "VBAT": {
+        "dir": "bidir",
+        "at": "U.BAT",
+        "desc": "单节锂电(经 J_BAT);内部 BATFET 走 NVDC power-path 到 VSYS,可再分压做电量采样",
+        "default_net": "VBAT"
+      },
+      "VBUS_IN": {
+        "dir": "in",
+        "at": "U.VBUS",
+        "desc": "USB 5V 唯一输入/充电源(3.9-5.5V,abs-max 12V,>7V 关断);单输入 NVDC,无 ACIN",
+        "default_net": "+5V"
+      },
+      "VDD_CORE": {
+        "dir": "out",
+        "at": "U.FB1",
+        "desc": "DCDC1 主 3V3(供 MCU 核心);固件 setProtectedChannel 保护不可关,关了即死机。也作 I2C 上拉参考轨",
+        "default_net": "+3V3"
+      },
+      "VRTC": {
+        "dir": "out",
+        "at": "U.VRTC",
+        "desc": "RTC 常开域 3V3(关机后仍供电,喂 RTC/备份/IRQ 上拉)",
+        "default_net": "RTC_VDD"
+      },
+      "VSYS_OUT": {
+        "dir": "out",
+        "at": "U.VSYS",
+        "desc": "系统母线(VBUS/BAT 择一建立);回喂各 DCDC/LDO 输入,下游轨都从这里派生",
+        "default_net": "VSYS"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.bmi270_imu_i2c",
+    "desc": "BMI270 6 轴 IMU(3 轴加速度 + 3 轴陀螺)I2C 接口最小系统:CSB 接 VDDIO 选 I2C 模式、SDO 接地定地址 0x68、INT1 中断上拉输出唤醒 MCU,VDD/VDDIO 各 100nF 就近去耦。M5Stack StickS3(取代老 StickC 的 MPU6886)同款,带手势/计步低功耗智能引擎",
+    "category": "sensing",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_04)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_VDD": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD 电源去耦(StickS3 C33),就近芯片供电脚。"
+      },
+      "C_VDDIO": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDDIO 电源去耦(StickS3 C35),就近 IO 电平脚;VDDIO 须匹配主机 I2C 电平。"
+      },
+      "R_INT": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "INT1 上拉到 VDDIO(StickS3 R6,PYG4_IMU_INT);INT1 推挽输出接 MCU GPIO 做运动唤醒。"
+      },
+      "U": {
+        "part": "sensor.bmi270",
+        "qty": 1,
+        "note": "BMI270 6 轴 IMU(3 轴加速度 + 3 轴陀螺),LGA-14 封装,I2C 地址 0x68(SDO=GND)/0x69(SDO=VDDIO)。带手势/计步/低功耗智能引擎;StickS3 用它取代老 StickC 的 MPU6886。CSB 接 VDDIO 选 I2C 模式(拉低=SPI)。引脚名放置前 sch read 核对真实符号脚。"
+      }
+    },
+    "ports": {
+      "GND": {
+        "dir": "in",
+        "at": "U.GND",
+        "desc": "地;VDD/VDDIO 去耦回流,GNDIO 也接此,SDO 接地定地址 0x68",
+        "default_net": "GND"
+      },
+      "I2C_SCL": {
+        "dir": "bidir",
+        "at": "U.SCX",
+        "desc": "I2C 时钟;BMI270 符号该脚名为 SCx(datasheet SPI 名 SCK),I2C 模式下即 SCL(StickS3 走 G48_SCL)。宿主总线上拉在 MCU 侧,本块不重复加",
+        "default_net": "I2C_SCL"
+      },
+      "I2C_SDA": {
+        "dir": "bidir",
+        "at": "U.SDX",
+        "desc": "I2C 数据;BMI270 符号该脚名为 SDx(datasheet SPI 名 SDI),I2C 模式下即 SDA(StickS3 走 G47_SDA)",
+        "default_net": "I2C_SDA"
+      },
+      "INT": {
+        "dir": "out",
+        "at": "U.INT1",
+        "desc": "INT1 推挽中断/运动唤醒输出 → MCU GPIO(StickS3 PYG4_IMU_INT);块内已 100k 上拉到 VDDIO。INT2 本板悬空,按需另接",
+        "default_net": "IMU_INT"
+      },
+      "VDD": {
+        "dir": "in",
+        "at": "U.VDD",
+        "desc": "芯片主供电;就近 100nF 去耦。可与 VDDIO 同接一轨",
+        "default_net": "3V3"
+      },
+      "VDDIO": {
+        "dir": "in",
+        "at": "U.VDDIO",
+        "desc": "IO 电平轨,必须匹配主机 I2C 电平(StickS3 为 3V3_L1);同时是 CSB 选模式与 INT 上拉的参考轨,就近 100nF 去耦",
+        "default_net": "3V3"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.bq24074_powerpath_charger",
+    "desc": "BQ24074 锂电充电 + power-path(输入↔电池无缝切换,断电续报/防盗类设备核心);电芯 NTC 低温禁充 + ILIM/ISET 外阻编程 + PGOOD 断电检测输出",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:BQ24074 (TI SLUS810 — power-path 充电器典型应用电路: IN/OUT/BAT 电容、ISET/ILIM 编程电阻、TS 10k NTC、EN1/EN2 输入限流模式真值表) ; 拓扑经 motobox 车机V2 两轮设计评审修正(评审修正项: TS 由轨分压改电芯 NTC、EN strap 落定 ILIM 模式、ILIM 1.07k=1.45A、PGOOD 100k 上拉)后在 车机V2-fable P1 整板落网",
+    "parts": {
+      "C_BAT": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "BAT 去耦,贴 U.BAT。"
+      },
+      "C_IN1": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "IN 高频去耦,贴 U.IN。"
+      },
+      "C_IN2": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "IN 体电容。"
+      },
+      "C_OUT": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "OUT(VSYS) 体电容。"
+      },
+      "C_OUT_HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "OUT 高频。"
+      },
+      "C_TMR": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "安全定时。按 K_TMR 对 DPPM 拉长后的充电时间核 ≥4-5h,或按 datasheet 禁用(终核)。"
+      },
+      "C_TS": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "TS 近端滤波: NTC 走电池辫线,滤 RF/瞬态防充电误挂起(核 datasheet 允许容值)。"
+      },
+      "J_BAT": {
+        "part": "conn.ph2_3p_ra",
+        "qty": 1,
+        "note": "PH2.0-3P 电池座: 1=VBATT, 2=GND, 3=电芯 NTC(103AT 10k,贴/绑电芯)。第三线是低温禁充的前提——两线座+板上固定电阻会删掉温度保护(评审 P1 高危项)。"
+      },
+      "R_ILIM": {
+        "part": "res.1k07_0402",
+        "qty": 1,
+        "note": "输入限流 KILIM/R=1550/1.07k≈1.45A(KILIM 实测典型 1550,非旧文档的 1600)。1.6k 的 1.0A 档会成为系统+充电的总瓶颈(DPPM 长期抢走充电电流)。"
+      },
+      "R_ISET": {
+        "part": "res.178k_0402",
+        "qty": 1,
+        "note": "充电电流 Ich=KISET/R≈890/1.78k≈0.5A(500mAh 电芯 1C)。电芯限 0.5C 则改 3.6k。"
+      },
+      "R_PG1": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "PGOOD#(开漏)上拉。100k 而非 1M: PGOOD 关断漏电可达 ~1µA,1M 会掉 1V 危及唤醒判读;100k 仅在输入在位时耗 33µA,电池态无电流。"
+      },
+      "R_TS": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "DNP(bring-up 临时件): 无 NTC 时单电阻 TS→GND 按 datasheet 无-NTC 接法。量产必须用电芯 NTC,此件禁贴。"
+      },
+      "U": {
+        "part": "charger.bq24074_qfn16",
+        "qty": 1,
+        "note": "BQ24074 QFN-16。功能脚(sch read 实测): TS/BAT(2,3)/CE#/EN2/EN1/PGOOD#/VSS/CHG#/OUT(10,11)/ILIM/IN/TMR/ITERM/ISET/EP。BAT 与 OUT 各为双脚同名——两脚都要连(漏一脚=悬空)。"
+      }
+    },
+    "ports": {
+      "CHG_PG": {
+        "dir": "out",
+        "at": "U.PGOOD#",
+        "desc": "输入电源在位指示(开漏+上拉): 低=输入好,高=输入丢失。接 RTC 脚(ESP32-S3 GPIO0-21)可做深睡 ext0 高电平唤醒→断电即时报警",
+        "default_net": "CHG_PG"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.VSS",
+        "desc": "参考地(EP 一并)",
+        "default_net": "GND"
+      },
+      "VBATT": {
+        "dir": "bidir",
+        "at": "U.BAT*",
+        "desc": "单节锂电(经 J_BAT)。可再分压做电池电压采样",
+        "default_net": "VBATT"
+      },
+      "VIN": {
+        "dir": "in",
+        "at": "U.IN",
+        "desc": "输入电源(上游 5V 母线/USB经OR后的 +5V)",
+        "default_net": "+5V"
+      },
+      "VPULL": {
+        "dir": "in",
+        "at": "R_PG1.2",
+        "desc": "CHG_PG 上拉电源——必须接断电后仍存活的常开轨(如 VSYS 派生的 +3V3),否则断电瞬间读数无效",
+        "default_net": "+3V3"
+      },
+      "VSYS": {
+        "dir": "out",
+        "at": "U.OUT*",
+        "desc": "power-path 系统轨: 输入在位≈4.4-5V,断电无缝切电池≈VBATT。下游 buck/buck-boost 从这里取电",
+        "default_net": "VSYS"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.cc1101_433m_balun_ipex",
+    "desc": "CC1101 433MHz 收发前端:分立 LC 巴伦 + 两级 LC 滤波/匹配 → IPEX 天线;26MHz 晶振 + RBIAS + 全脚去耦,SPI/GDO 接 MCU",
+    "category": "rf",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.9.0",
+    "updated": "v0.9.0",
+    "source": "datasheet:CC1101 (TI SWRS061I, Figure 10 315/433MHz 应用电路 + Table 20/21 BOM + §7.2-7.8) + official-ref:TI CC1101EM 434MHz reference design (CC1101EM_434MHz_SCHEMATIC_2_0_0.pdf rev 2.0.0) —— https://www.ti.com/lit/ds/symlink/cc1101.pdf ; https://www.ti.com/lit/zip/swrr046 ;拓扑抄自 showcase/001-esp32-barrier/reference-circuits.json circuits.cc1101_rf",
+    "parts": {
+      "C601": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "射频 VDD 体电容 1µF,磁珠芯片侧(TI ref C1);参考设计为 0805,本库统一用 0402 键 cap.1uf_0402"
+      },
+      "C621": {
+        "part": "cap.3p9_0402",
+        "qty": 1,
+        "note": "巴伦 RF_P 串联电容 3.9pF NP0(TI ref C121)"
+      },
+      "C622": {
+        "part": "cap.8p2_0402",
+        "qty": 1,
+        "note": "LC 滤波 第1级对地并联电容 8.2pF(TI ref C122)"
+      },
+      "C623": {
+        "part": "cap.5p6_0402",
+        "qty": 1,
+        "note": "LC 滤波 第2级对地并联电容 5.6pF(TI ref C123)"
+      },
+      "C624": {
+        "part": "cap.220p_0402",
+        "qty": 1,
+        "note": "巴伦 DC-block 220pF:射频把 L621 接地、阻直流(TI ref C124);C624.1 接 GND"
+      },
+      "C625": {
+        "part": "cap.220p_0402",
+        "qty": 1,
+        "note": "到天线的串联 DC-block 220pF(TI ref C125);参考设计恒装,馈线保持 50Ω"
+      },
+      "C631": {
+        "part": "cap.3p9_0402",
+        "qty": 1,
+        "note": "巴伦 RF_N 对地并联电容 3.9pF NP0(TI ref C131);与 C621 镜像"
+      },
+      "C641": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "DVDD(pin4)去耦 100nF(TI ref C41)"
+      },
+      "C651": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "DCOUPL(pin5)片内数字稳压器输出电容 100nF(TI ref C51)。DCOUPL 是输出,只对地,严禁接 VDD"
+      },
+      "C661": {
+        "part": "cap.220p_0402",
+        "qty": 1,
+        "note": "DGUARD(pin18)去耦 220pF(TI ref C181)"
+      },
+      "C681": {
+        "part": "cap.12p_0402",
+        "qty": 1,
+        "note": "XOSC_Q1 晶振负载帽 12pF。本块 X2 是 10pF-CL NX3225GA→取 12pF,不是数据手册 Table21 的 27pF(那对应 ~16pF-CL 晶振)"
+      },
+      "C682": {
+        "part": "cap.15p_0402",
+        "qty": 1,
+        "note": "XOSC_Q2 晶振负载帽 15pF(EM 434MHz 实建非对称 12/15pF);规则 §7.3:串联(C681,C682)+~2.5pF 寄生 = 晶振 CL"
+      },
+      "C691": {
+        "part": "cap.10n_0402",
+        "qty": 1,
+        "note": "AVDD pin9 去耦 10nF(TI ref C91)"
+      },
+      "C692": {
+        "part": "cap.220p_0402",
+        "qty": 1,
+        "note": "AVDD pin11 去耦 220pF(TI ref C111)"
+      },
+      "C693": {
+        "part": "cap.10n_0402",
+        "qty": 1,
+        "note": "AVDD pin14 去耦 10nF(TI ref C141)"
+      },
+      "C694": {
+        "part": "cap.220p_0402",
+        "qty": 1,
+        "note": "AVDD pin15 去耦 220pF(TI ref C151);每颗 AVDD 帽贴各自引脚,勿合并"
+      },
+      "J_ANT2": {
+        "part": "conn.ufl_ipex",
+        "alt": [
+          "conn.4gantenna_ipex",
+          "conn.activegnssantennaufl_ipex"
+        ],
+        "qty": 1,
+        "note": "U.FL/IPEX 50Ω 射频座(替代参考设计的 SMA)。SIG=射频信号,SHIELD=GND"
+      },
+      "L601": {
+        "part": "fb.blm15hg102",
+        "qty": 1,
+        "note": "供电入口 EMI 磁珠 BLM15HG102(1kΩ@100MHz,TI ref L1);模组级滤波,VDD_CC 经它进芯片"
+      },
+      "L621": {
+        "part": "ind.27nh_0402",
+        "qty": 1,
+        "note": "巴伦 RF_P 电感 27nH,经 C624 DC-block 接地(TI ref L121)"
+      },
+      "L622": {
+        "part": "ind.22nh_0402",
+        "qty": 1,
+        "note": "两级 LC 滤波/匹配 第1级串联电感 22nH(TI ref L122)"
+      },
+      "L623": {
+        "part": "ind.27nh_0402",
+        "qty": 1,
+        "note": "LC 滤波/匹配 第2级串联电感 27nH(TI ref L123)"
+      },
+      "L631": {
+        "part": "ind.27nh_0402",
+        "qty": 1,
+        "note": "巴伦 RF_N→单端汇合节点串联电感 27nH(TI ref L131);与 L621 镜像"
+      },
+      "R601": {
+        "part": "res.56k_0402",
+        "qty": 1,
+        "note": "RBIAS(pin17)片内偏置基准电阻 56k 1%,只对地——不接 VDD(TI ref R171)"
+      },
+      "U": {
+        "part": "ic.cc1101_qfn20",
+        "qty": 1,
+        "note": "CC1101 QFN-20 Sub-1GHz 收发器,387-464MHz;外露焊盘 EP=GND,需多颗过孔缝合到地平面(TI SWRS061I)。数字脚 SI/SO/SCLK/CSn/GDO0/GDO2 直连 MCU(见 ports)"
+      },
+      "X2": {
+        "part": "xtal.26mhz_3225_10pf",
+        "qty": 1,
+        "note": "26.000MHz 晶振 NX3225GA CL=10pF(3225 4脚);壳脚 X2.2/X2.4 接地"
+      }
+    },
+    "ports": {
+      "ANT": {
+        "dir": "out",
+        "at": "J_ANT2.SIG",
+        "desc": "50Ω 射频输出到 U.FL/IPEX 天线座",
+        "default_net": "ANT_433"
+      },
+      "CSN": {
+        "dir": "in",
+        "at": "U.CSn",
+        "desc": "SPI 片选(低有效),来自 MCU",
+        "default_net": "CC_CSN"
+      },
+      "GDO0": {
+        "dir": "out",
+        "at": "U.GDO0(ATEST)",
+        "desc": "通用数字输出/中断(收发状态/包就绪),到 MCU GPIO",
+        "default_net": "CC_GDO0"
+      },
+      "GDO2": {
+        "dir": "out",
+        "at": "U.GDO2",
+        "desc": "通用数字输出/中断,到 MCU GPIO",
+        "default_net": "CC_GDO2"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND*",
+        "desc": "地(GND_16/GND_19/外露焊盘 EP + 全部去耦/滤波下极),接地平面",
+        "default_net": "GND"
+      },
+      "MISO": {
+        "dir": "out",
+        "at": "U.SO(GDO1)",
+        "desc": "SPI 主入从出(CC1101 SO 串行数据出,与 GDO1 复用),到 MCU",
+        "default_net": "CC_MISO"
+      },
+      "MOSI": {
+        "dir": "in",
+        "at": "U.SI",
+        "desc": "SPI 主出从入(CC1101 SI 串行数据入),来自 MCU",
+        "default_net": "CC_MOSI"
+      },
+      "SCK": {
+        "dir": "in",
+        "at": "U.SCLK",
+        "desc": "SPI 时钟,来自 MCU",
+        "default_net": "CC_SCK"
+      },
+      "VDD_CC": {
+        "dir": "in",
+        "at": "L601.1",
+        "desc": "射频供电入口,经磁珠 L601 进芯片 VDD(3.3V,范围 1.8-3.6V)",
+        "default_net": "VDD3V3"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.ch334f_usb4_hub",
+    "desc": "CH334F USB2.0 四口 hub(自供电):12MHz 晶振(⚠24MHz 不枚举)+ V5 单轨供电(VDD33=内部 LDO 输出勿外接)+ OVCUR# 上拉;一个 USB-C 同时喂原生 USB + CH340 串口的调试底座",
+    "category": "usb",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:CH334 (WCH CH334/335 DS V2.5 — 外部 12MHz 晶振内置 PLL/负载电容;自供电 PSELF;参考电路 Fig6.1-6.3 与 p.30 OVCUR 91k 上拉) ; 供电与 strap 方案经 motobox 车机V2 两轮设计评审修正(评审 P0 实证: 24MHz 晶振 hub 完全不枚举;VDD33 双轨供电非法且电池态经 LDO 输出脚反向漏电)后在 车机V2-fable P2 整板落网",
+    "parts": {
+      "C_33": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD33 去耦——VDD33 是内部 LDO 的**输出**,只挂去耦。"
+      },
+      "C_33B": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "VDD33 LDO 输出体电容(datasheet 0.1µF+10µF)。"
+      },
+      "C_V5": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "V5 体电容(datasheet 要求 ≥1µF)。"
+      },
+      "C_V5HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "V5 高频,贴 U.V5。"
+      },
+      "C_X1": {
+        "part": "cap.18pf_0402",
+        "qty": 1,
+        "note": "DNP: CH334 内置晶振负载电容,默认不贴;bring-up 起振裕度不足再按 2·(CL−Cstray) 补。"
+      },
+      "C_X2": {
+        "part": "cap.18pf_0402",
+        "qty": 1,
+        "note": "DNP,同 C_X1。"
+      },
+      "R_OVC": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "OVCUR# 上拉到 VDD33——该脚**无内置上拉**(datasheet p.30 参考用 91k),悬空会误报过流关闭下游端口。"
+      },
+      "R_RST": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "RESET# 上拉(内置上拉,冗余保险,可 DNP)。"
+      },
+      "U": {
+        "part": "ic.ch334f_qfn24",
+        "qty": 1,
+        "note": "CH334F QFN-24(GANG 模式)。功能脚(sch read 实测): OVCUR#(1)/XO(3)/XI(4)/DM4-DP4(5,6)/DM3-DP3(7,8)/DM2-DP2(9,10)/DM1-DP1(11,12)/DMU-DPU(14,15)/RESET#/CDP(16)/PSELF(18)/V5(19)/VDD33(20)/GND(25,EP)。PSELF 内置上拉悬空=自供电;LED1-4/PWREN# 本块 NC。"
+      },
+      "X": {
+        "part": "xtal.12mhz_3225",
+        "qty": 1,
+        "note": "⚠必须 12MHz——datasheet 内置 PLL 至 480MHz,所有参考电路均 12MHz;24MHz 时 hub 不枚举,两条下游调试路径全灭(评审 P0 实证)。脚: OSC1(1)/OSC2(3)/GND(2,4)。"
+      }
+    },
+    "ports": {
+      "DN1_DM": {
+        "dir": "bidir",
+        "at": "U.DM1",
+        "desc": "下行口1 D-",
+        "default_net": "USB_ESP_DM"
+      },
+      "DN1_DP": {
+        "dir": "bidir",
+        "at": "U.DP1",
+        "desc": "下行口1 D+(典型: MCU 原生 USB)",
+        "default_net": "USB_ESP_DP"
+      },
+      "DN2_DM": {
+        "dir": "bidir",
+        "at": "U.DM2",
+        "desc": "下行口2 D-",
+        "default_net": "USB_UART_DM"
+      },
+      "DN2_DP": {
+        "dir": "bidir",
+        "at": "U.DP2",
+        "desc": "下行口2 D+(典型: CH340 串口桥)",
+        "default_net": "USB_UART_DP"
+      },
+      "DN3_DM": {
+        "dir": "bidir",
+        "at": "U.DM3",
+        "desc": "下行口3 D-",
+        "default_net": "USB_AUX_DM"
+      },
+      "DN3_DP": {
+        "dir": "bidir",
+        "at": "U.DP3",
+        "desc": "下行口3 D+(备用/模组 USB)",
+        "default_net": "USB_AUX_DP"
+      },
+      "DN4_DM": {
+        "dir": "bidir",
+        "at": "U.DM4",
+        "desc": "下行口4 D-(不用则 NC)"
+      },
+      "DN4_DP": {
+        "dir": "bidir",
+        "at": "U.DP4",
+        "desc": "下行口4 D+(不用则 NC)"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND",
+        "desc": "地(EP 一并)",
+        "default_net": "GND"
+      },
+      "HOST_DM": {
+        "dir": "bidir",
+        "at": "U.DMU",
+        "desc": "上行 D-",
+        "default_net": "USB_HOST_DM"
+      },
+      "HOST_DP": {
+        "dir": "bidir",
+        "at": "U.DPU",
+        "desc": "上行 D+(接 USB-C 座,配 block.usbc_ufp_power_or)",
+        "default_net": "USB_HOST_DP"
+      },
+      "VBUS_5V": {
+        "dir": "in",
+        "at": "U.V5",
+        "desc": "5V 供电(来自 USB VBUS 经 OR 的 +5V 母线;电池态该轨断电 hub 干净下电,不偷备份电池)",
+        "default_net": "+5V"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "schema_version": 2,
+    "revision": 4,
+    "id": "block.ch340c_usb_serial",
+    "desc": "CH340C 单路 USB 转串口(内置振荡器,无需晶振)+ USB-C + ESD",
+    "category": "usb-serial",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "Codex"
+    ],
+    "added": "v0.6.0",
+    "updated": "v1.7.1-dev.11",
+    "source": "datasheet:CH340C (南京沁恒) + datasheet:UMW USBLC6-2SC6 Nov.2024 (C2687116, 非 ST 同名型号, https://datasheet.lcsc.com/datasheet/pdf/cb339b3dae40ca0f3986b4e9f6690755.pdf?productCode=C2687116) + 立创常见参考电路",
+    "verification": {
+      "schematic": {
+        "status": "pending",
+        "issues": [
+          "CH340C 与 USB-C 主体曾现场通过，但 USBLC6-2SC6 的 6 引脚流通拓扑目前只有数据手册、标准器件和符号引脚快照的离线证据；须重新执行 sch block-apply、netlist、bridge-check 与保存回读后才能恢复 passed"
+        ]
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "not_tested"
+      },
+      "bringup": {
+        "status": "not_tested"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_V3": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "V3 脚对地 100nF —— VCC=5V 供电时 V3 必须接此电容;若整芯片 3V3 供电则 V3 直接并到 VCC(此电容删除)"
+      },
+      "C_VCC": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VCC 去耦,紧贴 VCC 脚"
+      },
+      "D_ESD": {
+        "part": "esd.usblc6_2sc6",
+        "qty": 1,
+        "note": "USBLC6-2SC6 低容 USB 2.0 ESD 阵列。真实脚义:1/6=I/O1(D- 通道)、3/4=I/O2(D+ 通道)、2=GND、5=VBUS；PCB 按 1→6、3→4 流通方向走线，连接器侧先经过保护器再到 CH340C。"
+      },
+      "J_USB": {
+        "part": "conn.usb_c_16p",
+        "qty": 1,
+        "note": "USB-C 16P 母座;VBUS(A4B9+B4A9 两脚)作 5V 输入源。D+/D- 为 DP1/DP2 + DN1/DN2 四脚(双取向,tie DP1+DP2、DN1+DN2)。EP 四脚(8/9/10/11)= 外壳/屏蔽,接 GND。SBU1/SBU2 USB2 不用,悬空。"
+      },
+      "R_CC1": {
+        "part": "res.5k1_0402",
+        "qty": 1,
+        "note": "USB-C CC1 下拉 5.1k,声明 device 取 5V"
+      },
+      "R_CC2": {
+        "part": "res.5k1_0402",
+        "qty": 1,
+        "note": "USB-C CC2 下拉 5.1k"
+      },
+      "U": {
+        "part": "ic.ch340c",
+        "qty": 1,
+        "note": "CH340C 内置晶振,比 CH340G 少一个 12MHz 晶体 + 2×22pF;直接用 C 版"
+      }
+    },
+    "ports": {
+      "DTR": {
+        "dir": "out",
+        "at": "U.DTR#",
+        "desc": "给自动下载电路(block.esp32_autodownload)的 DTR;不做自动下载则悬空",
+        "default_net": "USB_DTR"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND",
+        "desc": "系统地",
+        "default_net": "GND"
+      },
+      "RTS": {
+        "dir": "out",
+        "at": "U.RTS#",
+        "desc": "给自动下载电路的 RTS;不做自动下载则悬空",
+        "default_net": "USB_RTS"
+      },
+      "RXD": {
+        "dir": "in",
+        "at": "U.RXD",
+        "desc": "CH340 RXD ← 接主控 TX",
+        "default_net": "MCU_TX"
+      },
+      "TXD": {
+        "dir": "out",
+        "at": "U.TXD",
+        "desc": "CH340 TXD → 接主控 RX",
+        "default_net": "MCU_RX"
+      },
+      "VBUS_5V": {
+        "dir": "out",
+        "at": "J_USB.VBUS",
+        "desc": "USB 取到的 5V,喂给板上电源树(降压/LDO 输入)",
+        "default_net": "5V"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.es8311_codec_i2s",
+    "desc": "ES8311 单声道音频编解码(codec):I2C 控制(CCLK/CDATA)+ I2S 音频(MCLK/BCLK/LRCK/DSDIN/ASDOUT),一路 ADC(MIC1P/MIC1N 经耦合电容接 MEMS mic)+ 一路 DAC(OUTP/OUTN 经耦合电容→ D 类功放)。本板整颗芯片(PVDD/DVDD/AVDD)全部由干净音频轨 3V3_L3B_AU 供电,所有地(AGND/DGND/EPAD)回 AGND,仅经 R35(0R)单点桥回数字 GND。地址由 CE 脚设:接 GND/AGND=0x18、接 VDD=0x19(本板 CE 接 AGND=0x18)。QFN-24。",
+    "category": "audio",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_04)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_ADCVREF": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "ADCVREF ADC 基准旁路(StickS3 C41 1uF),U.ADCVREF → AGND,datasheet 必需。"
+      },
+      "C_AVDD": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "AVDD 模拟电源旁路(StickS3 C44 1uF/10V),U.AVDD → AGND,就近模拟电源脚。"
+      },
+      "C_DACVREF": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "DACVREF DAC 基准旁路(StickS3 C42 1uF),U.DACVREF → AGND,datasheet 必需。"
+      },
+      "C_DVDD": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "DVDD 电源去耦(StickS3 C34 10uF),就近芯片电源脚;顶端接 3V3_L3B_AU 音频轨,底端回 AGND。"
+      },
+      "C_MIC1N": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "MIC1N 输入 AC 耦合电容(StickS3 C39 1uF),串联在 U.MIC1N → MIC1_N 之间。"
+      },
+      "C_MIC1P": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "MIC1P 输入 AC 耦合电容(StickS3 C38 1uF),串联在 U.MIC1P → MIC1_P 之间(隔直,mic 偏置与 codec 输入解耦)。"
+      },
+      "C_OUTN": {
+        "part": "cap.33nf_0402",
+        "qty": 1,
+        "note": "OUTN DAC 输出串联耦合电容(StickS3 C43 33nF/25V),串联在 U.OUTN → DAC_L_N(→功放)之间,隔直。"
+      },
+      "C_OUTP": {
+        "part": "cap.33nf_0402",
+        "qty": 1,
+        "note": "OUTP DAC 输出串联耦合电容(StickS3 C45 33nF/25V),串联在 U.OUTP → DAC_L_P(→功放)之间,隔直。"
+      },
+      "C_PVDD": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "PVDD 电源去耦(StickS3 C32 10uF),就近芯片电源脚;顶端接 3V3_L3B_AU 音频轨,底端回 AGND。"
+      },
+      "C_VMID": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "VMID 中点电压旁路(StickS3 C40 1uF),U.VMID → AGND,datasheet 必需。"
+      },
+      "R_AGND": {
+        "part": "res.0r_0402",
+        "qty": 1,
+        "note": "AGND↔数字 GND 单点桥 0R(StickS3 R35)。板级模拟地平面经此单点回数字地平面,回流走 LDO 芯片衬底;R35 一端 AGND、另一端数字 GND,不直连 U18 任一地脚(U18 全部地脚已在 AGND 上)。"
+      },
+      "U": {
+        "part": "ic.es8311",
+        "qty": 1,
+        "note": "ES8311 单声道音频 codec,QFN-24。控制走 I2C(CCLK/CDATA),音频走 I2S(MCLK/SCLK/LRCK/DSDIN/ASDOUT);内含一路 ADC(MIC1P/MIC1N 差分输入)+ 一路 DAC(OUTP/OUTN 差分输出)。CE 脚设 I2C 地址(接 GND/AGND=0x18 / 接 VDD=0x19)。引脚名用 datasheet 脚名,放置前 sch read 拉真实符号脚名再绑定(注意 SCLK 脚符号名可能是『SCLK/DMIC_SCL』、MIC1P 可能是『MIC1P/DMIC_SDA』)。"
+      }
+    },
+    "ports": {
+      "AGND": {
+        "dir": "in",
+        "at": "U.AGND",
+        "desc": "模拟地(AGND/DGND/EPAD 全在此);U18 所有地脚汇聚点,经 R_AGND 0R 单点桥回数字 GND",
+        "default_net": "AGND"
+      },
+      "AVDD": {
+        "dir": "in",
+        "at": "U.AVDD",
+        "desc": "模拟电源,独立干净音频轨(本板 3V3_L3B_AU,专用 LDO CM1801 供,与数字 3V3 分开)",
+        "default_net": "3V3_L3B_AU"
+      },
+      "DVDD": {
+        "dir": "in",
+        "at": "U.DVDD",
+        "desc": "数字/外设电源脚 PVDD+DVDD 共此轨。本板 PVDD/DVDD 与 AVDD 同接干净音频轨 3V3_L3B_AU(整颗 ES8311 全走音频轨,不接数字 3V3),这是本板音频信噪比的做法",
+        "default_net": "3V3_L3B_AU"
+      },
+      "GND": {
+        "dir": "in",
+        "at": "R_AGND.2",
+        "desc": "数字 GND(仅经 R_AGND 0R 单点桥与本块 AGND 相连;U18 无地脚直接接数字 GND)",
+        "default_net": "GND"
+      },
+      "I2C_ADDR": {
+        "dir": "in",
+        "at": "U.CE",
+        "desc": "I2C 地址选择脚 CE:接 GND/AGND=0x18 / 接 VDD=0x19。本板原理图把 CE 直接接 AGND(0x18),故 default_net=AGND;如需 0x19 由宿主改接 VDD",
+        "default_net": "AGND"
+      },
+      "I2C_SCL": {
+        "dir": "bidir",
+        "at": "U.CCLK",
+        "desc": "控制 I2C 时钟(CCLK,本板 AUDIO_I2C_SCL);codec 寄存器配置总线",
+        "default_net": "AUDIO_I2C_SCL"
+      },
+      "I2C_SDA": {
+        "dir": "bidir",
+        "at": "U.CDATA",
+        "desc": "控制 I2C 数据(CDATA,本板 AUDIO_I2C_SDA)",
+        "default_net": "AUDIO_I2C_SDA"
+      },
+      "I2S_BCLK": {
+        "dir": "in",
+        "at": "U.SCLK/DMIC_SCL",
+        "desc": "I2S 位时钟 BCLK(datasheet 脚 SCLK/DMIC_SCL,本板 G17)",
+        "default_net": "I2S_BCLK"
+      },
+      "I2S_DIN": {
+        "dir": "in",
+        "at": "U.DSDIN",
+        "desc": "DAC 串行数据入(DSDIN,本板 G14,ESP→codec 放音)",
+        "default_net": "I2S_DIN"
+      },
+      "I2S_DOUT": {
+        "dir": "out",
+        "at": "U.ASDOUT",
+        "desc": "ADC 串行数据出(datasheet 脚 ASDOUT/SDOUT,本板 G16,codec→ESP 录音)",
+        "default_net": "I2S_DOUT"
+      },
+      "I2S_LRCK": {
+        "dir": "in",
+        "at": "U.LRCK",
+        "desc": "I2S 帧/声道时钟 LRCK(本板 G15)",
+        "default_net": "I2S_LRCK"
+      },
+      "I2S_MCLK": {
+        "dir": "in",
+        "at": "U.MCLK",
+        "desc": "I2S 主时钟(本板 G18);由 MCU 提供",
+        "default_net": "I2S_MCLK"
+      },
+      "MIC_N": {
+        "dir": "in",
+        "at": "C_MIC1N.2",
+        "desc": "MEMS mic 差分负/参考,经 C_MIC1N(C39 1uF)AC 耦合到 U.MIC1N(接 mems_mic_analog 块 MIC_N)",
+        "default_net": "MIC1_N"
+      },
+      "MIC_P": {
+        "dir": "in",
+        "at": "C_MIC1P.2",
+        "desc": "MEMS mic 差分正,经 C_MIC1P(C38 1uF)AC 耦合到 U.MIC1P(接 mems_mic_analog 块 MIC_P)",
+        "default_net": "MIC1_P"
+      },
+      "SPK_N": {
+        "dir": "out",
+        "at": "C_OUTN.2",
+        "desc": "DAC 输出负,经 C_OUTN(C43 33nF)串联耦合→功放差分输入(本板 DAC_L_N→AW8737)",
+        "default_net": "DAC_L_N"
+      },
+      "SPK_P": {
+        "dir": "out",
+        "at": "C_OUTP.2",
+        "desc": "DAC 输出正,经 C_OUTP(C45 33nF)串联耦合→功放差分输入(本板 DAC_L_P→AW8737)",
+        "default_net": "DAC_L_P"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.esp32_autodownload",
+    "desc": "ESP32 双三极管自动下载(交叉耦合:DTR/RTS → EN/IO0 时序),配 CH340 使用",
+    "category": "mcu-support",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "Codex"
+    ],
+    "added": "v0.6.0",
+    "updated": "v1.7.1-dev.11",
+    "source": "official-ref:立创·ESP32S3R8N8开发板(嘉立创官方开源,core 原理图 Q1/Q2/R16/R17)——sch read 抄取真实拓扑与用值。2026-09-27 按 Espressif ESP32 DevKitC V4 Auto program 修正 notes 中对调的单低输入态,internal_nets 未改变:https://dl.espressif.com/dl/schematics/esp32_devkitc_v4-sch.pdf ;启动时序:https://docs.espressif.com/projects/esptool/en/latest/esp32/advanced-topics/boot-mode-selection.html",
+    "parts": {
+      "Q1": {
+        "part": "bjt.mmbt3904_sot23",
+        "alt": [
+          "bjt.s8050_sot23"
+        ],
+        "qty": 1,
+        "note": "IO0 侧 NPN;官方板用 MMBT3904,S8050 等效可替"
+      },
+      "Q2": {
+        "part": "bjt.mmbt3904_sot23",
+        "alt": [
+          "bjt.s8050_sot23"
+        ],
+        "qty": 1,
+        "note": "EN 侧 NPN"
+      },
+      "R_DTR": {
+        "part": "res.4k7_0402",
+        "qty": 1,
+        "note": "DTR → Q2 基极的串阻(官方板 R16=4.7k)"
+      },
+      "R_RTS": {
+        "part": "res.4k7_0402",
+        "qty": 1,
+        "note": "RTS → Q1 基极的串阻(官方板 R17=4.7k)"
+      }
+    },
+    "ports": {
+      "DTR": {
+        "dir": "in",
+        "at": "Q1.E",
+        "desc": "来自 CH340 的 DTR(block.ch340c_usb_serial 的 DTR port)",
+        "default_net": "USB_DTR"
+      },
+      "EN": {
+        "dir": "out",
+        "at": "Q2.C",
+        "desc": "→ 主控 EN/CHIP_PU(block.esp32s3_wroom1_module 的 EN port)",
+        "default_net": "EN"
+      },
+      "IO0": {
+        "dir": "out",
+        "at": "Q1.C",
+        "desc": "→ 主控 GPIO0/BOOT(block.esp32s3_wroom1_module 的 IO0 port)",
+        "default_net": "IO0"
+      },
+      "RTS": {
+        "dir": "in",
+        "at": "Q2.E",
+        "desc": "来自 CH340 的 RTS(block.ch340c_usb_serial 的 RTS port)",
+        "default_net": "USB_RTS"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.esp32s3_chip_minsys",
+    "desc": "ESP32-S3 普通裸片(QFN-56,无内封 PSRAM)最小系统:外挂 W25Q64 8MB flash(SPICS0)+ APS6404L 8MB 四线 PSRAM(SPICS1,与 flash 共享 SPI0 数据线)+ 40MHz 晶振/负载帽 + 逐脚去耦 + EN 上电 RC + IO0 上拉;四线 PSRAM 只占 SPICS1,GPIO33~37 全部保留可用(这正是相对 S3R8 内封八线 PSRAM 的取舍,见 alt block.esp32s3r8_chip_minsys)",
+    "category": "mcu",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.13.1",
+    "updated": "v0.13.1",
+    "source": "official-ref:Espressif《ESP Hardware Design Guidelines — ESP32-S3 Schematic Checklist》(docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32s3/schematic-checklist.html,2026-07-16 实取):Flash/PSRAM 节『External SPI flash and PSRAM connect via the SPI0 pins. Flash uses SPICS0 while PSRAM uses SPICS1. Both share: SPICLK, SPID, SPIQ, SPIHD, and SPIWP. They're powered by VDD_SPI』、电源节逐轨去耦值(VDD3P3=10uF+1uF / VDD3P3_RTC=0.1uF / VDD3P3_CPU=0.1uF / VDD_SPI 额外 0.1uF+1uF / 入口≥10uF)、复位节『R = 10 kΩ and C = 1 μF』、GPIO0『recommended to place a pull-up resistor』、GPIO45 默认 0=3.3V、晶振节 40MHz ±10ppm + CL 公式。 ; datasheet:APS6404L-3SQR(AP Memory《APM SPI 3V PSRAM Datasheet》Rev.2.1 2019-10-25,PDF 实读):§3.1 Package Types SOP-8 脚位图、§6 Signal Table、§7 Power-Up Initialization『CE# should remain HIGH (track VDD within 200mV)』、§14.3 Decoupling Capacitor Requirement『required to have a decoupling capacitor on VDD pin… A low ESR 1μF ceramic cap is recommended… An optional 0.1μF can further improve high frequency transient response』(图示 C0=100nF + C1=1µF)。 ; official-ref:ESP-IDF components/esp_psram/esp32s3/Kconfig.spiram(master,2026-07-16 实取):SPIRAM_MODE_QUAD 为默认、SPIRAM_TYPE_ESPPSRAM64『ESP-PSRAM64 , LY68L6400 or APS6408』(64Mbit 档不限 QUAD/OCT)、SPIRAM_CS_IO default 26(=SPICS1)、SPIRAM_CLK_IO default 30(=SPICLK)——从固件侧反证 PSRAM 片选就是 SPICS1。 ; U/FLASH 脚名沿用同族已核实块 block.esp32s3r8_chip_minsys(2026-07-15 ceshi sch read 逐脚核实,同芯片族同符号族);PSRAM 脚名取自上述 datasheet §3.1/§6,**尚未** sch read 核实(见 _internal_nets_note)",
+    "parts": {
+      "C_BULK": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "3V3 入口体电容 10uF(HDG 电源节:VDD3P3 用 10uF+1uF,主入口『at least 10 μF』),压 WiFi 发射瞬态(峰值 ~500mA);靠近 VDD3P3(pin2/3)供电入口。"
+      },
+      "C_CPU": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD3P3_CPU(pin46)去耦 0.1uF(HDG 原文值),贴脚。"
+      },
+      "C_EN": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "CHIP_PU 对地 1uF,与 R_EN 组成上电延时 RC(HDG 复位节明写『R = 10 kΩ and C = 1 μF』);复位/自动下载电路从 EN port 外接。"
+      },
+      "C_FLASH": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "flash VCC 去耦 100nF,贴 W25Q64 pin8。"
+      },
+      "C_PSRAM": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "PSRAM VDD 去耦 1uF —— APS6404L datasheet §14.3 是**强制**要求(『It is required to have a decoupling capacitor on VDD pin… A low ESR 1μF ceramic cap is recommended』),低 ESR,尽可能贴 VDD(pin8);省掉它 = 违反器件手册。"
+      },
+      "C_PSRAM_HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "PSRAM VDD 高频去耦 100nF —— datasheet §14.3 的 optional 项(『An optional 0.1μF can further improve high frequency transient response』,图示 C0=100nF);84~133MHz 总线下建议保留。"
+      },
+      "C_RTC": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD3P3_RTC(pin20)去耦 0.1uF(HDG 原文值),贴脚。"
+      },
+      "C_SPI": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "VDD_SPI(pin29,内部由 VDD3P3_RTC 供出的 3.3V 输出域)滤波 1uF(HDG:VDD_SPI 需『extra 0.1 μF and 1 μF decoupling capacitors』),贴脚;该域同时喂外挂 flash + PSRAM,是本块比模组方案更吃电流的一轨。"
+      },
+      "C_SPI_HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD_SPI 高频去耦 0.1uF(HDG 同上『extra 0.1 μF and 1 μF』的 0.1uF 那颗),贴 pin29。"
+      },
+      "C_VDD3P3": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "VDD3P3(模拟/RF 供电,pin2+pin3 相邻双脚)去耦 1uF —— HDG 电源节该轨明确写 10uF + 1uF(与同族 block.esp32s3r8_chip_minsys 此位取 100nF 不同,本块按 HDG 原文取 1uF)。"
+      },
+      "C_VDDA": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDDA(pin55+pin56 相邻双脚)去耦 100nF,贴脚;HDG 将 VDDA 归入 VDD3P3 去耦方案,此 100nF 为高频补充。"
+      },
+      "C_X1": {
+        "part": "cap.12p_0402",
+        "qty": 1,
+        "note": "XTAL_P 负载帽,起步 12pF;精确值按 HDG 公式 CL=(C1×C4)/(C1+C4)+Cstray 实测微调到 ±10ppm。"
+      },
+      "C_X2": {
+        "part": "cap.12p_0402",
+        "qty": 1,
+        "note": "XTAL_N 负载帽,与 C_X1 对称等值。"
+      },
+      "FLASH": {
+        "part": "ic.w25q64_flash",
+        "qty": 1,
+        "note": "W25Q64JVSSIQ 8MB QSPI flash(N8),SOP-8;VCC 接 VDD_SPI(芯片内部 LDO 输出域),不接外部 3V3。片选 SPICS0(HDG:『Flash uses SPICS0』)。"
+      },
+      "PSRAM": {
+        "part": "ic.aps6404l",
+        "qty": 1,
+        "note": "APS6404L-3SQR-SN 8MB(64Mbit)四线 QSPI PSRAM,SOP-8,VDD=2.7~3.6V(datasheet §6 Signal Table『Core supply 3.3V』)→ 接 VDD_SPI 3.3V 域,与 flash 同域同总线、独立片选 SPICS1(HDG:『PSRAM uses SPICS1』)。⚠必须选带 3 前缀的 3SQR/3SQN(3.3V 版);无 3 的 SQN/SQH 系是 1.8V 件,接 3.3V VDD_SPI 会烧。"
+      },
+      "R_CS0": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "SPICS0(flash 片选)上拉 10k → VDD_SPI(**不是** 3V3):防上电未初始化期 flash 误选中;上拉到 VDD_SPI 域使该域断电时不倒灌。"
+      },
+      "R_CS1": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "SPICS1(PSRAM 片选)上拉 10k → VDD_SPI。依据 APS6404L datasheet §7 Power-Up Initialization:上电到 150µs 初始化结束期间『CE# should remain HIGH (track VDD within 200mV)』——ESP32-S3 复位期 SPICS1 是高阻,无此上拉则 CE# 浮空,PSRAM 初始化行为不确定。上拉到 VDD_SPI(非 3V3)才满足『track VDD within 200mV』。"
+      },
+      "R_EN": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "CHIP_PU(EN)上拉 10k → 3V3(HDG 复位节推荐值)。"
+      },
+      "R_IO0": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "GPIO0(boot strapping)上拉 10k → 默认 SPI flash 启动(HDG:『It is recommended to place a pull-up resistor at the GPIO0 pin』);下载时由 BOOT 按键/自动下载电路经 IO0 port 拉低。⚠HDG 同节警告『Do not add high-value capacitors at GPIO0』——本块因此不给 IO0 配电容。"
+      },
+      "U": {
+        "part": "mcu.esp32s3_chip",
+        "alt": [
+          "mcu.esp32s3r8_chip"
+        ],
+        "qty": 1,
+        "note": "ESP32-S3 普通裸片 QFN-56,**无内封 PSRAM** → 本块外挂 APS6404L 四线 PSRAM 补齐 R8 级内存。收益:四线 PSRAM 仅占 SPICS1,GPIO33~37(SPIIO4~SPIIO7/SPIDQS)全部空出可当普通 GPIO 用——选 alt(S3R8 内封八线 PSRAM)则这 5 个脚被永久占用。代价:多 1 片 PSRAM + SPI0 多一路 CS 与走线等长负担,且四线带宽低于八线。"
+      },
+      "X": {
+        "part": "xtal.40mhz_3225_12pf",
+        "qty": 1,
+        "note": "40MHz 3225 四脚晶振 CL=12pF,ESP32-S3 主时钟(HDG 晶振节要求精度 ±10ppm 以内);壳脚(符号 GND 名,物理 pin2/4)接地。"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "in",
+        "at": "U.VDD3P3*",
+        "desc": "3.3V 主供电(来自 LDO/buck),须扛 WiFi 发射瞬态 ≥500mA",
+        "default_net": "3V3"
+      },
+      "EN": {
+        "dir": "bidir",
+        "at": "U.CHIP_PU",
+        "desc": "复位/使能(CHIP_PU):接 RESET 按键(block.tactile_boot_reset)+ 自动下载电路(block.esp32_autodownload 的 EN port)",
+        "default_net": "EN"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.EP",
+        "desc": "系统地(含 QFN-56 EPAD 热焊盘,符号名 GND)",
+        "default_net": "GND"
+      },
+      "IO0": {
+        "dir": "bidir",
+        "at": "U.GPIO0",
+        "desc": "boot strapping:接 BOOT 按键 + 自动下载电路(block.esp32_autodownload 的 IO0 port)",
+        "default_net": "IO0"
+      },
+      "LNA_IN": {
+        "dir": "out",
+        "at": "U.LNA_IN",
+        "desc": "2.4GHz RF 收发脚 → 接天线匹配块(block.ant_2g4_ceramic_pi 的 RF_IN);50Ω 馈线,勿在本块内接任何东西",
+        "default_net": "RF_ANT"
+      },
+      "U0RXD": {
+        "dir": "in",
+        "at": "U.U0RXD",
+        "desc": "调试/烧录串口 RX ← 接 CH340 的 TXD(block.ch340c_usb_serial)",
+        "default_net": "MCU_RX"
+      },
+      "U0TXD": {
+        "dir": "out",
+        "at": "U.U0TXD",
+        "desc": "调试/烧录串口 TX → 接 CH340 的 RXD(block.ch340c_usb_serial)",
+        "default_net": "MCU_TX"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.esp32s3_pico_native_usb",
+    "desc": "ESP32-S3-PICO-1-N8R8 SiP 模组最小系统 + 原生 USB 下载(无 CH340/桥芯片):S3 内置 USB-Serial/JTAG,D+/D- 各串 22R 经 SDMM0806 共模扼流圈直连 USB-C;EN 上电复位 RC + GPIO0 boot strap + I2C 2.2K 上拉。PICO-1 内封 8MB flash + 8MB PSRAM + PCB 天线,无需外挂存储/晶振/天线匹配——区别于 WROOM 屏蔽罩模组与裸片最小系统",
+    "category": "mcu",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_04)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_BULK": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "3V3 体电容,配合三颗 100nF 就近去耦稳定模组供电。"
+      },
+      "C_EN": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "EN/CHIP_PU RC 电容到 GND(1uF,原理图 C50=1uF/10V —— 校验订正:草稿/规格误记 100nF,以原理图为准),原理图注『RC靠近芯片,电容优先靠近』;上电延迟保证复位可靠释放。"
+      },
+      "C_VDD1": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "模组电源脚就近 100nF 去耦(3V3),贴电源脚放置。"
+      },
+      "C_VDD2": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "模组电源脚就近 100nF 去耦(3V3)。"
+      },
+      "C_VDD3": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "模组电源脚就近 100nF 去耦(3V3)。"
+      },
+      "FT1": {
+        "part": "ind.cmc_usb_sdmm0806",
+        "qty": 1,
+        "note": "USB 共模扼流圈 SDMM0806H-2-900T,抑制 D+/D- 差分共模噪声;两组(1/2 与 3/4)分别串在 D+ 与 D- 上,靠近 USB 连接器。"
+      },
+      "R_BOOT": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "GPIO0 boot strap 上拉 3V3(原理图 R46,BOOT_OUT 路);上电为高=正常启动,拉低=进下载模式。"
+      },
+      "R_DM": {
+        "part": "res.22r_0402",
+        "qty": 1,
+        "note": "USB D- 串阻 22R,与 R_DP 成对等长。"
+      },
+      "R_DP": {
+        "part": "res.22r_0402",
+        "qty": 1,
+        "note": "USB D+ 串阻 22R,配合共模扼流做差分匹配(90Ω 差分阻抗)。"
+      },
+      "R_EN": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "EN/CHIP_PU 上拉 3V3;与 C_EN 构成上电复位 RC,RC 靠近芯片。"
+      },
+      "R_SCL": {
+        "part": "res.2k2_0402",
+        "qty": 1,
+        "note": "I2C SCL 上拉 2.2K 到 3V3(本板约定 SCL=GPIO48/G48);宿主总线已有上拉时删除避免并联过强。"
+      },
+      "R_SDA": {
+        "part": "res.2k2_0402",
+        "qty": 1,
+        "note": "I2C SDA 上拉 2.2K 到 3V3(本板约定 SDA=GPIO47/G47);同 R_SCL 去重规则。"
+      },
+      "U": {
+        "part": "mcu.esp32s3_pico1_n8r8",
+        "qty": 1,
+        "note": "ESP32-S3-PICO-1-N8R8 SiP 模组,内封 8MB flash + 8MB PSRAM + PCB 天线;相对裸片/S3R8 块的最大简化=无需外挂 flash/psram/晶振/天线匹配。原生 USB-Serial/JTAG 支持 D+/D- 直连 USB-C 下载。USB 数据脚=GPIO20(D+)/GPIO19(D-),复位脚=CHIP_PU(net SOC_RESET),BOOT=GPIO0,I2C=GPIO48(SCL)/GPIO47(SDA)——已按原理图 page_04 校验订正为真实符号脚名;放置前仍 sch read/--probe 核对完整符号脚名(如 GPIO47/SPICLK_P、GPIO48/SPICLK_N 的复合名)。"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "in",
+        "at": "C_BULK.1",
+        "desc": "3.3V 模组供电轨:所有 3V3/VDDA 电源脚 + 三颗 100nF + 一颗 10uF 体电容 + EN/BOOT/I2C 上拉的公共端",
+        "default_net": "3V3"
+      },
+      "BOOT": {
+        "dir": "in",
+        "at": "U.GPIO0",
+        "desc": "GPIO0 boot strap(块内已 10K 上拉到 3V3);高=正常启动,拉低=进下载模式,通常接 BOOT 按键到 GND",
+        "default_net": "BOOT"
+      },
+      "EN": {
+        "dir": "in",
+        "at": "U.CHIP_PU",
+        "desc": "EN=CHIP_PU 上电复位(块内已 10K 上拉 + 1uF RC,原理图 C50=1uF);可选引出到复位键/PMIC,长按复位配合 BOOT 进下载",
+        "default_net": "EN"
+      },
+      "GND": {
+        "dir": "in",
+        "at": "C_BULK.2",
+        "desc": "地:模组所有 GND/EPAD 焊盘 + 去耦回流 + EN RC 电容回地",
+        "default_net": "GND"
+      },
+      "I2C_SCL": {
+        "dir": "bidir",
+        "at": "R_SCL.1",
+        "desc": "I2C 时钟(本板约定 GPIO48/G48);块内已 2.2K 上拉到 3V3,宿主总线已有上拉时删本对",
+        "default_net": "I2C_SCL"
+      },
+      "I2C_SDA": {
+        "dir": "bidir",
+        "at": "R_SDA.1",
+        "desc": "I2C 数据(本板约定 GPIO47/G47);块内已 2.2K 上拉到 3V3",
+        "default_net": "I2C_SDA"
+      },
+      "USB_DM": {
+        "dir": "bidir",
+        "at": "R_DM.2",
+        "desc": "USB D- 差分(模组 GPIO19/USB_D-);模组侧起 SDMM0806 共模扼流圈 → 22R 串阻 → 引出到 USB-C 连接器 D-;与 D+ 成对等长",
+        "default_net": "USB_DM"
+      },
+      "USB_DP": {
+        "dir": "bidir",
+        "at": "R_DP.2",
+        "desc": "USB D+ 差分(模组 GPIO20/USB_D+);模组侧起 SDMM0806 共模扼流圈 → 22R 串阻 → 引出到 USB-C 连接器 D+(原理图顺序:模组→扼流→串阻→连接器);差分等长、90Ω 阻抗",
+        "default_net": "USB_DP"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.esp32s3_wroom1_module",
+    "desc": "ESP32-S3-WROOM-1 模组最小系统(3V3 去耦 + EN 上电复位 RC + IO0 boot strapping);模组内置 flash，无需外挂",
+    "category": "mcu",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.6.0",
+    "updated": "v0.6.0",
+    "source": "official-ref:Espressif ESP32-S3-WROOM-1 硬件设计指南 (Hardware Design Guidelines) + 官方最小系统参考",
+    "parts": {
+      "C_BULK": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "3V3 大电容,压 WiFi 发射瞬态电流(峰值可到 ~500mA);靠近模组供电脚"
+      },
+      "C_EN": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "value_override": "1uF",
+        "note": "EN 对地电容,与 R_EN 组成上电延时 RC(官方推荐 R=10k / C=1uF),保证 3V3 稳定后再释放复位;也吸收 EN 抖动"
+      },
+      "C_VDD": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "3V3 高频去耦,紧贴模组 3V3 脚"
+      },
+      "R_EN": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "EN 上拉 10k"
+      },
+      "R_IO0": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "IO0(boot strapping)上拉 10k → 默认从 flash 启动;下载时由 BOOT 按键/自动下载电路拉低"
+      },
+      "U": {
+        "part": "mcu.esp32s3_wroom1",
+        "alt": [
+          "mcu.esp32s3_wroom1u_n8"
+        ],
+        "qty": 1,
+        "note": "ESP32-S3-WROOM-1 模组:内置 flash(N4/N8/N16 视型号)+ PCB 天线;WROOM-1U 为外接 IPEX 天线版(alt)。用模组而非裸芯片:省晶振/flash/RF matching/天线设计，最省心。"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "in",
+        "at": "U.3V3",
+        "desc": "模组供电 3V3(来自 LDO/buck;不要直接 5V)",
+        "default_net": "3V3"
+      },
+      "EN": {
+        "dir": "bidir",
+        "at": "U.EN",
+        "desc": "复位/使能:接 RESET 按键 + 自动下载电路(block.esp32_autodownload 的 EN port)",
+        "default_net": "EN"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND*",
+        "desc": "系统地(含 EP 散热焊盘)",
+        "default_net": "GND"
+      },
+      "IO0": {
+        "dir": "bidir",
+        "at": "U.IO0",
+        "desc": "boot strapping:接 BOOT 按键 + 自动下载电路(block.esp32_autodownload 的 IO0 port)",
+        "default_net": "IO0"
+      },
+      "U0RXD": {
+        "dir": "in",
+        "at": "U.RXD0",
+        "desc": "调试/烧录串口 RX(IO44)← 接 CH340 的 TXD(block.ch340c_usb_serial 的 TXD port)",
+        "default_net": "MCU_RX"
+      },
+      "U0TXD": {
+        "dir": "out",
+        "at": "U.TXD0",
+        "desc": "调试/烧录串口 TX(IO43)→ 接 CH340 的 RXD(block.ch340c_usb_serial 的 RXD port)",
+        "default_net": "MCU_TX"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.esp32s3r8_chip_minsys",
+    "desc": "ESP32-S3R8 裸片(QFN-56)最小系统:外挂 W25Q64 8MB flash(SPI0 六线,VDD_SPI 供电)+ 40MHz 晶振/负载帽 + 全电源脚去耦 + EN 上电 RC + IO0 上拉;R8 内封 8MB Octal PSRAM,无需外挂 PSRAM(普通 S3 裸片才要外挂,见 alt mcu.esp32s3_chip)",
+    "category": "mcu",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.12.1",
+    "updated": "v1.13.2",
+    "source": "official-ref:Espressif《ESP32-S3 Hardware Design Guidelines》(esp32-s3_hardware_design_guidelines) §2.1 电源(逐脚去耦/10uF 体电容)、§2.2 上电时序与复位(CHIP_PU RC: R=10k C=1uF)、§2.3 Flash/PSRAM(VDD_SPI 供外挂 flash + SPICS0 上拉)、§2.4 晶振(40MHz 3225 + 对称负载帽)、§2.7 strapping(GPIO0 上拉默认 flash 启动) + 官方最小系统外围原理图(Schematic Checklist)。脚名 2026-07-15 在 ceshi 临时页 place C2913194/C179171/C47089401 后 sch read 逐脚核实",
+    "parts": {
+      "C_BULK": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "3V3 入口体电容 10uF,压 WiFi 发射瞬态(峰值 ~500mA);靠近 VDD3P3(pin2/3)供电入口"
+      },
+      "C_CPU": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD3P3_CPU(pin46)去耦 100nF,贴脚"
+      },
+      "C_EN": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "CHIP_PU 对地 1uF,与 R_EN 组成上电延时 RC(HDG §2.2:保证电源稳定后再释放复位);复位/自动下载电路从 EN port 外接"
+      },
+      "C_FLASH": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "flash VCC 去耦 100nF,贴 W25Q64 pin8"
+      },
+      "C_RTC": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD3P3_RTC(pin20)去耦 100nF,贴脚"
+      },
+      "C_SPI": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "VDD_SPI(pin29,内部经 ~20Ω 由 VDD3P3_RTC 供出的 3.3V 输出域)滤波 1uF,贴脚;该域同时喂外挂 flash 和内封 PSRAM"
+      },
+      "C_VDD3P3": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD3P3(模拟/RF 供电,pin2+pin3 相邻双脚)高频去耦 100nF,贴脚"
+      },
+      "C_VDDA": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDDA(pin55+pin56 相邻双脚)去耦 100nF,贴脚"
+      },
+      "C_X1": {
+        "part": "cap.12p_0402",
+        "qty": 1,
+        "note": "XTAL_P 负载帽,起步 12pF;精确值按 HDG §2.4 公式 串联(C_X1,C_X2)+板寄生=晶振 CL(12pF) 实测微调"
+      },
+      "C_X2": {
+        "part": "cap.12p_0402",
+        "qty": 1,
+        "note": "XTAL_N 负载帽,与 C_X1 对称等值"
+      },
+      "FLASH": {
+        "part": "ic.w25q64_flash",
+        "qty": 1,
+        "note": "W25Q64JVSSIQ 8MB QSPI flash(N8),SOP-8;VCC 接 VDD_SPI(芯片内部 LDO 输出域,深睡可断电),不接外部 3V3"
+      },
+      "R_CS": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "SPICS0 上拉 10k → VDD_SPI(不是 3V3!):HDG 外围原理图要求,防上电未初始化期 flash 误选中;上拉到 VDD_SPI 域使 flash 断电时不倒灌"
+      },
+      "R_EN": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "CHIP_PU(EN)上拉 10k → 3V3(HDG §2.2 推荐值)"
+      },
+      "R_IO0": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "GPIO0(boot strapping)上拉 10k → 默认 SPI flash 启动;下载时由 BOOT 按键/自动下载电路经 IO0 port 拉低"
+      },
+      "U": {
+        "part": "mcu.esp32s3r8_chip",
+        "alt": [
+          "mcu.esp32s3_chip"
+        ],
+        "qty": 1,
+        "note": "ESP32-S3R8 QFN-56,内封 8MB Octal PSRAM → N8R8 的 R8 由封装内直接满足,本块**不外挂 PSRAM**。alt=mcu.esp32s3_chip(无内封 PSRAM)时需另加 APS6404L 走 SPI0 独立 CS —— 该拓扑现已单独成块:block.esp32s3_chip_minsys。⚠内封八线 PSRAM 占用 **GPIO33~GPIO37**(SPIIO4~SPIIO7 + SPIDQS,即 DQ4~DQ7 + DQS/DM)与 SPICS1(pin28),外部一律勿用/悬空"
+      },
+      "X": {
+        "part": "xtal.40mhz_3225_12pf",
+        "qty": 1,
+        "note": "40MHz 3225 四脚晶振 CL=12pF,ESP32-S3 主时钟;壳脚(符号 GND 名,物理 pin2/4)接地"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "in",
+        "at": "U.2",
+        "desc": "3.3V 主供电(来自 LDO/buck),须扛 WiFi 发射瞬态 ≥500mA",
+        "default_net": "3V3"
+      },
+      "EN": {
+        "dir": "bidir",
+        "at": "U.CHIP_PU",
+        "desc": "复位/使能(CHIP_PU):接 RESET 按键(block.tactile_boot_reset)+ 自动下载电路(block.esp32_autodownload 的 EN port)",
+        "default_net": "EN"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND",
+        "desc": "系统地(含 QFN-56 EPAD 热焊盘,符号名 GND)",
+        "default_net": "GND"
+      },
+      "IO0": {
+        "dir": "bidir",
+        "at": "U.GPIO0",
+        "desc": "boot strapping:接 BOOT 按键 + 自动下载电路(block.esp32_autodownload 的 IO0 port)",
+        "default_net": "IO0"
+      },
+      "LNA_IN": {
+        "dir": "out",
+        "at": "U.LNA_IN",
+        "desc": "2.4GHz RF 收发脚 → 接天线匹配块(block.ant_2g4_ceramic_pi 的 RF_IN);50Ω 馈线,勿在本块内接任何东西",
+        "default_net": "RF_ANT"
+      },
+      "U0RXD": {
+        "dir": "in",
+        "at": "U.U0RXD",
+        "desc": "调试/烧录串口 RX ← 接 CH340 的 TXD(block.ch340c_usb_serial)",
+        "default_net": "MCU_RX"
+      },
+      "U0TXD": {
+        "dir": "out",
+        "at": "U.U0TXD",
+        "desc": "调试/烧录串口 TX → 接 CH340 的 RXD(block.ch340c_usb_serial)",
+        "default_net": "MCU_TX"
+      }
+    },
+    "signal_marker": "net_label",
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.i2c_isolation_2n7002dw",
+    "desc": "背靠背双 NMOS I2C 总线隔离/热插拔开关(StickS3 I2C HOT PLUGIN):每根 I2C 线用一颗 2N7002DW 双管的两只 NMOS 串联(源-源或漏-漏对接),两只栅极分别接两个电源域的 3V3 轨——每一侧域断电时,该侧 NMOS 栅极随之掉电截止,把本侧从中间节点断开,实现双向域隔离;只在被门控的隔离侧(AUDIO 域)各挂一颗 2.2k 上拉,主侧上拉由宿主总线提供。兼具 NMOS 电平转换能力(AN10441 衍生)",
+    "category": "mcu-support",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_04)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "Q_SCL": {
+        "part": "mosfet.2n7002dw",
+        "qty": 1,
+        "note": "SCL 线隔离开关(StickS3 封装 Q4,2N7002DW SOT-363 双管)。双管的两只 NMOS 串联:隔离侧管(Q4A,脚 1/6/2)源=隔离侧总线、漏=中间节点、栅(脚2)→隔离侧轨 VDD_B;主侧管(Q4B,脚 3/4/5)漏=中间节点、源=主侧总线、栅(脚5)→主侧轨 VDD_A。功能脚名(S_ISO/D_ISO/G_ISO/S_MAIN/D_MAIN/G_MAIN)对应观测脚号 1/6/2 / 4/3/5,放置前 sch read --probe 核对真实符号脚名再 remap;S/D 互换对通断对称,但体二极管方向由器件固定,以真机为准。"
+      },
+      "Q_SDA": {
+        "part": "mosfet.2n7002dw",
+        "qty": 1,
+        "note": "SDA 线隔离开关(StickS3 封装 Q5,2N7002DW SOT-363 双管),接法同 Q_SCL:隔离侧管 Q5B、主侧管 Q5A 串联,两栅分接 VDD_B / VDD_A。"
+      },
+      "R_SCL": {
+        "part": "res.2k2_0402",
+        "qty": 1,
+        "note": "隔离侧(可门控 AUDIO 域)SCL 上拉到 VDD_B(StickS3 R33,3V3_L3B_AU)。隔离侧断电时该上拉随域掉电,隔离管截止,不回灌主侧。主侧(G48_SCL)上拉不在本块——由宿主主总线提供(StickS3 见 Core MCU R38 / ESP32 块 I2C 上拉)。"
+      },
+      "R_SDA": {
+        "part": "res.2k2_0402",
+        "qty": 1,
+        "note": "隔离侧 SDA 上拉到 VDD_B(StickS3 R34,3V3_L3B_AU),同 R_SCL。"
+      }
+    },
+    "ports": {
+      "I2C_SCL_A": {
+        "dir": "bidir",
+        "at": "Q_SCL.S1",
+        "desc": "主侧(常开域)SCL 总线——接常开主 I2C(StickS3 G48_SCL,3V3_L2 域);主侧管源极,本块不含主侧上拉(由宿主提供)",
+        "default_net": "I2C_SCL_A"
+      },
+      "I2C_SCL_B": {
+        "dir": "bidir",
+        "at": "Q_SCL.S2",
+        "desc": "隔离侧(可门控 AUDIO 域)SCL 总线——接被门控外设 I2C(StickS3 AUDIO_I2C_SCL,3V3_L3B_AU 域 codec);隔离侧管源极,块内已 2.2k(R33)上拉到 VDD_B",
+        "default_net": "I2C_SCL_B"
+      },
+      "I2C_SDA_A": {
+        "dir": "bidir",
+        "at": "Q_SDA.S1",
+        "desc": "主侧 SDA 总线——接常开主 I2C(StickS3 G47_SDA);主侧管源极,本块不含主侧上拉",
+        "default_net": "I2C_SDA_A"
+      },
+      "I2C_SDA_B": {
+        "dir": "bidir",
+        "at": "Q_SDA.S2",
+        "desc": "隔离侧 SDA 总线——接被门控外设 I2C(StickS3 AUDIO_I2C_SDA);块内已 2.2k(R34)上拉到 VDD_B",
+        "default_net": "I2C_SDA_B"
+      },
+      "VDD_A": {
+        "dir": "in",
+        "at": "Q_SCL.G1",
+        "desc": "主侧域轨(StickS3 3V3_L2 常开)——两颗主侧串联管的共栅参考;该域上电时主侧管导通,把主侧总线接入中间节点",
+        "default_net": "3V3"
+      },
+      "VDD_B": {
+        "dir": "in",
+        "at": "Q_SCL.G2",
+        "desc": "隔离侧域轨(StickS3 3V3_L3B_AU 可被 PMIC 门控)——两颗隔离侧串联管的共栅参考 + 隔离侧一对 2.2k 上拉的公共上拉端;该域断电即隔离管截止,实现域隔离",
+        "default_net": "3V3_ISO"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.ina226_power_monitor",
+    "desc": "INA226 高侧电流/电压/功率监测(I2C):10mΩ 2512 采样电阻串在电池/电源主路,MCU 读实时电流·总线电压·功率——Flipper Zero『屏幕上看待机功耗』同款思路的通用化最小实现;0.25mA/LSB,mA 级待机可测(µA 级深睡电流测不了,见 notes)",
+    "category": "sensing",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.14.1",
+    "updated": "v0.14.1",
+    "source": "datasheet:INA226 (TI SBOS547) 外围明文(VS 0.1µF 去耦/地址表/CAL 公式 0.00512/(Current_LSB×Rshunt)) + design-pattern:Flipper Zero 电源监测(BQ25896 充电 + BQ27220 库仑计电量计,shunt 串电池负极低侧)的通用化——改用高侧 shunt+INA226 使 GND 不被抬升、任意轨可测。选型与脚名 2026-07-19 ceshi 真机核对",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "not_tested"
+      },
+      "bringup": {
+        "status": "not_tested"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_VS": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VS+ 电源去耦,datasheet 明文 0.1µF 就近。"
+      },
+      "R_ALERT": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "Alert 开漏低有效,上拉到 VS。可配过流/过压/欠压/功率超限/转换完成告警;不用告警功能时可删本件并 NC 该脚。"
+      },
+      "R_SCL": {
+        "part": "res.4k7_0402",
+        "qty": 1,
+        "note": "SCL 上拉,同 R_SDA。"
+      },
+      "R_SDA": {
+        "part": "res.4k7_0402",
+        "qty": 1,
+        "note": "SDA 上拉到 VS。⚠宿主 I2C 总线已有上拉(如与 AXP2101/其它 I2C 块同总线)时删除本对,避免并联过强。"
+      },
+      "R_SHUNT": {
+        "part": "res.shunt_10mr_2512",
+        "qty": 1,
+        "note": "10mΩ 1% 1W 2512 采样电阻,±15ppm/℃ 低温漂(测量级,普通厚膜 ±500ppm 会随温度漂 mA 级)。串在被测主路(电池正极/电源轨)。10mΩ → 满量程 ±8.19A,压降 10mV@1A 可忽略;1W 额定≈10A 裕量。"
+      },
+      "U": {
+        "part": "ic.ina226_msop10",
+        "qty": 1,
+        "note": "INA226 高侧电流/功率监测,MSOP-10,I2C(A0=A1=GND → 7-bit 0x40)。差分输入 ±81.92mV 满量程,16-bit,2.5µV/LSB;VBUS 引脚独立测总线电压 0-36V;内置电流×电压=功率寄存器。脚名经 ceshi sch read 实测:A1/A0/Alert/SDA/SCL/VS+/GND/VBUS/VIN-/VIN+。"
+      }
+    },
+    "ports": {
+      "ALERT_N": {
+        "dir": "out",
+        "at": "U.Alert",
+        "desc": "开漏低有效告警/转换完成中断(可选,接 MCU GPIO;不用可 NC)",
+        "default_net": "INA_ALERT"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND",
+        "desc": "参考地(A0/A1 同接地 → 地址 0x40)",
+        "default_net": "GND"
+      },
+      "I2C_SCL": {
+        "dir": "bidir",
+        "at": "U.SCL",
+        "desc": "I2C 时钟(≤2.94MHz)",
+        "default_net": "SCL"
+      },
+      "I2C_SDA": {
+        "dir": "bidir",
+        "at": "U.SDA",
+        "desc": "I2C 数据(7-bit 0x40,A0/A1 改接 VS/SDA/SCL 可扩到 0x4F 共 16 址)",
+        "default_net": "SDA"
+      },
+      "VBAT_IN": {
+        "dir": "in",
+        "at": "R_SHUNT.1",
+        "desc": "被测电源输入侧(电池+/上游轨)——电流从这里流经 shunt 到 VOUT,放电方向读数为正",
+        "default_net": "VBAT"
+      },
+      "VOUT": {
+        "dir": "out",
+        "at": "R_SHUNT.2",
+        "desc": "负载侧输出(接系统电源树入口);VBUS 引脚绑在此侧 → 功率寄存器读的是负载功率",
+        "default_net": "VSYS"
+      },
+      "VS": {
+        "dir": "in",
+        "at": "U.VS+",
+        "desc": "芯片供电 2.7-5.5V(与被测路独立,共模 0-36V 可测高于 VS 的轨);也是 I2C/Alert 上拉参考轨",
+        "default_net": "+3V3"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.ir_txrx_remote",
+    "desc": "红外遥控收发单元:VSOP38338 38kHz 红外接收头(OUT 串阻+下拉→MCU)+ IR928 红外发射管由 2N7002 NMOS 低边驱动(限流+栅极串阻/下拉)。两半独立,任一半不用可 DNF;VCC 从 5V 供电,接收解码须走 MCU RMT 外设",
+    "category": "comms",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_05)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_RX": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "接收头 VCC 去耦(原理图 C2 10uF),就近 U_RX 电源脚放置,抑制供电纹波(红外接收头对电源噪声敏感)。"
+      },
+      "D_TX": {
+        "part": "led.ir928_emitter",
+        "qty": 1,
+        "note": "IR928-6C/F1 红外发射管;阳极接 5V(VCC),阴极经限流电阻→MOSFET 漏极,低边驱动。"
+      },
+      "Q_TX": {
+        "part": "mosfet.2n7002",
+        "qty": 1,
+        "note": "发射 LED 低边驱动 NMOS(原理图 Q1);漏极接 LED 阴极侧,源极接地,栅极由 MCU 经串阻驱动。"
+      },
+      "R_RX_PD": {
+        "part": "res.20k_0402",
+        "qty": 1,
+        "note": "接收下拉 20K(原理图 R5),接在串阻 R6 之后的 MCU/LED_RX 节点(非 OUT 直下拉),与 R6 构成 10K/20K 分压并保证空闲电平确定。"
+      },
+      "R_RX_S": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "接收 OUT 串阻(原理图 R6),接到 MCU 侧,限制边沿电流/做简单 RC。"
+      },
+      "R_TX_G": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "栅极下拉 10K(原理图 R1),MCU 复位/悬空时保证 NMOS 关断,LED 不误发。"
+      },
+      "R_TX_GS": {
+        "part": "res.22r_0402",
+        "qty": 1,
+        "note": "栅极串阻 22R(原理图 R3),抑制栅极振铃/EMI 与开关沿。"
+      },
+      "R_TX_LED": {
+        "part": "res.10r_0402",
+        "qty": 1,
+        "note": "发射 LED 限流 10R(原理图 R2),设脉冲电流(红外发射为短脉冲,峰值电流较大)。"
+      },
+      "U_RX": {
+        "part": "ic.vsop38338",
+        "qty": 1,
+        "note": "VSOP38338 38kHz 红外接收头(带内置 38kHz 载波解调),常供电,OUT 空闲高、收到调制载波拉低;脚名(VCC/GND/OUT)放置前 sch read 核对。"
+      }
+    },
+    "ports": {
+      "GND": {
+        "dir": "in",
+        "at": "U_RX.GND*",
+        "desc": "地;接收头 GND、去耦、下拉、栅极下拉、NMOS 源极的公共回流",
+        "default_net": "GND"
+      },
+      "IR_RX": {
+        "dir": "out",
+        "at": "R_RX_S.2",
+        "desc": "红外接收头解调输出 → MCU(本板 G42_IR_RX,经 LED_RX);块内已串阻+20K 下拉;解码须走 MCU RMT 外设,不支持 GPIO 软解",
+        "default_net": "IR_RX"
+      },
+      "IR_TX": {
+        "dir": "in",
+        "at": "R_TX_GS.1",
+        "desc": "MCU → 红外发射驱动(本板 G46_IR_TX,经 LED_TX);经 22R 栅极串阻进 NMOS 栅极,高电平点亮红外 LED",
+        "default_net": "IR_TX"
+      },
+      "VCC": {
+        "dir": "in",
+        "at": "U_RX.VS",
+        "desc": "5V 供电(本板 5V_VBUS,由 EXT_5V 使能后才有,注意 EXT_5V_EN 供电模式);同时给接收头 VCC 与发射 LED 阳极",
+        "default_net": "5V"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.lc29h_dr_gnss_frontend",
+    "desc": "LC29H(BA/CA) 双频 DR GNSS 前端:供电/去耦 + V_BCKP 常开 + 有源天线 bias-tee(⚠馈电源是模组 VDD_RF 输出——VDD_EXT/VDD_RF 都是输出脚,接成 3V3 输入=评审 P0 级错误)+ RF ESD/pi 占位 + UART/PPS/RST 边界",
+    "category": "rf",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:LC29H (Quectel LC29H Series Hardware Design V1.2 — pin7 VDD_EXT=2.8V 电源输出/pin9 VDD_RF=随 VCC 输出供有源天线馈电;有源天线参考电路 限流+RF扼流+隔直+ESD) ; 两处输出脚误接与缺失 bias-tee 由 motobox 车机V2 设计评审(P0,对照官方 HW Design 复核确认)修正后在 车机V2-fable P3 整板落网",
+    "parts": {
+      "ANT": {
+        "part": "conn.ufl_rf_smt1",
+        "qty": 1,
+        "note": "U.FL 天线座: SIN(2)=信号, GND(1,3)。配 L1+L5 双频有源天线(偏压与 VDD_RF 电压匹配)。"
+      },
+      "C_BLK": {
+        "part": "cap.100pf_0402",
+        "qty": 1,
+        "note": "RF 隔直(模组内置隔直则换 0R——按 HW Design 终核)。"
+      },
+      "C_EXT": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD_EXT(2.8V **输出**)去耦——该脚只作 D_SEL 等 strap 的上拉源,⚠禁止接 3V3。"
+      },
+      "C_PI1": {
+        "part": "cap.100pf_0402",
+        "qty": 1,
+        "note": "pi 匹配并联占位1,DNP。"
+      },
+      "C_PI2": {
+        "part": "cap.100pf_0402",
+        "qty": 1,
+        "note": "pi 匹配并联占位2,DNP。"
+      },
+      "C_RF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VDD_RF(天线馈电 **输出**)去耦——⚠禁止接 3V3(会反灌内部 LDO)。"
+      },
+      "C_VCC": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "VCC 体电容。"
+      },
+      "C_VCC_HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VCC 高频。"
+      },
+      "D_ESD": {
+        "part": "esd.esd9b5v0_sod923",
+        "qty": 1,
+        "note": "天线口 ESD 占位。⚠ESD9B5.0ST5G 结电容为多 pF 级,**不满足网表 <0.5pF 的 RF 规格**(L1 1575M/L5 1176M 下多 pF 对地=馈线低阻抗旁路)——RF 签核前必须换真 <0.5pF 件(TPD1E0B04/PESD0402-140 类),换型后入 standard-parts 并更新本块。双向件方向无关,贴连接器。"
+      },
+      "L_ANT": {
+        "part": "ind.33nh_0402",
+        "qty": 1,
+        "note": "宽带 RF 扼流(27-47nH): 直流馈电通过、L1(1575M)/L5(1176M) 射频隔离(双频通过性终核)。"
+      },
+      "R_ANT": {
+        "part": "res.10r_0402",
+        "qty": 1,
+        "note": "天线馈电限流(VDD_RF→扼流→天线;天线短路时保护模组)。"
+      },
+      "R_PI": {
+        "part": "res.0r_0402",
+        "qty": 1,
+        "note": "pi 匹配串联占位(0R 起步,实测天线阻抗后替换)。"
+      },
+      "U": {
+        "part": "gnss.lc29h_ba_smd24",
+        "qty": 1,
+        "note": "LC29H-BA(开发)/CA(量产降本,引脚协议兼容——采购只认 BA/CA 后缀,AA 无 DR)。功能脚(sch read 实测): WAKEUP(1)/FWD(2)/1PPS(3)/WHEELTICK(4)/D_SEL1(5)/D_SEL2(6)/VDD_EXT(7)/RESET_N(8)/VDD_RF(9)/RF_IN(11)/ANT_ON(14)/TXD2,RXD2(15,16)/WI(17)/I2C(18,19)/TXD1(20)/RXD1(21)/V_BCKP(22)/VCC(23)/GND(10,12,13,24)。"
+      }
+    },
+    "ports": {
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND*",
+        "desc": "地(4 脚同名一并;天线座地一并)",
+        "default_net": "GND"
+      },
+      "PPS": {
+        "dir": "out",
+        "at": "U.1PPS",
+        "desc": "1PPS 时间脉冲→MCU 中断脚(UTC 时间锚/IMU 时间同步)",
+        "default_net": "GNSS_PPS"
+      },
+      "RESET_N": {
+        "dir": "in",
+        "at": "U.RESET_N",
+        "desc": "复位(低有效,内部上拉)——MCU 侧开漏驱动;门控断电时同样三态",
+        "default_net": "GNSS_RST"
+      },
+      "RXD": {
+        "dir": "in",
+        "at": "U.RXD1/SPI_MOSI",
+        "desc": "UART RX ←MCU TX。⚠VCC 被门控断电时 MCU 必须三态此线(防经 IO 钳位反灌)",
+        "default_net": "GNSS_RXD"
+      },
+      "TXD": {
+        "dir": "out",
+        "at": "U.TXD1/SPI_MISO",
+        "desc": "UART TX(NMEA/$PQTM DR 报文)→MCU RX",
+        "default_net": "GNSS_TXD"
+      },
+      "VBCKP": {
+        "dir": "in",
+        "at": "U.V_BCKP",
+        "desc": "RTC/星历保持——接**常开**轨(不跟 VCC 一起被门控),断电后热启动/DR 状态保持靠它",
+        "default_net": "+3V3"
+      },
+      "VCC": {
+        "dir": "in",
+        "at": "U.VCC",
+        "desc": "主供电 3.3V。待机要断电的设计经 block.pmos_highside_softstart 门控此口(几十 mA 的 GNSS 常开会吃光备份电池)",
+        "default_net": "+3V3_GNSS"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.led_indicator_gpio",
+    "desc": "GPIO 驱动 LED 指示灯(高边:GPIO 高=亮)+ 限流电阻;需在 LED 旁丝印标 +/- 极性",
+    "category": "indicator",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "Codex"
+    ],
+    "added": "v0.9.0",
+    "updated": "v1.7.1-dev.11",
+    "source": "common-practice + examples/esp32-mini(验证回归板 LED1/R1:GPIO→R→LED 阳极→GND)。限流 R = (Vgpio − Vf) / I_led。",
+    "parts": {
+      "LED": {
+        "part": "led.yellow_0805",
+        "alt": [
+          "led.yellow_0805"
+        ],
+        "qty": 1,
+        "note": "指示 LED, 0805。脚:1='+'(阳极), 2='−'(阴极)。C2296 / KT-0805Y 是黄色，手册 p3 在25°C、IF=10mA列 Vf=1.8–2.4V；换灯色或具体器件须按其手册重算限流 R。"
+      },
+      "R": {
+        "part": "res.1k_0402",
+        "alt": [
+          "res.10k_0402"
+        ],
+        "qty": 1,
+        "note": "限流电阻。3.3V GPIO 驱动所选黄色 LED，用手册10mA下的Vf作初步估算，R=1k、Vf=1.8–2.4V 时 估算 I≈0.9–1.5mA；这不是1mA条件下保证范围，真实电流还受 GPIO 压降和器件I-V曲线影响。调整亮度时核对 GPIO/LED 额定值并重算 R。"
+      }
+    },
+    "ports": {
+      "CTRL": {
+        "dir": "in",
+        "at": "R.1",
+        "desc": "→ 主控 GPIO(高边驱动:GPIO 输出高=LED 亮, 低=灭)。接任意可用 GPIO",
+        "default_net": "LED_CTRL"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "LED.-",
+        "desc": "系统地(LED 阴极侧)",
+        "default_net": "GND"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.lgs4056_liion_charge_path",
+    "desc": "LGS4056 单节锂电线性充电(TP4056 类)+ CH213K 双路理想二极管电源路径 OR(输入 5V ↔ 电池)+ CJ3439 双 P-MOSFET 门控电池电压 ADC 采样分压——完整锂电管理前端;是 bq24074 集成式 power-path 充电器的分立替代方案,更省成本/更灵活。draft:引脚按功能名绑定,待真机 --probe + block-apply 网表对账后升 verified。",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_03)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_ADC": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "ADC 采样电容(C30 100nF),靠 MCU ADC 引脚放置(原理图注 “ADC电容靠近引脚放置”)。"
+      },
+      "C_BAT": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "BAT/电池侧电容(C26 22uF),稳压电池节点。"
+      },
+      "C_IN": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "VCC 充电输入电容(C22 22uF),就近 LGS4056 输入脚。"
+      },
+      "Q_ADC_A": {
+        "part": "mosfet.cj3439kdw",
+        "qty": 1,
+        "note": "CJ3439KDW 双 P-MOSFET(一封装两管 Q2A/Q2B)——电池电压 ADC 采样两管级联高边开关(非单管):Q2A 由 VBAT_ADC_EN 门控做电平反相(源接 GND、漏拉 Q2B 栅),R15(100K)把 Q2B 栅上拉到 VBAT_L0 使默认关断;Q2A 导通时拉低 Q2B 栅,Q2B(高边 P-MOS,源接 VBAT_L0)导通把 VBAT 送入 R23/R24 分压。睡眠时 EN 撤去,Q2B 关断断开分压回路省 µA 级漏电。internal_nets 用 A_/B_ 前缀区分两管的 G/S/D,真机 sch read/--probe 必须核对 CJ3439KDW 六脚符号真实脚名再绑定(本前缀为草稿占位)。 (CJ3439KDW 双管;库符号为单管3脚 G1/S1/D1,双管靠放两次:A/B 共 SOT-363 一封装,BOM 实为 1 颗)"
+      },
+      "Q_ADC_B": {
+        "part": "mosfet.cj3439kdw",
+        "qty": 1,
+        "note": "CJ3439KDW 第二管(与 Q_ADC_A 同一物理 SOT-363 双管封装的另一半);高边通路管"
+      },
+      "R_ADC_G": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "ADC 采样门栅极电阻(R9 10K)。"
+      },
+      "R_ADC_H": {
+        "part": "res.1k_0402",
+        "qty": 1,
+        "note": "VBAT_ADC 上分压电阻(R23 1K);与 R_ADC_L 组成 1:1 分压(VBAT/2)供 MCU ADC。"
+      },
+      "R_ADC_L": {
+        "part": "res.1k_0402",
+        "qty": 1,
+        "note": "VBAT_ADC 下分压电阻(R24 1K)。"
+      },
+      "R_CE": {
+        "part": "res.1m_0402",
+        "qty": 1,
+        "note": "CE 充电使能电阻(R18 1M);充电使能由 PMIC 控制(CHG_EN)。"
+      },
+      "R_HS": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "Q2B 高边 P-MOS 栅极上拉到 VBAT_L0(R15 100K);默认关断采样管,Q2A 导通时被拉低开启。此电阻此前草稿漏画,是采样门能否工作的关键件。"
+      },
+      "R_PROG": {
+        "part": "res.4k7_0402",
+        "qty": 1,
+        "note": "充电电流编程电阻(R12 4.7K → 约 190mA)。Iset=Vprog/Rprog×倍率,阻值→电流换算按 LGS4056 datasheet 核对。"
+      },
+      "R_STAT": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "CHRG 开漏充电状态上拉到 3V3(R16 100K);充电状态回读到 PMIC/MCU(PYG0_CHG_STAT)。"
+      },
+      "U_CHG": {
+        "part": "ic.lgs4056",
+        "qty": 1,
+        "note": "LGS4056 单节锂电线性充电 IC(TP4056 类);PROG 电阻设充电电流、CE 使能、CHRG 开漏状态。脚名(VCC/BAT/PROG/CE/CHRG/GND/EP)放置前按 LGS4056 datasheet + sch read 核对。"
+      },
+      "U_PP1": {
+        "part": "ic.ch213k",
+        "qty": 1,
+        "note": "CH213K 理想二极管/负载开关(U13):输入 5V(Internal_5V)→ 系统轨一路。真机脚名(原理图对标)= VIN/VOUT/GND 三脚(非 IN/OUT,无 EN);放置前 sch read 复核。"
+      },
+      "U_PP2": {
+        "part": "ic.ch213k",
+        "qty": 1,
+        "note": "CH213K 理想二极管/负载开关(U14):电池 VBAT → 系统轨另一路。与 U_PP1 输出 OR 到系统轨实现输入↔电池无缝切换。脚名 VIN/VOUT/GND(同 U_PP1)。"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "in",
+        "at": "R_STAT.2",
+        "desc": "3V3 状态上拉轨,供 CHRG 开漏状态上拉",
+        "default_net": "3V3"
+      },
+      "CHG_EN": {
+        "dir": "in",
+        "at": "U_CHG.CE",
+        "desc": "充电使能(CE,由 PMIC 控制);经 R_CE(1M)接使能信号",
+        "default_net": "CHG_EN"
+      },
+      "CHG_STAT": {
+        "dir": "out",
+        "at": "U_CHG.CHRG",
+        "desc": "充电状态开漏输出(PYG0_CHG_STAT),块内已经 R_STAT(100K)上拉到 3V3,回读到 PMIC/MCU",
+        "default_net": "CHG_STAT"
+      },
+      "GND": {
+        "dir": "in",
+        "at": "U_CHG.GND",
+        "desc": "地:充电 IC GND/EP、输入输出电容、PROG、ADC 下分压/滤波回流公共地",
+        "default_net": "GND"
+      },
+      "VBAT": {
+        "dir": "bidir",
+        "at": "U_CHG.BAT",
+        "desc": "单节锂电池正极:充电时 LGS4056 输出到此,放电时经 U_PP2 进系统轨,并作为 ADC 采样门输入",
+        "default_net": "VBAT"
+      },
+      "VBAT_ADC": {
+        "dir": "out",
+        "at": "R_ADC_H.2",
+        "desc": "电池电压分压采样输出(VBAT/2)→ MCU ADC;门控开启时有效,C_ADC 靠 ADC 脚滤波",
+        "default_net": "VBAT_ADC"
+      },
+      "VBAT_ADC_EN": {
+        "dir": "in",
+        "at": "Q_ADC_A.G1",
+        "desc": "电池 ADC 采样门控使能:控制 CJ3439 双 P-MOSFET,睡眠时断开分压回路避免常态漏电",
+        "default_net": "VBAT_ADC_EN"
+      },
+      "VIN_5V": {
+        "dir": "in",
+        "at": "U_CHG.VCC",
+        "desc": "充电/系统输入 5V(本板 Internal_5V):既做 LGS4056 充电输入,也经 U_PP1 理想二极管进系统轨",
+        "default_net": "Internal_5V"
+      },
+      "VSYS": {
+        "dir": "out",
+        "at": "U_PP1.VO-",
+        "desc": "系统电源轨(本板 VBUS_L0):U_PP1(输入 5V)与 U_PP2(电池)两路理想二极管 OR 输出,输入↔电池无缝切换",
+        "default_net": "VBUS_L0"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.mems_mic_analog",
+    "desc": "模拟 MEMS 麦克风(MSM381A3729H9BPC,底进声):单端 OUT 经 0R(R48)接 codec MIC1P,MIC1N 经 0R(R49)接模拟地基准(pin3 GND,再经 R26 0R 单点桥到 AGND)构成伪差分;VDD 由 3V3_L3B_AU 经 R52(100R)+C65(100nF) RC 滤波供电。信噪比 65dB。",
+    "category": "audio",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_04)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_VDD": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "mic VDD 去耦/RC 滤波帽(StickS3 C65 100nF),VDD 滤波节点 → AGND,最靠 mic 电源脚。"
+      },
+      "R_FILT": {
+        "part": "res.100r_0402",
+        "qty": 1,
+        "note": "VDD 供电 RC 滤波串阻(StickS3 R52,100R/1%),3V3_L3B_AU 经此 + C65(100nF)到 AGND 构成 RC 低通,滤除电源噪声再进 mic VDD。注:原草稿误标为 100K 偏置电阻,实测原理图为 100R 供电滤波,与 MIC1_N 无连接。"
+      },
+      "R_OUT": {
+        "part": "res.0r_0402",
+        "qty": 1,
+        "note": "mic OUT(pin4) → MIC1_P 的 0R 跳线(StickS3 R48),便于调试改接法/断开测量。"
+      },
+      "R_REF": {
+        "part": "res.0r_0402",
+        "qty": 1,
+        "note": "MIC1_N 参考端 0R 跳线(StickS3 R49),把 mic 的 pin3 GND 基准引到 codec 的 MIC1N 参考脚,构成伪差分(MIC1N = mic 地基准,不是 VDD 偏置)。"
+      },
+      "U": {
+        "part": "mic.msm381a3729",
+        "qty": 1,
+        "note": "MSM381A3729H9BPC 模拟 MEMS 麦克风(底进声),单端模拟输出,信噪比 65dB。符号 4 脚:OUT(pin4)/VDD(pin1)/GND(pin3)/GND(pin2)——两个 GND 脚接**不同网络**(pin3=MIC_N 基准侧、pin2=去耦回流侧,间隔 R26 0R 单点桥),放置前先 sch read 拉真实符号脚名/脚号再绑定,别照抄功能名。"
+      }
+    },
+    "ports": {
+      "AGND": {
+        "dir": "in",
+        "at": "U.GND*",
+        "desc": "模拟地;mic pin2 GND + C_VDD 去耦回流 + R_S 单点桥另一端汇于此",
+        "default_net": "AGND"
+      },
+      "MIC_N": {
+        "dir": "out",
+        "at": "R_REF.2",
+        "desc": "mic 地基准端经 R_REF 0R 跳线 → codec MIC1N(伪差分参考/负)",
+        "default_net": "MIC1_N"
+      },
+      "MIC_P": {
+        "dir": "out",
+        "at": "R_OUT.2",
+        "desc": "麦克风单端输出经 R_OUT 0R 跳线 → codec MIC1P(伪差分正)",
+        "default_net": "MIC1_P"
+      },
+      "VDD": {
+        "dir": "in",
+        "at": "R_FILT.1",
+        "desc": "麦克风模拟供电入口,接干净音频轨 3V3_L3B_AU;块内经 R_FILT(100R)+C_VDD(100nF) RC 滤波再进 mic VDD 脚",
+        "default_net": "3V3_L3B_AU"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.microsd_spi_pushpush",
+    "desc": "microSD 自弹(push-push)卡座 SPI 模式接口:CMD/DAT0-3 全 10k 上拉(含未用 DAT1/DAT2)+ 10uF/0.1uF 卡供电去耦,3.3V 主机",
+    "category": "comms",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.9.0",
+    "updated": "v0.9.0",
+    "source": "official-ref:Espressif ESP-IDF —— SD 上拉要求 https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/sd_pullup_requirements.html + sdspi 例程 README https://github.com/espressif/esp-idf/tree/master/examples/storage/sd_card/sdspi(CMD/DAT0-3 全上拉、CD 可不接);去耦值取自 Adafruit #4682 microSD SPI/SDIO breakout 原理图 https://github.com/adafruit/Adafruit-MicroSD-SPI-or-SDIO-card-breakout-PCB(C1=10uF/C2=0.1uF)。拓扑权威来源见 showcase/001-esp32-barrier/reference-circuits.json circuits.microsd(confidence: authoritative)",
+    "parts": {
+      "C_BULK": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "卡 VDD 体电容,贴近 J_SD.VDD(Adafruit #4682 C1=10uF/0805;10uF 未确认 0402 可靠料,保留 0805)"
+      },
+      "C_HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "卡 VDD 高频去耦,最靠卡电源脚(Adafruit #4682 C2=0.1uF,原板 0603,本库降到 0402 默认,电气无碍)"
+      },
+      "J_SD": {
+        "part": "conn.tf_socket_pushpush",
+        "qty": 1,
+        "note": "microSD 自弹(push-push)卡座,8 触点 + 卡检测开关。SPI 模式映射:DAT3=CS、CMD=MOSI(DI)、CLK=SCK、DAT0=MISO(DO);外壳/屏蔽/固定脚接 GND。footprint=TF-SMD_TF-012,实际 pad 名随座子变,放置前用 sch read 核对映射。"
+      },
+      "R_CS": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "SD_CS(DAT3)上拉到 3V3 —— Espressif 要求 CMD/DAT0-3 每根都上拉"
+      },
+      "R_DAT1": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "未用 DAT1 上拉到 3V3;即使不接 host 也必须拉(Espressif 官方要求)"
+      },
+      "R_DAT2": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "未用 DAT2 上拉到 3V3;即使不接 host 也必须拉(Espressif 官方要求)"
+      },
+      "R_MISO": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "SD_MISO(DAT0)上拉到 3V3;卡初始化前保持 DO 电平确定"
+      },
+      "R_MOSI": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "SD_MOSI(CMD)上拉到 3V3;ESP-IDF sdspi 例程明确要求 CMD 10k"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "in",
+        "at": "J_SD.VDD",
+        "desc": "3.3V 卡供电轨;5 个上拉的公共端 + 10uF/0.1uF 去耦入口",
+        "default_net": "3V3"
+      },
+      "GND": {
+        "dir": "in",
+        "at": "J_SD.VSS",
+        "desc": "地;卡 VSS + 去耦回流,外壳/屏蔽脚也接此",
+        "default_net": "GND"
+      },
+      "SD_CS": {
+        "dir": "in",
+        "at": "J_SD.CD/DAT3",
+        "desc": "主机 SPI 片选 (CS/SS) → 卡 DAT3;块内已 10k 上拉到 3V3",
+        "default_net": "SD_CS"
+      },
+      "SD_MISO": {
+        "dir": "out",
+        "at": "J_SD.DAT0",
+        "desc": "卡 DAT0 (DO) → 主机 SPI MISO;块内已 10k 上拉到 3V3",
+        "default_net": "SD_MISO"
+      },
+      "SD_MOSI": {
+        "dir": "in",
+        "at": "J_SD.CMD",
+        "desc": "主机 SPI MOSI (DI) → 卡 CMD;块内已 10k 上拉到 3V3",
+        "default_net": "SD_MOSI"
+      },
+      "SD_SCK": {
+        "dir": "in",
+        "at": "J_SD.CLX",
+        "desc": "主机 SPI 时钟 → 卡 CLK;Espressif 不要求 SCK 上拉,本块未装(要对齐 Adafruit 再补 10k)",
+        "default_net": "SD_SCK"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.opto_acc_ign_detect",
+    "desc": "车载 ACC/点火检测前端(PTC+TVS+限流+光耦隔离+RC 硬化): 12-24V 点火线安全进 MCU GPIO,低有效;strapping 脚可用",
+    "category": "sensing",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:LTV-817 (Liteon — 光耦 CTR 特性/IF 工作点) + motobox IGNITION_DETECT_INPUT_DESIGN(项目级隔离硬化设计文档: PTC/TVS/RC 要求) ; 限流值经车机V2 二轮复核推导(22k 在 12V 下 IF 仅 0.49mA,无 CTR 分档不保拉低;10k/0805 兼顾 12V 1.08mA 与 24V 52mW)后在 车机V2-fable P4 整板落网",
+    "parts": {
+      "C_F": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "GPIO 端滤波电容(贴 MCU 脚)。"
+      },
+      "D_ACC": {
+        "part": "diode.smbj33a_smb",
+        "qty": 1,
+        "note": "ACC 线浪涌 TVS(点火线毛刺/负载突降): K→信号, A→GND。"
+      },
+      "F_ACC": {
+        "part": "fuse.ptc_1206_500ma",
+        "qty": 1,
+        "note": "ACC 线自恢复保险(线束短路/搭铁保护)。"
+      },
+      "R_LIM": {
+        "part": "res.10k_0805",
+        "qty": 1,
+        "note": "光耦 LED 限流: 12V 时 IF≈1.08mA(无 CTR 分档件也保得住拉低), 24V 时 52mW 在 0805 额定内。⚠不要用 22k——12V 下只有 0.49mA,输出可能拉不到 VIL(评审二轮实证);也不要 0402 小封装——24V 下超额定。"
+      },
+      "R_PU": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "集电极上拉到 MCU 域 3.3V。"
+      },
+      "R_S": {
+        "part": "res.470r_0402",
+        "qty": 1,
+        "note": "GPIO 串阻(与 C_F 组成输出 RC,τ≈47µs 毛刺滤除;strapping 脚要求)。"
+      },
+      "U_OPT": {
+        "part": "opto.ltv817s_smd4",
+        "qty": 1,
+        "note": "光耦隔离(车身电气域↔MCU 域)。符号脚为数字(sch read 实测): 1=阳极A, 2=阴极K, 3=发射极E, 4=集电极C(PC817 标准脚序)。"
+      }
+    },
+    "ports": {
+      "GND": {
+        "dir": "bidir",
+        "at": "U_OPT.3",
+        "desc": "地。注意本块光耦两侧共地(隔离的是电压域与瞬态,不是地隔离);需要真地隔离时输入侧回线单独走",
+        "default_net": "GND"
+      },
+      "IGN_12V": {
+        "dir": "in",
+        "at": "F_ACC.1",
+        "desc": "车辆 ACC/点火线(12-24V,经线束端子进板;配 block.vehicle_input_tps54360_5v 的 IGN_12V 透传口)",
+        "default_net": "IGN_12V"
+      },
+      "IGN_DETECT": {
+        "dir": "out",
+        "at": "R_S.2",
+        "desc": "MCU GPIO,低有效(ACC 通→光耦导通→拉低)。RC 硬化后可安全用在 strapping 脚(如 ESP32-S3 IO3——但该板永不烧 STRAP_JTAG_SEL eFuse);RTC 脚上可做 ext1 ANY_LOW 深睡唤醒(点火即醒)",
+        "default_net": "IGN_DETECT"
+      },
+      "VPULL": {
+        "dir": "in",
+        "at": "R_PU.2",
+        "desc": "输出上拉电源(MCU 域 3.3V)",
+        "default_net": "+3V3"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.pmos_highside_softstart",
+    "desc": "P-MOS 高侧负载开关(GPIO 高有效)+ RC 软启动:门控 GNSS/传感器/外设电源域,防硬开机冲垮主轨 brownout;深睡 hold 低=断电省电",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:SI2301 (Vishay — P 沟道 -20V/-2.3A 低 Vgs(th) 高侧开关典型用法) ; 软启动 RC 参数经 motobox 车机V2 二轮复核推导(硬开机冲 10µF 下游电容会把 3.3V 主轨拉垮 ~0.7V 触发 ESP32 brownout,τ=R_SLEW×C_GS≈1ms 斜坡消除)后在 车机V2-fable P3 整板落网(LC29H GNSS 电源域门控)",
+    "parts": {
+      "C_GS": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "软启动电容(栅-源): 100nF×10k≈1ms 斜坡,限制下游电容充电涌流。"
+      },
+      "Q_N": {
+        "part": "bjt.s8050_sot23",
+        "qty": 1,
+        "note": "NPN 拉低 P-MOS 栅极,使控制为『GPIO 高=开』(直连 GPIO 则为低有效且深睡默认态危险)。"
+      },
+      "Q_P": {
+        "part": "pmos.si2301_sot23",
+        "qty": 1,
+        "note": "高侧 P-MOS: S=输入轨, D=被门控输出, G=控制。功能脚(sch read 实测): G/S/D。选低 Vgs(th) 件保证 3.3V 轨全导通(Vgs≈-3.0V)。"
+      },
+      "R_B": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "Q_N 基极限流。"
+      },
+      "R_GS": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "栅-源上拉: 默认关断(上电/复位/深睡 GPIO 悬空时输出无电)。"
+      },
+      "R_SLEW": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "软启动串阻(Q_N.C→Q_P.G): 与 C_GS 组成 τ≈1ms 栅极斜坡。导通态 V_G≈VIN×R_SLEW/(R_SLEW+R_GS)≈0.3V→Vgs≈-3.0V 充分导通。"
+      }
+    },
+    "ports": {
+      "EN": {
+        "dir": "in",
+        "at": "R_B.2",
+        "desc": "GPIO 控制,高=开。深睡场景: gpio_hold 低电平 = 域断电省电(输出脚不需要 RTC 能力)",
+        "default_net": "PWR_EN"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "Q_N.E",
+        "desc": "参考地",
+        "default_net": "GND"
+      },
+      "VIN": {
+        "dir": "in",
+        "at": "Q_P.S",
+        "desc": "输入电源轨(3.3V/5V 均可;Vgs 导通深度随轨压变化,低于 2.5V 轨需换更低 Vgs(th) 件)",
+        "default_net": "+3V3"
+      },
+      "VOUT": {
+        "dir": "out",
+        "at": "Q_P.D",
+        "desc": "被门控电源域(如 +3V3_GNSS)。下游去耦电容属于负载块,不在本块内",
+        "default_net": "+3V3_SW"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.sdnand_sdmmc_4bit",
+    "desc": "贴片 SD-NAND(4GB LGA-8)SDMMC 4-bit 接口:CMD/DAT0-3 全 10k 上拉 + CLK 22R 串阻 + 去耦;焊死存储消除卡座振动/拔卡失效(车载/穿戴黑盒)",
+    "category": "storage",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:CSNP32GCR01-AOW (雷龙 — LGA-8 SD-NAND, SD 协议 4-bit) + SD 物理层规范(CMD/DAT 上拉要求) ; 容量陷阱(4Gbit≠4GB)与符号脚名实测经 motobox 车机V2 设计评审后在 车机V2-fable P2 整板落网",
+    "parts": {
+      "C_BULK": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "VCC 体电容(写突发 100mA+;1µF 偏小——评审值变更)。"
+      },
+      "C_HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VCC 高频去耦,贴 U.VCC。"
+      },
+      "R_CLK": {
+        "part": "res.22r_0402",
+        "qty": 1,
+        "note": "CLK 串阻(40MHz+ 最易振铃的线;可 0R 起步留位)。"
+      },
+      "R_CMD": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "CMD 上拉(SD 规范必需)。"
+      },
+      "R_D0": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "DAT0 上拉。"
+      },
+      "R_D1": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "DAT1 上拉。"
+      },
+      "R_D2": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "DAT2 上拉。"
+      },
+      "R_D3": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "DAT3 上拉——4-bit 模式使能前先确认它在位(bring-up 检查项)。"
+      },
+      "U": {
+        "part": "storage.sdnand_csnp32g_lga8",
+        "qty": 1,
+        "note": "CSNP32GCR01-AOW 32Gbit=4GB。符号脚名(sch read 实测,非通用编号): SDD2(1)/SDD3(2)/SCLK(3)/VSS(4)/CMD(5)/SDD0(6)/SDD1(7)/VCC(8)。⚠容量陷阱: 型号里 04G 常是 4Gbit=482MB(C47116998 反例,评审实证)——按 BYTES 核 datasheet。"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "in",
+        "at": "U.VCC",
+        "desc": "3.3V 供电(上拉同源)",
+        "default_net": "+3V3"
+      },
+      "CLK": {
+        "dir": "in",
+        "at": "R_CLK.1",
+        "desc": "SDMMC CLK(主控侧;串阻在块内)",
+        "default_net": "SD_CLK"
+      },
+      "CMD": {
+        "dir": "bidir",
+        "at": "U.CMD",
+        "desc": "SDMMC CMD",
+        "default_net": "SD_CMD"
+      },
+      "D0": {
+        "dir": "bidir",
+        "at": "U.SDD0",
+        "desc": "DAT0",
+        "default_net": "SD_D0"
+      },
+      "D1": {
+        "dir": "bidir",
+        "at": "U.SDD1",
+        "desc": "DAT1",
+        "default_net": "SD_D1"
+      },
+      "D2": {
+        "dir": "bidir",
+        "at": "U.SDD2",
+        "desc": "DAT2",
+        "default_net": "SD_D2"
+      },
+      "D3": {
+        "dir": "bidir",
+        "at": "U.SDD3",
+        "desc": "DAT3(1-bit 模式下也需上拉防误入 SPI)",
+        "default_net": "SD_D3"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.VSS",
+        "desc": "地",
+        "default_net": "GND"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.sim_card_6p_socket",
+    "desc": "4G/Cat.1 模组的 6P SIM(UICC)卡座接口:22R 串阻(模组侧)+ 100nF/33pF 去耦与 GSM 抗扰(卡座侧)+ 四路 ESD + DATA 10k 上拉[可 DNF];⚠SIM_VDD 是模组内部 LDO 的**输出**(1.8V/3.0V 自适应,≤10mA),严禁外接 3V3 灌电——与 LC29H 的 VDD_RF 同类陷阱",
+    "category": "comms",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.13.1",
+    "updated": "v0.13.1",
+    "source": "三家模组厂官方硬件设计手册交叉对账(2026-07-16 实取 PDF 逐图核对,取三家共识值): official-ref:合宙 Luat《Air780E 硬件设计手册》V1.3.3(2024-08-13)§3.10 表格9/图表10(6P 卡座参考电路:C1=0.1uF + C5=33pF,C2/C3/C4=33pF,R1/R2/R3=22Ω,R4=10k DATA 上拉,TVS1-4)+ 设计原则 6-10 ; official-ref:Quectel《EC20 R2.1 Hardware Design》V1.2 §3.9 Table 9 + Fig 18(USIM_VDD 100nF,33pF×3,0Ω 串阻『to facilitate debugging』,15K DATA 上拉『can improve anti-jamming capability upon applying of long layout trace』,TVS『parasitic capacitance should not be more than 15pF』,布线 ≤200mm / GND+USIM_VDD ≥0.5mm) ; official-ref:SIMCom《SIM7600 Series Hardware Design》V1.04 §3.5/3.5.1 Table 11-12 + Fig 20(USIM_VDD LDO 输出实测 1.8V 档 1.75-1.95V / 3.0V 档 2.75-3.05V;22Ω 串阻;33pF 位标 NM=不贴;『USIM_DATA has been pulled up with a 10KΩ resistor to USIM_VDD in module』;ESD 推荐 ESDA6V1W5/SMF15C;『the rise time and fall time of USIM_CLK should be less than 40ns』) ; official-ref:合宙官方文档中心 docs.openluat.com/air780eg/at/hardware/design/sim/(原则同上,官方域名佐证) ; official-ref:Silabs AN0820 Table 2.1(ISO 7816 触点定义 C1=Vcc/C2=RST/C3=CLK/C5=GND/C6=Vpp『Usually Not used』/C7=I/O,C4/C8=RFU)。 **本块所有脚名均未经 sch read 核实**(卡座/ESD 符号见 _internal_nets_note)",
+    "parts": {
+      "C_CLK": {
+        "part": "cap.33pf_0402",
+        "qty": 1,
+        "note": "CLK 对地 33pF,贴卡座侧。⚠与 SIM7600 的 40ns 边沿要求相权衡,见 R_CLK 注。"
+      },
+      "C_DAT": {
+        "part": "cap.33pf_0402",
+        "qty": 1,
+        "note": "DATA 对地 33pF,贴卡座侧。"
+      },
+      "C_RST": {
+        "part": "cap.33pf_0402",
+        "qty": 1,
+        "note": "RST 对地 33pF,贴**卡座侧**。用途是滤射频而非去抖 —— EC20 §3.9 原文:『The 33pF capacitors are used for filtering interference of EGSM900』(GSM900 突发被卡内电路整流成干扰)。SIM7600 图 20 此位画 22pF 且标 NM(不贴);纯 LTE Cat.1(无 GSM 回落)场景可评估改 DNF。"
+      },
+      "C_VDD": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "SIM_VDD 去耦 100nF,贴卡座(SIM7600 §3.5.1:『A 100nF capacitor on USIM_VDD is used to reduce interference』;EC20/Air780E 同值)。⚠三家参考电路**均无 1uF** —— 该轨是模组 LDO 输出、限流仅 ~10mA(Air780E 表格9:『最大供电电流 10mA』),不要按普通电源轨的习惯往上堆大容值。"
+      },
+      "C_VDD_HF": {
+        "part": "cap.33pf_0402",
+        "qty": 1,
+        "note": "SIM_VDD 上的 33pF(Air780E 图表10 的 C5),贴卡座。与信号线的 33pF 同理:滤 GSM 突发射频,不是去耦。"
+      },
+      "D_CLK": {
+        "part": "esd.esd9b5v0_sod923",
+        "qty": 1,
+        "note": "CLK 对地 ESD(TVS2),贴卡座侧。"
+      },
+      "D_DAT": {
+        "part": "esd.esd9b5v0_sod923",
+        "qty": 1,
+        "note": "DATA 对地 ESD(TVS1),贴卡座侧。SIM 卡触点直通壳外,是整机最易被手指打 ESD 的口之一,四路一个都别省。"
+      },
+      "D_RST": {
+        "part": "esd.esd9b5v0_sod923",
+        "qty": 1,
+        "note": "RST 对地 ESD(TVS3),贴卡座侧。"
+      },
+      "D_VDD": {
+        "part": "esd.esd9b5v0_sod923",
+        "qty": 1,
+        "note": "SIM_VDD 对地 ESD(Air780E 图表10 的 TVS4),贴卡座。双向件,方向无关。"
+      },
+      "J": {
+        "part": "conn.simcardsocket_sim6p",
+        "qty": 1,
+        "note": "6P SIM(UICC)卡座,暴露 ISO 7816 的 C1/C2/C3/C5/C6/C7,省掉 C4/C8(RFU,8P 件上用作 USB D±)。6P 件**无检测触点**→ 模组的 SIM_DET/USIM_PRESENCE 悬空即可(Quectel §3.9 明文:『If (U)SIM card detection function is not needed, please keep USIM_PRESENCE unconnected』,且该功能默认关闭,需 AT+QSIMDET 开)。要热插拔检测须换 8P 带 SW 触点卡座(Air780E 图表11)。SIMCom §3.5.1 点名可用 Amphenol C707 10M006 512。"
+      },
+      "R_CLK": {
+        "part": "res.22r_0402",
+        "qty": 1,
+        "note": "CLK 串阻 22Ω,放模组侧。⚠SIM7600 §3.5.1 警告:『USIM_CLK is very important signal, the rise time and fall time of USIM_CLK should be less than 40ns, otherwise the USIM card might not be initialized correctly』—— 串阻 + 33pF 会一起吃边沿,若卡初始化失败,优先减小/短接此阻并把 C_CLK 改 DNF。"
+      },
+      "R_DAT": {
+        "part": "res.22r_0402",
+        "qty": 1,
+        "note": "DATA 串阻 22Ω,放模组侧。"
+      },
+      "R_PU": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "DATA → SIM_VDD 上拉 10k,放**卡座侧**(EC20 §3.9:『should be placed close to the (U)SIM card connector』)。**默认贴,但可 DNF** —— 是否必需取决于模组:SIM7600 图 20 注明『USIM_DATA has been pulled up with a 10KΩ resistor to USIM_VDD in module』(内部已有,外部并联成 5k 仍无害);Air780E 图表10 画的是外部 10k;EC20 图 18 画 15k 且定性为可选(『can improve anti-jamming capability upon applying of long layout trace and sensitive occasion』)。**换模组时必查该模组是否内置上拉**。上拉必须到 SIM_VDD,不是 3V3。"
+      },
+      "R_RST": {
+        "part": "res.22r_0402",
+        "qty": 1,
+        "note": "RST 串阻 22Ω,放**模组侧**。取值依据:Air780E 原则9『在模块和SIM卡之间也可以串联 22 欧姆的电阻用以抑制杂散EMI,增强ESD防护』+ SIM7600 图 20 同为 22Ω(2/3 家共识)。Quectel EC20 此位画 0Ω 且理由不同(『to facilitate debugging』的调试跳线位)——22Ω 严格覆盖 0Ω 的意图,故取 22Ω。"
+      }
+    },
+    "ports": {
+      "GND": {
+        "dir": "bidir",
+        "at": "J.GND*",
+        "desc": "地。EC20 §3.9:若板上地平面完整,卡座地可直接接系统地(『If the ground is complete on customers' PCB, USIM_GND can be connected to PCB ground directly』);模组若有专用 USIM_GND 脚则优先接过去",
+        "default_net": "GND"
+      },
+      "SIM_CLK": {
+        "dir": "in",
+        "at": "R_CLK.1",
+        "desc": "时钟 ← 模组 USIM_CLK(模组输出到卡,DO);~4MHz 级,边沿敏感(≤40ns)",
+        "default_net": "SIM_CLK"
+      },
+      "SIM_DATA": {
+        "dir": "bidir",
+        "at": "R_DAT.1",
+        "desc": "数据 ↔ 模组 USIM_DATA/USIM_DAT(半双工 IO)",
+        "default_net": "SIM_DATA"
+      },
+      "SIM_RST": {
+        "dir": "in",
+        "at": "R_RST.1",
+        "desc": "复位 ← 模组 USIM_RST/USIM_RST_N(模组输出到卡,DO)",
+        "default_net": "SIM_RST"
+      },
+      "SIM_VDD": {
+        "dir": "in",
+        "at": "J.VCC",
+        "desc": "卡供电 —— 接模组的 USIM_VDD/SIM_VDD 脚。⚠这是模组**内部 LDO 的输出**(类型 PO),1.8V/3.0V 由模组自动识别卡后选择,限流 ~10mA。**绝不可接 3V3 或任何外部电源轨**(接了=两个源对灌,烧模组 LDO)——与 block.lc29h_dr_gnss_frontend 的 VDD_RF『输出脚被当输入接』属同一类 P0 级评审错误",
+        "default_net": "SIM_VDD"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.sp3485_rs485_halfduplex",
+    "desc": "SP3485 半双工 RS-485 Modbus RTU 现场接口(DE//RE 单 GPIO 收发切换 + 680R 失效安全偏置[默认DNF] + 120R 跳线终端 + SM712 TVS + 3P 端子)",
+    "category": "comms",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.9.0",
+    "updated": "v0.9.0",
+    "source": "datasheet:SP3485 (MaxLinear Rev 2.0.2, https://www.maxlinear.com/ds/sp3485.pdf — 引脚/真值表/封装,75176 pinout) + spec:MODBUS-over-Serial-Line V1.02 (https://www.modbus.org/file/secure/modbusoverserial.pdf — §3.4.5 线路终端 / §3.4.6 极化偏置 / §3.6 电缆与 Common) + datasheet:SM712 (Semtech, https://www.semtech.com/products/circuit-protection/esd-protection/sm712 ; https://docs.rs-online.com/b70c/0900766b81385d5f.pdf) + field-practice:680Ω 偏置常见值 (https://know.innon.com/bias-termination-rs485-network) —— 权威拓扑抄自 showcase/001-esp32-barrier/reference-circuits.json circuits.rs485",
+    "parts": {
+      "C701": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VCC 就近去耦。SP3485 datasheet 无应用电路/电容值,100nF 为通用实践。"
+      },
+      "D701": {
+        "part": "tvs.sm712_sot23",
+        "qty": 1,
+        "note": "RS-485 专用不对称 TVS(+12V/-7V,匹配 SP3485 共模范围)。引脚 1/2=数据线 A/B,引脚 3=GND。紧贴 J4 放置、地回路短。标准库件为 PSM712(SM712 等效)。"
+      },
+      "J4": {
+        "part": "conn.terminal_3p_508",
+        "qty": 1,
+        "note": "3P 5.08mm 螺钉端子 A/B/GND。Modbus §3.6:总线除差分对外须带第三根 Common;§3.4.4:整条总线单点接地。"
+      },
+      "JP701": {
+        "part": "conn.sip2_254",
+        "qty": 1,
+        "note": "终端使能跳线,串在 R703 上;或用焊接短接跳线。仅总线两个物理末端闭合。"
+      },
+      "R701": {
+        "part": "res.680r_0402",
+        "qty": 1,
+        "note": "失效安全偏置上拉 3V3->A。Modbus §3.4.6 每条总线段仅一处极化(通常主站);从站现场设备默认 DNF。与 R702 成对装/成对不装。"
+      },
+      "R702": {
+        "part": "res.680r_0402",
+        "qty": 1,
+        "note": "失效安全偏置下拉 B->GND。同 R701 的装配规则(成对、默认 DNF)。"
+      },
+      "R703": {
+        "part": "res.120r_1206",
+        "qty": 1,
+        "note": "A-B 线路终端电阻,经 JP701 接入。Modbus §3.4.5:仅在总线两个物理末端闭合;1206 取 0.25W 额定。"
+      },
+      "R706": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "RS485_DE 下拉到 GND(~10k),上电/GPIO 高阻时默认进接收模式,避免误占总线。参考电路 warning 的常见实践补件。"
+      },
+      "U7": {
+        "part": "ic.sp3485_sop8",
+        "qty": 1,
+        "note": "3.3V 半双工 RS-485 收发器,SOIC-8,75176 pinout:1=RO 2=/RE 3=DE 4=DI 5=GND 6=A(非反相) 7=B(反相) 8=VCC(datasheet Rev 2.0.2)。内部失效安全:总线开路/短路时 RO=1(Table 2)。MAX3485 同 pinout 3.3V 可直接替换(标准库暂无该 key)。"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "in",
+        "at": "U7.VCC",
+        "desc": "3.3V 供电(SP3485 原生 3V3;C701 就近去耦;若装偏置 R701 上拉也接此)",
+        "default_net": "3V3"
+      },
+      "A": {
+        "dir": "bidir",
+        "at": "U7.A",
+        "desc": "RS-485 总线 A(非反相,芯片惯例);经 JP701 可选 120R 终端 + SM712 保护,落到 J4 端子。丝印警示:与 Modbus/TIA 规范的 A/B 定义相反",
+        "default_net": "RS485_A"
+      },
+      "B": {
+        "dir": "bidir",
+        "at": "U7.B",
+        "desc": "RS-485 总线 B(反相,芯片惯例);同 A 路径。丝印警示:与 Modbus/TIA 规范相反",
+        "default_net": "RS485_B"
+      },
+      "DE_RE": {
+        "dir": "in",
+        "at": "U7.DE",
+        "desc": "MCU GPIO 收发方向控制;DE 与 /RE 并联(高=发送,低=接收),R706 10k 下拉默认上电进接收",
+        "default_net": "RS485_DE"
+      },
+      "DI": {
+        "dir": "in",
+        "at": "U7.DI",
+        "desc": "MCU UART TX -> RS-485 驱动输入(DI)",
+        "default_net": "RS485_TX"
+      },
+      "GND": {
+        "dir": "in",
+        "at": "U7.GND",
+        "desc": "系统地,与总线 Common(J4 第三线)、偏置下拉、TVS、DE 下拉共地",
+        "default_net": "GND"
+      },
+      "RO": {
+        "dir": "out",
+        "at": "U7.RO",
+        "desc": "RS-485 接收输出 -> MCU UART RX(发送时三态,MCU RX 需内部上拉或外加 ~10k)",
+        "default_net": "RS485_RX"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.st7789_spi_lcd_btb",
+    "desc": "SPI TFT(ST7789P3 135x240 IPS 1.14\")接口 = 主板侧 BTB 连接器(AXE512127D)+ 背光低边 MOSFET 开关。ST7789P3 驱动 IC 在 LCD FPC 上、不在本板;本块只是主板的 BTB 座 + 背光使能控制。座子传 SPI 4 线 CS/SCK/MOSI/DC(RS)/RST、共享 I2C(SCL/SDA,给 FPC 触摸/辅助)、屏供电 3V3 与背光 LED 两脚(anode/cathode)。背光 LED 由 3V3 经 R27 10R 限流→座子 anode 脚,LED cathode 脚→Q6 2N7002 漏极→GND,栅极受 G38_LCD_BL 使能、R43 5.1K 栅极下拉。",
+    "category": "display",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_04)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_VDD": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "屏逻辑供电去耦 1uF(C51),就近座子 VDD 脚(pin3);屏供电轨 3V3_L3B(可被电源域门控省电)。"
+      },
+      "J": {
+        "part": "conn.btb_lcd_axe512127",
+        "qty": 1,
+        "note": "LCD BTB 连接器 AXE512127D;SPI 屏信号 + 共享 I2C + 屏供电 + 背光 LED 两脚全经此座传到 LCD FPC。原理图脚:1=LCD_CS(G41)、3=VDD(3V3_L3B)、5=SCK(G40)、6=SCL(G48)、7=MOSI(G39)、8=SDA(G47)、9=RS/DC(G45)、10=背光 LED 阳极、11=RST(G21)、12=背光 LED 阴极;2/14/15=GND、13/16=MP 安装脚、4=NC。BTB 座真实 pad 号随座子而定,放置前先用 sch read --probe 拉真实脚名再绑定,本块信号名为功能名。"
+      },
+      "Q_BL": {
+        "part": "mosfet.2n7002",
+        "qty": 1,
+        "note": "背光低边开关 NMOS(Q6 2N7002T):栅极受 G38_LCD_BL 使能,漏极接座子背光 LED 阴极脚(pin12),源极接 GND。拉高栅极→导通→背光亮,拉低→关断→省电。"
+      },
+      "R_BL_G": {
+        "part": "res.5k1_0402",
+        "qty": 1,
+        "note": "背光 MOSFET 栅极下拉 5.1K(R43):G38_LCD_BL 悬空/上电未驱动时把 Q6 栅极拉到 GND,保证背光默认关断。"
+      },
+      "R_BL_LED": {
+        "part": "res.10r_0402",
+        "qty": 1,
+        "note": "背光 LED 串限流 10R(R27):从 3V3_L3B 串到座子背光 LED 阳极脚(pin10),设背光电流。"
+      },
+      "R_CS": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "LCD_CS 片选上拉 10K 到 3V3_L3B(R41),保证屏未选中时 CS 电平确定、避免误选。"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "in",
+        "at": "J.3",
+        "desc": "屏逻辑供电轨 3V3_L3B(可被电源域门控);同时经 R27 10R 供背光 LED、CS 上拉入口、1uF 去耦入口",
+        "default_net": "3V3"
+      },
+      "GND": {
+        "dir": "in",
+        "at": "J.2",
+        "desc": "地;座子多个 GND 脚(2/14/15)全并联 + 去耦回流 + 背光 MOSFET 源极/栅极下拉回流",
+        "default_net": "GND"
+      },
+      "I2C_SCL": {
+        "dir": "bidir",
+        "at": "J.6",
+        "desc": "共享 I2C 时钟(G48)经座子传到 LCD FPC(触摸/辅助器件);上拉在主控侧",
+        "default_net": "I2C_SCL"
+      },
+      "I2C_SDA": {
+        "dir": "bidir",
+        "at": "J.8",
+        "desc": "共享 I2C 数据(G47)经座子传到 LCD FPC(触摸/辅助器件);上拉在主控侧",
+        "default_net": "I2C_SDA"
+      },
+      "LCD_BL": {
+        "dir": "in",
+        "at": "Q_BL.G",
+        "desc": "背光使能(G38)→ Q6 2N7002 栅极;拉高开背光、拉低关背光;块内 5.1K 栅极下拉保证默认关断",
+        "default_net": "LCD_BL"
+      },
+      "LCD_CS": {
+        "dir": "in",
+        "at": "J.1",
+        "desc": "SPI 片选(G41)→ LCD;低有效选中屏;块内 10K 上拉到 3V3 保证未选中电平确定",
+        "default_net": "LCD_CS"
+      },
+      "LCD_DC": {
+        "dir": "in",
+        "at": "J.9",
+        "desc": "数据/命令选择(G45,RS=DC)→ LCD;高=数据、低=命令",
+        "default_net": "LCD_DC"
+      },
+      "LCD_MOSI": {
+        "dir": "in",
+        "at": "J.7",
+        "desc": "SPI 数据(G39)→ LCD;ST7789 单向写,无 MISO",
+        "default_net": "LCD_MOSI"
+      },
+      "LCD_RST": {
+        "dir": "in",
+        "at": "J.11",
+        "desc": "屏复位(G21)→ LCD;经座子直连,本块无 RST 上拉(复位电平由 MCU 侧保证)",
+        "default_net": "LCD_RST"
+      },
+      "LCD_SCK": {
+        "dir": "in",
+        "at": "J.5",
+        "desc": "SPI 时钟(G40)→ LCD",
+        "default_net": "LCD_SCK"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.sy7088_boost_5v",
+    "desc": "SY7088 同步升压 DCDC(VBUS/锂电 3.0-4.2V → 5V,1A):FB 分压 147K/46.4K 设 5V 输出,输入 3×22uF/输出 2×22uF + 2.2uH 功率电感,EN 使能;给 GROVE/EXT_5V/红外等外设供电",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_03)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "C_IN1": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "输入电容(原理图 C16),22uF/0805,贴近 VIN/电感输入侧。"
+      },
+      "C_IN2": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "输入电容(原理图 C17),22uF/0805,与 C_IN1/C_IN3 并联降输入纹波。"
+      },
+      "C_IN3": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "输入电容(原理图 C18),22uF/0805。输入 3×22uF 抗升压输入电流脉动。"
+      },
+      "C_OUT1": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "输出电容(原理图 C23),22uF/0805,贴近 VOUT 稳定 5V 输出、降纹波。"
+      },
+      "C_OUT2": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "输出电容(原理图 C24),22uF/0805,与 C_OUT1 并联。输出 2×22uF。"
+      },
+      "L": {
+        "part": "ind.2u2h",
+        "qty": 1,
+        "note": "2.2uH 功率电感(原理图 L2);一端接 LX 开关节点,一端接 VIN 输入侧(升压拓扑电感在输入)。选大电流/低 DCR 功率电感,饱和电流留 1A 输出裕量。"
+      },
+      "R_EN": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "EN 使能电阻(原理图 R10,100K);上拉/下拉设默认使能状态,EN 端由 PMIC/GPIO 门控升压开关。"
+      },
+      "R_FB_H": {
+        "part": "res.147k_0402",
+        "qty": 1,
+        "note": "FB 上分压 Ru(原理图 R13,147K),VOUT→FB。与 R_FB_L 分压设输出:Vout=1.2×(1+R13/R14)=1.2×(1+147/46.4)≈5V。"
+      },
+      "R_FB_L": {
+        "part": "res.46k4_0402",
+        "qty": 1,
+        "note": "FB 下分压 Rd(原理图 R14,46.4K),FB→GND。公式 Rd=1.2V/(Vout-1.2)×Ru;换轨压时按此重算分压。"
+      },
+      "U": {
+        "part": "ic.sy7088",
+        "qty": 1,
+        "note": "SY7088 同步升压(boost)DCDC 转换器;VIN 侧升压到 5V/1A。FB 反馈脚设输出电压,EN 使能,LX 为开关节点,PGND/SGND 功率地与信号地。脚名(IN/LX/FB/EN/PGND/SGND)放置前先 sch read 拉真实符号脚名再绑定,别照抄功能名。"
+      }
+    },
+    "ports": {
+      "EN": {
+        "dir": "in",
+        "at": "U.EN",
+        "desc": "使能脚(高有效开升压);由 PMIC/GPIO 门控 EXT_5V,块内 100K(R_EN)设默认状态",
+        "default_net": "EXT_5V_EN"
+      },
+      "GND": {
+        "dir": "in",
+        "at": "U.PGND",
+        "desc": "地(功率地 PGND + 信号地 SGND + 输入/输出电容回流);FB 下分压亦回此",
+        "default_net": "GND"
+      },
+      "VIN": {
+        "dir": "in",
+        "at": "U.IN",
+        "desc": "升压输入(VBUS_L0 / 锂电 3.0-4.2V 或 VBUS);经 2.2uH 电感与 3×22uF 输入电容进 IN 脚",
+        "default_net": "VBUS_L0"
+      },
+      "VOUT": {
+        "dir": "out",
+        "at": "U.OUT",
+        "desc": "5V 升压输出(≈1A,原理图 BOOST_OUT 轨);经 TPS22916 负载开关门控成 EXT_5V/GROVE_5V 给 GROVE/红外等外设。⚠不要裸接外设口——下游须经负载开关做使能/限流,升压器本身不能下游限流",
+        "default_net": "BOOST_OUT"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.sy8089_buck_3v3",
+    "desc": "SY8089 同步 buck →3.3V/2A(数字主轨:MCU/传感器/存储);电池尾段(VIN→3.45V)会掉出调节——固件要设 3.5-3.6V 安全关机线",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:SY8089A (Silergy — 2A 同步 buck 典型应用: Vref 0.6V FB 分压、2.2µH、输入/输出陶瓷电容) ; 3.3V 分压与电池尾段 dropout 行为注记经 motobox 车机V2 设计评审后在 车机V2-fable P1 整板落网",
+    "parts": {
+      "C_HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "输出高频。"
+      },
+      "C_IN": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "IN 体电容。"
+      },
+      "C_OUT": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "输出体电容。"
+      },
+      "L": {
+        "part": "ind.22uh_1210",
+        "qty": 1,
+        "note": "2.2µH,Isat≥2A(终核)。"
+      },
+      "R_FBB": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "FB 下分压。"
+      },
+      "R_FBT": {
+        "part": "res.453k_0402__2",
+        "qty": 1,
+        "note": "FB 上分压 45.3k(3.3V: 0.6×(1+45.3/10)=3.32V)。"
+      },
+      "U": {
+        "part": "buck.sy8089_tsot23",
+        "qty": 1,
+        "note": "SY8089A1AAC TSOT-23-5。功能脚(sch read 实测): EN(1)/GND(2)/LX(3)/IN(4)/FB(5)。"
+      }
+    },
+    "ports": {
+      "3V3": {
+        "dir": "out",
+        "at": "L.2",
+        "desc": "3.3V 数字主轨",
+        "default_net": "+3V3"
+      },
+      "EN": {
+        "dir": "in",
+        "at": "U.EN",
+        "desc": "使能,常开接 VIN 同网",
+        "default_net": "VSYS"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND",
+        "desc": "地",
+        "default_net": "GND"
+      },
+      "VIN": {
+        "dir": "in",
+        "at": "U.IN",
+        "desc": "输入(5V 母线或 power-path VSYS——电池态可低至 3.0V,见 dropout 注记)",
+        "default_net": "VSYS"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.tactile_boot_reset",
+    "desc": "ESP32 BOOT + RESET 轻触按键:BOOT 按下拉 IO0 到地(进下载),RESET 按下拉 EN 到地(复位);上拉/电容在模组块",
+    "category": "button",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.9.0",
+    "updated": "v0.9.0",
+    "source": "official-ref:Espressif ESP32-S3-DevKitC 原理图(BOOT→IO0、EN 按键)+ examples/esp32-mini(验证回归板 SW1/SW2)。ESP32 boot strapping:上电时 IO0=0 进下载、IO0=1 正常启动。",
+    "parts": {
+      "SW_BOOT": {
+        "part": "sw.tact_smd",
+        "qty": 1,
+        "note": "BOOT 键(进下载模式)。轻触贴片, 2 脚。按下把 IO0 短到 GND。"
+      },
+      "SW_RST": {
+        "part": "sw.tact_smd",
+        "qty": 1,
+        "note": "RESET 键(复位)。按下把 EN/CHIP_PU 短到 GND 触发复位。"
+      }
+    },
+    "ports": {
+      "EN": {
+        "dir": "in",
+        "at": "SW_RST.1",
+        "desc": "→ 主控 EN/CHIP_PU(接 block.esp32s3_wroom1_module 的 EN port)。EN 上拉+RC 在模组块,此键按下拉低=复位",
+        "default_net": "EN"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "SW_BOOT.2",
+        "desc": "系统地(两键的另一端)",
+        "default_net": "GND"
+      },
+      "IO0": {
+        "dir": "in",
+        "at": "SW_BOOT.1",
+        "desc": "→ 主控 GPIO0/BOOT(接 block.esp32s3_wroom1_module 的 IO0 port)。IO0 上拉在模组块(默认高=正常启动),此键按下拉低=进下载",
+        "default_net": "IO0"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.tps63802_buckboost_3v8",
+    "desc": "TPS63802 buck-boost →3.8V(锂电全程稳压):电池 3.0-4.2V 升降压给 4G 模组(Air780 类 VBAT 3.3-4.3V);纯 buck 在电池态 <3.9V 就保不住 3.8V——这就是要 buck-boost 的原因",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:TPS63802 (TI SLVSEZ8 — 2A buck-boost 典型应用: 单电感跨 L1/L2、FB 分压 Vfb=0.5V、MODE 电平选 PFM/强制PWM) ; 3.8V 分压与『电池态 4G 续报必须 buck-boost 而非纯 buck』的决策经 motobox 车机V2 设计评审定案后在 车机V2-fable P1 整板落网",
+    "parts": {
+      "C_HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "VOUT 高频。"
+      },
+      "C_IN": {
+        "part": "cap.10uf_0805",
+        "qty": 1,
+        "note": "VIN 体电容。"
+      },
+      "C_OUT": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "VOUT 体电容。大突发负载(4G TX)在负载端另加 ≥100µF bulk——不在本块内。"
+      },
+      "L": {
+        "part": "ind.1uh_1210",
+        "qty": 1,
+        "note": "1µH buck-boost 电感。⚠默认件 NLCV32T-1R0M-EF(1210) Isat≈1.5A,是**原型占位,不满足本块 must 规格**——电池态 VIN 3.0-3.3V 升 3.8V 带 2A 级突发时电感平均电流 ≈2.6A+纹波,量产前必须换 Isat≥4A 的 1µH 功率电感(SWPA5040S1R0NT/SRP4020 类),换型后把新料入 standard-parts 并更新本块。"
+      },
+      "R_FBB": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "FB 下分压。"
+      },
+      "R_FBT": {
+        "part": "res.665k_0402",
+        "qty": 1,
+        "note": "FB 上分压(3.8V: 0.5×(1+665/100)=3.83V)。"
+      },
+      "U": {
+        "part": "buckboost.tps63802_vson10",
+        "qty": 1,
+        "note": "TPS63802 VSON-10。功能脚(sch read 实测): EN(1)/MODE(2)/AGND(3)/FB(4)/PG(5)/VOUT(6)/L2(7)/GND(8)/L1(9)/VIN(10)。电感跨 L1↔L2。PG 本块 NC。"
+      }
+    },
+    "ports": {
+      "3V8": {
+        "dir": "out",
+        "at": "U.VOUT",
+        "desc": "3.8V 输出(4G 模组 VBAT;近模组端 bulk 电容属模组接口块)",
+        "default_net": "+3V8"
+      },
+      "EN": {
+        "dir": "in",
+        "at": "U.EN",
+        "desc": "使能。常开就接 VIN 同网;需要门控 4G 域时接 GPIO(注意模组自身 EN/PWRKEY 语义另核)",
+        "default_net": "VSYS"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND",
+        "desc": "地(MODE 已内联接地=自动 PFM 省电;要强制 PWM 低纹波把 MODE 改高——见 notes)",
+        "default_net": "GND"
+      },
+      "VIN": {
+        "dir": "in",
+        "at": "U.VIN",
+        "desc": "输入(典型: power-path 的 VSYS——车电在≈4.4-5V/电池态 3.0-4.2V,升降压全程覆盖)",
+        "default_net": "VSYS"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.usbc_dual_orientation_data",
+    "desc": "USB-C 设备口(16P)双取向数据 tie:DP1+DP2(A6+B6)短接成 USB_DP、DM1+DM2(A7+B7)短接成 USB_DM,C 口正反插都能通信;CC1/CC2 各 5.1K 下拉广告 UFP/设备(sink);D+/D- 各挂一颗 ESD5311 对地;VBUS/GND 冗余焊盘 fanout 全并联。区别于 usbc_ufp_power_or(仅电源 OR),本块只做数据+CC。",
+    "category": "usb",
+    "author": "@zhoushoujianwork",
+    "contributors": [
+      "M5Stack StickS3 K150 (原理图对标来源)"
+    ],
+    "added": "v0.19.0",
+    "updated": "v0.19.0",
+    "source": "oshwhub-ref:M5Stack StickS3 K150 原理图 PDF V0.6 20251111 (page_03)",
+    "verification": {
+      "schematic": {
+        "status": "passed"
+      },
+      "component_selection": {
+        "status": "passed"
+      },
+      "pcb_drc": {
+        "status": "pending"
+      },
+      "bringup": {
+        "status": "pending"
+      },
+      "production_ready": false
+    },
+    "parts": {
+      "D_DM": {
+        "part": "esd.esd5311",
+        "qty": 1,
+        "note": "D- 数据线 ESD 保护(D1 ESD5311),另一端接 GND,靠近 USB-C 连接器放置。"
+      },
+      "D_DP": {
+        "part": "esd.esd5311",
+        "qty": 1,
+        "note": "D+ 数据线 ESD 保护(D2 ESD5311),另一端接 GND,靠近 USB-C 连接器放置。"
+      },
+      "J": {
+        "part": "conn.usb_c_16p",
+        "qty": 1,
+        "note": "USB-C 16P 连接器(已在标准库)。双取向数据 tie:A 面 DP1/DN1 与 B 面 DP2/DN2 短接,正反插都通(原理图 M5 符号把 D- 标 DM1/DM2、屏蔽标 SHELL;本库 conn.usb_c_16p 符号实测脚名为 DN1/DN2、EP,已按库名绑定,佐证见已验证块 usbc_ufp_power_or)。VBUS(A4/B9+B4/A9)、GND(A1/A12+B1/B12)+EP 屏蔽壳为冗余焊盘,放置前用 sch read/--probe 再核对。SBU1/SBU2 本板悬空。"
+      },
+      "R_CC1": {
+        "part": "res.5k1_0402",
+        "qty": 1,
+        "note": "CC1 下拉 5.1K 到地(R3):UFP/设备 sink 广告,向 host 请求取电。绝不上拉(上拉=source/DFP)。"
+      },
+      "R_CC2": {
+        "part": "res.5k1_0402",
+        "qty": 1,
+        "note": "CC2 下拉 5.1K 到地(R4):与 R_CC1 成对,保证正反插任一取向都有 5.1K sink 广告。"
+      }
+    },
+    "ports": {
+      "CC1": {
+        "dir": "bidir",
+        "at": "J.CC1",
+        "desc": "配置通道 1:块内已 5.1K 下拉到地(UFP/设备 sink);host 侧上拉与本块下拉分压做取向/角色检测",
+        "default_net": "CC1"
+      },
+      "CC2": {
+        "dir": "bidir",
+        "at": "J.CC2",
+        "desc": "配置通道 2:块内已 5.1K 下拉到地,与 CC1 成对支撑正反插取向检测",
+        "default_net": "CC2"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "J.GND*",
+        "desc": "地:所有 GND 焊盘(A1/A12 + B1/B12)+ EP 屏蔽壳(原理图 M5 符号标 SHELL)fanout 全并联,CC 下拉与数据 ESD 也回此地",
+        "default_net": "GND"
+      },
+      "USB_DM": {
+        "dir": "bidir",
+        "at": "J.DN1",
+        "desc": "USB 数据 D-:DN1(A7)+DN2(B7,原理图 M5 符号标 DM1/DM2)双取向 tie 后引出,经 ESD5311 对地;接 MCU 原生 USB 或 USB-Serial 桥的 D-",
+        "default_net": "USB_DM"
+      },
+      "USB_DP": {
+        "dir": "bidir",
+        "at": "J.DP1",
+        "desc": "USB 数据 D+:DP1(A6)+DP2(B6)双取向 tie 后引出,经 ESD5311 对地;接 MCU 原生 USB 或 USB-Serial 桥的 D+",
+        "default_net": "USB_DP"
+      },
+      "VBUS": {
+        "dir": "bidir",
+        "at": "J.VBUS*",
+        "desc": "5V 总线电源:所有冗余 VBUS 焊盘(A4/B9 + B4/A9)fanout 全并联,接系统电源前端/负载开关",
+        "default_net": "VBUS"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.usbc_ufp_power_or",
+    "desc": "USB-C 设备口(UFP)+ VBUS 二极管 OR + TVS/ESD:调试口安全并入板上 5V 母线——只进不出(板子有自供电时严禁从 C 口向外灌电)",
+    "category": "usb",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:USBLC6-2SC6 (ST — USB2 低容 ESD 阵列流through接法) + datasheet:CH334 §3.6 Fig3-6-1/3-6-2(WCH 官方在外部供电场景插入理想二极管防 VBUS 倒灌的参考) ; VBUS 直连双硬源的危害与 OR 方案经 motobox 车机V2 设计评审定案(评审 P0: 车电在位时盒子经 C 口向笔记本 VBUS 灌 5V=USB 规范违例)后在 车机V2-fable P2 整板落网",
+    "parts": {
+      "D_OR": {
+        "part": "diode.ss34_sma",
+        "qty": 1,
+        "note": "VBUS→5V 母线 OR 二极管(A=VBUS 侧, K=母线): 只进不出。压降 ~0.4V 后 ≈4.6V,对下游充电器/hub 足够。台架大电流场景可升 SS54/理想二极管 IC(LM66100/CH213K)。"
+      },
+      "ESD": {
+        "part": "esd.usblc6_2sc6",
+        "qty": 1,
+        "note": "D± 低容 ESD 阵列(<1pF): 1/6=通道1(D-), 3/4=通道2(D+), 2=GND, 5=VBUS。流through接法,置连接器旁。"
+      },
+      "J": {
+        "part": "conn.usb_c_16p",
+        "qty": 1,
+        "note": "USB-C 16P 母座。功能脚(sch read 实测): VBUS(A4B9,B4A9 双脚)/GND(A1B12,B1A12)/CC1(A5)/CC2(B5)/DP1(A6)/DN1(A7)/DP2(B6)/DN2(B7)/SBU1,SBU2(NC)/EP(8-11 壳体)。DP1+DP2、DN1+DN2 在连接器焊盘处合并(正反插同一对)。"
+      },
+      "R_CC1": {
+        "part": "res.5k1_0402",
+        "qty": 1,
+        "note": "CC1 Rd 5.1k→GND(UFP 设备角色广告)。"
+      },
+      "R_CC2": {
+        "part": "res.5k1_0402",
+        "qty": 1,
+        "note": "CC2 Rd 5.1k→GND。"
+      },
+      "TVS": {
+        "part": "tvs.smaj5v0_sma",
+        "qty": 1,
+        "note": "VBUS 浪涌/ESD 钳位(K=VBUS, A=GND),置 D_OR 之前。"
+      }
+    },
+    "ports": {
+      "5V_BUS": {
+        "dir": "out",
+        "at": "D_OR.K",
+        "desc": "OR 之后并入板上 +5V 母线(可与车电/适配器 5V 共存;母线电压高于 VBUS-0.4V 时二极管自然截止)",
+        "default_net": "+5V"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "J.GND",
+        "desc": "地(壳体 EP 一并;需隔离壳地时改 R/C 落地)",
+        "default_net": "GND"
+      },
+      "USB_DM": {
+        "dir": "bidir",
+        "at": "J.DN1",
+        "desc": "D-",
+        "default_net": "USB_HOST_DM"
+      },
+      "USB_DP": {
+        "dir": "bidir",
+        "at": "J.DP1",
+        "desc": "D+(接 hub 上行或 MCU 原生 USB)",
+        "default_net": "USB_HOST_DP"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.vehicle_input_tps54360_5v",
+    "desc": "车载 12-24V 常电输入前端(端子+保险+反接P-MOS带栅极钳位+TVS)+ TPS54360B 车规 buck →5V/2A(600kHz);摩托/汽车电瓶供电设备的电源入口标准单元",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.11.0",
+    "updated": "v0.11.0",
+    "source": "datasheet:TPS54360B (TI SLVSC50 — 60V/3.5A 宽压 buck 典型应用: EN UVLO 分压/RT 定频/COMP 补偿/BOOT/非同步续流) + datasheet:SMBJ33A/BZT52C12 ; 反接 P-MOS 栅极钳位拓扑与 60V 续流管选型经 motobox 车机V2 两轮设计评审修正(评审实证: 无栅极网络时 Vgs 达 -24~-53V 超 ±20V 上限;40V 续流管在 SMBJ33A ~53V 钳位电压下击穿)后在 车机V2-fable P1 整板落网",
+    "parts": {
+      "C_BOOT": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "BOOT 自举(BOOT↔SW)。"
+      },
+      "C_COMP": {
+        "part": "cap.47nf_0402",
+        "qty": 1,
+        "note": "COMP 补偿 C 4.7nF(终核)。"
+      },
+      "C_COMP_HF": {
+        "part": "cap.47pf_0402",
+        "qty": 1,
+        "note": "COMP 高频极点 47pF(终核)。"
+      },
+      "C_IN1": {
+        "part": "cap.10uf50v_1210",
+        "qty": 1,
+        "note": "输入体电容 ×2 之一(50V 档,24V 直流偏压降额 ~50% 已计入用双颗)。"
+      },
+      "C_IN1B": {
+        "part": "cap.10uf50v_1210",
+        "qty": 1,
+        "note": "输入体电容 ×2 之二。"
+      },
+      "C_IN_HF": {
+        "part": "cap.100nf_0603",
+        "qty": 1,
+        "note": "输入高频(50V 档),贴 U.VIN。"
+      },
+      "C_OUT1": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "输出体电容 ×2 之一。"
+      },
+      "C_OUT2": {
+        "part": "cap.22uf_0805",
+        "qty": 1,
+        "note": "输出体电容 ×2 之二。"
+      },
+      "C_OUT_HF": {
+        "part": "cap.100nf_0402",
+        "qty": 1,
+        "note": "输出高频。"
+      },
+      "D_CATCH": {
+        "part": "diode.b360a_sma",
+        "qty": 1,
+        "note": "续流肖特基 ≥60V/3A(A→GND, K→SW)。评审 P1 实证: 反压=输入钳位后电压(SMBJ33A 最高 ~53V),40V 件(SS34/B340A)会击穿短路带走 5V 轨——必须 60V 档。SMA 在 24V/2A 下 ~0.8W 偏热,更大电流升 SMB/SMC(B560C)。"
+      },
+      "D_QG": {
+        "part": "zener.bzt52c12_sod123",
+        "qty": 1,
+        "note": "12V 稳压管钳 |Vgs|≤12V: A→栅, K→源。"
+      },
+      "D_TVS": {
+        "part": "diode.smbj33a_smb",
+        "qty": 1,
+        "note": "输入浪涌 TVS(载具瞬态)。⚠终核: 真 24V 系统 load-dump(ISO 7637-2 P5 数十焦)建议升 SMCJ33A 1500W;12V-only 则 SMBJ33A 够。"
+      },
+      "F_IN": {
+        "part": "fuse.2a_1206",
+        "qty": 1,
+        "note": "输入保险。⚠终核: 24V 系统钳位故障电压可达 ~53V,1206 片式保险分断电压常低于 63V——确认不足则换分断 ≥63V 的件。"
+      },
+      "J_VEH": {
+        "part": "conn.terminal_3p_508",
+        "qty": 1,
+        "note": "车辆线束入口 3P 端子: 1=常电(12-24V), 2=ACC/点火(透传给检测块), 3=车身地。"
+      },
+      "L_OUT": {
+        "part": "ind.15uh_12x12mm",
+        "qty": 1,
+        "note": "15µH 屏蔽功率电感,Isat≥4A(终核)。4 焊盘件: 同侧双 pad 同网,两个都要连(1/2=SW 侧, 3/4=5V 侧)。"
+      },
+      "Q_REV": {
+        "part": "bjt.pmos40v_sot23",
+        "qty": 1,
+        "note": "反接保护 P-MOS(理想二极管接法): D=输入侧(体二极管先导通), S=受保护母线。必须配 R_QG+D_QG 栅极网络——裸栅时 Vgs=-24V(常态)~-53V(TVS 钳位期间),超 SOT-23 P-MOS ±20V 上限,栅氧击穿后保护静默失效(评审 P0 实证)。"
+      },
+      "R_COMP": {
+        "part": "res.47k_0402",
+        "qty": 1,
+        "note": "COMP 补偿 R 4.7k(终核 Webench,按输出电容直流偏压降额后的有效容值算)。"
+      },
+      "R_ENB": {
+        "part": "res.887k_0402",
+        "qty": 1,
+        "note": "EN 下分压 88.7k。"
+      },
+      "R_ENT": {
+        "part": "res.453k_0402",
+        "qty": 1,
+        "note": "EN 上分压(VIN→EN): 与 R_ENB 设 UVLO 启动≈6.8V/停≈5.2V——躲过起动机压降但不误停(终核)。"
+      },
+      "R_FBB": {
+        "part": "res.10k_0402",
+        "qty": 1,
+        "note": "FB 下分压。"
+      },
+      "R_FBT": {
+        "part": "res.523k_0402",
+        "qty": 1,
+        "note": "FB 上分压 52.3k(5V: 0.8×(1+52.3/10)=4.98V)。"
+      },
+      "R_QG": {
+        "part": "res.100k_0402",
+        "qty": 1,
+        "note": "栅极下拉(G→GND),提供导通偏置。"
+      },
+      "R_RT": {
+        "part": "res.162k_0402",
+        "qty": 1,
+        "note": "RT/CLK 定频 ≈600kHz(24V 输入下最小导通时间余量充足)。"
+      },
+      "U": {
+        "part": "buck.tps54360_so8",
+        "qty": 1,
+        "note": "TPS54360B 60V/3.5A 非同步 buck。功能脚(sch read 实测): BOOT/VIN/EN/RT\\CLK(符号名 RT/CLK)/FB/COMP/GND/SW/EP。65V abs-max 是全链钳位电压的天花板。"
+      }
+    },
+    "ports": {
+      "5V": {
+        "dir": "out",
+        "at": "L_OUT.3",
+        "desc": "5V/2A 母线(供 power-path 充电器/USB hub 等;USB VBUS 并入必须经二极管 OR,严禁直连)",
+        "default_net": "+5V"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U.GND",
+        "desc": "参考地(车身地经 J_VEH.3 汇入)",
+        "default_net": "GND"
+      },
+      "IGN_12V": {
+        "dir": "out",
+        "at": "J_VEH.2",
+        "desc": "ACC/点火线透传(接 block.opto_acc_ign_detect 的 IGN_12V 口)",
+        "default_net": "IGN_12V"
+      },
+      "VBAT_RAW": {
+        "dir": "out",
+        "at": "U.VIN",
+        "desc": "保护后的 12-24V 母线(供车电在位采样分压等;大分压+钳位后进 ADC)",
+        "default_net": "VBAT_RAW"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  },
+  {
+    "id": "block.xl1509_buck_12v_5v",
+    "desc": "XL1509 12V→5V/1A 非同步降压(固定5V版:FEEDBACK 直连输出、内部分压,无外部反馈电阻);含输入反接保护 + 续流管 + 输入/输出铝电解",
+    "category": "power",
+    "author": "@zhoushoujianwork",
+    "contributors": [],
+    "added": "v0.9.0",
+    "updated": "v0.9.0",
+    "source": "datasheet:XL1509 Rev 2.0 — Fig.4「12V→5V/2A 典型应用电路」+ Fig.5 布局指南;https://datasheet.lcsc.com/datasheet/pdf/6764d4cba2504b189b593202c77b9bd6.pdf?productCode=C61063 (LCSC C61063 XL1509-5.0E1)。拓扑抄自 showcase/001-esp32-barrier/reference-circuits.json 的 circuits.buck12v(authoritative)。",
+    "parts": {
+      "C501": {
+        "part": "cap.470uf35v_smd",
+        "qty": 1,
+        "note": "输入体电容 CIN 470uF/35V 铝电解,极性件:+接+12V轨、-接GND。贴 U5 pin1(VIN)与 pin5-8(GND)放(datasheet Fig.5)。"
+      },
+      "C502": {
+        "part": "cap.220uf35v_smd",
+        "qty": 1,
+        "note": "输出体电容 COUT。datasheet Fig.4 标 180uF/35V(非标值),就近替 220uF(库件 cap.220uf35v_smd 实为 220uF/16V);因在5V输出轨,16V耐压已足。极性件:+接+5V、-接GND。"
+      },
+      "C503": {
+        "part": "cap.1uf_0402",
+        "qty": 1,
+        "note": "输入陶瓷旁路 1uF(datasheet Fig.4 标 '105'=1uF),与 CIN 并联贴 U5 pin1。在12V轨上宜≥25V耐压;0402 勉强、0603 更稳,此处按任务默认沿用0402。"
+      },
+      "D501": {
+        "part": "diode.ss34_sma",
+        "alt": [
+          "diode.b340ass34_sma"
+        ],
+        "qty": 1,
+        "note": "续流/catch 肖特基:阴极(K)接开关节点 SW_5V、阳极(A)接 GND。datasheet Fig.4 原用 1N5820(直插 3A/20V),SS34(SMA 40V/3A,LCSC C8678)为标准SMD等效。紧贴IC放置。"
+      },
+      "D502": {
+        "part": "diode.ss34_sma",
+        "alt": [
+          "diode.b340ass34_sma"
+        ],
+        "qty": 1,
+        "note": "12V 输入串联反接保护肖特基:阳极(A)接端子 +12V_RAW、阴极(K)接 CIN/U5.VIN。~0.5V压降@1A,余~11.5V 远高于5V输出所需7V下限。近零损耗方案改高边P-FET(见 schematic_notes)。"
+      },
+      "J1": {
+        "part": "conn.screw_terminal_2p",
+        "qty": 1,
+        "note": "12V 输入 2P 螺钉端子 KF301-5.0-2P(LCSC C474881,250V/17A)。pin1=+12V,pin2=GND。"
+      },
+      "L501": {
+        "part": "ind.68uh_3a",
+        "qty": 1,
+        "note": "功率电感 68uH(datasheet Fig.4 规定 68uH/2A)。SHOU HAN CYH125-68UH,3A额定,64.8mΩ DCR(LCSC C7431083,12.5×12.5mm)。pin1 接开关节点 SW_5V,pin2 出 +5V。"
+      },
+      "U5": {
+        "part": "ic.xl1509_5v_buck",
+        "qty": 1,
+        "note": "XLSEMI XL1509-5.0E1 固定5V非同步降压,2A/150kHz,4.5-40V 输入(LCSC C61063,SOIC-8)。脚:1=VIN,2=OUTPUT(开关节点),3=FEEDBACK(固定5V版直连+5V输出,勿加分压),4=ON/OFF(低有效使能,接GND常开),5-8=GND。MP1584(ic.mp1584en_buck)是更高频可调替代但引脚/拓扑不同、需外部分压,非drop-in。"
+      }
+    },
+    "ports": {
+      "+5V": {
+        "dir": "out",
+        "at": "L501.2",
+        "desc": "稳压 5V/1A 输出(电感 L501 出口,并联 C502 与 U5.FEEDBACK),供下游 3V3 LDO/负载",
+        "default_net": "+5V"
+      },
+      "GND": {
+        "dir": "bidir",
+        "at": "U5.GND*",
+        "desc": "功率地/参考地(汇集输入输出电容负端、续流管阳极、端子 GND)",
+        "default_net": "GND"
+      },
+      "ONOFF": {
+        "dir": "in",
+        "at": "U5.ON/OFF",
+        "desc": "低有效使能:常态直连 GND=常开(default_net=GND);拉高>1.4V 关断,悬空默认开。切勿接 VIN(会关断变换器)",
+        "default_net": "GND"
+      },
+      "VIN_12V": {
+        "dir": "in",
+        "at": "J1.1",
+        "desc": "外部 12V 电源经 KF301 2P 螺钉端子输入(反接保护 D502 之前的 +12V_RAW)",
+        "default_net": "+12V_RAW"
+      }
+    },
+    "validation": {
+      "platform": "KiCad",
+      "status": "unverified",
+      "libraryResolutionRequired": true,
+      "note": "Reference topology only. Resolve native library IDs and pin geometry, then run native ERC/DRC on the current project."
+    }
+  }
+]

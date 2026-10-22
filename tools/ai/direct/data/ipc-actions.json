@@ -1,0 +1,530 @@
+{
+  "system.api.version": {
+    "request": "kiapi.common.commands.GetVersion"
+  },
+  "system.binary_path": {
+    "request": "kiapi.common.commands.GetKiCadBinaryPath",
+    "aliases": {
+      "name": "binary_name",
+      "binary": "binary_name"
+    }
+  },
+  "system.paths": {
+    "request": "kiapi.common.commands.GetPaths"
+  },
+  "system.ping": {
+    "request": "kiapi.common.commands.Ping"
+  },
+  "system.plugin_settings_path": {
+    "request": "kiapi.common.commands.GetPluginSettingsPath"
+  },
+  "project.netclasses.get": {
+    "request": "kiapi.common.commands.GetNetClasses"
+  },
+  "project.netclasses.set": {
+    "request": "kiapi.common.commands.SetNetClasses",
+    "aliases": {
+      "netClasses": "net_classes",
+      "classes": "net_classes",
+      "mergeMode": "merge_mode"
+    }
+  },
+  "document.text.extents": {
+    "request": "kiapi.common.commands.GetTextExtents"
+  },
+  "document.text.shapes": {
+    "request": "kiapi.common.commands.GetTextAsShapes"
+  },
+  "project.textvars.get": {
+    "request": "kiapi.common.commands.GetTextVariables",
+    "docField": "document",
+    "kind": "any"
+  },
+  "project.textvars.set": {
+    "request": "kiapi.common.commands.SetTextVariables",
+    "docField": "document",
+    "kind": "any",
+    "aliases": {
+      "mergeMode": "merge_mode"
+    }
+  },
+  "document.close": {
+    "request": "kiapi.common.commands.CloseDocument",
+    "docField": "document",
+    "kind": "any",
+    "requireDocument": true
+  },
+  "document.close_all": {
+    "request": "kiapi.common.commands.CloseAllDocuments",
+    "confirm": true
+  },
+  "document.modified": {
+    "request": "kiapi.common.commands.GetDocumentModifiedState",
+    "docField": "document",
+    "kind": "any"
+  },
+  "document.save_copy": {
+    "request": "kiapi.common.commands.SaveCopyOfDocument",
+    "docField": "document",
+    "kind": "any",
+    "aliases": {
+      "output": "path"
+    }
+  },
+  "editor.selection.export": {
+    "request": "kiapi.common.commands.SaveSelectionToString"
+  },
+  "schematic.jobs.svg": {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportSvg",
+    "docField": "job_settings.document",
+    "kind": "schematic"
+  },
+  "schematic.jobs.dxf": {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportDxf",
+    "docField": "job_settings.document",
+    "kind": "schematic"
+  },
+  "schematic.jobs.pdf": {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportPdf",
+    "docField": "job_settings.document",
+    "kind": "schematic"
+  },
+  "schematic.jobs.ps": {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportPs",
+    "docField": "job_settings.document",
+    "kind": "schematic"
+  },
+  "schematic.jobs.netlist": {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportNetlist",
+    "docField": "job_settings.document",
+    "kind": "schematic"
+  },
+  "schematic.jobs.bom": {
+    "request": "kiapi.schematic.jobs.RunSchematicJobExportBOM",
+    "docField": "job_settings.document",
+    "kind": "schematic",
+    "aliases": {
+      "excludeDnp": "exclude_dnp",
+      "groupSymbols": "group_symbols"
+    }
+  },
+  "schematic.hierarchy.get": {
+    "request": "kiapi.schematic.commands.GetSchematicHierarchy",
+    "docField": "document",
+    "kind": "schematic"
+  },
+  "editor.crossprobe.announce": {
+    "request": "kiapi.common.commands.CrossProbeAnnounce"
+  },
+  "editor.selection.sync": {
+    "request": "kiapi.common.commands.SyncSelection"
+  },
+  "editor.nets.highlight": {
+    "request": "kiapi.common.commands.HighlightNets",
+    "aliases": {
+      "nets": "net_name",
+      "netNames": "net_name"
+    }
+  },
+  "schematic.variants.add": {
+    "request": "kiapi.common.commands.AddVariant",
+    "docField": "document",
+    "kind": "schematic"
+  },
+  "schematic.variants.delete": {
+    "request": "kiapi.common.commands.DeleteVariant",
+    "docField": "document",
+    "kind": "schematic"
+  },
+  "schematic.variants.rename": {
+    "request": "kiapi.common.commands.RenameVariant",
+    "docField": "document",
+    "kind": "schematic",
+    "aliases": {
+      "from": "old_name",
+      "to": "new_name"
+    }
+  },
+  "schematic.variants.copy": {
+    "request": "kiapi.common.commands.CopyVariant",
+    "docField": "document",
+    "kind": "schematic",
+    "aliases": {
+      "from": "old_name",
+      "to": "new_name"
+    }
+  },
+  "schematic.variants.describe": {
+    "request": "kiapi.common.commands.SetVariantDescription",
+    "docField": "document",
+    "kind": "schematic"
+  },
+  "schematic.variants.current.set": {
+    "request": "kiapi.common.commands.SetCurrentVariant",
+    "docField": "document",
+    "kind": "schematic"
+  },
+  "schematic.variants.current.get": {
+    "request": "kiapi.common.commands.GetCurrentVariant",
+    "docField": "document",
+    "kind": "schematic"
+  },
+  "board.padstack.presence": {
+    "request": "kiapi.board.commands.CheckPadstackPresenceOnLayers",
+    "docField": "board",
+    "kind": "pcb",
+    "aliases": {
+      "ids": "items"
+    }
+  },
+  "board.move.interactive": {
+    "request": "kiapi.board.commands.InteractiveMoveItems",
+    "docField": "board",
+    "kind": "pcb",
+    "aliases": {
+      "ids": "items"
+    }
+  },
+  "board.items.from_string": {
+    "request": "kiapi.common.commands.ParseAndCreateItemsFromString",
+    "docField": "document",
+    "kind": "pcb",
+    "aliases": {
+      "sexpr": "contents",
+      "text": "contents"
+    }
+  },
+  "board.layers.visible.get": {
+    "request": "kiapi.board.commands.GetVisibleLayers",
+    "docField": "board",
+    "kind": "pcb"
+  },
+  "board.layers.visible.set": {
+    "request": "kiapi.board.commands.SetVisibleLayers",
+    "docField": "board",
+    "kind": "pcb"
+  },
+  "board.layers.active.get": {
+    "request": "kiapi.board.commands.GetActiveLayer",
+    "docField": "board",
+    "kind": "pcb"
+  },
+  "board.layers.active.set": {
+    "request": "kiapi.board.commands.SetActiveLayer",
+    "docField": "board",
+    "kind": "pcb"
+  },
+  "editor.library.open": {
+    "request": "kiapi.common.commands.OpenLibraryItem"
+  },
+  "board.embedded.add": {
+    "request": "kiapi.board.commands.AddEmbeddedFiles",
+    "docField": "board",
+    "kind": "pcb"
+  },
+  "board.embedded.set": {
+    "request": "kiapi.board.commands.SetEmbeddedFiles",
+    "docField": "board",
+    "kind": "pcb"
+  },
+  "board.appearance.get": {
+    "request": "kiapi.board.commands.GetBoardEditorAppearanceSettings"
+  },
+  "board.appearance.set": {
+    "request": "kiapi.board.commands.SetBoardEditorAppearanceSettings"
+  },
+  "board.plotsettings.get": {
+    "request": "kiapi.board.commands.GetBoardPlotSettings",
+    "docField": "board",
+    "kind": "pcb"
+  },
+  "board.plotsettings.set": {
+    "request": "kiapi.board.commands.SetBoardPlotSettings",
+    "docField": "board",
+    "kind": "pcb",
+    "aliases": {
+      "plotSettings": "plot_settings",
+      "settings": "plot_settings"
+    }
+  },
+  "board.drc.marker.add": {
+    "request": "kiapi.board.commands.InjectDrcError",
+    "docField": "board",
+    "kind": "pcb",
+    "aliases": {
+      "ids": "items"
+    }
+  },
+  "board.jobs.3d": {
+    "request": "kiapi.board.jobs.RunBoardJobExport3D",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.render": {
+    "request": "kiapi.board.jobs.RunBoardJobExportRender",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.dxf": {
+    "request": "kiapi.board.jobs.RunBoardJobExportDxf",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.pdf": {
+    "request": "kiapi.board.jobs.RunBoardJobExportPdf",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.ps": {
+    "request": "kiapi.board.jobs.RunBoardJobExportPs",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.gerbers": {
+    "request": "kiapi.board.jobs.RunBoardJobExportGerbers",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.drill": {
+    "request": "kiapi.board.jobs.RunBoardJobExportDrill",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.position": {
+    "request": "kiapi.board.jobs.RunBoardJobExportPosition",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.gencad": {
+    "request": "kiapi.board.jobs.RunBoardJobExportGencad",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.ipc2581": {
+    "request": "kiapi.board.jobs.RunBoardJobExportIpc2581",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.ipcd356": {
+    "request": "kiapi.board.jobs.RunBoardJobExportIpcD356",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.odb": {
+    "request": "kiapi.board.jobs.RunBoardJobExportODB",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "board.jobs.stats": {
+    "request": "kiapi.board.jobs.RunBoardJobExportStats",
+    "docField": "job_settings.document",
+    "kind": "pcb"
+  },
+  "system.capabilities": {
+    "request": "kiapi.common.commands.GetCapabilities"
+  },
+  "job.status": {
+    "request": "kiapi.common.commands.GetJobStatus"
+  },
+  "job.cancel": {
+    "request": "kiapi.common.commands.CancelJob"
+  },
+  "board.jobs.svg": {
+    "request": "kiapi.board.jobs.RunBoardJobExportSvg"
+  },
+  "document.list": {
+    "request": "kiapi.common.commands.GetOpenDocuments"
+  },
+  "project.open": {
+    "request": "kiapi.common.commands.OpenDocument"
+  },
+  "project.info": {
+    "request": "kiapi.common.commands.GetOpenDocuments"
+  },
+  "document.save": {
+    "request": "kiapi.common.commands.SaveDocument"
+  },
+  "document.revert": {
+    "request": "kiapi.common.commands.RevertDocument"
+  },
+  "board.layers.get": {
+    "request": "kiapi.board.commands.GetBoardEnabledLayers"
+  },
+  "board.place.autoplace": {
+    "request": "kiapi.board.commands.AutoPlaceFootprints"
+  },
+  "board.plane.create": {
+    "request": "kiapi.board.commands.CreatePlane"
+  },
+  "board.plane.verify": {
+    "request": "kiapi.board.commands.VerifyPlane"
+  },
+  "schematic.create": {
+    "request": "kiapi.common.commands.CreateDocument"
+  },
+  "library.search.symbols": {
+    "request": "kiapi.schematic.commands.SearchLibrarySymbolsRequest"
+  },
+  "library.get.symbol": {
+    "request": "kiapi.schematic.commands.GetLibrarySymbolRequest"
+  },
+  "schematic.place.symbol": {
+    "request": "kiapi.schematic.commands.PlaceSymbolFromLibraryRequest"
+  },
+  "schematic.annotate": {
+    "request": "kiapi.schematic.commands.AnnotateSchematicRequest"
+  },
+  "editor.run_action": {
+    "request": "kiapi.common.commands.RunAction"
+  },
+  "editor.selection.get": {
+    "request": "kiapi.common.commands.GetSelection"
+  },
+  "editor.selection.clear": {
+    "request": "kiapi.common.commands.ClearSelection"
+  },
+  "editor.commit.begin": {
+    "request": "kiapi.common.commands.BeginCommit"
+  },
+  "editor.commit.end": {
+    "request": "kiapi.common.commands.EndCommit"
+  },
+  "board.nets.get": {
+    "request": "kiapi.board.commands.GetNets"
+  },
+  "board.items.by_net": {
+    "request": "kiapi.board.commands.GetItemsByNet"
+  },
+  "board.items.connected": {
+    "request": "kiapi.board.commands.GetConnectedItems"
+  },
+  "board.rules.get": {
+    "request": "kiapi.board.commands.GetBoardDesignRules"
+  },
+  "board.origin.get": {
+    "request": "kiapi.board.commands.GetBoardOrigin"
+  },
+  "board.origin.set": {
+    "request": "kiapi.board.commands.SetBoardOrigin"
+  },
+  "board.bbox.get": {
+    "request": "kiapi.common.commands.GetBoundingBox"
+  },
+  "board.rules.set": {
+    "request": "kiapi.board.commands.SetBoardDesignRules"
+  },
+  "board.rules.custom.get": {
+    "request": "kiapi.board.commands.GetCustomDesignRules"
+  },
+  "board.rules.custom.set": {
+    "request": "kiapi.board.commands.SetCustomDesignRules"
+  },
+  "board.items.by_netclass": {
+    "request": "kiapi.board.commands.GetItemsByNetClass"
+  },
+  "board.items.get_by_id": {
+    "request": "kiapi.common.commands.GetItemsById"
+  },
+  "board.flip": {
+    "request": "kiapi.board.commands.FlipItems"
+  },
+  "board.titleblock.get": {
+    "request": "kiapi.common.commands.GetTitleBlockInfo"
+  },
+  "board.titleblock.set": {
+    "request": "kiapi.common.commands.SetTitleBlockInfo"
+  },
+  "board.pagesettings.get": {
+    "request": "kiapi.common.commands.GetPageSettings"
+  },
+  "board.pagesettings.set": {
+    "request": "kiapi.common.commands.SetPageSettings"
+  },
+  "board.layers.name.get": {
+    "request": "kiapi.board.commands.GetBoardLayerName"
+  },
+  "board.layers.by_name.get": {
+    "request": "kiapi.board.commands.GetBoardLayerByName"
+  },
+  "board.hittest": {
+    "request": "kiapi.common.commands.HitTest"
+  },
+  "board.export.string": {
+    "request": "kiapi.common.commands.SaveDocumentToString"
+  },
+  "board.netclasses.get": {
+    "request": "kiapi.board.commands.GetNetClassForNets"
+  },
+  "board.pad.polygon.get": {
+    "request": "kiapi.board.commands.GetPadShapeAsPolygon"
+  },
+  "board.text.expand": {
+    "request": "kiapi.common.commands.ExpandTextVariables"
+  },
+  "board.graphics.defaults.get": {
+    "request": "kiapi.board.commands.GetGraphicsDefaults"
+  },
+  "board.layers.enabled.set": {
+    "request": "kiapi.board.commands.SetBoardEnabledLayers"
+  },
+  "board.variants.get": {
+    "request": "kiapi.common.commands.GetVariants"
+  },
+  "board.embedded.get": {
+    "request": "kiapi.board.commands.GetEmbeddedFiles"
+  },
+  "board.connectivity.prove": {
+    "request": "kiapi.board.commands.ProveConnectivity"
+  },
+  "board.stackup.read": {
+    "request": "kiapi.board.commands.GetBoardStackup"
+  },
+  "board.stackup.write": {
+    "request": "kiapi.board.commands.UpdateBoardStackup"
+  },
+  "board.zones.refill": {
+    "request": "kiapi.board.commands.RefillZones"
+  },
+  "board.netlist.import": {
+    "request": "kiapi.board.commands.ImportNetlist"
+  },
+  "schematic.netlist.get": {
+    "request": "kiapi.schematic.commands.GetSchematicNetlist"
+  },
+  "editor.selection.add": {
+    "request": "kiapi.common.commands.AddToSelection"
+  },
+  "editor.selection.remove": {
+    "request": "kiapi.common.commands.RemoveFromSelection"
+  },
+  "board.items.get": {
+    "request": "kiapi.common.commands.GetItems"
+  },
+  "board.items.create": {
+    "request": "kiapi.common.commands.CreateItems"
+  },
+  "board.items.update": {
+    "request": "kiapi.common.commands.UpdateItems"
+  },
+  "board.items.delete": {
+    "request": "kiapi.common.commands.DeleteItems"
+  },
+  "schematic.items.get": {
+    "request": "kiapi.common.commands.GetItems"
+  },
+  "schematic.items.create": {
+    "request": "kiapi.common.commands.CreateItems"
+  },
+  "schematic.items.update": {
+    "request": "kiapi.common.commands.UpdateItems"
+  },
+  "schematic.items.delete": {
+    "request": "kiapi.common.commands.DeleteItems"
+  },
+  "board.specctra.export": {
+    "request": "kiapi.board.commands.ExportSpecctraBoard"
+  },
+  "board.specctra.import": {
+    "request": "kiapi.board.commands.ImportSpecctraRoutes"
+  }
+}

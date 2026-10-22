@@ -45,6 +45,7 @@ void KICAD_MANAGER_FRAME::OnFileHistory( wxCommandEvent& event )
 void KICAD_MANAGER_FRAME::OnClearFileHistory( wxCommandEvent& aEvent )
 {
     ClearFileHistory();
+    RefreshProjectTree();
 }
 
 

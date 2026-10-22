@@ -24,6 +24,7 @@
 #include "pgm_kicad.h"
 #include "project_tree.h"
 #include "project_tree_pane.h"
+#include "project_workspace.h"
 #include <dialogs/dialog_git_mr_review.h>
 #include "local_history_pane.h"
 #include "widgets/bitmap_button.h"
@@ -96,8 +97,7 @@
 #include <project/project_file.h>
 
 
-#define EDITORS_CAPTION _( "Editors" )
-#define PROJECT_FILES_CAPTION _( "Project Files" )
+#define EDITORS_CAPTION _( "Start Page" )
 
 #define ID_INIT_WATCHED_PATHS 52913
 
@@ -151,13 +151,14 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
         m_active_project( false ),
         m_showHistoryPanel( false ),
         m_projectTreePane( nullptr ),
+        m_projectWorkspace( nullptr ),
         m_historyPane( nullptr ),
         m_launcher( nullptr ),
         m_lastToolbarIconSize( 0 ),
         m_pcmButton( nullptr ),
         m_pcmUpdateCount( 0 )
 {
-    const int defaultLeftWinWidth = FromDIP( 250 );
+    const int defaultLeftWinWidth = FromDIP( 300 );
 
     m_leftWinWidth = defaultLeftWinWidth; // Default value
     m_aboutTitle = "KiCad";
@@ -223,6 +224,9 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
     setupTools();
     setupUIConditions();
 
+    m_projectWorkspace = new PROJECT_WORKSPACE( this, m_projectTreePane );
+    m_leftWinWidth = std::max( m_leftWinWidth, defaultLeftWinWidth );
+
     m_toolbarSettings = GetToolbarSettings<KICAD_MANAGER_TOOLBAR_SETTINGS>( "kicad-toolbars" );
     configureToolbars();
     RecreateToolbars();
@@ -235,9 +239,9 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
 
     // There is no wxAUIPaneInfo::SetSize(), but a trick is to use MinSize() to set the required pane width,
     // and after give a reasonable MinSize value.
-    m_auimgr.AddPane( m_projectTreePane,
+    m_auimgr.AddPane( m_projectWorkspace,
                       EDA_PANE().Palette().Name( "ProjectTree" ).Left().Layer( 1 )
-                                .Caption( PROJECT_FILES_CAPTION ).PaneBorder( false )
+                                .CaptionVisible( false ).PaneBorder( false )
                                 .MinSize( m_leftWinWidth, -1 ).Floatable( false ).Movable( false ) );
 
     m_historyPane = new LOCAL_HISTORY_PANE( this );
@@ -264,16 +268,16 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
     m_notebook->Freeze();
     m_launcher->SetClosable( false );
     m_notebook->AddPage( m_launcher, EDITORS_CAPTION, false );
-    m_notebook->SetTabCtrlHeight( 0 );
+    m_notebook->SetTabCtrlHeight( -1 );
     m_notebook->Thaw();
 
     m_auimgr.AddPane( m_notebook, EDA_PANE().Canvas().Name( "Editors" ).Center().Caption( EDITORS_CAPTION )
-                                            .PaneBorder( false ).MinSize( m_notebook->GetBestSize() ) );
+                                            .PaneBorder( false ).MinSize( FromDIP( wxSize( 480, 400 ) ) ) );
 
     m_auimgr.Update();
 
     // Now the actual m_projectTreePane size is set, give it a reasonable min width
-    m_auimgr.GetPane( m_projectTreePane ).MinSize( defaultLeftWinWidth, FromDIP( 80 ) );
+    m_auimgr.GetPane( m_projectWorkspace ).MinSize( defaultLeftWinWidth, FromDIP( 80 ) );
 
 
     wxSizer* mainSizer = GetSizer();
@@ -341,10 +345,8 @@ KICAD_MANAGER_FRAME::~KICAD_MANAGER_FRAME()
 
 void KICAD_MANAGER_FRAME::HideTabsIfNeeded()
 {
-    if( m_notebook->GetPageCount() == 1 )
-        m_notebook->SetTabCtrlHeight( 0 );
-    else
-        m_notebook->SetTabCtrlHeight( -1 );
+    // The start page remains a visible navigation target even with no jobsets open.
+    m_notebook->SetTabCtrlHeight( -1 );
 }
 
 
@@ -863,6 +865,8 @@ bool KICAD_MANAGER_FRAME::CloseProject( bool aSave )
     }
 
     m_projectTreePane->EmptyTreePrj();
+    m_projectWorkspace->ProjectClosed();
+    m_launcher->RefreshProjects();
     HideTabsIfNeeded();
 
     return true;
@@ -917,6 +921,21 @@ bool KICAD_MANAGER_FRAME::LoadProject( const wxFileName& aProjectFileName )
     // The project file should be valid by the time we get here or something has gone wrong.
     if( !aProjectFileName.Exists() )
         return false;
+
+    // Re-selecting the current project is an activation, not a project switch.
+    // In particular, do this before inspecting our own lock and closing players.
+    wxFileName requested( aProjectFileName );
+    wxFileName current( GetProjectFileName() );
+    requested.Normalize( wxPATH_NORM_DOTS | wxPATH_NORM_ABSOLUTE );
+    current.Normalize( wxPATH_NORM_DOTS | wxPATH_NORM_ABSOLUTE );
+
+    if( m_active_project && requested == current )
+    {
+        m_projectWorkspace->ProjectOpened();
+        m_notebook->SetSelection( 0 );
+        Raise();
+        return true;
+    }
 
     wxString fullPath = aProjectFileName.GetFullPath();
 
@@ -1002,6 +1021,8 @@ bool KICAD_MANAGER_FRAME::LoadProject( const wxFileName& aProjectFileName )
 
     m_projectTreePane->ReCreateTreePrj();
     m_historyPane->RefreshHistory( Prj().GetProjectPath() );
+    m_projectWorkspace->ProjectOpened();
+    m_launcher->RefreshProjects();
 
     for( const wxString& jobset : Prj().GetLocalSettings().m_OpenJobSets )
     {
@@ -1235,6 +1256,18 @@ void KICAD_MANAGER_FRAME::OnEditAdvancedCfg( wxCommandEvent& WXUNUSED( event ) )
 void KICAD_MANAGER_FRAME::RefreshProjectTree()
 {
     m_projectTreePane->ReCreateTreePrj();
+    m_projectWorkspace->RefreshProjects();
+    m_launcher->RefreshProjects();
+}
+
+
+bool KICAD_MANAGER_FRAME::AddProjectDirectory( const wxString& aDirectory )
+{
+    if( !m_projectWorkspace->AddDirectory( aDirectory ) )
+        return false;
+    m_notebook->SetSelection( 0 );
+    Raise();
+    return true;
 }
 
 
@@ -1253,7 +1286,7 @@ void KICAD_MANAGER_FRAME::ShowChangedLanguage()
     if( pageId != wxNOT_FOUND )
         m_notebook->SetPageText( pageId, EDITORS_CAPTION );
 
-    m_auimgr.GetPane( m_projectTreePane ).Caption( PROJECT_FILES_CAPTION );
+    m_projectWorkspace->UpdateLabels();
     m_auimgr.Update();
 
     m_projectTreePane->FileWatcherReset();
@@ -1365,7 +1398,7 @@ void KICAD_MANAGER_FRAME::SaveSettings( APP_SETTINGS_BASE* aCfg )
 
     wxCHECK( settings, /*void*/ );
 
-    settings->m_LeftWinWidth = m_projectTreePane->GetSize().x;
+    settings->m_LeftWinWidth = m_projectWorkspace->GetSize().x;
     settings->m_ShowHistoryPanel = m_historyPane && m_auimgr.GetPane( m_historyPane ).IsShown();
 
     if( !m_isClosing )

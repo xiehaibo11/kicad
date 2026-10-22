@@ -1,0 +1,51 @@
+{
+  "name": "@-kicadai/kicad-code",
+  "version": "0.2.1",
+  "description": "Kicad AI terminal with shared in-process native KiCad tools and PCB design skills",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "bin": {
+    "Kicad": "bin/Kicad.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "arm64"
+  ],
+  "files": [
+    "bin/",
+    "lib/",
+    "vendor/",
+    "resources/",
+    "licenses/",
+    "manifest.json",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/prepare.mjs",
+    "prepack": "node scripts/verify.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "jsonc-parser": "3.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiehaibo11/kicad.git",
+    "directory": "tools/ai/Kicad-terminal/npm"
+  },
+  "homepage": "https://github.com/xiehaibo11/kicad/tree/codex/kicad-npm/tools/ai/Kicad-terminal/npm",
+  "bugs": {
+    "url": "https://github.com/xiehaibo11/kicad/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

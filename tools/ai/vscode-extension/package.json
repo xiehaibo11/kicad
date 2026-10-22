@@ -1,10 +1,10 @@
 {
   "name": "kicad-agent-vscode",
-  "displayName": "KiCad Agent",
+  "displayName": "Kicad 工具扩展（旧版）",
   "description": "AI-native KiCad automation: DRC/ERC diagnostics, schematic generation, fanout, routing, DFM, impedance, structural checks, and an LLM tool loop.",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "publisher": "kicad-agent",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -16,60 +16,59 @@
     "commands": [
       {
         "command": "kicadAgent.health",
-        "title": "KiCad Agent: Health Check"
+        "title": "Kicad: Health Check"
       },
       {
         "command": "kicadAgent.actions",
-        "title": "KiCad Agent: Run Action..."
+        "title": "Kicad: Run Action..."
       },
       {
         "command": "kicadAgent.runDrc",
-        "title": "KiCad Agent: Run DRC"
+        "title": "Kicad: Run DRC"
       },
       {
         "command": "kicadAgent.runErc",
-        "title": "KiCad Agent: Run ERC"
+        "title": "Kicad: Run ERC"
       },
       {
         "command": "kicadAgent.generateSchematic",
-        "title": "KiCad Agent: Generate Schematic from Circuit Spec"
+        "title": "Kicad: Generate Schematic from Circuit Spec"
       },
       {
         "command": "kicadAgent.fanout",
-        "title": "KiCad Agent: BGA Fanout"
+        "title": "Kicad: BGA Fanout"
       },
       {
         "command": "kicadAgent.dfmAnalyze",
-        "title": "KiCad Agent: DFM Analyze"
+        "title": "Kicad: DFM Analyze"
       },
       {
         "command": "kicadAgent.dfmFix",
-        "title": "KiCad Agent: DFM Fix"
+        "title": "Kicad: DFM Fix"
       },
       {
         "command": "kicadAgent.impedance",
-        "title": "KiCad Agent: Impedance Calculate"
+        "title": "Kicad: Impedance Calculate"
       },
       {
         "command": "kicadAgent.autoroute",
-        "title": "KiCad Agent: Autoroute (baseline)"
+        "title": "Kicad: Autoroute (baseline)"
       },
       {
         "command": "kicadAgent.structuralCheck",
-        "title": "KiCad Agent: Structural Check + STEP"
+        "title": "Kicad: Structural Check + STEP"
       },
       {
         "command": "kicadAgent.aiPrompt",
-        "title": "KiCad Agent: Ask the Model"
+        "title": "Kicad: Open Chat"
       },
       {
         "command": "kicadAgent.showMcpConfig",
-        "title": "KiCad Agent: Show MCP Configuration"
+        "title": "Kicad: Show Native Tool Configuration"
       },
       {
-        "command": "kicadAgent.refreshActions",
-        "title": "Refresh Actions",
-        "icon": "$(refresh)"
+        "command": "kicadAgent.configure",
+        "title": "Kicad: Configure Model (settings.json)"
       },
       {
         "command": "kicadAgent.runAction",
@@ -98,20 +97,14 @@
     "views": {
       "kicadAgent": [
         {
-          "id": "kicadAgent.actions",
-          "name": "Actions",
-          "icon": "resources/kicad.svg"
+          "id": "kicadAgent.chat",
+          "name": "AI 对话",
+          "icon": "resources/kicad.svg",
+          "type": "webview"
         }
       ]
     },
     "menus": {
-      "view/title": [
-        {
-          "command": "kicadAgent.refreshActions",
-          "when": "view == kicadAgent.actions",
-          "group": "navigation"
-        }
-      ],
       "commandPalette": [
         {
           "command": "kicadAgent.startServer",
@@ -125,15 +118,10 @@
     "configuration": {
       "title": "KiCad Agent",
       "properties": {
-        "kicadAgent.path": {
-          "type": "string",
-          "default": "kicad-agent",
-          "description": "Path to the kicad-agent executable."
-        },
         "kicadAgent.kicadCli": {
           "type": "string",
           "default": "kicad-cli",
-          "description": "Path to kicad-cli (passed as KICAD_CLI)."
+          "description": "Path to the native kicad-cli binary (passed as KICAD_CLI)."
         },
         "kicadAgent.socket": {
           "type": "string",
@@ -148,7 +136,7 @@
         "kicadAgent.timeoutMs": {
           "type": "number",
           "default": 1800000,
-          "description": "Maximum time for one kicad-agent invocation, in milliseconds."
+          "description": "Maximum time for one native tool call, in milliseconds."
         },
         "kicadAgent.symbolDir": {
           "type": "string",
@@ -159,12 +147,32 @@
           "type": "string",
           "default": "",
           "description": "KICAD10_FOOTPRINT_DIR for the agent (optional)"
+        },
+        "kicadAgent.maxSteps": {
+          "type": "number",
+          "default": 20,
+          "description": "Maximum model turns per chat request (1-100)."
+        },
+        "kicadAgent.llmProvider": {
+          "type": "string",
+          "default": "",
+          "description": "Provider name from settings.json (optional)."
+        },
+        "kicadAgent.llmModel": {
+          "type": "string",
+          "default": "",
+          "description": "Override the provider's model (optional)."
+        },
+        "kicadAgent.directPath": {
+          "type": "string",
+          "default": "",
+          "description": "Shared JavaScript runtime path; defaults to bundled resources."
         }
       }
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "node ../direct/build.mjs && mkdir -p resources && cp ../direct/dist/kicad-direct.mjs ../direct/dist/LICENSE-protobufjs.txt ../direct/dist/LICENSE-blocks-MIT.txt resources/ && cp ../../../LICENSE resources/LICENSE-KiCad-GPL.txt && npm run compile && node test-native.cjs",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "package": "vsce package --allow-missing-repository"

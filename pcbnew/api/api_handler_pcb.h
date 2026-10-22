@@ -218,6 +218,7 @@ protected:
 private:
     PCB_CONTEXT* pcbContext() const { return static_cast<PCB_CONTEXT*>( context() ); }
 
+protected:
     PCB_EDIT_FRAME* frame() const;
 };
 

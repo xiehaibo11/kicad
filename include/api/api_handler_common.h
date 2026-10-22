@@ -28,6 +28,7 @@
 #include <api/api_handler.h>
 #include <api/common/commands/base_commands.pb.h>
 #include <api/common/commands/project_commands.pb.h>
+#include <api/common/commands/editor_commands.pb.h>
 
 using namespace kiapi::common;
 using google::protobuf::Empty;
@@ -72,6 +73,9 @@ public:
     }
 
 private:
+    HANDLER_RESULT<commands::RunActionResponse> handleRunAction(
+        const HANDLER_CONTEXT<commands::RunAction>& aCtx );
+
     HANDLER_RESULT<commands::GetVersionResponse> handleGetVersion(
         const HANDLER_CONTEXT<commands::GetVersion>& aCtx );
 

@@ -1,0 +1,17 @@
+{
+  // Editor and type-check project for the overlay sources. Each file sits at the path it takes in the
+  // pinned OpenCode package, so imports resolve against cache/Kicad (run link-overlay.sh once).
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "../../../cache/Kicad/packages/opencode/tsconfig.json",
+  "compilerOptions": {
+    "rootDirs": [".", "../../../cache/Kicad/packages/opencode"],
+    "paths": {
+      "@/*": ["./src/*", "../../../cache/Kicad/packages/opencode/src/*"],
+      "@test/*": ["./test/*", "../../../cache/Kicad/packages/opencode/test/*"]
+    },
+    "types": ["bun"],
+    "noEmit": true
+  },
+  // The package's own ambient declarations (assets, generated SST types) come along unchanged.
+  "include": ["src/**/*", "test/**/*", "../../../cache/Kicad/packages/opencode/*.d.ts", "../../../cache/Kicad/packages/opencode/src/*.d.ts"]
+}

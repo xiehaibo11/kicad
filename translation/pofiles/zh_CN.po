@@ -83099,3 +83099,128 @@ msgstr "KiCad 图框编辑器"
 
 #~ msgid "Save DRC Report File"
 #~ msgstr "保存 DRC 报告文件"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "All Projects"
+msgstr "所有工程"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Project Design"
+msgstr "工程设计"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Start Page"
+msgstr "开始页"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "KiCad Workspace"
+msgstr "KiCad 工程工作区"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Browse projects, open a design, and continue where you left off."
+msgstr "浏览工程、打开设计，继续上次的工作。"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Quick Start"
+msgstr "快速开始"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Recent Projects"
+msgstr "最近工程"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Project Path"
+msgstr "工程路径"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Current Project"
+msgstr "当前工程"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "No project loaded"
+msgstr "尚未打开工程"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "New Project"
+msgstr "新建工程"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Open Project"
+msgstr "打开工程"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Add Project Folder..."
+msgstr "添加工程目录…"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Open Project Folder..."
+msgstr "打开工程目录…"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Select Project Folder"
+msgstr "选择工程目录"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Project Tools"
+msgstr "设计工具"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Search projects or paths"
+msgstr "搜索工程名称或路径"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Open a project from All Projects to see its design files."
+msgstr "从“所有工程”打开一个工程，即可查看设计文件。"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Scanning project folders..."
+msgstr "正在扫描工程目录…"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Add a folder to browse all its projects."
+msgstr "添加目录，浏览其中的所有工程。"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+#, c-format
+msgid "%zu project entries"
+msgstr "%zu 个工程条目"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "No matching projects"
+msgstr "没有匹配的工程"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Scan limited. Add a more specific folder."
+msgstr "扫描已达范围限制，请添加更具体的目录。"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Remove Folder from List"
+msgstr "从列表移除目录"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Open Folder in File Manager"
+msgstr "在文件管理器中打开目录"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Edit symbol libraries"
+msgstr "编辑原理图符号库"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Edit footprint libraries"
+msgstr "编辑 PCB 封装库"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "PCB engineering calculators"
+msgstr "阻抗、电流及电气计算"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Convert images into symbols or footprints"
+msgstr "将图像转换为符号或封装"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Edit drawing sheet borders and title blocks"
+msgstr "编辑图框与标题栏"
+
+#: kicad/project_workspace.cpp kicad/dialogs/panel_kicad_launcher.cpp
+msgid "Manage plugins and content"
+msgstr "管理插件及扩展内容"

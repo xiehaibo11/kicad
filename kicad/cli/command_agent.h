@@ -26,7 +26,7 @@ namespace CLI
 {
 
 /**
- * Thin passthrough from kicad-cli to the kicad-agent AI terminal.
+ * Thin passthrough from kicad-cli to the shared JavaScript automation runtime.
  *
  * Keeping the AI surface in a sibling binary lets the Go toolchain stay
  * optional while still making every AI action reachable through kicad-cli.

@@ -45,6 +45,8 @@ KICAD_SETTINGS::KICAD_SETTINGS() :
     m_params.emplace_back( new PARAM<bool>( "aui.show_history_panel", &m_ShowHistoryPanel, false ) );
 
     m_params.emplace_back( new PARAM_LIST<wxString>( "system.open_projects", &m_OpenProjects, {} ) );
+    m_params.emplace_back( new PARAM_LIST<wxString>( "workspace.project_directories",
+                                                    &m_ProjectDirectories, {} ) );
 
     m_params.emplace_back( new PARAM<wxString>( "system.last_design_block_lib_dir", &m_lastDesignBlockLibDir, "" ) );
 

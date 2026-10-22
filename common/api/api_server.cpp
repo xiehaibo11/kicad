@@ -77,6 +77,16 @@ KICAD_API_SERVER::~KICAD_API_SERVER()
 wxFileName KICAD_API_SERVER::StandardSocketPath()
 {
     wxFileName socket;
+    wxString overridePath;
+
+    // The native GUI and direct clients can share an explicitly isolated socket.
+    if( wxGetEnv( wxS( "KICAD_API_SOCKET" ), &overridePath ) && !overridePath.IsEmpty() )
+    {
+        wxFileName requested( overridePath );
+
+        if( requested.IsAbsolute() && !requested.GetFullName().IsEmpty() )
+            return requested;
+    }
 
 #ifdef __WXMAC__
     socket.AssignDir( wxS( "/tmp" ) );

@@ -121,11 +121,11 @@ option( KICAD_BUILD_QA_TESTS
 include( CMakeDependentOption )
 
 option( KICAD_BUILD_AI_AGENT
-    "Build the kicad-agent AI automation terminal (requires Go)"
+    "Build the shared KiCad JavaScript automation runtime (requires Node.js and Bun)"
     OFF )
 
 cmake_dependent_option( KICAD_BUILD_AI_AGENT_IPC
-    "Build kicad-agent with KiCad IPC support (requires NNG)"
+    "Compatibility option; shared JavaScript IPC is always included"
     OFF "KICAD_BUILD_AI_AGENT" OFF )
 
 option( KICAD_UPDATE_CHECK

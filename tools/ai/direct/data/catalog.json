@@ -1,0 +1,1876 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-10-20.1",
+  "language": "zh-CN",
+  "policy": "本库是项目工程约束与检查方法，不是付费标准全文或工业认证。资料按需加载，任何未知参数都不生成通用安全默认值。",
+  "authorityOrder": [
+    "适用法规/合同及经授权取得的标准",
+    "准确器件数据表/勘误/硬件指南",
+    "订单对应制造/装配能力",
+    "KiCad 官方工具及库文档",
+    "专家教学/示例（非强制约束）"
+  ],
+  "sources": [
+    {
+      "id": "kicad-sch",
+      "title": "KiCad Schematic Editor",
+      "url": "https://docs.kicad.org/10.0/en/eeschema/eeschema.html",
+      "authority": "official-documentation",
+      "version": "10.0",
+      "checkedAt": "2026-10-20",
+      "accessScope": "manual",
+      "limitations": "本机 10.99 开发版须同时核对本机帮助和实际 API；ERC 不证明电路功能。"
+    },
+    {
+      "id": "kicad-pcb",
+      "title": "KiCad PCB Editor",
+      "url": "https://docs.kicad.org/10.0/en/pcbnew/pcbnew.html",
+      "authority": "official-documentation",
+      "version": "10.0",
+      "checkedAt": "2026-10-20",
+      "accessScope": "manual",
+      "limitations": "规则必须由产品和板厂确认；软件功能不等于制造能力。"
+    },
+    {
+      "id": "kicad-cli",
+      "title": "KiCad CLI",
+      "url": "https://docs.kicad.org/10.0/en/cli/cli.html",
+      "authority": "official-documentation",
+      "version": "10.0",
+      "checkedAt": "2026-10-20",
+      "accessScope": "manual",
+      "limitations": "命令参数以本机 --help 为准，保存快照的检查不代表未保存画布。"
+    },
+    {
+      "id": "klc",
+      "title": "KiCad Library Conventions",
+      "url": "https://klc.kicad.org/",
+      "authority": "official-library-conventions",
+      "version": "living documentation",
+      "checkedAt": "2026-10-20",
+      "accessScope": "conventions",
+      "limitations": "库贡献规范不等于器件数据表或制造验收标准。"
+    },
+    {
+      "id": "ipc-design",
+      "title": "IPC Design Standards",
+      "url": "https://www.ipc.org/ipc-design-standards",
+      "authority": "standards-publisher",
+      "version": "public overview checked 2026-10-20",
+      "checkedAt": "2026-10-20",
+      "accessScope": "public overview only",
+      "limitations": "未收录付费标准全文或尺寸表；项目须取得适用版本并由责任工程师解释。"
+    },
+    {
+      "id": "ipc-dfm",
+      "title": "IPC Design for Manufacturing",
+      "url": "https://www.ipc.org/design-manufacturing-confirmed-ipc-standards",
+      "authority": "standards-publisher",
+      "version": "public overview",
+      "checkedAt": "2026-10-20",
+      "accessScope": "public overview only",
+      "limitations": "性能等级、可制造性等级和工业温度范围分别确定，不能混为一个最高等级。"
+    },
+    {
+      "id": "ipc-6012",
+      "title": "IPC-6012F Qualification and Performance",
+      "url": "https://www.ipc.org/news-release/ipc-releases-ipc-6012f-qualification-and-performance-specification-rigid-printed",
+      "authority": "standards-publisher",
+      "version": "F announcement 2023; verify contracted revision",
+      "checkedAt": "2026-10-20",
+      "accessScope": "public announcement only",
+      "limitations": "只核实范围，不声称已读取全部标准或适用附录；需供应商合同验收。"
+    },
+    {
+      "id": "iec-insulation",
+      "title": "IEC 60664-1 insulation coordination",
+      "url": "https://webstore.iec.ch/en/publication/59671",
+      "authority": "standards-publisher",
+      "version": "2020 catalog; check AMD1:2025 and applicable product standard",
+      "checkedAt": "2026-10-20",
+      "accessScope": "catalog only",
+      "limitations": "未取得标准全文；安全距离取决于电压、污染、海拔、材料和产品标准，不提供通用毫米数。"
+    },
+    {
+      "id": "ti-highspeed",
+      "title": "TI High-Speed Layout Guidelines SCAA082A",
+      "url": "https://www.ti.com/lit/an/scaa082a/scaa082a.pdf",
+      "authority": "semiconductor-manufacturer",
+      "version": "Rev A, 2017",
+      "checkedAt": "2026-10-20",
+      "accessScope": "application note",
+      "limitations": "通用原理参考；具体接口、封装、叠层和器件指南优先，不能把 3W/20H 当通用硬门槛。"
+    },
+    {
+      "id": "adi-ground",
+      "title": "ADI MT-031 Grounding Data Converters",
+      "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-031.pdf",
+      "authority": "semiconductor-manufacturer",
+      "version": "Rev A, 2008",
+      "checkedAt": "2026-10-20",
+      "accessScope": "tutorial",
+      "limitations": "转换器相关原理，AGND/DGND 的连接按器件要求与回流分析，不机械切地。"
+    },
+    {
+      "id": "adi-decouple",
+      "title": "ADI MT-101 Decoupling Techniques",
+      "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-101.pdf",
+      "authority": "semiconductor-manufacturer",
+      "version": "Rev 0, 2009",
+      "checkedAt": "2026-10-20",
+      "accessScope": "tutorial",
+      "limitations": "电容值、封装、自谐振与网络阻抗须结合实际 PDN 和器件要求。"
+    },
+    {
+      "id": "ti-power",
+      "title": "TI PCB layout guidelines to optimize power supply performance",
+      "url": "https://www.ti.com/video/6245175641001",
+      "authority": "semiconductor-manufacturer",
+      "version": "training video",
+      "checkedAt": "2026-10-20",
+      "accessScope": "public training page",
+      "limitations": "教程不可替代具体电源芯片 EVM、数据表和稳定性实测；未声称观看全部视频。"
+    },
+    {
+      "id": "st-clock",
+      "title": "ST AN2867 Oscillator design guidelines",
+      "url": "https://www.st.com/resource/en/application_note/an2867-guidelines-for-oscillator-design-on-stm8afals-and-stm32-mcusmpus-stmicroelectronics.pdf",
+      "authority": "semiconductor-manufacturer",
+      "version": "AN2867, verify device/current revision",
+      "checkedAt": "2026-10-20",
+      "accessScope": "application-note search metadata",
+      "limitations": "STM8/STM32 专用，其他器件只参考方法，负载和增益裕量重新计算；本次未逐页审阅。"
+    },
+    {
+      "id": "nordic-rf",
+      "title": "Nordic nRF52832 reference circuitry",
+      "url": "https://docs.nordicsemi.com/r/bundle/ps_nrf52832/page/ref_circuitry.html",
+      "authority": "semiconductor-manufacturer",
+      "version": "device product specification",
+      "checkedAt": "2026-10-20",
+      "accessScope": "official reference page",
+      "limitations": "专用参考设计，匹配值、禁布区和射频布局不能跨型号照搬。"
+    },
+    {
+      "id": "jlc-capability",
+      "title": "JLCPCB PCB capabilities",
+      "url": "https://jlcpcb.com/capabilities/Capabilities?type=1",
+      "authority": "manufacturer-process",
+      "version": "living capabilities checked 2026-10-20",
+      "checkedAt": "2026-10-20",
+      "accessScope": "capability table",
+      "limitations": "下单的层数、铜厚、材料、孔工艺与订单确认优先；不固化网页最小极限为全局默认。"
+    },
+    {
+      "id": "euro-class",
+      "title": "Eurocircuits PCB classification",
+      "url": "https://www.eurocircuits.com/technical-guidelines/pcb-design-guidelines/classification/",
+      "authority": "manufacturer-process",
+      "version": "living guidelines",
+      "checkedAt": "2026-10-20",
+      "accessScope": "process guidance",
+      "limitations": "仅适用于所选服务、图形及钻孔等级；须确认报价和工艺。"
+    },
+    {
+      "id": "euro-panel",
+      "title": "Eurocircuits panel guidelines",
+      "url": "https://www.eurocircuits.com/technical-guidelines/panel-guidelines/",
+      "authority": "manufacturer-process",
+      "version": "living guidelines",
+      "checkedAt": "2026-10-20",
+      "accessScope": "process guidance",
+      "limitations": "工艺边、连接和面板按实际装配线与板厂确认。"
+    },
+    {
+      "id": "euro-fiducial",
+      "title": "Eurocircuits assembly fiducials",
+      "url": "https://www.eurocircuits.com/technical-guidelines/pcb-assembly-guidelines/fiducials/",
+      "authority": "manufacturer-process",
+      "version": "living guidelines",
+      "checkedAt": "2026-10-20",
+      "accessScope": "assembly guidance",
+      "limitations": "全局/局部基准点的位置、禁布和尺寸按实际贴装能力确认。"
+    },
+    {
+      "id": "phils-lab",
+      "title": "Phil’s Lab #65 KiCad STM32 PCB design workflow",
+      "url": "https://www.youtube.com/watch?v=aVUqaB0IMh4",
+      "authority": "expert-teaching",
+      "version": "2022-07-05, KiCad 6",
+      "checkedAt": "2026-10-20",
+      "accessScope": "video description and chapter metadata only",
+      "limitations": "教学来源，不是行业标准；未声称观看全部视频。03:54 MCU、26:59 晶振、42:54 ERC、49:25 封装、57:03 布局、1:32:45 DRC、1:35:21 制造输出。"
+    },
+    {
+      "id": "rick-hartley",
+      "title": "Rick Hartley: PC Board Stack-up Best Practices",
+      "url": "https://podcast.altium.com/e/pc-board-stack-up-best-practices-with-rick-hartley/",
+      "authority": "expert-teaching",
+      "version": "2018-07-24",
+      "checkedAt": "2026-10-20",
+      "accessScope": "interview and public transcript",
+      "limitations": "用于理解叠层、参考平面与 EMI，实际板需计算和测试，不照搬示例层数。"
+    },
+    {
+      "id": "kicad-examples",
+      "title": "KiCad source examples",
+      "url": "https://gitlab.com/kicad/code/kicad/-/tree/master/demos",
+      "authority": "official-example",
+      "version": "local checkout inventory",
+      "checkedAt": "2026-10-20",
+      "accessScope": "local project file inventory with SHA-256",
+      "limitations": "全量索引不表示逐个完成电气审查；历史示例和仿真工程不能直接认定可生产。"
+    }
+  ],
+  "topics": [
+    {
+      "id": "requirements",
+      "title": "需求、风险、可靠性和标准适用性",
+      "stage": "spec",
+      "aliases": [
+        "工业级",
+        "最高级别",
+        "需求",
+        "class 3",
+        "class3",
+        "可靠性",
+        "requirements"
+      ],
+      "requiredInputs": [
+        "用途/市场/失效后果",
+        "输入电源与接口",
+        "温湿度/海拔/寿命/振动",
+        "成本、尺寸、维修和制造目标"
+      ],
+      "rules": [
+        {
+          "id": "REQUIREMENTS-01",
+          "kind": "project-engineering-policy",
+          "requirement": "建立需求到电路、规则、测试和交付物的追踪矩阵；未知项显式列出",
+          "verification": "逐项记录指标、单位、容差、验证方法、责任人和版本",
+          "sourceIds": [
+            "ipc-design",
+            "ipc-dfm",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "REQUIREMENTS-02",
+          "kind": "project-engineering-policy",
+          "requirement": "分别选择性能等级、制造工艺能力和元器件环境等级；最高可靠性目标须落实到可验证需求",
+          "verification": "查适用 IPC/产品标准、合同版本及供应商能力，不把工业级等同于 Class 3",
+          "sourceIds": [
+            "ipc-design",
+            "ipc-dfm",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "REQUIREMENTS-03",
+          "kind": "project-engineering-policy",
+          "requirement": "按产品使用环境完成风险分析、失效模式与关键特性分级",
+          "verification": "审查电击、发热、火灾、反接、失控及单点失效的缓解和试验",
+          "sourceIds": [
+            "ipc-design",
+            "ipc-dfm",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "REQUIREMENTS-04",
+          "kind": "project-engineering-policy",
+          "requirement": "记录电源、信号和机械接口预算及允许变化",
+          "verification": "对需求边界、瞬态、容差、启动及异常工况做最坏情况分析",
+          "sourceIds": [
+            "ipc-design",
+            "ipc-dfm",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "REQUIREMENTS-05",
+          "kind": "project-engineering-policy",
+          "requirement": "每个关卡保留设计快照和证据；未验证不得标通过",
+          "verification": "将待办与证据验收分开；源文件变化后重新检查",
+          "sourceIds": [
+            "ipc-design",
+            "ipc-dfm",
+            "kicad-sch"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ipc-design",
+        "ipc-dfm",
+        "kicad-sch"
+      ],
+      "tools": [
+        "project.info",
+        "reference.plan"
+      ],
+      "requiredEvidence": [
+        "requirements",
+        "risk-register",
+        "standards-applicability"
+      ]
+    },
+    {
+      "id": "schematic",
+      "title": "原理图拓扑与电气审查",
+      "stage": "schematic",
+      "aliases": [
+        "原理图",
+        "schematic",
+        "电路",
+        "层次",
+        "总线"
+      ],
+      "requiredInputs": [
+        "完整器件数据表/勘误",
+        "功能框图与接口定义",
+        "电源树/时序/电平"
+      ],
+      "rules": [
+        {
+          "id": "SCHEMATIC-01",
+          "kind": "project-engineering-policy",
+          "requirement": "依据实际功能和数据表设计电路，不依靠名称猜测引脚或参考值",
+          "verification": "逐网络核对方向、电气类型、供电域、绝对最大值与工作范围",
+          "sourceIds": [
+            "kicad-sch",
+            "phils-lab"
+          ]
+        },
+        {
+          "id": "SCHEMATIC-02",
+          "kind": "project-engineering-policy",
+          "requirement": "层次页、全局标签、总线成员和多单元器件必须完整一致",
+          "verification": "检查所有子页、跨页网络、共用编号、隐藏电源引脚和未连接脚的意图",
+          "sourceIds": [
+            "kicad-sch",
+            "phils-lab"
+          ]
+        },
+        {
+          "id": "SCHEMATIC-03",
+          "kind": "project-engineering-policy",
+          "requirement": "启动、复位、boot、调试和时钟应覆盖上电/掉电与异常状态",
+          "verification": "审查上拉下拉、strap 采样、时序、调试连接及恢复通道",
+          "sourceIds": [
+            "kicad-sch",
+            "phils-lab"
+          ]
+        },
+        {
+          "id": "SCHEMATIC-04",
+          "kind": "project-engineering-policy",
+          "requirement": "ERC 运行全部级别并复核例外；禁止靠改引脚类型、PWR_FLAG 或屏蔽错误伪造通过",
+          "verification": "每个 no-connect、PWR_FLAG 和例外有电路依据和审查证据",
+          "sourceIds": [
+            "kicad-sch",
+            "phils-lab"
+          ]
+        },
+        {
+          "id": "SCHEMATIC-05",
+          "kind": "project-engineering-policy",
+          "requirement": "仿真按模型适用范围和边界条件执行，仿真与实物分别验收",
+          "verification": "保留模型来源/版本、测试平台、角落条件及实测差异",
+          "sourceIds": [
+            "kicad-sch",
+            "phils-lab"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "kicad-sch",
+        "phils-lab"
+      ],
+      "tools": [
+        "schematic.generate",
+        "schematic.erc.run",
+        "project.info"
+      ],
+      "requiredEvidence": [
+        "schematic-review",
+        "erc-report",
+        "simulation-where-applicable"
+      ]
+    },
+    {
+      "id": "parts",
+      "title": "器件选型、降额与供应链",
+      "stage": "schematic",
+      "aliases": [
+        "BOM",
+        "器件",
+        "选型",
+        "降额",
+        "datasheet"
+      ],
+      "requiredInputs": [
+        "制造商完整料号和封装后缀",
+        "工作角落和寿命目标",
+        "采购/替代策略"
+      ],
+      "rules": [
+        {
+          "id": "PARTS-01",
+          "kind": "project-engineering-policy",
+          "requirement": "完整料号、封装、电压温度等级和生命周期必须可追溯",
+          "verification": "BOM 包含制造商、MPN、数据表版本与 DNP/变体，替代料独立验证",
+          "sourceIds": [
+            "kicad-sch",
+            "ipc-design"
+          ]
+        },
+        {
+          "id": "PARTS-02",
+          "kind": "project-engineering-policy",
+          "requirement": "按工作温度、容差、偏压和寿命验证额定值及降额",
+          "verification": "计算电容直流偏压、电阻脉冲功耗、半导体 SOA 与热裕量",
+          "sourceIds": [
+            "kicad-sch",
+            "ipc-design"
+          ]
+        },
+        {
+          "id": "PARTS-03",
+          "kind": "project-engineering-policy",
+          "requirement": "关键器件和连接器确认可采购、认证与可追溯性",
+          "verification": "核对渠道、交期、批次、停产风险和防伪计划",
+          "sourceIds": [
+            "kicad-sch",
+            "ipc-design"
+          ]
+        },
+        {
+          "id": "PARTS-04",
+          "kind": "project-engineering-policy",
+          "requirement": "器件参考电路只对匹配型号/版本/工况成立",
+          "verification": "逐项比较参考设计电源、负载、频率、封装和 PCB 工艺",
+          "sourceIds": [
+            "kicad-sch",
+            "ipc-design"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "kicad-sch",
+        "ipc-design"
+      ],
+      "tools": [
+        "web.search",
+        "web.fetch"
+      ],
+      "requiredEvidence": [
+        "bom-review",
+        "derating-analysis",
+        "approved-vendor-list"
+      ]
+    },
+    {
+      "id": "footprints",
+      "title": "符号、封装、焊盘和 3D 库",
+      "stage": "library",
+      "aliases": [
+        "封装",
+        "引脚",
+        "symbol",
+        "footprint",
+        "3D",
+        "QFN",
+        "BGA"
+      ],
+      "requiredInputs": [
+        "官方封装尺寸图和焊接建议",
+        "pin1/底视图/顶视图说明",
+        "实际装配工艺与焊盘策略"
+      ],
+      "rules": [
+        {
+          "id": "FOOTPRINTS-01",
+          "kind": "project-engineering-policy",
+          "requirement": "符号脚号、焊盘号与数据表逐脚对应，不能用引脚数或外观认封装",
+          "verification": "核查隐藏脚、散热焊盘、NC/DNU 和多单元编号",
+          "sourceIds": [
+            "klc",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "FOOTPRINTS-02",
+          "kind": "project-engineering-policy",
+          "requirement": "焊盘、阻焊、钢网与散热过孔按实际封装和工艺制定",
+          "verification": "审查开窗、分割钢网、过孔塞填/盖帽及锡量，原生 DRC 配合板厂确认",
+          "sourceIds": [
+            "klc",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "FOOTPRINTS-03",
+          "kind": "project-engineering-policy",
+          "requirement": "核查本体尺寸、引脚跨距、pin1、courtyard 与装配方向",
+          "verification": "在 1:1 输出和 3D 装配中对照器件/连接器实际方向",
+          "sourceIds": [
+            "klc",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "FOOTPRINTS-04",
+          "kind": "project-engineering-policy",
+          "requirement": "所有本地符号、封装和模型必须随工程可解析并锁定版本",
+          "verification": "检查库表、相对路径、依赖快照、许可证及缺失模型；缺失模型不能宣称机械通过",
+          "sourceIds": [
+            "klc",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "FOOTPRINTS-05",
+          "kind": "project-engineering-policy",
+          "requirement": "KLC 检查补充库一致性，不替代数据表和制造验收",
+          "verification": "保留封装审查和板上焊盘/引脚对照记录",
+          "sourceIds": [
+            "klc",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "klc",
+        "kicad-pcb",
+        "kicad-sch"
+      ],
+      "tools": [
+        "audit.footprint",
+        "board.drc.run",
+        "web.fetch"
+      ],
+      "requiredEvidence": [
+        "datasheet-pinmap",
+        "footprint-review",
+        "library-lock"
+      ]
+    },
+    {
+      "id": "power",
+      "title": "电源树、开关电源与保护",
+      "stage": "schematic",
+      "aliases": [
+        "电源",
+        "power",
+        "DC/DC",
+        "buck",
+        "boost",
+        "LDO",
+        "PDN"
+      ],
+      "requiredInputs": [
+        "各轨电压/瞬态电流/纹波/时序",
+        "芯片 EVM 和布局指南",
+        "输入浪涌与保护等级"
+      ],
+      "rules": [
+        {
+          "id": "POWER-01",
+          "kind": "project-engineering-policy",
+          "requirement": "验证启动、稳态、负载跳变、掉电、反灌和故障的电源预算",
+          "verification": "保留效率、压降、浪涌、限流、保持时间和稳定性计算/测量",
+          "sourceIds": [
+            "ti-power",
+            "adi-decouple",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "POWER-02",
+          "kind": "project-engineering-policy",
+          "requirement": "开关电源高 di/dt 回路紧凑，反馈和敏感信号远离高 dv/dt 节点",
+          "verification": "逐一标出输入热回路、续流路径、反馈 Kelvin 点和 PGND/AGND 连接",
+          "sourceIds": [
+            "ti-power",
+            "adi-decouple",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "POWER-03",
+          "kind": "project-engineering-policy",
+          "requirement": "去耦以器件指南、回路电感和 PDN 目标阻抗决定",
+          "verification": "核查电容偏压/ESR/ESL/反谐振及电源地过孔回路，不只按距离摆电容",
+          "sourceIds": [
+            "ti-power",
+            "adi-decouple",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "POWER-04",
+          "kind": "project-engineering-policy",
+          "requirement": "电源铜、过孔、连接器和热路径按实际电流及温升验算",
+          "verification": "使用经确认叠层、铜厚和散热边界，不能把线宽经验数值当保证",
+          "sourceIds": [
+            "ti-power",
+            "adi-decouple",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "POWER-05",
+          "kind": "project-engineering-policy",
+          "requirement": "输入保护涵盖反接、过压、过流和接口瞬态",
+          "verification": "核查保险/TVS 选型与协调、接地路径、能量及失效状态",
+          "sourceIds": [
+            "ti-power",
+            "adi-decouple",
+            "kicad-pcb"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ti-power",
+        "adi-decouple",
+        "kicad-pcb"
+      ],
+      "tools": [
+        "board.stackup.read",
+        "board.drc.run",
+        "web.fetch"
+      ],
+      "requiredEvidence": [
+        "power-review",
+        "power-transient-measurement",
+        "pdn-analysis"
+      ]
+    },
+    {
+      "id": "analog",
+      "title": "模拟、ADC/DAC 与采样链",
+      "stage": "schematic",
+      "aliases": [
+        "模拟",
+        "analog",
+        "ADC",
+        "DAC",
+        "运放",
+        "精度"
+      ],
+      "requiredInputs": [
+        "精度/噪声/带宽预算",
+        "源阻抗和采样时序",
+        "器件供电与参考要求"
+      ],
+      "rules": [
+        {
+          "id": "ANALOG-01",
+          "kind": "project-engineering-policy",
+          "requirement": "建立增益、偏置、噪声、温漂和容差预算",
+          "verification": "计算最坏情况并结合 SPICE 模型有效性及实测",
+          "sourceIds": [
+            "adi-ground",
+            "adi-decouple",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "ANALOG-02",
+          "kind": "project-engineering-policy",
+          "requirement": "模拟数字回流按路径组织，地分割必须有论证",
+          "verification": "避免敏感信号跨参考缝，AGND/DGND 连接依据器件而非固定套路",
+          "sourceIds": [
+            "adi-ground",
+            "adi-decouple",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "ANALOG-03",
+          "kind": "project-engineering-policy",
+          "requirement": "采样输入、参考和时钟满足稳定与建立要求",
+          "verification": "核查抗混叠、驱动稳定、采样电容充电及参考去耦",
+          "sourceIds": [
+            "adi-ground",
+            "adi-decouple",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "ANALOG-04",
+          "kind": "project-engineering-policy",
+          "requirement": "高阻和微弱信号控制泄漏、污染、热梯度和耦合",
+          "verification": "按工况审查护环/屏蔽/清洗、布局和测试方法",
+          "sourceIds": [
+            "adi-ground",
+            "adi-decouple",
+            "kicad-sch"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "adi-ground",
+        "adi-decouple",
+        "kicad-sch"
+      ],
+      "tools": [
+        "schematic.erc.run",
+        "board.drc.run"
+      ],
+      "requiredEvidence": [
+        "analog-error-budget",
+        "analog-measurements"
+      ]
+    },
+    {
+      "id": "clock",
+      "title": "晶振、时钟与复位时序",
+      "stage": "schematic",
+      "aliases": [
+        "晶振",
+        "时钟",
+        "oscillator",
+        "crystal",
+        "复位"
+      ],
+      "requiredInputs": [
+        "晶体与 MCU/SoC 专用资料",
+        "负载/驱动/频率容差",
+        "寄生与温度范围"
+      ],
+      "rules": [
+        {
+          "id": "CLOCK-01",
+          "kind": "project-engineering-policy",
+          "requirement": "晶体等效参数、负载、驱动和振荡裕量按实际器件核验",
+          "verification": "负载电容包含寄生，验证极限电压/温度下启动与稳态",
+          "sourceIds": [
+            "st-clock",
+            "ti-highspeed",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "CLOCK-02",
+          "kind": "project-engineering-policy",
+          "requirement": "晶振回路紧凑且隔离噪声，布局与接地按芯片指南",
+          "verification": "核查走线、禁布、地/电源、测试点对振荡器负载的影响",
+          "sourceIds": [
+            "st-clock",
+            "ti-highspeed",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "CLOCK-03",
+          "kind": "project-engineering-policy",
+          "requirement": "时钟质量和复位满足接收器与电源域要求",
+          "verification": "测量抖动、占空比、边沿、时序与异常恢复",
+          "sourceIds": [
+            "st-clock",
+            "ti-highspeed",
+            "kicad-pcb"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "st-clock",
+        "ti-highspeed",
+        "kicad-pcb"
+      ],
+      "tools": [
+        "web.fetch",
+        "board.drc.run"
+      ],
+      "requiredEvidence": [
+        "clock-review",
+        "startup-and-timing-test"
+      ]
+    },
+    {
+      "id": "stackup",
+      "title": "叠层、参考平面和阻抗",
+      "stage": "board",
+      "aliases": [
+        "叠层",
+        "stackup",
+        "阻抗",
+        "参考平面",
+        "return path"
+      ],
+      "requiredInputs": [
+        "板厂确认叠层/材料/铜厚",
+        "信号边沿和接口目标阻抗",
+        "允许损耗/公差/过孔结构"
+      ],
+      "rules": [
+        {
+          "id": "STACKUP-01",
+          "kind": "project-engineering-policy",
+          "requirement": "布线前确认层数、参考平面、材料和可制造阻抗结构",
+          "verification": "获取板厂叠层及阻抗表，计算有效铜厚/介质/阻焊影响并锁定版本",
+          "sourceIds": [
+            "kicad-pcb",
+            "ti-highspeed",
+            "rick-hartley",
+            "jlc-capability"
+          ]
+        },
+        {
+          "id": "STACKUP-02",
+          "kind": "project-engineering-policy",
+          "requirement": "关键信号保持连续参考并给换层提供适当回流",
+          "verification": "检查跨分割/开槽/平面边缘及返回过孔，不能只检查信号连通",
+          "sourceIds": [
+            "kicad-pcb",
+            "ti-highspeed",
+            "rick-hartley",
+            "jlc-capability"
+          ]
+        },
+        {
+          "id": "STACKUP-03",
+          "kind": "project-engineering-policy",
+          "requirement": "差分与单端约束来自接口和器件资料及叠层解算",
+          "verification": "核对线宽/间距/损耗/公差，默认值和 3W/20H 仅能作为待验证启发",
+          "sourceIds": [
+            "kicad-pcb",
+            "ti-highspeed",
+            "rick-hartley",
+            "jlc-capability"
+          ]
+        },
+        {
+          "id": "STACKUP-04",
+          "kind": "project-engineering-policy",
+          "requirement": "高速、PDN、散热和工艺权衡必须记录",
+          "verification": "层数并非质量等级；保留 stackup 审查、阻抗 coupon 与生产要求",
+          "sourceIds": [
+            "kicad-pcb",
+            "ti-highspeed",
+            "rick-hartley",
+            "jlc-capability"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "kicad-pcb",
+        "ti-highspeed",
+        "rick-hartley",
+        "jlc-capability"
+      ],
+      "tools": [
+        "board.stackup.read",
+        "board.impedance.calculate",
+        "reference.search"
+      ],
+      "requiredEvidence": [
+        "confirmed-stackup",
+        "impedance-budget",
+        "return-path-review"
+      ]
+    },
+    {
+      "id": "placement",
+      "title": "布局、结构和可维修性",
+      "stage": "place",
+      "aliases": [
+        "布局",
+        "placement",
+        "结构",
+        "安装",
+        "散热"
+      ],
+      "requiredInputs": [
+        "外壳/连接器/紧固件模型",
+        "功能分区和关键回路",
+        "装配和调试空间"
+      ],
+      "rules": [
+        {
+          "id": "PLACEMENT-01",
+          "kind": "project-engineering-policy",
+          "requirement": "先锁定板框、机械基准、安装孔和连接器再组织功能块",
+          "verification": "核对公差链、插拔路径、螺钉/支柱、外壳和 PCB 厚度",
+          "sourceIds": [
+            "kicad-pcb",
+            "phils-lab",
+            "euro-fiducial"
+          ]
+        },
+        {
+          "id": "PLACEMENT-02",
+          "kind": "project-engineering-policy",
+          "requirement": "布局优先满足电源回路、时钟、模拟和关键接口拓扑",
+          "verification": "禁止无约束全板自动摆放，保留锁定器件和人工审查",
+          "sourceIds": [
+            "kicad-pcb",
+            "phils-lab",
+            "euro-fiducial"
+          ]
+        },
+        {
+          "id": "PLACEMENT-03",
+          "kind": "project-engineering-policy",
+          "requirement": "热源、敏感器件及高压区按热、电磁和绝缘约束分布",
+          "verification": "检查耦合、热梯度、降额、气流及实际工作方向",
+          "sourceIds": [
+            "kicad-pcb",
+            "phils-lab",
+            "euro-fiducial"
+          ]
+        },
+        {
+          "id": "PLACEMENT-04",
+          "kind": "project-engineering-policy",
+          "requirement": "装配、测试、返修和标识有空间与可达性",
+          "verification": "检查 courtyard、探针、手焊/热风、极性/版本标记及工具操作空间",
+          "sourceIds": [
+            "kicad-pcb",
+            "phils-lab",
+            "euro-fiducial"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "kicad-pcb",
+        "phils-lab",
+        "euro-fiducial"
+      ],
+      "tools": [
+        "board.place.autoplace",
+        "board.drc.run"
+      ],
+      "requiredEvidence": [
+        "mechanical-review",
+        "placement-review"
+      ]
+    },
+    {
+      "id": "routing",
+      "title": "布线、过孔、铺铜和连通性",
+      "stage": "route",
+      "aliases": [
+        "布线",
+        "走线",
+        "routing",
+        "铺铜",
+        "过孔",
+        "差分"
+      ],
+      "requiredInputs": [
+        "网类/自定义规则及其依据",
+        "已确认布局和叠层",
+        "敏感/大电流/时序网络清单"
+      ],
+      "rules": [
+        {
+          "id": "ROUTING-01",
+          "kind": "project-engineering-policy",
+          "requirement": "线宽、间距、过孔和边缘限制取产品和板厂约束的有效交集",
+          "verification": "建立 netclass 和自定义规则，复核局部覆盖，禁止为清错放宽规则",
+          "sourceIds": [
+            "kicad-pcb",
+            "ti-highspeed",
+            "ipc-design",
+            "jlc-capability"
+          ]
+        },
+        {
+          "id": "ROUTING-02",
+          "kind": "project-engineering-policy",
+          "requirement": "先布受约束关键网络，自动布线只能在已确认边界内运行",
+          "verification": "保护锁定项、回流与功能分区；自动路由完成不代表工程完成",
+          "sourceIds": [
+            "kicad-pcb",
+            "ti-highspeed",
+            "ipc-design",
+            "jlc-capability"
+          ]
+        },
+        {
+          "id": "ROUTING-03",
+          "kind": "project-engineering-policy",
+          "requirement": "长度/偏斜含封装、过孔和接收端预算，按实际时序选择匹配组",
+          "verification": "不盲目等长；检查蛇形自耦合、间距、参考和延迟解算",
+          "sourceIds": [
+            "kicad-pcb",
+            "ti-highspeed",
+            "ipc-design",
+            "jlc-capability"
+          ]
+        },
+        {
+          "id": "ROUTING-04",
+          "kind": "project-engineering-policy",
+          "requirement": "铜区填充后核查孤岛、热连接、细颈和每个端点真实连通",
+          "verification": "保存快照重新填充检查，逐网络证明无未连，视觉接触不当电气连接",
+          "sourceIds": [
+            "kicad-pcb",
+            "ti-highspeed",
+            "ipc-design",
+            "jlc-capability"
+          ]
+        },
+        {
+          "id": "ROUTING-05",
+          "kind": "project-engineering-policy",
+          "requirement": "通孔、盲埋孔和微孔选择符合可靠性与工艺资格",
+          "verification": "审核纵横比、叠孔、填孔/盖帽、钻孔公差和热循环风险",
+          "sourceIds": [
+            "kicad-pcb",
+            "ti-highspeed",
+            "ipc-design",
+            "jlc-capability"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "kicad-pcb",
+        "ti-highspeed",
+        "ipc-design",
+        "jlc-capability"
+      ],
+      "tools": [
+        "board.route.autoroute",
+        "board.zones.refill",
+        "board.connectivity.prove",
+        "board.drc.run"
+      ],
+      "requiredEvidence": [
+        "routing-review",
+        "native-drc",
+        "connectivity-proof"
+      ]
+    },
+    {
+      "id": "highspeed",
+      "title": "DDR、USB、以太网与高速 SI",
+      "stage": "route",
+      "aliases": [
+        "高速",
+        "high speed",
+        "DDR",
+        "USB",
+        "PCIe",
+        "以太网",
+        "SI",
+        "差分"
+      ],
+      "requiredInputs": [
+        "准确 SoC/PHY/存储型号及硬件指南",
+        "拓扑/速率/封装延迟",
+        "IBIS/S 参数和实际叠层"
+      ],
+      "rules": [
+        {
+          "id": "HIGHSPEED-01",
+          "kind": "project-engineering-policy",
+          "requirement": "每种接口采用对应器件/版本的拓扑与约束，不套其他芯片的长度表",
+          "verification": "建立源端到终端 pin-to-pin 约束，记录 byte lane、组内/组间预算",
+          "sourceIds": [
+            "ti-highspeed",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "HIGHSPEED-02",
+          "kind": "project-engineering-policy",
+          "requirement": "阻抗、端接、回流、stub 与连接器整体评估",
+          "verification": "将封装/过孔/ESD/连接器纳入通道分析，按需要做 SI 仿真和眼图实测",
+          "sourceIds": [
+            "ti-highspeed",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "HIGHSPEED-03",
+          "kind": "project-engineering-policy",
+          "requirement": "等长、换层和串扰基于延迟与预算验证",
+          "verification": "区分差分内偏斜与组间时序，检查参考平面、模式转换及蛇形耦合",
+          "sourceIds": [
+            "ti-highspeed",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "HIGHSPEED-04",
+          "kind": "project-engineering-policy",
+          "requirement": "高速电源与时钟裕量和功能测试联合验收",
+          "verification": "保留最坏角落、训练/压力测试、误码/眼图和 PDN 证据",
+          "sourceIds": [
+            "ti-highspeed",
+            "kicad-pcb"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ti-highspeed",
+        "kicad-pcb"
+      ],
+      "tools": [
+        "web.search",
+        "web.fetch",
+        "board.drc.run",
+        "board.stackup.read"
+      ],
+      "requiredEvidence": [
+        "interface-constraint-table",
+        "si-pi-analysis",
+        "interface-lab-tests"
+      ]
+    },
+    {
+      "id": "rf-emc",
+      "title": "RF、天线、ESD 与 EMC",
+      "stage": "route",
+      "aliases": [
+        "RF",
+        "射频",
+        "天线",
+        "EMC",
+        "EMI",
+        "ESD",
+        "浪涌"
+      ],
+      "requiredInputs": [
+        "频段/天线/外壳及认证目标",
+        "RF 器件参考版图",
+        "端口耦合和试验要求"
+      ],
+      "rules": [
+        {
+          "id": "RF-EMC-01",
+          "kind": "project-engineering-policy",
+          "requirement": "射频匹配、馈线和禁布遵循实际器件与天线参考并保留调试能力",
+          "verification": "核查叠层/参考地/匹配器件寄生，装壳后用 VNA/射频测试验证",
+          "sourceIds": [
+            "nordic-rf",
+            "ti-highspeed",
+            "rick-hartley"
+          ]
+        },
+        {
+          "id": "RF-EMC-02",
+          "kind": "project-engineering-policy",
+          "requirement": "外部接口的屏蔽和瞬态电流路径靠近入口并降低耦合",
+          "verification": "分析 TVS/机壳地/信号地连接，检查回路电感、隔离及保护器件额定值",
+          "sourceIds": [
+            "nordic-rf",
+            "ti-highspeed",
+            "rick-hartley"
+          ]
+        },
+        {
+          "id": "RF-EMC-03",
+          "kind": "project-engineering-policy",
+          "requirement": "EMC 从电流回路与共模路径控制，不依赖事后随机加磁珠",
+          "verification": "审查时钟谐波、连接线、屏蔽接缝、滤波与布局并做预一致性测试",
+          "sourceIds": [
+            "nordic-rf",
+            "ti-highspeed",
+            "rick-hartley"
+          ]
+        },
+        {
+          "id": "RF-EMC-04",
+          "kind": "project-engineering-policy",
+          "requirement": "适用的发射、抗扰度和无线测试由实际产品与市场确定",
+          "verification": "保留配置、样机版本、试验条件、实验室报告与整改闭环",
+          "sourceIds": [
+            "nordic-rf",
+            "ti-highspeed",
+            "rick-hartley"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "nordic-rf",
+        "ti-highspeed",
+        "rick-hartley"
+      ],
+      "tools": [
+        "web.fetch",
+        "board.drc.run"
+      ],
+      "requiredEvidence": [
+        "rf-emc-review",
+        "emc-test-report"
+      ]
+    },
+    {
+      "id": "safety",
+      "title": "绝缘、安规和功能安全适用性",
+      "stage": "spec",
+      "aliases": [
+        "安规",
+        "高压",
+        "绝缘",
+        "爬电",
+        "安全",
+        "safety",
+        "医疗",
+        "汽车"
+      ],
+      "requiredInputs": [
+        "产品标准/销售地区",
+        "工作/瞬态电压和绝缘等级",
+        "污染等级/材料组/海拔"
+      ],
+      "rules": [
+        {
+          "id": "SAFETY-01",
+          "kind": "project-engineering-policy",
+          "requirement": "确定适用产品标准和法规后由合格人员制定绝缘及试验要求",
+          "verification": "标准全文/版本/适用范围和审批可追溯，公共目录不能代替条款判断",
+          "sourceIds": [
+            "iec-insulation",
+            "ipc-design",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "SAFETY-02",
+          "kind": "project-engineering-policy",
+          "requirement": "爬电与电气间隙分别计算并覆盖所有铜层、焊盘和机械路径",
+          "verification": "核对槽孔、涂覆资格、污染、海拔、材料和装配公差，禁止固定通用毫米数",
+          "sourceIds": [
+            "iec-insulation",
+            "ipc-design",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "SAFETY-03",
+          "kind": "project-engineering-policy",
+          "requirement": "保护接地、隔离件、保险和故障能量按风险验证",
+          "verification": "审核认证器件工作电压/瞬态、故障分析、耐压/接地/泄漏试验",
+          "sourceIds": [
+            "iec-insulation",
+            "ipc-design",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "SAFETY-04",
+          "kind": "project-engineering-policy",
+          "requirement": "汽车、医疗、航空或功能安全声明需要相应过程与资格",
+          "verification": "通用 PCB 教程、DRC 或 IPC 等级不得当成行业认证",
+          "sourceIds": [
+            "iec-insulation",
+            "ipc-design",
+            "kicad-pcb"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "iec-insulation",
+        "ipc-design",
+        "kicad-pcb"
+      ],
+      "tools": [
+        "web.search",
+        "board.drc.run"
+      ],
+      "requiredEvidence": [
+        "safety-applicability",
+        "safety-review-and-lab-test"
+      ]
+    },
+    {
+      "id": "thermal-reliability",
+      "title": "热设计、寿命与环境可靠性",
+      "stage": "dfm",
+      "aliases": [
+        "热",
+        "温升",
+        "thermal",
+        "寿命",
+        "可靠性",
+        "振动"
+      ],
+      "requiredInputs": [
+        "真实功耗/负载周期",
+        "外壳/气流/环境边界",
+        "寿命和环境试验目标"
+      ],
+      "rules": [
+        {
+          "id": "THERMAL-RELIABILITY-01",
+          "kind": "project-engineering-policy",
+          "requirement": "最坏功耗下验证结温、器件降额和板上热点",
+          "verification": "模型边界与热阻适用性需说明，样机热电偶/热像验证不能省略",
+          "sourceIds": [
+            "ipc-6012",
+            "ipc-design",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "THERMAL-RELIABILITY-02",
+          "kind": "project-engineering-policy",
+          "requirement": "材料、焊点、连接器和重件适合温度循环及机械环境",
+          "verification": "审查 CTE、铜平衡、固定、共振、焊点疲劳和潮湿污染",
+          "sourceIds": [
+            "ipc-6012",
+            "ipc-design",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "THERMAL-RELIABILITY-03",
+          "kind": "project-engineering-policy",
+          "requirement": "可靠性计划按失效风险制定应力、样本和合格判据",
+          "verification": "记录温循/湿热/振动/寿命试验的实际条件、结果和失效分析",
+          "sourceIds": [
+            "ipc-6012",
+            "ipc-design",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "THERMAL-RELIABILITY-04",
+          "kind": "project-engineering-policy",
+          "requirement": "验证与生产变更必须可追溯到相同硬件/工艺配置",
+          "verification": "替代料、PCB 材料、叠层和装配工艺变更执行影响分析与再验证",
+          "sourceIds": [
+            "ipc-6012",
+            "ipc-design",
+            "kicad-pcb"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "ipc-6012",
+        "ipc-design",
+        "kicad-pcb"
+      ],
+      "tools": [
+        "web.fetch",
+        "board.drc.run"
+      ],
+      "requiredEvidence": [
+        "thermal-analysis-and-measurement",
+        "reliability-validation"
+      ]
+    },
+    {
+      "id": "dfm",
+      "title": "裸板制造、材料与工艺能力",
+      "stage": "dfm",
+      "aliases": [
+        "DFM",
+        "板厂",
+        "制造",
+        "加工",
+        "铜厚",
+        "钻孔"
+      ],
+      "requiredInputs": [
+        "订单对应工艺规范和日期",
+        "确认叠层和材料",
+        "制造数据及特殊要求"
+      ],
+      "rules": [
+        {
+          "id": "DFM-01",
+          "kind": "project-engineering-policy",
+          "requirement": "制造参数必须来自所选供应商/工艺并锁定来源版本",
+          "verification": "核对层数、铜厚、最小几何、钻孔、环宽、阻焊和边缘限制，不采用未知默认值",
+          "sourceIds": [
+            "jlc-capability",
+            "euro-class",
+            "euro-panel",
+            "ipc-6012"
+          ]
+        },
+        {
+          "id": "DFM-02",
+          "kind": "project-engineering-policy",
+          "requirement": "全局最小规则和局部自定义覆盖都必须满足有效约束",
+          "verification": "审阅 .kicad_pro/.kicad_dru、禁用检查和规则优先级，保留所有例外依据",
+          "sourceIds": [
+            "jlc-capability",
+            "euro-class",
+            "euro-panel",
+            "ipc-6012"
+          ]
+        },
+        {
+          "id": "DFM-03",
+          "kind": "project-engineering-policy",
+          "requirement": "填孔、背钻、控深、边镀、阻抗和特殊材料需专项确认",
+          "verification": "记录技术要求、能力证明、报价/订单确认与检验方法",
+          "sourceIds": [
+            "jlc-capability",
+            "euro-class",
+            "euro-panel",
+            "ipc-6012"
+          ]
+        },
+        {
+          "id": "DFM-04",
+          "kind": "project-engineering-policy",
+          "requirement": "拼板、工艺边、分板和板翘风险与生产线协调",
+          "verification": "核对连接方式、铜到分板线、V-cut/mouse-bite、治具与重件应力",
+          "sourceIds": [
+            "jlc-capability",
+            "euro-class",
+            "euro-panel",
+            "ipc-6012"
+          ]
+        },
+        {
+          "id": "DFM-05",
+          "kind": "project-engineering-policy",
+          "requirement": "制造交付前完成板厂 CAM/DFM 回答闭环",
+          "verification": "板厂自动检查只是工艺证据，不能替代电气和可靠性审查",
+          "sourceIds": [
+            "jlc-capability",
+            "euro-class",
+            "euro-panel",
+            "ipc-6012"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "jlc-capability",
+        "euro-class",
+        "euro-panel",
+        "ipc-6012"
+      ],
+      "tools": [
+        "audit.run",
+        "board.dfm.analyze",
+        "board.drc.run"
+      ],
+      "requiredEvidence": [
+        "manufacturing-profile",
+        "fabricator-confirmation",
+        "dfm-review"
+      ]
+    },
+    {
+      "id": "assembly",
+      "title": "贴装、钢网、BOM 与工艺",
+      "stage": "manufacturing",
+      "aliases": [
+        "装配",
+        "贴片",
+        "钢网",
+        "SMT",
+        "CPL",
+        "DNP",
+        "焊接"
+      ],
+      "requiredInputs": [
+        "实际 BOM/变体和贴片坐标",
+        "组装线能力",
+        "器件焊接/潮敏要求"
+      ],
+      "rules": [
+        {
+          "id": "ASSEMBLY-01",
+          "kind": "project-engineering-policy",
+          "requirement": "BOM、CPL、丝印和装配图按最终设计变体一致导出",
+          "verification": "核查 DNP、位号、坐标原点/单位、底层镜像和旋转的板厂约定",
+          "sourceIds": [
+            "euro-fiducial",
+            "euro-panel",
+            "kicad-pcb",
+            "klc"
+          ]
+        },
+        {
+          "id": "ASSEMBLY-02",
+          "kind": "project-engineering-policy",
+          "requirement": "极性、pin1、连接器方向与实际封装逐项复核",
+          "verification": "不依赖自动坐标文件，保留首件照片和方向检查",
+          "sourceIds": [
+            "euro-fiducial",
+            "euro-panel",
+            "kicad-pcb",
+            "klc"
+          ]
+        },
+        {
+          "id": "ASSEMBLY-03",
+          "kind": "project-engineering-policy",
+          "requirement": "钢网和焊盘设计按锡量、桥连、空洞和散热焊盘工艺评审",
+          "verification": "确认开窗、分割、塞孔与回流曲线、MSL/烘烤要求",
+          "sourceIds": [
+            "euro-fiducial",
+            "euro-panel",
+            "kicad-pcb",
+            "klc"
+          ]
+        },
+        {
+          "id": "ASSEMBLY-04",
+          "kind": "project-engineering-policy",
+          "requirement": "基准点、边缘夹持、元件高度和双面工艺符合装配线",
+          "verification": "由制造方审查全局/局部 fiducial、工具空间、测试与返修",
+          "sourceIds": [
+            "euro-fiducial",
+            "euro-panel",
+            "kicad-pcb",
+            "klc"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "euro-fiducial",
+        "euro-panel",
+        "kicad-pcb",
+        "klc"
+      ],
+      "tools": [
+        "audit.footprint",
+        "audit.run"
+      ],
+      "requiredEvidence": [
+        "assembly-review",
+        "bom-cpl-review",
+        "first-article-inspection"
+      ]
+    },
+    {
+      "id": "dft",
+      "title": "可测试性、烧录与生产测试",
+      "stage": "manufacturing",
+      "aliases": [
+        "DFT",
+        "测试点",
+        "ICT",
+        "烧录",
+        "test",
+        "调试"
+      ],
+      "requiredInputs": [
+        "功能验收/覆盖率目标",
+        "测试治具与探针能力",
+        "固件/密钥和追溯要求"
+      ],
+      "rules": [
+        {
+          "id": "DFT-01",
+          "kind": "project-engineering-policy",
+          "requirement": "关键电源、地、复位、调试和接口可安全接入",
+          "verification": "核对探针间距/支撑/禁布、测量加载与安全操作",
+          "sourceIds": [
+            "kicad-sch",
+            "kicad-pcb",
+            "ipc-dfm"
+          ]
+        },
+        {
+          "id": "DFT-02",
+          "kind": "project-engineering-policy",
+          "requirement": "测试步骤覆盖开短路、功能、模拟裕量和边界工况",
+          "verification": "记录故障覆盖、判据、校准与良品/不良品验证",
+          "sourceIds": [
+            "kicad-sch",
+            "kicad-pcb",
+            "ipc-dfm"
+          ]
+        },
+        {
+          "id": "DFT-03",
+          "kind": "project-engineering-policy",
+          "requirement": "烧录、版本、校准和序列号可追溯并支持返修恢复",
+          "verification": "验证镜像摘要、读回、配置位和测试数据库，不在公开资料中放密钥",
+          "sourceIds": [
+            "kicad-sch",
+            "kicad-pcb",
+            "ipc-dfm"
+          ]
+        },
+        {
+          "id": "DFT-04",
+          "kind": "project-engineering-policy",
+          "requirement": "量产测试需治具重复性、节拍及误判评估",
+          "verification": "保留 GR&R/重复测试、黄金样机、日志与失效处理流程",
+          "sourceIds": [
+            "kicad-sch",
+            "kicad-pcb",
+            "ipc-dfm"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "kicad-sch",
+        "kicad-pcb",
+        "ipc-dfm"
+      ],
+      "tools": [
+        "project.info",
+        "reference.plan"
+      ],
+      "requiredEvidence": [
+        "dft-review",
+        "production-test-plan",
+        "fixture-validation"
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "ERC、DRC、连通、规则与版本证据",
+      "stage": "verified",
+      "aliases": [
+        "审查",
+        "验收",
+        "DRC",
+        "ERC",
+        "连通",
+        "检查",
+        "audit"
+      ],
+      "requiredInputs": [
+        "保存的完整工程与依赖",
+        "需求/规则/制造基线",
+        "原生报告和工程审查材料"
+      ],
+      "rules": [
+        {
+          "id": "VERIFICATION-01",
+          "kind": "project-engineering-policy",
+          "requirement": "对同一保存快照运行全部级别 ERC/DRC、原理图 PCB 一致性与连通检查",
+          "verification": "包含排除项/禁用项/所有 track errors、重新填铜和每个子页，不只看错误计数",
+          "sourceIds": [
+            "kicad-cli",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "VERIFICATION-02",
+          "kind": "project-engineering-policy",
+          "requirement": "报告缺失、检查未运行、忽略项目或规则依据不明均不得判通过",
+          "verification": "保留原生 JSON 和工具版本；只改状态或确认布尔值不是证据",
+          "sourceIds": [
+            "kicad-cli",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "VERIFICATION-03",
+          "kind": "project-engineering-policy",
+          "requirement": "当前源文件与证据绑定 SHA-256；改变后失效",
+          "verification": "覆盖子页、本地符号/封装、规则、3D 和制造约束，检查读取期间是否变化",
+          "sourceIds": [
+            "kicad-cli",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "VERIFICATION-04",
+          "kind": "project-engineering-policy",
+          "requirement": "静态检查、工程审查和实物测试分层验收",
+          "verification": "DRC 零错误不证明时序/热/EMC/功能/绝缘/量产良率",
+          "sourceIds": [
+            "kicad-cli",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        },
+        {
+          "id": "VERIFICATION-05",
+          "kind": "project-engineering-policy",
+          "requirement": "所有例外有依据、影响、责任人和重验范围",
+          "verification": "不自动禁用规则、缩小范围或改网名来消除真实缺陷",
+          "sourceIds": [
+            "kicad-cli",
+            "kicad-pcb",
+            "kicad-sch"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "kicad-cli",
+        "kicad-pcb",
+        "kicad-sch"
+      ],
+      "tools": [
+        "audit.rules",
+        "audit.run",
+        "board.connectivity.prove",
+        "release.check"
+      ],
+      "requiredEvidence": [
+        "native-audit",
+        "engineering-review",
+        "revision-bound-evidence"
+      ]
+    },
+    {
+      "id": "release",
+      "title": "制造交付与试产/量产放行",
+      "stage": "manufacturing",
+      "aliases": [
+        "投产",
+        "量产",
+        "投板",
+        "Gerber",
+        "release",
+        "生产",
+        "工业级别"
+      ],
+      "requiredInputs": [
+        "完整版本和变体",
+        "制造商确认与审查证据",
+        "样机/认证/试产结果"
+      ],
+      "rules": [
+        {
+          "id": "RELEASE-01",
+          "kind": "project-engineering-policy",
+          "requirement": "导出制造包必须由同一冻结快照产生并可重现",
+          "verification": "包含 Gerber/钻孔或约定格式、叠层/制板说明、BOM/CPL、装配图与测试要求及摘要清单",
+          "sourceIds": [
+            "kicad-pcb",
+            "ipc-dfm",
+            "ipc-6012",
+            "euro-panel"
+          ]
+        },
+        {
+          "id": "RELEASE-02",
+          "kind": "project-engineering-policy",
+          "requirement": "独立查看制造输出并核对板框、孔、层、极性、坐标和版本",
+          "verification": "不能只看导出进程退出码；与源板、实物方向及板厂 CAM 复核",
+          "sourceIds": [
+            "kicad-pcb",
+            "ipc-dfm",
+            "ipc-6012",
+            "euro-panel"
+          ]
+        },
+        {
+          "id": "RELEASE-03",
+          "kind": "project-engineering-policy",
+          "requirement": "打样放行与量产放行分开；未知与不适用必须显式解释",
+          "verification": "关卡输出列出缺失证据和适用条件，AI 不能代签或以状态通过替代审查",
+          "sourceIds": [
+            "kicad-pcb",
+            "ipc-dfm",
+            "ipc-6012",
+            "euro-panel"
+          ]
+        },
+        {
+          "id": "RELEASE-04",
+          "kind": "project-engineering-policy",
+          "requirement": "量产需功能、热、EMC/安规适用性、可靠性与试产过程证据",
+          "verification": "保存真实样机/配置/仪器/条件/批次/良率/失效闭环，文档模板不是实测",
+          "sourceIds": [
+            "kicad-pcb",
+            "ipc-dfm",
+            "ipc-6012",
+            "euro-panel"
+          ]
+        },
+        {
+          "id": "RELEASE-05",
+          "kind": "project-engineering-policy",
+          "requirement": "可追溯的责任工程师/质量及制造方完成最终放行",
+          "verification": "工具只核对证据包完整性和摘要，不认证签名、报告真实性或代替法规责任",
+          "sourceIds": [
+            "kicad-pcb",
+            "ipc-dfm",
+            "ipc-6012",
+            "euro-panel"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "kicad-pcb",
+        "ipc-dfm",
+        "ipc-6012",
+        "euro-panel"
+      ],
+      "tools": [
+        "release.template",
+        "release.check",
+        "audit.run"
+      ],
+      "requiredEvidence": [
+        "release-package-review",
+        "prototype-validation",
+        "compliance-validation",
+        "pilot-process-validation",
+        "accountable-release"
+      ]
+    },
+    {
+      "id": "examples",
+      "title": "KiCad 原生设计与仿真示例索引",
+      "stage": "reference",
+      "aliases": [
+        "示例",
+        "example",
+        "参考设计",
+        "demo",
+        "原先设计"
+      ],
+      "requiredInputs": [
+        "示例对应功能和版本",
+        "项目本地路径和文件摘要"
+      ],
+      "rules": [
+        {
+          "id": "EXAMPLES-01",
+          "kind": "project-engineering-policy",
+          "requirement": "所有本地 demos 工程仅作为按需参考，保留原始文件",
+          "verification": "通过 reference.examples 查工程、文件清单和摘要，复制到独立目录后试验",
+          "sourceIds": [
+            "kicad-examples",
+            "kicad-sch",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "EXAMPLES-02",
+          "kind": "project-engineering-policy",
+          "requirement": "复用前检查器件、工艺、规则、许可与时代差异",
+          "verification": "旧示例、仿真专用或演示板不得直接认定安全或投产就绪",
+          "sourceIds": [
+            "kicad-examples",
+            "kicad-sch",
+            "kicad-pcb"
+          ]
+        },
+        {
+          "id": "EXAMPLES-03",
+          "kind": "project-engineering-policy",
+          "requirement": "学习方法与正式设计证据分开记录",
+          "verification": "没有逐项核验的参考标记为未审查，不能继承其验收结论",
+          "sourceIds": [
+            "kicad-examples",
+            "kicad-sch",
+            "kicad-pcb"
+          ]
+        }
+      ],
+      "sourceIds": [
+        "kicad-examples",
+        "kicad-sch",
+        "kicad-pcb"
+      ],
+      "tools": [
+        "reference.examples",
+        "project.info"
+      ],
+      "requiredEvidence": [
+        "example-applicability-review"
+      ]
+    }
+  ]
+}

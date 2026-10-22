@@ -20,6 +20,7 @@
 #pragma once
 
 #include <api/api_handler_pcb.h>
+#include <api/common/commands/editor_commands.pb.h>
 
 class PCB_EDIT_FRAME;
 
@@ -36,6 +37,9 @@ public:
     API_HANDLER_PCB_AI( std::shared_ptr<PCB_CONTEXT> aContext, PCB_EDIT_FRAME* aFrame = nullptr );
 
 private:
+    HANDLER_RESULT<kiapi::common::commands::RunActionResponse> handleViewerAction(
+            const HANDLER_CONTEXT<kiapi::common::commands::RunAction>& aCtx );
+
     HANDLER_RESULT<kiapi::board::commands::AutoPlaceFootprintsResponse> handleAutoPlaceFootprints(
             const HANDLER_CONTEXT<kiapi::board::commands::AutoPlaceFootprints>& aCtx );
 

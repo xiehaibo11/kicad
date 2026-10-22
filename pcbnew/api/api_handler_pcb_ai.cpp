@@ -24,6 +24,7 @@
 
 #include <api/api_enums.h>
 #include <api/api_utils.h>
+#include <3d_viewer/eda_3d_viewer_frame.h>
 #include <autorouter/ar_autoplacer.h>
 #include <board_commit.h>
 #include <board_design_settings.h>
@@ -34,6 +35,8 @@
 #include <geometry/shape_poly_set.h>
 #include <math/box2.h>
 #include <netinfo.h>
+#include <pcb_edit_frame.h>
+#include <tool/tool_manager.h>
 #include <zone.h>
 #include <zone_filler.h>
 
@@ -102,6 +105,8 @@ static kbc::PlaneInfo makePlaneInfo( BOARD* aBoard, ZONE* aZone )
 API_HANDLER_PCB_AI::API_HANDLER_PCB_AI( PCB_EDIT_FRAME* aFrame ) :
         API_HANDLER_PCB( aFrame )
 {
+    registerHandler<commands::RunAction, commands::RunActionResponse>(
+            &API_HANDLER_PCB_AI::handleViewerAction );
     registerHandler<kbc::AutoPlaceFootprints, kbc::AutoPlaceFootprintsResponse>(
             &API_HANDLER_PCB_AI::handleAutoPlaceFootprints );
 
@@ -117,6 +122,8 @@ API_HANDLER_PCB_AI::API_HANDLER_PCB_AI( std::shared_ptr<PCB_CONTEXT> aContext,
                                         PCB_EDIT_FRAME* aFrame ) :
         API_HANDLER_PCB( std::move( aContext ), aFrame )
 {
+    registerHandler<commands::RunAction, commands::RunActionResponse>(
+            &API_HANDLER_PCB_AI::handleViewerAction );
     registerHandler<kbc::AutoPlaceFootprints, kbc::AutoPlaceFootprintsResponse>(
             &API_HANDLER_PCB_AI::handleAutoPlaceFootprints );
 
@@ -125,6 +132,44 @@ API_HANDLER_PCB_AI::API_HANDLER_PCB_AI( std::shared_ptr<PCB_CONTEXT> aContext,
 
     registerHandler<kbc::VerifyPlane, kbc::VerifyPlaneResponse>(
             &API_HANDLER_PCB_AI::handleVerifyPlane );
+}
+
+
+HANDLER_RESULT<commands::RunActionResponse> API_HANDLER_PCB_AI::handleViewerAction(
+        const HANDLER_CONTEXT<commands::RunAction>& aCtx )
+{
+    wxString action = wxString::FromUTF8( aCtx.Request.action() );
+    wxString editor = wxString::FromUTF8( aCtx.Request.editor() ).Lower();
+
+    if( editor.IsEmpty() )
+        editor = action.BeforeFirst( '.' ).Lower();
+
+    // The 3D viewer belongs to its PCB editor, rather than the manager's
+    // KIWAY player table. Resolve it inside the PCB module, where its RTTI
+    // and lifetime are known, and leave other editors to the common handler.
+    EDA_3D_VIEWER_FRAME* viewer = frame() ? frame()->Get3DViewerFrame() : nullptr;
+
+    if( ( editor != wxS( "3d-viewer" ) && editor != wxS( "3dviewer" ) )
+        || !viewer || viewer->IsBeingDeleted() || !viewer->GetToolManager() )
+    {
+        ApiResponseStatus error;
+        error.set_status( ApiStatusCode::AS_UNHANDLED );
+        return tl::unexpected( error );
+    }
+
+    if( !viewer->IsEnabled() )
+    {
+        ApiResponseStatus error;
+        error.set_status( ApiStatusCode::AS_BUSY );
+        error.set_error_message( "The 3D viewer is blocked by a dialog" );
+        return tl::unexpected( error );
+    }
+
+    commands::RunActionResponse response;
+    response.set_status( viewer->GetToolManager()->RunAction( action.ToStdString() )
+                                 ? commands::RunActionStatus::RAS_OK
+                                 : commands::RunActionStatus::RAS_INVALID );
+    return response;
 }
 
 
