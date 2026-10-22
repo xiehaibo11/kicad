@@ -49,7 +49,7 @@ void KICAD_MANAGER_FRAME::doReCreateMenuBar()
     KICAD_MANAGER_CONTROL* controlTool = m_toolManager->GetTool<KICAD_MANAGER_CONTROL>();
     // wxWidgets handles the Mac Application menu behind the scenes, but that means
     // we always have to start from scratch with a new wxMenuBar.
-    wxMenuBar*  oldMenuBar = GetMenuBar();
+    wxMenuBar*  oldMenuBar = m_workspaceMenu ? m_workspaceMenu : GetMenuBar();
     WX_MENUBAR* menuBar    = new WX_MENUBAR();
 
     //-- File menu -----------------------------------------------------------
@@ -276,6 +276,9 @@ void KICAD_MANAGER_FRAME::doReCreateMenuBar()
     menuBar->Append( prefsMenu, _( "&Preferences" ) );
     AddStandardHelpMenu( menuBar );
 
-    SetMenuBar( menuBar );
+    m_workspaceMenu = menuBar;
+    auto* editor = m_notebook ? WorkspaceEditor( m_notebook->GetCurrentPage() ) : nullptr;
+    if( !editor )
+        SetMenuBar( menuBar );
     delete oldMenuBar;
 }

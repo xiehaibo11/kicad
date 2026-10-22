@@ -38,6 +38,7 @@
 #include <settings/settings_manager.h>
 #include <settings/kicad_settings.h>
 #include <tool/selection.h>
+#include <tool/actions.h>
 #include <tool/tool_event.h>
 #include <tool/tool_manager.h>
 #include <tool/common_control.h>
@@ -771,6 +772,7 @@ int KICAD_MANAGER_CONTROL::ShowPlayer( const TOOL_EVENT& aEvent )
         return -1;
 
     REENTRANCY_GUARD guard( &m_inShowPlayer );
+    bool alreadyOpen = m_frame->Kiway().Player( playerType, false ) != nullptr;
 
     try
     {
@@ -788,7 +790,10 @@ int KICAD_MANAGER_CONTROL::ShowPlayer( const TOOL_EVENT& aEvent )
         return -1;
     }
 
-    if( !player->IsVisible() )   // A hidden frame might not have the document loaded.
+    // Notebook pages are hidden whenever another editor is selected. Visibility
+    // must not cause an already loaded document (including edits) to be reloaded.
+    bool needsDocument = !alreadyOpen || ( !player->IsWorkspacePage() && !player->IsVisible() );
+    if( needsDocument )
     {
         wxString filepath;
 
@@ -833,6 +838,15 @@ int KICAD_MANAGER_CONTROL::ShowPlayer( const TOOL_EVENT& aEvent )
         player->Iconize( false );
 
     player->Raise();
+
+    if( needsDocument && player->IsWorkspacePage() )
+    {
+        player->CallAfter( [player]()
+        {
+            if( player->GetToolManager() )
+                player->GetToolManager()->RunAction( ACTIONS::zoomFitScreen );
+        } );
+    }
 
     // Raising the window does not set the focus on Linux.  This should work on
     // any platform.

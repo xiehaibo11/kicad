@@ -39,6 +39,7 @@
 #include <nlohmann/json_fwd.hpp>
 
 #include <wx/aui/aui.h>
+#include <workspace_frame.h>
 #include <wx/datetime.h>
 #include <layer_ids.h>
 #include <frame_type.h>
@@ -112,7 +113,7 @@ typedef std::function< void( wxUpdateUIEvent& ) > UIUpdateHandler;
  * calling it from the derived class's SaveSettings().  This class is not a #KIWAY_PLAYER
  * because #KICAD_MANAGER_FRAME is derived from it and that class is not a player.
  */
-class EDA_BASE_FRAME : public wxFrame, public TOOLS_HOLDER, public KIWAY_HOLDER,
+class EDA_BASE_FRAME : public WORKSPACE_FRAME, public TOOLS_HOLDER, public KIWAY_HOLDER,
                        public UNITS_PROVIDER
 {
 public:
@@ -130,6 +131,9 @@ public:
                     const wxString& aFrameName, KIWAY* aKiway, const EDA_IU_SCALE& aIuScale );
 
     ~EDA_BASE_FRAME();
+
+    wxStatusBar* CreateStatusBar( int number = 1, long style = wxSTB_DEFAULT_STYLE,
+                                 wxWindowID id = 0, const wxString& name = wxStatusBarNameStr ) override;
 
     void ChangeUserUnits( EDA_UNITS aUnits );
 

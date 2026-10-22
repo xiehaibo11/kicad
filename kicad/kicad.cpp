@@ -151,8 +151,15 @@ HANDLER_RESULT<commands::OpenDocumentResponse> openInGui( KICAD_MANAGER_FRAME* a
         aFrame->GetToolManager()->RunAction( pcb ? KICAD_MANAGER_ACTIONS::editPCB
                                                  : KICAD_MANAGER_ACTIONS::editSchematic );
 
-        if( !aFrame->Kiway().Player( pcb ? FRAME_PCB_EDITOR : FRAME_SCH, false ) )
+        KIWAY_PLAYER* player = aFrame->Kiway().Player( pcb ? FRAME_PCB_EDITOR : FRAME_SCH, false );
+        if( !player )
             return apiFailure( ApiStatusCode::AS_BAD_REQUEST, wxS( "The editor did not open" ) );
+
+        wxFileName loaded( player->GetCurrentFileName() );
+        loaded.MakeAbsolute( aFrame->Prj().GetProjectPath() );
+        if( loaded != aDocPath )
+            return apiFailure( ApiStatusCode::AS_BAD_REQUEST,
+                               wxS( "The editor did not load the requested document" ) );
     }
 
     commands::OpenDocumentResponse response;

@@ -2342,6 +2342,17 @@ void PCB_EDIT_FRAME::UpdateTitle()
     title += wxT( " \u2014 " ) + _( "PCB Editor" );
 
     SetTitle( title );
+    if( IsWorkspacePage() )
+    {
+        auto* tabs = static_cast<wxAuiNotebook*>( GetParent() );
+        int index = tabs->GetPageIndex( this );
+        if( index != wxNOT_FOUND )
+        {
+            tabs->SetPageText( index, wxString( IsContentModified() ? wxS( "*" ) : wxEmptyString )
+                                     + wxS( "PCB" ) );
+            tabs->SetPageToolTip( index, title );
+        }
+    }
 }
 
 

@@ -1100,6 +1100,10 @@ private:
 
     DIALOG_ERC*                 m_ercDialog;
     DIALOG_BOOK_REPORTER*       m_diffSymbolDialog;
+    void updateSheetTabs();
+    wxAuiNotebook*             m_sheetTabs = nullptr;
+    std::vector<wxString>      m_sheetTabPaths;
+    bool                      m_updatingSheetTabs = false;
     HIERARCHY_PANE*             m_hierarchy;
     DIALOG_SYMBOL_FIELDS_TABLE* m_symbolFieldsTableDialog;
     DIALOG_SCHEMATIC_SETUP*     m_schematicSetupDialog;

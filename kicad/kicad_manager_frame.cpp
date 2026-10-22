@@ -231,6 +231,7 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
     configureToolbars();
     RecreateToolbars();
     ReCreateMenuBar();
+    m_workspaceMenu = GetMenuBar();
 
     m_auimgr.SetManagedWindow( this );
     m_auimgr.SetFlags( wxAUI_MGR_LIVE_RESIZE );
@@ -259,10 +260,12 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
                                     wxAUI_NB_TOP | wxAUI_NB_CLOSE_ON_ALL_TABS | wxAUI_NB_TAB_MOVE
                                             | wxAUI_NB_SCROLL_BUTTONS | wxNO_BORDER );
 
+    m_notebook->SetName( wxS( "KiCadWorkspaceEditors" ) );
     m_notebook->SetArtProvider( new WX_AUI_TAB_ART() );
 
     m_notebook->Bind( wxEVT_AUINOTEBOOK_PAGE_CLOSE, &KICAD_MANAGER_FRAME::onNotebookPageCloseRequest, this );
     m_notebook->Bind( wxEVT_AUINOTEBOOK_PAGE_CLOSED, &KICAD_MANAGER_FRAME::onNotebookPageCountChanged, this );
+    m_notebook->Bind( wxEVT_AUINOTEBOOK_PAGE_CHANGED, &KICAD_MANAGER_FRAME::OnWorkspacePageChanged, this );
     m_launcher = new PANEL_KICAD_LAUNCHER( m_notebook );
 
     m_notebook->Freeze();
@@ -314,6 +317,8 @@ KICAD_MANAGER_FRAME::KICAD_MANAGER_FRAME( wxWindow* parent, const wxString& titl
 
 KICAD_MANAGER_FRAME::~KICAD_MANAGER_FRAME()
 {
+    m_notebook->Unbind( wxEVT_AUINOTEBOOK_PAGE_CHANGED, &KICAD_MANAGER_FRAME::OnWorkspacePageChanged, this );
+    SetMenuBar( m_workspaceMenu );
     Unbind( wxEVT_CHAR, &TOOL_DISPATCHER::DispatchWxEvent, m_toolDispatcher );
     Unbind( wxEVT_CHAR_HOOK, &TOOL_DISPATCHER::DispatchWxEvent, m_toolDispatcher );
 
@@ -350,6 +355,71 @@ void KICAD_MANAGER_FRAME::HideTabsIfNeeded()
 }
 
 
+WORKSPACE_FRAME* KICAD_MANAGER_FRAME::WorkspaceEditor( wxWindow* aPage )
+{
+    // KIFACEs have hidden RTTI on macOS; identify their pages through KIWAY.
+    for( FRAME_T type : { FRAME_SCH, FRAME_PCB_EDITOR } )
+    {
+        KIWAY_PLAYER* player = Kiway().Player( type, false );
+        if( player && player == aPage && player->IsWorkspacePage() )
+            return player;
+    }
+    return nullptr;
+}
+
+
+bool KICAD_MANAGER_FRAME::ProcessEvent( wxEvent& event )
+{
+    if( m_notebook && !m_forwardingWorkspaceEvent
+        && !( event.GetEventType() == wxEVT_MENU && event.GetId() == wxID_EXIT )
+        && ( event.GetEventType() == wxEVT_MENU || event.GetEventType() == wxEVT_UPDATE_UI
+             || event.GetEventType() == wxEVT_MENU_OPEN || event.GetEventType() == wxEVT_MENU_CLOSE
+             || event.GetEventType() == wxEVT_MENU_HIGHLIGHT
+             || event.GetEventType() == wxEVT_ACTIVATE || event.GetEventType() == wxEVT_ICONIZE ) )
+    {
+        if( auto* editor = WorkspaceEditor( m_notebook->GetCurrentPage() ) )
+        {
+            m_forwardingWorkspaceEvent = true;
+            bool handled = editor->GetEventHandler()->ProcessEvent( event );
+            m_forwardingWorkspaceEvent = false;
+            if( handled ) return true;
+        }
+    }
+    return EDA_BASE_FRAME::ProcessEvent( event );
+}
+
+
+void KICAD_MANAGER_FRAME::OnWorkspacePageChanged( wxAuiNotebookEvent& event )
+{
+    if( event.GetOldSelection() >= 0
+        && static_cast<size_t>( event.GetOldSelection() ) < m_notebook->GetPageCount() )
+    {
+        if( auto* oldEditor = WorkspaceEditor( m_notebook->GetPage( event.GetOldSelection() ) ) )
+        {
+            wxActivateEvent deactivate( wxEVT_ACTIVATE, false, oldEditor->GetId() );
+            deactivate.SetEventObject( oldEditor );
+            oldEditor->GetEventHandler()->ProcessEvent( deactivate );
+        }
+    }
+
+    auto* editor = WorkspaceEditor( m_notebook->GetCurrentPage() );
+    SetMenuBar( editor && editor->WorkspaceMenu() ? editor->WorkspaceMenu() : m_workspaceMenu );
+    if( editor )
+    {
+        wxString label = editor == Kiway().Player( FRAME_SCH, false ) ? _( "Schematic" ) : wxS( "PCB" );
+        if( editor->GetTitle().StartsWith( wxS( "*" ) ) )
+            label.Prepend( wxS( "*" ) );
+        m_notebook->SetPageText( m_notebook->GetSelection(), label );
+        m_notebook->SetPageToolTip( m_notebook->GetSelection(), editor->GetTitle() );
+        wxActivateEvent activate( wxEVT_ACTIVATE, true, editor->GetId() );
+        activate.SetEventObject( editor );
+        editor->GetEventHandler()->ProcessEvent( activate );
+        editor->SetFocus();
+    }
+    event.Skip();
+}
+
+
 void KICAD_MANAGER_FRAME::onNotebookPageCountChanged( wxAuiNotebookEvent& evt )
 {
     HideTabsIfNeeded();
@@ -360,6 +430,14 @@ void KICAD_MANAGER_FRAME::onNotebookPageCloseRequest( wxAuiNotebookEvent& evt )
 {
     wxAuiNotebook* notebook = (wxAuiNotebook*) evt.GetEventObject();
     wxWindow*      page = notebook->GetPage( evt.GetSelection() );
+
+    if( auto* editor = WorkspaceEditor( page ) )
+    {
+        // Native close handlers own unsaved-change prompts and document teardown.
+        evt.Veto();
+        editor->Close();
+        return;
+    }
 
     if( PANEL_NOTEBOOK_BASE* panel = dynamic_cast<PANEL_NOTEBOOK_BASE*>( page ) )
     {

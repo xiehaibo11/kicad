@@ -824,6 +824,7 @@ set( COMMON_SRCS
     gal_display_options_common.cpp
     gr_text.cpp
     eda_base_frame.cpp
+    workspace_frame.cpp
     eda_draw_frame.cpp
     eda_group.cpp
     eda_item.cpp

@@ -133,6 +133,21 @@ BEGIN_EVENT_TABLE( EDA_BASE_FRAME, wxFrame )
     END_EVENT_TABLE()
 
 
+wxStatusBar* EDA_BASE_FRAME::CreateStatusBar( int number, long style, wxWindowID id,
+                                               const wxString& name )
+{
+    if( !IsWorkspacePage() )
+        return wxFrame::CreateStatusBar( number, style, id, name );
+
+    wxStatusBar* status = OnCreateStatusBar( number, style, id, name );
+    SetWorkspaceStatus( status );
+    m_auimgr.AddPane( status, wxAuiPaneInfo().Name( wxS( "WorkspaceStatus" ) ).Bottom()
+                            .CaptionVisible( false ).CloseButton( false ).PaneBorder( false )
+                            .MinSize( -1, status->GetBestSize().y ).Layer( 10 ) );
+    return status;
+}
+
+
 void EDA_BASE_FRAME::commonInit( FRAME_T aFrameType )
 {
     m_ident             = aFrameType;
@@ -180,7 +195,7 @@ EDA_BASE_FRAME::EDA_BASE_FRAME( wxWindow* aParent, FRAME_T aFrameType, const wxS
                                 const wxPoint& aPos, const wxSize& aSize, long aStyle,
                                 const wxString& aFrameName, KIWAY* aKiway,
                                 const EDA_IU_SCALE& aIuScale ) :
-        wxFrame( aParent, wxID_ANY, aTitle, aPos, aSize, aStyle, aFrameName ),
+        WORKSPACE_FRAME( aParent, aFrameType, aTitle, aPos, aSize, aStyle, aFrameName, aKiway ),
         TOOLS_HOLDER(),
         KIWAY_HOLDER( aKiway, KIWAY_HOLDER::FRAME ),
         UNITS_PROVIDER( aIuScale, EDA_UNITS::MM )
@@ -192,6 +207,48 @@ EDA_BASE_FRAME::EDA_BASE_FRAME( wxWindow* aParent, FRAME_T aFrameType, const wxS
     m_uiUpdateHandlerBound = false;
 
     commonInit( aFrameType );
+
+    if( IsWorkspacePage() )
+    {
+        Bind( wxEVT_SHOW, [this]( wxShowEvent& event )
+        {
+            if( event.IsShown() )
+            {
+                // Cocoa cannot measure toolbar controls reliably while their
+                // notebook page is hidden during editor construction.
+                CallAfter( [this]()
+                {
+                    if( m_isClosing || !IsShown() )
+                        return;
+
+                    for( ACTION_TOOLBAR* toolbar : { m_tbTopMain, m_tbTopAux, m_tbLeft, m_tbRight } )
+                    {
+                        if( !toolbar )
+                            continue;
+
+                        toolbar->KiRealize();
+                        wxAuiPaneInfo& pane = m_auimgr.GetPane( toolbar );
+                        pane.MaxSize( wxDefaultSize );
+                        pane.BestSize( toolbar->GetBestSize() );
+                        if( toolbar == m_tbLeft || toolbar == m_tbRight )
+                            pane.MinSize( toolbar->GetBestSize().x, -1 );
+                        else
+                            pane.MinSize( -1, toolbar->GetBestSize().y );
+                    }
+
+                    if( wxStatusBar* status = WorkspaceStatus() )
+                    {
+                        int height = status->GetBestSize().y;
+                        m_auimgr.GetPane( status ).Resizable( true ).DockFixed( false )
+                                .MinSize( -1, height ).BestSize( -1, height ).MaxSize( -1, height );
+                    }
+
+                    m_auimgr.Update();
+                } );
+            }
+            event.Skip();
+        } );
+    }
 
     Bind( wxEVT_DPI_CHANGED,
           [&]( wxDPIChangedEvent& aEvent )
@@ -1190,7 +1247,8 @@ void EDA_BASE_FRAME::ensureWindowIsOnScreen()
 
 void EDA_BASE_FRAME::LoadWindowSettings( const WINDOW_SETTINGS* aCfg )
 {
-    LoadWindowState( aCfg->state );
+    if( !IsWorkspacePage() )
+        LoadWindowState( aCfg->state );
 
     m_perspective = aCfg->perspective;
     m_auiLayoutState = std::make_unique<nlohmann::json>( aCfg->aui_state );
@@ -1205,29 +1263,33 @@ void EDA_BASE_FRAME::SaveWindowSettings( WINDOW_SETTINGS* aCfg )
     if( IsIconized() )
         return;
 
-    // If the window is maximized, we use the saved window size from before it was maximized
-    if( IsMaximized() )
+    if( !IsWorkspacePage() )
     {
-        m_framePos  = m_normalFramePos;
-        m_frameSize = m_normalFrameSize;
-    }
-    else
-    {
-        m_frameSize = GetWindowSize();
-        m_framePos  = GetPosition();
-    }
+        // If the window is maximized, we use the saved window size from before it was maximized
+        if( IsMaximized() )
+        {
+            m_framePos  = m_normalFramePos;
+            m_frameSize = m_normalFrameSize;
+        }
+        else
+        {
+            m_frameSize = GetWindowSize();
+            m_framePos  = GetPosition();
+        }
 
-    aCfg->state.pos_x     = m_framePos.x;
-    aCfg->state.pos_y     = m_framePos.y;
-    aCfg->state.size_x    = m_frameSize.x;
-    aCfg->state.size_y    = m_frameSize.y;
-    aCfg->state.maximized = IsMaximized();
-    aCfg->state.display   = wxDisplay::GetFromWindow( this );
+        aCfg->state.pos_x     = m_framePos.x;
+        aCfg->state.pos_y     = m_framePos.y;
+        aCfg->state.size_x    = m_frameSize.x;
+        aCfg->state.size_y    = m_frameSize.y;
+        aCfg->state.maximized = IsMaximized();
+        aCfg->state.display   = wxDisplay::GetFromWindow( this );
 
-    wxLogTrace( traceDisplayLocation, wxS( "Saving window maximized: %s" ),
-                IsMaximized() ? wxS( "true" ) : wxS( "false" ) );
-    wxLogTrace( traceDisplayLocation, wxS( "Saving config position (%d, %d) with size (%d, %d)" ),
-                m_framePos.x, m_framePos.y, m_frameSize.x, m_frameSize.y );
+        wxLogTrace( traceDisplayLocation, wxS( "Saving window maximized: %s" ),
+                    IsMaximized() ? wxS( "true" ) : wxS( "false" ) );
+        wxLogTrace( traceDisplayLocation, wxS( "Saving config position (%d, %d) with size (%d, %d)" ),
+                    m_framePos.x, m_framePos.y, m_frameSize.x, m_frameSize.y );
+
+    }
 
     // Once this is fully implemented, wxAuiManager will be used to maintain
     // the persistence of the main frame and all it's managed windows and
@@ -1376,7 +1438,9 @@ void EDA_BASE_FRAME::RestoreAuiLayout()
 
     for( size_t i = 0; i < panes.GetCount(); ++i )
     {
-        if( panes.Item( i ).IsToolbar() )
+        if( panes.Item( i ).IsToolbar()
+            || ( IsWorkspacePage() && ( panes.Item( i ).name == wxS( "SheetTabs" )
+                                        || panes.Item( i ).name == wxS( "WorkspaceStatus" ) ) ) )
             panes.Item( i ).Show( true );
     }
 }
@@ -2021,7 +2085,7 @@ WXLRESULT EDA_BASE_FRAME::MSWWindowProc( WXUINT message, WXWPARAM wParam, WXLPAR
             return 0;
     }
 
-    return wxFrame::MSWWindowProc( message, wParam, lParam );
+    return WORKSPACE_FRAME::MSWWindowProc( message, wParam, lParam );
 }
 #endif
 

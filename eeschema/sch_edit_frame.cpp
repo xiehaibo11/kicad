@@ -249,6 +249,36 @@ SCH_EDIT_FRAME::SCH_EDIT_FRAME( KIWAY* aKiway, wxWindow* aParent ) :
     m_auimgr.AddPane( m_messagePanel, EDA_PANE().Messages().Name( wxS( "MsgPanel" ) )
                       .Bottom().Layer( 6 ) );
 
+    if( IsWorkspacePage() )
+    {
+        m_sheetTabs = new wxAuiNotebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
+                                        wxAUI_NB_TOP | wxAUI_NB_SCROLL_BUTTONS );
+        m_auimgr.AddPane( m_sheetTabs, wxAuiPaneInfo().Name( wxS( "SheetTabs" ) )
+                         .Top().Layer( 7 ).CaptionVisible( false ).PaneBorder( false )
+                         .CloseButton( false ).Resizable( false )
+                         .MinSize( FromDIP( wxSize( 100, 34 ) ) )
+                         .BestSize( FromDIP( wxSize( 100, 34 ) ) ) );
+        m_sheetTabs->Bind( wxEVT_AUINOTEBOOK_PAGE_CHANGED,
+                [this]( wxAuiNotebookEvent& event )
+                {
+                    int index = event.GetSelection();
+                    if( !m_updatingSheetTabs && index >= 0
+                        && static_cast<size_t>( index ) < m_sheetTabPaths.size() )
+                    {
+                        for( SCH_SHEET_PATH path : Schematic().Hierarchy() )
+                        {
+                            if( path.PathAsString() == m_sheetTabPaths[index] )
+                            {
+                                m_toolManager->RunAction<SCH_SHEET_PATH*>(
+                                        SCH_ACTIONS::changeSheet, &path );
+                                break;
+                            }
+                        }
+                    }
+                    event.Skip();
+                } );
+    }
+
     // Columns; layers 1 - 3
     m_auimgr.AddPane( m_hierarchy, EDA_PANE().Palette().Name( SchematicHierarchyPaneName() )
                       .Caption( _( "Schematic Hierarchy" ) )
@@ -586,6 +616,15 @@ void SCH_EDIT_FRAME::OnCrossProbeFlashTimer( wxTimerEvent& aEvent )
 
 SCH_EDIT_FRAME::~SCH_EDIT_FRAME()
 {
+    // Child notebook teardown must not navigate through a model being destroyed.
+    m_updatingSheetTabs = true;
+    if( m_sheetTabs )
+    {
+        m_auimgr.DetachPane( m_sheetTabs );
+        delete m_sheetTabs;
+        m_sheetTabs = nullptr;
+    }
+
     // Ensure that teardowns without doCloseWindow are fully unregistered
     if( m_schematic )
         Kiway().LocalHistory().UnregisterSaver( m_schematic );
@@ -1411,10 +1450,46 @@ void SCH_EDIT_FRAME::OnUpdatePCB()
 }
 
 
+void SCH_EDIT_FRAME::updateSheetTabs()
+{
+    if( !m_sheetTabs || m_updatingSheetTabs )
+        return;
+
+    m_updatingSheetTabs = true;
+    SCH_SHEET_LIST sheets = Schematic().Hierarchy();
+    sheets.SortByPageNumbers( false );
+    std::vector<wxString> paths;
+    for( const SCH_SHEET_PATH& path : sheets )
+        paths.push_back( path.PathAsString() );
+
+    if( paths != m_sheetTabPaths )
+    {
+        m_sheetTabs->DeleteAllPages();
+        m_sheetTabPaths = paths;
+        for( size_t i = 0; i < paths.size(); ++i )
+            m_sheetTabs->AddPage( new wxPanel( m_sheetTabs ), wxEmptyString );
+    }
+
+    int index = 0;
+    for( const SCH_SHEET_PATH& path : sheets )
+    {
+        wxString title = path.Last()->GetShownName( false );
+        if( title.IsEmpty() )
+            title = _( "Root" );
+        m_sheetTabs->SetPageText( index, title );
+        if( path == GetCurrentSheet() && m_sheetTabs->GetSelection() != index )
+            m_sheetTabs->SetSelection( index );
+        ++index;
+    }
+    m_updatingSheetTabs = false;
+}
+
+
 void SCH_EDIT_FRAME::UpdateHierarchyNavigator( bool aRefreshNetNavigator, bool aClear )
 {
     m_toolManager->GetTool<SCH_NAVIGATE_TOOL>()->CleanHistory();
     m_hierarchy->UpdateHierarchyTree( aClear );
+    updateSheetTabs();
 
     if( aRefreshNetNavigator )
         RefreshNetNavigator();
@@ -1426,12 +1501,14 @@ void SCH_EDIT_FRAME::UpdateLabelsHierarchyNavigator()
     // Update only the hierarchy navigation tree labels.
     // The tree list is expected to be up to date
     m_hierarchy->UpdateLabelsHierarchyTree();
+    updateSheetTabs();
 }
 
 
 void SCH_EDIT_FRAME::UpdateHierarchySelection()
 {
     m_hierarchy->UpdateHierarchySelection();
+    updateSheetTabs();
 }
 
 
@@ -1885,6 +1962,17 @@ void SCH_EDIT_FRAME::updateTitle()
     title += wxT( " \u2014 " ) + _( "Schematic Editor" );
 
     SetTitle( title );
+    if( IsWorkspacePage() )
+    {
+        auto* tabs = static_cast<wxAuiNotebook*>( GetParent() );
+        int index = tabs->GetPageIndex( this );
+        if( index != wxNOT_FOUND )
+        {
+            tabs->SetPageText( index, ( IsContentModified() ? wxS( "*" ) : wxEmptyString )
+                                     + _( "Schematic" ) );
+            tabs->SetPageToolTip( index, title );
+        }
+    }
 }
 
 
@@ -2447,6 +2535,7 @@ void SCH_EDIT_FRAME::DisplayCurrentSheet()
     editTool->UpdateNetHighlighting( dummy );
 
     m_hierarchy->UpdateHierarchySelection();
+    updateSheetTabs();
 
     m_schematic->OnSchSheetChanged();
 

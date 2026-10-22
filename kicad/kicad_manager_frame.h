@@ -47,6 +47,9 @@ public:
     ~KICAD_MANAGER_FRAME();
 
     void OnIdle( wxIdleEvent& event );
+    bool ProcessEvent( wxEvent& event ) override;
+    void OnWorkspacePageChanged( wxAuiNotebookEvent& event );
+    WORKSPACE_FRAME* WorkspaceEditor( wxWindow* aPage );
 
     bool canCloseWindow( wxCloseEvent& aCloseEvent ) override;
     void doCloseWindow() override;
@@ -269,7 +272,9 @@ private:
     PROJECT_TREE_PANE*    m_projectTreePane;
     PROJECT_WORKSPACE*    m_projectWorkspace;
     LOCAL_HISTORY_PANE*   m_historyPane;
-    wxAuiNotebook*        m_notebook;
+    wxAuiNotebook*        m_notebook = nullptr;
+    wxMenuBar*            m_workspaceMenu = nullptr;
+    bool                  m_forwardingWorkspaceEvent = false;
     PANEL_KICAD_LAUNCHER* m_launcher;
     int                   m_lastToolbarIconSize;
 
