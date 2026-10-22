@@ -1,0 +1,4 @@
+原始工程引用 23 种 3D 模型。嘉立创原生 epro2 导出包未包含 STEP 模型实体文件。
+KiCad 中保留了模型路径引用；此目录暂不包含模型。二维原理图和 PCB 编辑不依赖这些模型。
+请后续从已授权的器件库导出或下载对应 STEP 文件，再放入本目录。
+具体文件名见 ../迁移检查/migration-audit.json 的 3DModelFileReferences。

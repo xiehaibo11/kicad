@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "RK3308B_IPC 摄像头模块-import-fps") (type "KiCad") (uri "${KIPRJMOD}/RK3308B_IPC 摄像头模块-import-fps.pretty") (options "kicad_import_cache=1") (descr ""))
+)

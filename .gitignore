@@ -164,3 +164,6 @@ qa/data/**/*.spice
 
 # Required extension source asset.
 !/tools/ai/Kicad-extension/overlay/kicad-logo.png
+
+# KiCad local history repositories inside projects
+.history/

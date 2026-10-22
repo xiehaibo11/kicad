@@ -1,0 +1,186 @@
+{
+  "2_SoC_U1.1.kicad_sch": {
+    "bytes": 553808,
+    "sha256": "e5fe1c7e15354ee55e9477a6066da21016709679f0cdb342d881715fbb44c34d"
+  },
+  "3_DDR.kicad_sch": {
+    "bytes": 355319,
+    "sha256": "7f65bd9ab6068dc6373288a032609454886fbd226156aee43ec2f62390fd496a"
+  },
+  "4_Flash.kicad_sch": {
+    "bytes": 137547,
+    "sha256": "3329eb2e4b43c21ee89e955335bb060234d720c49e05d3c7a71e2b1c0f0bb2be"
+  },
+  "5_WiFi.kicad_sch": {
+    "bytes": 222007,
+    "sha256": "9694c99e6afcdf015b4333e8754d1cd67288929c803ca810977f6277d37144c6"
+  },
+  "6_IO.kicad_sch": {
+    "bytes": 236955,
+    "sha256": "37d614002b804c18ff59551290dfc688c08246f452d905b951d77a07cf32d6d3"
+  },
+  "7_SoC_U1.3.kicad_sch": {
+    "bytes": 242397,
+    "sha256": "5e62674116353d2a3987f4c7d17dc454c1d33782de7879d2a167800040630449"
+  },
+  "8_SoC_U1.2.kicad_sch": {
+    "bytes": 253332,
+    "sha256": "cfbe8c0829e8ab5e5c0e4ea60932e90aa28ea09f78119f64c3c7506237ee94aa"
+  },
+  "EASYEDA_MODELS/待补充模型.txt": {
+    "bytes": 405,
+    "sha256": "2e9047048e5a17fee4b434c3c9c6ae5fd2227390e8e8d6bf6cc528d48b3c841c"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/BGA-355_L13.0-W13.0-P0.65_RK3308.kicad_mod": {
+    "bytes": 366596,
+    "sha256": "36012a83aca503ec9fd52d103fb7d3412865f952ab995b5e2a95bca7f784e17b"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/C0402.kicad_mod": {
+    "bytes": 4398,
+    "sha256": "eb9715ef7194b46076c49df0c87361b30e20009e71ce47f373c547f7f5420784"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/C0603.kicad_mod": {
+    "bytes": 4772,
+    "sha256": "a774c8a941e78699a95ea6bc4d1fd591ae811700c3af208b05b1ea5f39993002"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/C0805.kicad_mod": {
+    "bytes": 5538,
+    "sha256": "5168b869c3f3f0b71b9d0a1183cd440232a7ebdcc65e9e06cdd5e10fa18f3299"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/CONN-SMD_P2.00_S2B-PH-SM4-TB-LF-SN.kicad_mod": {
+    "bytes": 6317,
+    "sha256": "a322932c4571b42f5eb4b4aa2ca7c52d29b9ddb723002b991ffefd0265218f7f"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/CONN-SMD_S4B-PH-SM4-TB-LF-SN.kicad_mod": {
+    "bytes": 7268,
+    "sha256": "745c8f22813d91426120cc524be73df61ac9dd65cf535e961d47c0eeb8db52d0"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/CRYSTAL-SMD_4P-L3.2-W2.5-BL.kicad_mod": {
+    "bytes": 4948,
+    "sha256": "868f695db5088f84cdda2b84193ba6e3d2d432be2a51eb39b080a2a3252bb998"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/FBGA-96_L13.5-W7.5-R16-C6-P0.80-TL.kicad_mod": {
+    "bytes": 102327,
+    "sha256": "69078ad573fc05158a4997e23d6ba4d5d51b628fe2596e4b0d242341884eb831"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/FILTER-SMD_4P-L2.0-W1.3-BL_DLW21.kicad_mod": {
+    "bytes": 5064,
+    "sha256": "45c1e856523722c45603015b7cb98c8079cd2465faab71968e49a7631a2518c3"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/IND-SMD_L3.0-W3.0.kicad_mod": {
+    "bytes": 4022,
+    "sha256": "993cc96a4f6db8646b7732862578f11054666e9cd8ddd28ea165843245258edb"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/L0603.kicad_mod": {
+    "bytes": 5311,
+    "sha256": "cdf7d408944bfc89efec66b4f29a08b2e68b937a3fb163ca5acea8b7c83673b7"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/LED0603-RD_RED.kicad_mod": {
+    "bytes": 6566,
+    "sha256": "d5c40672d53a805243275f30d929907d6379eff00613e98ea8859d72594a8f2a"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/QFN-44_L12.0-W12.0-P0.90-TL_AP6212.kicad_mod": {
+    "bytes": 22775,
+    "sha256": "ab846052f264729e14a3c9cce98b6fb65764fbd2275aadb0162867e6d36053f8"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/R0402.kicad_mod": {
+    "bytes": 4660,
+    "sha256": "705f32b16fab54f9b45bc3161d12c4ade02ec7a499aeeb69214711f56262ba46"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/R0603.kicad_mod": {
+    "bytes": 4749,
+    "sha256": "0101c62a7f8b263598b987cffe427d17fd6baa0dc5b89d55adff33e250b192cc"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/SMA_L4.3-W2.6-LS5.0-RD.kicad_mod": {
+    "bytes": 5062,
+    "sha256": "df65cab5873bcd7e0f147b23b53f9f69428fd777a53c2d70200ce3aa413aedf9"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/SMA_L4.4-W2.6-LS5.0-RD.kicad_mod": {
+    "bytes": 4590,
+    "sha256": "c50547f9e00d1b5b5b1e67b583c0e0626d5ca5eb16cb186347e67fa1857ba74c"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/SOD-923_L0.8-W0.6-LS1.0-BI.kicad_mod": {
+    "bytes": 3367,
+    "sha256": "9933c4e71b0d5a85d8cccbdc18e3c8d835a8052640038cd71d3e140ab4e401b6"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BL.kicad_mod": {
+    "bytes": 6104,
+    "sha256": "7effcd62c662398efe470797c2fafa4e736b24925fd1b21d669eef54dfd21f77"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BR.kicad_mod": {
+    "bytes": 7322,
+    "sha256": "b222cf588c0e0e906777ee66d23519a8f35a97b869f650323b91144a01939677"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BL.kicad_mod": {
+    "bytes": 6587,
+    "sha256": "0538e2780cadd59b3e71323f3da6bbef332b328a79959283fef17d905c5e6781"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/SOT-25_L3.0-W1.6-P0.95-LS2.8-BL.kicad_mod": {
+    "bytes": 6679,
+    "sha256": "e1a3ab662d7f6619aa17612398d97bcc7367ed3479449e4c3a62277a3a1e4dd1"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/TESTPOINT-SMD_L1.6-W0.8_RCU-0C.kicad_mod": {
+    "bytes": 3303,
+    "sha256": "295ede0d9661a134457958ea283de6cae9ac425eb11120bd2fb65fe8438f006a"
+  },
+  "RK3308B_IPC 摄像头模块-import-fps.pretty/WSON-8_L8.0-W6.0-P1.27-TL-EP-1.kicad_mod": {
+    "bytes": 7794,
+    "sha256": "7039e9a2c7285cd8035c4b0797a39db2c2341b9b9ffbef9f8457d1100be8bff4"
+  },
+  "RK3308B_IPC 摄像头模块-import-syms.kicad_sym": {
+    "bytes": 378079,
+    "sha256": "73e3dba0b89a365d890d5d14db7425582ee4952299c46721bf84863666ad0030"
+  },
+  "RK3308B_IPC 摄像头模块.kicad_pcb": {
+    "bytes": 2257733,
+    "sha256": "594f8bfc057ebbf4425a3165758788b354f16d8aa74515c649f37caf320c7fb5"
+  },
+  "RK3308B_IPC 摄像头模块.kicad_pro": {
+    "bytes": 21345,
+    "sha256": "6104776f4e61d0760ff3bc0c7075809ff5e6605a0e328b7db7a5a2b79ae5273c"
+  },
+  "RK3308B_IPC 摄像头模块.kicad_sch": {
+    "bytes": 328955,
+    "sha256": "9a770dc2bc569e272bc0fdd2abe255f7ea3ed3406f7b64b2cad61f2e9b9c5628"
+  },
+  "empty.kicad_wks": {
+    "bytes": 196,
+    "sha256": "12177b959fa42fb9902338b0ed47c13482b98997bf72e4e1eb2387bda11d1c61"
+  },
+  "fp-lib-table": {
+    "bytes": 209,
+    "sha256": "be55f5565dc1c1ff9b8f3ccc26b62e44b814a41a1edb61179e7208f35bc582b3"
+  },
+  "sym-lib-table": {
+    "bytes": 215,
+    "sha256": "6314a4d6567b9beb7e0cf6edbb0f00ed6ed098e221f393c7fc4e94643df8ac1e"
+  },
+  "来源备份/RK3308B_IPC 摄像头模块.epro2": {
+    "bytes": 894915,
+    "sha256": "f2c00b3ff3eacfebcf01970ceda4f2fcf2ef6d33954a1ed1101df1386a403cd5"
+  },
+  "来源备份/嘉立创原设计规则.json": {
+    "bytes": 15061,
+    "sha256": "1ff529020ac10b92ce76aedd7e6b56016790c60b1ed1cca5045211ed362911ce"
+  },
+  "迁移检查/kicad-drc.json": {
+    "bytes": 863229,
+    "sha256": "7b5e5d13c88f9d76a42774a7bef4d53aff451f5279a8fc6ccd77ee7d4326eb26"
+  },
+  "迁移检查/kicad-netlist.xml": {
+    "bytes": 426751,
+    "sha256": "86d949616b9b85aab98c1e14e778afa52155c7e62c0e396073be0339aac6454a"
+  },
+  "迁移检查/migration-audit.json": {
+    "bytes": 4359,
+    "sha256": "2f8d0bc5885ff57298e3da4a3eacc2297c519debebe360cc8c05d3ab0bf48000"
+  },
+  "迁移检查/source-netlist.enet": {
+    "bytes": 577856,
+    "sha256": "c2f1d7766f8edc81a5b6dfa838e91c81e075f86b0665cc8046e33b69e8b5112c"
+  },
+  "迁移说明.txt": {
+    "bytes": 3424,
+    "sha256": "00e878a9c8eb89ed1b7ea0d18bfee9f4b5c042f5f5d1f4f23ce7ef9aa2c37596"
+  }
+}

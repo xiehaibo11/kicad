@@ -1,0 +1,786 @@
+{
+  "designRule": {
+    "trackPhysics": {
+      "copperThickness1oz": {
+        "name": "copperThickness1oz",
+        "isDefault": true,
+        "unit": "mm",
+        "strokeValue": {
+          "common": {
+            "min": 0.127,
+            "max": 2.54,
+            "default": 0.254
+          }
+        }
+      },
+      "copperThickness2oz": {
+        "name": "copperThickness2oz",
+        "isDefault": false,
+        "unit": "mm",
+        "strokeValue": {
+          "common": {
+            "min": 0.203,
+            "max": 2.54,
+            "default": 0.254
+          }
+        }
+      }
+    },
+    "netRule": {
+      "DDR_DQ0": {
+        "net": "DDR_DQ0",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ1": {
+        "net": "DDR_DQ1",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ2": {
+        "net": "DDR_DQ2",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ3": {
+        "net": "DDR_DQ3",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ4": {
+        "net": "DDR_DQ4",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ5": {
+        "net": "DDR_DQ5",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ6": {
+        "net": "DDR_DQ6",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ7": {
+        "net": "DDR_DQ7",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ8": {
+        "net": "DDR_DQ8",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ9": {
+        "net": "DDR_DQ9",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ10": {
+        "net": "DDR_DQ10",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ11": {
+        "net": "DDR_DQ11",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ14": {
+        "net": "DDR_DQ14",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DM0": {
+        "net": "DDR_DM0",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DM1": {
+        "net": "DDR_DM1",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQS0": {
+        "net": "DDR_DQS0",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQS0N": {
+        "net": "DDR_DQS0N",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQS1": {
+        "net": "DDR_DQS1",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQS1N": {
+        "net": "DDR_DQS1N",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A0": {
+        "net": "DDR_A0",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A1": {
+        "net": "DDR_A1",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A2": {
+        "net": "DDR_A2",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A3": {
+        "net": "DDR_A3",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A4": {
+        "net": "DDR_A4",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A5": {
+        "net": "DDR_A5",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A6": {
+        "net": "DDR_A6",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A7": {
+        "net": "DDR_A7",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A8": {
+        "net": "DDR_A8",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A9": {
+        "net": "DDR_A9",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A10": {
+        "net": "DDR_A10",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A11": {
+        "net": "DDR_A11",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A12": {
+        "net": "DDR_A12",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A13": {
+        "net": "DDR_A13",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_A14": {
+        "net": "DDR_A14",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_BA0": {
+        "net": "DDR_BA0",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_BA1": {
+        "net": "DDR_BA1",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_BA2": {
+        "net": "DDR_BA2",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_CLK": {
+        "net": "DDR_CLK",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_CLKN": {
+        "net": "DDR_CLKN",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_CKE": {
+        "net": "DDR_CKE",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_CS0N": {
+        "net": "DDR_CS0N",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_ODT0": {
+        "net": "DDR_ODT0",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_RASN": {
+        "net": "DDR_RASN",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_CASN": {
+        "net": "DDR_CASN",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_WEN": {
+        "net": "DDR_WEN",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_RESET": {
+        "net": "DDR_RESET",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_ZQ": {
+        "net": "DDR_ZQ",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "VREF_DDR": {
+        "net": "VREF_DDR",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "VDD_DDR": {
+        "net": "VDD_DDR",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "GND": {
+        "net": "GND",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ13": {
+        "net": "DDR_DQ13",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ15": {
+        "net": "DDR_DQ15",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DDR_DQ12": {
+        "net": "DDR_DQ12",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "+3V3": {
+        "net": "+3V3",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SPI_IO3": {
+        "net": "SPI_IO3",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SPI_CLK": {
+        "net": "SPI_CLK",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SPI_MOSI": {
+        "net": "SPI_MOSI",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SPI_CS0": {
+        "net": "SPI_CS0",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SPI_IO2": {
+        "net": "SPI_IO2",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SPI_MISO": {
+        "net": "SPI_MISO",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "USB_CON_DM": {
+        "net": "USB_CON_DM",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "USB_CON_DP": {
+        "net": "USB_CON_DP",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "USB_DM": {
+        "net": "USB_DM",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "USB_DP": {
+        "net": "USB_DP",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "RECOVERY": {
+        "net": "RECOVERY",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "+5V_CAM": {
+        "net": "+5V_CAM",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "USB_DET": {
+        "net": "USB_DET",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "+5V_IN": {
+        "net": "+5V_IN",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "IRCUTA_C": {
+        "net": "IRCUTA_C",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "AOUT_C": {
+        "net": "AOUT_C",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "J2_IO2_C": {
+        "net": "J2_IO2_C",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "J2_IO1_C": {
+        "net": "J2_IO1_C",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "IRCUTA": {
+        "net": "IRCUTA",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "AOUT": {
+        "net": "AOUT",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "J2_IO1": {
+        "net": "J2_IO1",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "J2_IO2": {
+        "net": "J2_IO2",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DBG_TX_C": {
+        "net": "DBG_TX_C",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DBG_RX_C": {
+        "net": "DBG_RX_C",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DBG_TX": {
+        "net": "DBG_TX",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "DBG_RX": {
+        "net": "DBG_RX",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "+5V": {
+        "net": "+5V",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SW_CORE": {
+        "net": "SW_CORE",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "VDD_CORE": {
+        "net": "VDD_CORE",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "FB_CORE": {
+        "net": "FB_CORE",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SW_LOG": {
+        "net": "SW_LOG",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "VDD_LOG": {
+        "net": "VDD_LOG",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "FB_LOG": {
+        "net": "FB_LOG",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SW_DDR": {
+        "net": "SW_DDR",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "FB_DDR": {
+        "net": "FB_DDR",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SW_3V3": {
+        "net": "SW_3V3",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "FB_3V3": {
+        "net": "FB_3V3",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "LED_PWR": {
+        "net": "LED_PWR",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "ISET_CAM": {
+        "net": "ISET_CAM",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "+1V8": {
+        "net": "+1V8",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "XIN_24M": {
+        "net": "XIN_24M",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "XOUT_24M": {
+        "net": "XOUT_24M",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "RESET_N": {
+        "net": "RESET_N",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "USB_EXTR": {
+        "net": "USB_EXTR",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "FLASH_SEL": {
+        "net": "FLASH_SEL",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "V1P0_USB": {
+        "net": "V1P0_USB",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "AVCM": {
+        "net": "AVCM",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "AVCMH": {
+        "net": "AVCMH",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "V1P8_ANA": {
+        "net": "V1P8_ANA",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "BT_HOST_WAKE": {
+        "net": "BT_HOST_WAKE",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "WIFI_REG_ON": {
+        "net": "WIFI_REG_ON",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "WIFI_WAKE_HOST": {
+        "net": "WIFI_WAKE_HOST",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SDIO_D2": {
+        "net": "SDIO_D2",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SDIO_D3": {
+        "net": "SDIO_D3",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "BT_WAKE": {
+        "net": "BT_WAKE",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "BT_REG_ON": {
+        "net": "BT_REG_ON",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "BT_UART_RX": {
+        "net": "BT_UART_RX",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "BT_UART_CTS": {
+        "net": "BT_UART_CTS",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "BT_UART_RTS": {
+        "net": "BT_UART_RTS",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "WIFI_32K": {
+        "net": "WIFI_32K",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SDIO_D0": {
+        "net": "SDIO_D0",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SDIO_CLK": {
+        "net": "SDIO_CLK",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SDIO_D1": {
+        "net": "SDIO_D1",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "BT_UART_TX": {
+        "net": "BT_UART_TX",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "SDIO_CMD": {
+        "net": "SDIO_CMD",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "WL_VIN_LDO": {
+        "net": "WL_VIN_LDO",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "WL_BUCK_LX": {
+        "net": "WL_BUCK_LX",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "ANT_MOD": {
+        "net": "ANT_MOD",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "WL_XTAL_IN": {
+        "net": "WL_XTAL_IN",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "WL_XTAL_OUT": {
+        "net": "WL_XTAL_OUT",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      },
+      "$4N75": {
+        "net": "$4N75",
+        "ruleMap": {
+          "TrackPhysics": ""
+        }
+      }
+    }
+  },
+  "differentialPair": {},
+  "netClass": {},
+  "equalLengthNetGroup": {},
+  "differentialPairGroups": {}
+}
