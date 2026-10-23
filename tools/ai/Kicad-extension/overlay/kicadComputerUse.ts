@@ -96,7 +96,16 @@ class ComputerSession {
     if(name!=='bring_to_front'&&!Number.isInteger(input.window_id))throw Error('Pass the exact window_id from list_windows or get_window_state.');
     if(!readOnly&&name!=='bring_to_front'&&![...this.snapshots.values(),...this.captures.values()].some(owner=>owner.pid===input.pid&&owner.window===input.window_id))throw Error('Read this exact window before sending input.');
     // check_permissions is read-only and does not request OS dialogs.
-    const result=await this.raw(name,input,signal),data=driverData(result);
+    let result=await this.raw(name,input,signal);
+    const initial=driverData(result);
+    // Cua 0.38.0 can reject its own delta output after input. A fresh full
+    // observation is safe; never retry the input action or unrelated errors.
+    if(name==='get_window_state'&&input.since!==undefined&&result.isError&&initial.code==='typed_output_mismatch'&&initial.detail==='returned_element_count does not match elements'){
+      const full={...input};delete full.since;
+      result=await this.raw(name,full,signal);
+      if(!result.isError)result={...result,content:[...result.content,{type:'text',text:'Cua delta readback failed validation; returned a fresh full window observation. No input action was retried.'}]};
+    }
+    const data=driverData(result);
     if(name==='get_window_state'&&typeof data.snapshot_id==='string'){
       for(const [id,owner] of this.snapshots)if(owner.pid===input.pid&&owner.window===input.window_id)this.snapshots.delete(id);
       this.snapshots.set(data.snapshot_id,{pid:input.pid,window:input.window_id});

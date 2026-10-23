@@ -7,13 +7,13 @@ import {createRequire} from 'node:module';
 import * as core from '../composer/computer-use.ts';
 import {mcpResult,codexToolResult,chatToolContent} from '../composer/tool-result.ts';
 const root=process.argv[2],require=createRequire(path.join(root,'package.json')),ts=require('typescript');
-let cfg={enabled:false,driverPath:'',anyApp:false,allowedApps:[...core.KICAD_APPS]},started=0,stopped=0,closed=0,sequence=0,trusted=true;
+let cfg={enabled:false,driverPath:'',anyApp:false,allowedApps:[...core.KICAD_APPS]},started=0,stopped=0,closed=0,sequence=0,trusted=true,readError;
 const calls=[],updates=[],apps=[{bundle_id:'org.kicad.pcbnew',pid:1,running:true,name:'PCB Editor'},{bundle_id:'com.google.Chrome',pid:2,running:true,name:'Chrome'}];
 const reply=data=>({content:[{type:'text',text:JSON.stringify(data)}],structuredContent:data});
 class Client{
  async connect(){}async close(){closed++;}
  async listTools(){return {tools:[...core.COMPUTER_READ,...core.COMPUTER_ACTION,'run_script','exec'].map(name=>({name,description:name,inputSchema:{type:'object'}}))};}
- async callTool({name,arguments:args}){calls.push({name,args});if(name==='list_apps')return reply({apps});if(name==='list_windows')return reply({windows:apps.map(a=>({pid:a.pid,window_id:a.pid*10}))});if(name==='get_window_state')return {...reply({snapshot_id:'s'+(++sequence),capture_id:'c'+sequence}),content:[{type:'image',data:'fixture',mimeType:'image/png'}]};if(name==='check_permissions')return reply({accessibility:true,screen_recording:true});return reply({ok:true});}
+ async callTool({name,arguments:args}){calls.push({name,args});if(name==='list_apps')return reply({apps});if(name==='list_windows')return reply({windows:apps.map(a=>({pid:a.pid,window_id:a.pid*10}))});if(name==='get_window_state'){if(readError){const error=readError;readError=undefined;return {...reply(error),isError:true};}return {...reply({snapshot_id:'s'+(++sequence),capture_id:'c'+sequence}),content:[{type:'image',data:'fixture',mimeType:'image/png'}]};}if(name==='check_permissions')return reply({accessibility:true,screen_recording:true});return reply({ok:true});}
 }
 class Service{socket='/private/test.sock';log='/private/test.log';async start(){started++;}async stop(){stopped++;}async binary(){return '/test/cua-driver';}async running(){return started>stopped;}}
 const vscode={ConfigurationTarget:{Global:1},workspace:{get isTrusted(){return trusted;},getConfiguration:()=>({get:(k,d)=>cfg[k.replace('computer.','')]??d,update:async(k,value,target)=>{updates.push({k,value,target});cfg[k.replace('computer.','')]=value;}})}};
@@ -39,6 +39,16 @@ const other=host.computerCapabilities();await assert.rejects(()=>call('computer_
 await call('computer_read',{name:'get_window_state',arguments:{pid:1,window_id:10}});
 await assert.rejects(()=>call('computer_action',{name:'click',arguments:{pid:1,window_id:10,element_token:'s1:3'}}),/not owned/);
 await assert.rejects(()=>call('computer_action',{name:'click',arguments:{pid:1,window_id:10,capture_id:'c1'}}),/not owned/);
+const actionCount=calls.filter(c=>c.name==='click').length;
+readError={code:'typed_output_mismatch',detail:'returned_element_count does not match elements'};
+const refreshed=await call('computer_read',{name:'get_window_state',arguments:{pid:1,window_id:10,since:'latest'}});
+assert.equal(refreshed.isError,undefined);assert.match(refreshed.content.at(-1).text,/fresh full window observation/);
+assert.equal(calls.at(-2).args.since,'latest');assert.equal(calls.at(-1).args.since,undefined);
+assert.equal(calls.filter(c=>c.name==='click').length,actionCount,'delta recovery never repeats an action');
+readError={code:'permission_denied',detail:'Screen capture denied'};
+const readCount=calls.filter(c=>c.name==='get_window_state').length;
+assert.equal((await call('computer_read',{name:'get_window_state',arguments:{pid:1,window_id:10,since:'latest'}})).isError,true);
+assert.equal(calls.filter(c=>c.name==='get_window_state').length,readCount+1,'unrelated read errors are preserved');
 cfg.allowedApps=[];await assert.rejects(()=>call('computer_action',{name:'press_key',arguments:{pid:1,window_id:10,key:'Escape'}}),/allowed app pid/);
 cfg.anyApp=true;assert.equal((await call('computer_read',{name:'list_apps',arguments:{}})).structuredContent.apps.length,2);
 await assert.rejects(()=>call('computer_read',{name:'get_window_state',arguments:{scope:'desktop'}}),/exact app/);

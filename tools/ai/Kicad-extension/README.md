@@ -1,6 +1,6 @@
 # Kicad
 
-当前构建版本：0.4.64。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
+当前构建版本：0.4.65。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
 终端源码为 `tools/ai/Kicad-terminal`。扩展显示为 **Kicad**，终端显示为 **Kicad 终端**。
 扩展安装 ID 仍为 `kicad-agent.kicad`，可直接升级并保留用户配置。
 
@@ -44,11 +44,11 @@ SVG/DXF/PDF/PS 导出缺少 `layers` 时在调用前报错；阻抗计算找不�
 未指定类型的 `document.list` 同时列出打开的 PCB 与原理图。从扩展打开的 Kicad 终端（0.2.0）
 随附 `/kicad-drc`、`/kicad-fab`、`/kicad-route`、`/kicad-step`、`/kicad-schematic` 快捷任务命令。
 
-本版本安装包见 [GitHub Release 0.4.64](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.64)。
-下载 `kicad-0.4.64.vsix`，在 VS Code 扩展菜单中选择 **从 VSIX 安装…**，或者执行：
+本版本安装包见 [GitHub Release 0.4.65](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.65)。
+下载 `kicad-0.4.65.vsix`，在 VS Code 扩展菜单中选择 **从 VSIX 安装…**，或者执行：
 
 ```sh
-code --install-extension ./kicad-0.4.64.vsix --force
+code --install-extension ./kicad-0.4.65.vsix --force
 ```
 
 需要 VS Code 1.98 或以上版本，当前验证平台为 macOS Apple Silicon。
@@ -521,4 +521,6 @@ The private `org.kicad.agent.cua-driver` LaunchAgent starts the signed app in th
 
 Models discover `computer_tools`, then use `computer_read` and `computer_action` through the existing capability catalog as needed. Starting the service does not start an agent, capture the screen or run a workflow. App access is rechecked on each call; actions require an observed window and conversation-owned tokens. Read-only mode cannot dispatch input. Screenshots remain image blocks through the Claude-compatible SDK and Codex adapter; text-only providers can request accessibility trees with `include_screenshot:false`. The managed service currently supports macOS only.
 
-Validation distinguishes deterministic host/UI tests from live model acceptance. `test-computer-use.mjs BUILD_DIR` tests policy and transport; `test-computer-ui.cjs BUILD_DIR` uses the production webview with a fixture host. `test-computer-models.mjs BUILD_DIR /tmp/kicad-cua-fixture PID WINDOW_ID OUTPUT_DIR` is an explicit live acceptance script that permits only one disposable KiCad window and restores its selection filter after each model. It is never run by the build and never operates on user boards.
+For Cua 0.38.0's known `get_window_state` delta count validation error, the adapter refreshes the same window once without `since`. It preserves other errors and never repeats an input action.
+
+Validation distinguishes deterministic host/UI tests from live model acceptance. `test-computer-use.mjs BUILD_DIR` tests policy and transport; `test-computer-ui.cjs BUILD_DIR` uses the production webview with a fixture host. `test-computer-models.mjs BUILD_DIR /tmp/kicad-cua-fixture PID WINDOW_ID OUTPUT_DIR` is an explicit live acceptance script that permits only one disposable KiCad window and restores its selection filter after each model. It requires both model-visible readback and independent state verification. It is never run by the build and never operates on user boards.
