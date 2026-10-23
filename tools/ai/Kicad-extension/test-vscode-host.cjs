@@ -40,9 +40,11 @@ exports.run = async () => {
   assert.equal(inline.mcp?.easyeda, undefined);
   assert.ok(inline.plugin.some(item => String(item).includes('session-runtime.mjs')));
   const healthPromise = vscode.commands.executeCommand('kicadAgent.health');
-  await new Promise(resolve => setTimeout(resolve,4000));
-  await vscode.commands.executeCommand('workbench.action.closeQuickOpen');
-  const health = await Promise.race([healthPromise,new Promise((_,reject)=>setTimeout(()=>reject(new Error('Native health command timed out')),15000))]);
+  // Health can finish after IPC timeout; close the result picker when it actually appears.
+  const closePicker=setInterval(()=>void vscode.commands.executeCommand('workbench.action.closeQuickOpen'),200);
+  let health;
+  try {health = await Promise.race([healthPromise,new Promise((_,reject)=>setTimeout(()=>reject(new Error('Native health command timed out')),20000))]);}
+  finally {clearInterval(closePicker);}
   assert.equal(health?.ok,true,'Health must execute in-process, even without the compatibility Node command');
   const pid = await terminal.processId;
   assert.ok(pid > 0, 'Native terminal has a process');

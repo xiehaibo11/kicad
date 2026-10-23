@@ -33,10 +33,32 @@ export async function publicAddresses(host, options = {}, lookup = dns.lookup, f
   if (!addresses.length || addresses.some(a => !publicIP(a.address))) bad('Private, local and reserved network destinations are not allowed');
   return addresses;
 }
-export async function fetchPublic(url, { signal, timeoutMs = 30000, redirects = 0, accept = 'text/html,application/pdf,text/plain' } = {}) {
+export async function fetchPublic(url, { signal, timeoutMs = 300000, redirects = 0, accept = 'text/html,application/pdf,text/plain' } = {}) {
+  if (!Number.isInteger(timeoutMs) || timeoutMs < 0) bad('timeoutMs must be a non-negative integer');
+  const controller = new AbortController();
+  const abort = () => controller.abort(signal.reason);
+  if (signal?.aborted) abort(); else signal?.addEventListener('abort', abort, { once: true });
+  const timer = timeoutMs ? setTimeout(() => controller.abort(new DirectError('TIMEOUT', 'Web fetch exceeded its deadline')), timeoutMs) : undefined;
+  let onAbort;
+  try {
+    const cancelled = new Promise((_, reject) => {
+      onAbort = () => reject(controller.signal.reason);
+      if (controller.signal.aborted) onAbort(); else controller.signal.addEventListener('abort', onAbort, { once: true });
+    });
+    // The deadline covers DNS, redirects and the entire body, including a peer
+    // sending occasional bytes to keep a socket inactivity timeout alive.
+    return await Promise.race([fetchWithSignal(url, { signal: controller.signal, timeoutMs, redirects, accept }), cancelled]);
+  } finally {
+    clearTimeout(timer); signal?.removeEventListener('abort', abort);
+    if (onAbort) controller.signal.removeEventListener('abort', onAbort);
+  }
+}
+async function fetchWithSignal(url, { signal, timeoutMs, redirects, accept }) {
+  signal.throwIfAborted();
   const u = new URL(url);
   if (!['https:', 'http:'].includes(u.protocol) || u.username || u.password || redirects > 5 || u.port && !['80', '443'].includes(u.port)) bad('Only public HTTP(S) URLs on standard ports are allowed');
   const host = u.hostname.replace(/^\[|\]$/g, ''), addresses = await publicAddresses(host, {signal, timeoutMs});
+  signal.throwIfAborted();
   const chosen = addresses[0];
   const response = await new Promise((resolve, reject) => {
     const req = (u.protocol === 'https:' ? https : http).get(u, { signal, timeout: timeoutMs, headers: { 'User-Agent': 'KiCad-Direct/1.0', Accept: accept }, lookup: (_host, opts, callback) => opts.all ? callback(null, [chosen]) : callback(null, chosen.address, chosen.family) }, res => {
@@ -46,7 +68,7 @@ export async function fetchPublic(url, { signal, timeoutMs = 30000, redirects = 
     });
     req.on('timeout', () => req.destroy(new DirectError('TIMEOUT', 'HTTP request timed out'))); req.on('error', reject);
   });
-  if (response.status >= 300 && response.status < 400 && response.headers.location) return fetchPublic(new URL(response.headers.location, u).href, { signal, timeoutMs, redirects: redirects + 1, accept });
+  if (response.status >= 300 && response.status < 400 && response.headers.location) return fetchWithSignal(new URL(response.headers.location, u).href, { signal, timeoutMs, redirects: redirects + 1, accept });
   if (response.status !== 200) throw new DirectError('HTTP_FAILED', 'HTTP status ' + response.status);
   return { ...response, url: u.href };
 }
@@ -54,7 +76,7 @@ const plain = s => s.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(
 export async function web(action, p, options) {
   const searching = action === 'web.search', limit = p.limit ?? 5;
   if (!Number.isInteger(limit) || limit < 1 || limit > 10) bad('limit must be 1..10');
-  const response = await fetchPublic(searching ? 'https://html.duckduckgo.com/html/?q=' + encodeURIComponent(required(p, 'query')) : required(p, 'url'), { ...options, timeoutMs: p.timeoutMs ?? 30000 });
+  const response = await fetchPublic(searching ? 'https://html.duckduckgo.com/html/?q=' + encodeURIComponent(required(p, 'query')) : required(p, 'url'), { ...options, timeoutMs: p.timeoutMs ?? 300000 });
   if (searching) {
     const text = response.buffer.toString('utf8'), results = [...text.matchAll(/<a\b[^>]*class="result__a"[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)].slice(0, limit).map(m => { const u = new URL(m[1].replaceAll('&amp;', '&'), response.url); return { title: plain(m[2]), url: u.searchParams.get('uddg') ?? u.href }; });
     return ok(action, { query: p.query, results, source: response.url, untrustedContent: true });

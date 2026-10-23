@@ -5,14 +5,17 @@ export function applyContinuity(root,overlay){
   fs.copyFileSync(path.join(overlay,'../../composer/intent.ts'),path.join(root,'src/shared/kicadIntent.ts'));
   fs.copyFileSync(path.join(overlay,'../../composer/demand.ts'),path.join(root,'src/shared/kicadDemand.ts'));
   fs.copyFileSync(path.join(overlay,'../../composer/history.ts'),path.join(root,'src/shared/kicadHistory.ts'));
-  fs.writeFileSync(path.join(root,'src/shared/kicadLocalTools.ts'),fs.readFileSync(path.join(overlay,'../../composer/local-tools.ts'),'utf8').replace("from './history'","from './kicadHistory'"));
+  fs.writeFileSync(path.join(root,'src/shared/kicadLocalTools.ts'),fs.readFileSync(path.join(overlay,'../../composer/local-tools.ts'),'utf8').replace("from './history.ts'","from './kicadHistory'"));
   fs.copyFileSync(path.join(overlay,'../../composer/harness.ts'),path.join(root,'src/shared/kicadHarness.ts'));
+  fs.copyFileSync(path.join(overlay,'../../composer/permission-gates.ts'),path.join(root,'src/shared/kicadPermissionGates.ts'));
   fs.copyFileSync(path.join(overlay,'sessionContinuity.ts'),path.join(root,'src/services/claude/sessionContinuity.ts'));
   fs.copyFileSync(path.join(overlay,'UserQuestion.vue'),path.join(root,'src/webview/src/components/UserQuestion.vue'));
   fs.copyFileSync(path.join(overlay,'../../composer/diagnostics.ts'),path.join(root,'src/shared/kicadDiagnostics.ts'));
+  fs.writeFileSync(path.join(root,'src/shared/kicadExecutionOutput.ts'),fs.readFileSync(path.join(overlay,'../../composer/execution-output.ts'),'utf8').replace("from './diagnostics.ts'","from './kicadDiagnostics'"));
+  fs.copyFileSync(path.join(overlay,'kicadToolOutput.ts'),path.join(root,'src/kicadToolOutput.ts'));
   const sdk='src/services/claude/ClaudeSdkService.ts';
-  patch(sdk,"import * as vscode from 'vscode';","import * as vscode from 'vscode';\nimport {SessionContinuity} from './sessionContinuity';\nimport {sdkLogLevel} from '../../shared/kicadDiagnostics';");
-  patch(sdk,'        // 构建 SDK Options',`        const continuity=new SessionContinuity();
+  patch(sdk,"import * as vscode from 'vscode';","import * as vscode from 'vscode';\nimport {SessionContinuity} from './sessionContinuity';\nimport {recordToolOutput} from '../../kicadToolOutput';\nimport {sdkLogLevel} from '../../shared/kicadDiagnostics';");
+  patch(sdk,'        // 构建 SDK Options',`        const continuity=new SessionContinuity(undefined,{output:recordToolOutput});
         // Compact before exhausting the window. Respect explicit runtime tuning.
         if(!env.CLAUDE_AUTOCOMPACT_PCT_OVERRIDE)env.CLAUDE_AUTOCOMPACT_PCT_OVERRIDE='85';
         // 构建 SDK Options`);

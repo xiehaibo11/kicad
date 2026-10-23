@@ -47,4 +47,24 @@ const source=fs.readFileSync(path.join(root,'src/services/claude/ClaudeAgentServ
 const dispatch=tree.statements.find(n=>ts.isClassDeclaration(n)&&n.name?.text==='ClaudeAgentService').members.find(n=>ts.isMethodDeclaration(n)&&n.name.getText(tree)==='readFromClient').getText(tree);
 const scope={fixture:new AsyncQueue(),Error,Map,console};vm.runInNewContext(ts.transpileModule(`class Dispatcher{fromClientStream=fixture;received=[];logService={error(){}};closeChannel(){};async launchClaude(id){if(id==='broken')throw Error('launch failed');this.received.push(id)};${dispatch}};globalThis.dispatcher=new Dispatcher()`,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText,scope);
 const dispatched=scope.dispatcher.readFromClient();scope.fixture.enqueue({type:'launch_claude',channelId:'broken',cwd:'/same'});scope.fixture.enqueue({type:'launch_claude',channelId:'recovered',cwd:'/same'});scope.fixture.done();await dispatched;assert.equal(scope.dispatcher.received.join(','),'recovered');
-console.log('Pause/resend lifecycle passed: fresh channel with original session/options, immediate resend, stale result/finally isolation, duplicate send prevention, startup cancellation and stale permission cleanup.');
+// The permission mode is locked while a turn runs; the stop button remains.
+const modeSelect=fs.readFileSync(path.join(root,'src/webview/src/components/ModeSelect.vue'),'utf8');
+const modelSelect=fs.readFileSync(path.join(root,'src/webview/src/components/ModelSelect.vue'),'utf8');
+const buttonArea=fs.readFileSync(path.join(root,'src/webview/src/components/ButtonArea.vue'),'utf8');
+const chatPage=fs.readFileSync(path.join(root,'src/webview/src/pages/ChatPage.vue'),'utf8');
+const sessionSource=fs.readFileSync(path.join(root,'src/webview/src/core/Session.ts'),'utf8');
+assert.match(modeSelect,/:disabled="disabled"/);assert.match(modeSelect,/disabled\?: boolean/);assert.match(modeSelect,/if \(props\.disabled\) return/);
+assert.match(modelSelect,/:disabled="disabled"/);assert.match(modelSelect,/disabled\?: boolean/);assert.match(modelSelect,/if\(!props\.disabled\)emit/);
+assert.match(buttonArea,/:disabled="conversationWorking \|\| loading"/);
+// Model and reasoning stay selectable during a turn; the choice is queued for the next request.
+assert.match(buttonArea,/:selected-model="selectedModel" :disabled="loading \|\| configurationChanging"/);
+assert.match(buttonArea,/<ReasoningSelect [^>]*:disabled="loading \|\| configurationChanging"/);
+assert.match(sessionSource,/if\(remember && this\.busy\(\)\)return this\.queueModel\(model\);/);
+// Token-level progress never reaches the webview; only real records re-render the list.
+assert.match(source,/if \(message\.type === 'stream_event' \|\| \(message\.type === 'system' && \(message as any\)\.subtype === 'thinking_tokens'\)\) continue;/);
+assert.match(fs.readFileSync(path.join(root,'src/services/claude/ClaudeSdkService.ts'),'utf8'),/includePartialMessages: false\n/);
+assert.match(sessionSource,/if \(currentMessages\.length !== this\.messages\(\)\.length \|\| event\?\.type === 'user'\) this\.messages\(currentMessages\);/);
+assert.match(chatPage,/if \(increased && followOutput && !selectingInConversation\(\)\)/);
+assert.match(chatPage,/if \(isBusy\.value\) return/);
+assert.match(sessionSource,/if\(this\.busy\(\)\)throw new Error/);
+console.log('Pause/resend lifecycle passed: fresh channel with original session/options, immediate resend, stale result/finally isolation, duplicate send prevention, startup cancellation, locked request controls and stale permission cleanup.');

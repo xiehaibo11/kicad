@@ -20,7 +20,7 @@ exports.run=async()=>{
   assert.equal(results().length,before,'changing effort must not send');
   assert.equal(agent.channels.get(channelId).sessionId,sessionId);assert.equal(agent.channels.get(channelId).permissionMode,'bypassPermissions');
   await turn('max');await agent.setThinkingLevel(channelId,'off');await turn('off');
-  await assert.rejects(agent.setThinkingLevel(channelId,'medium'),/不支持/);
+  await assert.rejects(agent.setThinkingLevel(channelId,'medium'),/does not support/);
   assert.equal(agent.channels.get(channelId).thinkingLevel,'off');
   await agent.setThinkingLevel(channelId,'high');await turn('high');
   assert.equal(agent.channels.get(channelId).sessionId,sessionId);

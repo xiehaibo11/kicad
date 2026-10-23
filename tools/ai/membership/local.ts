@@ -55,11 +55,24 @@ export function probeClaude(cwd=process.cwd()):Promise<any>{return new Promise((
   });
   child.stdin.write(JSON.stringify({type:'control_request',request_id:'kicad-models',request:{subtype:'initialize'}})+'\n');
 });}
-export function claudeModels(models:any[]){const seen=new Set<string>();return models.flatMap(m=>{const id=m.resolvedModel||m.value;if(!id||seen.has(id))return [];seen.add(id);return [{value:id,displayName:(m.description?.split(' · ')[0]||m.displayName||id),description:m.description,aliases:models.filter(a=>(a.resolvedModel||a.value)===id).map(a=>a.value)}];});}
+export function claudeModels(models:any[]){const seen=new Set<string>();return models.flatMap(m=>{const id=m.resolvedModel||m.value;if(!id||seen.has(id))return [];seen.add(id);return [{value:id,displayName:(m.description?.split(' · ')[0]||m.displayName||id),description:m.description,aliases:models.filter(a=>(a.resolvedModel||a.value)===id).map(a=>a.value),...claudeReasoning(m)}];});}
+// Effort tiers as the CLI reports them; absent on CLIs that predate the fields.
+function claudeReasoning(m:any){return Array.isArray(m.supportedEffortLevels)?{reasoningEfforts:m.supportsEffort===false?[]:m.supportedEffortLevels,thinkingOff:m.supportsThinkingOff===true}:{};}
 export async function discoverMembership(cwd?:string){const [claude,codex]=await Promise.allSettled([probeClaude(cwd),probeCodex(cwd)]);return {
-  supportedModels:[...(claude.status==='fulfilled'?claudeModels(claude.value.models):[]),...(codex.status==='fulfilled'?codex.value.models.map((m:any)=>({value:'codex:'+m.model,displayName:m.displayName.replace(/^(GPT-[\d.]+)-/, '$1 '),description:m.description})):[])],
+  supportedModels:[...(claude.status==='fulfilled'?claudeModels(claude.value.models):[]),...(codex.status==='fulfilled'?codex.value.models.map((m:any)=>({value:'codex:'+m.model,displayName:m.displayName.replace(/^(GPT-[\d.]+)-/, '$1 '),description:m.description,...(Array.isArray(m.supportedReasoningEfforts)?{reasoningEfforts:m.supportedReasoningEfforts.map((e:any)=>e.reasoningEffort)}:{})})):[])],
   accounts:{claude:claude.status==='fulfilled'?claude.value.account:{error:claude.reason.message},codex:codex.status==='fulfilled'?codex.value.account:{error:codex.reason.message}}
 };}
+
+// Model menus open often and each discovery starts both CLIs (seconds). Share one
+// in-flight discovery, answer from the last result and refresh it once it is stale.
+let discovery:{at:number;value:ReturnType<typeof discoverMembership>}|undefined;
+let lastDiscovery:Awaited<ReturnType<typeof discoverMembership>>|undefined;
+export function cachedMembership(cwd?:string,maxAge=60000){
+ if(discovery&&Date.now()-discovery.at<maxAge)return discovery.value;
+ const value=discoverMembership(cwd);discovery={at:Date.now(),value};
+ value.then(result=>{lastDiscovery=result;},()=>{if(discovery?.value===value)discovery=undefined;});
+ return lastDiscovery?Promise.resolve(lastDiscovery):value;
+}
 
 // Used only by text-only auxiliary requests and the terminal's native model
 // transport. Refresh remains owned by Codex; no token is copied into app config.
@@ -70,9 +83,9 @@ export async function codexAccess(){
  if(!auth.tokens?.access_token)throw Error('本地 Codex 凭据不可用，请重新执行 codex login。');
  return auth.tokens as {access_token:string;account_id?:string};
 }
-export async function codexText(model:string,prompt:string,instructions:string,signal:AbortSignal){
+export async function codexText(model:string,prompt:string,instructions:string,signal:AbortSignal,effort?:string){
  const token=await codexAccess();if(signal.aborted)throw Error('已取消');
- const response=await fetch('https://chatgpt.com/backend-api/codex/responses',{method:'POST',redirect:'error',signal,headers:{'content-type':'application/json',authorization:'Bearer '+token.access_token,...(token.account_id?{'chatgpt-account-id':token.account_id}:{})},body:JSON.stringify({model:model.replace(/^codex:/,''),instructions,input:[{role:'user',content:[{type:'input_text',text:prompt}]}],tools:[],store:false,stream:true})});
+ const response=await fetch('https://chatgpt.com/backend-api/codex/responses',{method:'POST',redirect:'error',signal,headers:{'content-type':'application/json',authorization:'Bearer '+token.access_token,...(token.account_id?{'chatgpt-account-id':token.account_id}:{})},body:JSON.stringify({model:model.replace(/^codex:/,''),instructions,input:[{role:'user',content:[{type:'input_text',text:prompt}]}],tools:[],store:false,stream:true,...(effort?{reasoning:{effort}}:{})})});
  if(!response.ok)throw Error('Codex 会员请求失败：HTTP '+response.status);
  if(!response.body)throw Error('Codex 未返回响应流');
  const reader=response.body.getReader(),decoder=new TextDecoder();let buffer='',text='',completed=false;

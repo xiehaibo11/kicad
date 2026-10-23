@@ -15,6 +15,8 @@ test('shared history persists extension messages and reads native terminal sessi
   const user={type:'user',uuid:'user1',message:{role:'user',content:'保存我的设计检查会话'}};
   const assistant={type:'assistant',uuid:'assistant1',message:{role:'assistant',content:[{type:'text',text:'已读取，尚未修改。'}]}};
   await Promise.all([saveExtensionEvent(id,cwd,user),saveExtensionEvent(id,cwd,assistant)]);
+  // CLI-generated turns (image scale notes) are not the user's messages.
+  await saveExtensionEvent(id,cwd,{type:'user',uuid:'synthetic1',isSynthetic:true,message:{role:'user',content:[{type:'text',text:'[Image: original 2362x1672, displayed at 2000x1416.]'}]}});
   assert.equal((await listHistory(cwd,'extension')).length,1);
   assert.equal((await readHistory('extension:'+id,cwd)).length,2);
   assert.equal((await readHistory('extension:'+id,other)).length,0);

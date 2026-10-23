@@ -63,7 +63,10 @@ export class NngClient {
       };
       const error = err => finish(new DirectError('IPC_UNAVAILABLE', err.message, this.path));
       const close = () => finish(new DirectError('IPC_UNAVAILABLE', 'KiCad closed the connection', this.path));
-      const abort = () => finish(new DirectError('CANCELLED', 'IPC request cancelled; a submitted edit may already have executed'));
+      // A caller deadline (AbortSignal.timeout) is a timeout, not a user cancellation.
+      const abort = () => finish(signal?.reason?.name === 'TimeoutError'
+        ? new DirectError('TIMEOUT', 'KiCad IPC deadline exceeded; if this was an edit, inspect before retrying')
+        : new DirectError('CANCELLED', 'IPC request cancelled; if this was an edit, it may already have executed'));
       const timer = setTimeout(() => finish(new DirectError('TIMEOUT', 'KiCad IPC deadline exceeded; inspect before retrying an edit')), timeoutMs);
       const send = () => {
         const header = Buffer.alloc(13);

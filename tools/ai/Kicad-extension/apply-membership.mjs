@@ -5,7 +5,7 @@ export function applyMembership(root,overlay){
  fs.copyFileSync(path.join(overlay,'../../membership/local.ts'),path.join(root,'src/shared/kicadMembership.ts'));
  fs.copyFileSync(path.join(overlay,'kicadCodex.ts'),path.join(root,'src/kicadCodex.ts'));
  const sdk='src/services/claude/ClaudeSdkService.ts';
- patch(sdk,"import * as vscode from 'vscode';","import * as vscode from 'vscode';\nimport {codexQuery,withProviderHistory} from '../../kicadCodex';\nimport {discoverMembership,executable,membershipEnvironment} from '../../shared/kicadMembership';");
+ patch(sdk,"import * as vscode from 'vscode';","import * as vscode from 'vscode';\nimport {codexQuery,withProviderHistory} from '../../kicadCodex';\nimport {cachedMembership,executable,membershipEnvironment} from '../../shared/kicadMembership';\nimport {registerReasoningModels} from '../../shared/kicadReasoning';");
  patch(sdk,'        const { inputStream, resume, canUseTool, model, cwd, permissionMode, maxThinkingTokens, onStderrError } = params;',`        if(params.model?.startsWith('codex:'))return codexQuery(params);
         params=await withProviderHistory(params,false);
         const { inputStream, resume, canUseTool, model, cwd, permissionMode, maxThinkingTokens, onStderrError } = params;`);
@@ -18,7 +18,8 @@ export function applyMembership(root,overlay){
         const binaryName = process.platform === 'win32' ? 'claude.exe' : 'claude';`);
  patch(sdk,'        const capabilities = Array.from(new Set(params.capabilities ?? [])).filter(Boolean);',`        const capabilities = Array.from(new Set(params.capabilities ?? [])).filter(Boolean);
         if(capabilities.length && capabilities.every(c=>c==='supportedModels'||c==='accountInfo')){
-          const discovered=await discoverMembership(params.cwd);
+          const discovered=await cachedMembership(params.cwd);
+          registerReasoningModels(discovered.supportedModels);
           return {data:{supportedModels:discovered.supportedModels,accountInfo:discovered.accounts}};
         }`);
  // Configuration discovery must not launch a full chat with in-process tools and then close stdin.
@@ -30,11 +31,14 @@ export function applyMembership(root,overlay){
  patch(handlers,handlerSource.slice(start,end),`async function loadConfig(context: HandlerContext): Promise<any> {
     const {sdkService,workspaceService}=context;
     const cwd=workspaceService.getDefaultWorkspaceFolder()?.uri.fsPath || process.cwd();
-    const [commands,membership]=await Promise.all([
+    const results=await Promise.allSettled([
         sdkService.probe({cwd,capabilities:['supportedCommands']}),
         sdkService.probe({cwd,capabilities:['supportedModels','accountInfo']})
     ]);
-    return {slashCommands:commands.data?.supportedCommands||[],models:membership.data?.supportedModels||[],accountInfo:membership.data?.accountInfo||null};
+    for(const result of results)if(result.status==='rejected')context.logService.warn('Optional configuration discovery failed: '+String(result.reason));
+    const commands=results[0].status==='fulfilled'?results[0].value:undefined;
+    const membership=results[1].status==='fulfilled'?results[1].value:undefined;
+    return {slashCommands:commands?.data?.supportedCommands||[],models:membership?.data?.supportedModels||[],accountInfo:membership?.data?.accountInfo||null};
 }
 `);
  const optimizer='src/kicadPromptOptimizer.ts';

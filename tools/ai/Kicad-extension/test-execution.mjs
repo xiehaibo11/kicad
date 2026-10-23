@@ -51,6 +51,14 @@ const archiveMessages=[];
 processAndAttachMessage(archiveMessages,assistant([{type:'tool_use',id:'archive',name:'Bash',input:{command:'unzip source.epro2'}}]));
 processAndAttachMessage(archiveMessages,{type:'user',message:{content:[{type:'tool_result',tool_use_id:'archive',is_error:true,content:'Exit code 50\n/tmp/example.epru: write error (disk full?). Continue?\nfile probably truncated'}]}});
 view=executionView(archiveMessages,false);assert.match(view.failures[0].summary,/Exit code 50.*归档.*ditto/);
+// Expected guards and optional probes are not task failures; a real error still is.
+const expectedFailures=[];
+processAndAttachMessage(expectedFailures,assistant([{type:'tool_use',id:'probe',name:'Bash',input:{command:'ls ~/.vscode/extensions; which code cursor'}},{type:'tool_use',id:'large',name:'Read',input:{file_path:'/tmp/big.md'}},{type:'tool_use',id:'real',name:'Bash',input:{command:'false'}}]));
+processAndAttachMessage(expectedFailures,{type:'user',message:{content:[{type:'tool_result',tool_use_id:'probe',is_error:true,content:'Exit code 1\nkicad-agent.kicad-0.4.49\n---CODE---\n/usr/local/bin/code\ncursor not found'}]}});
+processAndAttachMessage(expectedFailures,{type:'user',message:{content:[{type:'tool_result',tool_use_id:'large',is_error:true,content:'File content (291.3KB) exceeds maximum allowed size (256KB). Use offset and limit parameters to read specific portions of the file.'}]}});
+processAndAttachMessage(expectedFailures,{type:'user',message:{content:[{type:'tool_result',tool_use_id:'real',is_error:true,content:'Exit code 1\nzsh: command not found: kicad-cli'}]}});
+view=executionView(expectedFailures,false);
+assert.deepEqual(Array.from(view.failures,x=>x.id),['real'],'optional probes and Read size guards are not reported as task failures');
 // Timeline rows (Claude Code style): thought durations, tool cards, nested subagents, status.
 const {executionSteps,describeTool,countTools}=load(path.join(root,'src/webview/src/utils/executionSteps.ts'));
 const stepMessages=[],start=Date.parse('2026-10-22T16:00:00Z'),at=(s,raw)=>({...raw,timestamp:start+s*1000});
@@ -69,6 +77,44 @@ assert.equal(steps[3].children.length,1,'subagent calls nest under their Agent r
 assert.equal(steps[4].output,'boom','error tags are removed');assert.equal(steps[5].rich,true,'edits keep the diff renderer');
 assert.deepEqual([...executionSteps(executionView(stepMessages,false).details,false).filter(s=>s.kind==='tool'&&s.status==='stopped').map(s=>s.label)],['Agent','Edit'],'unfinished calls of an ended turn are not running');
 assert.equal(describeTool('Read',{file_path:'/a/b/c/d/e.ts',offset:10,limit:5}).summary,'…/c/d/e.ts · 10–14 行');
+// Images retain their original path, while display names never expose base64 bytes.
+const imageMessages=[],imagePath='/private/tmp/原理图 exports/cleared.png';
+processAndAttachMessage(imageMessages,assistant([{type:'tool_use',id:'image',name:'Read',input:{file_path:imagePath}}]));
+let imageStep=executionSteps(imageMessages,true)[0];assert.equal(imageStep.image.filePath,imagePath);assert.equal(imageStep.image.name,'cleared.png');assert.equal(imageStep.status,'running');
+processAndAttachMessage(imageMessages,{type:'user',message:{content:[{type:'tool_result',tool_use_id:'image',content:[{type:'image',source:{type:'base64',media_type:'image/png',data:'original-image-bytes'}},text('Image read successfully')]}]}});
+imageStep=executionSteps(imageMessages,false)[0];assert.equal(imageStep.status,'success');assert.equal(imageStep.output,'Image read successfully');assert.equal(imageStep.wrapper.getToolResultValue().content[0].source.data,'original-image-bytes','stored image bytes remain available to the model/history');
+processAndAttachMessage(imageMessages,{type:'user',message:{content:[{type:'tool_result',tool_use_id:'image',is_error:true,content:'File does not exist'}]}});
+imageStep=executionSteps(imageMessages,false)[0];assert.equal(imageStep.status,'error');assert.equal(imageStep.output,'File does not exist');
+for(const filePath of ['https://example.com/x.png','command:run.png','/tmp/file.txt']){
+  assert.equal(executionSteps([Message.fromRaw(assistant([{type:'tool_use',id:'unsafe',name:'Read',input:{file_path:filePath}}]))],false)[0].image,undefined);
+}
 assert.equal(describeTool('mcp__kicad__capability_search',{query:'drc',kind:'tool'}).summary,'"drc" · tool');
+// Malformed SDK rows or missing tool names must not crash presentation (the reported slice/undefined failures).
+assert.equal(describeTool(undefined,{}).label,'');assert.equal(describeTool('Bash',null).summary,'');
+assert.doesNotThrow(()=>executionView([{type:'assistant',message:{content:undefined},timestamp:Date.now(),isEmpty:false}],false));
+assert.doesNotThrow(()=>executionSteps([{type:'assistant',message:{content:undefined},timestamp:Date.now(),isEmpty:false}],false));
 const sdk=fs.readFileSync(path.join(root,'src/services/claude/ClaudeSdkService.ts'),'utf8');assert.match(sdk,/Execution communication:/);assert.match(sdk,/Never withhold a necessary question/);
+// Render the shipped Vue component: steps are present without a turn disclosure or counter.
+const {parse,compileScript}=require('vue/compiler-sfc'),{h,defineComponent}=require('vue'),{renderToString}=require('vue/server-renderer');
+const file=path.join(root,'src/webview/src/components/Messages/ExecutionTurn.vue');
+const compiled=compileScript(parse(fs.readFileSync(file,'utf8')).descriptor,{id:'execution-record',inlineTemplate:true});
+const componentModule={exports:{}};
+vm.runInNewContext(ts.transpileModule(compiled.content,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module:componentModule,exports:componentModule.exports,require:name=>name.endsWith('MessageRenderer.vue')?{default:defineComponent({props:['message'],setup:props=>()=>h('p',typeof props.message.message.content==='string'?props.message.message.content:props.message.message.content.map(w=>w.content.text||'').join(''))})}:name.endsWith('ExecutionSteps.vue')?{default:defineComponent({props:['steps','live'],setup:props=>()=>h('div',[...props.steps.map(s=>h('span',s.kind==='tool'?s.label:s.kind)),props.live])})}:name.endsWith('.vue')?{default:defineComponent({setup:()=>()=>h('div','details')})}:name.startsWith('.')?load(path.resolve(path.dirname(file),name+'.ts')):require(name),console,setInterval:()=>0,clearInterval:()=>{}});
+const component=componentModule.exports.default;
+const finalHtml=await renderToString(h(component,{messages:stepMessages.concat([mainFinal]),context:{},busy:false}));
+assert.match(finalHtml,/execution-steps/,'the stream is visible without a disclosure');assert.match(finalHtml,/Bash/,'tool steps render immediately');assert.match(finalHtml,/主任务正常完成/);
+assert.doesNotMatch(finalHtml,/execution-toggle|次工具调用|项失败|execution-output|执行详情/);
+const pendingHtml=await renderToString(h(component,{messages:stepMessages,context:{},busy:true}));
+assert.match(pendingHtml,/execution-steps/);assert.doesNotMatch(pendingHtml,/execution-toggle|次工具调用/);
+// Mixed tool/text/interactive blocks retain source order, with functional question renderers.
+const mixed=Message.fromRaw(assistant([{type:'tool_use',id:'first',name:'Read',input:{file_path:'/a'}},text('【重要问题】文件缺少依赖。'),{type:'tool_use',id:'ask',name:'AskUserQuestion',input:{questions:[]}}]));
+const flow=executionView([mixed],true).timeline;
+const flowSteps=executionSteps(flow,true);
+assert.deepEqual([...flowSteps.map(s=>s.kind==='tool'?s.name:s.kind)],['Read','text','AskUserQuestion']);
+assert.equal(flowSteps[2].rich,true,'interactive questions retain their controls inside the stream');
+assert.match(executionView([Message.fromRaw({type:'result',is_error:true})],false).resultError,/上方步骤/);
+// Synthetic CLI turns (image scale notes) are neither bubbles nor turn boundaries.
+assert.equal(Message.fromRaw({type:'user',isSynthetic:true,message:{role:'user',content:[{type:'text',text:'[Image: original 2362x1672, displayed at 2000x1416. Multiply coordinates by 1.18 to map to original image.]'}]}}),null);
+assert.equal(Message.fromRaw({type:'user',isMeta:true,message:{role:'user',content:'Caveat: local command output'}}),null);
+assert.ok(Message.fromRaw({type:'user',message:{role:'user',content:'real request'}}));
 console.log('Execution presentation passed: per-request grouping, final text, visible important issues and questions, tool failures, nested agents, result-only output, stop/disconnect, full record retention and ordinary chat.');

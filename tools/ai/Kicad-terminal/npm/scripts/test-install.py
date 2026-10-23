@@ -22,7 +22,7 @@ with tempfile.TemporaryDirectory(prefix='Kicad npm acceptance ') as directory:
     home = root/'isolated home'
     home.mkdir()
     env = {k:v for k,v in os.environ.items() if not k.startswith(('OPENCODE_', 'XDG_', 'NPM_TOKEN', 'NODE_AUTH_TOKEN', 'DEEPSEEK_'))}
-    env.update(HOME=str(home), npm_config_cache=str(root/'empty npm cache'), npm_config_userconfig=str(root/'no credentials.npmrc'), npm_config_update_notifier='false', OPENCODE_DISABLE_MODELS_FETCH='1', OPENCODE_DISABLE_AUTOUPDATE='1', OPENCODE_DISABLE_PROJECT_CONFIG='1')
+    env.update(HOME=str(home), npm_config_cache=str(root/'empty npm cache'), npm_config_userconfig=str(root/'no credentials.npmrc'), npm_config_update_notifier='false', OPENCODE_DISABLE_MODELS_FETCH='1', OPENCODE_DISABLE_AUTOUPDATE='1', OPENCODE_DISABLE_PROJECT_CONFIG='1', KICAD_LOCAL_MEMBERSHIP='0', KICAD_AUTO_CONNECT='0')
     for variable, folder in [('XDG_CONFIG_HOME','config'),('XDG_DATA_HOME','data'),('XDG_STATE_HOME','state'),('XDG_CACHE_HOME','cache')]:
         env[variable] = str(root/folder)
         (root/folder).mkdir()
@@ -74,9 +74,32 @@ with tempfile.TemporaryDirectory(prefix='Kicad npm acceptance ') as directory:
         subprocess.run([str(command),'debug','skill'],cwd=root,env=env,stdout=listing,stderr=subprocess.PIPE,text=True,timeout=120,check=True)
         listing.seek(0)
         skills = json.load(listing)
-    bundled_skills = [item for item in skills if str(item['location']).startswith(str(installed/'resources/skills'))]
     expected_skills = sorted(p.name for p in (source.parents[3]/'.claude/skills').glob('kicad-*') if (p/'SKILL.md').is_file())
-    assert sorted(item['name'] for item in bundled_skills) == expected_skills, bundled_skills
+    assert skills == [], 'Startup must not preload skill bodies'
+    assert sorted(p.name for p in (installed/'resources/skills').iterdir() if (p/'SKILL.md').is_file()) == expected_skills
+    # Exercise the shipped plugin: page metadata, then load only the selected skill.
+    skill_probe = "import {KicadSessionRuntime} from " + json.dumps((installed/'resources/session-runtime.mjs').as_uri()) + ";\n"
+    skill_probe += "const root=" + json.dumps(str(installed)) + ";\n" + """
+const hooks=await KicadSessionRuntime({directory:process.cwd(),client:{}});
+try {
+  await hooks.config({skills:{paths:[root+'/resources/skills']}});
+  const skills=[];let offset=0;
+  do {
+    const page=JSON.parse(await hooks.tool.capability_search.execute({kind:'skill',query:'',offset},{}));
+    if(page.results.some(item=>Object.hasOwn(item,'content')))throw Error('Discovery exposed a skill body');
+    skills.push(...page.results);offset=page.nextOffset;
+  } while(offset!==null && offset!==undefined);
+  const permissions=[];
+  const loaded=JSON.parse(await hooks.tool.capability_call.execute({id:'skill:kicad-engineering',arguments:{}},{ask:async request=>permissions.push(request.permission)}));
+  console.log(JSON.stringify({names:skills.map(item=>item.name).sort(),loaded,permissions}));
+} finally {await hooks.event({event:{type:'server.instance.disposed'}});}
+"""
+    skill_result = json.loads(run(['node','--input-type=module','--eval',skill_probe]))
+    assert skill_result['names'] == expected_skills, skill_result['names']
+    assert skill_result['loaded']['name'] == 'kicad-engineering'
+    assert skill_result['loaded']['content'] == (installed/'resources/skills/kicad-engineering/SKILL.md').read_text()
+    assert skill_result['permissions'] == ['skill']
+    bundled_skills = skill_result['names']
     assert 'kicad-engineering' in expected_skills
     assert (installed/'resources/skills/kicad-engineering/references/release-evidence.md').is_file()
     agent = installed/'resources/kicad-direct.mjs'
@@ -111,7 +134,7 @@ with tempfile.TemporaryDirectory(prefix='Kicad npm acceptance ') as directory:
             assert json.loads(fetch('/session')[0]) == [], 'startup must not create a task'
             assert not {'kicad','easyeda'} & set(json.loads(fetch('/mcp')[0])), 'built-in tools must not spawn old global MCP connectors'
             tool_ids = json.loads(fetch('/experimental/tool/ids')[0])
-            assert 'kicad_health' in tool_ids and 'kicad_board' in tool_ids, tool_ids
+            assert 'capability_search' in tool_ids and 'capability_call' in tool_ids, tool_ids
             html,kind = fetch('/')
             assert 'text/html' in kind
             asset = re.search(rb'<script[^>]+src="([^"]+)"',html).group(1).decode()

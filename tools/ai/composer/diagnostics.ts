@@ -11,13 +11,13 @@ const queues=new Map<string,Promise<void>>();
 const processRun=randomUUID();
 const writers=new Map<string,{sequence:number;bytes:number;day:string;lastCleanup:number}>();
 const root=()=>process.env.KICAD_DIAGNOSTICS_DIR||path.join(process.env.XDG_STATE_HOME||path.join(os.homedir(),'.local/state'),'kicad/diagnostics');
-export function redact(value:unknown):string {
+export function redact(value:unknown,limit=1200):string {
   return String(value??'').replace(/-----BEGIN [^-]*PRIVATE KEY-----[\s\S]*?(?:-----END [^-]*PRIVATE KEY-----|$)/g,'[REDACTED KEY]')
     .replace(/\b(?:Bearer|Basic)\s+[^\s"',;]+/gi,'[REDACTED AUTH]')
     .replace(/\b(?:ctx7sk-|sk-|sk_|ghp_|github_pat_|xox[baprs]-)[a-zA-Z0-9_-]+/g,'[REDACTED TOKEN]')
     .replace(/((?:api[_-]?key|access[_-]?token|auth[_-]?token|authorization|password|passwd|secret|token)["']?\s*[:=]\s*)(?:"[^"]*"|'[^']*'|[^\s,;}&]+)/gi,'$1[REDACTED]')
     .replace(/(https?:\/\/)[^\s/@]+:[^\s/@]+@/g,'$1[REDACTED]@')
-    .replace(/(https?:\/\/[^\s?#]+)\?[^\s#]*/g,'$1?[REDACTED QUERY]').slice(0,1200);
+    .replace(/(https?:\/\/[^\s?#]+)\?[^\s#]*/g,'$1?[REDACTED QUERY]').slice(0,limit);
 }
 // Respect vendor severity; DEBUG text such as "Error log sink initialized" is not a failure.
 export function sdkLogLevel(line:string):string {
@@ -34,6 +34,19 @@ export class SdkErrorLines {
 // space. Do not silently rewrite shell commands; let the agent choose a supported
 // extractor and a fresh destination within the user's authorized task.
 export const ARCHIVE_GUIDANCE='On macOS, extract .epro2 ZIP archives using /usr/bin/ditto -x -k "source.epro2" "fresh temporary directory". System unzip can return exit 50 on Chinese member names despite free disk space. Preserve source files and verify extracted contents. Check .epru member format before treating it as JSON.';
+// Bash tools run the user's shell. In zsh an unquoted glob that matches nothing aborts the whole
+// command and `==` inside [ ] is an error; both kept failing in the runtime journal.
+export function shellGuidance(shell=process.env.SHELL||''):string{
+  return /(?:^|\/)zsh$/.test(shell)?'Shell commands run in zsh: quote glob patterns and option values containing * or ? (for example --include="*.py"), quote literal separators such as \'===BASE===\' (zsh performs = expansion on an unquoted word beginning with =), use = rather than == inside [ ], and quote paths with spaces or Chinese characters. For optional executables use `command -v tool >/dev/null 2>&1 || true` or a separate call; a missing optional tool must not make a diagnostic command look failed.':'';
+}
+// A multi-command line ending in `which tool` returns 1 when an optional tool is
+// missing, making useful output look like a failed call. The advice is for the
+// model; the UI treats the probe as expected rather than a design/tool failure.
+export function optionalProbeAdvice(command?:string):string|undefined {
+  if(typeof command!=='string')return;
+  if(/(?:^|[;&|]\s*)(?:which|command\s+-v|type)\s+/i.test(command))
+    return '可选程序探测（which / command -v / type）未命中时会让整条命令返回非零。用 `command -v tool >/dev/null 2>&1 || true` 或分开调用；不要把可选探测失败当成主任务失败。';
+}
 export function archiveCommandAdvice(name:string,args:any,platform=process.platform):string|undefined {
   if(platform!=='darwin'||!['bash','shell','terminal'].includes(name.toLowerCase()))return;
   const command=typeof args?.command==='string'?args.command:'';
@@ -62,6 +75,10 @@ const rules:[string,RegExp,string][]=[
   ['search_limit',/Ripgrep JSON record exceeded/i,'搜索结果中有超长单行；缩小文件范围，或使用支持大型 JSON 记录的搜索版本。'],
   ['binary_file',/Cannot read binary file/i,'这是二进制文件；按格式使用归档或专用读取工具，不要当作文本读取。'],
   ['archive_write',/write error \(disk full\?\)|fchmod \(file attributes\) error|is probably truncated/i,'归档解压写入失败；先检查空间与成员文件名。在 macOS 上若涉及中文 .epro2 文件名，改用 ditto -x -k 解压到新临时目录并验证完整性。不要仅凭退出码 50 认定磁盘已满。'],
+  ['large_file',/File content \([^)]+\) exceeds maximum allowed size|exceeds maximum allowed size \(256\s*KB\)|use offset and limit parameters to read specific portions/i,'这是 Read 工具对超过 256 KiB 文件的保护性限制，不是程序故障。先检查文件大小，再用 offset/limit 读取需要的行段，或改用内容搜索；只有用户明确要求整份文件时才考虑 allow_large。'],
+  ['kicad_runtime',/kicad-direct was not found|Bundled KiCad JavaScript runtime is missing/i,'优先使用内置 mcp__kicad__ 工具，不要从 Bash 调 kicad-cli agent。若必须使用 CLI，设置 KICAD_DIRECT 指向 kicad-direct.mjs，或在构建时开启 -DKICAD_BUILD_AI_AGENT=ON。'],
+  ['json_parse',/JSONDecodeError|Extra data: line \d+|Expecting value: line \d+|is not valid JSON|Unexpected non-whitespace character after JSON/i,'JSON 输入不符合单一 JSON 文档格式。先检查输入大小、格式与报错位置；.epru 可能是带分隔符的记录，不能直接 json.load。CLI 输出须先检查退出码，将 stdout 与 stderr 分开（不要 2>&1），再按工具约定解析。不要截取第一个大括号来掩盖格式问题，也不要自动重放写操作。'],
+  ['script_syntax',/SyntaxError|Unexpected token|Unexpected end of JSON input|Unexpected identifier/i,'生成的脚本或 JSON 语法无效。检查引号、转义和截断位置后重写；不要把语法错误当成程序缺失。'],
   ['dependency',/ENOENT|not.found|missing.executable|command not found/i,'检查目标路径、程序安装和版本匹配。'],
   ['design_check',/CONNECTIVITY_UNPROVEN|AUDIT_NOT_PASSED|RELEASE_EVIDENCE_INCOMPLETE|DRC_FAILED|ERC_FAILED/i,'这是工程检查未通过；读取检查报告，不当作运行时崩溃。'],
   ['command_exit',/(?:Command exited with code|Exit code)\s+\d+/i,'检查命令退出码、工作目录和原始终端输出；非零退出不一定是程序缺陷。'],
@@ -73,8 +90,14 @@ const rules:[string,RegExp,string][]=[
 const COMMAND_EXIT=/^\s*(?:Exit code|Command exited with code)\s+\d+/i;
 const commandRules:[string,RegExp,string][]=[
   ['archive_write',rules.find(([kind])=>kind==='archive_write')![1],rules.find(([kind])=>kind==='archive_write')![2]],
-  ['shell_syntax',/\(eval\):\d+:|zsh: (?:parse error|no matches found|bad pattern|unknown file attribute)|syntax error near unexpected token|unexpected EOF while looking for matching|bad substitution|unmatched [`'"]/i,'命令语法或引号错误（zsh 会展开未加引号的通配符、== 与特殊字符）；修正引号或改写命令后再执行，不要据此判断程序缺失。'],
+  ['shell_syntax',/\(eval\):\d+:|zsh: (?:parse error|no matches found|bad pattern|unknown file attribute)|syntax error near unexpected token|unexpected EOF while looking for matching|bad substitution|unmatched [`'"]/i,'命令语法或引号错误（zsh 会展开未加引号的通配符、== 与以 = 开头的词）；把分隔符写成 \'===BASE===\'，修正引号或改写命令后再执行，不要据此判断程序缺失。'],
   ['search_pattern',/exceeds complexity limits|regex parse error|Invalid regular expression|unmatched \(|error at position \d+/i,'搜索正则无效或过于复杂；简化模式或改用固定字符串（-F）后再搜索。'],
+  // A parser exception proves the input format failed, not why it failed.
+  ['json_parse',rules.find(([kind])=>kind==='json_parse')![1],rules.find(([kind])=>kind==='json_parse')![2]],
+  ['script_syntax',/SyntaxError|Unexpected token|Unexpected end of JSON input|Unexpected identifier/i,'生成的脚本或 JSON 语法无效；检查引号、转义和截断位置后重写。'],
+  ['large_file',/File content \([^)]+\) exceeds maximum allowed size|exceeds maximum allowed size \(256\s*KB\)/i,'Read 工具对超过 256 KiB 的文件启用了保护；改用 offset/limit 或内容搜索，不要重试整文件读取。'],
+  ['optional_probe',/(?:^|\n)(?:which|command -v|type)\b[^\n]*(?:not found|no \w+ in)/i,'可选程序探测未命中，不应让整条命令被当成任务失败；用 `|| true` 或分开调用。'],
+  ['kicad_runtime',/kicad-direct was not found|Bundled KiCad JavaScript runtime is missing/i,'优先使用内置 mcp__kicad__ 工具；若必须用 kicad-cli agent，设置 KICAD_DIRECT 或开启 -DKICAD_BUILD_AI_AGENT=ON。'],
   ['permission',/Permission denied|Operation not permitted|\bEACCES\b|\bEPERM\b/,'核对工作区权限与用户授权，不绕过权限重试。'],
   ['dependency',/command not found|No such file or directory|\bENOENT\b|Cannot find module/i,'检查目标路径、程序安装和版本匹配。'],
   ['timeout',/timed out|deadline exceeded|\bETIMEDOUT\b/i,'检查耗时与取消状态，先回读执行结果再决定是否重试。'],
@@ -92,16 +115,19 @@ export function diagnose(error:unknown){
   }
   return {kind:rule?.[0]||'unknown',suggestion:rule?.[2]||'根据关联会话和调用 ID 检查原始执行记录；目前证据不足，不能认定根因。',message:redact(text)};
 }
-async function workspaceDir(cwd:string){const real=await fs.realpath(cwd).catch(()=>path.resolve(cwd));return path.join(root(),createHash('sha256').update(real).digest('hex').slice(0,24));}
+async function workspaceDir(cwd:string,base=root()){const real=await fs.realpath(cwd).catch(()=>path.resolve(cwd));return path.join(base,createHash('sha256').update(real).digest('hex').slice(0,24));}
 export class RuntimeJournal {
   private pending:Promise<void>=Promise.resolve();private warning=false;private dropped=0;private queued=0;
   readonly source:DiagnosticSource;readonly cwd:string;
+  // The directory is fixed when the journal is created: writes are queued and may finish
+  // after a caller (or a test) has changed KICAD_DIAGNOSTICS_DIR.
+  private readonly base=root();
   constructor(source:DiagnosticSource,cwd:string){this.source=source;this.cwd=cwd;}
   record(event:DiagnosticEvent):Promise<void>{
     if(this.queued>=256){this.dropped++;return Promise.resolve();}
     this.queued++;
     const work=this.pending.then(async()=>{
-      const dir=await workspaceDir(this.cwd);
+      const dir=await workspaceDir(this.cwd,this.base);
       const write=(queues.get(dir)||Promise.resolve()).catch(()=>{}).then(async()=>{
         await fs.mkdir(dir,{recursive:true,mode:0o700});
         const key=dir+':'+this.source;

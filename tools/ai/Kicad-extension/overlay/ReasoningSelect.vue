@@ -1,11 +1,11 @@
 <template>
-  <DropdownTrigger align="right" :width="260" :disabled="disabled" :trigger-props="{role:'button', tabindex:0, 'aria-label':'选择推理强度', 'aria-disabled':disabled, onKeydown: triggerKey}">
+  <DropdownTrigger align="right" :width="360" :disabled="disabled" :trigger-props="{role:'button', tabindex:0, 'aria-label':'Select reasoning effort', 'aria-disabled':disabled, onKeydown: triggerKey}">
     <template #trigger>
-      <span class="reasoning-trigger" :class="{'is-disabled':disabled}" :title="'推理强度：' + selected.label" @click.capture="blockDisabled">
+      <span class="reasoning-trigger" :class="{'is-disabled':disabled}" :title="'Reasoning effort: ' + selected.label" @click.capture="blockDisabled">
         <span class="codicon codicon-brain" /><span>{{ selected.label }}</span><span class="codicon codicon-chevron-up" />
       </span>
     </template>
-    <template #header><div class="reasoning-heading">推理强度<span>按当前模型支持的档位选择</span></div></template>
+    <template #header><div class="reasoning-heading">Reasoning effort<span>Levels supported by the current model</span></div></template>
     <template #content="{close}">
       <DropdownItem v-for="(option,index) in options" :key="option.value" :index="index"
         :item="{id:option.value,label:option.label,detail:option.description,checked:option.value===selected.value,type:'reasoning'}"
@@ -14,13 +14,16 @@
   </DropdownTrigger>
 </template>
 <script setup lang="ts">
-import {computed} from 'vue';
+import {computed,onUnmounted,ref} from 'vue';
 import {DropdownTrigger,DropdownItem} from './Dropdown';
-import {reasoningOptions,normalizeReasoning} from '../../../shared/kicadReasoning';
+import {reasoningOptions,onReasoningModelsChanged} from '../../../shared/kicadReasoning';
 const props=defineProps<{model?:string;level?:string;disabled?:boolean}>();
 const emit=defineEmits<{(event:'select',level:string):void}>();
-const options=computed(()=>reasoningOptions(props.model));
-const selected=computed(()=>options.value.find(option=>option.value===normalizeReasoning(props.model,props.level))!);
+// Discovered model capabilities arrive after the first render.
+const revision=ref(0);
+onUnmounted(onReasoningModelsChanged(()=>revision.value++));
+const options=computed(()=>{void revision.value;return reasoningOptions(props.model)});
+const selected=computed(()=>options.value.find(option=>option.value===props.level) ?? options.value[0]);
 function choose(level:string,close:()=>void){close();if(!props.disabled)emit('select',level)}
 function blockDisabled(event:MouseEvent){if(props.disabled){event.preventDefault();event.stopPropagation()}}
 function triggerKey(event:KeyboardEvent){if(props.disabled){event.preventDefault();return}if(event.key==='Enter'||event.key===' '){event.preventDefault();(event.currentTarget as HTMLElement).click()}}

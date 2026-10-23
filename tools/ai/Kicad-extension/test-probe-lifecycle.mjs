@@ -18,6 +18,7 @@ vm.runInNewContext(ts.transpileModule(code,{compilerOptions:{target:ts.ScriptTar
 const probe=new scope.Probe();
 assert.equal((await probe.probe({capabilities:['fixture']})).data.fixture,'models');
 assert.equal(lastOptions.persistSession,false);assert.equal(lastOptions.abortController.signal.aborted,true);assert.equal(returned,1);assert.equal(probe.context.subscriptions.length,0);
+assert.equal(lastOptions.strictMcpConfig,true);assert.deepEqual(Object.keys(lastOptions.mcpServers),[]);assert.equal(lastOptions.tools.length,0);assert.equal(lastOptions.disallowedTools[0],'Skill');assert.ok('disable-slash-commands' in lastOptions.extraArgs);
 blocked=true;
 await assert.rejects(probe.probe({capabilities:['fixture'],timeoutMs:1000}),/timed out/);
 assert.equal(lastOptions.abortController.signal.aborted,true);assert.equal(returned,2);assert.equal(probe.context.subscriptions.length,0);

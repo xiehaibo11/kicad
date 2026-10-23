@@ -11,6 +11,10 @@ if (process.platform !== 'darwin' || process.arch !== 'arm64') {
 }
 const root = fileURLToPath(new URL('../', import.meta.url));
 try {
+  if(process.argv[2]==='doctor'){
+    process.argv.splice(2,1);
+    await import('../resources/agent-doctor.mjs');
+  } else {
   const child = spawn(path.join(root, 'vendor/darwin-arm64/kicad-terminal'), process.argv.slice(2), {
     env: runtimeEnvironment(root), stdio: 'inherit',
   });
@@ -31,6 +35,7 @@ try {
     for (const [name, handler] of handlers) process.off(name, handler);
     process.exitCode = code ?? (signal === 'SIGINT' ? 130 : 1);
   });
+  }
 } catch (error) {
   console.error('Kicad: ' + error.message);
   process.exitCode = 1;

@@ -1,10 +1,30 @@
 # Kicad
 
-当前版本：0.4.36。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
+当前构建版本：0.4.64。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
 终端源码为 `tools/ai/Kicad-terminal`。扩展显示为 **Kicad**，终端显示为 **Kicad 终端**。
 扩展安装 ID 仍为 `kicad-agent.kicad`，可直接升级并保留用户配置。
 
-0.4.31 在可信工作区激活时自动连接原生 KiCad IPC。默认实例不存在时启动 KiCad GUI 并等待就绪；工程打开直接交给 GUI，不再自动启动无界面 API 服务。显式 socket 不重定向。
+后端状态检查由用户点击状态栏或调用 health 工具时按需执行。原生 IPC 连接与项目打开仍交给 KiCad，显式 socket 不重定向。
+
+0.4.62 支持点击工具卡片 IN / OUT / ERR 的文字，在第一编辑器组打开完整内容的命名只读标签页。
+IN 命令、OUT 输出和 ERR 错误分别查看；复制按钮独立，Enter / 空格同样可打开。只在手动查看时打开，不执行命令、不弹窗，也不停止对话。
+
+0.4.61 将 Read 图片文件名和 OUT 图片结果变为可点击入口，沿用 open_file 消息通道，在 VS Code 第一编辑器组的内置图像预览中打开。
+仅点击、Enter 或空格激活时打开，不随模型读取自动切换编辑器。支持临时目录、中文及含空格路径；缺失图片显示错误，不模糊匹配其他文件。
+
+0.4.60 将子代理授权绑定到聊天输入流中的当前真实用户请求，SDK 钩子、子代理提示、模型计划、历史及工具结果均不能授予授权。
+“请把项目进行深度了解”始终由主代理处理；只有明确要求子代理的当前请求才允许启动，并仍服从子代理开关。
+打包检查使用真实 SDK/CLI 与本地模型响应夹具，验证普通请求、权限模式、跨轮撤销、显式请求与禁用设置。
+UI 截图标明模拟事件来源；界面测试不能证明真实模型的工具选择。安装后需在当前任务结束时重载 VS Code 窗口，
+才能替换已加载的旧版扩展代码；仅安装 VSIX 不会热替换活动窗口中的服务。
+
+
+0.4.58 修复显式子代理授权（描述、附件、示例和历史不视为启动请求），并让关闭子代理设置同时禁用原生入口。
+Codex 根据当前请求启用或禁用原生 V2 协作，沿用本地 app-server 和同一线程历史；动态工具遵守相同的钩子拒绝与只读判定。
+MCP 配置变化或工具清单通知会使旧能力和只读标记失效；技能索引顺序稳定、避免符号链接循环，正文仍在调用时读取。
+设置 **MCP mode**（按需 / 直连 / 关闭）、**Skills mode**（按需 / 原生 / 关闭）、禁用名单、额外目录、
+**Subagents enabled** 和可选提示组件在聊天会话启动或重启时生效；当前运行中的工具配置保持一致。
+这些聊天设置不改写独立 OpenCode 终端的用户配置，终端仍使用共享按需目录和显式委派规则。
 
 0.4.30 增加当前工作区的共享会话历史：聊天面板历史列表可读取终端会话，标题标记为 `[终端]`，以只读方式展示；标题栏的历史按钮或 `Kicad: 共享会话历史` 命令可查看原始记录，并在终端继续原生会话。终端使用 `/kicad-history` 或 `session_history` 工具读取两端历史。跨运行时不混用会话 ID。
 
@@ -24,11 +44,11 @@ SVG/DXF/PDF/PS 导出缺少 `layers` 时在调用前报错；阻抗计算找不�
 未指定类型的 `document.list` 同时列出打开的 PCB 与原理图。从扩展打开的 Kicad 终端（0.2.0）
 随附 `/kicad-drc`、`/kicad-fab`、`/kicad-route`、`/kicad-step`、`/kicad-schematic` 快捷任务命令。
 
-已公开的稳定安装包见 [GitHub Release 0.4.22](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.22)。
-下载 `kicad-0.4.22.vsix`，在 VS Code 扩展菜单中选择 **从 VSIX 安装…**，或者执行：
+本版本安装包见 [GitHub Release 0.4.64](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.64)。
+下载 `kicad-0.4.64.vsix`，在 VS Code 扩展菜单中选择 **从 VSIX 安装…**，或者执行：
 
 ```sh
-code --install-extension ./kicad-0.4.22.vsix --force
+code --install-extension ./kicad-0.4.64.vsix --force
 ```
 
 需要 VS Code 1.98 或以上版本，当前验证平台为 macOS Apple Silicon。
@@ -38,22 +58,33 @@ KiCad 软件、原生 CLI 及完整终端运行时单独安装，共享 JavaScri
 [终端安装说明](https://github.com/xiehaibo11/kicad/blob/codex/kicad-npm/tools/ai/Kicad-terminal/npm/README.md)。
 发行页同时提供 SHA-256 校验文件与本次构建验证报告；该发布渠道为 GitHub Release。
 
-执行过程按每次请求合并，默认只显示一行运行状态和工具调用次数，点击展开或收起详情。
-工具参数、原始输出、子代理说明、思考和中间进度都在执行记录中；重要问题、需用户
-决定的事项、错误摘要和最终回复单独显示。权限确认不折叠。纯聊天仍正常显示回复，
-完成、失败、停止或连接中断按实际事件区分，不会把停止当作完成。历史记录同样可展开。
-0.4.24 在展开的执行详情底部增加“收起执行详情”，可直接收起并返回顶部状态入口，
-支持鼠标和键盘；收起不暂停任务，重新展开保留完整记录。
+执行过程采用与终端一致的逐步输出：模型实际调用一个工具，才追加该步骤及其 IN / OUT；
+工具完成后，再依据结果继续。没有整轮折叠入口、调用次数或失败次数汇总。思考、普通进度、
+重要问题和交互式问题保留事件顺序，最终回复显示在步骤之后。工具输出较长时先预览几行，
+可用鼠标或键盘在编辑器中打开完整内容；查看、复制和阅读记录不会调用工具或暂停任务。
+MCP 和技能默认按需加载：只注册能力检索、调用入口（启用子代理时另有只读入口），
+检索只返回匹配项；选定的 MCP 才连接，选定的技能才读取正文，检索不会自动执行结果。
+工具参数、结果和错误同时写入只读的 **Kicad Tools** 终端；调用工具不会自动打开或聚焦窗口。
+通过命令 **Kicad: 查看工具终端输出** 可查看终端。纯聊天正常显示回复；停止或中断时，
+尚未完成的工具标为“未完成”，不会显示为成功。历史记录采用相同的逐步输出。
+Claude Code 读取大图后自动追加的说明（如 `[Image: original …] Multiply coordinates…`，实时为
+`isSynthetic`、记录中为 `isMeta`）不是用户消息，不显示为用户气泡，也不会把一次请求拆成多段。
 
 暂停立即停止接收旧通道的界面事件，并清理旧权限确认；后端结束旧 SDK 进程。
 再次手动发送时恢复原会话及模型、推理强度、权限和目录。旧结果或流结束回调不会清空
 新请求状态；单次会话启动失败也不会让后续消息分发停止。不自动重发已暂停的任务。
-聊天中不再单独展示 Interrupted / Tool interrupted 提示，停止状态保留在可展开的执行记录里。
+聊天中不再单独展示 Interrupted / Tool interrupted 提示，未完成状态保留在对应工具步骤里。
 手动续发按当前权限继续调用工具，不附加只读限制或额外的“重新发送成功”回复。
 
-模型菜单立即展示本地模型和自定义配置，SDK 模型发现只在首次打开时异步执行，
-不阻塞选择。支持搜索、方向键和 Enter。模型与推理强度切换先保存到会话，
-只在下一次手动发送前更新 SDK 进程，恢复原会话和权限；选择本身不启动对话或发送消息。
+模型菜单立即展示本地模型和自定义配置；本机 Claude/Codex 模型发现在宿主中共享一次进行中的
+探测，此后直接返回上次结果并在超过 60 秒时后台刷新，打开菜单不再每次重启两个 CLI。
+面板打开时模型发现在后台完成，不阻塞模型选择和首次发送。支持搜索、方向键和 Enter。
+模型与推理强度切换先保存到会话，只在下一次手动发送前更新 SDK 进程，恢复原会话和权限；
+选择本身不启动对话或发送消息。任务运行中也可以选择模型和推理强度：选择立即显示并保存，
+当前任务继续使用原进程，下一次发送前生效；运行中锁定的只有权限模式和附件等辅助操作。
+运行中聊天区只在读者停留在底部时跟随新输出，向上滚动阅读或选中文字时不会被拉回底部。
+Claude Code 2.1.30x 每个 token 产生的 stream_event 与 system/thinking_tokens 不再转发到界面
+（扩展也不再请求 partial messages），避免面板与日志被每秒上千条事件占满。
 用户主动选择的模型会保存为 Kicad 扩展偏好，修改历史消息、新建对话、恢复旧会话和重开窗口
 都沿用该选择。默认设置、Profile 切换、SDK 列表发现和后台状态更新不会覆盖它。
 历史消息编辑框与主输入框共享模型、权限和推理强度。修改后重新发送在原位置替换该消息，
@@ -80,7 +111,7 @@ spec_validate、blocks、reference、audit）不再弹出确认；会修改设�
 
 自动调用以用户实际提交的任务为依据；打开面板、恢复历史、选择模型或权限、接受下一句草稿
 都不会启动任务。只有数字、问候或空输入时先澄清，不会猜成“检查环境”或第一项。
-后端在最高权限下同样拦截这些输入触发的业务工具和子代理。普通自然语言中目标或条件
+寒暄与不充分输入由共享提示提供建议，不按关键词硬拦正常工具；子代理在所有权限模式下仍需要明确的当前人类请求。普通自然语言中目标或条件
 缺失时，由模型先提问再执行。AskUserQuestion 显示真实问题、选项和自定义回答，默认不选中；
 必须回答全部问题才能确认，通用 Yes 不能代替回答，取消后停止等待。
 
@@ -91,7 +122,7 @@ spec_validate、blocks、reference、audit）不再弹出确认；会修改设�
 不自动重复已完成的修改。SDK 记录尚未落盘时，以实际收到的消息及工具钩子记录补齐检查点。
 原始 CLI 记录保留，压缩副本和检查点位于 Claude 配置目录下 `kicad-task-state/<session-id>`，
 本地记录使用 0600 权限。终端使用同一需求规则及本地运行时插件，在原有自动压缩基础上
-保存历史、检查点并恢复任务上下文，默认不清理工具结果；保留用户明确的压缩设置。
+保存历史、检查点并恢复任务上下文，默认启用原生旧工具结果修剪，完整存储不变；保留用户明确的压缩设置。
 
 参考 [OpenAI 官方上下文压缩说明](https://developers.openai.com/api/docs/guides/compaction)
 与 [长任务状态管理示例](https://developers.openai.com/cookbook/examples/agents_sdk/building_reliable_agents_memory_compaction)。
@@ -105,14 +136,40 @@ spec_validate、blocks、reference、audit）不再弹出确认；会修改设�
 不必反复点击 Yes。可随时切回其他模式；设置中的默认权限模式也可选择最高权限。
 切换会放行当前待确认的工具操作，但用户问题与计划决策仍由用户回答。
 
-输入框中的脑图标现在是 **推理强度** 菜单，按当前模型和运行时支持的档位选择。
-DeepSeek Flash / V4 Pro 提供自动、关闭思考、轻度、高、最高；Claude Sonnet 提供
-自动、关闭、轻度、中等、高，Opus 额外提供最高。其他兼容模型保留自动和思考开关。
+输入框中的脑图标是 **Reasoning effort** 菜单（英文界面），只列出当前模型实际声明的档位：
+Auto（使用该模型的默认配置）、None、Minimal、Low、Medium、High、Extra High、Max、Ultra。
+档位来自本机 CLI 的模型发现：Claude Code `initialize` 返回的 `supportedEffortLevels` /
+`supportsThinkingOff`，Codex app-server `model/list` 返回的 `supportedReasoningEfforts`。
+实测（Claude Code 2.1.305、Codex 0.163.0）：Opus 5.5 / Fable 5.1 / Sonnet 5.5 / Haiku 5.5
+提供 Low–Max，自适应思考无法关闭，因此没有 None；GPT-6.1 Sol、6 Astra、6 Sol、5.6 Sol、
+5.6 Terra 提供 Low–Ultra，6 Luna 与 5.6 Luna 到 Max 为止。Ultra 仅表示提供商声明的推理档位，
+不会授予子代理权限。DeepSeek Flash / V4 Pro 提供 Auto、None、Low、High、Max。
+发现失败时按模型族使用内置回退表；未知兼容模型只保留 Auto 和 None。
+Auto 不覆盖 Claude Code 自身配置（`~/.claude/settings.json` 的 `modelSettings.<模型>.effortLevel`，
+否则模型默认值）和 Codex 的 `model_reasoning_effort`；DeepSeek 的 Auto 明确不发送 effort。
 选择只影响后续聊天请求，不自动发送；切换会恢复同一会话并保留权限模式。
 同一对话中记住各模型所选档位，切换模型时会校验支持范围。失败会保留原档位并显示错误。
 扩展继续使用 Claude Agent SDK；没有把 Codex 桌面端内部代码嵌入扩展。
-CLI 固定为 2.1.83，SDK API 保持 0.1.77；强度通过真实的 `output_config.effort` 发送。
+强度通过真实的 `output_config.effort`（Claude）或 `turn/start.effort`（Codex）发送；
+`test-reasoning-local.mjs` 用本机 CLI 加本地 HTTP 夹具逐个模型、逐个档位核对线上的 effort 值。
 DeepSeek 的预算参数不控制推理强度，因此显式传递该提供商支持的 effort。
+
+**工具编排设置**（设置 → 扩展 → Kicad；新对话或下一次重启会话时生效）：
+
+| 设置 | 取值 | 说明 |
+| --- | --- | --- |
+| `kicadAgent.mcp.mode` | `onDemand`（默认）/ `direct` / `off` | 外部 MCP 服务器：任务需要时经 `capability_search` 连接；或会话开始时直接交给运行时（工具名 `mcp__<服务器>__<工具>`）；或不用 |
+| `kicadAgent.mcp.disabledServers` | 名称列表 | 任何模式下都不连接 |
+| `kicadAgent.skills.mode` | `onDemand`（默认）/ `native` / `off` | 技能：经目录按需搜索加载；或用运行时自带的 Skill 工具和技能列表；或不加载 |
+| `kicadAgent.skills.disabled` / `skills.extraRoots` | 列表 | 禁用的技能名；额外的 SKILL.md 搜索目录 |
+| `kicadAgent.subagents.enabled` | 默认开 | 注册只读子代理 `kicad-reviewer`、`kicad-verifier`，在所选模型上运行，只能用 `capability_inspect` 等只读工具 |
+| `kicadAgent.prompt.disabledSections` | 段名列表 | 关闭可选的提示词组件；`identity`、`tool_calls`、`mode`、`boundaries` 始终保留 |
+
+提示词由 `composer/prompt-sections.ts` 按运行时事实和上述设置组装，文字与所选模型无关
+（Claude、DeepSeek、Codex 收到同一组组件）；工具结果预算只看运行时上报的上下文窗口。
+KiCad 的三个入口工具带 `alwaysLoad` 和只读注解：支持延迟加载工具的运行时不会再先绕一轮
+工具搜索。`mutates:false` 的内置 KiCad 动作免确认；外部 MCP 工具照常询问。
+架构分析与验证记录见 `tools/ai/audit/claude-code-architecture-2026-10-22/REPORT.md`。
 
 参数语义参考 [OpenAI reasoning](https://developers.openai.com/api/docs/guides/reasoning)、
 [Codex 配置](https://learn.chatgpt.com/docs/config-file/config-reference)、
@@ -381,3 +438,63 @@ Chat archives remain local: extension events under `~/.local/share/kicad/history
 `local_memory` appends verified summaries or user-requested preferences to `<history-root>/memory/<workspace-hash>/memory.jsonl` with private file permissions. `read` recalls the latest 30 matching records; it does not automatically replay historical instructions. Credentials are redacted from memory summaries. Chat archives and memory summaries are distinct: retaining chats does not imply every message becomes an enduring preference. The model can list/read prior chats and append/recall memory through natural-language requests. Network documentation queries and memory writes respect the active tool permission mode.
 
 The model selector shows short names only (for example `Opus 5.5`, `GPT-6.1 Sol`); the full model ID remains the request value and is available in the extension's hover hint. Local login status is in the selector heading's hover hint.
+
+### 0.4.64：设置页面与发布更新
+
+Skills、Slash Commands、Hooks、Plugins 页面现在展示本地清单；技能开关、MCP 来源同步开关和过期权限规则清理使用实际配置回读。
+浏览设置不会启动 MCP 服务器、运行 hook 或调用模型；跨工具 MCP 来源标识和敏感字段隐藏保留。
+本版本重新构建共享运行时，终端配套版本为 0.2.3。
+
+### 0.4.63：本地斜杠菜单与共享策略设置
+
+`/` 菜单由扩展维护，不依赖 Claude 的 `supportedCommands`、登录或所选模型。
+Claude、DeepSeek、自定义兼容模型与 Codex 使用相同的 `/model`、`/effort`、`/permissions`、
+`/tools`、`/skills`、`/mcp`、`/status`、`/doctor`、`/settings`、`/history`、`/new` 入口。
+工具和技能目录每页最多 10 条；可输入 `/tool:名称` 或 `/skill:名称` 筛选，选择只插入草稿。
+浏览不调用模型、执行工具、读取技能正文或连接 MCP。自然语言调用仍保留，不要求先输入 `/`。
+`/mcp` 只显示配置状态；`/status`、`/doctor prompt-audit` 在编辑器内打开只读报告。
+菜单中的能力属于本扩展，不会把其他产品的账户功能显示成已经实现的本地功能。
+
+共享配置依次读取 `~/.config/kicad/settings.json`、工作区 `.kicad/settings.json`、
+`.kicad/settings.local.json`、显式 VS Code 设置，以及最后的托管设置。
+macOS 托管路径为 `/Library/Application Support/KicadAgent/managed-settings.json`；
+`KICAD_MANAGED_SETTINGS` 可指定其他路径。扩展支持 JSONC；独立终端使用 JSON。
+VS Code 中使用 `kicadAgent.` 前缀，例如 `kicadAgent.maxEffortLevel`。
+
+```json
+{
+  "autoMode": true,
+  "deniedModels": ["model-id-to-block"],
+  "maxEffortLevel": "high",
+  "modelSettings": {"deepseek-*": {"maxEffortLevel": "high"}},
+  "maxProseWidth": 100,
+  "commitAttribution": false,
+  "mcpVerification": true,
+  "autoModeSuggestions": false
+}
+```
+
+- Agent 默认开启低风险自动操作；本地已知只读操作和工作区内普通文件编辑可直接执行。
+  Shell、Git、未知工具及敏感路径仍按权限询问。这里使用保守的本地规则，不声称等同于 Claude 的风险分类模型。
+- `deniedModels` 支持完整 ID 或 `*` 通配符，跨层合并；推理上限取各层更低值。
+  配置禁用名单时必须选择可检查的具体模型 ID。主会话、辅助建议和优化请求均检查策略。
+- `maxEffortLevel` 只保留模型实际支持的档位；Auto 也遵守上限。推理强度不会授权子代理。
+- `maxProseWidth` 限制终端正文宽度，0 表示不限；工具输出保持原样。
+- `commitAttribution:false` 对 Claude SDK 会话传入空署名配置，不修改用户现有 Claude 配置文件。
+  本地终端与 Codex 没有本扩展额外添加署名的机制。
+- `mcpVerification:false` 仅在 Agent 自动模式下免去共享按需 MCP 包装器的逐次调用确认。
+  它不关闭 TLS、身份验证或服务器证书校验；原生 direct MCP 的权限仍由对应运行时负责。
+- `autoModeSuggestions:false` 阻止下一句预测请求；手动提示词优化继续可用。
+- WebFetch 下载默认总期限为 5 分钟，取消、SSRF 防护和大小限制继续生效。
+
+“提示词审计”是静态只读检查：报告已注册组件、长度和工作区指令文件中的可疑模型约束，
+不调用模型，也不宣称已经语义验证所有运行时动态提示词。
+命令面板的 **Kicad: Evaluate Claude Plugin** 检查本机 Claude 是否支持 `plugin eval`，
+再由标准任务终端运行实际评估；需要带 `.claude-plugin/plugin.json` 的 AI 插件。
+这不是原生 KiCad 插件或电路正确性认证；旧 CLI 会明确要求升级。
+
+Ultracode 是独立于 effort 的多代理工作流，不是 Ultra 档位的别名。
+参考 [Claude 官方工作流说明](https://code.claude.com/docs/en/workflows) 和
+[Serverworks 的版本评述](https://blog.serverworks.co.jp/2026/10/03/190000)。
+当前捆绑 CLI 2.1.83 不支持该新功能，因此不显示不可用的 Ultracode 开关；
+同时设置 `CLAUDE_CODE_DISABLE_WORKFLOWS=1`，子代理继续由独立设置和当前用户明确请求共同授权。

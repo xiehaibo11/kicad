@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {RuntimeJournal,DiagnosticRecorder,diagnosticReport,redact,diagnose,toolFailure,archiveCommandAdvice} from '../diagnostics.ts';
+import {RuntimeJournal,DiagnosticRecorder,diagnosticReport,redact,diagnose,toolFailure,archiveCommandAdvice,optionalProbeAdvice,shellGuidance} from '../diagnostics.ts';
 
 test('journal captures both clients, isolates workspaces, redacts secrets and correlates calls',async()=>{
  const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'kicad-diagnostics-')),old=process.env.KICAD_DIAGNOSTICS_DIR;process.env.KICAD_DIAGNOSTICS_DIR=path.join(tmp,'logs');
@@ -83,6 +83,14 @@ test('shell exits are classified from error lines, not from program output',()=>
  assert.equal(diagnose('Exit code 1\n<template>\n  <div v-if="view.failures.length">rejected or denied</div>\n</template>').kind,'command_exit');
  assert.equal(diagnose('Exit code 1\nugrep: error: error at position 94\n(?:x){0,400}\n     exceeds complexity limits___/\n\n(eval):1: == not found').kind,'search_pattern');
  assert.equal(diagnose('Exit code 1\n(eval):1: no matches found: --include=*.ts').kind,'shell_syntax');
+ assert.equal(diagnose('Exit code 1\n(eval):1: ===BASE=== not found').kind,'shell_syntax');
+ assert.match(diagnose('Exit code 1\n(eval):1: ===BASE=== not found').suggestion,/===BASE===/);
+ assert.equal(diagnose("SyntaxError: Unexpected token '!'").kind,'script_syntax');
+ assert.equal(diagnose('File content (291.3KB) exceeds maximum allowed size (256KB). Use offset and limit parameters to read specific portions of the file.').kind,'large_file');
+ assert.match(diagnose('File content (291.3KB) exceeds maximum allowed size (256KB). Use offset and limit parameters to read specific portions of the file.').suggestion,/offset\/limit|256 KiB/);
+ assert.match(optionalProbeAdvice('which code cursor 2>/dev/null'),/command -v/);
+ assert.equal(optionalProbeAdvice('ls -la'),undefined);
+ assert.equal(diagnose('kicad-direct was not found. Build it with -DKICAD_BUILD_AI_AGENT=ON').kind,'kicad_runtime');
  assert.equal(diagnose('Exit code 127\nzsh: command not found: kicad-cli').kind,'dependency');
  assert.equal(diagnose('Exit code 1\nls: /missing: No such file or directory').kind,'dependency');
  assert.equal(diagnose('Exit code 1\ncat: /etc/secret: Permission denied').kind,'permission');
@@ -98,4 +106,30 @@ test('report rows locate events without repeating suggestions and list the slowe
  assert.equal(report.pendingCalls.length,1);assert.equal(report.pendingCalls[0].name,'Bash');assert.equal(report.pendingCalls[0].schemaVersion,undefined);
  assert.equal(report.recent[0].kind,'invalid_arguments');assert.equal(report.recent[0].suggestion,undefined);assert.ok(report.issues[0].suggestion);
  }finally{if(old===undefined)delete process.env.KICAD_DIAGNOSTICS_DIR;else process.env.KICAD_DIAGNOSTICS_DIR=old;await fs.rm(tmp,{recursive:true,force:true});}
+});
+
+test('queued writes stay in the directory chosen when the journal was created',async()=>{
+ const tmp=await fs.mkdtemp(path.join(os.tmpdir(),'kicad-journal-root-')),old=process.env.KICAD_DIAGNOSTICS_DIR;
+ try{
+ process.env.KICAD_DIAGNOSTICS_DIR=path.join(tmp,'fixture');const journal=new RuntimeJournal('extension',tmp);
+ const pending=journal.record({category:'tool',phase:'start',status:'running',sessionId:'fixture-session',callId:'c',name:'Bash'});
+ // A test restores the real directory before fire-and-forget writes finish; they must not land there.
+ process.env.KICAD_DIAGNOSTICS_DIR=path.join(tmp,'real');await pending;
+ assert.equal((await fs.readdir(path.join(tmp,'fixture'))).length,1);await assert.rejects(fs.access(path.join(tmp,'real')));
+ }finally{if(old===undefined)delete process.env.KICAD_DIAGNOSTICS_DIR;else process.env.KICAD_DIAGNOSTICS_DIR=old;await fs.rm(tmp,{recursive:true,force:true});}
+});
+
+test('zsh users get quoting guidance; other shells get none',()=>{
+ assert.match(shellGuidance('/bin/zsh'),/--include="\*\.py"/);assert.match(shellGuidance('/opt/homebrew/bin/zsh'),/== inside/);assert.match(shellGuidance('/bin/zsh'),/===BASE===/);assert.match(shellGuidance('/bin/zsh'),/command -v/);
+ for(const shell of ['/bin/bash','/usr/bin/fish',''])assert.equal(shellGuidance(shell),'');
+});
+
+test('JSON parse failures from merged stderr get a specific diagnosis',async()=>{
+ const {diagnose}=await import('../diagnostics.ts');
+ const extra='Exit code 1\nTraceback (most recent call last):\n  File "<string>", line 3, in <module>\njson.decoder.JSONDecodeError: Extra data: line 1612 column 1 (char 746803)';
+ assert.equal(diagnose(extra).kind,'json_parse');assert.match(diagnose(extra).suggestion,/2>&1/);
+ assert.equal(diagnose('Exit code 1\n    raise JSONDecodeError("Expecting value", s, err.value) from None\njson.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)').kind,'json_parse');
+ assert.equal(diagnose('json.decoder.JSONDecodeError: Extra data: line 1 column 34 (char 33)').kind,'json_parse');
+ assert.match(diagnose('JSONDecodeError: Extra data').suggestion,/\.epru/);
+ assert.equal(diagnose('Exit code 1\nSyntaxError: invalid syntax').kind,'script_syntax','other script errors keep their kind');
 });

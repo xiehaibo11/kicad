@@ -50,12 +50,12 @@ setTimeout(()=>window.dispatchEvent(new MessageEvent('message',{data:{type:'from
  const sent=()=>page.evaluate(()=>window.previewMessages.filter(m=>m.type==='io_message').length);
  const mode=page.locator('.mode-dropdown .dropdown-label');
  await mode.waitFor();assert.equal(await mode.innerText(),'Agent');
- const effort=page.getByRole('button',{name:'选择推理强度',exact:true});
- assert.match(await effort.innerText(),/自动/);await effort.click();
+ const effort=page.getByRole('button',{name:'Select reasoning effort',exact:true});
+ assert.match(await effort.innerText(),/Auto/);await effort.click();
  const effortMenu=page.locator('.dropdown-menu-item .file-info-container');
- assert.deepEqual(await effortMenu.allTextContents(),['自动','关闭思考','轻度','高','最高']);
+ assert.deepEqual(await effortMenu.allTextContents(),['Auto','None','Low','High','Max']);
  await page.screenshot({path:path.join(output,`reasoning-menu-${version}.png`)});
- await effortMenu.getByText('最高',{exact:true}).click();await page.waitForFunction(()=>document.querySelector('[aria-label="选择推理强度"]').innerText.includes('最高'));assert.match(await effort.innerText(),/最高/);assert.equal(await sent(),0);
+ await effortMenu.getByText('Max',{exact:true}).click();await page.waitForFunction(()=>document.querySelector('[aria-label="Select reasoning effort"]').innerText.includes('Max'));assert.match(await effort.innerText(),/Max/);assert.equal(await sent(),0);
 
  await page.locator('.full-input-box').screenshot({path:path.join(output,`composer-agent-${version}.png`)});
  await mode.click();
@@ -79,15 +79,15 @@ setTimeout(()=>window.dispatchEvent(new MessageEvent('message',{data:{type:'from
  const launchMode=await page.evaluate(()=>window.previewMessages.filter(m=>m.type==='launch_claude').at(-1).permissionMode);
  assert.equal(launchMode,'acceptEdits');
  assert.ok(await page.evaluate(()=>window.previewMessages.some(m=>(m.type==='launch_claude'&&m.thinkingLevel==='max')||(m.request?.type==='set_thinking_level'&&m.request.thinkingLevel==='max'))),'selected effort must reach host before send');
- await effort.click();await effortMenu.getByText('轻度',{exact:true}).click();
+ await effort.click();await effortMenu.getByText('Low',{exact:true}).click();
  await page.waitForFunction(()=>window.previewMessages.some(m=>m.request?.type==='set_thinking_level'&&m.request.thinkingLevel==='low'));
- await page.waitForFunction(()=>document.querySelector('[aria-label="选择推理强度"]').innerText.includes('轻度'));
+ await page.waitForFunction(()=>document.querySelector('[aria-label="Select reasoning effort"]').innerText.includes('Low'));
  assert.equal(await sent(),1);
- await page.evaluate(()=>window.failReasoning=true);await effort.click();await effortMenu.getByText('高',{exact:true}).click();
- await page.getByRole('alert').getByText('推理强度切换测试失败',{exact:true}).waitFor();assert.match(await effort.innerText(),/轻度/);
+ await page.evaluate(()=>window.failReasoning=true);await effort.click();await effortMenu.getByText('High',{exact:true}).click();
+ await page.getByRole('alert').getByText('推理强度切换测试失败',{exact:true}).waitFor();assert.match(await effort.innerText(),/Low/);
  assert.equal(await sent(),1);await page.evaluate(()=>window.failReasoning=false);
- await effort.click();await effortMenu.getByText('最高',{exact:true}).click();
- await page.waitForFunction(()=>document.querySelector('[aria-label="选择推理强度"]').innerText.includes('最高'));
+ await effort.click();await effortMenu.getByText('Max',{exact:true}).click();
+ await page.waitForFunction(()=>document.querySelector('[aria-label="Select reasoning effort"]').innerText.includes('Max'));
  assert.equal(await page.getByRole('alert').count(),0);
 
  await page.evaluate(()=>window.dispatchEvent(new MessageEvent('message',{data:{type:'from-extension',message:{type:'request',requestId:'pending-bash',channelId:window.chatChannel,request:{type:'tool_permission_request',toolName:'Bash',inputs:{command:'printf fixture'},suggestions:[]}}}})));

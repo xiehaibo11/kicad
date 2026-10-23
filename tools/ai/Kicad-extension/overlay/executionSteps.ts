@@ -1,29 +1,30 @@
 import {Message} from '../models/Message';
 import type {ContentBlockWrapper} from '../models/ContentBlockWrapper';
+import {imageFile,type EditorImage} from '../../../shared/imageFiles';
 
-// The expanded execution record as a Claude Code style timeline: one row per thought,
+// The progressive execution stream: one row per thought,
 // tool call or progress text, with each tool's input and output. Subagent rows nest
 // under the Task/Agent call that started them.
 export type StepStatus='running'|'success'|'error'|'stopped';
 export interface ThoughtStep {kind:'thought';key:string;text:string;seconds?:number}
 export interface TextStep {kind:'text';key:string;wrapper:ContentBlockWrapper}
 export interface OtherStep {kind:'other';key:string;message:Message}
-export interface ToolStep {kind:'tool';key:string;id:string;name:string;label:string;summary:string;input:string;output:string;status:StepStatus;rich:boolean;wrapper:ContentBlockWrapper;children:Step[]}
+export interface ToolStep {kind:'tool';key:string;id:string;name:string;label:string;summary:string;input:string;output:string;image?:EditorImage;status:StepStatus;rich:boolean;wrapper:ContentBlockWrapper;children:Step[]}
 export type Step=ThoughtStep|TextStep|OtherStep|ToolStep;
 
 // Edits, writes and todo lists keep their dedicated diff/list renderers inside the row.
-const RICH=new Set(['Edit','MultiEdit','Write','NotebookEdit','TodoWrite','ExitPlanMode']);
+const RICH=new Set(['Edit','MultiEdit','Write','NotebookEdit','TodoWrite','AskUserQuestion','EnterPlanMode','ExitPlanMode']);
 const AGENT=new Set(['Task','Agent']);
 const OUTPUT_LIMIT=200*1024;
-const blocks=(message:Message):ContentBlockWrapper[]=>Array.isArray(message.message.content)?message.message.content:[];
+const blocks=(message:Message):ContentBlockWrapper[]=>Array.isArray(message?.message?.content)?message.message.content:[];
 const oneLine=(value:unknown,limit=160)=>String(value??'').replace(/\s+/g,' ').trim().slice(0,limit);
 export const shortPath=(file:string)=>{const parts=String(file||'').split('/').filter(Boolean);return parts.length>3?'…/'+parts.slice(-3).join('/'):String(file||'');};
 const json=(value:unknown)=>{try{return JSON.stringify(value,null,2)??'';}catch{return String(value);}};
 // Arguments read on one line when collapsed and wrap when the card opens.
 const compact=(value:unknown)=>{try{return JSON.stringify(value)??'';}catch{return String(value);}};
-function contentText(value:any):string{
+function contentText(value:any,linkedImage=false):string{
   if(typeof value==='string')return value;
-  if(Array.isArray(value))return value.map(item=>typeof item==='string'?item:item?.type==='text'?item.text||'':item?.type==='image'?'[图片]':'').filter(Boolean).join('\n');
+  if(Array.isArray(value))return value.map(item=>typeof item==='string'?item:item?.type==='text'?item.text||'':item?.type==='image'&&!linkedImage?'[图片]':'').filter(Boolean).join('\n');
   return value===undefined||value===null?'':json(value);
 }
 // JSON results (KiCad tools) read better indented; large ones stay as sent.
@@ -36,8 +37,9 @@ function mcpParts(name:string){const parts=name.split('__');return parts.length>
 
 /** Bold name, grey summary and the IN text of one tool call. */
 export function describeTool(name:string,input:any){
+  const toolName=typeof name==='string'?name:'';
   const i=input&&typeof input==='object'?input:{};
-  switch(name){
+  switch(toolName){
     case 'Bash':return {label:'Bash',summary:oneLine(i.description||String(i.command||'').split('\n')[0]),input:String(i.command??'')};
     case 'Read':return {label:'Read',summary:shortPath(i.file_path)+(i.offset||i.limit?` · ${i.offset??1}${i.limit?'–'+((i.offset??1)+i.limit-1):''} 行`:''),input:String(i.file_path??'')};
     case 'Grep':return {label:'Grep',summary:oneLine(`"${i.pattern??''}"`+(i.path?' · '+shortPath(i.path):'')+(i.glob?' · '+i.glob:'')),input:[i.pattern,i.path&&'path: '+i.path,i.glob&&'glob: '+i.glob,i.type&&'type: '+i.type,i.output_mode&&'mode: '+i.output_mode,i['-i']&&'ignore case'].filter(Boolean).join('\n')};
@@ -48,8 +50,8 @@ export function describeTool(name:string,input:any){
     case 'Edit':case 'MultiEdit':case 'Write':case 'NotebookEdit':return {label:name,summary:shortPath(i.file_path||i.notebook_path),input:''};
     case 'TodoWrite':return {label:'Update Todos',summary:'',input:''};
   }
-  if(name.startsWith('mcp__')){
-    const {tool}=mcpParts(name);
+  if(toolName.startsWith('mcp__')){
+    const {tool}=mcpParts(toolName);
     if(tool==='capability_search')return {label:'capability_search',summary:oneLine([i.query&&`"${i.query}"`,i.kind,i.server].filter(Boolean).join(' · ')),input:compact(i)};
     if(tool==='capability_call'){
       const args=i.arguments&&typeof i.arguments==='object'?i.arguments:{};
@@ -59,12 +61,13 @@ export function describeTool(name:string,input:any){
     return {label:tool,summary:oneLine(i.action||i.description||first||''),input:compact(i)};
   }
   const first=i.description||i.command||i.file_path||i.pattern||i.url||i.query||i.action;
-  return {label:name,summary:oneLine(first||''),input:Object.keys(i).length?compact(i):''};
+  return {label:toolName,summary:oneLine(first||''),input:Object.keys(i).length?compact(i):''};
 }
 
-function toolOutput(wrapper:ContentBlockWrapper){
+function toolOutput(wrapper:ContentBlockWrapper,linkedImage=false){
   const result=wrapper.getToolResultValue();
-  let text=contentText(result?.content);
+  let text=contentText(result?.content,linkedImage&&!result?.is_error);
+  if(linkedImage&&!result?.is_error&&text.trim()==='[图片]')text='';
   const extra=wrapper.toolUseResult;
   if(!text&&extra&&typeof extra==='object')text=[extra.stdout,extra.stderr].filter(Boolean).join('\n')||'';
   return {text:readable(text),error:!!result?.is_error,done:!!result};
@@ -89,9 +92,10 @@ export function executionSteps(details:Message[],busy:boolean,startedAt?:number)
         const seconds=previous!==undefined&&message.timestamp>previous?Math.max(1,Math.round((message.timestamp-previous)/1000)):undefined;
         target.push({kind:'thought',key,text:String(block.thinking??''),seconds});
       }else if(block.type==='tool_use'){
-        const described=describeTool(block.name,block.input),output=toolOutput(wrapper);
+        const toolName=typeof block.name==='string'?block.name:'',described=describeTool(toolName,block.input);
+        const image=toolName==='Read'?imageFile(block.input?.file_path):undefined,output=toolOutput(wrapper,!!image);
         const status:StepStatus=output.done?output.error?'error':'success':busy?'running':'stopped';
-        const step:ToolStep={kind:'tool',key,id:block.id,name:block.name,...described,output:output.text,status,rich:RICH.has(block.name),wrapper,children:[]};
+        const step:ToolStep={kind:'tool',key,id:block.id,name:toolName,...described,output:output.text,image,status,rich:RICH.has(toolName),wrapper,children:[]};
         tools.set(block.id,step);target.push(step);
       }else if(block.type==='text'){
         if(String(block.text??'').trim())target.push({kind:'text',key,wrapper});
@@ -102,6 +106,12 @@ export function executionSteps(details:Message[],busy:boolean,startedAt?:number)
     previous=message.timestamp;
   });
   return top;
+}
+/** The Markdown text of an assistant message, as copied by its copy action. Tool calls, thoughts and images are excluded. */
+export function messageText(message:Message):string{
+  const content:any=message?.message?.content;
+  if(typeof content==='string')return content;
+  return blocks(message).map(wrapper=>wrapper.content).filter((block:any)=>block?.type==='text').map((block:any)=>String(block.text??'')).filter(text=>text.trim()).join('\n\n');
 }
 export const isAgentTool=(name:string)=>AGENT.has(name);
 /** Tool calls in a step list, including nested subagent calls. */

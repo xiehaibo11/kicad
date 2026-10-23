@@ -22,6 +22,8 @@ const errors = [];
 let uriHandler;
 const folders = [{ uri: { fsPath: '/tmp/first board' } }, { uri: { fsPath: '/tmp/second board' } }];
 const settings = {
+  // Machine-independent: other tools' MCP files are covered by test-inventory.mjs.
+  'mcp.sync': [],
   nodePath: process.execPath,
   directPath: path.join(root, 'resources/kicad/kicad-direct.mjs'),
   kicadCli: '/tmp/KiCad Test.app/kicad-cli',
@@ -69,14 +71,14 @@ function load(relative, overrides = {}) {
   }));
   const module = { exports: {} };
   vm.runInNewContext(result.outputText, {
-    module, exports: module.exports, process, console, Buffer, URL,
+    module, exports: module.exports, process, console, Buffer, URL, AbortController,
     require: name => name === 'vscode' ? vscode : name === '@anthropic-ai/claude-agent-sdk' ? {} : overrides[name] ?? require(name)
   }, { filename: file });
   return module.exports;
 }
 
 const policy = load('src/kicadToolsPolicy.ts');
-const runtime = load('src/kicadRuntime.ts', { './shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './kicadToolsPolicy': policy });
+const runtime = load('src/kicadRuntime.ts', { './shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadMcpSync':load('src/shared/kicadMcpSync.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'), './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './kicadToolsPolicy': policy });
 const server = runtime.getKiCadRuntimeConfig('/tmp/second board');
 assert.equal(server.command, undefined);
 assert.equal(server.entry, settings.directPath);
@@ -111,7 +113,7 @@ try {
   fs.rmSync(temporary, { recursive: true, force: true });
 }
 
-load('src/kicadIntegration.ts', { './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './shared/kicadHistory': load('src/shared/kicadHistory.ts'), './kicadRuntime': runtime, './kicadProviders': { resolveDeepSeekCredentials: async()=>undefined } }).registerKiCadIntegration({ subscriptions: [] });
+load('src/kicadIntegration.ts', { './kicadSettings':{agentSettings:()=>({settings:{maxProseWidth:100}})}, './shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'), './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './shared/kicadHistory': load('src/shared/kicadHistory.ts'), './kicadRuntime': runtime, './kicadProviders': { resolveDeepSeekCredentials: async()=>undefined } }).registerKiCadIntegration({ subscriptions: [] });
 const start = handlers.get('kicadAgent.startOpenCode');
 await start();
 assert.equal(terminals.length, 1);
@@ -175,7 +177,8 @@ load('src/extension.ts', new Proxy({}, { get: () => ({}) }));
 const sdk = fs.readFileSync(path.join(root, 'src/services/claude/ClaudeSdkService.ts'), 'utf8');
 const parsed = ts.createSourceFile('ClaudeSdkService.ts', sdk, ts.ScriptTarget.Latest, true);
 assert.equal(parsed.parseDiagnostics.length, 0);
-assert.match(sdk, /mcpServers: await getKiCadSdkServers\(cwdParam,/);
+assert.match(sdk, /const kicadSession = await getKiCadSdkSession\(cwdParam,/);
+assert.match(sdk, /mcpServers: kicadSession\.servers,/);
 assert.match(sdk, /applyProviderEnvironment\(this\.context, env, modelParam\)/);
 assert.match(sdk, /# KiCad Context/);
 assert.ok(!sdk.includes('getEasyEdaMcpServer'));
@@ -191,7 +194,11 @@ assert.ok(!runtime.READ_ONLY_EDA_TOOLS.some(name => /kicad_call|kicad_board/.tes
 // Main query never enables all tools or automatic skill injection.
 assert.match(sdk,/strictMcpConfig: true/);
 assert.match(sdk,/'disable-slash-commands': null/);
-assert.match(sdk,/DEMAND_GUIDANCE/);
+assert.match(sdk,/kicadDemandGuidance\(kicadSession\.settings\)/);
+assert.match(sdk,/features: kicadPromptFeatures\(kicadSession\.settings\)/,'prompt components follow the orchestration settings');
+const settingsManifest=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8')).contributes.configuration.properties;
+for(const key of ['kicadAgent.mcp.mode','kicadAgent.mcp.disabledServers','kicadAgent.skills.mode','kicadAgent.skills.disabled','kicadAgent.skills.extraRoots','kicadAgent.subagents.enabled','kicadAgent.prompt.disabledSections'])assert.ok(settingsManifest[key],key+' setting');
+assert.deepEqual(settingsManifest['kicadAgent.mcp.mode'].enum,['onDemand','direct','off']);assert.deepEqual(settingsManifest['kicadAgent.skills.mode'].enum,['onDemand','native','off']);
 assert.ok(!sdk.includes('params.kicadTools'));
 console.log('Overlay checks passed: native terminal, workspace selection, MCP config preservation, trust, paths, provider routing, SDK syntax.');
 
@@ -200,3 +207,18 @@ assert.ok(fs.readFileSync(path.join(root,'src/webview/src/core/SessionStore.ts')
 const terminalHandler=fs.readFileSync(path.join(root,'src/services/claude/handlers/handlers.ts'),'utf8');
 assert.ok(terminalHandler.includes("await vscode.commands.executeCommand('kicadAgent.startOpenCode')"));
 assert.ok(!terminalHandler.includes('terminal.sendText("claude --help")'));
+
+// Merely activating a trusted extension must not execute any health tools.
+let healthLoads=0;
+vscode.StatusBarAlignment={Left:1};
+vscode.window.createOutputChannel=()=>({clear(){},appendLine(){},dispose(){}});
+vscode.window.createStatusBarItem=()=>({show(){},dispose(){}});
+vscode.window.showQuickPick=async()=>undefined;
+const health=load('src/kicadHealth.ts',{
+  './shared/kicadDiagnostics':{RuntimeJournal:class{async record(){}}},
+  './kicadRuntime':{getKiCadNativeTools:async()=>{healthLoads++;return [{name:'kicad_health',execute:async()=>({ok:true,data:{ipc:{available:false},cli:{ok:true,data:{version:'fixture'}}}})}];}}
+});
+health.registerKiCadHealth({subscriptions:[]});
+assert.equal(healthLoads,0,'startup must not load or execute health tools');
+await handlers.get('kicadAgent.health')();
+assert.equal(healthLoads,1,'an explicit health command remains available');
