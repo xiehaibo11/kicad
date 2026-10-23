@@ -7,7 +7,7 @@ import {createRequire} from 'node:module';
 import * as core from '../composer/computer-use.ts';
 import {mcpResult,codexToolResult,chatToolContent} from '../composer/tool-result.ts';
 const root=process.argv[2],require=createRequire(path.join(root,'package.json')),ts=require('typescript');
-let cfg={enabled:false,driverPath:'',anyApp:false,allowedApps:[...core.KICAD_APPS]},started=0,stopped=0,closed=0,sequence=0,trusted=true,readError;
+let cfg={enabled:false,driverPath:'',anyApp:false,allowedApps:[...core.KICAD_APPS]},started=0,stopped=0,closed=0,sequence=0,trusted=true,readError,missing=false;
 const calls=[],updates=[],apps=[{bundle_id:'org.kicad.pcbnew',pid:1,running:true,name:'PCB Editor'},{bundle_id:'com.google.Chrome',pid:2,running:true,name:'Chrome'}];
 const reply=data=>({content:[{type:'text',text:JSON.stringify(data)}],structuredContent:data});
 class Client{
@@ -16,7 +16,7 @@ class Client{
  async callTool({name,arguments:args}){calls.push({name,args});if(name==='list_apps')return reply({apps});if(name==='list_windows')return reply({windows:apps.map(a=>({pid:a.pid,window_id:a.pid*10}))});if(name==='get_window_state'){if(readError){const error=readError;readError=undefined;return {...reply(error),isError:true};}return {...reply({snapshot_id:'s'+(++sequence),capture_id:'c'+sequence}),content:[{type:'image',data:'fixture',mimeType:'image/png'}]};}if(name==='check_permissions')return reply({accessibility:true,screen_recording:true});return reply({ok:true});}
 }
 class Service{socket='/private/test.sock';log='/private/test.log';async start(){started++;}async stop(){stopped++;}async binary(){return '/test/cua-driver';}async running(){return started>stopped;}}
-const vscode={ConfigurationTarget:{Global:1},workspace:{get isTrusted(){return trusted;},getConfiguration:()=>({get:(k,d)=>cfg[k.replace('computer.','')]??d,update:async(k,value,target)=>{updates.push({k,value,target});cfg[k.replace('computer.','')]=value;}})}};
+const vscode={commands:{executeCommand:async name=>updates.push({command:name})},ConfigurationTarget:{Global:1},workspace:{get isTrusted(){return trusted;},getConfiguration:()=>({get:(k,d)=>cfg[k.replace('computer.','')]??d,inspect:k=>({defaultValue:missing?undefined:({enabled:false,driverPath:'',anyApp:false,allowedApps:core.KICAD_APPS})[k.replace('computer.','')],globalValue:cfg[k.replace('computer.','')],workspaceValue:true}),update:async(k,value,target)=>{updates.push({k,value,target});cfg[k.replace('computer.','')]=value;}})}};
 const module={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(root,'src/kicadComputerUse.ts'),'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText,{module,exports:module.exports,process,console,setTimeout,clearTimeout,require:name=>name==='vscode'?vscode:name==='@modelcontextprotocol/sdk/client/index.js'?{Client}:name==='@modelcontextprotocol/sdk/client/stdio.js'?{StdioClientTransport:class{}}:name==='./shared/kicadComputerUse'?{...core,CuaService:Service}:require(name)});
 const host=module.exports,session=host.computerCapabilities(),cap=name=>session.capabilities.find(c=>c.name===name),call=(name,args,sessionOverride=session)=>sessionOverride.capabilities.find(c=>c.name===name).execute(args,{});
 assert.equal(started,0,'catalog construction is lazy');
@@ -57,6 +57,13 @@ await host.computerSetting('enabled',false);assert.equal(stopped,1);assert.ok(cl
 cfg.enabled=true;assert.equal((await call('computer_read',{name:'check_permissions',arguments:{}})).structuredContent.accessibility,true,'existing conversation reconnects after re-enabling');await session.close();
 trusted=false;const untrusted=host.computerCapabilities();await assert.rejects(()=>call('computer_read',{name:'check_permissions',arguments:{}},untrusted),/Trust/);await untrusted.close();
 await assert.rejects(()=>host.computerSetting('allowedApps',['../x']),/bundle IDs/);
+missing=true;const stale=await host.computerStatus();assert.equal(stale.reloadRequired,true);assert.equal(stale.missingSettings.length,4);
+const countBefore=updates.length;
+await assert.rejects(()=>host.computerSetting('allowedApps',['com.google.Chrome']),/older Kicad settings schema/);
+assert.equal(updates.length,countBefore,'unregistered settings are not written');
+await host.computerSetting('reload');assert.equal(updates.at(-1).command,'workbench.action.reloadWindow');missing=false;
+assert.equal((await host.computerStatus()).reloadRequired,false);
+cfg.anyApp=false;assert.equal(host.computerConfig().anyApp,false,'a workspace value cannot broaden computer access');
 assert.equal(mcpResult(pixels).content[0].type,'image');assert.equal(codexToolResult(pixels).contentItems[0].imageUrl,'data:image/png;base64,fixture');assert.equal(chatToolContent(pixels)[0].source.data,'fixture');assert.match(codexToolResult(pixels).contentItems.at(-1).text,/snapshot_id/,'Codex receives structured element handles as text');assert.equal(codexToolResult({ok:false}).success,false);
 const plist=core.launchAgentPlist('/Apps/CuaDriver.app','/private/a&b.sock','/private/pid','/private/log');
 for(const value of ['<key>KeepAlive</key><true/>','<key>RunAtLoad</key><true/>','--no-overlay','--no-permissions-gate','/private/a&amp;b.sock','DO_NOT_TRACK'])assert.ok(plist.includes(value));

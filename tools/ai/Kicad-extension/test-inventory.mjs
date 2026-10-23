@@ -62,6 +62,9 @@ try{
   assert.deepEqual(plain(updates.at(-1)),{key:'mcp.sync',value:SOURCES.filter(id=>id!=='codex'),target:1});
   assert.deepEqual(server(await host.kicadInventory(),'codex_docs').flags.map(flag=>flag.kind),['disabled'],'turning a source off is visible immediately');
   await host.setKicadSync('codex',true);assert.equal(updates.at(-1).value,undefined,'the full list is the default and stored as no value');
+  await host.setKicadSync('codex-plugins',true);assert.deepEqual(plain(updates.at(-1).value),[...SOURCES,'codex-plugins'],'sharing plugin code requires a separate explicit opt-in');
+  await host.setKicadSync('claude-plugins',true);assert.deepEqual(plain(updates.at(-1).value),[...SOURCES,'codex-plugins','claude-plugins'],'selecting every source is not reset to defaults');
+  await host.setKicadSync('codex-plugins',false);await host.setKicadSync('claude-plugins',false);assert.equal(updates.at(-1).value,undefined,'turning off plugin sources restores the original defaults');
   await assert.rejects(()=>host.setKicadSync('unknown',true),/Unknown MCP source/);
 
   // Toggles edit only the Kicad disable lists the catalog obeys.

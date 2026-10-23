@@ -190,7 +190,7 @@ async function servers(options:InventoryOptions,home:string){
       else if(origin[server.name]!==where){const clash=conflicts.find(item=>item.name===server.name&&item.dropped===where);flags.push({kind:clash?'conflict':'duplicate',message:clash?'A different server with this name from '+clash.kept+' is used.':'Same server as the one from '+origin[server.name]+'.'});}
     }
     await common(server.name,server.config,flags);
-    found.push({name:server.name,scope:report.scope==='project'?'project':report.file.endsWith('#project')?'local':'user',source:report.label,...describeServer(server.config||{}),file:report.file.replace(/#project$/,''),flags});
+    found.push({name:server.name,scope:report.scope==='plugin'?'plugin':report.scope==='project'?'project':report.file.endsWith('#project')?'local':'user',source:report.label,...describeServer(server.config||{}),file:report.file.replace(/#project$/,''),flags});
   }
   const sources=MCP_SOURCES.map(source=>({id:source.id,label:source.label,enabled:enabled.includes(source.id),
     files:reports.filter(report=>report.source===source.id).map(report=>({file:report.file.replace(/#project$/,''),scope:report.scope,used:report.used,servers:report.servers.length,error:report.error,...(report.file.endsWith('#project')?{section:'entries for this project'}:{})}))}));

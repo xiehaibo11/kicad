@@ -1,6 +1,6 @@
 # Kicad
 
-当前构建版本：0.4.65。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
+当前构建版本：0.4.66。项目根目录为 `Kicad`，扩展源码为 `tools/ai/Kicad-extension`，
 终端源码为 `tools/ai/Kicad-terminal`。扩展显示为 **Kicad**，终端显示为 **Kicad 终端**。
 扩展安装 ID 仍为 `kicad-agent.kicad`，可直接升级并保留用户配置。
 
@@ -44,11 +44,11 @@ SVG/DXF/PDF/PS 导出缺少 `layers` 时在调用前报错；阻抗计算找不�
 未指定类型的 `document.list` 同时列出打开的 PCB 与原理图。从扩展打开的 Kicad 终端（0.2.0）
 随附 `/kicad-drc`、`/kicad-fab`、`/kicad-route`、`/kicad-step`、`/kicad-schematic` 快捷任务命令。
 
-本版本安装包见 [GitHub Release 0.4.65](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.65)。
-下载 `kicad-0.4.65.vsix`，在 VS Code 扩展菜单中选择 **从 VSIX 安装…**，或者执行：
+本版本安装包见 [GitHub Release 0.4.66](https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.66)。
+下载 `kicad-0.4.66.vsix`，在 VS Code 扩展菜单中选择 **从 VSIX 安装…**，或者执行：
 
 ```sh
-code --install-extension ./kicad-0.4.65.vsix --force
+code --install-extension ./kicad-0.4.66.vsix --force
 ```
 
 需要 VS Code 1.98 或以上版本，当前验证平台为 macOS Apple Silicon。
@@ -524,3 +524,16 @@ Models discover `computer_tools`, then use `computer_read` and `computer_action`
 For Cua 0.38.0's known `get_window_state` delta count validation error, the adapter refreshes the same window once without `since`. It preserves other errors and never repeats an input action.
 
 Validation distinguishes deterministic host/UI tests from live model acceptance. `test-computer-use.mjs BUILD_DIR` tests policy and transport; `test-computer-ui.cjs BUILD_DIR` uses the production webview with a fixture host. `test-computer-models.mjs BUILD_DIR /tmp/kicad-cua-fixture PID WINDOW_ID OUTPUT_DIR` is an explicit live acceptance script that permits only one disposable KiCad window and restores its selection filter after each model. It requires both model-visible readback and independent state verification. It is never run by the build and never operates on user boards.
+
+
+## Shared integrations and settings recovery (0.4.66)
+
+MCP Servers → Sync from Other Tools reuses existing local configurations without copying them. The separate **Codex Plugins** and **Claude Plugins** switches are off by default. Opting in offers standalone MCP servers from locally installed, user-selected plugin packages through the same on-demand catalog used by Claude, DeepSeek, Codex and other providers. Each server has a plugin namespace, its source path and its own disable switch. Opening settings does not connect servers.
+
+Supported package formats: portable `plugin.json` + `mcp.json`, Codex `.codex-plugin/plugin.json` + `.mcp.json`, and Claude `.claude-plugin/plugin.json` with default `.mcp.json`, declared local JSON files and inline server maps. `${PLUGIN_ROOT}` and `${CLAUDE_PLUGIN_ROOT}` resolve to the installed directory. Claude project installations, unselected packages, ambiguous Codex cache versions without `latest`, paths outside a package, remote MCP bundles, executable authentication helpers and host-specific tool policies are not imported. Authentication stores, lifecycle hooks and registered `.app.json` connections stay in the original app. A private Codex computer/browser connection is reported as unavailable rather than launched outside its host. Existing configured MCP servers retain precedence.
+
+The Chrome and Excel switches under Computer Control grant Cua native app-window access. They do not claim to attach another product's browser extension or Excel add-in. Use an existing standalone MCP integration for those structured tools. Locked-screen use is shown as unavailable without a switch.
+
+If an editor window still has the settings schema from an earlier installation, Computer Control reports that state before a write and offers **Reload Window**. Reload is user-triggered; activation never interrupts a running conversation. Computer-control configuration is read from the user layer explicitly, so workspace settings cannot broaden application access even during an upgrade. After installation, reload existing editor windows to register the new manifest.
+
+References: [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins), [Codex MCP configuration](https://developers.openai.com/codex/mcp), [Claude plugin manifest](https://code.claude.com/docs/en/plugins-reference), [Claude Chrome integration](https://code.claude.com/docs/en/chrome).

@@ -11,7 +11,7 @@ if(!cwd?.startsWith('/tmp/kicad-cua-fixture')||!pid||!windowId)throw Error('Pass
 fs.mkdirSync(out,{recursive:true});
 const require=createRequire(path.join(root,'package.json')),ts=require('typescript'),sdk=await import(pathToFileURL(require.resolve('@anthropic-ai/claude-agent-sdk')).href),z=require('zod').z;
 const config={'computer.enabled':true,'mcp.sync':[],'subagents.enabled':false};
-const vscode={ConfigurationTarget:{Global:1},workspace:{isTrusted:true,getConfiguration:()=>({get:(key,fallback)=>config[key]??fallback})},extensions:{getExtension:()=>({extensionPath:root})},Uri:{file:p=>({fsPath:p,toString:()=>pathToFileURL(p).href})},window:{showErrorMessage(){},showWarningMessage(){},showInformationMessage(){}}};
+const vscode={ConfigurationTarget:{Global:1},workspace:{isTrusted:true,getConfiguration:()=>({get:(key,fallback)=>config[key]??fallback,inspect:key=>({globalValue:config[key]})})},extensions:{getExtension:()=>({extensionPath:root})},Uri:{file:p=>({fsPath:p,toString:()=>pathToFileURL(p).href})},window:{showErrorMessage(){},showWarningMessage(){},showInformationMessage(){}}};
 let active,trace=[];
 const settings={mcpMode:'onDemand',disabledServers:[],skillsMode:'off',disabledSkills:[],skillRoots:[],subagents:false,disabledSections:[]};
 function createCatalog(){

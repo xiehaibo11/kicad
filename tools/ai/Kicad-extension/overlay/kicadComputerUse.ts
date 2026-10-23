@@ -7,7 +7,10 @@ import type {Capability} from './shared/kicadDemand';
 // Application-scope settings cannot be enabled by a repository's settings.json.
 export function computerConfig():ComputerConfig {
   const cfg=vscode.workspace.getConfiguration('kicadAgent');
-  return {enabled:cfg.get('computer.enabled',false),driverPath:cfg.get('computer.driverPath',''),anyApp:cfg.get('computer.anyApp',false),allowedApps:cfg.get('computer.allowedApps',KICAD_APPS)};
+  // Read the user layer explicitly, including during an in-place extension
+  // upgrade when the renderer may still hold an older registration schema.
+  const user=<T>(key:string,fallback:T)=>{const info=cfg.inspect<T>('computer.'+key);return info?.globalValue??info?.defaultValue??fallback;};
+  return {enabled:user('enabled',false),driverPath:user('driverPath',''),anyApp:user('anyApp',false),allowedApps:user('allowedApps',KICAD_APPS)};
 }
 export const computerService=new CuaService(computerConfig);
 const sessions=new Set<ComputerSession>();
@@ -135,10 +138,14 @@ export async function computerStatus(){
   const running=binary?await computerService.running():false;
   let permissions:any;
   if(running){const session=new ComputerSession();try{permissions=driverData(await session.raw('check_permissions'));}catch(e){error=String(e);}finally{await session.close();}}
-  return {...config,binary,running,permissions,error,platform:process.platform,socket:computerService.socket,log:computerService.log,persistent:running,lockedUse:false};
+  const cfg=vscode.workspace.getConfiguration('kicadAgent');
+  const missingSettings=['enabled','driverPath','anyApp','allowedApps'].filter(key=>cfg.inspect('computer.'+key)?.defaultValue===undefined);
+  return {...config,binary,running,permissions,error,missingSettings,reloadRequired:missingSettings.length>0,platform:process.platform,socket:computerService.socket,log:computerService.log,persistent:running,lockedUse:false};
 }
 export async function computerSetting(action:string,value?:any){
   const cfg=vscode.workspace.getConfiguration('kicadAgent');
+  if(['enabled','anyApp','allowedApps'].includes(action)&&cfg.inspect('computer.'+action)?.defaultValue===undefined)
+    throw Error('The running editor has an older Kicad settings schema. Reload this window to register kicadAgent.computer.'+action+', then retry. Your settings have not been changed.');
   if(action==='enabled'){
     if(typeof value!=='boolean')throw Error('enabled must be boolean');
     await cfg.update('computer.enabled',value,vscode.ConfigurationTarget.Global);
@@ -157,6 +164,9 @@ export async function computerSetting(action:string,value?:any){
     // daemon; no shell, no background dialog at activation or during a tool read.
     const {spawn}=await import('node:child_process');
     const child=spawn(await computerService.binary(),['permissions','grant'],{stdio:'ignore',detached:true,env:{...process.env,DO_NOT_TRACK:'1'}});child.on('error',()=>{});child.unref();
+  }else if(action==='reload'){
+    // Only a user click may reload the editor; never interrupt a running task on activation.
+    await vscode.commands.executeCommand('workbench.action.reloadWindow');
   }else if(action==='log'){
     await vscode.window.showTextDocument(await vscode.workspace.openTextDocument(vscode.Uri.file(computerService.log)),{preview:true});
   }else throw Error('Unknown computer-control setting action.');

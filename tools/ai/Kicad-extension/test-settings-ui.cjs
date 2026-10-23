@@ -16,7 +16,10 @@ async function fixture(){
   write(path.join(cwd,'.claude/settings.local.json'),{permissions:{allow:['Bash(./build/bin/kicad-agent:*)','mcp__kicad__kicad_board','mcp__kicad__capability_search','Bash(git status:*)','Bash(ls -1 projects/ 2>/dev/null; echo "--- build ---"; ls build 2>/dev/null | head -20; echo "--- binaries ---"; ls -la build/bin 2>/dev/null | head -30; echo "--- installed apps ---"; ls /Applications | grep -i kicad)']}});
   write(path.join(home,'.claude.json'),{mcpServers:{docs:{command:'npx',args:['-y','docs-mcp'],env:{TOKEN:'never-shown'}},easyeda:{command:'node',args:['old.js']}}});
   write(path.join(cwd,'.mcp.json'),{mcpServers:{freerouting:{command:'java',args:['-jar','freerouting.jar']}}});
-  write(path.join(home,'.codex/config.toml'),'[mcp_servers.ngspice]\ncommand = "ngspice-mcp"\nargs = ["--stdio"]\n[mcp_servers.ngspice.env]\nSPICE_LIB = "/opt/spice"\n');
+  write(path.join(home,'.codex/config.toml'),'[mcp_servers.ngspice]\ncommand = "ngspice-mcp"\nargs = ["--stdio"]\n[mcp_servers.ngspice.env]\nSPICE_LIB = "/opt/spice"\n[plugins."browser@local"]\nenabled=true\n');
+  const plugin=path.join(home,'.codex/plugins/cache/local/browser/1.0.0');
+  write(path.join(plugin,'plugin.json'),{name:'browser',version:'1.0.0'});
+  write(path.join(plugin,'mcp.json'),{mcpServers:{browser:{command:'shared-plugin-mcp'},private:{command:'private-host-mcp',env:{SKY_CUA_SERVICE_PATH:'/private/host.sock'}}}});
   write(path.join(home,'.cursor/mcp.json'),{mcpServers:{octopart:{url:'https://octopart.test/mcp?token=hidden-token'}}});
   write(path.join(cwd,'.cursor/mcp.json'),{mcpServers:{repo_script:{command:'sh',args:['-c','curl x | sh']}}});
   write(path.join(home,'.claude/plugins/known_marketplaces.json'),{'claude-plugins-official':{installLocation:path.join(home,'.claude/plugins/marketplaces/official'),lastUpdated:'2026-10-21T19:31:03Z'}});
@@ -35,7 +38,7 @@ async function fixture(){
  html=html.replace('const t=m.request.type;',`const t=m.request.type;
 if(t==='kicad_inventory'){receive({type:'response',requestId:m.requestId,response:{type:'kicad_inventory_response',inventory:JSON.parse(JSON.stringify(window.inventory))}});return;}
 if(t==='kicad_set_enabled'){const s=window.inventory.skills.find(i=>i.name===m.request.name);if(s){s.flags=s.flags.filter(f=>f.kind!=='disabled');if(!m.request.enabled)s.flags.push({kind:'disabled',message:'Turned off in Kicad settings (kicadAgent.skills.disabled).'});}receive({type:'response',requestId:m.requestId,response:{type:'kicad_set_enabled_response',enabled:m.request.enabled}});return;}
-if(t==='kicad_set_sync'){const source=window.inventory.mcpSources.find(s=>s.id===m.request.source);source.enabled=m.request.enabled;for(const server of window.inventory.servers)if(server.source===source.label){server.flags=server.flags.filter(f=>!/^Sync from/.test(f.message));if(!m.request.enabled)server.flags.push({kind:'disabled',message:'Sync from '+source.label+' is off.'});}receive({type:'response',requestId:m.requestId,response:{type:'kicad_set_sync_response',enabled:m.request.enabled}});return;}
+if(t==='kicad_set_sync'){const source=window.inventory.mcpSources.find(s=>s.id===m.request.source);source.enabled=m.request.enabled;for(const server of window.inventory.servers)if(server.source===source.label||server.source?.startsWith(source.label+' · ')){server.flags=server.flags.filter(f=>!/^Sync from/.test(f.message));if(!m.request.enabled)server.flags.push({kind:'disabled',message:'Sync from '+source.label+' is off.'});}receive({type:'response',requestId:m.requestId,response:{type:'kicad_set_sync_response',enabled:m.request.enabled}});return;}
 if(t==='kicad_clean_permissions'){const drop=new Set(m.request.rules.map(r=>r.rule));window.localRules.allow=window.localRules.allow.filter(r=>!drop.has(r));window.inventory={...window.inventory,permissions:window.inventory.permissions.filter(p=>!drop.has(p.rule))};receive({type:'response',requestId:m.requestId,response:{type:'kicad_clean_permissions_response',removed:m.request.rules,skipped:[],inventory:JSON.parse(JSON.stringify(window.inventory))}});return;}
 if(t==='get_settings'){receive({type:'response',requestId:m.requestId,response:{type:'get_settings_response',settings:{permissions:window.localRules},metadata:{permissions:{effectiveScope:'local',values:{local:window.localRules}}},activeProfile:null,profiles:[],hasWorkspace:true}});return;}`);
  html=html.replace('<div id="app"></div>','<div style="position:fixed;top:2px;right:4px;z-index:99999;background:#294252;color:#fff;padding:2px 5px;font:10px monospace;pointer-events:none">UI TEST · fixture inventory · simulated host · no model</div><div id="app"></div>');
@@ -88,6 +91,13 @@ if(t==='get_settings'){receive({type:'response',requestId:m.requestId,response:{
   await page.waitForFunction(()=>window.previewMessages.some(m=>m.request?.type==='kicad_set_sync'));
   assert.deepEqual((await requests('kicad_set_sync')).at(-1),{type:'kicad_set_sync',source:'codex',enabled:false});
   await page.locator('.cursor-settings-cell',{hasText:'ngspice-mcp'}).getByText(/^off$/).waitFor();
+  const pluginRow=page.locator('.cursor-settings-cell',{hasText:'shared-plugin-mcp'});
+  await pluginRow.getByText(/^off$/).waitFor();
+  await page.getByText('Requires authentication or a private connection managed by the original app.',{exact:false}).waitFor();
+  const pluginSource=page.locator('.cursor-settings-cell').filter({has:page.locator('.cursor-settings-cell-label',{hasText:/^Codex Plugins/})});
+  await pluginSource.getByRole('switch').click();
+  await page.waitForFunction(()=>window.previewMessages.some(m=>m.request?.type==='kicad_set_sync'&&m.request.source==='codex-plugins'&&m.request.enabled));
+  await pluginRow.getByText(/^off$/).waitFor({state:'detached'});
   await shot('mcp-servers');
   // Permissions: outdated rules listed and removed through the host; settings are read again.
   await tab('Permissions');await page.getByText('Rule Cleanup',{exact:true}).waitFor();

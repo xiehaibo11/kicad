@@ -48,7 +48,7 @@ pkg.bugs = { url: 'https://github.com/xiehaibo11/kicad/issues' };
 pkg.keywords = Array.from(new Set([...(pkg.keywords ?? []), 'kicad', 'pcb', 'eda', 'schematic']));
 pkg.categories = ['AI', 'Other'];
 pkg.kicadUpstreamVersion = pkg.version;
-pkg.version = '0.4.65';
+pkg.version = '0.4.66';
 pkg.activationEvents = Array.from(new Set([...(pkg.activationEvents ?? []), 'onUri']));
 pkg.dependencies['jsonc-parser'] = '^3.3.1';
 // Pinned JavaScript CLI with native effort support; keep the existing SDK API.

@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'node:fs/promises';
 import {settingsFiles,settingsInventory} from './shared/kicadInventory';
 import {kicadAgents,kicadToolSettings} from './kicadRuntime';
-import {MCP_SOURCES} from './shared/kicadMcpSync';
+import {MCP_SOURCES,DEFAULT_MCP_SYNC} from './shared/kicadMcpSync';
 
 // Settings pages read configuration from disk. Nothing here connects an MCP
 // server, runs a hook or starts the CLI; toggles only edit the Kicad settings
@@ -44,9 +44,9 @@ export async function setKicadSync(source:string,enabled:boolean){
   const target=info?.workspaceFolderValue!==undefined?vscode.ConfigurationTarget.WorkspaceFolder:info?.workspaceValue!==undefined?vscode.ConfigurationTarget.Workspace:vscode.ConfigurationTarget.Global;
   const current=kicadToolSettings(folder()).mcpSync;
   const next=enabled?Array.from(new Set([...current,source])):current.filter(item=>item!==source);
-  // Keep the canonical order; the full list is the default and is stored as no value.
+  // Keep canonical order. Plugin sources are opt-in, separate from the defaults.
   const ordered=MCP_SOURCES.map(item=>item.id).filter(id=>next.includes(id));
-  await cfg.update('mcp.sync',ordered.length===MCP_SOURCES.length?undefined:ordered,target);
+  await cfg.update('mcp.sync',JSON.stringify(ordered)===JSON.stringify(DEFAULT_MCP_SYNC)?undefined:ordered,target);
   return {enabled,applies:'next conversation'};
 }
 

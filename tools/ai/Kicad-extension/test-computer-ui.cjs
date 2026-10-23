@@ -1,6 +1,6 @@
 // Production settings bundle; fixture host, no model or OS actions.
 const assert=require('node:assert/strict'),{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright'),fs=require('node:fs'),http=require('node:http'),path=require('node:path');
-(async()=>{const root=process.argv[2],out=path.join(__dirname,'audit/computer-use-0.4.65');fs.mkdirSync(out,{recursive:true});
+(async()=>{const root=process.argv[2],out=path.join(__dirname,'audit/shared-integrations-0.4.66');fs.mkdirSync(out,{recursive:true});
 const old=fs.readFileSync(path.join(__dirname,'test-composer-ui.cjs'),'utf8');let html=old.slice(old.indexOf(' const html=`')+13,old.indexOf('`;\n const server='));
 html=html.replace("window.CLAUDIX_BOOTSTRAP={host:'sidebar',page:'chat'}","window.CLAUDIX_BOOTSTRAP={host:'sidebar',page:'settings'}").replace('const t=m.request.type;',`const t=m.request.type;
 if(t==='kicad_computer_status'||t==='kicad_computer_setting'){
@@ -17,8 +17,15 @@ const cell=label=>page.locator('.cursor-settings-cell').filter({has:page.locator
 await cell('Google Chrome').locator('[role="switch"]').click();await page.waitForFunction(()=>window.computer.allowedApps.includes('com.google.Chrome'));
 await cell('Any App').locator('[role="switch"]').click();await page.waitForFunction(()=>window.computer.anyApp);
 await page.getByRole('button',{name:'Restart',exact:true}).click();await page.getByRole('button',{name:'View Log',exact:true}).click();
-const locked=page.getByTitle('Locked-screen use unavailable');assert.equal(await locked.getAttribute('disabled')!==null||await locked.getAttribute('aria-disabled')==='true'||(await locked.evaluate(e=>e.className)).includes('disabled'),true);
+await page.getByText('Reuse Codex and Claude Integrations',{exact:true}).waitFor();
+await cell('Locked-Screen Use').getByText('Unavailable.',{exact:false}).waitFor();assert.equal(await cell('Locked-Screen Use').getByRole('switch').count(),0,'no misleading control for an unsupported capability');
 await page.screenshot({path:path.join(out,'settings-running.png'),fullPage:true});await page.getByTitle('Enable Computer Control',{exact:true}).click();await page.getByTestId('computer-status').getByText('Off',{exact:true}).waitFor();
+await page.evaluate(()=>{window.computer.reloadRequired=true;window.computer.missingSettings=['allowedApps'];});
+await page.getByRole('button',{name:'Refresh',exact:true}).click();await page.getByRole('button',{name:'Reload Window',exact:true}).waitFor();
+assert.equal(await page.getByTitle('Allow Any App',{exact:true}).isDisabled(),true,'schema mismatch disables changes until the user reloads');
+assert.equal((await requests()).filter(r=>r.action==='reload').length,0,'schema mismatch never reloads a window automatically');
+await page.screenshot({path:path.join(out,'settings-reload-required.png'),fullPage:true});
+await page.getByRole('button',{name:'Reload Window',exact:true}).click();assert.equal((await requests()).filter(r=>r.action==='reload').length,1);
 assert.equal((await requests()).filter(r=>r.action==='permissions').length,0);assert.deepEqual(errors,[]);
 fs.writeFileSync(path.join(out,'ui.json'),JSON.stringify({ok:true,provenance:'production bundle; simulated host; no live OS actions',checks:['independent off/on','service and TCC status','per-app allowlist','Any App','Restart','View Log in editor request','locked-screen unsupported','no permission request on load','off readback'],requests:await requests(),errors},null,2));console.log('Computer Control UI passed.');
 }catch(e){await page.screenshot({path:path.join(out,'ui-failure.png'),fullPage:true});console.error((await page.locator('body').innerText()).slice(-3000));throw e;}finally{await browser.close();server.closeAllConnections();server.close();}})().catch(e=>{console.error(e);process.exit(1);});

@@ -30,7 +30,7 @@
     </SettingsSubSection>
   </SettingsSection>
   <SettingsSection title="Sync from Other Tools">
-    <SettingsSubSection caption="Servers you add in these tools appear here automatically, read live from their own files; nothing is copied. Repository files of other tools are listed but never used. Changes apply to the next conversation.">
+    <SettingsSubSection caption="Reuse server definitions in place; nothing is copied or started by opening settings. Codex Plugins and Claude Plugins are separate opt-ins and include only selected local packages. Their private app connections, credentials and hooks stay with the original host. Repository files of other tools are listed but never used. Changes apply to the next conversation.">
       <SettingsCell v-for="(source, index) in sources" :key="source.id" :divider="index > 0">
         <template #label>
           <div class="kicad-server-label"><span>{{ source.label }}</span><Badge size="small" variant="subtle">{{ count(source) }} server{{ count(source) === 1 ? '' : 's' }}</Badge></div>

@@ -11,9 +11,9 @@ export function applyInventory(root,overlay){
   const manifest=path.join(root,'package.json'),pkg=JSON.parse(fs.readFileSync(manifest,'utf8'));
   const blocks=[pkg.contributes?.configuration].flat().filter(Boolean),properties=blocks.find(block=>block.properties?.['kicadAgent.mcp.mode'])?.properties;
   if(!properties)throw Error('Inventory: kicadAgent.mcp.mode setting not found');
-  const sources=['claude-code','claude-desktop','cursor','vscode','windsurf','codex','opencode'];
-  properties['kicadAgent.mcp.sync']={type:'array',items:{type:'string',enum:sources},default:sources,order:11,uniqueItems:true,
-    markdownDescription:'Use MCP servers configured in these tools on this machine, read live from their own files (`~/.claude.json` and `.mcp.json`, Claude Desktop, `~/.cursor/mcp.json`, VS Code `mcp.json`, Windsurf, `~/.codex/config.toml`, OpenCode). Nothing is copied. Repository files of other tools are never used; names in Kicad settings win.'};
+  const defaults=['claude-code','claude-desktop','cursor','vscode','windsurf','codex','opencode'],sources=[...defaults,'codex-plugins','claude-plugins'];
+  properties['kicadAgent.mcp.sync']={type:'array',items:{type:'string',enum:sources},default:defaults,order:11,uniqueItems:true,
+    markdownDescription:'Reuse local MCP definitions from other tools without copying. Codex Plugins and Claude Plugins are separate opt-ins for selected local plugin packages. Only standalone JSON MCP definitions are supported; private host connections, authentication stores, hooks and downloadable bundles are not imported. Repository files of other tools are not used; names in Kicad settings win.'};
   fs.writeFileSync(manifest,JSON.stringify(pkg,null,2)+'\n');
   fs.copyFileSync(path.join(overlay,'kicadInventoryHost.ts'),path.join(root,'src/kicadInventoryHost.ts'));
   fs.copyFileSync(path.join(overlay,'settings/kicadInventory.ts'),path.join(settings,'kicadInventory.ts'));

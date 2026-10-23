@@ -1,12 +1,16 @@
 <template>
   <SettingsTab title="Computer Control">
     <p class="computer-intro">Control application windows through the open-source Cua Driver. Tools load when the conversation needs them; keeping the service available does not start a task or capture the screen.</p>
+    <div v-if="status?.reloadRequired" role="alert" class="computer-error">
+      This window is using an older Kicad settings schema. Reload the window to register the installed settings, then retry. Saved settings are preserved.
+      <Button size="small" variant="secondary" @click="change('reload')">Reload Window</Button>
+    </div>
     <SettingsSection title="Cua Driver">
       <SettingsSubSection caption="The signed macOS app owns Accessibility and Screen Recording permissions. Its private background service survives conversations and editor exit, and restarts at login.">
         <SettingsCell>
           <template #label>Enable Computer Control</template>
           <template #description>Independent of MCP, skills, reasoning and sub-agent settings. Turning it off revokes active tool connections and stops the extension's service.</template>
-          <template #trailing><Switch :model-value="!!status?.enabled" :disabled="busy" title="Enable Computer Control" @update:model-value="change('enabled',$event)" /></template>
+          <template #trailing><Switch :model-value="!!status?.enabled" :disabled="busy || status?.reloadRequired" title="Enable Computer Control" @update:model-value="change('enabled',$event)" /></template>
         </SettingsCell>
         <SettingsCell :divider="true">
           <template #label><span data-testid="computer-status">{{ status?.running ? 'Running in background' : status?.enabled ? 'Service unavailable' : 'Off' }}</span></template>
@@ -29,21 +33,24 @@
       <SettingsSubSection caption="Access is enforced on every window read and action. KiCad is allowed by default. These controls grant native mouse, keyboard and accessibility access; Chrome's browser extension and Excel's add-in are separate integrations.">
         <SettingsCell>
           <template #label>Any App</template><template #description>Allow all application windows. Full-desktop capture and unscoped scripts remain unavailable.</template>
-          <template #trailing><Switch :model-value="!!status?.anyApp" :disabled="busy || !status?.enabled" title="Allow Any App" @update:model-value="change('anyApp',$event)" /></template>
+          <template #trailing><Switch :model-value="!!status?.anyApp" :disabled="busy || status?.reloadRequired || !status?.enabled" title="Allow Any App" @update:model-value="change('anyApp',$event)" /></template>
         </SettingsCell>
         <SettingsCell v-for="(app,index) in apps" :key="app.label" :divider="true">
           <template #label>{{ app.label }}</template><template #description>{{ app.description }}</template>
-          <template #trailing><Switch :model-value="status?.anyApp || app.ids.every(id=>status?.allowedApps?.includes(id))" :disabled="busy || !status?.enabled || status?.anyApp" :title="'Allow ' + app.label" @update:model-value="toggleApp(index,$event)" /></template>
+          <template #trailing><Switch :model-value="status?.anyApp || app.ids.every(id=>status?.allowedApps?.includes(id))" :disabled="busy || status?.reloadRequired || !status?.enabled || status?.anyApp" :title="'Allow ' + app.label" @update:model-value="toggleApp(index,$event)" /></template>
         </SettingsCell>
         <SettingsCell :divider="true">
           <template #label>Other Applications</template><template #description>Additional bundle IDs, separated by commas. Changes revoke current connections and take effect on the next tool call.</template>
-          <template #trailing><div class="computer-custom"><input v-model="extraApps" aria-label="Other application bundle IDs" placeholder="com.example.app" :disabled="busy" /><Button size="small" variant="secondary" :disabled="busy" @click="saveApps">Save</Button></div></template>
+          <template #trailing><div class="computer-custom"><input v-model="extraApps" aria-label="Other application bundle IDs" placeholder="com.example.app" :disabled="busy || status?.reloadRequired" /><Button size="small" variant="secondary" :disabled="busy || status?.reloadRequired" @click="saveApps">Save</Button></div></template>
         </SettingsCell>
         <SettingsCell :divider="true">
           <template #label>Locked-Screen Use</template><template #description>Unavailable. Cua Driver cannot bypass the macOS lock screen. Unlock the Mac before using screen control; a background service does not grant locked-screen access.</template>
-          <template #trailing><Switch :model-value="false" :disabled="true" title="Locked-screen use unavailable" /></template>
         </SettingsCell>
       </SettingsSubSection>
+    </SettingsSection>
+    <SettingsSection title="Reuse Codex and Claude Integrations">
+      <p class="computer-intro">Use existing MCP servers and local plugin server definitions through MCP Servers → Sync from Other Tools. Codex Plugins and Claude Plugins have separate opt-in switches. Skills remain in the Skills page. These shared tools are available across model providers and load on demand.</p>
+      <p class="computer-intro">A Chrome browser extension, an Excel add-in and a desktop app's private connection still require their owning host. Sharing a local MCP definition does not transfer its login or macOS permissions. Host-dependent definitions are reported as unavailable.</p>
     </SettingsSection>
     <p v-if="failure || status?.error" role="alert" class="computer-error">{{ failure || status.error }}</p>
     <p class="computer-footer">Install the signed Cua Driver app (tested version 0.38.0), then enable this switch. No driver, optional perception models, browser extension or application add-in is downloaded automatically. Text-only models can use accessibility trees; vision models also receive window screenshots.</p>

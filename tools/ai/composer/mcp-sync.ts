@@ -6,18 +6,22 @@
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
 import * as os from 'node:os';
+import {createHash} from 'node:crypto';
 
-export type McpSourceId='claude-code'|'claude-desktop'|'cursor'|'vscode'|'windsurf'|'codex'|'opencode';
+export type McpSourceId='claude-code'|'claude-desktop'|'cursor'|'vscode'|'windsurf'|'codex'|'opencode'|'codex-plugins'|'claude-plugins';
 export type McpConfig={type?:'stdio'|'http'|'sse';command?:string;args?:string[];env?:Record<string,string>;cwd?:string;url?:string;headers?:Record<string,string>;timeout?:number};
 export type SyncedServer={name:string;config?:McpConfig;issue?:string;disabled?:boolean;pending?:boolean;replaced?:boolean};
-export type SourceFile={source:McpSourceId;label:string;scope:'user'|'project';file:string;exists:boolean;used:boolean;servers:SyncedServer[];error?:string};
+export type SourceFile={source:McpSourceId;label:string;scope:'user'|'project'|'plugin';file:string;exists:boolean;used:boolean;servers:SyncedServer[];error?:string};
 
 /** Precedence order: earlier sources win a name clash. */
 export const MCP_SOURCES:{id:McpSourceId;label:string}[]=[
   {id:'claude-code',label:'Claude Code'},{id:'claude-desktop',label:'Claude Desktop'},{id:'cursor',label:'Cursor'},
   {id:'vscode',label:'VS Code'},{id:'windsurf',label:'Windsurf'},{id:'codex',label:'Codex'},{id:'opencode',label:'OpenCode'},
+  {id:'codex-plugins',label:'Codex Plugins'},{id:'claude-plugins',label:'Claude Plugins'},
 ];
 const label=(id:McpSourceId)=>MCP_SOURCES.find(source=>source.id===id)!.label;
+/** Provider-safe namespace in both on-demand and native/direct MCP modes. */
+export const pluginServerName=(id:string,server:string)=>'plugin_'+id.replace(/[^A-Za-z0-9_-]/g,'_').slice(0,12)+'_'+server.replace(/[^A-Za-z0-9_-]/g,'_').slice(0,12)+'_'+createHash('sha256').update(id+'\0'+server).digest('hex').slice(0,8);
 // Built-in tools replace these; entries with these names are never synced.
 const REPLACED=new Set(['kicad','easyeda']);
 
@@ -117,7 +121,7 @@ function normalize(source:McpSourceId,raw:any,env:NodeJS.ProcessEnv):{config?:Mc
   return {...substitute(config,env),disabled};
 }
 
-function locations(cwd:string,home:string):{source:McpSourceId;scope:'user'|'project';file:string;format:'json'|'jsonc'|'toml';pick:(data:any)=>any}[]{
+function locations(cwd:string,home:string,env:NodeJS.ProcessEnv):{source:McpSourceId;scope:'user'|'project';file:string;format:'json'|'jsonc'|'toml';pick:(data:any)=>any}[]{
   const support=process.platform==='darwin'?path.join(home,'Library','Application Support'):process.platform==='win32'?(process.env.APPDATA||path.join(home,'AppData','Roaming')):(process.env.XDG_CONFIG_HOME||path.join(home,'.config'));
   const xdg=process.env.XDG_CONFIG_HOME||path.join(home,'.config');
   const servers=(data:any)=>data?.mcpServers,vscode=(data:any)=>data?.servers;
@@ -132,7 +136,7 @@ function locations(cwd:string,home:string):{source:McpSourceId;scope:'user'|'pro
     {source:'vscode',scope:'user',file:path.join(support,'Code - Insiders','User','mcp.json'),format:'jsonc',pick:vscode},
     {source:'vscode',scope:'project',file:path.join(cwd,'.vscode','mcp.json'),format:'jsonc',pick:vscode},
     {source:'windsurf',scope:'user',file:path.join(home,'.codeium','windsurf','mcp_config.json'),format:'json',pick:servers},
-    {source:'codex',scope:'user',file:path.join(process.env.CODEX_HOME||path.join(home,'.codex'),'config.toml'),format:'toml',pick:(data:any)=>data?.mcp_servers},
+    {source:'codex',scope:'user',file:path.join(env.CODEX_HOME||path.join(home,'.codex'),'config.toml'),format:'toml',pick:(data:any)=>data?.mcp_servers},
     {source:'opencode',scope:'user',file:path.join(xdg,'opencode','opencode.json'),format:'jsonc',pick:(data:any)=>data?.mcp},
     {source:'opencode',scope:'user',file:path.join(xdg,'opencode','opencode.jsonc'),format:'jsonc',pick:(data:any)=>data?.mcp},
   ];
@@ -142,11 +146,77 @@ export type McpSyncOptions={cwd:string;home?:string;env?:NodeJS.ProcessEnv;
   /** Claude's .mcp.json approval: approved names, rejected names and approve-all. */
   approval?:{approved?:string[];rejected?:string[];all?:boolean}};
 
+/** Local plugin packages only. Never installs a package, executes hooks, fetches
+ * bundles, reads an OAuth store or connects a host's private browser channel. */
+async function pluginSources(home:string,env:NodeJS.ProcessEnv):Promise<SourceFile[]>{
+  const json=async(file:string)=>{const text=await read(file);return text===undefined?undefined:JSON.parse(text);};
+  const codexHome=env.CODEX_HOME||path.join(home,'.codex'),claudeHome=env.CLAUDE_CONFIG_DIR||path.join(home,'.claude');
+  const found:SourceFile[]=[];
+  const load=async(source:'codex-plugins'|'claude-plugins',id:string,root:string,enabled:boolean,policy:any={})=>{
+    const report:SourceFile={source,label:label(source)+' · '+id,scope:'plugin',file:root,exists:true,used:true,servers:[]};found.push(report);
+    try{
+      const realRoot=await fs.realpath(root);
+      const local=async(relative:string)=>{
+        if(path.isAbsolute(relative)||!relative.startsWith('./')&&relative.includes('://'))throw Error('Only local plugin-relative JSON definitions are supported.');
+        const file=await fs.realpath(path.resolve(realRoot,relative));
+        if(!file.startsWith(realRoot+path.sep))throw Error('Plugin configuration points outside its installed folder.');
+        if(path.extname(file)!=='.json')throw Error('MCP bundles require the original host; only JSON definitions are shared.');
+        const stat=await fs.stat(file);if(stat.size>1024*1024)throw Error('Plugin configuration exceeds 1 MiB.');
+        return {file,data:await json(file)};
+      };
+      const portable=await json(path.join(realRoot,'plugin.json'));
+      const manifest=portable||await json(path.join(realRoot,source==='codex-plugins'?'.codex-plugin':'.claude-plugin','plugin.json'));
+      if(!manifest)throw Error('No installed plugin manifest found.');
+      report.file=path.join(root,portable?'plugin.json':source==='codex-plugins'?'.codex-plugin/plugin.json':'.claude-plugin/plugin.json');
+      let entries:Record<string,any>={};
+      const merge=(value:any)=>{const servers=value?.mcpServers||value;if(servers&&typeof servers==='object'&&!Array.isArray(servers))for(const [name,raw] of Object.entries(servers))if(name!=='$schema')entries[name]=raw;};
+      const defaultFile=portable?'./mcp.json':'./.mcp.json';
+      if(await read(path.join(realRoot,defaultFile))!==undefined)merge((await local(defaultFile)).data);
+      if(!portable)for(const item of [manifest.mcpServers].flat().filter(Boolean)){
+        if(typeof item==='string')merge((await local(item)).data);else merge(item);
+      }
+      for(const [server,raw] of Object.entries<any>(entries)){
+        // Keep plugin namespaces: two plugins can both provide a server named browser.
+        const name=pluginServerName(id,server);
+        const hostOnly=raw?.headersHelper||raw?.oauth||raw?.auth||raw?.extensions?.['com.openai']?.auth?.type&&raw.extensions['com.openai'].auth.type!=='none'
+          ||Object.keys(raw?.env||{}).some(key=>/^(?:SKY_CUA_SERVICE_PATH|NODE_REPL_TRUSTED_SERVICES|BROWSER_USE_CODEX_APP_|CUA_REPL_)/.test(key));
+        const filters=policy?.mcp_servers?.[server];
+        const unsupportedPolicy=[raw,filters].some(value=>value&&(value.enabled_tools||value.disabled_tools||value.tools||value.default_tools_approval_mode));
+        const issue=hostOnly?'Requires authentication or a private connection managed by the original app. Use it in that app or configure a standalone MCP server.':unsupportedPolicy?'Original host tool policies require that host; this definition is not imported with weaker policies.':undefined;
+        const normalized=issue?{issue}:normalize(source,{...raw,...(raw?.type==='streamable-http'?{type:'http'}:{}),...(!raw?.url?{cwd:raw?.cwd||realRoot,env:{...raw?.env,CLAUDE_PLUGIN_ROOT:realRoot,PLUGIN_ROOT:realRoot}}:{})},{...env,CLAUDE_PLUGIN_ROOT:realRoot,PLUGIN_ROOT:realRoot});
+        report.servers.push({name,...normalized,disabled:!enabled||raw?.disabled===true||raw?.enabled===false||filters?.enabled===false,...(REPLACED.has(server)?{replaced:true}:{})});
+      }
+      if(!Object.keys(entries).length&&(manifest.apps||portable?.extensions?.['com.openai']?.apps))report.error='Registered app connections are managed by the original host; no standalone MCP server is bundled.';
+    }catch{report.error='Could not load local plugin definitions. Check the installed manifest and plugin-relative JSON paths.';}
+  };
+  try{
+    const config=parseToml(await read(path.join(codexHome,'config.toml'))||'');
+    for(const [id,policy] of Object.entries<any>(config.plugins||{})){
+      const at=id.lastIndexOf('@');if(at<1)continue;
+      const name=id.slice(0,at),market=id.slice(at+1);
+      if(![name,market].every(part=>/^[A-Za-z0-9_.-]+$/.test(part)&&part!=='.'&&part!=='..'))continue;
+      const cache=path.join(codexHome,'plugins/cache',market,name);
+      let versions:string[]=[];try{versions=(await fs.readdir(cache,{withFileTypes:true})).filter(entry=>entry.isDirectory()||entry.isSymbolicLink()).map(entry=>entry.name).sort((a,b)=>b.localeCompare(a,undefined,{numeric:true}));}catch{continue;}
+      const version=versions.includes('latest')?'latest':versions.length===1?versions[0]:undefined;
+      if(version)await load('codex-plugins',id,path.join(cache,version),policy.enabled===true,policy);
+      else if(versions.length)found.push({source:'codex-plugins',label:label('codex-plugins')+' · '+id,scope:'plugin',file:cache,exists:true,used:false,servers:[],error:'Several cached versions exist without a latest selection. Select a current version in Codex before sharing.'});
+    }
+  }catch{found.push({source:'codex-plugins',label:label('codex-plugins'),scope:'plugin',file:path.join(codexHome,'config.toml'),exists:true,used:false,servers:[],error:'Could not read Codex plugin selections.'});}
+  try{
+    const installed=await json(path.join(claudeHome,'plugins/installed_plugins.json')),settings=await json(path.join(claudeHome,'settings.json'));
+    for(const [id,records] of Object.entries<any>(installed?.plugins||{})){
+      const record=[records].flat().filter(item=>item?.scope==='user'&&!item.projectPath).at(-1);
+      if(typeof record?.installPath==='string')await load('claude-plugins',id,record.installPath,settings?.enabledPlugins?.[id]===true);
+    }
+  }catch{found.push({source:'claude-plugins',label:label('claude-plugins'),scope:'plugin',file:path.join(claudeHome,'plugins/installed_plugins.json'),exists:true,used:false,servers:[],error:'Could not read Claude plugin selections.'});}
+  return found;
+}
+
 /** Every known MCP config file, parsed; used by the settings page and by syncedMcpServers. */
 export async function readMcpSources(options:McpSyncOptions):Promise<SourceFile[]>{
   const home=options.home||os.homedir(),env=options.env||process.env,cache=new Map<string,Promise<string|undefined>>();
   const reports:SourceFile[]=[];
-  for(const location of locations(options.cwd,home)){
+  for(const location of locations(options.cwd,home,env)){
     const file=location.file.replace(/#project$/,''),text=await (cache.get(file)??(cache.set(file,read(file)),cache.get(file)!));
     // Only Claude's own repository file has an approval flow; other tools' repository files stay unused.
     const report:SourceFile={source:location.source,label:label(location.source),scope:location.scope,file:location.file,exists:text!==undefined,used:location.scope==='user'||location.source==='claude-code',servers:[]};
@@ -162,6 +232,7 @@ export async function readMcpSources(options:McpSyncOptions):Promise<SourceFile[
     }
     if(report.exists)reports.push(report);
   }
+  reports.push(...await pluginSources(home,env));
   return reports;
 }
 
@@ -184,7 +255,8 @@ export function syncedMcpServers(reports:SourceFile[],enabled:readonly string[],
   }
   return {servers,origin,conflicts};
 }
-export const DEFAULT_MCP_SYNC=MCP_SOURCES.map(source=>source.id);
+// Plugin executables are a separate opt-in; cache presence alone grants no access.
+export const DEFAULT_MCP_SYNC=MCP_SOURCES.filter(source=>!source.id.endsWith('-plugins')).map(source=>source.id);
 /** Claude's own approval of repository .mcp.json servers, from ~/.claude.json and the settings files. */
 export async function claudeMcpApproval(cwd:string,home=os.homedir()){
   const json=async(file:string)=>{try{return JSON.parse(await fs.readFile(file,'utf8'));}catch{return undefined;}};

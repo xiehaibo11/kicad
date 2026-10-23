@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import {DEFAULT_MCP_SYNC,claudeMcpApproval,parseJsonc,parseToml,readMcpSources,syncedMcpServers} from '../mcp-sync.ts';
+import {DEFAULT_MCP_SYNC,claudeMcpApproval,parseJsonc,parseToml,readMcpSources,syncedMcpServers,pluginServerName} from '../mcp-sync.ts';
 
 const write=async(file,content)=>{await fs.mkdir(path.dirname(file),{recursive:true});await fs.writeFile(file,typeof content==='string'?content:JSON.stringify(content,null,2));};
 
@@ -83,5 +83,59 @@ test('unreadable files are reported without stopping other sources',async()=>{
     const reports=await readMcpSources({cwd,home,env:{}});
     assert.match(reports.find(r=>r.label==='Cursor').error,/Could not read/);
     assert.deepEqual(Object.keys(syncedMcpServers(reports,DEFAULT_MCP_SYNC).servers),['ok']);
+  }finally{await fs.rm(base,{recursive:true,force:true});}
+});
+
+test('selected Codex and Claude plugin MCP definitions are shared in place only after opt-in',async()=>{
+  const base=await fs.mkdtemp(path.join(os.tmpdir(),'kicad-plugin-sync-')),home=path.join(base,'home'),cwd=path.join(base,'repo');
+  const codex=path.join(home,'.codex'),claude=path.join(home,'.claude'),root=path.join(codex,'plugins/cache/local/browser/1.0.0'),other=path.join(claude,'plugins/cache/local/reader/2.0.0');
+  try{
+    await write(path.join(codex,'config.toml'),'[plugins."browser@local"]\nenabled = true\n');
+    await write(path.join(root,'plugin.json'),{name:'browser',version:'1.0.0'});
+    await write(path.join(root,'mcp.json'),{$schema:'https://agent-plugins.org/schemas/1.0.0/mcp.schema.json',mcpServers:{browser:{type:'stdio',command:'node',args:['${PLUGIN_ROOT}/server.mjs'],env:{LABEL:'${CLAUDE_PLUGIN_ROOT}'}},web:{type:'streamable-http',url:'https://example.test/mcp'},private:{command:'node',env:{SKY_CUA_SERVICE_PATH:'/private/app.sock'}},auth:{type:'http',url:'https://example.test/oauth',extensions:{'com.openai':{auth:{type:'oauth'}}}},off:{command:'node',enabled:false}}});
+    await write(path.join(claude,'plugins/installed_plugins.json'),{plugins:{'reader@local':[{scope:'user',version:'2.0.0',installPath:other}],'project@local':[{scope:'project',projectPath:cwd,installPath:other}]}});
+    await write(path.join(claude,'settings.json'),{enabledPlugins:{'reader@local':true}});
+    await write(path.join(other,'.claude-plugin/plugin.json'),{name:'reader',mcpServers:['./extra.json',{inline:{command:'node',args:['${CLAUDE_PLUGIN_ROOT}/inline.mjs']}}]});
+    await write(path.join(other,'.mcp.json'),{mcpServers:{reader:{command:'node',args:['old.mjs']}}});
+    await write(path.join(other,'extra.json'),{mcpServers:{reader:{command:'node',args:['${CLAUDE_PLUGIN_ROOT}/reader.mjs']}}});
+    const reports=await readMcpSources({home,cwd,env:{}}),realRoot=await fs.realpath(root),realOther=await fs.realpath(other);
+    assert.deepEqual(syncedMcpServers(reports,DEFAULT_MCP_SYNC).servers,{},'plugins are opt-in separately from shared user MCP configs');
+    const codexServers=syncedMcpServers(reports,['codex-plugins']).servers,c=name=>pluginServerName('browser@local',name),r=name=>pluginServerName('reader@local',name);
+    assert.deepEqual(Object.keys(codexServers).sort(),[c('browser'),c('web')]);
+    assert.equal(codexServers[c('browser')].args[0],path.join(realRoot,'server.mjs'));
+    assert.equal(codexServers[c('browser')].cwd,realRoot);
+    assert.equal(codexServers[c('browser')].env.CLAUDE_PLUGIN_ROOT,realRoot);
+    assert.equal(codexServers[c('web')].type,'http');
+    assert.match(reports.flatMap(r=>r.servers).find(s=>s.name===c('private')).issue,/private connection/);
+    assert.match(reports.flatMap(r=>r.servers).find(s=>s.name===c('auth')).issue,/authentication/);
+    const reader=syncedMcpServers(reports,['claude-plugins']).servers;
+    assert.deepEqual(Object.keys(reader).sort(),[r('inline'),r('reader')]);
+    assert.equal(reader[r('reader')].args[0],path.join(realOther,'reader.mjs'),'declared files override the default plugin MCP file');
+    assert.equal(reports.some(r=>r.label.includes('project@local')),false,'project-installed plugin code is not imported');
+    const mine={[r('reader')]:{command:'mine'}};
+    assert.equal(syncedMcpServers(reports,['claude-plugins'],mine).servers[r('reader')],undefined);
+    for(const key of Object.keys({...reader,...codexServers}))assert.match(key,/^[A-Za-z0-9_-]+$/,'native MCP names must work across providers');
+    assert.notEqual(pluginServerName('same.name@local','browser'),pluginServerName('same_name@local','browser'),'normalization cannot cause name collisions');
+    const before=await fs.readFile(path.join(root,'mcp.json'),'utf8');
+    await write(path.join(codex,'config.toml'),'[plugins."browser@local"]\nenabled = false\n');
+    assert.deepEqual(syncedMcpServers(await readMcpSources({home,cwd,env:{}}),['codex-plugins']).servers,{});
+    assert.equal(await fs.readFile(path.join(root,'mcp.json'),'utf8'),before,'source package is never rewritten');
+  }finally{await fs.rm(base,{recursive:true,force:true});}
+});
+
+test('plugin paths, ambiguous cache versions and original tool policies fail closed',async()=>{
+  const base=await fs.mkdtemp(path.join(os.tmpdir(),'kicad-plugin-boundary-')),home=path.join(base,'home'),cwd=path.join(base,'repo'),cache=path.join(home,'.codex/plugins/cache/local');
+  try{
+    await write(path.join(home,'.codex/config.toml'),'[plugins."escape@local"]\nenabled=true\n[plugins."versions@local"]\nenabled=true\n[plugins."policy@local"]\nenabled=true\n[plugins."policy@local".mcp_servers.docs]\ndisabled_tools=["write"]\n');
+    await write(path.join(cache,'escape/1/.codex-plugin/plugin.json'),{name:'escape',mcpServers:'../outside.json'});
+    await write(path.join(cache,'escape/outside.json'),{mcpServers:{bad:{command:'bad'}}});
+    for(const version of ['1','2'])await write(path.join(cache,'versions',version,'plugin.json'),{name:'versions'});
+    await write(path.join(cache,'policy/1/plugin.json'),{name:'policy'});
+    await write(path.join(cache,'policy/1/mcp.json'),{mcpServers:{docs:{command:'node'}}});
+    const reports=await readMcpSources({home,cwd,env:{}});
+    assert.deepEqual(syncedMcpServers(reports,['codex-plugins']).servers,{});
+    assert.match(reports.find(r=>r.label.includes('escape@')).error,/plugin-relative/);
+    assert.match(reports.find(r=>r.label.includes('versions@')).error,/Several cached versions/);
+    assert.match(reports.find(r=>r.label.includes('policy@')).servers[0].issue,/weaker policies/);
   }finally{await fs.rm(base,{recursive:true,force:true});}
 });
