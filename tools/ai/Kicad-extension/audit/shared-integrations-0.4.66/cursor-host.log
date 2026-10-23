@@ -1,0 +1,197 @@
+(node:37076) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `Cursor --trace-deprecation ...` to show where the warning was created)
+[90m[main 2026-10-23T22:49:26.500Z][0m [AgentHostUpdater] following channel stable (by release track stable)
+[90m[main 2026-10-23T22:49:26.501Z][0m [AgentHostUpdater] watching https://downloads.cursor.com/agent-host-harness/channels/stable/latest.json every 300s; installs to /tmp/ki-cua-host-I62QeH/profile/agent-harness; idle until an extension host writes hosts/<pid>.json
+[90m[main 2026-10-23T22:49:26.562Z][0m [MoltenAgentsWindow] Agents Window opens the built-in Agents Window: no molten_agents_window read for the signed-in account yet
+[90m[main 2026-10-23T22:49:26.664Z][0m updateURL https://api2.cursor.sh/updates/api/update/darwin-arm64/cursor/3.27.6/0ef4bfe78f288458b002c844574e7363979d2cbaad087c52869c1f22208a5c45/stable
+[90m[main 2026-10-23T22:49:26.666Z][0m update#setState idle
+[90m[main 2026-10-23T22:49:26.667Z][0m [UpdateSupervisor] Cached gate startup (enabled=false)
+[CursorExtensionIsolationService] Extension isolation is enabled
+Missing property "alwaysKeepComposerInBound" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "defaultCapabilities" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "autoApplyFilesOutsideContext" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "yoloCommandAllowlist" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "yoloCommandDenylist" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "smartAllowlistDenylist" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "yoloMcpToolsDisabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "doNotShowYoloModeWarningAgain" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "doNotShowFullYoloModeWarningAgain" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "selectedFakeStreamerId" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "yoloDeleteFileDisabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "yoloOutsideWorkspaceDisabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "yoloEnableRunEverything" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "enableSmartAuto" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "isWebSearchToolEnabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "isWebSearchToolEnabled2" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "isWebSearchToolEnabled3" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "autoAcceptWebSearchTool" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "isWebFetchToolEnabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "webFetchDomainAllowlist" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "autoApproveModeTransitions" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "mcpAuthBlocking" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "autoApprovedModeTransitions" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "autoRejectedModeTransitions" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "backgroundComposerEnv" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "useLegacyTerminalTool" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "modes4" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "codeBlockDisplayPreference" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "thinkingLevel" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "composerMigrationVersion" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "mcpServers" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "mcpDisabledTools" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "featureModelConfigs" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "backgroundComposerState" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "dialogDontAskAgainPreferences" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cursorIgnore" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "teamAdminSettings" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "shouldShowViewZoneWhenPreviewBoxIsClipped6" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cppModelsState" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "aiSettings" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "authenticationSettings" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "websiteUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "backendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "authClientId" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "authDomain" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "repoBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "telemBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cmdkBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "geoCppBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cppConfigBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "originBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "bcProxyUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "agentBackendUrlPrivacy" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "agentBackendUrlNonPrivacy" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "credentialsDisplayName" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cmdLineHookState" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "shouldOnlyImportOnAccept" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cppAutoImportDecorationStyle" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "newUserData" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "azureState" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "personalDocs" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cppInCmdF" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cppTriggerInComments" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cppShowWhitespaceOnlyChanges" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "cppConfig" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "haveNotImportedFromVSC" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "shouldAutoParseCmdKLinks" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "isFileSyncClientEnabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "membershipType" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "fastApplyModelType" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "explicitlyEnableSemanticSearch" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "backgroundComposerEnv" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "preferredEmbeddingModel" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "oneTimeSettings" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "eligibleForSnippetLearning" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "goneThroughCodeSnippetOnboarding" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "goneThroughCodeSnippetChangeManagement" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "hasResetModelOnce" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+Missing property "rpcFileLoggerEnabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+[CursorAgentHostEnablementService] cursor_agent_host gate is disabled, private inference is disabled, local agent token source is none, remote-workspace policy is allowed, effective agent-host topology is disabled
+[PushRequestContextService] push request context is disabled (killswitchActive=false, instantGrepEnabled=false, indexingGrepEnabled=true, agentHostEnabled=false, agentHostForcePush=false)
+[AgentHostService] using legacy implementation
+[90m[main 2026-10-23T22:49:28.344Z][0m TracingService: private inference lockdown disabled
+[90m[main 2026-10-23T22:49:28.470Z][0m [Tray] getMacOSIconPath: hasNotifications: false
+[90m[main 2026-10-23T22:49:28.477Z][0m [Tray] getMacOSIconPath: hasNotifications: false
+[HostedMcpAccountServers] 0 account server(s) run on this desktop: none
+[WorktreeManager] Using worktrees root /tmp/ki-cua-host-I62QeH/profile/home/.cursor/worktrees
+Started local extension host with pid 37111.
+[90m[main 2026-10-23T22:49:29.624Z][0m [Tray] Menu bar visibility: unknown -> blocked
+[WorktreeCleanupCron] Registering cleanup task with interval of 6 hours
+[WorktreeCleanupCron] Cleanup task registered with interval of 6 hours (21600000ms)
+[WorktreeCleanupCron] Scheduling startup catch-up cleanup in 30000ms (no recorded run; interval 21600s)
+[McpProcessAfterRestoredContribution] waiting to latch shared-process MCP routing until experiment service is initialized
+Loading development extension at /tmp/ki-cua-host-I62QeH/vsix/extension
+(node:37076) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+No search provider registered for scheme: file, waiting
+[MainThreadShellExec] $updateShellExecCapabilities: hostKind=1, expectedHost=1, isRemote=false, sandboxSupported=true, linuxKernelVersion=none
+[MainThreadShellExec] AppArmor suggestion skipped: sandboxSupported=true, linuxKernelVersion=none
+[ShellExec] Created session 37568107-99d5-4ece-8046-59972316ce44 on LocalProcess host
+[cursor-agent-exec] Sandbox helper resolution:
+[cursor-agent-exec]   platform=darwin
+[cursor-agent-exec]   resourcesPath=/Applications/Cursor.app/Contents/Resources
+[cursor-agent-exec]   execPath=/Applications/Cursor.app/Contents/Frameworks/Cursor Helper (Plugin).app/Contents/MacOS/Cursor Helper (Plugin)
+[cursor-agent-exec]   execDir=/Applications/Cursor.app/Contents/Frameworks/Cursor Helper (Plugin).app/Contents/MacOS
+[cursor-agent-exec]   extensionRoot=/Applications/Cursor.app/Contents/Resources/app/extensions/cursor-agent-exec
+[cursor-agent-exec]   VSCODE_DEV=undefined
+[cursor-agent-exec]   candidate (extensionRoot relative (../../resources/helpers)): /Applications/Cursor.app/Contents/Resources/app/resources/helpers/cursorsandbox, exists=true
+[cursor-agent-exec]   FOUND sandbox helper at: /Applications/Cursor.app/Contents/Resources/app/resources/helpers/cursorsandbox
+[cursor-agent-exec] Sandbox configured: binary=/Applications/Cursor.app/Contents/Resources/app/resources/helpers/cursorsandbox
+[PushRequestContextService] Updated sandbox network file entries (0 entries)
+[Debug] Registered command palette action: debug.solidLeakStats
+[Debug] Registered command palette action: debug.classifyRecentConversations
+[Debug] Registered command palette action: debug.getApplicationProperty
+[Debug] Registered command palette action: debug.setApplicationProperty
+[Debug] Registered command palette action: debug.logComposer
+[Debug] Registered command palette action: debug.seedResponseComparisonForTesting
+[Debug] Registered command palette action: debug.getContextKeyValue
+[Debug] Registered command palette action: debug.simulateLimitHitStage
+[Debug] Registered command palette action: debug.clearLimitHitSimulation
+[Debug] Registered command palette action: debug.testLinearIssues
+[Debug] Registered command palette action: debug.restartOfflineWorkers
+[Debug] Registered command palette action: debug.startWorkerForFolder
+[Debug] Registered command palette action: debug.listRecordedWorkers
+[Debug] Registered command palette action: debug.resetModelPicker
+[Debug] Registered command palette action: debug.replayStreamingFixture
+OpenInBrowserWatcher: Initializing terminal log watcher
+[Debug] Registered command palette action: debug.migrateMcpGrantsToServer
+[Debug] Registered command palette action: debug.forceIdleHostStopNow
+[Debug] Registered command palette action: debug.armIdleHostStopAtNextCompletion
+[Debug] Registered command palette action: debug.rendererProcessInventory
+[GC Trace Polling] Disabled by config
+[SharedSessionFileWatcherGateMirror] Mirrored gate (reason=initial, enabled=false)
+[UpdateSupervisorGateMirror] Mirrored gates (reason=initial, enabled=false, shipItCacheResetKilled=false, backgroundActivityCheckKilled=false)
+(node:37111) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `Cursor Helper (Plugin) --trace-deprecation ...` to show where the warning was created)
+[MainThreadCursorExplorerProviderService] Explorer provider registered
+[cursor-computer-use] local_computer_use gate off at activation (the gate's default, or Statsig not hydrated yet); Computer Use registers if a later Statsig refresh turns it on
+[MainThreadCursor] Received agent skills batch 1/1
+22:49:31.989 INFO  [isSandboxHelperSupported] Starting sandbox support check...
+22:49:31.989 INFO  [checkBinaryAvailable] Resolved binary path: /Applications/Cursor.app/Contents/Resources/app/resources/helpers/cursorsandbox
+22:49:31.989 INFO  [checkBinaryAvailable] Binary path exists: true
+22:49:31.989 INFO  [isSandboxHelperSupported] darwin platform, binary available, sandbox supported!
+repoResult.error UserNotLoggedInError
+repoResult.error UserNotLoggedInError
+repoResult.error UserNotLoggedInError
+22:49:32.121 WARN  computeGlobalCache: slow ctx=LocalRequestContextExecutor.rebuildGlobalCache/LocalRequestContextExecutor.computeGlobalCache meta={totalMs: 1587, cloudRule: 2, subagents: 2, codebaseRef: 2, cursorRules: 1586, ruleCount: 0}
+[MainThreadCursor] Received Cursor rules batch 1/1
+[MainThreadCursor] Received Cursor rules batch 1/1
+[unauthenticated] No authorization header found: ConnectError: [unauthenticated] No authorization header found
+    at t (vscode-file://vscode-app/Applications/Cursor.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js:17870:1078104)
+    at async Object.unary (vscode-file://vscode-app/Applications/Cursor.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js:7511:4245)
+    at async Object.cppConfig (vscode-file://vscode-app/Applications/Cursor.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js:7399:17352)
+    at async _Ka.loadCppConfigIncludingHandlingProAccess (vscode-file://vscode-app/Applications/Cursor.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js:20960:1305) {
+  name: 'ConnectError',
+  rawMessage: 'No authorization header found',
+  code: 16,
+  metadata: {},
+  details: [
+    {
+      type: 'aiserver.v1.ErrorDetails',
+      value: [Object],
+      debug: [Object]
+    }
+  ]
+}
+[HostedMcpPlacement] routing blip guard turned on by a refresh
+[SharedSessionFileWatcherGateMirror] Mirrored gate (reason=gate-change, enabled=false)
+[UpdateSupervisorGateMirror] Mirrored gates (reason=gate-change, enabled=true, shipItCacheResetKilled=false, backgroundActivityCheckKilled=false)
+[90m[main 2026-10-23T22:49:35.929Z][0m [RendererPing] enabled (intervalMs=5000, blockThresholdMs=15000, stacks=true)
+[cursor-computer-use] local_computer_use gate on after a Statsig refresh, 4.0 s after activation; registering Computer Use now
+[McpProcessAfterRestoredContribution] latched shared-process MCP routing enabled for this session after OAuth migration
+[RealtimeVoice] default voice was not read {
+  name: 'ConnectError',
+  rawMessage: 'Error',
+  code: 16,
+  metadata: {},
+  details: [
+    {
+      type: 'aiserver.v1.ErrorDetails',
+      value: [Object],
+      debug: [Object]
+    }
+  ]
+}
+[Kicad Computer Control] Error: Computer control is off. Enable kicadAgent.computer.enabled in Computer Control settings.
+[90m[main 2026-10-23T22:49:41.144Z][0m [CursorProclistService] Config enabled feature (subsample every 10s; memoryPressureMonitorEnabled=true)
+[Cursor Proclist Polling] Started polling (every 5 min)
+[90m[main 2026-10-23T22:49:44.197Z][0m Extension host with pid 37111 exited with code: 0, signal: unknown.

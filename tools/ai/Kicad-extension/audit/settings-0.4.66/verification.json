@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "version": "0.4.66",
+  "provenance": "production webview bundle; fixture inventory from composer/inventory.ts; simulated host responses; no model calls",
+  "checks": [
+    "skills grouped by source with duplicate/overridden/outdated/manual flags",
+    "skill toggle sends kicad_set_enabled; manual skills have no toggle",
+    "Open sends open_file with the SKILL.md path",
+    "slash commands namespaced with override and outdated flags",
+    "built-in and configured hooks, missing program flagged",
+    "plugin search; install command copied, not executed",
+    "MCP configured servers from files incl. built-in tools; no secrets; old empty text replaced",
+    "servers synced from Codex/Cursor with source badges; repository file of another tool unused",
+    "per-tool sync switch sends kicad_set_sync and marks its servers off",
+    "permission cleanup removes exactly the outdated rules through the host and re-reads settings",
+    "no page errors"
+  ],
+  "requests": {
+    "setEnabled": [
+      {
+        "type": "kicad_set_enabled",
+        "kind": "skill",
+        "name": "kicad-agent",
+        "enabled": false
+      }
+    ],
+    "clean": [
+      {
+        "type": "kicad_clean_permissions",
+        "rules": [
+          {
+            "scope": "local",
+            "list": "allow",
+            "rule": "Bash(./build/bin/kicad-agent:*)"
+          },
+          {
+            "scope": "local",
+            "list": "allow",
+            "rule": "mcp__kicad__kicad_board"
+          }
+        ]
+      }
+    ]
+  },
+  "pageErrors": []
+}

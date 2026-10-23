@@ -1,0 +1,259 @@
+bun test v1.3.14 (0d9b296a)
+
+test/kicad-composer.test.tsx:
+{"draft":"只检查 U1，不要修改。","remainingAttachments":["new-attachment.png"],"lateOptimizationReplacedDraft":false}
+
+test/app-lifecycle.test.tsx:
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/Users/mosc/.local/state/opencode/kv.json'
+    path: "/Users/mosc/.local/state/opencode/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/Users/mosc/.local/state/opencode/kv.json'
+    path: "/Users/mosc/.local/state/opencode/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/Users/mosc/.local/state/opencode/kv.json'
+    path: "/Users/mosc/.local/state/opencode/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+tui bootstrap failed {
+  error: "ConfigRemoteAuthError",
+  name: "Error",
+  stack: "Error: ConfigRemoteAuthError\n    at <anonymous> (/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/cache/Kicad/packages/sdk/js/src/v2/gen/client/client.gen.ts:216:29)\n    at processTicksAndRejections (native)",
+}
+
+test/cli/tui/diff-viewer-file-tree.test.tsx:
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+
+test/cli/tui/diff-viewer.test.tsx:
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+Failed to read KV state {
+  error: 340 |   }
+341 | 
+342 |   export async function withLock<T>(key: string, fn: () => Promise<T>, input: Options = {}) {
+343 |     await using _ = await acquire(key, input)
+344 |     input.signal?.throwIfAborted()
+345 |     return await fn()
+                       ^
+ENOENT: no such file or directory, open '/tmp/opencode/state/kv.json'
+    path: "/tmp/opencode/state/kv.json",
+ syscall: "open",
+   errno: -2,
+    code: "ENOENT"
+
+      at async withLock (/private/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-terminal-settings-ts3iv2w2/packages/core/src/util/flock.ts:345:18)
+,
+}
+
+ 212 pass
+ 1 skip
+ 0 fail
+ 8 snapshots, 586 expect() calls
+Ran 213 tests across 49 files. [9.05s]

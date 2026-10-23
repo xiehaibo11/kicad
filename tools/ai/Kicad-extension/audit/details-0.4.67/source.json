@@ -1,0 +1,12 @@
+{
+  "base": "d7085b573ade6711d396d5d869131c09168bfd1a",
+  "commit": "04ed42ddebbd0e8a9fd9394b84a10c9d192b8d38",
+  "tree": "1d122d5755afdda4e6cf8bc491715eae2cd39c32",
+  "branch": "codex/release-details-0.4.67",
+  "changedFiles": [
+    "tools/ai/Kicad-extension/README.md",
+    "tools/ai/Kicad-extension/IMPLEMENTATION_NOTES.md",
+    "tools/ai/Kicad-extension/apply-overlay.mjs"
+  ],
+  "buildSourceFilesMatched": 257
+}

@@ -1,0 +1,147 @@
+{
+ "version": "0.4.63",
+ "checks": [
+  "menu equals advertised tiers",
+  "English labels",
+  "deepest tier reaches host on send"
+ ],
+ "results": [
+  {
+   "model": "claude-opus-5-5",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max"
+   ],
+   "launched": "max"
+  },
+  {
+   "model": "claude-fable-5-1",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max"
+   ],
+   "launched": "max"
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max"
+   ],
+   "launched": "max"
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max"
+   ],
+   "launched": "max"
+  },
+  {
+   "model": "codex:gpt-6.1-sol",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max",
+    "Ultra"
+   ],
+   "launched": "ultra"
+  },
+  {
+   "model": "codex:gpt-6-astra",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max",
+    "Ultra"
+   ],
+   "launched": "ultra"
+  },
+  {
+   "model": "codex:gpt-6-sol",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max",
+    "Ultra"
+   ],
+   "launched": "ultra"
+  },
+  {
+   "model": "codex:gpt-6-luna",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max"
+   ],
+   "launched": "max"
+  },
+  {
+   "model": "codex:gpt-5.6-sol",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max",
+    "Ultra"
+   ],
+   "launched": "ultra"
+  },
+  {
+   "model": "codex:gpt-5.6-terra",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max",
+    "Ultra"
+   ],
+   "launched": "ultra"
+  },
+  {
+   "model": "codex:gpt-5.6-luna",
+   "menu": [
+    "Auto",
+    "Low",
+    "Medium",
+    "High",
+    "Extra High",
+    "Max"
+   ],
+   "launched": "max"
+  }
+ ]
+}

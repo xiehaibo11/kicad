@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "version": "0.2.3",
+  "checks": {
+    "kicad-terminal": "ff3a3ac7775b616558efa3897f98ecbb25e166c7bdfc24f6881558970645af7e",
+    "session-runtime.mjs": "89849b10dd00502c96be7c6ebfe67e3c8477c215ac50282ce554815d620351ad",
+    "agent-doctor.mjs": "cfbc9cb0a9d34fa7aa0b672494a970e1b39e55d8ff15b3e14af7df656d34dd2f",
+    "kicad-direct.mjs": "fc84b26e8171dfc9ed5d052a8efb634a659a3bf8ca9ce6fa9975676beee9a1c9"
+  }
+}

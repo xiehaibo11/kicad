@@ -1,0 +1,12 @@
+✔ declares the installation method so updates use the same package manager (0.68375ms)
+✔ JSONC retains model, provider, MCP, plugin, skills and compaction choices (1.742833ms)
+✔ malformed inherited settings fail without silently dropping user data (0.349ms)
+✔ bundle carries full backend; optional credentials are read only; override wins (1.123ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 155.932667

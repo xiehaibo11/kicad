@@ -19,5 +19,19 @@
   "unselectedMcpConnected": false,
   "skillBodyOnlyAfterCall": true,
   "nativeStartupSkillCatalogEmpty": true,
-  "slashCompletionDoesNotLoadSkills": true
+  "slashCompletionDoesNotLoadSkills": true,
+  "conversationAndExplicitNoToolGuard": [
+    {
+      "prompt": "\u8c22\u8c22\uff01",
+      "modelProposedCalls": 2,
+      "shellExecuted": false,
+      "unrelatedMcpConnected": false
+    },
+    {
+      "prompt": "\u4e0d\u8981\u8c03\u7528\u4efb\u4f55\u5de5\u5177\uff0c\u53ea\u89e3\u91ca\u521a\u624d\u7684\u7ed3\u679c\u3002",
+      "modelProposedCalls": 2,
+      "shellExecuted": false,
+      "unrelatedMcpConnected": false
+    }
+  ]
 }

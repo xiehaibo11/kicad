@@ -1,0 +1,54 @@
+[
+  {
+    "model": "claude-opus-4-6",
+    "localMenu": true,
+    "lateEmptyProbe": true,
+    "toolPagination": true,
+    "skillDraft": true,
+    "modelSelector": true,
+    "effortSelector": true,
+    "statusEditor": true,
+    "doctorArgs": true,
+    "unrecognizedSlashForwarded": true,
+    "browseModelRequests": 0
+  },
+  {
+    "model": "deepseek-flash",
+    "localMenu": true,
+    "lateEmptyProbe": true,
+    "toolPagination": true,
+    "skillDraft": true,
+    "modelSelector": true,
+    "effortSelector": true,
+    "statusEditor": true,
+    "doctorArgs": true,
+    "unrecognizedSlashForwarded": true,
+    "browseModelRequests": 0
+  },
+  {
+    "model": "codex:gpt-6.1-sol",
+    "localMenu": true,
+    "lateEmptyProbe": true,
+    "toolPagination": true,
+    "skillDraft": true,
+    "modelSelector": true,
+    "effortSelector": true,
+    "statusEditor": true,
+    "doctorArgs": true,
+    "unrecognizedSlashForwarded": true,
+    "browseModelRequests": 0
+  },
+  {
+    "model": "custom-compatible-model",
+    "localMenu": true,
+    "lateEmptyProbe": true,
+    "toolPagination": true,
+    "skillDraft": true,
+    "modelSelector": true,
+    "effortSelector": true,
+    "statusEditor": true,
+    "doctorArgs": true,
+    "unrecognizedSlashForwarded": true,
+    "browseModelRequests": 0
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "args": [
+    "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code",
+    "--user-data-dir",
+    "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-image-host-_9shk6ss/user",
+    "--extensions-dir",
+    "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-image-host-_9shk6ss/extensions",
+    "--disable-extensions",
+    "--disable-workspace-trust",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "--new-window",
+    "--extensionDevelopmentPath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-0461-final-mu8ovrbd/extension",
+    "--extensionTestsPath=/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/test-editor-images-host.cjs",
+    "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-image-host-_9shk6ss/workspace"
+  ],
+  "source": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-image-review-28a08gil"
+}

@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-23T22:16:07.823104+00:00",
+  "url": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.65",
+  "tag": "kicad-extension-v0.4.65",
+  "sourceCommit": "c9331b47627df92032b7836a5ef2a051033e3793",
+  "isDraft": false,
+  "isPrerelease": false,
+  "sha256": "1fcb99cce1734ffaab07014606e54a7ee81c6da83338e7631fd9acfe8ace5c5d",
+  "publicAssets": [
+    "build-manifest.json",
+    "computer-control-validation.json",
+    "kicad-0.4.65.vsix",
+    "REPORT.md",
+    "SHA256SUMS"
+  ],
+  "anonymousDownload": {
+    "ok": true,
+    "authentication": "none; curl public release URLs without authorization headers",
+    "assets": [
+      {
+        "name": "kicad-0.4.65.vsix",
+        "bytes": 34671654
+      },
+      {
+        "name": "build-manifest.json",
+        "bytes": 382
+      },
+      {
+        "name": "REPORT.md",
+        "bytes": 8171
+      },
+      {
+        "name": "computer-control-validation.json",
+        "bytes": 5673
+      },
+      {
+        "name": "SHA256SUMS",
+        "bytes": 345
+      }
+    ]
+  },
+  "cleanInstall": {
+    "ok": true,
+    "source": "anonymous public download",
+    "editor": "VS Code",
+    "freshUserDataDir": "/tmp/kicad-cua-public-auz15dv_/clean-profile",
+    "freshExtensionsDir": "/tmp/kicad-cua-public-auz15dv_/clean-extensions",
+    "verifiedFiles": 1218,
+    "differences": []
+  },
+  "remoteTagCommit": "c9331b47627df92032b7836a5ef2a051033e3793"
+}

@@ -1,0 +1,16 @@
+{
+ "version": "0.4.59",
+ "floodEventsPerSecond": 983,
+ "maxTimerLagMs": 8,
+ "scrolledAnswerStayed": true,
+ "selected": "SWER: the U1 regulator output is",
+ "kept": "SWER: the U1 regulator output is",
+ "modelDisabled": "false",
+ "stagedDuringTurn": 0,
+ "savedDuringTurn": true,
+ "stagedBeforeNext": true,
+ "bubbles": 3,
+ "syntheticShown": false,
+ "measuredDuringTurn": true,
+ "errors": []
+}

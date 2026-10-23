@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "releases": [
+    {
+      "tag": "kicad-extension-v0.4.64",
+      "url": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.64",
+      "isDraft": false,
+      "sourceCommit": "0197fd4cd801833e1d3473861cc7303e4e505377",
+      "uploadedAssetDigestsVerified": true
+    },
+    {
+      "tag": "kicad-code-v0.2.3",
+      "url": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.2.3",
+      "isDraft": false,
+      "sourceCommit": "0197fd4cd801833e1d3473861cc7303e4e505377",
+      "uploadedAssetDigestsVerified": true
+    }
+  ],
+  "files": [
+    {
+      "name": "kicad-0.4.64.vsix",
+      "url": "https://github.com/xiehaibo11/kicad/releases/download/kicad-extension-v0.4.64/kicad-0.4.64.vsix",
+      "bytes": 34660983,
+      "sha256": "ff309cfc00ae7a8de3feafdc29acb941818fbfdc1b0cd875c55e746c52b62074",
+      "anonymousDownloadVerified": true
+    },
+    {
+      "name": "-kicadai-kicad-code-0.2.3.tgz",
+      "url": "https://github.com/xiehaibo11/kicad/releases/download/kicad-code-v0.2.3/-kicadai-kicad-code-0.2.3.tgz",
+      "bytes": 47499525,
+      "sha256": "40ff1d9794775851b93f6674adc247cc9b427c0e56d636141e6b8234bf70ef2a",
+      "anonymousDownloadVerified": true
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+[
+  {
+    "test": "test-overlay.mjs",
+    "code": 0,
+    "output": "Overlay checks passed: native terminal, workspace selection, MCP config preservation, trust, paths, provider routing, SDK syntax.\n"
+  },
+  {
+    "test": "test-native-tools.mjs",
+    "code": 0,
+    "output": "Native tools passed: actual SDK in-process registration, shared bundle, 20 handlers, real reference call and domain rejection; zero daemon commands.\n"
+  },
+  {
+    "test": "test-lazy-tools.mjs",
+    "code": 0,
+    "output": "Lazy KiCad tools passed: read-only tools without prompts, two stable discovery tools, selected schema and direct execution, message intent, stored-session evidence, the packaged CLI tool lists and a same-session relaunch that keeps history.\n"
+  },
+  {
+    "test": "test-prompt-optimizer.mjs",
+    "code": 0,
+    "output": "Prompt optimizer checks passed: selected model, text-only isolation, cancel, timeout, errors, empty output, tool rejection.\n"
+  },
+  {
+    "test": "test-composer.mjs",
+    "code": 0,
+    "output": "Composer backend checks passed: model isolation, bounded prediction, in-process catalog with schemas/access and cancellation; zero catalog subprocesses.\n"
+  },
+  {
+    "test": "test-probe-lifecycle.mjs",
+    "code": 0,
+    "output": "SDK probe lifecycle passed: success/timeout abort, bounded lifetime and no late orphan spawn.\n"
+  },
+  {
+    "test": "test-provider-routing.mjs",
+    "code": 0,
+    "output": "Provider routing passed: endpoint precedence, validation, cross-provider and DeepSeek model changes, resume identity, modes and busy guard.\n"
+  },
+  {
+    "test": "test-membership.mjs",
+    "code": 0,
+    "output": "Membership passed: Codex provider routing, membership-only auth, plan tool denial, sandbox, completion and cross-provider historical context.\n"
+  },
+  {
+    "test": "test-config-discovery.mjs",
+    "code": 0,
+    "output": "Config discovery passed: lightweight probes only, optional timeout preserves models and initialization, no chat or MCP startup/shutdown race.\n"
+  },
+  {
+    "test": "test-slash-menu.mjs",
+    "code": 0,
+    "output": "Slash menu passed: provider-independent local entries, bounded metadata-only discovery, disabled skills, cleanup, secret-free MCP view and no model/tool/MCP execution.\n"
+  },
+  {
+    "test": "test-permissions.mjs",
+    "code": 0,
+    "output": "Permissions passed: SDK capability and selected modes, pending Bash/MCP approval, explicit questions retained, no persistent rules, failed switch rollback.\n"
+  },
+  {
+    "test": "test-delegation.mjs",
+    "code": 0,
+    "output": "Delegation enforcement passed: 8 queries, 11 turns; unauthorized child queries = 0.\n"
+  },
+  {
+    "test": "test-composer-keyboard.mjs",
+    "code": 0,
+    "output": "Composer keyboard passed: Tab is reserved with/without predictions and open completion menus, IME protected, Shift+Tab mode shortcut retained.\n"
+  },
+  {
+    "test": "test-reasoning.mjs",
+    "code": 0,
+    "output": "Reasoning passed: provider capabilities, invalid effort rejection, same session and permissions, busy guard, no optimistic state on failure.\nModel changes passed: failure retains old selection, unsupported effort resets, remembered per-model choice restores.\n"
+  },
+  {
+    "test": "test-dashboard.mjs",
+    "code": 0,
+    "output": "Dashboard event checks passed: SDK task/tool correlation, nested agents, cumulative usage, background results, terminal status, history and disconnect.\nKiCad tools on demand: ordinary messages keep the process, KiCad requests keep the same process and discover only selected tools.\nModel performance checks passed: zero process launches on selection, one restart on manual send, session/permissions retained, cancellation prevents enqueue.\n"
+  },
+  {
+    "test": "test-execution.mjs",
+    "code": 0,
+    "output": "Execution presentation passed: per-request grouping, final text, visible important issues and questions, tool failures, nested agents, result-only output, stop/disconnect, full record retention and ordinary chat.\n"
+  },
+  {
+    "test": "test-editor-images.mjs",
+    "code": 0,
+    "output": "Editor images passed: native image editor, exact/relative/Unicode paths, supported formats, missing files, text selections and directories.\n"
+  },
+  {
+    "test": "test-tool-content.mjs",
+    "code": 0,
+    "output": "Tool content passed: production open_content handler, named full snapshots, deduplication, cleanup, retry and no file writes or command execution.\n"
+  },
+  {
+    "test": "test-lifecycle.mjs",
+    "code": 0,
+    "output": "Pause/resend lifecycle passed: fresh channel with original session/options, immediate resend, stale result/finally isolation, duplicate send prevention, startup cancellation, locked request controls and stale permission cleanup.\n"
+  },
+  {
+    "test": "test-model-selection.mjs",
+    "code": 0,
+    "output": "Model selection passed: delayed init, persisted explicit selection, new conversation, resume, explicit Default, failure rollback, busy guard, cancellation during init; no automatic sends.\n"
+  },
+  {
+    "test": "test-message-editing.mjs",
+    "code": 0,
+    "output": "Message editing passed: original slot replacement, repeated edits, preceding history, same session/model/permissions/effort, attachments, UUID echo dedup, persisted reopen, normal identical messages, failure preservation, pause/resend, stale reference, atomic concurrent storage.\n"
+  },
+  {
+    "test": "test-continuity.mjs",
+    "code": 0,
+    "output": "Continuity passed: hooks record events and give advice without denying tools; malformed checkpoints do not crash; history/todos/pending state survive compaction.\n"
+  },
+  {
+    "test": "test-tool-output.mjs",
+    "code": 0,
+    "output": "Tool output passed: passive terminal, explicit reveal only, retained failures, redaction, no shell input, exact host command.\n"
+  }
+]

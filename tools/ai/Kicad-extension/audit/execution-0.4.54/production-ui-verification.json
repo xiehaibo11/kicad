@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "version": "0.4.54",
+  "checks": [
+    "tool records, counts, commands and child logs never shown",
+    "progress line while running",
+    "child result never settles main turn",
+    "important findings visible",
+    "error summary visible, raw error only in local records",
+    "permission prompt available",
+    "final only, no intermediate progress promotion",
+    "320px no horizontal overflow",
+    "pause and immediate resend restores session",
+    "late retired result and close cannot stop resend",
+    "one send per explicit message",
+    "new chat resets execution and agents",
+    "ordinary chat streams normally"
+  ],
+  "pageErrors": []
+}

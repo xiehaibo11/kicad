@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "version": "0.4.67",
+  "checkedAt": "2026-10-23T23:17:38.905023+00:00",
+  "source": "anonymous downloaded VSIX",
+  "extensionsDirectory": "/tmp/ki-details-067-qk_9b0at/clean-extensions",
+  "payloadFilesChecked": 1218,
+  "detailsMatch": true,
+  "stdout": "Installing extensions...\nExtension 'kicad-0.4.67.vsix' was successfully installed.\n",
+  "stderr": "(node:45813) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.\n(Use `Code --trace-deprecation ...` to show where the warning was created)\n"
+}

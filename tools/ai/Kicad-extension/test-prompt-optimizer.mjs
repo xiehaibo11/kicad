@@ -1,5 +1,7 @@
 // Exercise cancellation, tool isolation and model routing without calling an API.
 import assert from 'node:assert/strict';
+import {resolveSettings,assertModelAllowed,capEffort} from '../composer/settings.ts';
+import * as reasoning from './overlay/kicadReasoning.ts';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -13,7 +15,7 @@ const predictionModule = {exports:{}};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(root,'src/kicadPrediction.ts'),'utf8'), {compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText, {module:predictionModule,exports:predictionModule.exports});
 const journalEvents=[];const diagnostics={RuntimeJournal:class{async record(event){journalEvents.push(event)}}};
 const module = { exports: {} };
-vm.runInNewContext(compiled.outputText, { module, exports: module.exports, AbortController, setTimeout, clearTimeout, require:name=>{if(name==='./shared/kicadMembership')return {codexText:async()=> 'codex-text-fixture'};if(name==='./shared/kicadDiagnostics')return diagnostics;assert.equal(name,'./kicadPrediction');return predictionModule.exports;} });
+vm.runInNewContext(compiled.outputText, { module, exports: module.exports, AbortController, setTimeout, clearTimeout, require:name=>{if(name==='vscode')return {workspace:{workspaceFolders:[]}};if(name==='./kicadSettings')return {agentSettings:()=>({settings:resolveSettings([])})};if(name==='./shared/kicadSettings')return {assertModelAllowed,capEffort};if(name==='./shared/kicadReasoning')return reasoning;if(name==='./shared/kicadMembership')return {codexText:async()=> 'codex-text-fixture'};if(name==='./shared/kicadDiagnostics')return diagnostics;assert.equal(name,'./kicadPrediction');return predictionModule.exports;} });
 const { optimizePrompt } = module.exports;
 const config = { cwd: '/isolated/optimizer', cliPath: '/cli.js', env: { ANTHROPIC_AUTH_TOKEN: 'fixture-only' } };
 const request = { type: 'optimize_prompt', text: '只检查 PCB，不修改 @board.kicad_pcb', model: 'deepseek-flash' };

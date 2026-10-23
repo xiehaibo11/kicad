@@ -1,0 +1,152 @@
+{
+ "ok": true,
+ "fixture": "installed CLIs + localhost HTTP; no external model",
+ "claudeCli": "2.1.305 (Claude Code)",
+ "codexCli": "codex-cli 0.163.0",
+ "cases": [
+  {
+   "provider": "deepseek",
+   "model": "deepseek-flash",
+   "level": "default_on",
+   "wire": {
+    "model": "deepseek-flash",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-flash",
+   "level": "off",
+   "wire": {
+    "model": "deepseek-flash",
+    "thinking": "disabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-flash",
+   "level": "low",
+   "wire": {
+    "model": "deepseek-flash",
+    "effort": "low",
+    "thinking": "enabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-flash",
+   "level": "high",
+   "wire": {
+    "model": "deepseek-flash",
+    "effort": "high",
+    "thinking": "enabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-flash",
+   "level": "max",
+   "wire": {
+    "model": "deepseek-flash",
+    "effort": "max",
+    "thinking": "enabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-pro",
+   "level": "default_on",
+   "wire": {
+    "model": "deepseek-v4-pro",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-pro",
+   "level": "off",
+   "wire": {
+    "model": "deepseek-v4-pro",
+    "thinking": "disabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-pro",
+   "level": "low",
+   "wire": {
+    "model": "deepseek-v4-pro",
+    "effort": "low",
+    "thinking": "enabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-pro",
+   "level": "high",
+   "wire": {
+    "model": "deepseek-v4-pro",
+    "effort": "high",
+    "thinking": "enabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-pro",
+   "level": "max",
+   "wire": {
+    "model": "deepseek-v4-pro",
+    "effort": "max",
+    "thinking": "enabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-flash",
+   "level": "default_on",
+   "wire": {
+    "model": "deepseek-v4-flash",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-flash",
+   "level": "off",
+   "wire": {
+    "model": "deepseek-v4-flash",
+    "thinking": "disabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-flash",
+   "level": "low",
+   "wire": {
+    "model": "deepseek-v4-flash",
+    "effort": "low",
+    "thinking": "enabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-flash",
+   "level": "high",
+   "wire": {
+    "model": "deepseek-v4-flash",
+    "effort": "high",
+    "thinking": "enabled"
+   }
+  },
+  {
+   "provider": "deepseek",
+   "model": "deepseek-v4-flash",
+   "level": "max",
+   "wire": {
+    "model": "deepseek-v4-flash",
+    "effort": "max",
+    "thinking": "enabled"
+   }
+  }
+ ]
+}

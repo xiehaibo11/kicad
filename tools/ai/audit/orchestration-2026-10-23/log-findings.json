@@ -1,0 +1,45 @@
+{
+  "screenshotCorrelation": "The screenshot omits session/call ids. The following are matching recorded failures, not a unique identification of all screenshot rows.",
+  "failures": [
+    {
+      "session": "ae10de60-e6aa-4137-8722-0fba32e86026",
+      "call": "call_00_ET_Sww7kD0MRVzZbnkOrGBU8224",
+      "timestamp": "2026-10-23T04:10:25.681Z",
+      "journal": "/Users/mosc/.local/state/kicad/diagnostics/3beb5229d8cfe82e4adae373/2026-10-23-extension-c1b30fa0-3bb1-4992-90ac-4df8e17f385b-1.jsonl",
+      "journalLine": 40,
+      "error": "JSONDecodeError: Extra data at line 1 column 34 (char 33)",
+      "verifiedFile": {
+        "extension": ".epru",
+        "bytes": 7642131,
+        "firstObjectKeys": [
+          "type",
+          "ticket"
+        ],
+        "firstObjectEndsAt": 33,
+        "nextCharacters": "||",
+        "delimiterCount": 22663
+      },
+      "cause": "A delimiter-separated record file was passed to json.load as one JSON document."
+    },
+    {
+      "session": "6fc6d8fa-53f1-464c-8846-f3efb1a6611c",
+      "call": "call_00_li8cjSm276lP4Hb6rJcV1815",
+      "timestamp": "2026-10-23T05:35:01.606Z",
+      "error": "JSONDecodeError: Expecting value at line 1 column 1",
+      "cause": "The script split .epru records and unconditionally parsed every record body as JSON; individual bodies require format/type validation."
+    },
+    {
+      "session": "6fc6d8fa-53f1-464c-8846-f3efb1a6611c",
+      "call": "call_00_REcTDQeWEfOqIIhpHvN00817",
+      "timestamp": "2026-10-23T05:36:50.058Z",
+      "error": "JSONDecodeError: Extra data at line 20646 (char 746718)",
+      "verifiedFile": {
+        "path": "/tmp/live_drc.json",
+        "bytes": 746802,
+        "trailingText": "pcb drc: native verdict failed; inspect the returned violations"
+      },
+      "cause": "The command redirected stderr into stdout (2>&1), appending a diagnostic after the JSON document."
+    }
+  ],
+  "designMutationsReplayed": false
+}

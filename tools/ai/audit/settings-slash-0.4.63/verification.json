@@ -1,0 +1,164 @@
+{
+  "createdAt": "2026-10-23T09:39:36.025046+00:00",
+  "installed": {
+    "extension": "0.4.63",
+    "terminal": "0.2.2",
+    "activeVSCodeReloaded": false
+  },
+  "tests": {
+    "extensionRegressions": 23,
+    "composer": {
+      "pass": 49
+    },
+    "direct": {
+      "pass": 64,
+      "skip": 6
+    },
+    "membership": {
+      "pass": 3
+    },
+    "terminalTui": {
+      "pass": 212,
+      "skip": 1
+    },
+    "npm": {
+      "pass": 4
+    },
+    "wireCases": 86,
+    "wireModels": 14,
+    "codexUltraPolicyCases": 1,
+    "slashUiProviders": 4,
+    "reasoningUiModels": 11
+  },
+  "modelEfforts": {
+    "claude-opus-5-5": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "claude-fable-5-1": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "claude-sonnet-5-5": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "claude-haiku-5-5": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "codex:gpt-6.1-sol": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max",
+      "ultra"
+    ],
+    "codex:gpt-6-astra": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max",
+      "ultra"
+    ],
+    "codex:gpt-6-sol": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max",
+      "ultra"
+    ],
+    "codex:gpt-6-luna": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "codex:gpt-5.6-sol": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max",
+      "ultra"
+    ],
+    "codex:gpt-5.6-terra": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max",
+      "ultra"
+    ],
+    "codex:gpt-5.6-luna": [
+      "default_on",
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "deepseek-flash": [
+      "default_on",
+      "off",
+      "low",
+      "high",
+      "max"
+    ],
+    "deepseek-v4-pro": [
+      "default_on",
+      "off",
+      "low",
+      "high",
+      "max"
+    ],
+    "deepseek-v4-flash": [
+      "default_on",
+      "off",
+      "low",
+      "high",
+      "max"
+    ]
+  },
+  "artifacts": {
+    "Kicad-extension/dist/kicad-0.4.63.vsix": {
+      "bytes": 34628430,
+      "sha256": "a4b36c14fc8358b17ba17f8be7ed00ce326fd8d19698beb0fcb22cd381a95b28"
+    },
+    "Kicad-terminal/dist/-kicadai-kicad-code-0.2.2.tgz": {
+      "bytes": 47496880,
+      "sha256": "abb73cfb8db872ab78767ccdd5420e5a14f8edd7dff2896f0e9a5dcd7a7af1e3"
+    },
+    "Kicad-terminal/dist/kicad-terminal": {
+      "bytes": 145710544,
+      "sha256": "f9f9dc58eb0fd4662b4331524f6f6b0143026231abfbb04f48620a1e600c6287"
+    }
+  },
+  "coverageLimit": "Provider responses were local fixtures; no claim that every external provider account or inference endpoint is accepted live."
+}

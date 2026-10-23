@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-23T23:11:33.198016+00:00",
+  "vsixSha256": "9b2621f2e0212235e258af01d7128da79bfc9a35db314123097affb57f8d3ddf",
+  "installed": [
+    {
+      "editor": "VS Code",
+      "version": "0.4.67",
+      "path": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.67",
+      "payloadFilesChecked": 1218,
+      "mismatches": [],
+      "packageMetadataIgnored": true,
+      "detailsMatch": true
+    },
+    {
+      "editor": "Cursor",
+      "version": "0.4.67",
+      "path": "/Users/mosc/.cursor/extensions/kicad-agent.kicad-0.4.67",
+      "payloadFilesChecked": 1218,
+      "mismatches": [],
+      "packageMetadataIgnored": true,
+      "detailsMatch": true
+    }
+  ],
+  "settingsUnchanged": true,
+  "existingWindowsNotReloaded": true,
+  "worktreeBranchAndIndexPreserved": true
+}

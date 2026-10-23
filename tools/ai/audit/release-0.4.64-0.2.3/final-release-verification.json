@@ -1,0 +1,98 @@
+{
+  "passed": true,
+  "releases": [
+    {
+      "product": "extension",
+      "tag": "kicad-extension-v0.4.64",
+      "url": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.64",
+      "public": true,
+      "targetCommit": "0197fd4cd801833e1d3473861cc7303e4e505377",
+      "assets": [
+        {
+          "name": "SHA256SUMS",
+          "bytes": 612,
+          "digest": "sha256:79f7c8920eae91c592c439f5d848e663740ad54aa2a8dac111a8f74e59d13df5"
+        },
+        {
+          "name": "build-manifest.json",
+          "bytes": 382,
+          "digest": "sha256:e5293414cc836621dc7c85758a62d8fb623f865b9a07afd001fd01151a70a544"
+        },
+        {
+          "name": "kicad-0.4.64.vsix",
+          "bytes": 34660983,
+          "digest": "sha256:ff309cfc00ae7a8de3feafdc29acb941818fbfdc1b0cd875c55e746c52b62074"
+        },
+        {
+          "name": "native-vscode-host.json",
+          "bytes": 222,
+          "digest": "sha256:eb2c63aa85a29dfc484651030341e495f395a08ab6772bf843a64807e8958133"
+        },
+        {
+          "name": "public-download-verification.json",
+          "bytes": 1228,
+          "digest": "sha256:91573f8da367241096273fd0446f776b1f471092d89b413f917367129eb2f693"
+        },
+        {
+          "name": "settings-ui.json",
+          "bytes": 1556,
+          "digest": "sha256:32c8bcfeb3899b952d0c8e92edafa618f14e272bf1c8eb2c6f18d649f3c0cfe0"
+        },
+        {
+          "name": "slash-menu-ui.json",
+          "bytes": 1492,
+          "digest": "sha256:a55975990d1ead2a3ea1dbfbd40ff6be7413121e82f0362146ff61a2b95535bd"
+        },
+        {
+          "name": "verification.json",
+          "bytes": 1055,
+          "digest": "sha256:0f9965426c0d137c5677e7fb361da064e4b042171c6ceb4550662d9f5b38d569"
+        }
+      ]
+    },
+    {
+      "product": "terminal",
+      "tag": "kicad-code-v0.2.3",
+      "url": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.2.3",
+      "public": true,
+      "targetCommit": "0197fd4cd801833e1d3473861cc7303e4e505377",
+      "assets": [
+        {
+          "name": "-kicadai-kicad-code-0.2.3.tgz",
+          "bytes": 47499525,
+          "digest": "sha256:40ff1d9794775851b93f6674adc247cc9b427c0e56d636141e6b8234bf70ef2a"
+        },
+        {
+          "name": "SHA256SUMS",
+          "bytes": 543,
+          "digest": "sha256:2365e156680c91c921a28f9851c2b9dfc88e43eabaf52987c33cbd3f1a7c93e6"
+        },
+        {
+          "name": "build-manifest.json",
+          "bytes": 1405,
+          "digest": "sha256:00ba29378adfce4ca43464a707b1725872e7906a9dd730480ce8e91ed463c878"
+        },
+        {
+          "name": "local-acceptance.json",
+          "bytes": 1575,
+          "digest": "sha256:62c6b6a08ba9eae14f1a151db5c6ea2280d15f0c3901e5d6805ba7c1b88a58dd"
+        },
+        {
+          "name": "public-acceptance.json",
+          "bytes": 1590,
+          "digest": "sha256:3011f4fe6d1f148e614230eceb7665f86c57fd2b2a894da6403617457bc221f8"
+        },
+        {
+          "name": "public-download-verification.json",
+          "bytes": 1228,
+          "digest": "sha256:91573f8da367241096273fd0446f776b1f471092d89b413f917367129eb2f693"
+        },
+        {
+          "name": "verification.json",
+          "bytes": 850,
+          "digest": "sha256:ff9c040d97765746018974764ffa5148874195106f5228f17671a55d5451d40a"
+        }
+      ]
+    }
+  ]
+}

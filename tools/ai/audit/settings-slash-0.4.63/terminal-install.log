@@ -1,0 +1,9 @@
+{"verified": true, "kind": "terminal", "version": "1.19.3"}
+{"retired": []}
+
+Kicad installed: /Users/mosc/.local/bin/Kicad
+Version: 0.2.2
+
+Start:   Kicad
+Help:    Kicad --help
+Resume:  Kicad --continue

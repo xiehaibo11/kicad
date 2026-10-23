@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "provenance": "production bundle; simulated host; no live OS actions",
+  "checks": [
+    "independent off/on",
+    "service and TCC status",
+    "per-app allowlist",
+    "Any App",
+    "Restart",
+    "View Log in editor request",
+    "locked-screen unsupported",
+    "no permission request on load",
+    "off readback"
+  ],
+  "requests": [
+    {
+      "type": "kicad_computer_status"
+    },
+    {
+      "type": "kicad_computer_setting",
+      "action": "enabled",
+      "value": true
+    },
+    {
+      "type": "kicad_computer_setting",
+      "action": "allowedApps",
+      "value": [
+        "org.kicad.kicad",
+        "org.kicad.pcbnew",
+        "org.kicad.eeschema",
+        "com.google.Chrome"
+      ]
+    },
+    {
+      "type": "kicad_computer_setting",
+      "action": "anyApp",
+      "value": true
+    },
+    {
+      "type": "kicad_computer_setting",
+      "action": "restart"
+    },
+    {
+      "type": "kicad_computer_setting",
+      "action": "log"
+    },
+    {
+      "type": "kicad_computer_setting",
+      "action": "enabled",
+      "value": false
+    }
+  ],
+  "errors": []
+}

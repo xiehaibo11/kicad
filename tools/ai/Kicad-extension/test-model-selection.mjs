@@ -26,8 +26,12 @@ await new Promise(r=>setTimeout(r,0));assert.equal(first.modelSelection(),undefi
 connection.config({modelSetting:'deepseek-flash',defaultCwd:'/fixture'});release();await preload;assert.equal(first.modelSelection(),'deepseek-flash');assert.equal(saved.length,0);
 await first.setModel({value:'deepseek-v4-pro'});assert.equal(first.modelSelection(),'deepseek-v4-pro');assert.equal(connection.config().modelSetting,'deepseek-v4-pro');assert.equal(saved.at(-1).value,'deepseek-v4-pro');assert.equal(sent.length,0);
 const next=new Session(async()=>connection,context);await next.preloadConnection();assert.equal(next.modelSelection(),'deepseek-v4-pro');await next.send('继续执行任务');assert.equal(launches.at(-1)[3],'deepseek-v4-pro');
-await assert.rejects(next.setModel({value:'sonnet'}),/先暂停/);assert.equal(next.modelSelection(),'deepseek-v4-pro');
-await next.interrupt();await next.send('继续执行');assert.equal(launches.at(-1)[3],'deepseek-v4-pro');await next.interrupt();
+// A choice made during a running turn is saved and shown at once; the running
+// process is not reconfigured, and the next request uses the new model.
+const stagedBefore=staged.length;await next.setModel({value:'haiku'});assert.equal(next.modelSelection(),'haiku');assert.equal(saved.at(-1).value,'haiku');assert.equal(staged.length,stagedBefore,'running turn keeps its model');
+streams.at(-1).enqueue({type:'result',session_id:'same-conversation',is_error:false});await new Promise(r=>setTimeout(r,0));
+await next.send('继续执行');assert.equal(staged.at(-1).model.value,'haiku','queued model is staged on the live channel before the next request');assert.equal(sent.at(-1).id,launches.at(-1)[0]);
+await next.interrupt();await next.setModel({value:'deepseek-v4-pro'});await next.send('继续执行');assert.equal(launches.at(-1)[3],'deepseek-v4-pro');await next.interrupt();
 // Explicit change in another conversation applies when an existing idle session resumes.
 await first.setModel({value:'sonnet'});await next.send('继续当前会话');assert.equal(launches.at(-1)[3],'sonnet');
 streams.at(-1).enqueue({type:'result',session_id:'same-conversation',is_error:false});await new Promise(r=>setTimeout(r,0));

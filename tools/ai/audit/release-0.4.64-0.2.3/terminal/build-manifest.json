@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "terminal",
+  "version": "1.19.3",
+  "createdAt": "2026-10-23T10:29:06.358167+00:00",
+  "upstreamCommit": "e3c4eb242585dcd77be1a867391b7c25fd47ce52",
+  "sourceSha256": "7ac2287fd34335343a0b760ef1aae7878bf688d23a5b85bff505b4539336b37f",
+  "files": {
+    "kicad-terminal": "ff3a3ac7775b616558efa3897f98ecbb25e166c7bdfc24f6881558970645af7e",
+    "upstream.json": "bb4d8ab01636797b974ba28fd4a04aafbe9a784105c23fe52ff6997e84914c6d",
+    "composer.json": "32389cf73587ba56ba91dfd32a0dffd1bd0d4dbd73e640021564d0d7ac700b41",
+    "waiting.json": "1edee71d1813570c8db62c98ec259deeb3483f65675a6398b3bd5b2d69294dc7",
+    "branding.json": "fa677ee83f678ad09b8cecc340fd8aac4ca93b2f8ecd2917e9ea1e0f5043205e",
+    "LICENSE-OpenCode.txt": "625f0f619133f89bbbb2abe37369613dfa1885eba1e50d02170deb62bb42cb6b",
+    "eda-agent-instructions.md": "692006da9a4f17a9ea1d61b2725a02d85ceb1e4bcf9cae6c6041e18696b99d96",
+    "session-runtime.mjs": "89849b10dd00502c96be7c6ebfe67e3c8477c215ac50282ce554815d620351ad",
+    "agent-doctor.mjs": "cfbc9cb0a9d34fa7aa0b672494a970e1b39e55d8ff15b3e14af7df656d34dd2f",
+    "kicad-direct.mjs": "fc84b26e8171dfc9ed5d052a8efb634a659a3bf8ca9ce6fa9975676beee9a1c9",
+    "LICENSE-protobufjs.txt": "49d6a1c9a623784c61c6cb70f773f3457faceb1914a13c8560a9823b7631950c",
+    "LICENSE-blocks-MIT.txt": "56e2b73f041848e87de1c6a805f462f064bfcb4b31a69b135d9f2376281611ad"
+  }
+}

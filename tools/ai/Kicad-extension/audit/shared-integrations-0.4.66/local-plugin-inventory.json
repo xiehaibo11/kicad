@@ -1,0 +1,100 @@
+{
+  "checkedAt": "2026-10-23T22:50:17.668Z",
+  "metadataOnly": true,
+  "defaultPluginSync": false,
+  "plugins": [
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · chrome@openai-bundled",
+      "used": true,
+      "servers": []
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · visualize@openai-bundled",
+      "used": true,
+      "servers": []
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · browser@openai-bundled",
+      "used": true,
+      "servers": []
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · codex-app-tools@openai-bundled",
+      "used": true,
+      "servers": [
+        {
+          "name": "plugin_codex-app-to_codex_app_c5adb4f2",
+          "disabled": true,
+          "available": false,
+          "issue": "Original host tool policies require that host; this definition is not imported with weaker policies."
+        }
+      ]
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · unified-computer-use@openai-bundled",
+      "used": true,
+      "servers": [
+        {
+          "name": "plugin_unified-comp_cua_repl_6bdfd1c0",
+          "disabled": false,
+          "available": false,
+          "issue": "Requires authentication or a private connection managed by the original app. Use it in that app or configure a standalone MCP server."
+        }
+      ]
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · computer-use@openai-bundled",
+      "used": true,
+      "servers": []
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · documents@openai-primary-runtime",
+      "used": true,
+      "servers": []
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · pdf@openai-primary-runtime",
+      "used": true,
+      "servers": []
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · spreadsheets@openai-primary-runtime",
+      "used": true,
+      "error": "Registered app connections are managed by the original host; no standalone MCP server is bundled.",
+      "servers": []
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · presentations@openai-primary-runtime",
+      "used": true,
+      "servers": []
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · template-creator@openai-primary-runtime",
+      "used": true,
+      "servers": []
+    },
+    {
+      "source": "codex-plugins",
+      "label": "Codex Plugins · code-review@openai-bundled",
+      "used": true,
+      "servers": [
+        {
+          "name": "plugin_code-review__code-review_0a89e1f6",
+          "disabled": true,
+          "available": true
+        }
+      ]
+    }
+  ]
+}

@@ -32,14 +32,14 @@ npx --yes @-kicadai/kicad-code@latest --continue
 ```
 
 npm 官方包为 [`@-kicadai/kicad-code`](https://www.npmjs.com/package/@-kicadai/kicad-code)，
-当前版本为 `0.2.1`，可省略版本号获取 `latest`。
-旧版 0.1.1 也有 GitHub Release 上的 npm tarball：
+`latest` 可能落后于 GitHub 发行版；可用 `npm view @-kicadai/kicad-code version` 查询。
+本次 0.2.3 可从 GitHub Release 的完整 tarball 启动：
 
 ```sh
-npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-code-v0.1.1/-kicadai-kicad-code-0.1.1.tgz Kicad
+npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-code-v0.2.3/-kicadai-kicad-code-0.2.3.tgz Kicad
 ```
 
-校验报告与发行包见 [Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.1.1)。
+校验报告与发行包见 [Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.2.3)。
 
 `npx` 是下载、缓存并运行 npm 包的入口；全局安装后才会在 PATH 中长期提供
 这些命令。包内携带原生运行时和完整后端，不要求 Bun、Python 或 Go。
@@ -60,7 +60,13 @@ KICAD_CLI=/path/to/kicad-cli Kicad
 源码与许可证：https://github.com/xiehaibo11/kicad/tree/codex/kicad-npm/tools/ai/Kicad-terminal
 各开源组件保留原许可证，详见 THIRD_PARTY_NOTICES.md 与 licenses/。
 
-## 0.2.1 KiCad 工具按需加载
+## 0.2.3 共享策略与按需发现
+
+工具、MCP 和技能使用 `capability_search` 查找相关元数据，再通过 `capability_call` 读取所选技能或执行所选工具。
+启动时不预加载技能正文、不连接所有 MCP 服务器。`Kicad doctor prompt-audit` 直接输出本地审计 JSON。
+设置与扩展 0.4.64 共用；子代理仍需要用户明确请求。内嵌 Web UI 与原有子命令保留。
+
+## 0.2.1 KiCad 工具按需加载（历史版本）
 
 会话开始时只带一个 `kicad_load` 工具和简短说明；消息涉及 KiCad/PCB/原理图等工作，或模型调用 `kicad_load` 后，
 同一轮内即加载 20 个 KiCad 工具和完整指南，并在该会话中保持。普通对话不再每次携带 KiCad 工具定义。
@@ -85,7 +91,7 @@ KICAD_CLI=/path/to/kicad-cli Kicad
 新增 `release.snapshot/template/check`，按当前工程文件与证据的 SHA-256 检查投板、投产资料完整性。
 任务进度不能替代审查证据；软件检查也不能代替实物验证和责任工程师的最终放行。
 
-当前后端目录：335 个类型化动作、20 组进程内工具、971 个原生 GUI 工具索引。
+当前后端目录：333 个类型化动作、20 组进程内工具、971 个原生 GUI 工具索引。
 这些数量表示可发现入口，不表示每个动作都已在实板上逐项验证。
 包内含共享 JavaScript 工具、8 个技能及 `kicad-engineering` 的完整辅助参考文件。
 

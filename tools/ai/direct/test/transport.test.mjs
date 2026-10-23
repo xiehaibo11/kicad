@@ -39,5 +39,7 @@ test('deadline and cancellation do not replay a submitted edit', () => fixture('
   await assert.rejects(client.request(Buffer.from('edit'), { timeoutMs: 20 }), e => e.code === 'TIMEOUT');
   const controller = new AbortController(), pending = client.request(Buffer.from('edit2'), { timeoutMs: 1000, signal: controller.signal }); setTimeout(() => controller.abort(), 20);
   await assert.rejects(pending, e => e.code === 'CANCELLED'); assert.equal(counts().requests, 2);
+  // A runtime deadline arrives as an aborted signal; it is reported as a timeout, not a user cancellation.
+  await assert.rejects(client.request(Buffer.from('edit3'), { timeoutMs: 1000, signal: AbortSignal.timeout(20) }), e => e.code === 'TIMEOUT' && !/cancel/i.test(e.message)); assert.equal(counts().requests, 3);
   await assert.rejects(client.request(Buffer.from('x'), { timeoutMs: -1 }), e => e.code === 'BAD_INPUT');
 }));

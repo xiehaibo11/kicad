@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "vsixSha256": "1fcb99cce1734ffaab07014606e54a7ee81c6da83338e7631fd9acfe8ace5c5d",
+  "installations": [
+    {
+      "editor": ".vscode",
+      "path": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.65",
+      "files": 1218,
+      "differences": []
+    },
+    {
+      "editor": ".cursor",
+      "path": "/Users/mosc/.cursor/extensions/kicad-agent.kicad-0.4.65",
+      "files": 1218,
+      "differences": []
+    }
+  ]
+}

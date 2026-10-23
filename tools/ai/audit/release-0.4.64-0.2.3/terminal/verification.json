@@ -1,0 +1,29 @@
+{
+  "sourceCommit": "0197fd4cd801833e1d3473861cc7303e4e505377",
+  "sourceBranch": "codex/release-settings-0.4.64",
+  "sourceFilesInReleaseCommit": 132,
+  "tests": {
+    "composerPass": 55,
+    "directPass": 64,
+    "directLiveIpcSkipped": 6,
+    "membershipPass": 3
+  },
+  "limits": [
+    "Provider UI and protocol fixtures do not establish live inference quality for every model.",
+    "No native KiCad design acceptance was performed."
+  ],
+  "ok": true,
+  "version": "0.2.3",
+  "nativeBaseline": "1.19.3",
+  "platform": "darwin-arm64",
+  "nodeMinimum": 22,
+  "embeddedWebUi": true,
+  "typeChecks": true,
+  "tuiPass": 212,
+  "tuiSkip": 1,
+  "nativeKicadTestsPass": 11,
+  "npmTestsPass": 4,
+  "cleanInstallAcceptance": true,
+  "npmRegistryPublished": false,
+  "npmRegistryReason": "No authenticated publishing session (npm whoami returned E401)."
+}

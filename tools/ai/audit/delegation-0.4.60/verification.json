@@ -1,0 +1,48 @@
+{
+  "version": "0.4.60",
+  "sourceSha256": "5cc09fc08802e471bfe398212ef620b67c1ab571ec185f52d0eb060bf5ad416a",
+  "vsixSha256": "211e3421db42318581d3b25269919345158eb1bfc1dc7698998f3facfeb7dda9",
+  "localInstallation": {
+    "ok": true,
+    "version": "0.4.60",
+    "filesVerified": 1217,
+    "installed": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.60",
+    "vsixSha256": "211e3421db42318581d3b25269919345158eb1bfc1dc7698998f3facfeb7dda9",
+    "activeWindowsReloaded": false
+  },
+  "sharedTests": {
+    "passed": 46,
+    "failed": 0
+  },
+  "runtimeQueries": 8,
+  "runtimeTurns": 11,
+  "unauthorizedChildren": 0,
+  "authorizedChildren": 1,
+  "productionUi": {
+    "ok": true,
+    "version": "0.4.60",
+    "provenance": "Production UI bundle with synthetic host events; no model requests; screenshots visibly labeled",
+    "checks": [
+      "ordinary project inspection displays no child or delegation step",
+      "explicit delegation has a separate labeled fixture",
+      "no aggregate wrapper, counters or automatic terminal reveal",
+      "one live stream status before the first event",
+      "progress, tool outputs and findings appear in event order",
+      "thought disclosure by mouse and keyboard",
+      "full tool outputs and child logs retained",
+      "child result never settles main turn",
+      "important findings visible",
+      "failed call output on its own ERR step",
+      "permission prompt available",
+      "final answer follows progressive steps",
+      "320px no horizontal overflow",
+      "pause and immediate resend restores session",
+      "late retired result and close cannot stop resend",
+      "one send per explicit message",
+      "new chat resets execution and agents",
+      "ordinary chat streams normally"
+    ],
+    "pageErrors": []
+  },
+  "activation": "Existing windows have not been reloaded; a running hardware-project task was observed. No external model requests were sent by verification."
+}

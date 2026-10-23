@@ -1,0 +1,16 @@
+
+> @-kicadai/kicad-code@0.2.3 test
+> node --test test/*.test.mjs
+
+✔ declares the installation method so updates use the same package manager (0.737583ms)
+✔ JSONC retains model, provider, MCP, plugin, skills and compaction choices (1.119541ms)
+✔ malformed inherited settings fail without silently dropping user data (0.342375ms)
+✔ bundle carries full backend; optional credentials are read only; override wins (1.187ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 87.723458

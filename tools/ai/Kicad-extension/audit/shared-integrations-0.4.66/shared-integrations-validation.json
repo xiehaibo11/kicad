@@ -1,0 +1,388 @@
+{
+  "version": "0.4.66",
+  "checkedAt": "2026-10-23T22:51:29.024998+00:00",
+  "sourceCommit": "d7085b573ade6711d396d5d869131c09168bfd1a",
+  "sourceParent": "c9331b47627df92032b7836a5ef2a051033e3793",
+  "buildSourceFilesMatched": 256,
+  "buildManifest": {
+    "schemaVersion": 1,
+    "kind": "extension",
+    "version": "0.4.66",
+    "createdAt": "2026-10-23T22:50:00.497717+00:00",
+    "upstreamCommit": "c238b3e57c55e95220a8e2837cd4cbe6350a6b65",
+    "sourceSha256": "b0ec07d863baed736de73f550206aa3f0dcdfee36842cf15d8356969a934bb4a",
+    "files": {
+      "kicad-0.4.66.vsix": "cff148dc2fb100664009af640f479c0048311930c472e12873c1f89fd8e158a0"
+    }
+  },
+  "build": {
+    "ok": true,
+    "typescript": true,
+    "vueTypescript": true,
+    "regressionGates": true,
+    "packagedBundle": true,
+    "note": "One UI assertion was corrected to inspect the native disabled property after packaging; no production source or payload changed. Source manifest was refreshed and verified."
+  },
+  "composerTests": {
+    "passed": 57,
+    "failed": 0
+  },
+  "realMcp": {
+    "ok": true,
+    "provenance": "production connector and catalog; disposable local stdio MCP plugin; no external MCP or model requests",
+    "checks": [
+      "metadata-only discovery starts no process",
+      "plugin source opt-in",
+      "original schema and result",
+      "one shared server process",
+      "revocation disconnects"
+    ]
+  },
+  "ui": {
+    "computer": {
+      "ok": true,
+      "provenance": "production bundle; simulated host; no live OS actions",
+      "checks": [
+        "independent off/on",
+        "service and TCC status",
+        "per-app allowlist",
+        "Any App",
+        "Restart",
+        "View Log in editor request",
+        "locked-screen unsupported",
+        "no permission request on load",
+        "off readback"
+      ],
+      "requests": [
+        {
+          "type": "kicad_computer_status"
+        },
+        {
+          "type": "kicad_computer_setting",
+          "action": "enabled",
+          "value": true
+        },
+        {
+          "type": "kicad_computer_setting",
+          "action": "allowedApps",
+          "value": [
+            "org.kicad.kicad",
+            "org.kicad.pcbnew",
+            "org.kicad.eeschema",
+            "com.google.Chrome"
+          ]
+        },
+        {
+          "type": "kicad_computer_setting",
+          "action": "anyApp",
+          "value": true
+        },
+        {
+          "type": "kicad_computer_setting",
+          "action": "restart"
+        },
+        {
+          "type": "kicad_computer_setting",
+          "action": "log"
+        },
+        {
+          "type": "kicad_computer_setting",
+          "action": "enabled",
+          "value": false
+        },
+        {
+          "type": "kicad_computer_status"
+        },
+        {
+          "type": "kicad_computer_setting",
+          "action": "reload"
+        }
+      ],
+      "errors": []
+    },
+    "settings": {
+      "ok": true,
+      "version": "0.4.66",
+      "provenance": "production webview bundle; fixture inventory from composer/inventory.ts; simulated host responses; no model calls",
+      "checks": [
+        "skills grouped by source with duplicate/overridden/outdated/manual flags",
+        "skill toggle sends kicad_set_enabled; manual skills have no toggle",
+        "Open sends open_file with the SKILL.md path",
+        "slash commands namespaced with override and outdated flags",
+        "built-in and configured hooks, missing program flagged",
+        "plugin search; install command copied, not executed",
+        "MCP configured servers from files incl. built-in tools; no secrets; old empty text replaced",
+        "servers synced from Codex/Cursor with source badges; repository file of another tool unused",
+        "per-tool sync switch sends kicad_set_sync and marks its servers off",
+        "permission cleanup removes exactly the outdated rules through the host and re-reads settings",
+        "no page errors"
+      ],
+      "requests": {
+        "setEnabled": [
+          {
+            "type": "kicad_set_enabled",
+            "kind": "skill",
+            "name": "kicad-agent",
+            "enabled": false
+          }
+        ],
+        "clean": [
+          {
+            "type": "kicad_clean_permissions",
+            "rules": [
+              {
+                "scope": "local",
+                "list": "allow",
+                "rule": "Bash(./build/bin/kicad-agent:*)"
+              },
+              {
+                "scope": "local",
+                "list": "allow",
+                "rule": "mcp__kicad__kicad_board"
+              }
+            ]
+          }
+        ]
+      },
+      "pageErrors": []
+    }
+  },
+  "realEditors": {
+    "vscode": {
+      "ok": true,
+      "provenance": "real VS Code Extension Test Host; activated final VSIX router; actual signed Cua Driver; no model requests or screenshots",
+      "version": "0.4.66",
+      "enabled": {
+        "enabled": true,
+        "driverPath": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "anyApp": false,
+        "allowedApps": [
+          "org.kicad.kicad",
+          "org.kicad.pcbnew",
+          "org.kicad.eeschema"
+        ],
+        "binary": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "running": true,
+        "permissions": {
+          "accessibility": true,
+          "direct_capture_error": null,
+          "direct_capture_status": "not_checked",
+          "screen_recording": true,
+          "screen_recording_capturable": null,
+          "source": {
+            "attribution": "driver-daemon",
+            "bundle_id": "com.trycua.driver",
+            "disclaim_env": false,
+            "executable": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+            "note": "These booleans reflect the CuaDriver daemon's own TCC identity (com.trycua.driver) because this process is its own responsible process.",
+            "pid": 36837,
+            "responsible_ppid": 1
+          }
+        },
+        "missingSettings": [],
+        "reloadRequired": false,
+        "platform": "darwin",
+        "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-cua-501/driver.sock",
+        "log": "/tmp/ki-cua-host-60XmsE/profile/home/Library/Logs/Kicad/cua-driver.log",
+        "persistent": true,
+        "lockedUse": false
+      },
+      "off": {
+        "enabled": false,
+        "driverPath": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "anyApp": false,
+        "allowedApps": [
+          "org.kicad.pcbnew"
+        ],
+        "binary": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "running": false,
+        "missingSettings": [],
+        "reloadRequired": false,
+        "platform": "darwin",
+        "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-cua-501/driver.sock",
+        "log": "/tmp/ki-cua-host-60XmsE/profile/home/Library/Logs/Kicad/cua-driver.log",
+        "persistent": false,
+        "lockedUse": false
+      },
+      "exitStatus": {
+        "enabled": true,
+        "driverPath": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "anyApp": false,
+        "allowedApps": [
+          "org.kicad.pcbnew"
+        ],
+        "binary": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "running": true,
+        "permissions": {
+          "accessibility": true,
+          "direct_capture_error": null,
+          "direct_capture_status": "not_checked",
+          "screen_recording": true,
+          "screen_recording_capturable": null,
+          "source": {
+            "attribution": "driver-daemon",
+            "bundle_id": "com.trycua.driver",
+            "disclaim_env": false,
+            "executable": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+            "note": "These booleans reflect the CuaDriver daemon's own TCC identity (com.trycua.driver) because this process is its own responsible process.",
+            "pid": 36971,
+            "responsible_ppid": 1
+          }
+        },
+        "missingSettings": [],
+        "reloadRequired": false,
+        "platform": "darwin",
+        "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-cua-501/driver.sock",
+        "log": "/tmp/ki-cua-host-60XmsE/profile/home/Library/Logs/Kicad/cua-driver.log",
+        "persistent": true,
+        "lockedUse": false
+      }
+    },
+    "cursor": {
+      "ok": true,
+      "provenance": "real VS Code Extension Test Host; activated final VSIX router; actual signed Cua Driver; no model requests or screenshots",
+      "version": "0.4.66",
+      "enabled": {
+        "enabled": true,
+        "driverPath": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "anyApp": false,
+        "allowedApps": [
+          "org.kicad.kicad",
+          "org.kicad.pcbnew",
+          "org.kicad.eeschema"
+        ],
+        "binary": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "running": true,
+        "permissions": {
+          "accessibility": true,
+          "direct_capture_error": null,
+          "direct_capture_status": "not_checked",
+          "screen_recording": true,
+          "screen_recording_capturable": null,
+          "source": {
+            "attribution": "driver-daemon",
+            "bundle_id": "com.trycua.driver",
+            "disclaim_env": false,
+            "executable": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+            "note": "These booleans reflect the CuaDriver daemon's own TCC identity (com.trycua.driver) because this process is its own responsible process.",
+            "pid": 37254,
+            "responsible_ppid": 1
+          }
+        },
+        "missingSettings": [],
+        "reloadRequired": false,
+        "platform": "darwin",
+        "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-cua-501/driver.sock",
+        "log": "/tmp/ki-cua-host-I62QeH/profile/home/Library/Logs/Kicad/cua-driver.log",
+        "persistent": true,
+        "lockedUse": false
+      },
+      "off": {
+        "enabled": false,
+        "driverPath": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "anyApp": false,
+        "allowedApps": [
+          "org.kicad.pcbnew"
+        ],
+        "binary": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "running": false,
+        "missingSettings": [],
+        "reloadRequired": false,
+        "platform": "darwin",
+        "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-cua-501/driver.sock",
+        "log": "/tmp/ki-cua-host-I62QeH/profile/home/Library/Logs/Kicad/cua-driver.log",
+        "persistent": false,
+        "lockedUse": false
+      },
+      "exitStatus": {
+        "enabled": true,
+        "driverPath": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "anyApp": false,
+        "allowedApps": [
+          "org.kicad.pcbnew"
+        ],
+        "binary": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "running": true,
+        "permissions": {
+          "accessibility": true,
+          "direct_capture_error": null,
+          "direct_capture_status": "not_checked",
+          "screen_recording": true,
+          "screen_recording_capturable": null,
+          "source": {
+            "attribution": "driver-daemon",
+            "bundle_id": "com.trycua.driver",
+            "disclaim_env": false,
+            "executable": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+            "note": "These booleans reflect the CuaDriver daemon's own TCC identity (com.trycua.driver) because this process is its own responsible process.",
+            "pid": 37470,
+            "responsible_ppid": 1
+          }
+        },
+        "missingSettings": [],
+        "reloadRequired": false,
+        "platform": "darwin",
+        "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-cua-501/driver.sock",
+        "log": "/tmp/ki-cua-host-I62QeH/profile/home/Library/Logs/Kicad/cua-driver.log",
+        "persistent": true,
+        "lockedUse": false
+      }
+    }
+  },
+  "installation": {
+    "ok": true,
+    "checkedAt": "2026-10-23T22:50:34.102798+00:00",
+    "vsixSha256": "cff148dc2fb100664009af640f479c0048311930c472e12873c1f89fd8e158a0",
+    "installed": [
+      {
+        "editor": "VS Code",
+        "version": "0.4.66",
+        "path": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.66",
+        "payloadFilesChecked": 1218,
+        "mismatches": [],
+        "packageMetadataIgnored": true
+      },
+      {
+        "editor": "Cursor",
+        "version": "0.4.66",
+        "path": "/Users/mosc/.cursor/extensions/kicad-agent.kicad-0.4.66",
+        "payloadFilesChecked": 1218,
+        "mismatches": [],
+        "packageMetadataIgnored": true
+      }
+    ],
+    "existingWindowsNotReloaded": true
+  },
+  "service": {
+    "ok": true,
+    "productionLaunchAgent": "/Users/mosc/Library/LaunchAgents/org.kicad.agent.cua-driver.plist",
+    "log": "/Users/mosc/Library/Logs/Kicad/cua-driver.log",
+    "pid": "37470",
+    "permissions": {
+      "accessibility": true,
+      "direct_capture_error": null,
+      "direct_capture_status": "not_checked",
+      "screen_recording": true,
+      "screen_recording_capturable": null,
+      "source": {
+        "attribution": "driver-daemon",
+        "bundle_id": "com.trycua.driver",
+        "disclaim_env": false,
+        "executable": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "note": "These booleans reflect the CuaDriver daemon's own TCC identity (com.trycua.driver) because this process is its own responsible process.",
+        "pid": 37470,
+        "responsible_ppid": 1
+      }
+    },
+    "checkedAt": "2026-10-23T22:50:00.419Z",
+    "noCapture": true
+  },
+  "limits": [
+    "No new live model matrix in 0.4.66. Prior 0.4.65 screen-control acceptance: 12 passed, Fable 5.1 blocked by usage credits.",
+    "UI tests use the production bundle with simulated host responses; real host tests separately verify actual settings registration, writes and signed service.",
+    "Only standalone local JSON MCP definitions are shared. Private host connections, auth stores, hooks and application add-ins are not transferred.",
+    "On this machine no enabled standalone plugin server was eligible. Real transport acceptance used a disposable plugin fixture.",
+    "Likely cause of screenshot is an older settings registry in an existing window after repeated same-version replacement; exact original renderer state was not captured.",
+    "GitHub Release distribution only; no Marketplace or npm publication."
+  ]
+}

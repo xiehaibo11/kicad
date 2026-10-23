@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "productionLaunchAgent": "/Users/mosc/Library/LaunchAgents/org.kicad.agent.cua-driver.plist",
+  "log": "/Users/mosc/Library/Logs/Kicad/cua-driver.log",
+  "pid": "37470",
+  "permissions": {
+    "accessibility": true,
+    "direct_capture_error": null,
+    "direct_capture_status": "not_checked",
+    "screen_recording": true,
+    "screen_recording_capturable": null,
+    "source": {
+      "attribution": "driver-daemon",
+      "bundle_id": "com.trycua.driver",
+      "disclaim_env": false,
+      "executable": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+      "note": "These booleans reflect the CuaDriver daemon's own TCC identity (com.trycua.driver) because this process is its own responsible process.",
+      "pid": 37470,
+      "responsible_ppid": 1
+    }
+  },
+  "checkedAt": "2026-10-23T22:50:00.419Z",
+  "noCapture": true
+}

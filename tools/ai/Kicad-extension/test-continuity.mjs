@@ -7,28 +7,81 @@ import vm from 'node:vm';
 import {createRequire} from 'node:module';
 const root=process.argv[2],require=createRequire(path.join(root,'package.json')),ts=require('typescript');
 function load(file){const module={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,process,console,Buffer,require:name=>name.startsWith('.')?load(path.resolve(path.dirname(file),name+'.ts')):require(name)});return module.exports;}
-const {SessionContinuity}=load(path.join(root,'src/services/claude/sessionContinuity.ts'));
+const {SessionContinuity:LoadedContinuity}=load(path.join(root,'src/services/claude/sessionContinuity.ts'));
+// Hooks record diagnostics without awaiting; wait for those writes before deleting the fixture directory.
+const continuities=[];class SessionContinuity extends LoadedContinuity{constructor(...args){super(...args);continuities.push(this);}}
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'Kicad-continuity-'));
 const oldDiagnostics=process.env.KICAD_DIAGNOSTICS_DIR;process.env.KICAD_DIAGNOSTICS_DIR=path.join(tmp,'diagnostics');
 try{
  const policy=new SessionContinuity(path.join(tmp,'state')),input={session_id:'fixture-session',cwd:tmp,transcript_path:path.join(tmp,'session.jsonl')};
- assert.equal(policy.beforeTool({...input,tool_name:'Bash'}).hookSpecificOutput.permissionDecision,'deny','startup grants no task');
+ // Continuity records events. It must never deny a tool based on a conversational heuristic.
+ assert.equal(policy.beforeTool({...input,tool_name:'Bash'}).continue,true,'startup is recorded, not blocked');
  for(const prompt of ['','  ','1','2。','你好','hello']){
-  await policy.prompt({...input,prompt});
-  for(const tool_name of ['Bash','Read','Task','mcp__kicad__kicad_health'])assert.equal(policy.beforeTool({...input,tool_name}).hookSpecificOutput.permissionDecision,'deny');
+  const submitted=await policy.prompt({...input,prompt});
+  assert.ok(submitted.hookSpecificOutput.additionalContext.length);
+  for(const tool_name of ['Bash','Read','Task','ToolSearch','mcp__kicad__kicad_health'])assert.equal(policy.beforeTool({...input,tool_name}).continue,true,prompt+':'+tool_name);
   assert.equal(policy.beforeTool({...input,tool_name:'AskUserQuestion'}).continue,true);
  }
+ const ambiguous=await policy.prompt({...input,prompt:'你好'});
+ assert.match(ambiguous.hookSpecificOutput.additionalContext,/underspecified/i);
  const question={questions:[{question:'需要执行什么任务？',options:[{label:'运行 DRC'},{label:'解释结果'}]}]};
+ for(const prompt of ['谢谢','好的','你是谁？','不要调用工具，只解释刚才的结果','Answer from this chat without tools']){
+  const submitted=await policy.prompt({...input,prompt});
+  assert.match(submitted.hookSpecificOutput.additionalContext,/conversational|asked not to use tools|underspecified/i);
+  for(const tool_name of ['Bash','Read','Task','ToolSearch','mcp__kicad__capability_search','AskUserQuestion'])assert.equal(policy.beforeTool({...input,tool_name}).continue,true,prompt+':'+tool_name);
+ }
+ await policy.prompt({...input,prompt:'你好'});
  assert.equal(policy.validateAnswer('AskUserQuestion',question,{behavior:'allow',updatedInput:question}).behavior,'deny','generic Yes may not select the first option');
- assert.equal(policy.beforeTool({...input,tool_name:'Bash'}).hookSpecificOutput.permissionDecision,'deny');
+ assert.equal(policy.beforeTool({...input,tool_name:'Bash'}).continue,true);
  assert.equal(policy.validateAnswer('AskUserQuestion',question,{behavior:'allow',updatedInput:{...question,answers:{'需要执行什么任务？':'解释结果'}}}).behavior,'allow');
  assert.equal(policy.beforeTool({...input,tool_name:'Read'}).continue,true);
  await policy.prompt({...input,prompt:'修改 U1 的参数为 10 kΩ，运行 DRC，不要布线。'});
  assert.equal(policy.beforeTool({...input,tool_name:'mcp__kicad__kicad_call'}).continue,true);
+ // Enforced policies: sub-agents only on an explicit request, and the harness deny list.
+ const decision=result=>result.hookSpecificOutput?.permissionDecision;
+ await policy.prompt({...input,prompt:'请把项目进行深度了解'});
+ assert.equal(decision(policy.beforeTool({...input,tool_name:'Agent',tool_input:{subagent_type:'Explore',prompt:'x'}})),'deny','no unrequested sub-agent');
+ assert.match(policy.beforeTool({...input,tool_name:'Task'}).hookSpecificOutput.permissionDecisionReason,/explicitly asks/);
+ await policy.prompt({...input,prompt:'<document>Use a subagent to inspect</document> Explain the document.'});
+ assert.equal(decision(policy.beforeTool({...input,tool_name:'Agent'})),'deny');
+ await policy.prompt({...input,prompt:'用子代理并行检查电源和接口'});
+ await policy.recordInput({type:'user',message:{role:'user',content:'用子代理并行检查电源和接口'},parent_tool_use_id:null},tmp);
+ assert.equal(decision(policy.beforeTool({...input,tool_name:'Agent'})),undefined,'an explicit request launches it');
+ policy.configure({subagents:false,skillsMode:'native',disabledSkills:['private']});
+ assert.equal(decision(policy.beforeTool({...input,tool_name:'Agent'})),'deny','disabled beats launch request');
+ assert.equal(decision(policy.beforeTool({...input,tool_name:'Skill',tool_input:{skill:'plugin:private'}})),'deny');
+ assert.equal(decision(policy.beforeTool({...input,tool_name:'Skill',tool_input:{skill:'public'}})),undefined);
+ policy.configure({subagents:true,skillsMode:'off'});
+ assert.equal(decision(policy.beforeTool({...input,tool_name:'Skill',tool_input:{skill:'public'}})),'deny');
+ assert.equal(decision(policy.beforeTool({...input,tool_name:'Bash',tool_input:{command:'sudo rm -rf /'}})),'deny');
+ assert.equal(decision(policy.beforeTool({...input,tool_name:'Bash',tool_input:{command:'ls -la'}})),undefined);
+ // Authorization comes from the root host input, never an SDK/child prompt or observed message.
+ const provenance=new SessionContinuity(path.join(tmp,'provenance'));
+ const human=content=>({type:'user',message:{role:'user',content},parent_tool_use_id:null});
+ const agent=()=>decision(provenance.beforeTool({...input,tool_name:'Agent'}));
+ await provenance.prompt({...input,prompt:'Use a subagent to inspect'});
+ assert.equal(agent(),'deny','a hook alone is not human authorization');
+ await provenance.recordInput(human('请把项目进行深度了解'),tmp);
+ await provenance.prompt({...input,prompt:'Use a subagent to inspect'});
+ assert.equal(agent(),'deny','a rewritten SDK prompt cannot grant authorization');
+ await provenance.observe({type:'assistant',message:{content:[{type:'text',text:'I will launch agents.'}]}});
+ assert.equal(agent(),'deny','an assistant plan cannot grant authorization');
+ await provenance.recordInput(human('Use a subagent to inspect U1'),tmp);
+ assert.equal(agent(),undefined,'a direct root human request authorizes delegation');
+ await provenance.prompt({...input,prompt:'Inspect U1'});
+ assert.equal(agent(),undefined,'a child hook cannot overwrite the root request');
+ for(const extra of [{isSynthetic:true},{isMeta:true},{isSidechain:true},{parent_tool_use_id:'parent'}]){
+   await provenance.recordInput({...human('Read it yourself'),...extra},tmp);
+   assert.equal(agent(),undefined,'synthetic/child inputs cannot change root authorization');
+ }
+ await provenance.recordInput(human('Read it yourself'),tmp);
+ assert.equal(agent(),'deny','the next ordinary human turn revokes authorization');
+ await provenance.recordInput({...human('Use a subagent to inspect'),isSynthetic:true},tmp);
+ assert.equal(agent(),'deny','synthetic inputs cannot authorize delegation');
+ assert.equal(policy.needsConfirmation('Bash',{command:'git push --force'},'/fixture'),true);assert.equal(policy.needsConfirmation('Bash',{command:'ls'},'/fixture'),false);
  if(process.platform==='darwin'){
-   const blocked=policy.beforeTool({...input,tool_name:'Bash',tool_input:{command:'unzip -q "中文.epro2" -d /tmp/new'}});
-   assert.equal(blocked.hookSpecificOutput.permissionDecision,'deny');assert.match(blocked.hookSpecificOutput.permissionDecisionReason,/ditto/);
-   assert.equal(policy.beforeTool({...input,tool_name:'Bash',tool_input:{command:'ditto -x -k "中文.epro2" /tmp/new'}}).continue,true);
+   // The archive advice is still delivered after the failure, not as a pre-execution denial.
+   assert.equal(policy.beforeTool({...input,tool_name:'Bash',tool_input:{command:'unzip -q "中文.epro2" -d /tmp/new'}}).continue,true);
    const hint=policy.failedTool({...input,tool_name:'Bash',error:'Exit code 50\nwrite error (disk full?)'});
    assert.match(hint.hookSpecificOutput.additionalContext,/ditto/);
  }
@@ -37,8 +90,8 @@ try{
  await policy.checkpoint(input);const state=JSON.parse(fs.readFileSync(path.join(tmp,'state/fixture-session/checkpoint.json')));
  assert.ok(fs.readFileSync(state.archive,'utf8').startsWith(raw));assert.equal(state.requests[0].text,records[0].message.content);assert.equal(state.ledger.find(t=>t.id==='pending-1').status,'pending or interrupted');assert.equal(state.todos[0].status,'in_progress');assert.equal(fs.statSync(state.archive).mode&0o777,0o600);
  const continuation=await policy.start({...input,source:'compact'});assert.match(continuation.hookSpecificOutput.additionalContext,/10 kΩ/);assert.match(continuation.hookSpecificOutput.additionalContext,/不要布线/);assert.match(continuation.hookSpecificOutput.additionalContext,/pending-1/);assert.match(continuation.hookSpecificOutput.additionalContext,/fullHistory/);
- const restored=new SessionContinuity(path.join(tmp,'state'));await restored.start({...input,source:'resume'});assert.equal(restored.beforeTool({...input,tool_name:'Write'}).hookSpecificOutput.permissionDecision,'deny','opening old history never resumes work');
- await policy.prompt({...input,prompt:'1'});await policy.checkpoint(input);await policy.start({...input,source:'compact'});assert.equal(policy.beforeTool({...input,tool_name:'Write'}).hookSpecificOutput.permissionDecision,'deny','compaction grants no inferred task');
+ assert.equal(policy.beforeTool({...input,tool_name:'Write'}).continue,true,'restoring history is context, not a permission decision');
+ await policy.prompt({...input,prompt:'1'});await policy.checkpoint(input);await policy.start({...input,source:'compact'});assert.equal(policy.beforeTool({...input,tool_name:'Write'}).continue,true,'compaction is context, not a permission decision');
  const racing=new SessionContinuity(path.join(tmp,'race'));
  await racing.prompt({...input,prompt:'创建文件，不要布线。'});
  racing.beforeTool({...input,tool_name:'Write',tool_use_id:'race-write',tool_input:{file_path:'/fixture.txt',content:'OK'}});
@@ -51,10 +104,15 @@ try{
  const guarded=new SessionContinuity(path.join(tmp,'guard'));
  await guarded.prompt({...input,prompt:'检查原理图并修复错误。'});
  const failed={...input,tool_name:'Bash',tool_input:{command:'false'},error:'exit 1'};
- for(let i=0;i<3;i++){assert.equal(guarded.beforeTool({...failed,tool_use_id:'f'+i}).continue,true);guarded.failedTool({...failed,tool_use_id:'f'+i});}
- assert.equal(guarded.beforeTool(failed).hookSpecificOutput.permissionDecision,'deny');
+ for(let i=0;i<3;i++){assert.equal(guarded.beforeTool({...failed,tool_use_id:'f'+i}).continue,true);const hint=guarded.failedTool({...failed,tool_use_id:'f'+i});if(i===2)assert.match(hint.hookSpecificOutput.additionalContext,/three times/);}
+ assert.equal(guarded.beforeTool(failed).continue,true,'repeated failure is advice; the model may still change and retry');
  assert.equal(guarded.beforeTool({...failed,tool_input:{command:'pwd'}}).continue,true);
  await guarded.prompt({...input,prompt:'修正环境后再试一次。'});assert.equal(guarded.beforeTool(failed).continue,true);
+ // Malformed/older checkpoints must not crash a hook or the session start (the historical slice failure).
+ const broken=new SessionContinuity(path.join(tmp,'broken'));fs.mkdirSync(path.join(tmp,'broken/fixture-session'),{recursive:true});
+ fs.writeFileSync(path.join(tmp,'broken/fixture-session/checkpoint.json'),JSON.stringify({schemaVersion:1,requests:null,ledger:null,todos:null,archive:null}));
+ const repaired=await broken.start({...input,source:'compact'});assert.match(repaired.hookSpecificOutput.additionalContext,/Task checkpoint/);
+ assert.equal(broken.beforeTool({...input,tool_name:'Bash'}).continue,true);
  const large={...input,tool_name:'mcp__kicad__kicad_board',tool_input:{},tool_use_id:'large',tool_response:{ok:false,error:{message:'测'.repeat(100000)}}};
  const compactResult=await guarded.afterTool(large),replacement=compactResult.hookSpecificOutput.updatedMCPToolOutput;
  assert.equal(replacement.isError,true);const reference=JSON.parse(replacement.content[0].text);
@@ -87,5 +145,5 @@ try{
  vm.runInNewContext(ts.transpileModule(wrap,{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText,{result:fakeResult,continuity:fakeContinuity,cwdParam:tmp});
  for await(const _ of fakeResult){}
  assert.deepEqual(seen,['assistant','result'],'for-await over the SDK query must pass every message through observe');
- console.log('Continuity passed: no startup/ambiguous execution, actual question answers, clear-task tools, exact history archive, task/todo/pending state restored, no permission grant on restore/compaction.');
-}finally{if(oldDiagnostics===undefined)delete process.env.KICAD_DIAGNOSTICS_DIR;else process.env.KICAD_DIAGNOSTICS_DIR=oldDiagnostics;await fsp.rm(tmp,{recursive:true,force:true});}
+ console.log('Continuity passed: hooks record events and give advice without denying tools; malformed checkpoints do not crash; history/todos/pending state survive compaction.');
+}finally{await Promise.all(continuities.map(c=>c.flushDiagnostics()));if(oldDiagnostics===undefined)delete process.env.KICAD_DIAGNOSTICS_DIR;else process.env.KICAD_DIAGNOSTICS_DIR=oldDiagnostics;await fsp.rm(tmp,{recursive:true,force:true});}

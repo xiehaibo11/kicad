@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "source": "anonymous downloaded VSIX",
+  "version": "0.4.66",
+  "extensionsDirectory": "/tmp/ki-shared-public-qal848r5/clean-extensions",
+  "stdout": "Installing extensions...\nExtension 'kicad-0.4.66.vsix' was successfully installed.\n",
+  "stderr": "(node:39986) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.\n(Use `Code --trace-deprecation ...` to show where the warning was created)\n",
+  "checkedAt": "2026-10-23T23:02:20.810254+00:00"
+}

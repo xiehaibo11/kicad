@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "file": "dist/extension.cjs",
+      "sha256": "3bb8c78d3ff6efe98679a05d49b6a5a24253ac8ae3037919b0033994c5f6b8d1"
+    },
+    {
+      "file": "dist/media/main.js",
+      "sha256": "5932ed1886b01b915f71cfc320ec13e4138d96f48f17797c49d044ea241f9d08"
+    },
+    {
+      "file": "dist/media/style.css",
+      "sha256": "4b83b810006554d32c19600844ff71e3d68c0c10cca0c21cb173cf045a045c28"
+    },
+    {
+      "file": "resources/kicad/kicad-direct.mjs",
+      "sha256": "fc84b26e8171dfc9ed5d052a8efb634a659a3bf8ca9ce6fa9975676beee9a1c9"
+    },
+    {
+      "file": "resources/kicad/session-runtime.mjs",
+      "sha256": "89849b10dd00502c96be7c6ebfe67e3c8477c215ac50282ce554815d620351ad"
+    },
+    {
+      "file": "resources/kicad/agent-doctor.mjs",
+      "sha256": "cfbc9cb0a9d34fa7aa0b672494a970e1b39e55d8ff15b3e14af7df656d34dd2f"
+    }
+  ]
+}

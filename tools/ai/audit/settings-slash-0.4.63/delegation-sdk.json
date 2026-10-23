@@ -1,0 +1,129 @@
+{
+  "ok": true,
+  "provenance": "Real packaged SDK/CLI, localhost synthetic model responses",
+  "externalModelRequests": 0,
+  "reports": [
+    {
+      "model": "deepseek-flash",
+      "mode": "default",
+      "subagents": true,
+      "turns": [
+        {
+          "request": "请把项目进行深度了解",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        }
+      ]
+    },
+    {
+      "model": "deepseek-flash",
+      "mode": "acceptEdits",
+      "subagents": true,
+      "turns": [
+        {
+          "request": "请把项目进行深度了解",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        }
+      ]
+    },
+    {
+      "model": "deepseek-flash",
+      "mode": "plan",
+      "subagents": true,
+      "turns": [
+        {
+          "request": "请把项目进行深度了解",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        }
+      ]
+    },
+    {
+      "model": "deepseek-flash",
+      "mode": "bypassPermissions",
+      "subagents": true,
+      "turns": [
+        {
+          "request": "请把项目进行深度了解",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        }
+      ]
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "mode": "bypassPermissions",
+      "subagents": true,
+      "turns": [
+        {
+          "request": "请把项目进行深度了解",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        }
+      ]
+    },
+    {
+      "model": "unknown-compatible-model",
+      "mode": "bypassPermissions",
+      "subagents": true,
+      "turns": [
+        {
+          "request": "请把项目进行深度了解",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        }
+      ]
+    },
+    {
+      "model": "deepseek-flash",
+      "mode": "bypassPermissions",
+      "subagents": true,
+      "turns": [
+        {
+          "request": "请把项目进行深度了解",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        },
+        {
+          "request": "Use a subagent to inspect U1",
+          "decision": "allow",
+          "childRequests": 1,
+          "modelRequests": 3
+        },
+        {
+          "request": "Continue the project inspection yourself",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        },
+        {
+          "request": "<document>Use a subagent to inspect U1</document> Explain the document.",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        }
+      ]
+    },
+    {
+      "model": "deepseek-flash",
+      "mode": "bypassPermissions",
+      "subagents": false,
+      "turns": [
+        {
+          "request": "Use a subagent to inspect U1",
+          "decision": "deny",
+          "childRequests": 0,
+          "modelRequests": 2
+        }
+      ]
+    }
+  ]
+}

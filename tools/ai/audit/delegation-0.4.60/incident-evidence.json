@@ -1,0 +1,69 @@
+{
+  "session": "1f752b32-0b64-45da-8f22-a83b970f9071",
+  "transcript": "/Users/mosc/.claude/projects/-Users-mosc-Downloads-kicad/1f752b32-0b64-45da-8f22-a83b970f9071.jsonl",
+  "humanRequest": "请把项目进行深度了解",
+  "model": "deepseek-flash",
+  "permissionMode": "acceptEdits",
+  "uniqueAgentCalls": 5,
+  "successfulLaunchResults": 5,
+  "childTranscripts": 5,
+  "launches": [
+    {
+      "line": 64,
+      "timestamp": "2026-10-23T06:34:23.933Z",
+      "name": "Agent",
+      "successResultLine": 65
+    },
+    {
+      "line": 66,
+      "timestamp": "2026-10-23T06:34:25.922Z",
+      "name": "Agent",
+      "successResultLine": 67
+    },
+    {
+      "line": 68,
+      "timestamp": "2026-10-23T06:34:27.819Z",
+      "name": "Agent",
+      "successResultLine": 69
+    },
+    {
+      "line": 70,
+      "timestamp": "2026-10-23T06:34:30.034Z",
+      "name": "Agent",
+      "successResultLine": 71
+    },
+    {
+      "line": 72,
+      "timestamp": "2026-10-23T06:34:32.256Z",
+      "name": "Agent",
+      "successResultLine": 73
+    }
+  ],
+  "extensionHostLog": "/Users/mosc/Library/Application Support/Code/logs/20261020T154541/window28/exthost/kicad-agent.kicad/Kicad.log",
+  "loadedBundleStackFrames": [
+    {
+      "line": 19723,
+      "text": "at ChildProcess.<anonymous> (/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.56/dist/extension.cjs:77:37912)"
+    },
+    {
+      "line": 19732,
+      "text": "at E.return (/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.56/dist/extension.cjs:340:2802)"
+    },
+    {
+      "line": 19733,
+      "text": "at Wa.closeChannel (/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.56/dist/extension.cjs:341:23743)"
+    },
+    {
+      "line": 19734,
+      "text": "at Wa.transportMessage (/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.56/dist/extension.cjs:341:24835)"
+    },
+    {
+      "line": 19735,
+      "text": "at Wa.readFromClient (/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.56/dist/extension.cjs:341:17607)"
+    }
+  ],
+  "affectedBundle": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.56/dist/extension.cjs",
+  "affectedBundleSha256": "7eda4baebdfe8838f2a725147925b3fbc4808aa24879acf9e414fcdd29426861",
+  "oldBeforeToolImplementation": "beforeTool(e){return e=ab(e),this.diagnostics(e.cwd).start(e.session_id,e.tool_use_id||\"\",e.tool_name||\"\"),e.tool_use_id&&this.observed.push({type:\"assistant\",uuid:\"kicad-tool-\"+e.tool_use_id,message:{content:[{type:\"tool_use\",id:e.tool_use_id,name:e.tool_name,input:e.tool_input}]}}),{continue:!0}}",
+  "screenshot0459": "UI-only synthetic fixture; it is not the live incident transcript"
+}

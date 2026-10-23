@@ -19,7 +19,7 @@ async function lines(file:string):Promise<any[]> {
   try {return (await fs.readFile(file,'utf8')).split('\n').flatMap(line=>{try{return [JSON.parse(line)];}catch{return [];}});}
   catch(error){if((error as NodeJS.ErrnoException).code==='ENOENT')return [];throw error;}
 }
-const viewable=(record:any)=>['user','assistant'].includes(record.type) && !record.isMeta && !record.isSidechain && !record.parent_tool_use_id;
+const viewable=(record:any)=>['user','assistant'].includes(record.type) && !record.isMeta && !record.isSynthetic && !record.isSidechain && !record.parent_tool_use_id;
 function unique(records:any[]) {
   const result=new Map<string,any>();
   for(const record of records.filter(viewable))result.set(record.uuid || record.message?.id || randomUUID(),record);

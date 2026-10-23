@@ -10,7 +10,14 @@ export function applyLazyTools(root){
   patch(sdk,"append: VS_CODE_APPEND_PROMPT + '","append: VS_CODE_APPEND_PROMPT + '\\n' + DEMAND_GUIDANCE + '");
   // Prevent Claude's automatic skill catalogue; the shared search reads metadata, call reads one body.
   patch(sdk,"              'debug': null,","              'disable-slash-commands': null,\n              'debug': null,");
+  // Configuration probes run before a user task and must not load external servers or skills.
+  patch(sdk,'            settingSources: [],',"            settingSources: [],\n            mcpServers: {},\n            strictMcpConfig: true,\n            tools: [],\n            disallowedTools: ['Skill'],");
+  patch(sdk,'            extraArgs: {},',"            extraArgs: {'disable-slash-commands': null},");
   patch(sdk,'canUseTool:async (tool,input,options)=>continuity.validateAnswer(tool,input,await canUseTool(tool,input,options)),',`canUseTool:async (tool,input,options)=>{
+                // Agent mode is the direct-execution mode: operational tools run
+                // without a per-call Yes. Questions and plan transitions still
+                // require the user's own answer/approval.
+                if(permissionModeParam==='acceptEdits' && !['AskUserQuestion','ExitPlanMode','EnterPlanMode'].includes(tool))return {behavior:'allow',updatedInput:input};
                 if(tool==='mcp__kicad__capability_search')return {behavior:'allow',updatedInput:input};
                 if(tool==='mcp__kicad__capability_call'){
                     const id=String(input.id||''),args=input.arguments as Record<string,unknown>;

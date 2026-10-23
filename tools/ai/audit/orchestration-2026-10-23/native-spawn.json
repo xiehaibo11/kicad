@@ -1,0 +1,1 @@
+{"ok":true,"nativeCli":"codex-cli 0.163.0","isolatedHome":true,"requests":6,"sameThreadColdResumed":true,"nativeSpawnVisibility":[false,true,true,false,false,false],"nativeChildLaunched":true,"childDynamicToolSchemaListed":true,"dynamicReplies":[{"method":"item/tool/call","threadId":"01a1677b-0d3f-7641-b499-cfb1079a3208","tool":"capability_inspect"}],"externalModelRequests":0}

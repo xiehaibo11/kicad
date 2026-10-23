@@ -1,0 +1,20 @@
+{
+  "branch": "feature/ai-automation",
+  "head": "4f5fbd4b1ac13ccdbeb17628144f734a2a9d360b",
+  "stagedFiles": [],
+  "releaseSourceSnapshotStable": true,
+  "editorRegistration": {
+    "vscode": [
+      {
+        "id": "kicad-agent.kicad",
+        "version": "0.4.64"
+      }
+    ],
+    "cursor": [
+      {
+        "id": "kicad-agent.kicad",
+        "version": "0.4.64"
+      }
+    ]
+  }
+}

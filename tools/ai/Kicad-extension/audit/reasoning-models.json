@@ -1,0 +1,161 @@
+{
+ "source": "membership/local.ts discoverMembership against local claude/codex CLIs",
+ "claudeCli": "2.1.305 (Claude Code)",
+ "codexCli": "codex-cli 0.163.0",
+ "supportedModels": [
+  {
+   "value": "claude-opus-5-5",
+   "displayName": "Opus 5.5",
+   "description": "Opus 5.5 · Best for everyday, complex tasks",
+   "aliases": [
+    "default",
+    "opus"
+   ],
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max"
+   ],
+   "thinkingOff": false
+  },
+  {
+   "value": "claude-fable-5-1",
+   "displayName": "Fable 5.1",
+   "description": "Fable 5.1 · Most capable for your hardest and longest-running tasks",
+   "aliases": [
+    "claude-fable-5-1[1m]"
+   ],
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max"
+   ],
+   "thinkingOff": false
+  },
+  {
+   "value": "claude-sonnet-5-5",
+   "displayName": "Sonnet 5.5",
+   "description": "Sonnet 5.5 · Efficient for routine tasks",
+   "aliases": [
+    "sonnet"
+   ],
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max"
+   ],
+   "thinkingOff": false
+  },
+  {
+   "value": "claude-haiku-5-5",
+   "displayName": "Haiku 5.5",
+   "description": "Haiku 5.5 · Fastest for quick answers",
+   "aliases": [
+    "haiku"
+   ],
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max"
+   ],
+   "thinkingOff": false
+  },
+  {
+   "value": "codex:gpt-6.1-sol",
+   "displayName": "GPT-6.1 Sol",
+   "description": "Latest workhorse model for coding and everyday work.",
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+    "ultra"
+   ]
+  },
+  {
+   "value": "codex:gpt-6-astra",
+   "displayName": "GPT-6 Astra",
+   "description": "Frontier intelligence for the most demanding work.",
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+    "ultra"
+   ]
+  },
+  {
+   "value": "codex:gpt-6-sol",
+   "displayName": "GPT-6 Sol",
+   "description": "Previous generation workhorse model.",
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+    "ultra"
+   ]
+  },
+  {
+   "value": "codex:gpt-6-luna",
+   "displayName": "GPT-6 Luna",
+   "description": "Fast and affordable model for easier tasks.",
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max"
+   ]
+  },
+  {
+   "value": "codex:gpt-5.6-sol",
+   "displayName": "GPT-5.6 Sol",
+   "description": "Older generation workhorse model.",
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+    "ultra"
+   ]
+  },
+  {
+   "value": "codex:gpt-5.6-terra",
+   "displayName": "GPT-5.6 Terra",
+   "description": "Older balanced model for straightforward work.",
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max",
+    "ultra"
+   ]
+  },
+  {
+   "value": "codex:gpt-5.6-luna",
+   "displayName": "GPT-5.6 Luna",
+   "description": "Older fast and efficient model.",
+   "reasoningEfforts": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max"
+   ]
+  }
+ ]
+}

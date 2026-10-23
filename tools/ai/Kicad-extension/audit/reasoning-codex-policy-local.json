@@ -1,0 +1,20 @@
+{
+ "ok": true,
+ "fixture": "installed CLIs + localhost HTTP; no external model",
+ "claudeCli": "2.1.305 (Claude Code)",
+ "codexCli": "codex-cli 0.163.0",
+ "cases": [
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6.1-sol",
+   "level": "ultra",
+   "effort": "ultra",
+   "wire": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh",
+    "delegation": false,
+    "delegateTools": []
+   }
+  }
+ ]
+}

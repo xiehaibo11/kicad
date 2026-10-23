@@ -1,6 +1,6 @@
 {
   "name": "@-kicadai/kicad-code",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "Kicad AI terminal with shared in-process native KiCad tools and PCB design skills",
   "license": "GPL-3.0-or-later",
   "type": "module",

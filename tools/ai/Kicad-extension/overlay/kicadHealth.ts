@@ -7,7 +7,7 @@ export function registerKiCadHealth(context: vscode.ExtensionContext) {
   const output = vscode.window.createOutputChannel('Kicad 后端状态');
   const status = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 5);
   status.text = '$(circuit-board) Kicad';
-  status.tooltip = '检查内部工具、KiCad IPC、文档与可选工具';
+  status.tooltip = '点击按需检查内部工具、KiCad IPC、文档与可选工具';
   status.command = 'kicadAgent.health';
   status.show();
   let current: AbortController | undefined;
@@ -43,7 +43,5 @@ export function registerKiCadHealth(context: vscode.ExtensionContext) {
     } finally {if(current===controller) current=undefined;}
   };
   const command = vscode.commands.registerCommand('kicadAgent.health', () => refresh());
-  if (vscode.workspace.isTrusted) void refresh(false);
-  const trust = vscode.workspace.onDidGrantWorkspaceTrust(() => { void refresh(false); });
-  context.subscriptions.push(output,status,command,trust,{dispose(){current?.abort();}});
+  context.subscriptions.push(output,status,command,{dispose(){current?.abort();}});
 }

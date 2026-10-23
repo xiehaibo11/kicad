@@ -237,3 +237,26 @@ Chat archives remain local: extension events under `~/.local/share/kicad/history
 `local_memory` appends verified summaries or user-requested preferences to `<history-root>/memory/<workspace-hash>/memory.jsonl` with private file permissions. `read` recalls the latest 30 matching records; it does not automatically replay historical instructions. Credentials are redacted from memory summaries. Chat archives and memory summaries are distinct: retaining chats does not imply every message becomes an enduring preference. The model can list/read prior chats and append/recall memory through natural-language requests. Network documentation queries and memory writes respect the active tool permission mode.
 
 The model selector shows short names only (for example `Opus 5.5`, `GPT-6.1 Sol`); the full model ID remains the request value and is available in the extension's hover hint. Local login status is in the selector heading's hover hint.
+
+## 0.2.3：与扩展设置更新同步发布
+
+重新构建完整终端和内嵌 Web UI，纳入与扩展 0.4.64 相同的按需工具、MCP 配置发现和共享策略代码。
+保留既有用户配置；`Kicad doctor prompt-audit` 继续直接在终端输出本地审计 JSON。
+
+## 0.2.2：共享策略和提示词审计
+
+终端与扩展 0.4.63 共用 `composer/settings.ts`：低风险 Auto 默认开启，未知工具和高风险操作仍询问。
+可用 `~/.config/kicad/settings.json`、项目 `.kicad/settings.json`、`.kicad/settings.local.json`
+及托管设置配置 `autoMode`、`deniedModels`、`maxEffortLevel`、逐模型 `modelSettings`、
+`maxProseWidth`、`mcpVerification`、`autoModeSuggestions`。
+禁用模型跨层合并，推理上限只能收紧，显式终端权限设置优先于默认低风险权限。
+关闭 `mcpVerification` 只影响共享 MCP 工具调用确认，不影响 TLS 或身份认证。
+终端不自动插入 commit attribution，因此该共享选项在终端无额外动作。
+
+`Kicad doctor prompt-audit` 直接输出 JSON 到终端，不启动交互界面、模型或 MCP。
+聊天中的 `/doctor` 是同一报告的工具入口；静态审计不等于完整提示词语义验证。
+正文默认限宽 100 列（`maxProseWidth:0` 不限），工具输出不裁剪；WebFetch 默认总期限为 5 分钟。
+子代理授权独立于 effort，仍要求当前用户明确请求。
+
+固定上游 v1.19.3 的 Web UI 引用了缺失的 `@opencode-ai/client/promise` 导出。
+`apply-settings.mjs` 把它映射到已有的生成版 Promise 客户端，保留完整嵌入式 Web UI。

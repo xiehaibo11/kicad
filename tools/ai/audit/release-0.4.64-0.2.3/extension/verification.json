@@ -1,0 +1,43 @@
+{
+  "sourceCommit": "0197fd4cd801833e1d3473861cc7303e4e505377",
+  "sourceBranch": "codex/release-settings-0.4.64",
+  "sourceFilesInReleaseCommit": 132,
+  "tests": {
+    "composerPass": 55,
+    "directPass": 64,
+    "directLiveIpcSkipped": 6,
+    "membershipPass": 3
+  },
+  "limits": [
+    "Provider UI and protocol fixtures do not establish live inference quality for every model.",
+    "No native KiCad design acceptance was performed."
+  ],
+  "ok": true,
+  "version": "0.4.64",
+  "buildAndTypeChecks": true,
+  "regressionSuite": true,
+  "settingsUi": true,
+  "slashUiProviders": [
+    "Claude",
+    "DeepSeek",
+    "Codex",
+    "custom-compatible"
+  ],
+  "nativeVsCodeHost": true,
+  "executionImagesAndEditorLinksUi": true,
+  "installed": {
+    "vscode": {
+      "version": "0.4.64",
+      "filesVerified": 1218,
+      "differences": []
+    },
+    "cursor": {
+      "version": "0.4.64",
+      "filesVerified": 1218,
+      "differences": []
+    },
+    "userSettingsUnchanged": true
+  },
+  "editorWindowReloaded": false,
+  "marketplacePublished": false
+}

@@ -18,6 +18,12 @@ def sources(component):
     paths += [p for p in (component.parent / 'composer').rglob('*') if p.is_file()]
     paths += [p for p in (component.parent / 'membership').rglob('*') if p.is_file()]
     paths += [p for p in (component.parent / 'direct').rglob('*') if p.is_file() and not {'node_modules', 'dist', 'test'} & set(p.relative_to(component.parent / 'direct').parts) and p.suffix in ('.mjs', '.json')]
+    npm = component / 'npm'
+    if npm.is_dir():
+        paths += [p for p in npm.rglob('*') if p.is_file()
+                  and not {'node_modules', 'dist'} & set(p.relative_to(npm).parts)
+                  and (p.relative_to(npm).parts[0] in ('bin', 'lib', 'scripts', 'test')
+                       or p.parent == npm and p.name in ('package.json', 'README.md', 'THIRD_PARTY_NOTICES.md'))]
     paths += [Path(__file__).resolve()]
     entries = [(str(p.relative_to(component.parent)), digest(p)) for p in paths]
     return hashlib.sha256(json.dumps(sorted(entries), separators=(',', ':')).encode()).hexdigest()
@@ -43,7 +49,7 @@ def main():
         artifacts = [artifact]
     elif mode == 'terminal':
         version = json.loads((component / 'upstream.json').read_text()).get('version', '1.19.3')
-        artifacts = [component / 'dist' / name for name in ('kicad-terminal', 'upstream.json', 'composer.json', 'waiting.json', 'branding.json', 'LICENSE-OpenCode.txt', 'eda-agent-instructions.md', 'session-runtime.mjs', 'kicad-direct.mjs', 'LICENSE-protobufjs.txt', 'LICENSE-blocks-MIT.txt')]
+        artifacts = [component / 'dist' / name for name in ('kicad-terminal', 'upstream.json', 'composer.json', 'waiting.json', 'branding.json', 'LICENSE-OpenCode.txt', 'eda-agent-instructions.md', 'session-runtime.mjs', 'agent-doctor.mjs', 'kicad-direct.mjs', 'LICENSE-protobufjs.txt', 'LICENSE-blocks-MIT.txt')]
     else:
         raise SystemExit('usage: build-manifest.py extension|terminal|verify COMPONENT [UPSTREAM]')
     manifest = {

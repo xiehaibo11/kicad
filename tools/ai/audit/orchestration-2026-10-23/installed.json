@@ -1,0 +1,10 @@
+{
+  "installedPath": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.58",
+  "version": "0.4.58",
+  "packageFilesMatch": {
+    "dist/extension.cjs": true,
+    "dist/media/main.js": true,
+    "resources/kicad/session-runtime.mjs": true
+  },
+  "runningWindowReloaded": false
+}

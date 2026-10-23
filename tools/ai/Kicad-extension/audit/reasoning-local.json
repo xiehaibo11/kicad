@@ -1,0 +1,758 @@
+{
+ "ok": true,
+ "fixture": "installed CLIs + localhost HTTP; no external model",
+ "claudeCli": "2.1.305 (Claude Code)",
+ "codexCli": "codex-cli 0.163.0",
+ "cases": [
+  {
+   "provider": "claude",
+   "model": "claude-opus-5-5",
+   "level": "default_on",
+   "wire": {
+    "model": "claude-opus-5-5",
+    "effort": "medium",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-opus-5-5",
+   "level": "low",
+   "wire": {
+    "model": "claude-opus-5-5",
+    "effort": "low",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-opus-5-5",
+   "level": "medium",
+   "wire": {
+    "model": "claude-opus-5-5",
+    "effort": "medium",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-opus-5-5",
+   "level": "high",
+   "wire": {
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-opus-5-5",
+   "level": "xhigh",
+   "wire": {
+    "model": "claude-opus-5-5",
+    "effort": "xhigh",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-opus-5-5",
+   "level": "max",
+   "wire": {
+    "model": "claude-opus-5-5",
+    "effort": "max",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-fable-5-1",
+   "level": "default_on",
+   "wire": {
+    "model": "claude-fable-5-1",
+    "effort": "high",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-fable-5-1",
+   "level": "low",
+   "wire": {
+    "model": "claude-fable-5-1",
+    "effort": "low",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-fable-5-1",
+   "level": "medium",
+   "wire": {
+    "model": "claude-fable-5-1",
+    "effort": "medium",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-fable-5-1",
+   "level": "high",
+   "wire": {
+    "model": "claude-fable-5-1",
+    "effort": "high",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-fable-5-1",
+   "level": "xhigh",
+   "wire": {
+    "model": "claude-fable-5-1",
+    "effort": "xhigh",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-fable-5-1",
+   "level": "max",
+   "wire": {
+    "model": "claude-fable-5-1",
+    "effort": "max",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-sonnet-5-5",
+   "level": "default_on",
+   "wire": {
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-sonnet-5-5",
+   "level": "low",
+   "wire": {
+    "model": "claude-sonnet-5-5",
+    "effort": "low",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-sonnet-5-5",
+   "level": "medium",
+   "wire": {
+    "model": "claude-sonnet-5-5",
+    "effort": "medium",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-sonnet-5-5",
+   "level": "high",
+   "wire": {
+    "model": "claude-sonnet-5-5",
+    "effort": "high",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-sonnet-5-5",
+   "level": "xhigh",
+   "wire": {
+    "model": "claude-sonnet-5-5",
+    "effort": "xhigh",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-sonnet-5-5",
+   "level": "max",
+   "wire": {
+    "model": "claude-sonnet-5-5",
+    "effort": "max",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-haiku-5-5",
+   "level": "default_on",
+   "wire": {
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-haiku-5-5",
+   "level": "low",
+   "wire": {
+    "model": "claude-haiku-5-5",
+    "effort": "low",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-haiku-5-5",
+   "level": "medium",
+   "wire": {
+    "model": "claude-haiku-5-5",
+    "effort": "medium",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-haiku-5-5",
+   "level": "high",
+   "wire": {
+    "model": "claude-haiku-5-5",
+    "effort": "high",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-haiku-5-5",
+   "level": "xhigh",
+   "wire": {
+    "model": "claude-haiku-5-5",
+    "effort": "xhigh",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "claude",
+   "model": "claude-haiku-5-5",
+   "level": "max",
+   "wire": {
+    "model": "claude-haiku-5-5",
+    "effort": "max",
+    "thinking": "adaptive"
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6.1-sol",
+   "level": "default_on",
+   "wire": {
+    "model": "gpt-6.1-sol",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6.1-sol",
+   "level": "low",
+   "effort": "low",
+   "wire": {
+    "model": "gpt-6.1-sol",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6.1-sol",
+   "level": "medium",
+   "effort": "medium",
+   "wire": {
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6.1-sol",
+   "level": "high",
+   "effort": "high",
+   "wire": {
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6.1-sol",
+   "level": "xhigh",
+   "effort": "xhigh",
+   "wire": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6.1-sol",
+   "level": "max",
+   "effort": "max",
+   "wire": {
+    "model": "gpt-6.1-sol",
+    "effort": "max",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6.1-sol",
+   "level": "ultra",
+   "effort": "ultra",
+   "wire": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh",
+    "delegation": true
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-astra",
+   "level": "default_on",
+   "wire": {
+    "model": "gpt-6-astra",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-astra",
+   "level": "low",
+   "effort": "low",
+   "wire": {
+    "model": "gpt-6-astra",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-astra",
+   "level": "medium",
+   "effort": "medium",
+   "wire": {
+    "model": "gpt-6-astra",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-astra",
+   "level": "high",
+   "effort": "high",
+   "wire": {
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-astra",
+   "level": "xhigh",
+   "effort": "xhigh",
+   "wire": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-astra",
+   "level": "max",
+   "effort": "max",
+   "wire": {
+    "model": "gpt-6-astra",
+    "effort": "max",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-astra",
+   "level": "ultra",
+   "effort": "ultra",
+   "wire": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "delegation": true
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-sol",
+   "level": "default_on",
+   "wire": {
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-sol",
+   "level": "low",
+   "effort": "low",
+   "wire": {
+    "model": "gpt-6-sol",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-sol",
+   "level": "medium",
+   "effort": "medium",
+   "wire": {
+    "model": "gpt-6-sol",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-sol",
+   "level": "high",
+   "effort": "high",
+   "wire": {
+    "model": "gpt-6-sol",
+    "effort": "high",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-sol",
+   "level": "xhigh",
+   "effort": "xhigh",
+   "wire": {
+    "model": "gpt-6-sol",
+    "effort": "xhigh",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-sol",
+   "level": "max",
+   "effort": "max",
+   "wire": {
+    "model": "gpt-6-sol",
+    "effort": "max",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-sol",
+   "level": "ultra",
+   "effort": "ultra",
+   "wire": {
+    "model": "gpt-6-sol",
+    "effort": "max",
+    "delegation": true
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-luna",
+   "level": "default_on",
+   "wire": {
+    "model": "gpt-6-luna",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-luna",
+   "level": "low",
+   "effort": "low",
+   "wire": {
+    "model": "gpt-6-luna",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-luna",
+   "level": "medium",
+   "effort": "medium",
+   "wire": {
+    "model": "gpt-6-luna",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-luna",
+   "level": "high",
+   "effort": "high",
+   "wire": {
+    "model": "gpt-6-luna",
+    "effort": "high",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-luna",
+   "level": "xhigh",
+   "effort": "xhigh",
+   "wire": {
+    "model": "gpt-6-luna",
+    "effort": "xhigh",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-6-luna",
+   "level": "max",
+   "effort": "max",
+   "wire": {
+    "model": "gpt-6-luna",
+    "effort": "max",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-sol",
+   "level": "default_on",
+   "wire": {
+    "model": "gpt-5.6-sol",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-sol",
+   "level": "low",
+   "effort": "low",
+   "wire": {
+    "model": "gpt-5.6-sol",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-sol",
+   "level": "medium",
+   "effort": "medium",
+   "wire": {
+    "model": "gpt-5.6-sol",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-sol",
+   "level": "high",
+   "effort": "high",
+   "wire": {
+    "model": "gpt-5.6-sol",
+    "effort": "high",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-sol",
+   "level": "xhigh",
+   "effort": "xhigh",
+   "wire": {
+    "model": "gpt-5.6-sol",
+    "effort": "xhigh",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-sol",
+   "level": "max",
+   "effort": "max",
+   "wire": {
+    "model": "gpt-5.6-sol",
+    "effort": "max",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-sol",
+   "level": "ultra",
+   "effort": "ultra",
+   "wire": {
+    "model": "gpt-5.6-sol",
+    "effort": "max",
+    "delegation": true
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-terra",
+   "level": "default_on",
+   "wire": {
+    "model": "gpt-5.6-terra",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-terra",
+   "level": "low",
+   "effort": "low",
+   "wire": {
+    "model": "gpt-5.6-terra",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-terra",
+   "level": "medium",
+   "effort": "medium",
+   "wire": {
+    "model": "gpt-5.6-terra",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-terra",
+   "level": "high",
+   "effort": "high",
+   "wire": {
+    "model": "gpt-5.6-terra",
+    "effort": "high",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-terra",
+   "level": "xhigh",
+   "effort": "xhigh",
+   "wire": {
+    "model": "gpt-5.6-terra",
+    "effort": "xhigh",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-terra",
+   "level": "max",
+   "effort": "max",
+   "wire": {
+    "model": "gpt-5.6-terra",
+    "effort": "max",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-terra",
+   "level": "ultra",
+   "effort": "ultra",
+   "wire": {
+    "model": "gpt-5.6-terra",
+    "effort": "max",
+    "delegation": true
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-luna",
+   "level": "default_on",
+   "wire": {
+    "model": "gpt-5.6-luna",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-luna",
+   "level": "low",
+   "effort": "low",
+   "wire": {
+    "model": "gpt-5.6-luna",
+    "effort": "low",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-luna",
+   "level": "medium",
+   "effort": "medium",
+   "wire": {
+    "model": "gpt-5.6-luna",
+    "effort": "medium",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-luna",
+   "level": "high",
+   "effort": "high",
+   "wire": {
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-luna",
+   "level": "xhigh",
+   "effort": "xhigh",
+   "wire": {
+    "model": "gpt-5.6-luna",
+    "effort": "xhigh",
+    "delegation": false
+   }
+  },
+  {
+   "provider": "codex",
+   "model": "codex:gpt-5.6-luna",
+   "level": "max",
+   "effort": "max",
+   "wire": {
+    "model": "gpt-5.6-luna",
+    "effort": "max",
+    "delegation": false
+   }
+  }
+ ]
+}

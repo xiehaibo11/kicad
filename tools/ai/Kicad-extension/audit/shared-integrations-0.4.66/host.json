@@ -1,0 +1,90 @@
+{
+  "ok": true,
+  "provenance": "real VS Code Extension Test Host; activated final VSIX router; actual signed Cua Driver; no model requests or screenshots",
+  "version": "0.4.66",
+  "enabled": {
+    "enabled": true,
+    "driverPath": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+    "anyApp": false,
+    "allowedApps": [
+      "org.kicad.kicad",
+      "org.kicad.pcbnew",
+      "org.kicad.eeschema"
+    ],
+    "binary": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+    "running": true,
+    "permissions": {
+      "accessibility": true,
+      "direct_capture_error": null,
+      "direct_capture_status": "not_checked",
+      "screen_recording": true,
+      "screen_recording_capturable": null,
+      "source": {
+        "attribution": "driver-daemon",
+        "bundle_id": "com.trycua.driver",
+        "disclaim_env": false,
+        "executable": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "note": "These booleans reflect the CuaDriver daemon's own TCC identity (com.trycua.driver) because this process is its own responsible process.",
+        "pid": 36837,
+        "responsible_ppid": 1
+      }
+    },
+    "missingSettings": [],
+    "reloadRequired": false,
+    "platform": "darwin",
+    "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-cua-501/driver.sock",
+    "log": "/tmp/ki-cua-host-60XmsE/profile/home/Library/Logs/Kicad/cua-driver.log",
+    "persistent": true,
+    "lockedUse": false
+  },
+  "off": {
+    "enabled": false,
+    "driverPath": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+    "anyApp": false,
+    "allowedApps": [
+      "org.kicad.pcbnew"
+    ],
+    "binary": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+    "running": false,
+    "missingSettings": [],
+    "reloadRequired": false,
+    "platform": "darwin",
+    "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-cua-501/driver.sock",
+    "log": "/tmp/ki-cua-host-60XmsE/profile/home/Library/Logs/Kicad/cua-driver.log",
+    "persistent": false,
+    "lockedUse": false
+  },
+  "exitStatus": {
+    "enabled": true,
+    "driverPath": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+    "anyApp": false,
+    "allowedApps": [
+      "org.kicad.pcbnew"
+    ],
+    "binary": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+    "running": true,
+    "permissions": {
+      "accessibility": true,
+      "direct_capture_error": null,
+      "direct_capture_status": "not_checked",
+      "screen_recording": true,
+      "screen_recording_capturable": null,
+      "source": {
+        "attribution": "driver-daemon",
+        "bundle_id": "com.trycua.driver",
+        "disclaim_env": false,
+        "executable": "/Applications/CuaDriver.app/Contents/MacOS/cua-driver",
+        "note": "These booleans reflect the CuaDriver daemon's own TCC identity (com.trycua.driver) because this process is its own responsible process.",
+        "pid": 36971,
+        "responsible_ppid": 1
+      }
+    },
+    "missingSettings": [],
+    "reloadRequired": false,
+    "platform": "darwin",
+    "socket": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-cua-501/driver.sock",
+    "log": "/tmp/ki-cua-host-60XmsE/profile/home/Library/Logs/Kicad/cua-driver.log",
+    "persistent": true,
+    "lockedUse": false
+  }
+}

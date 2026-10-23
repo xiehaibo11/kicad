@@ -1,0 +1,81 @@
+{
+  "ok": true,
+  "version": "0.4.61",
+  "unitAndTypeChecks": "full build passed",
+  "productionWebview": {
+    "ok": true,
+    "version": "0.4.61",
+    "provenance": "production bundle; simulated SDK events and host responses; no model calls",
+    "checks": [
+      "filename click",
+      "OUT image Enter",
+      "filename Space",
+      "no automatic open",
+      "no modal or popup",
+      "original paths preserved",
+      "mixed text/image",
+      "legacy placeholder",
+      "failed Read remains ERR",
+      "host open failure and retry",
+      "stream continues",
+      "320px layout"
+    ],
+    "openRequests": [
+      {
+        "type": "open_file",
+        "filePath": "/private/tmp/Kicad \u56fe\u7247 exports/cleared PCB.png"
+      },
+      {
+        "type": "open_file",
+        "filePath": "/private/tmp/Kicad \u56fe\u7247 exports/cleared PCB.png"
+      },
+      {
+        "type": "open_file",
+        "filePath": "/private/tmp/Kicad \u56fe\u7247 exports/cleared PCB.png"
+      },
+      {
+        "type": "open_file",
+        "filePath": "/private/tmp/Kicad \u56fe\u7247 exports/cleared PCB.png"
+      },
+      {
+        "type": "open_file",
+        "filePath": "/private/tmp/Kicad \u56fe\u7247 exports/cleared PCB.png"
+      }
+    ],
+    "pageErrors": []
+  },
+  "nativeEditor": {
+    "ok": true,
+    "provenance": "real VS Code Extension Test Host; assembled production handler; fixture PNG, no model calls",
+    "vscodeVersion": "1.136.1",
+    "extensionVersion": "0.4.61",
+    "imagePath": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad image \u7f16\u8f91\u5668-SwE3tr/\u539f\u7406\u56fe exports/cleared PCB.png",
+    "tabs": [
+      {
+        "group": 1,
+        "label": "cleared PCB.png",
+        "viewType": "imagePreview.previewEditor",
+        "uri": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad image \u7f16\u8f91\u5668-SwE3tr/\u539f\u7406\u56fe exports/cleared PCB.png",
+        "active": true
+      },
+      {
+        "group": 2,
+        "label": "Kicad image test \u00b7 no model",
+        "viewType": "mainThreadWebview-kicad.imageAcceptance",
+        "active": true
+      }
+    ],
+    "logs": [
+      "[handleOpenFile] \u6253\u5f00\u6587\u4ef6\u5931\u8d25: Error: ENOENT: no such file or directory, stat '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad image \u7f16\u8f91\u5668-SwE3tr/missing.png'"
+    ]
+  },
+  "installation": {
+    "ok": true,
+    "version": "0.4.61",
+    "path": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.61",
+    "filesVerified": 1217,
+    "artifactSha256": "c5a9789895636db079c8f4be4184d4048e1d163122d20bab81aae2aec37c6af2",
+    "sourceSha256": "7471c648b957f985cd6de05c42635013c7688b7ad11dd804ba60c438e6c054fa",
+    "existingWindowReloaded": false
+  }
+}

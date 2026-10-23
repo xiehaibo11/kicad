@@ -1,0 +1,1274 @@
+{
+  "provenance": "Live signed Cua 0.38.0; production computer adapter; production Codex adapter; Claude SDK registration with same demand catalog; no live user projects; fixture-only guard; test continuity recorder; no native CLI tools or sub-agents",
+  "pid": 12828,
+  "windowId": 69859,
+  "boardSha256": "ad6fbdc7e714662a67eff09cc2eeed00554750e00f381e73fe81ee9780b3cc06",
+  "accounts": {
+    "claude": {
+      "subscriptionType": "Claude Pro",
+      "apiProvider": "firstParty"
+    },
+    "codex": {
+      "type": "chatgpt",
+      "planType": "pro"
+    }
+  },
+  "results": [
+    {
+      "model": "claude-opus-5-5",
+      "route": "Claude Agent SDK / Anthropic-compatible",
+      "vision": true,
+      "before": "1",
+      "events": [
+        {
+          "type": "result",
+          "subtype": "success",
+          "is_error": false,
+          "result": "I clicked the \"Locked items\" checkbox once and it changed from checked (`\"1\"`) to unchecked (`\"0\"`). The `since:\"latest\"` readback you asked for failed, though, so I had to confirm with a full read instead.\n\n1. **First read:** the `AXCheckBox` \"Locked items\" had token `s00000011:10`, value `\"1\"` (checked). It's in the Selection Filter panel.\n2. **Click:** I clicked once using that exact token with pid 12828 and window_id 69859. The checkbox reported \"Performed AXPress\", but the tool couldn't confirm the effect.\n3. **`since:\"latest\"` readback:** it failed twice with the same internal error: \"returned_element_count does not match elements\". That's a bug in the read tool.\n4. **Confirmation:** I did one full read of the same window with the same query, tree format and screenshot settings, just without `since`. The checkbox (now token `s00000014:10`) shows value `\"0\"`, and the screenshot shows it unchecked.\n\nI didn't restore it, touch any files, or use a shell, menus or other windows."
+        }
+      ],
+      "after": "0",
+      "actions": 1,
+      "imageDelivered": true,
+      "ok": true,
+      "trace": [
+        {
+          "tool": "computer_tools",
+          "args": {
+            "query": "get_window_state click"
+          },
+          "image": false,
+          "ok": true,
+          "data": {}
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": true,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "capture_id": "capture_e1a2a470da0c41df8deca6cd0ef436bf_0000000000000005",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000011:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "screenshot_frame": {
+                  "h": 8,
+                  "w": 47,
+                  "x": 751,
+                  "y": 378
+                },
+                "selected": true,
+                "value": "1"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "pid": 12828,
+            "returned_element_count": 1,
+            "screenshot_frame_valid": true,
+            "screenshot_height": 458,
+            "screenshot_mime_type": "image/png",
+            "screenshot_scale": 2,
+            "screenshot_width": 800,
+            "snapshot_id": "s00000011",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_bounds": {
+              "height": 979,
+              "width": 1710,
+              "x": 51,
+              "y": 178
+            },
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        },
+        {
+          "tool": "computer_action",
+          "args": {
+            "name": "click",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "element_token": "s00000011:10"
+            }
+          },
+          "image": false,
+          "ok": true,
+          "data": {
+            "delivery": {
+              "mode": "background"
+            },
+            "effect": "unverifiable",
+            "hint": "The click was sent but nothing confirmed it. Read what changed before clicking again; a repeat can toggle or double-fire.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "route": "accessibility",
+            "summary": "✅ Performed AXPress on [10] AXCheckBox \"Locked items\"."
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "since": "latest",
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": false,
+          "data": {
+            "code": "typed_output_mismatch",
+            "detail": "returned_element_count does not match elements",
+            "execution_state": "unknown",
+            "hint": "The driver could not confirm its own result, so the action may have run. Read the window before repeating it.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "tool": "get_window_state"
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "since": "latest",
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": false,
+          "data": {
+            "code": "typed_output_mismatch",
+            "detail": "returned_element_count does not match elements",
+            "execution_state": "unknown",
+            "hint": "The driver could not confirm its own result, so the action may have run. Read the window before repeating it.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "tool": "get_window_state"
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": true,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "capture_id": "capture_e1a2a470da0c41df8deca6cd0ef436bf_0000000000000008",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000014:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "screenshot_frame": {
+                  "h": 8,
+                  "w": 47,
+                  "x": 751,
+                  "y": 378
+                },
+                "selected": false,
+                "value": "0"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "invalidated_snapshot_ids": [
+              "s00000013"
+            ],
+            "pid": 12828,
+            "returned_element_count": 1,
+            "screenshot_frame_valid": true,
+            "screenshot_height": 458,
+            "screenshot_mime_type": "image/png",
+            "screenshot_scale": 2,
+            "screenshot_width": 800,
+            "snapshot_id": "s00000014",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_bounds": {
+              "height": 979,
+              "width": 1710,
+              "x": 51,
+              "y": 178
+            },
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        }
+      ],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 42371
+    },
+    {
+      "model": "claude-fable-5-1",
+      "route": "Claude Agent SDK / Anthropic-compatible",
+      "vision": true,
+      "before": "1",
+      "ok": false,
+      "error": "Error: Claude Code process exited with code 1",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 6417
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "route": "Claude Agent SDK / Anthropic-compatible",
+      "vision": true,
+      "before": "1",
+      "events": [
+        {
+          "type": "result",
+          "subtype": "success",
+          "is_error": false,
+          "result": "The \"Locked items\" checkbox changed from checked to unchecked after the click.\n\n- **Before:** I found AXCheckBox \"Locked items\" with token `s0000001c:10`. Its value was `1` and `selected` was true.\n- **Click:** I called click once with that exact token. It returned \"Performed AXPress\", but marked the effect as unverifiable.\n- **After:** The readback shows value `0` and `selected` false. In the screenshot, the \"Locked items\" box in the Selection Filter panel is unchecked.\n\nThe `since:\"latest\"` readback failed twice with an output-mismatch error: \"returned_element_count does not match elements\". I then did one plain `get_window_state` read, with the same query, tree format and screenshot settings but no `since`. That read is the source of the \"after\" state above. It was read-only, so the checkbox was not clicked a second time.\n\nI did not restore the state, change any files, or use any other tools, menus or windows."
+        }
+      ],
+      "after": "0",
+      "actions": 1,
+      "imageDelivered": true,
+      "ok": true,
+      "trace": [
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": true,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "capture_id": "capture_e1a2a470da0c41df8deca6cd0ef436bf_0000000000000009",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s0000001c:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "screenshot_frame": {
+                  "h": 8,
+                  "w": 47,
+                  "x": 751,
+                  "y": 378
+                },
+                "selected": true,
+                "value": "1"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "pid": 12828,
+            "returned_element_count": 1,
+            "screenshot_frame_valid": true,
+            "screenshot_height": 458,
+            "screenshot_mime_type": "image/png",
+            "screenshot_scale": 2,
+            "screenshot_width": 800,
+            "snapshot_id": "s0000001c",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_bounds": {
+              "height": 979,
+              "width": 1710,
+              "x": 51,
+              "y": 178
+            },
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        },
+        {
+          "tool": "computer_action",
+          "args": {
+            "name": "click",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "element_token": "s0000001c:10"
+            }
+          },
+          "image": false,
+          "ok": true,
+          "data": {
+            "delivery": {
+              "mode": "background"
+            },
+            "effect": "unverifiable",
+            "hint": "The click was sent but nothing confirmed it. Read what changed before clicking again; a repeat can toggle or double-fire.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "route": "accessibility",
+            "summary": "✅ Performed AXPress on [10] AXCheckBox \"Locked items\"."
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "since": "latest",
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": false,
+          "data": {
+            "code": "typed_output_mismatch",
+            "detail": "returned_element_count does not match elements",
+            "execution_state": "unknown",
+            "hint": "The driver could not confirm its own result, so the action may have run. Read the window before repeating it.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "tool": "get_window_state"
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "since": "latest",
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": false,
+          "data": {
+            "code": "typed_output_mismatch",
+            "detail": "returned_element_count does not match elements",
+            "execution_state": "unknown",
+            "hint": "The driver could not confirm its own result, so the action may have run. Read the window before repeating it.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "tool": "get_window_state"
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": true,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "capture_id": "capture_e1a2a470da0c41df8deca6cd0ef436bf_000000000000000c",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s0000001f:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "screenshot_frame": {
+                  "h": 8,
+                  "w": 47,
+                  "x": 751,
+                  "y": 378
+                },
+                "selected": false,
+                "value": "0"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "invalidated_snapshot_ids": [
+              "s0000001e"
+            ],
+            "pid": 12828,
+            "returned_element_count": 1,
+            "screenshot_frame_valid": true,
+            "screenshot_height": 458,
+            "screenshot_mime_type": "image/png",
+            "screenshot_scale": 2,
+            "screenshot_width": 800,
+            "snapshot_id": "s0000001f",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_bounds": {
+              "height": 979,
+              "width": 1710,
+              "x": 51,
+              "y": 178
+            },
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        }
+      ],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 29352
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "route": "Claude Agent SDK / Anthropic-compatible",
+      "vision": true,
+      "before": "1",
+      "events": [
+        {
+          "type": "result",
+          "subtype": "success",
+          "is_error": false,
+          "result": "The click was sent, but I could not confirm that the value changed.\n\n- **Locate:** The first read (pid 12828, window 69859, query \"Locked items\") found one AXCheckBox \"Locked items\" with element_token `s00000024:10`, value \"1\", selected true.\n- **Click:** I sent one click with that exact token. It returned `Performed AXPress on [10] AXCheckBox \"Locked items\"`, but the tool reported the effect as unverifiable.\n- **Readback:** Both readback attempts (the `since:\"latest\"` read and one retry) failed with `internal typed output mismatch for get_window_state: returned_element_count does not match elements; the tool may have executed. Verify state before retrying.` I got no element data from either attempt, so I have no before/after value for the checkbox.\n\nI did not click again, restore the setting, change any files, or use other tools. Because the click may have run, the checkbox may now be toggled. Someone should check the \"Locked items\" checkbox in the PCB Editor directly, or rerun the read without `include_screenshot`, to see whether the value is now \"0\". The test harness should handle the restore."
+        }
+      ],
+      "after": "0",
+      "actions": 1,
+      "imageDelivered": true,
+      "ok": true,
+      "trace": [
+        {
+          "tool": "computer_tools",
+          "args": {
+            "query": "get_window_state click"
+          },
+          "image": false,
+          "ok": true,
+          "data": {}
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": true,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "capture_id": "capture_e1a2a470da0c41df8deca6cd0ef436bf_000000000000000d",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000024:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "screenshot_frame": {
+                  "h": 8,
+                  "w": 47,
+                  "x": 751,
+                  "y": 378
+                },
+                "selected": true,
+                "value": "1"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "pid": 12828,
+            "returned_element_count": 1,
+            "screenshot_frame_valid": true,
+            "screenshot_height": 458,
+            "screenshot_mime_type": "image/png",
+            "screenshot_scale": 2,
+            "screenshot_width": 800,
+            "snapshot_id": "s00000024",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_bounds": {
+              "height": 979,
+              "width": 1710,
+              "x": 51,
+              "y": 178
+            },
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        },
+        {
+          "tool": "computer_action",
+          "args": {
+            "name": "click",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "element_token": "s00000024:10"
+            }
+          },
+          "image": false,
+          "ok": true,
+          "data": {
+            "delivery": {
+              "mode": "background"
+            },
+            "effect": "unverifiable",
+            "hint": "The click was sent but nothing confirmed it. Read what changed before clicking again; a repeat can toggle or double-fire. Three single actions in a row: send the next ones as one run_steps call. It runs them in order, stops at the first failure and returns what changed.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "route": "accessibility",
+            "summary": "✅ Performed AXPress on [10] AXCheckBox \"Locked items\"."
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "since": "latest",
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": false,
+          "data": {
+            "code": "typed_output_mismatch",
+            "detail": "returned_element_count does not match elements",
+            "execution_state": "unknown",
+            "hint": "The driver could not confirm its own result, so the action may have run. Read the window before repeating it.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "tool": "get_window_state"
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "since": "latest",
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": false,
+          "data": {
+            "code": "typed_output_mismatch",
+            "detail": "returned_element_count does not match elements",
+            "execution_state": "unknown",
+            "hint": "The driver could not confirm its own result, so the action may have run. Read the window before repeating it.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "tool": "get_window_state"
+          }
+        }
+      ],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 25573
+    },
+    {
+      "model": "codex:gpt-6.1-sol",
+      "route": "production codexQuery/app-server",
+      "vision": true,
+      "before": "1",
+      "ok": false,
+      "error": "Error: failed to load configuration: invalid type: string \"\", expected f64\nin `mcp_servers.node_repl.tool_timeout_sec`\n",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 5359
+    },
+    {
+      "model": "codex:gpt-6-astra",
+      "route": "production codexQuery/app-server",
+      "vision": true,
+      "before": "1",
+      "ok": false,
+      "error": "Error: failed to load configuration: invalid type: string \"\", expected f64\nin `mcp_servers.node_repl.tool_timeout_sec`\n",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 4986
+    },
+    {
+      "model": "codex:gpt-6-sol",
+      "route": "production codexQuery/app-server",
+      "vision": true,
+      "before": "1",
+      "ok": false,
+      "error": "Error: failed to load configuration: invalid type: string \"\", expected f64\nin `mcp_servers.node_repl.tool_timeout_sec`\n",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 5250
+    },
+    {
+      "model": "codex:gpt-6-luna",
+      "route": "production codexQuery/app-server",
+      "vision": true,
+      "before": "1",
+      "ok": false,
+      "error": "Error: failed to load configuration: invalid type: string \"\", expected f64\nin `mcp_servers.node_repl.tool_timeout_sec`\n",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 4880
+    },
+    {
+      "model": "codex:gpt-5.6-sol",
+      "route": "production codexQuery/app-server",
+      "vision": true,
+      "before": "1",
+      "ok": false,
+      "error": "Error: failed to load configuration: invalid type: string \"\", expected f64\nin `mcp_servers.node_repl.tool_timeout_sec`\n",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 5318
+    },
+    {
+      "model": "codex:gpt-5.6-terra",
+      "route": "production codexQuery/app-server",
+      "vision": true,
+      "before": "1",
+      "ok": false,
+      "error": "Error: failed to load configuration: invalid type: string \"\", expected f64\nin `mcp_servers.node_repl.tool_timeout_sec`\n",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 5627
+    },
+    {
+      "model": "codex:gpt-5.6-luna",
+      "route": "production codexQuery/app-server",
+      "vision": true,
+      "before": "1",
+      "ok": false,
+      "error": "Error: failed to load configuration: invalid type: string \"\", expected f64\nin `mcp_servers.node_repl.tool_timeout_sec`\n",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 5545
+    },
+    {
+      "model": "deepseek-flash",
+      "route": "Claude Agent SDK / Anthropic-compatible",
+      "vision": false,
+      "before": "1",
+      "stderr": "⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors\n[claude-code:unrecognized_model] {\"model\":\"deepseek-flash\",\"query_source\":\"sdk\"}\n",
+      "events": [
+        {
+          "type": "result",
+          "subtype": "success",
+          "is_error": false,
+          "result": "Clicked **AXCheckBox “Locked items”** once in PCB Editor window `69859`.\n\nReadback confirms the checkbox changed:\n\n- Before: `value: \"1\"`, `selected: true`\n- After: `value: \"0\"`, `selected: false`\n\nNo further actions taken."
+        }
+      ],
+      "after": "0",
+      "actions": 1,
+      "imageDelivered": false,
+      "ok": true,
+      "trace": [
+        {
+          "tool": "computer_tools",
+          "args": {
+            "query": "get_window_state click"
+          },
+          "image": false,
+          "ok": true,
+          "data": {}
+        },
+        {
+          "tool": "computer_tools",
+          "args": {
+            "query": "get_window_state"
+          },
+          "image": false,
+          "ok": true,
+          "data": {}
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": false,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "element_count": 176,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000040:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "selected": true,
+                "value": "1"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "pid": 12828,
+            "returned_element_count": 1,
+            "snapshot_id": "s00000040",
+            "timeout_ms": 1000,
+            "total_element_count": 176,
+            "tree_format": "elements",
+            "truncated": true,
+            "truncation_reason": "timeout",
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        },
+        {
+          "tool": "computer_action",
+          "args": {
+            "name": "click",
+            "arguments": {
+              "element_token": "s00000040:10",
+              "pid": 12828,
+              "window_id": 69859
+            }
+          },
+          "image": false,
+          "ok": true,
+          "data": {
+            "delivery": {
+              "mode": "background"
+            },
+            "effect": "unverifiable",
+            "hint": "The click was sent but nothing confirmed it. Read what changed before clicking again; a repeat can toggle or double-fire.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "route": "accessibility",
+            "summary": "✅ Performed AXPress on [10] AXCheckBox \"Locked items\"."
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": false,
+              "max_dimension": 800,
+              "since": "latest"
+            }
+          },
+          "image": false,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000041:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "selected": false,
+                "value": "0"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "invalidated_snapshot_ids": [
+              "s00000040"
+            ],
+            "pid": 12828,
+            "returned_element_count": 1,
+            "since": "s00000040",
+            "since_status": "too_much_changed",
+            "snapshot_id": "s00000041",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        }
+      ],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 23679
+    },
+    {
+      "model": "deepseek-v4-pro",
+      "route": "Claude Agent SDK / Anthropic-compatible",
+      "vision": false,
+      "before": "1",
+      "stderr": "⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors\n[claude-code:unrecognized_model] {\"model\":\"deepseek-v4-pro\",\"query_source\":\"sdk\"}\n",
+      "events": [
+        {
+          "type": "result",
+          "subtype": "success",
+          "is_error": false,
+          "result": "Confirmed value changed.\n\n- Before click: `s00000046:10` AXCheckBox \"Locked items\" — `selected:true`, `value:\"1\"`\n- After click + readback (`s00000049:10`): — `selected:false`, `value:\"0\"`\n\nNote: the requested `since:\"latest\"` readback returned an internal typed-output mismatch twice, so I verified with a same-window read using the same query/tree_format/include_screenshot settings. The readback confirms the checkbox value changed from `1` to `0`. Stopping here; no restore performed."
+        }
+      ],
+      "after": "0",
+      "actions": 1,
+      "imageDelivered": false,
+      "ok": true,
+      "trace": [
+        {
+          "tool": "computer_tools",
+          "args": {
+            "query": "get_window_state click"
+          },
+          "image": false,
+          "ok": true,
+          "data": {}
+        },
+        {
+          "tool": "computer_tools",
+          "args": {
+            "query": "get_window_state"
+          },
+          "image": false,
+          "ok": true,
+          "data": {}
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": false,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000046:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "selected": true,
+                "value": "1"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "pid": 12828,
+            "returned_element_count": 1,
+            "snapshot_id": "s00000046",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        },
+        {
+          "tool": "computer_action",
+          "args": {
+            "name": "click",
+            "arguments": {
+              "element_token": "s00000046:10",
+              "pid": 12828,
+              "window_id": 69859
+            }
+          },
+          "image": false,
+          "ok": true,
+          "data": {
+            "delivery": {
+              "mode": "background"
+            },
+            "effect": "unverifiable",
+            "hint": "The click was sent but nothing confirmed it. Read what changed before clicking again; a repeat can toggle or double-fire.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "route": "accessibility",
+            "summary": "✅ Performed AXPress on [10] AXCheckBox \"Locked items\"."
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "since": "latest",
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": false,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": false,
+          "data": {
+            "code": "typed_output_mismatch",
+            "detail": "returned_element_count does not match elements",
+            "execution_state": "unknown",
+            "hint": "The driver could not confirm its own result, so the action may have run. Read the window before repeating it.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "tool": "get_window_state"
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "since": "latest",
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": false,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": false,
+          "data": {
+            "code": "typed_output_mismatch",
+            "detail": "returned_element_count does not match elements",
+            "execution_state": "unknown",
+            "hint": "The driver could not confirm its own result, so the action may have run. Read the window before repeating it.",
+            "next_call": {
+              "arguments": {
+                "pid": 12828,
+                "since": "latest",
+                "window_id": 69859
+              },
+              "tool": "get_window_state"
+            },
+            "tool": "get_window_state"
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": false,
+              "max_dimension": 800
+            }
+          },
+          "image": false,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000049:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "selected": false,
+                "value": "0"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "invalidated_snapshot_ids": [
+              "s00000048"
+            ],
+            "pid": 12828,
+            "returned_element_count": 1,
+            "snapshot_id": "s00000049",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        }
+      ],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 39733
+    }
+  ]
+}

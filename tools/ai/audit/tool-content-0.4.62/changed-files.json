@@ -1,0 +1,13 @@
+[
+  "overlay/ExecutionIO.vue",
+  "overlay/ExecutionSteps.vue",
+  "apply-execution.mjs",
+  "apply-overlay.mjs",
+  "build.sh",
+  "README.md",
+  "test-execution-steps-ui.cjs",
+  "test-editor-images-loader.cjs",
+  "overlay/toolContent.ts",
+  "test-tool-content.mjs",
+  "test-tool-content-host.cjs"
+]

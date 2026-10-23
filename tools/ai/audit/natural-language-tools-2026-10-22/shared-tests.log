@@ -1,0 +1,43 @@
+bun test v1.3.14 (0d9b296a)
+
+tools/ai/composer/test/history.test.mjs:
+(pass) shared history persists extension messages and reads native terminal sessions without crossing workspaces [45.74ms]
+
+tools/ai/composer/test/intent.test.mjs:
+(pass) conversation and explicit no-tool requests cannot start operational tools [0.50ms]
+(pass) natural-language tasks retain access without slash commands or rigid keyword allowlists [0.02ms]
+
+tools/ai/composer/test/demand.test.mjs:
+(pass) startup is inert, discovery bounded, only selected MCP starts, denied/unknown targets never execute [2.36ms]
+(pass) skill search excludes bodies and loads only the exact selected skill, with project precedence [2.74ms]
+(pass) skill discovery honors invocation restrictions without preloading tools or skill bodies [2.08ms]
+(pass) tool search ranks name matches first and compacts oversized enums [0.25ms]
+(pass) task words find the tool that runs a matching action; kind defaults to tool [0.65ms]
+
+tools/ai/composer/test/diagnostics.test.mjs:
+(pass) journal captures both clients, isolates workspaces, redacts secrets and correlates calls [6.43ms]
+(pass) terminal bus records final thrown errors even with no next tool, AI errors and retry status [0.11ms]
+(pass) diagnosis distinguishes cancellations, permissions, design violations and runtime failures [0.11ms]
+(pass) concurrent writes stay parseable, malformed tails are visible and retention ignores unrelated files [6.96ms]
+(pass) logging failures never throw into the tool execution and report failure once [0.73ms]
+(pass) SDK debug messages are not errors and chunked actual failures remain visible [0.30ms]
+(pass) EPRO2 archive write errors retain evidence and macOS extraction uses a supported alternative [0.31ms]
+(pass) shell exits are classified from error lines, not from program output [0.18ms]
+(pass) report rows locate events without repeating suggestions and list the slowest tools [1.36ms]
+
+tools/ai/composer/test/harness.test.mjs:
+(pass) retry guard counts identical failures, allows changed requests and resets on a real user turn [0.28ms]
+(pass) successful calls never force extra bookkeeping tools; explicit todo updates still persist [0.13ms]
+(pass) large results are archived byte-exact with a bounded preview; archive failures propagate [2.12ms]
+
+tools/ai/composer/test/local-tools.test.mjs:
+(pass) local memory survives reload, isolates workspaces, and excludes secrets; history is available to both clients [1.85ms]
+(pass) Context7 uses fixed official endpoints, protects credentials, reports HTTP failures and bounds context [3.32ms]
+
+tools/ai/membership/test/local.test.mjs:
+(pass) membership environment and complete model IDs [0.14ms]
+(pass) local CLI discovery paginates, sanitizes account details and does not infer membership from models [1723.21ms]
+
+ 24 pass
+ 0 fail
+Ran 24 tests across 7 files. [2.37s]

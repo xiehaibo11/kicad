@@ -1,0 +1,14 @@
+{
+  "profile": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-content-host-lJ06rI",
+  "args": [
+    "--user-data-dir",
+    "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-content-host-lJ06rI/user",
+    "--disable-extensions",
+    "--disable-workspace-trust",
+    "--skip-welcome",
+    "--new-window",
+    "--extensionDevelopmentPath=/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/kicad-0462-final-nb323e7l/extension",
+    "--extensionTestsPath=/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/test-tool-content-host.cjs",
+    "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad-content-host-lJ06rI/workspace"
+  ]
+}

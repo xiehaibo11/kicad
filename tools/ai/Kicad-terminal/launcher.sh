@@ -2,6 +2,10 @@
 # User-facing AI terminal entry. Keep kicad-cli available for native automation.
 set -eu
 KICAD_BIN_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+if [ "${1:-}" = doctor ]; then
+  shift
+  exec node "$KICAD_BIN_DIR/../share/kicad-terminal/agent-doctor.mjs" "$@"
+fi
 if [ ! -x "$KICAD_BIN_DIR/kicad-terminal" ]; then
   echo "Kicad 终端 is missing. Build tools/ai/Kicad-terminal, then run bash tools/ai/Kicad-terminal/install.sh." >&2
   exit 1

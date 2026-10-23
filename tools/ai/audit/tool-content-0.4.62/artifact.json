@@ -1,0 +1,16 @@
+{
+  "version": "0.4.62",
+  "vsix": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/dist/kicad-0.4.62.vsix",
+  "sha256": "ce6de7d902fb90d096c3b981da8b9f2a28916eee180c0697ee18922180c44c37",
+  "buildManifest": {
+    "schemaVersion": 1,
+    "kind": "extension",
+    "version": "0.4.62",
+    "createdAt": "2026-10-23T08:14:56.874806+00:00",
+    "upstreamCommit": "c238b3e57c55e95220a8e2837cd4cbe6350a6b65",
+    "sourceSha256": "1696fb9c8e05effe2386bffe1b5264dbd2c421fe16a2973997ee4c883991ac95",
+    "files": {
+      "kicad-0.4.62.vsix": "ce6de7d902fb90d096c3b981da8b9f2a28916eee180c0697ee18922180c44c37"
+    }
+  }
+}

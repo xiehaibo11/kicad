@@ -1,0 +1,94 @@
+{
+  "readOnly": true,
+  "scope": "Composed system sections and root project instruction files; does not load skill bodies, MCP servers or models.",
+  "sections": [
+    {
+      "name": "identity",
+      "characters": 295
+    },
+    {
+      "name": "task_protocol",
+      "characters": 748
+    },
+    {
+      "name": "tool_policy",
+      "characters": 687
+    },
+    {
+      "name": "tool_calls",
+      "characters": 486
+    },
+    {
+      "name": "large_files",
+      "characters": 507
+    },
+    {
+      "name": "capability_discovery",
+      "characters": 465
+    },
+    {
+      "name": "skills",
+      "characters": 407
+    },
+    {
+      "name": "mcp",
+      "characters": 313
+    },
+    {
+      "name": "delegation",
+      "characters": 621
+    },
+    {
+      "name": "memory",
+      "characters": 327
+    },
+    {
+      "name": "verification",
+      "characters": 449
+    },
+    {
+      "name": "domain",
+      "characters": 333
+    },
+    {
+      "name": "environment",
+      "characters": 218
+    },
+    {
+      "name": "mode",
+      "characters": 129
+    },
+    {
+      "name": "output_style",
+      "characters": 327
+    },
+    {
+      "name": "continuity",
+      "characters": 469
+    },
+    {
+      "name": "boundaries",
+      "characters": 329
+    }
+  ],
+  "files": [
+    "/Users/mosc/Downloads/Kicad/AGENTS.md"
+  ],
+  "findings": [],
+  "limits": "Static checks identify possible stale references and portability issues; semantic conflicts and arbitrary shell instructions require review.",
+  "settings": {
+    "autoMode": true,
+    "deniedModels": [],
+    "modelSettings": {},
+    "maxProseWidth": 100,
+    "commitAttribution": true,
+    "mcpVerification": true,
+    "autoModeSuggestions": true
+  },
+  "sources": [
+    {
+      "source": "host settings",
+      "managed": false
+    }
+  ]
+}

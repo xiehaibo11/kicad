@@ -1,0 +1,42 @@
+{
+  "provenance": "Live signed Cua 0.38.0; production computer adapter; production Codex adapter; Claude SDK registration with same demand catalog; no live user projects; fixture-only guard; test continuity recorder; no native CLI tools or sub-agents",
+  "pid": 12828,
+  "windowId": 69859,
+  "boardSha256": "ad6fbdc7e714662a67eff09cc2eeed00554750e00f381e73fe81ee9780b3cc06",
+  "accounts": {
+    "claude": {
+      "subscriptionType": "Claude Pro",
+      "apiProvider": "firstParty"
+    },
+    "codex": {
+      "type": "chatgpt",
+      "planType": "pro"
+    }
+  },
+  "results": [
+    {
+      "model": "claude-opus-5-5",
+      "route": "Claude Agent SDK / Anthropic-compatible",
+      "vision": true,
+      "before": "0",
+      "ok": false,
+      "error": "Error: Claude Code process exited with code 1",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 6659
+    },
+    {
+      "model": "claude-fable-5-1",
+      "route": "Claude Agent SDK / Anthropic-compatible",
+      "vision": true,
+      "before": "0",
+      "ok": false,
+      "error": "Error: Claude Code process exited with code 1",
+      "trace": [],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 6379
+    }
+  ]
+}

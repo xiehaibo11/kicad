@@ -1,0 +1,4 @@
+	file:///Applications/Visual%20Studio%20Code.app/Contents/Resources/app/extensions/media-preview -> vscode.media-preview
+2026-10-23 00:38:39.933 [info] ExtensionService#_doActivateExtension vscode.media-preview, startup: false, activationEvent: 'onCustomEditor:imagePreview.previewEditor'
+2026-10-23 00:38:39.988 [info] Extension host terminating: received terminate message from renderer
+2026-10-23 00:38:40.000 [info] Extension host with pid 89872 exiting with code 0

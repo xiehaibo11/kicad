@@ -1,0 +1,83 @@
+{
+  "ok": true,
+  "version": "0.4.67",
+  "checkedAt": "2026-10-23T23:11:52.500419+00:00",
+  "source": {
+    "base": "d7085b573ade6711d396d5d869131c09168bfd1a",
+    "commit": "04ed42ddebbd0e8a9fd9394b84a10c9d192b8d38",
+    "tree": "1d122d5755afdda4e6cf8bc491715eae2cd39c32",
+    "branch": "codex/release-details-0.4.67",
+    "changedFiles": [
+      "tools/ai/Kicad-extension/README.md",
+      "tools/ai/Kicad-extension/IMPLEMENTATION_NOTES.md",
+      "tools/ai/Kicad-extension/apply-overlay.mjs"
+    ],
+    "buildSourceFilesMatched": 257
+  },
+  "build": {
+    "command": "bash tools/ai/Kicad-extension/build.sh",
+    "exitCode": 0,
+    "typescript": true,
+    "vueTypescript": true,
+    "allBuildRegressionGates": true,
+    "packagedBundle": true,
+    "manifestVerified": true,
+    "manifest": {
+      "schemaVersion": 1,
+      "kind": "extension",
+      "version": "0.4.67",
+      "createdAt": "2026-10-23T23:10:53.659072+00:00",
+      "upstreamCommit": "c238b3e57c55e95220a8e2837cd4cbe6350a6b65",
+      "sourceSha256": "a7f10ebf7c16cab90bfe113ac7e98f84125fdbd4a5d81b03402b2e30fc9cece1",
+      "files": {
+        "kicad-0.4.67.vsix": "9b2621f2e0212235e258af01d7128da79bfc9a35db314123097affb57f8d3ddf"
+      }
+    }
+  },
+  "details": {
+    "ok": true,
+    "version": "0.4.67",
+    "readmeLines": 33,
+    "detailsAsset": "extension/readme.md",
+    "packagedReadmeMatchesSource": true,
+    "changedPayloadEntries": [
+      "extension.vsixmanifest",
+      "extension/README.md.bak",
+      "extension/package.json",
+      "extension/readme.md"
+    ],
+    "runtimePayloadIdenticalToPreviousRelease": true,
+    "vsixSha256": "9b2621f2e0212235e258af01d7128da79bfc9a35db314123097affb57f8d3ddf",
+    "vsixBytes": 34636367
+  },
+  "installation": {
+    "ok": true,
+    "checkedAt": "2026-10-23T23:11:33.198016+00:00",
+    "vsixSha256": "9b2621f2e0212235e258af01d7128da79bfc9a35db314123097affb57f8d3ddf",
+    "installed": [
+      {
+        "editor": "VS Code",
+        "version": "0.4.67",
+        "path": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.67",
+        "payloadFilesChecked": 1218,
+        "mismatches": [],
+        "packageMetadataIgnored": true,
+        "detailsMatch": true
+      },
+      {
+        "editor": "Cursor",
+        "version": "0.4.67",
+        "path": "/Users/mosc/.cursor/extensions/kicad-agent.kicad-0.4.67",
+        "payloadFilesChecked": 1218,
+        "mismatches": [],
+        "packageMetadataIgnored": true,
+        "detailsMatch": true
+      }
+    ],
+    "settingsUnchanged": true,
+    "existingWindowsNotReloaded": true,
+    "worktreeBranchAndIndexPreserved": true
+  },
+  "liveModelMatrixRun": false,
+  "scope": "Documentation and release version only; every runtime payload file is byte-identical to 0.4.66."
+}

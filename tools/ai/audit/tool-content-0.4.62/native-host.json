@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "provenance": "real VS Code Extension Test Host; activated VSIX request router and provider; no model calls",
+  "vscodeVersion": "1.136.1",
+  "extensionVersion": "0.4.62",
+  "snapshots": [
+    {
+      "label": "command (native-test)",
+      "uri": "kicad-tool-content:/command%20%28native-test%29?id%3Dca074165b243c877ccdd9ed8cc5eb555875e8c0f17a781ec788c188c232eb5ac",
+      "characters": 148,
+      "lines": 3,
+      "typingRejected": true
+    },
+    {
+      "label": "Bash tool output (native-test)",
+      "uri": "kicad-tool-content:/Bash%20tool%20output%20%28native-test%29?id%3D13de707888169cc3fedefdaffd3186348c5109c08f53ad3027407ac959e55f0f",
+      "characters": 43892,
+      "lines": 3000,
+      "typingRejected": true
+    },
+    {
+      "label": "Bash tool error (native-test)",
+      "uri": "kicad-tool-content:/Bash%20tool%20error%20%28native-test%29?id%3Df962c4490781606f16b39d3e59df77915ba7f56c7d9c4148e79b029c59035839",
+      "characters": 22,
+      "lines": 2,
+      "typingRejected": true
+    }
+  ],
+  "tabs": [
+    {
+      "group": 1,
+      "label": "TEST FIXTURE · no model calls",
+      "scheme": "untitled",
+      "active": false
+    },
+    {
+      "group": 1,
+      "label": "Bash tool output (native-test)",
+      "scheme": "kicad-tool-content",
+      "active": true
+    },
+    {
+      "group": 2,
+      "label": "Kicad content test · no model",
+      "active": true
+    }
+  ],
+  "commandExecuted": false
+}

@@ -26,7 +26,7 @@ const packageVersion = JSON.parse(fs.readFileSync(path.join(root, 'package.json'
 const runtimeVersion = execFileSync(path.join(root, 'vendor/darwin-arm64/kicad-terminal'), ['--version'], { encoding: 'utf8' }).trim();
 if (runtimeVersion !== packageVersion) throw new Error(`Runtime reports ${runtimeVersion}, package.json is ${packageVersion}: rebuild tools/ai/Kicad-terminal`);
 fs.chmodSync(path.join(root, 'bin/Kicad.mjs'), 0o755);
-for (const name of ['eda-agent-instructions.md', 'session-runtime.mjs', 'upstream.json', 'branding.json', 'composer.json', 'waiting.json', 'build-manifest.json']) copy(path.join(terminal, 'dist', name), 'resources/' + name);
+for (const name of ['eda-agent-instructions.md', 'session-runtime.mjs', 'agent-doctor.mjs', 'upstream.json', 'branding.json', 'composer.json', 'waiting.json', 'build-manifest.json']) copy(path.join(terminal, 'dist', name), 'resources/' + name);
 // Standalone installations update themselves from this package, including their launcher.
 copy(path.join(terminal, 'launcher.sh'), 'resources/launcher.sh');
 fs.chmodSync(path.join(root, 'resources/launcher.sh'), 0o755);

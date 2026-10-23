@@ -34,8 +34,17 @@ async function claudeCredential(){
 export const ClaudeMembership=async()=>({auth:{provider:CLAUDE,methods:[],loader:async()=>({apiKey:'local-membership',fetch:async(input:any,init:any={})=>{
  const url=new URL(typeof input==='string'?input:input.url||input);if(url.origin!=='https://api.anthropic.com')throw Error('Refusing to send membership credentials to another host');
  const headers=new Headers(init.headers);headers.delete('x-api-key');headers.set('authorization','Bearer '+await claudeCredential());headers.set('anthropic-beta',Array.from(new Set([...(headers.get('anthropic-beta')||'').split(',').filter(Boolean),'oauth-2025-04-20'])).join(','));
- return fetch(url,{...init,headers,redirect:'error'});
+ return explainClaudeRejection(await fetch(url,{...init,headers,redirect:'error'}));
 }})}});
+// The API answers subscription credentials it will not serve here with a bare "Error" body, which
+// OpenCode retried five times without showing a reason. Report it once (403 is not retried) with
+// what still works; real rate limits and server errors keep their own status and message.
+export async function explainClaudeRejection(response:Response):Promise<Response>{
+ if(response.ok)return response;
+ let message='';try{message=String(JSON.parse(await response.clone().text())?.error?.message||'');}catch{}
+ if(message&&message!=='Error'||!message&&response.status>=500)return response;
+ return new Response(JSON.stringify({type:'error',error:{type:'permission_error',message:'Claude 会员请求被 Anthropic 拒绝（HTTP '+response.status+'，未返回原因）。本机 Claude 会员通过 Claude Code 使用：请在 Kicad 扩展中选择 Claude 模型，或在终端改用 Codex 会员、DeepSeek 或 API Key 模型。'}}),{status:403,headers:{'content-type':'application/json'}});
+}
 export const CodexMembership=async()=>({auth:{provider:CODEX,methods:[],loader:async()=>({apiKey:'local-membership',fetch:async(input:any,init:any={})=>{
  const url=new URL(typeof input==='string'?input:input.url||input);if(url.origin!=='https://chatgpt.com'||!url.pathname.startsWith('/backend-api/codex/'))throw Error('Refusing to send membership credentials to another host');
  const tokens=await codexAccess();const headers=new Headers(init.headers);headers.set('authorization','Bearer '+tokens.access_token);if(tokens.account_id)headers.set('chatgpt-account-id',tokens.account_id);headers.set('originator','kicad');

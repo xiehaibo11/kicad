@@ -1,0 +1,11 @@
+✔ membership environment and complete model IDs (2.917709ms)
+✔ local CLI discovery paginates, sanitizes account details and does not infer membership from models (1126.636041ms)
+✔ model discovery is shared, answers from the last result and carries effort tiers (1098.779625ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2369.854583

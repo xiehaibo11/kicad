@@ -1,0 +1,376 @@
+{
+  "provenance": "Live signed Cua 0.38.0; production computer adapter; production Codex adapter; Claude SDK registration with same demand catalog; no live user projects; fixture-only guard; test continuity recorder; no native CLI tools or sub-agents",
+  "pid": 12828,
+  "windowId": 69859,
+  "boardSha256": "ad6fbdc7e714662a67eff09cc2eeed00554750e00f381e73fe81ee9780b3cc06",
+  "accounts": {
+    "claude": {
+      "subscriptionType": "Claude Pro",
+      "apiProvider": "firstParty"
+    },
+    "codex": {
+      "type": "chatgpt",
+      "planType": "pro"
+    }
+  },
+  "results": [
+    {
+      "model": "codex:gpt-6.1-sol",
+      "route": "production codexQuery/app-server",
+      "vision": true,
+      "before": "1",
+      "events": [
+        {
+          "type": "result",
+          "subtype": "success",
+          "is_error": false,
+          "errors": [],
+          "result": ""
+        }
+      ],
+      "after": "1",
+      "actions": 0,
+      "imageDelivered": true,
+      "ok": false,
+      "trace": [
+        {
+          "tool": "computer_tools",
+          "args": {
+            "query": "get_window_state click"
+          },
+          "image": false,
+          "ok": true,
+          "data": {}
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": true,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "capture_id": "capture_e1a2a470da0c41df8deca6cd0ef436bf_0000000000000010",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s0000004e:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "screenshot_frame": {
+                  "h": 8,
+                  "w": 47,
+                  "x": 751,
+                  "y": 378
+                },
+                "selected": true,
+                "value": "1"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "pid": 12828,
+            "returned_element_count": 1,
+            "screenshot_frame_valid": true,
+            "screenshot_height": 458,
+            "screenshot_mime_type": "image/png",
+            "screenshot_scale": 2,
+            "screenshot_width": 800,
+            "snapshot_id": "s0000004e",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_bounds": {
+              "height": 979,
+              "width": 1710,
+              "x": 51,
+              "y": 178
+            },
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        }
+      ],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 31194
+    },
+    {
+      "model": "codex:gpt-6-astra",
+      "route": "production codexQuery/app-server",
+      "vision": true,
+      "before": "1",
+      "events": [
+        {
+          "type": "result",
+          "subtype": "success",
+          "is_error": false,
+          "errors": [],
+          "result": ""
+        }
+      ],
+      "providerMessage": "The test could not be completed. `computer_read` returned screenshot data and a snapshot header, but omitted `structuredContent.elements`, so I could not obtain the exact token or checkbox value for “Locked items.”\n\nI made three reads of pid `12828`, window `69859` while attempting to access that result. No click was sent, no token was guessed, and no shell, files, sub-agents, menus, or other windows were used. The value change remains unverified.",
+      "after": "1",
+      "actions": 0,
+      "imageDelivered": true,
+      "ok": false,
+      "trace": [
+        {
+          "tool": "computer_tools",
+          "args": {
+            "query": "get_window_state click"
+          },
+          "image": false,
+          "ok": true,
+          "data": {}
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": true,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "capture_id": "capture_e1a2a470da0c41df8deca6cd0ef436bf_0000000000000011",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000053:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "screenshot_frame": {
+                  "h": 8,
+                  "w": 47,
+                  "x": 751,
+                  "y": 378
+                },
+                "selected": true,
+                "value": "1"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "pid": 12828,
+            "returned_element_count": 1,
+            "screenshot_frame_valid": true,
+            "screenshot_height": 458,
+            "screenshot_mime_type": "image/png",
+            "screenshot_scale": 2,
+            "screenshot_width": 800,
+            "snapshot_id": "s00000053",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_bounds": {
+              "height": 979,
+              "width": 1710,
+              "x": 51,
+              "y": 178
+            },
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": true,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "capture_id": "capture_e1a2a470da0c41df8deca6cd0ef436bf_0000000000000012",
+            "element_count": 411,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000054:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "screenshot_frame": {
+                  "h": 8,
+                  "w": 47,
+                  "x": 751,
+                  "y": 378
+                },
+                "selected": true,
+                "value": "1"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "invalidated_snapshot_ids": [
+              "s00000053"
+            ],
+            "pid": 12828,
+            "returned_element_count": 1,
+            "screenshot_frame_valid": true,
+            "screenshot_height": 458,
+            "screenshot_mime_type": "image/png",
+            "screenshot_scale": 2,
+            "screenshot_width": 800,
+            "snapshot_id": "s00000054",
+            "timeout_ms": 1000,
+            "total_element_count": 411,
+            "tree_format": "elements",
+            "truncated": false,
+            "window_bounds": {
+              "height": 979,
+              "width": 1710,
+              "x": 51,
+              "y": 178
+            },
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        },
+        {
+          "tool": "computer_read",
+          "args": {
+            "name": "get_window_state",
+            "arguments": {
+              "pid": 12828,
+              "window_id": 69859,
+              "query": "Locked items",
+              "tree_format": "elements",
+              "include_screenshot": true,
+              "max_dimension": 800
+            }
+          },
+          "image": true,
+          "ok": true,
+          "data": {
+            "app_name": "PCB Editor",
+            "capture_id": "capture_e1a2a470da0c41df8deca6cd0ef436bf_0000000000000013",
+            "element_count": 202,
+            "elements": [
+              {
+                "actions": [
+                  "AXPress"
+                ],
+                "depth": 1,
+                "element_index": 10,
+                "element_token": "s00000055:10",
+                "enabled": true,
+                "frame": {
+                  "h": 17,
+                  "w": 101,
+                  "x": 1656,
+                  "y": 985.5
+                },
+                "label": "Locked items",
+                "parent_index": 0,
+                "role": "AXCheckBox",
+                "screenshot_frame": {
+                  "h": 8,
+                  "w": 47,
+                  "x": 751,
+                  "y": 378
+                },
+                "selected": true,
+                "value": "1"
+              }
+            ],
+            "elements_complete": false,
+            "filtered_element_count": 1,
+            "invalidated_snapshot_ids": [
+              "s00000054"
+            ],
+            "pid": 12828,
+            "returned_element_count": 1,
+            "screenshot_frame_valid": true,
+            "screenshot_height": 458,
+            "screenshot_mime_type": "image/png",
+            "screenshot_scale": 2,
+            "screenshot_width": 800,
+            "snapshot_id": "s00000055",
+            "timeout_ms": 1000,
+            "total_element_count": 202,
+            "tree_format": "elements",
+            "truncated": true,
+            "truncation_reason": "timeout",
+            "window_bounds": {
+              "height": 979,
+              "width": 1710,
+              "x": 51,
+              "y": 178
+            },
+            "window_id": 69859,
+            "window_title": "computer-control — PCB Editor"
+          }
+        }
+      ],
+      "restored": true,
+      "boardUnchanged": true,
+      "duration_ms": 45429
+    }
+  ]
+}

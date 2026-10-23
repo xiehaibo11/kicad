@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "editor": "VS Code",
+      "enabled": true,
+      "onlyChangedKey": "kicadAgent.computer.enabled",
+      "sha256": "6ecb89737522bc853b59b8916b2529b3cc4811adb193cd79ee230bcee10aceb8"
+    },
+    {
+      "editor": "Cursor",
+      "enabled": true,
+      "onlyChangedKey": "kicadAgent.computer.enabled",
+      "sha256": "3f2e9c29bdce81a6ad40756d2abfbfe19a3c41ce0d585bacd1508fbab7f1dac0"
+    }
+  ]
+}

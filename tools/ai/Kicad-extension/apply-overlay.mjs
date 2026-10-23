@@ -19,6 +19,13 @@ import {applyMessageEditing} from './apply-message-editing.mjs';
 import {applyContinuity} from './apply-continuity.mjs';
 import {applyHistory} from './apply-history.mjs';
 import {applyLazyTools} from './apply-lazy-tools.mjs';
+import {applyRuntimeLock} from './apply-runtime-lock.mjs';
+import {applyResponsiveness} from './apply-responsiveness.mjs';
+import {applyOrchestration} from './apply-orchestration.mjs';
+import {applySettings} from './apply-settings.mjs';
+import {applySlashMenu} from './apply-slash-menu.mjs';
+import {applyInventory} from './apply-inventory.mjs';
+import {applyComputerUse} from './apply-computer-use.mjs';
 
 const [, , buildDir, overlayDir] = process.argv;
 
@@ -41,7 +48,7 @@ pkg.bugs = { url: 'https://github.com/xiehaibo11/kicad/issues' };
 pkg.keywords = Array.from(new Set([...(pkg.keywords ?? []), 'kicad', 'pcb', 'eda', 'schematic']));
 pkg.categories = ['AI', 'Other'];
 pkg.kicadUpstreamVersion = pkg.version;
-pkg.version = '0.4.29';
+pkg.version = '0.4.67';
 pkg.activationEvents = Array.from(new Set([...(pkg.activationEvents ?? []), 'onUri']));
 pkg.dependencies['jsonc-parser'] = '^3.3.1';
 // Pinned JavaScript CLI with native effort support; keep the existing SDK API.
@@ -66,11 +73,32 @@ if (contributes.configuration) {
     'kicadAgent.nodePath': { type: 'string', default: 'node', description: 'Node.js 22 or newer executable.' },
     'kicadAgent.kicadCli': { type: 'string', default: '', description: 'Optional kicad-cli path passed to the KiCad MCP server.' },
     'kicadAgent.socket': { type: 'string', default: '', description: 'Optional KiCad API socket path.' },
+    'kicadAgent.autoMode': {type:'boolean',default:true,description:'In Agent mode, automatically allow known local reads and workspace edits. Unknown commands and external calls ask. This local policy is independent of reasoning and never authorizes sub-agents.'},
+    'kicadAgent.deniedModels': {type:'array',items:{type:'string'},default:[],description:'Blocked model IDs (supports *). Enforced before model requests; shared and managed file denials cannot be removed here.'},
+    'kicadAgent.maxEffortLevel': {type:'string',enum:['off','minimal','low','medium','high','xhigh','max','ultra'],description:'Maximum reasoning effort. Auto also runs at or below this cap; unsupported lower tiers produce an explicit error.'},
+    'kicadAgent.modelSettings': {type:'object',default:{},additionalProperties:{type:'object',properties:{maxEffortLevel:{type:'string',enum:['off','minimal','low','medium','high','xhigh','max','ultra']}},additionalProperties:false},description:'Per-model effort caps, keyed by model ID or * pattern. Combined with the global and managed caps.'},
+    'kicadAgent.maxProseWidth': {type:'integer',minimum:0,default:100,description:'Maximum prose width in new interactive terminals (columns). 0 uses the full width. Tool output keeps its normal width.'},
+    'kicadAgent.commitAttribution': {type:'boolean',default:true,description:'Include the Claude runtime commit and PR attribution. Off passes empty attribution to the runtime; existing commits are never rewritten.'},
+    'kicadAgent.mcpVerification': {type:'boolean',default:true,description:'Require confirmation for external MCP calls in Agent mode. Off allows these calls in Agent mode; explicit model, skill, sub-agent and safety restrictions still apply.'},
+    'kicadAgent.autoModeSuggestions': {type:'boolean',default:true,description:'Allow model-generated next-message suggestions. Off suppresses prediction requests.'},
     'kicadAgent.openCode.path': { type: 'string', default: 'kicad-terminal', description: 'Kicad terminal executable (full OpenCode runtime with Kicad branding). Set opencode here to use an upstream installation.' },
     'kicadAgent.openCode.args': { type: 'array', items: { type: 'string' }, default: [], description: 'Arguments passed directly to OpenCode, e.g. --continue or --model provider/model.' },
     'kicadAgent.openCode.injectMcp': { type: 'boolean', default: true, description: 'Load the built-in KiCad tools in this OpenCode terminal. Other OpenCode configuration stays managed by OpenCode. Disable to use your own KiCad MCP configuration.' },
     'kicadAgent.deepseek.apiKey': { type: 'string', default: '', description: 'DeepSeek API key. Prefer the "Kicad: Set DeepSeek API Key" command, which stores it in SecretStorage.' },
-    'kicadAgent.deepseek.baseUrl': { type: 'string', default: '', description: 'DeepSeek Anthropic-compatible endpoint (default: https://api.deepseek.com/anthropic).' }
+    'kicadAgent.deepseek.baseUrl': { type: 'string', default: '', description: 'DeepSeek Anthropic-compatible endpoint (default: https://api.deepseek.com/anthropic).' },
+    // Tool orchestration. Applies when a conversation starts or restarts; a running turn keeps its tools.
+    'kicadAgent.mcp.mode': { type: 'string', enum: ['onDemand', 'direct', 'off'], default: 'onDemand', order: 10,
+      enumDescriptions: ['Configured MCP servers stay disconnected until a task needs one; the agent finds them with capability_search (fewest tokens, works with every model).', 'Hand configured MCP servers straight to the runtime at the start of each conversation; their tools appear as mcp__<server>__<tool>.', 'Do not use external MCP servers. Built-in KiCad tools stay available.'],
+      markdownDescription: 'How external MCP servers (Kicad settings → MCP servers) reach the agent. Built-in KiCad tools are always available through the capability catalog.' },
+    'kicadAgent.mcp.disabledServers': { type: 'array', items: { type: 'string' }, default: [], order: 11, description: 'MCP server names that are never connected, in any mode.' },
+    'kicadAgent.skills.mode': { type: 'string', enum: ['onDemand', 'native', 'off'], default: 'onDemand', order: 12,
+      enumDescriptions: ['Skills are searched and loaded through the capability catalog only when a task needs one; skill bodies are read at load time.', 'Use the runtime\'s own skill tool and skill listing (Claude Code skills / Codex skills).', 'Do not load skills.'],
+      markdownDescription: 'How skills (`SKILL.md` folders in ~/.claude/skills, ~/.agents/skills, ~/.codex/skills, project .claude/skills, plugins) are loaded.' },
+    'kicadAgent.skills.disabled': { type: 'array', items: { type: 'string' }, default: [], order: 13, description: 'Skill names that are never offered or loaded.' },
+    'kicadAgent.skills.extraRoots': { type: 'array', items: { type: 'string' }, default: [], order: 14, description: 'Additional directories searched for SKILL.md folders (on-demand mode). Relative paths resolve against the workspace; ~ is the home folder.' },
+    'kicadAgent.subagents.enabled': { type: 'boolean', default: true, order: 15, markdownDescription: 'Allow sub-agents only when explicitly requested by the user. Off disables delegation, including native Agent/Task and Codex collaboration. Claude-compatible runtimes register read-only `kicad-reviewer` and `kicad-verifier` agents on the selected model; Codex uses its native agents.' },
+    'kicadAgent.prompt.disabledSections': { type: 'array', items: { type: 'string', enum: ['task_protocol', 'tool_policy', 'large_files', 'capability_discovery', 'skills', 'mcp', 'delegation', 'memory', 'verification', 'environment', 'output_style', 'continuity'] }, default: [], order: 16,
+      markdownDescription: 'Optional model-agnostic prompt components to leave out. `identity`, `tool_calls`, `mode` and `boundaries` are always included.' }
   });
 }
 
@@ -80,6 +108,9 @@ contributes.commands.push(
   { command: 'kicadAgent.deepseek.setKey', title: 'Kicad: Set DeepSeek API Key' },
   { command: 'kicadAgent.deepseek.clearKey', title: 'Kicad: Clear DeepSeek API Key' },
   { command: 'kicadAgent.health', title: 'Kicad: 检查连接状态' },
+  { command: 'kicadAgent.promptAudit', title: 'Kicad: Doctor Prompt Audit' },
+  { command: 'kicadAgent.pluginEval', title: 'Kicad: Evaluate Claude Plugin' },
+  { command: 'kicadAgent.showToolOutput', title: 'Kicad: 查看工具终端输出', icon: '$(terminal)' },
   { command: 'kicadAgent.deepseek.status', title: 'Kicad: DeepSeek Status' }
 );
 contributes.menus['view/title'].push({ command: 'kicadAgent.startOpenCode', when: 'view == claudix.chatView', group: 'navigation' });
@@ -319,9 +350,9 @@ for (const name of ['kicadHealth.ts', 'kicadRuntime.ts', 'kicadIntegration.ts', 
 // Shared on-demand policy for the KiCad tools (also used by the Kicad terminal).
 fs.copyFileSync(path.join(overlayDir, '../..', 'composer/kicad-tools.ts'), path.join(buildDir, 'src', 'kicadToolsPolicy.ts'));
 patchFile('src/extension.ts', "import * as vscode from 'vscode';",
-  "import * as vscode from 'vscode';\nimport { registerKiCadIntegration } from './kicadIntegration';\nimport { registerProviderCommands } from './kicadProviders';");
+  "import * as vscode from 'vscode';\nimport { registerToolOutput } from './kicadToolOutput';\nimport { registerKiCadIntegration } from './kicadIntegration';\nimport { registerProviderCommands } from './kicadProviders';");
 patchFile('src/extension.ts', 'export function activate(context: vscode.ExtensionContext) {',
-  'export function activate(context: vscode.ExtensionContext) {\n  registerKiCadIntegration(context);\n  registerProviderCommands(context);');
+  'export function activate(context: vscode.ExtensionContext) {\n  registerToolOutput(context);\n  registerKiCadIntegration(context);\n  registerProviderCommands(context);');
 
 // Share one host API and surface webview startup errors in the extension log.
 function patchBootstrap(anchor,replacement) {
@@ -728,3 +759,42 @@ applyMembership(buildDir,overlayDir);
 applyLazyTools(buildDir);
 // Last: anchors the chips and user messages after the editing and model-selection patches.
 applyAttachments(buildDir,overlayDir);
+// Lock the permission mode while a turn runs and queue model/reasoning choices
+// for the next request; Agent mode auto-approves operational tools but keeps
+// questions and plan transitions explicit.
+applyRuntimeLock(buildDir);
+// Drop token-level progress, follow output only at the bottom, never block on discovery.
+applyResponsiveness(buildDir);
+
+// Model-agnostic prompt components. The runtime assembles environment, mode and
+// capability guidance per query; the static EDA instructions remain a cached
+// domain component, so the dynamic renderer omits its own domain section.
+const sharedDir=path.join(buildDir,'src','shared');
+fs.mkdirSync(sharedDir,{recursive:true});
+fs.copyFileSync(path.join(overlayDir,'../..','composer/model-profile.ts'),path.join(sharedDir,'kicadModelProfile.ts'));
+fs.writeFileSync(path.join(sharedDir,'kicadPromptSections.ts'),
+  fs.readFileSync(path.join(overlayDir,'../..','composer/prompt-sections.ts'),'utf8')
+    .replace("from './model-profile.ts'","from './kicadModelProfile.ts'"));
+for(const relative of ['tsconfig.json','src/webview/tsconfig.json']){
+  const tsconfigPath=path.join(buildDir,relative);
+  if(!fs.existsSync(tsconfigPath))continue;
+  const tsconfig=JSON.parse(fs.readFileSync(tsconfigPath,'utf8'));
+  tsconfig.compilerOptions={...tsconfig.compilerOptions,noEmit:true,allowImportingTsExtensions:true};
+  fs.writeFileSync(tsconfigPath,JSON.stringify(tsconfig,null,2)+'\n');
+}
+patchFile('src/services/claude/ClaudeSdkService.ts',
+  "import { getKiCadSdkServers, READ_ONLY_EDA_TOOLS } from '../../kicadRuntime';",
+  "import { getKiCadSdkServers, READ_ONLY_EDA_TOOLS } from '../../kicadRuntime';\nimport { renderPromptSections } from '../../shared/kicadPromptSections';");
+patchFile('src/services/claude/ClaudeSdkService.ts',
+  "append: VS_CODE_APPEND_PROMPT + '",
+  "append: renderPromptSections({model: modelParam, cwd: cwdParam, mode: permissionModeParam, platform: process.platform, shell: process.env.SHELL, kicadCli: process.env.KICAD_CLI, socket: process.env.KICAD_API_SOCKET, includeDomain: false}) + '\\n' + VS_CODE_APPEND_PROMPT + '");
+patchFile('src/services/claude/ClaudeSdkService.ts',
+  "mcpServers: await getKiCadSdkServers(cwdParam, (await this.configService.getAllSettings()).mcpServers ?? {}),",
+  "mcpServers: await getKiCadSdkServers(cwdParam, (await this.configService.getAllSettings()).mcpServers ?? {}, {model: modelParam}),");
+// MCP/skill/sub-agent orchestration and prompt features follow the Kicad settings.
+applyOrchestration(buildDir);
+applySettings(buildDir,overlayDir);
+applySlashMenu(buildDir,overlayDir);
+applyInventory(buildDir,overlayDir);
+
+applyComputerUse(buildDir,overlayDir);

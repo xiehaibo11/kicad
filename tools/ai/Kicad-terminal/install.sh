@@ -58,7 +58,7 @@ for name in ('Kicad', 'kicad', 'kicad-terminal'):
     if (binary / name).is_dir():
         raise SystemExit(f'Kicad: cannot replace a directory: {binary / name}')
 for name in ('LICENSE-OpenCode.txt', 'upstream.json', 'composer.json', 'waiting.json',
-             'eda-agent-instructions.md', 'session-runtime.mjs', 'kicad-direct.mjs', 'LICENSE-protobufjs.txt', 'LICENSE-blocks-MIT.txt'):
+             'eda-agent-instructions.md', 'session-runtime.mjs', 'agent-doctor.mjs', 'kicad-direct.mjs', 'LICENSE-protobufjs.txt', 'LICENSE-blocks-MIT.txt'):
     with tempfile.NamedTemporaryFile(dir=share, prefix='.Kicad-', delete=False) as stream:
         temporary = Path(stream.name)
     try:

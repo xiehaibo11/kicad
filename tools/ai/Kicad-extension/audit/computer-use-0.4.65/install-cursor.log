@@ -1,0 +1,23 @@
+Installing extensions...
+[node.js fs] readdir with filetypes failed with error:  Error: ENOENT: no such file or directory, scandir '/Users/mosc/.cursor/extensions/kicad-agent.kicad-0.4.65'
+    at async Object.readdir (node:internal/original-fs/promises:1013:18)
+    at async e4 (file:///Applications/Cursor.app/Contents/Resources/app/out/vs/code/node/cliProcessMain.js:52:30229)
+    at async Object.kn (file:///Applications/Cursor.app/Contents/Resources/app/out/vs/code/node/cliProcessMain.js:52:30158)
+    at async Ps.readdir (file:///Applications/Cursor.app/Contents/Resources/app/out/vs/code/node/cliProcessMain.js:63:21750)
+    at async ds.toFileStat (file:///Applications/Cursor.app/Contents/Resources/app/out/vs/code/node/cliProcessMain.js:61:4612)
+    at async ds.resolve (file:///Applications/Cursor.app/Contents/Resources/app/out/vs/code/node/cliProcessMain.js:61:3525)
+    at async ja.toLocalExtension (file:///Applications/Cursor.app/Contents/Resources/app/out/vs/code/node/cliProcessMain.js:58:56869)
+    at async Promise.all (index 2)
+    at async ja.scanExtensions (file:///Applications/Cursor.app/Contents/Resources/app/out/vs/code/node/cliProcessMain.js:58:50952)
+    at async Ha.doRun (file:///Applications/Cursor.app/Contents/Resources/app/out/vs/code/node/cliProcessMain.js:58:60354) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: '/Users/mosc/.cursor/extensions/kicad-agent.kicad-0.4.65'
+}
+Error: Please restart VS Code before reinstalling Kicad.
+    at Ha.doRun (file:///Applications/Cursor.app/Contents/Resources/app/out/vs/code/node/cliProcessMain.js:58:61088) {
+  code: 'Internal',
+  name: 'Internal'
+}
+Failed Installing Extensions: file:///Users/mosc/Downloads/Kicad/tools/ai/Kicad-extension/dist/kicad-0.4.65.vsix

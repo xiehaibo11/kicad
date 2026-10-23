@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "provenance": "real VS Code Extension Test Host; assembled production handler; fixture PNG, no model calls",
+  "imagePath": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad image 编辑器-85XLtm/原理图 exports/cleared PCB.png",
+  "tabs": [
+    {
+      "group": 1,
+      "label": "Kicad image test · no model",
+      "viewType": "mainThreadWebview-kicad.imageAcceptance",
+      "active": false
+    },
+    {
+      "group": 1,
+      "label": "cleared PCB.png",
+      "viewType": "imagePreview.previewEditor",
+      "uri": "/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad image 编辑器-85XLtm/原理图 exports/cleared PCB.png",
+      "active": true
+    }
+  ],
+  "logs": [
+    "[handleOpenFile] 打开文件失败: Error: ENOENT: no such file or directory, stat '/var/folders/v8/t1mlv9kd4s7b5z6r8s65vbym0000gn/T/Kicad image 编辑器-85XLtm/missing.png'"
+  ]
+}

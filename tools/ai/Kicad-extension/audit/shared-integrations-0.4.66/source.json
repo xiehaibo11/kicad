@@ -1,0 +1,27 @@
+{
+  "base": "c9331b47627df92032b7836a5ef2a051033e3793",
+  "commit": "d7085b573ade6711d396d5d869131c09168bfd1a",
+  "branch": "codex/release-shared-integrations-0.4.66",
+  "sourceFiles": [
+    "tools/ai/Kicad-extension/README.md",
+    "tools/ai/Kicad-extension/apply-inventory.mjs",
+    "tools/ai/Kicad-extension/apply-overlay.mjs",
+    "tools/ai/Kicad-extension/build.sh",
+    "tools/ai/Kicad-extension/overlay/kicadComputerUse.ts",
+    "tools/ai/Kicad-extension/overlay/kicadInventoryHost.ts",
+    "tools/ai/Kicad-extension/overlay/settings/SettingsTabComputer.vue",
+    "tools/ai/Kicad-extension/overlay/settings/kicad/KicadMcpInventory.vue",
+    "tools/ai/Kicad-extension/test-computer-host.cjs",
+    "tools/ai/Kicad-extension/test-computer-models.mjs",
+    "tools/ai/Kicad-extension/test-computer-ui.cjs",
+    "tools/ai/Kicad-extension/test-computer-use.mjs",
+    "tools/ai/Kicad-extension/test-inventory.mjs",
+    "tools/ai/Kicad-extension/test-settings-ui.cjs",
+    "tools/ai/composer/inventory.ts",
+    "tools/ai/composer/mcp-sync.ts",
+    "tools/ai/composer/test/mcp-sync.test.mjs",
+    "tools/ai/Kicad-extension/test-shared-integrations.mjs"
+  ],
+  "buildSourceFilesMatched": 256,
+  "tree": "4d2b296876888138ebb3687d9f379ad11c22ea15"
+}

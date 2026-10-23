@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "version": "0.4.67",
+  "readmeLines": 33,
+  "detailsAsset": "extension/readme.md",
+  "packagedReadmeMatchesSource": true,
+  "changedPayloadEntries": [
+    "extension.vsixmanifest",
+    "extension/README.md.bak",
+    "extension/package.json",
+    "extension/readme.md"
+  ],
+  "runtimePayloadIdenticalToPreviousRelease": true,
+  "vsixSha256": "9b2621f2e0212235e258af01d7128da79bfc9a35db314123097affb57f8d3ddf",
+  "vsixBytes": 34636367,
+  "unpacked": "/tmp/ki-details-067-qk_9b0at/unpacked/extension"
+}

@@ -47,6 +47,18 @@ with tempfile.TemporaryDirectory(prefix='Kicad-demand-native-') as tmp:
   assert 'MCP_DEMAND_OK' in json.dumps(requests[-1])
   assert marker.exists() and not unused.exists()
   evidence={'ok':True,'modelRequests':len(requests),'initialToolNames':[t['function']['name'] for t in requests[0]['tools']],'selectedMcpConnected':True,'unselectedMcpConnected':False,'skillBodyOnlyAfterCall':True,'nativeStartupSkillCatalogEmpty':True,'slashCompletionDoesNotLoadSkills':True}
+  # Even if the model proposes tools for conversation, the real host must block them.
+  unauthorized=root/'conversation-command-ran'
+  actions=[('capability_search',{'kind':'tool','query':'echo','server':'untouched'}),('bash',{'command':'touch '+str(unauthorized),'description':'Must be blocked'})]
+  conversational=[]
+  for prompt in ['谢谢！','不要调用任何工具，只解释刚才的结果。']:
+   requests.clear();sid=call('/session',{})['id']
+   response=call('/session/'+sid+'/message',{'model':{'providerID':'fixture','modelID':'fixture'},'parts':[{'type':'text','text':prompt}]})
+   assert len(requests)==3,(prompt,len(requests),response)
+   assert not unauthorized.exists() and not unused.exists(),prompt
+   assert '当前请求只需直接回复' in json.dumps(requests,ensure_ascii=False),prompt
+   conversational.append({'prompt':prompt,'modelProposedCalls':2,'shellExecuted':False,'unrelatedMcpConnected':False})
+  evidence['conversationAndExplicitNoToolGuard']=conversational
   output=Path(__file__).with_name('audit')/'demand-native.json';output.parent.mkdir(exist_ok=True);output.write_text(json.dumps(evidence,indent=2));print(json.dumps(evidence))
  finally:
   child.terminate()

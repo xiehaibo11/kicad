@@ -1,5 +1,5 @@
 {
-  "version": "0.4.16",
+  "version": "0.4.54",
   "fixture": "Installed production frontend, mock host responses",
   "checks": [
     "empty input disabled",

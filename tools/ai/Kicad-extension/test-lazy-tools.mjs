@@ -1,3 +1,4 @@
+import * as toolResult from '../composer/tool-result.ts';
 // KiCad tools on demand in the chat: real SDK registration, the packaged CLI over a localhost model
 // fixture, the relaunch that attaches the tools to an ongoing conversation, and the evidence that keeps
 // stored conversations loaded. No external model or user data.
@@ -11,7 +12,8 @@ import {createRequire} from 'node:module';
 import {pathToFileURL} from 'node:url';
 const root=path.resolve(process.argv[2]),require=createRequire(path.join(root,'package.json')),ts=require('typescript');
 const sdk=await import(pathToFileURL(require.resolve('@anthropic-ai/claude-agent-sdk')).href);
-const settings={directPath:path.join(root,'resources/kicad/kicad-direct.mjs')};
+// Other tools' MCP files on this machine are not part of these checks (test-inventory.mjs covers sync).
+const settings={directPath:path.join(root,'resources/kicad/kicad-direct.mjs'),'mcp.sync':[]};
 // TypeScript emits the runtime's dynamic import as require(); hand it the real ES module.
 const directUrl=pathToFileURL(settings.directPath).href,direct=await import(directUrl);
 const vscode={Uri:{file:fsPath=>({fsPath})},extensions:{getExtension:()=>undefined},
@@ -25,7 +27,7 @@ function load(relative,overrides={}){
     require:name=>name==='vscode'?vscode:name==='@anthropic-ai/claude-agent-sdk'?sdk:name===directUrl?direct:overrides[name]??require(name)},{filename:file});
   return module.exports;
 }
-const policy=load('src/kicadToolsPolicy.ts'),runtime=load('src/kicadRuntime.ts',{'./shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadDiagnostics':load('src/shared/kicadDiagnostics.ts'),'./kicadToolsPolicy':policy});
+const policy=load('src/kicadToolsPolicy.ts'),runtime=load('src/kicadRuntime.ts',{'./shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './kicadComputerUse':{computerCapabilities:()=>({capabilities:[],close:async()=>{}})}, './shared/kicadToolResult':toolResult, './shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadMcpSync':load('src/shared/kicadMcpSync.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'),'./shared/kicadDiagnostics':load('src/shared/kicadDiagnostics.ts'),'./kicadToolsPolicy':policy});
 const config=fs.mkdtempSync(path.join(os.tmpdir(),'Kicad-lazy-tools-')),cwd=path.join(config,'lazy project');
 fs.mkdirSync(cwd);process.env.CLAUDE_CONFIG_DIR=config;
 try{
@@ -38,8 +40,26 @@ try{
 
   // Discovery alone registers two tools and never connects configured servers.
   const lazy=await runtime.getKiCadSdkServers(cwd,{unused:{command:'must-not-start'}},{tools:false});
-  const expected=['capability_search','capability_call'];
+  const expected=['capability_search','capability_call','capability_inspect'];
   assert.deepEqual(Object.keys(lazy.kicad.instance._registeredTools),expected);
+  // Entry points are never deferred behind a runtime tool search; reads may run in parallel.
+  const registered=lazy.kicad.instance._registeredTools;
+  for(const name of expected)assert.equal(registered[name]._meta['anthropic/alwaysLoad'],true,name+' alwaysLoad');
+  assert.equal(registered.capability_search.annotations.readOnlyHint,true);assert.equal(registered.capability_inspect.annotations.readOnlyHint,true);assert.equal(registered.capability_call.annotations.readOnlyHint,false);
+  const inspect=async(id,args)=>(await registered.capability_inspect.handler({id,arguments:args},{}));
+  await assert.rejects(()=>inspect('tool:kicad_board',{action:'board.items.delete',payload:{}}),/only read-only/,'sub-agents cannot mutate through inspect');
+  assert.equal(JSON.parse((await inspect('tool:kicad_reference',{action:'reference.plan',payload:{query:'power'}})).content[0].text).ok,true);
+  settings['subagents.enabled']=false;
+  assert.deepEqual(Object.keys((await runtime.getKiCadSdkServers(cwd,{},{tools:false})).kicad.instance._registeredTools),['capability_search','capability_call'],'no inspect tool without sub-agents');
+  delete settings['subagents.enabled'];
+  // Settings gate catalog sources with an actionable message.
+  settings['skills.mode']='off';
+  const noSkills=await runtime.getKiCadSdkServers(cwd,{},{tools:false});
+  await assert.rejects(()=>noSkills.kicad.instance._registeredTools.capability_search.handler({query:'',kind:'skill'},{}),/kicadAgent\.skills\.mode/);
+  delete settings['skills.mode'];
+  settings['mcp.mode']='direct';settings['mcp.disabledServers']=['blocked'];
+  assert.deepEqual(Object.keys(await runtime.getKiCadSdkServers(cwd,{selected:{command:'x'},blocked:{command:'x'},off:{command:'x',enabled:false},kicad:{command:'x'}},{tools:false})),['kicad','selected'],'direct mode hands enabled user servers to the runtime');
+  delete settings['mcp.mode'];delete settings['mcp.disabledServers'];
   const search=async args=>JSON.parse((await lazy.kicad.instance._registeredTools.capability_search.handler(args,{})).content[0].text);
   const call=async(id,args)=>JSON.parse((await lazy.kicad.instance._registeredTools.capability_call.handler({id,arguments:args},{})).content[0].text);
   // Built-in ids stay callable in later turns without a new search; unknown ids never execute.
@@ -54,7 +74,7 @@ try{
   assert.equal(ref.results[0].name,'kicad_reference');
   sameSchema(direct.toolsList().find(t=>t.name==='kicad_reference').inputSchema,ref.results[0].inputSchema,'selected reference');
   assert.equal((await call(ref.results[0].id,{action:'reference.plan',payload:{query:'power'}})).ok,true);
-  assert.equal(Object.keys(lazy.kicad.instance._registeredTools).length,2,'discovery never expands registration');
+  assert.equal(Object.keys(lazy.kicad.instance._registeredTools).length,3,'discovery never expands registration');
   const full=await runtime.getKiCadSdkServers(cwd,{},{tools:true});
   assert.deepEqual(Object.keys(full.kicad.instance._registeredTools),expected,'legacy options cannot expand registration');
 
@@ -80,14 +100,14 @@ try{
   runtime.rememberKiCadSession(ids[3]);assert.equal(await runtime.sessionUsedKiCad(ids[3],cwd),true);
 
   // 4. The packaged CLI shows the model only what the process registered.
-  const requests=[];let sequence=-1;
+  const requests=[];let sequence=-1,observeDemand=()=>undefined;
   const steps=[['capability_search',{kind:'tool',query:'runtime_diagnostics'}],['capability_call',{id:'tool:runtime_diagnostics',arguments:{}}],['capability_search',{kind:'skill',query:'fixture-specialist'}],['capability_call',{id:'skill:fixture',arguments:{}}],['capability_search',{kind:'tool',query:'echo',server:'selected'}],['capability_call',{id:'mcp:selected:echo',arguments:{}}]];
   const server=http.createServer(async(req,res)=>{
     let raw='';for await(const part of req)raw+=part;let body={};try{body=JSON.parse(raw)}catch{}
     if(req.url.includes('count_tokens'))return res.end('{"input_tokens":10}');
     const kicad=(body.tools||[]).filter(t=>t.name.startsWith('mcp__kicad__'));
     if(!body.messages){res.writeHead(200,{'Content-Type':'application/json'});res.end('{}');return;}
-    requests.push({tools:kicad.map(t=>t.name),schemas:Object.fromEntries(kicad.map(t=>[t.name,t])),messages:(body.messages||[]).length,payload:body});
+    requests.push({demandState:observeDemand(),tools:kicad.map(t=>t.name),schemas:Object.fromEntries(kicad.map(t=>[t.name,t])),messages:(body.messages||[]).length,payload:body});
     res.writeHead(200,{'Content-Type':'text/event-stream'});
     const send=(type,data)=>res.write('event: '+type+'\ndata: '+JSON.stringify({type,...data})+'\n\n');
     send('message_start',{message:{id:'msg_lazy_'+requests.length,type:'message',role:'assistant',model:body.model,content:[],stop_reason:null,stop_sequence:null,usage:{input_tokens:10,output_tokens:1}}});
@@ -118,7 +138,7 @@ try{
       finally{clearTimeout(timer);run.close?.()}
       const request=requests.slice(before).find(item=>item.tools.length),seen=request?.tools;
       assert.ok(seen,'the model request lists the KiCad MCP tools');
-      assert.deepEqual(seen,['mcp__kicad__capability_call','mcp__kicad__capability_search']);
+      assert.deepEqual([...seen].sort(),['mcp__kicad__capability_call','mcp__kicad__capability_inspect','mcp__kicad__capability_search']);
     }
 
     // Real CLI executes search -> call in one query, including an external MCP and a skill.
@@ -128,10 +148,17 @@ try{
     fs.writeFileSync(fixture,`const fs=require('node:fs');fs.writeFileSync(process.argv[2],'started');require('node:readline').createInterface({input:process.stdin}).on('line',line=>{const r=JSON.parse(line);if(r.id===undefined)return;const result=r.method==='initialize'?{protocolVersion:'2024-11-05',capabilities:{tools:{}},serverInfo:{name:'fixture',version:'1'}}:r.method==='tools/list'?{tools:[{name:'echo',description:'fixture echo',inputSchema:{type:'object',properties:{}}}]}:r.method==='tools/call'?{content:[{type:'text',text:'MCP_DEMAND_OK'}]}:{};console.log(JSON.stringify({jsonrpc:'2.0',id:r.id,result}));});`);
     const servers=await runtime.getKiCadSdkServers(cwd,{selected:{command:process.execPath,args:[fixture,marker]},unused:{command:process.execPath,args:[fixture,unused]}});
     assert.equal(fs.existsSync(marker),false);sequence=0;const beforeSequence=requests.length;
+    observeDemand=()=>({selectedStarted:fs.existsSync(marker),unusedStarted:fs.existsSync(unused)});
     const run=sdk.query({prompt:'Inspect runtime diagnostics, load fixture specialist skill and call selected MCP echo. No design changes.',options:{...options(servers),persistSession:false,maxTurns:8,permissionMode:'bypassPermissions',allowDangerouslySkipPermissions:true}});
-    let result;try{for await(const message of run)if(message.type==='result')result=message;}finally{run.close?.();sequence=-1;}
+    const emitted=[];let result;try{for await(const message of run){
+      if(message.type==='assistant')for(const block of message.message?.content||[])if(block.type==='tool_use')emitted.push(block.name);
+      if(message.type==='result')result=message;
+    }}finally{run.close?.();sequence=-1;observeDemand=()=>undefined;}
     assert.equal(result?.is_error,false);const observed=requests.slice(beforeSequence);assert.equal(observed.length,7);
-    assert.ok(observed.every(request=>request.tools.length===2));
+    assert.ok(observed.every(request=>request.tools.length===3));
+    assert.deepEqual(observed.map(request=>request.demandState.selectedStarted),[false,false,false,false,false,true,true],'selected MCP starts only when the model requests its search, after earlier results');
+    assert.ok(observed.every(request=>!request.demandState.unusedStarted),'unselected MCP never starts');
+    assert.deepEqual(emitted,steps.map(([name])=>'mcp__kicad__'+name),'tool steps stream in invocation order, rather than appearing as a preloaded batch');
     assert.ok(!JSON.stringify(observed[0].payload).includes('The following skills are available'));
     assert.ok(!JSON.stringify(observed[3].payload).includes('SKILL_BODY_ONLY_ON_DEMAND'));
     assert.ok(JSON.stringify(observed[4].payload).includes('SKILL_BODY_ONLY_ON_DEMAND'));
@@ -159,12 +186,12 @@ try{
       throw Error('transcript not written: '+text);
     }
     const first=await converse(await runtime.getKiCadSdkServers(cwd,{},{tools:false}),undefined,'Summarize what is in this folder.');
-    assert.deepEqual(first.request.tools,['mcp__kicad__capability_call','mcp__kicad__capability_search']);
+    assert.deepEqual([...first.request.tools].sort(),['mcp__kicad__capability_call','mcp__kicad__capability_inspect','mcp__kicad__capability_search']);
     await stored(first.session,'Summarize what is in this folder.');
     assert.equal(await runtime.sessionUsedKiCad(first.session,cwd),false);
     const second=await converse(await runtime.getKiCadSdkServers(cwd,{},{tools:true}),first.session,'Run DRC on this PCB.');
     assert.equal(second.session,first.session,'the relaunch continues the same conversation');
-    assert.equal(second.request.tools.length,2);assert.ok(second.request.messages>=3,'earlier messages are kept: '+second.request.messages);
+    assert.equal(second.request.tools.length,3);assert.ok(second.request.messages>=3,'earlier messages are kept: '+second.request.messages);
     await stored(first.session,'Run DRC on this PCB.');
     assert.equal(await runtime.sessionUsedKiCad(first.session,cwd),true,'the stored conversation is found and counts as KiCad work');
   }finally{server.close()}

@@ -3,4 +3,8 @@ const root=process.argv[2],require=createRequire(path.join(root,'package.json'))
 const start=source.indexOf('async function loadConfig('),end=source.indexOf('\n/**',start),js=ts.transpileModule(source.slice(start,end),{compilerOptions:{target:ts.ScriptTarget.ES2022}}).outputText;
 const calls=[];const load=vm.runInNewContext(js+'\nloadConfig',{process});
 const result=await load({workspaceService:{getDefaultWorkspaceFolder:()=>({uri:{fsPath:'/fixture'}})},sdkService:{query:()=>{throw Error('Configuration must not create a chat or tools');},probe:async p=>{calls.push(p);return {data:p.capabilities.includes('supportedCommands')?{supportedCommands:['fixture']}:{supportedModels:['model'],accountInfo:{claude:{subscriptionType:'fixture'}}}};}}});
-assert.equal(calls.length,2);assert.equal(result.models[0],'model');assert.equal(result.slashCommands[0],'fixture');console.log('Config discovery passed: lightweight probes only, no chat, no MCP startup/shutdown race.');
+assert.equal(calls.length,1);assert.equal(result.models[0],'model');assert.deepEqual(Array.from(result.slashCommands),[]);assert.ok(!calls[0].capabilities.includes('supportedCommands'));
+const warnings=[];
+const fallback=await load({workspaceService:{getDefaultWorkspaceFolder:()=>({uri:{fsPath:'/fixture'}})},logService:{warn:m=>warnings.push(m)},sdkService:{probe:async p=>{throw Error('SDK probe timed out');}}});
+assert.deepEqual(Array.from(fallback.models),[]);assert.deepEqual(Array.from(fallback.slashCommands),[]);assert.equal(warnings.length,1);
+console.log('Config discovery passed: lightweight probes only, optional timeout preserves models and initialization, no chat or MCP startup/shutdown race.');

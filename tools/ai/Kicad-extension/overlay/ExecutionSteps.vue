@@ -16,15 +16,18 @@
         <template v-else>
           <div class="exec-tool-head" :title="step.summary">
             <span class="exec-tool-name">{{ step.label }}</span>
-            <span v-if="step.summary" class="exec-tool-summary">{{ step.summary }}</span>
+            <button v-if="step.image" class="exec-tool-summary exec-tool-file" :title="step.image.filePath" :aria-label="'在编辑器中查看图片 '+step.image.name" @click="openImage(step)">{{ step.image.name }}</button>
+            <span v-else-if="step.summary" class="exec-tool-summary">{{ step.summary }}</span>
             <span v-if="step.status==='running'" class="exec-tool-state">执行中</span>
             <span v-else-if="step.status==='stopped'" class="exec-tool-state">未完成</span>
           </div>
-          <ExecutionIO v-if="step.input||step.output" :input="step.input" :output="step.output" :error="step.status==='error'" />
+          <ExecutionIO v-if="step.input||step.output" :input="step.input" :output="step.output" :image="step.status==='success'?step.image:undefined" :error="step.status==='error'" @open-image="openImage(step)" @open-content="openContent(step,$event)" />
+          <p v-if="contentErrors.has(step.key)" class="exec-image-error" role="alert">{{ contentErrors.get(step.key) }}</p>
+          <p v-if="imageErrors.has(step.key)" class="exec-image-error" role="alert">{{ imageErrors.get(step.key) }}</p>
         </template>
         <template v-if="step.children.length">
           <button class="exec-children-toggle" :aria-expanded="!closed.has(step.key)" @click="toggleChildren(step.key)">
-            <span>子代理 · {{ countTools(step.children) }} 次工具调用</span>
+            <span>子代理</span>
             <span class="codicon" :class="closed.has(step.key)?'codicon-chevron-down':'codicon-chevron-up'" aria-hidden="true" />
           </button>
           <ExecutionSteps v-if="!closed.has(step.key)" :steps="step.children" :context="context" nested />
@@ -32,34 +35,44 @@
       </template>
       <div v-else-if="step.kind==='text'" class="exec-text">
         <ContentBlock :block="step.wrapper.content" :context="context" />
+        <MessageCopy class="exec-text-actions" :text="String((step.wrapper.content as any).text??'')" />
       </div>
       <div v-else class="exec-other">
         <MessageRenderer :message="step.message" :context="context" />
+        <MessageCopy v-if="step.message.type==='assistant'&&messageText(step.message).trim()" class="exec-other-actions" :text="messageText(step.message)" />
       </div>
     </li>
     <li v-if="live" class="exec-step exec-step-live" role="status">
       <span class="exec-dot" aria-hidden="true" />
       <span class="exec-live">{{ live }}</span>
     </li>
-    <li v-if="collapsible" class="exec-step exec-step-collapse">
-      <span class="exec-dot" aria-hidden="true" />
-      <button class="execution-collapse" @click="emit('collapse')">
-        <span>收起</span>
-        <span class="codicon codicon-chevron-up" aria-hidden="true" />
-      </button>
-    </li>
   </ol>
 </template>
 <script setup lang="ts">
 import {reactive} from 'vue';
 import type {ToolContext} from '../../types/tool';
-import {countTools,type Step} from '../../utils/executionSteps';
+import {messageText,type Step,type ToolStep} from '../../utils/executionSteps';
 import ContentBlock from './ContentBlock.vue';
+import MessageCopy from './MessageCopy.vue';
 import MessageRenderer from './MessageRenderer.vue';
 import ExecutionIO from './ExecutionIO.vue';
-defineProps<{steps:Step[];context:ToolContext;nested?:boolean;live?:string;collapsible?:boolean}>();
-const emit=defineEmits<{collapse:[]}>();
+const props=defineProps<{steps:Step[];context:ToolContext;nested?:boolean;live?:string}>();
 const open=reactive(new Set<string>()),closed=reactive(new Set<string>());
+const imageErrors=reactive(new Map<string,string>());
+const contentErrors=reactive(new Map<string,string>());
+async function openContent(step:ToolStep,row:{label:string;text:string}){
+  contentErrors.delete(step.key);
+  const title=row.label==='IN'?(step.name==='Bash'?'command':step.label+' input'):step.label+' tool '+(row.label==='ERR'?'error':'output');
+  const id=String(step.id||step.key).replace(/[^\w-]/g,'').slice(-12)||'tool';
+  try{await props.context.fileOpener.openContent(row.text,title+' ('+id+')',false);}
+  catch(error){contentErrors.set(step.key,'无法打开内容：'+(error instanceof Error?error.message:String(error)));}
+}
+async function openImage(step:ToolStep){
+  if(!step.image)return;
+  imageErrors.delete(step.key);
+  try{await props.context.fileOpener.open(step.image.filePath);}
+  catch(error){imageErrors.set(step.key,'无法打开图片：'+(error instanceof Error?error.message:String(error)));}
+}
 const toggle=(key:string)=>open.has(key)?open.delete(key):open.add(key);
 const toggleChildren=(key:string)=>closed.has(key)?closed.delete(key):closed.add(key);
 const duration=(seconds:number)=>seconds<60?seconds+' 秒':Math.floor(seconds/60)+' 分 '+(seconds%60)+' 秒';
@@ -79,15 +92,19 @@ const duration=(seconds:number)=>seconds<60?seconds+' 秒':Math.floor(seconds/60
 .exec-step-tool.is-running>.exec-dot,.exec-step-live>.exec-dot{background:#d97757;animation:exec-pulse 1.4s ease-in-out infinite;}
 .exec-step-tool.is-stopped>.exec-dot{background:var(--vscode-sideBar-background,#181818);border:1px solid var(--vscode-descriptionForeground,#7a7a7a);box-sizing:border-box;}
 @keyframes exec-pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.exec-thought,.execution-collapse,.exec-children-toggle{display:inline-flex;align-items:center;gap:6px;border:0;background:none;padding:0;font:inherit;color:var(--vscode-descriptionForeground,#8b8b8b);cursor:pointer;text-align:left;}
+.exec-thought,.exec-children-toggle{display:inline-flex;align-items:center;gap:6px;border:0;background:none;padding:0;font:inherit;color:var(--vscode-descriptionForeground,#8b8b8b);cursor:pointer;text-align:left;}
 .exec-thought:disabled{cursor:default;}
-.exec-thought:not(:disabled):hover,.execution-collapse:hover,.exec-children-toggle:hover{color:var(--vscode-foreground,#ccc);}
-.exec-thought .codicon,.execution-collapse .codicon,.exec-children-toggle .codicon{font-size:12px;}
-.exec-thought:focus-visible,.execution-collapse:focus-visible,.exec-children-toggle:focus-visible{outline:1px solid var(--vscode-focusBorder,#3794ff);outline-offset:2px;border-radius:3px;}
+.exec-thought:not(:disabled):hover,.exec-children-toggle:hover{color:var(--vscode-foreground,#ccc);}
+.exec-thought .codicon,.exec-children-toggle .codicon{font-size:12px;}
+.exec-thought:focus-visible,.exec-children-toggle:focus-visible{outline:1px solid var(--vscode-focusBorder,#3794ff);outline-offset:2px;border-radius:3px;}
 .exec-thought-text{margin-top:4px;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--vscode-descriptionForeground,#8b8b8b);font-size:12.5px;max-height:320px;overflow:auto;}
 .exec-tool-head{display:flex;align-items:baseline;gap:8px;min-width:0;}
 .exec-tool-name{flex:none;font-weight:600;color:var(--vscode-foreground,#e0e0e0);}
 .exec-tool-summary{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--vscode-descriptionForeground,#9a9a9a);}
+.exec-tool-file{border:0;background:none;padding:0;font:inherit;text-align:left;color:var(--vscode-textLink-foreground,#3794ff);cursor:pointer;}
+.exec-tool-file:hover{text-decoration:underline;color:var(--vscode-textLink-activeForeground,#4daafc);}
+.exec-tool-file:focus-visible{outline:1px solid var(--vscode-focusBorder,#3794ff);outline-offset:2px;}
+.exec-image-error{margin:4px 0 0;overflow-wrap:anywhere;color:var(--vscode-errorForeground,#f48771);font-size:12px;}
 .exec-tool-state{flex:none;font-size:11px;color:var(--vscode-descriptionForeground,#8b8b8b);}
 .exec-children-toggle{margin-top:6px;font-size:12px;}
 .exec-live{color:var(--vscode-descriptionForeground,#8b8b8b);}
@@ -95,6 +112,10 @@ const duration=(seconds:number)=>seconds<60?seconds+' 秒':Math.floor(seconds/60
 .exec-text :deep(.markdown-content p:first-child){margin-top:0;}
 .exec-text :deep(.markdown-content p:last-child){margin-bottom:0;}
 .exec-other :deep(.message){margin:0;}
+/* Progress text copies section by section: the action appears on hover or keyboard focus. */
+.exec-text-actions,.exec-other-actions{margin:2px 0 -10px -4px;}
+.exec-other-actions{margin-left:20px;}
+.exec-step-text:hover>.exec-text>.exec-text-actions,.exec-step-other:hover>.exec-other>.exec-other-actions,.exec-text-actions:focus-within,.exec-other-actions:focus-within{opacity:1;}
 /* Dedicated renderers (diff, todo list) sit in the row; the rail and dot replace their icon. */
 .exec-rich :deep(.tool-message-wrapper){padding:0;}
 .exec-rich :deep(.main-line){padding:0;gap:8px;}

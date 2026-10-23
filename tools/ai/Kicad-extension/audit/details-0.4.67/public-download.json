@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-23T23:17:36.429939+00:00",
+  "assets": [
+    {
+      "asset": "kicad-0.4.67.vsix",
+      "sha256": "9b2621f2e0212235e258af01d7128da79bfc9a35db314123097affb57f8d3ddf",
+      "bytes": 34636367,
+      "anonymous": true
+    },
+    {
+      "asset": "build-manifest.json",
+      "sha256": "c5cc30bf81b7d09bae7292213a37068c7a8dba05aba25ab98054618287e97c0a",
+      "bytes": 382,
+      "anonymous": true
+    },
+    {
+      "asset": "details-validation.json",
+      "sha256": "9de26fda183691b2288e90ffd5389eee16a400bf4a1a2459bbef723d4b9a466f",
+      "bytes": 2742,
+      "anonymous": true
+    },
+    {
+      "asset": "REPORT.md",
+      "sha256": "77a2c58f6aa96a6415d2439bccfc8360c09d0b45ccf3d4432b15b052ed8b9996",
+      "bytes": 1483,
+      "anonymous": true
+    },
+    {
+      "asset": "SHA256SUMS",
+      "sha256": "58b47a25e9f2e71c15ed15a4f9a0da2d1f7f7d349d98400df224e1fa1cea3518",
+      "bytes": 336,
+      "anonymous": true
+    }
+  ],
+  "downloadDirectory": "/tmp/ki-details-067-qk_9b0at/public"
+}

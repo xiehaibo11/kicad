@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-23T23:02:19.892796+00:00",
+  "downloadDirectory": "/tmp/ki-shared-public-qal848r5",
+  "assets": [
+    {
+      "asset": "kicad-0.4.66.vsix",
+      "sha256": "cff148dc2fb100664009af640f479c0048311930c472e12873c1f89fd8e158a0",
+      "bytes": 34675548,
+      "anonymous": true
+    },
+    {
+      "asset": "build-manifest.json",
+      "sha256": "385d7323e6985b05134880295cc95f71ebb4a0babad11a5b14a233633660a5f8",
+      "bytes": 382,
+      "anonymous": true
+    },
+    {
+      "asset": "shared-integrations-validation.json",
+      "sha256": "afdde682cb94836f71ae93870068481ccfac8131e6766e4e22a02fe7615b293d",
+      "bytes": 14506,
+      "anonymous": true
+    },
+    {
+      "asset": "REPORT.md",
+      "sha256": "9fda6c10aa85c331f67bb2e05435d698f5a44b118bbe0a5d5744b521f39e7867",
+      "bytes": 6333,
+      "anonymous": true
+    }
+  ]
+}

@@ -22,6 +22,10 @@ export function applyReasoning(root, overlay) {
           <div v-if="reasoningError" class="reasoning-error" role="alert">{{ reasoningError }}</div>`);
   patch(page,'  .inputContainer {',`  .reasoning-error { color:var(--vscode-errorForeground);font-size:12px;padding:4px 8px; }
   .inputContainer {`);
+  // Every model probe carries the vendor-reported effort tiers for the selector.
+  const transport='src/webview/src/transport/BaseTransport.ts';
+  patch(transport,'import { signal } from "alien-signals";','import { signal } from "alien-signals";\nimport { registerReasoningModels } from "../../../shared/kicadReasoning";');
+  patch(transport,'    return this.sendRequest({ type: "sdk_probe", capabilities, timeoutMs });','    return this.sendRequest({ type: "sdk_probe", capabilities, timeoutMs }).then(response => {\n      registerReasoningModels((response as any)?.data?.supportedModels);\n      return response;\n    });');
   const session='src/webview/src/core/Session.ts';
   patch(session,"import { signal, computed, effect } from 'alien-signals';","import { signal, computed, effect } from 'alien-signals';\nimport {normalizeReasoning} from '../../../shared/kicadReasoning';");
   patch(session,"  readonly thinkingLevel = signal<string>('default_on');","  readonly thinkingLevel = signal<string>('default_on');\n  private reasoningByModel = new Map<string,string>();\n  private reasoningChanging = false;");
@@ -49,7 +53,7 @@ export function applyReasoning(root, overlay) {
 
   async setThinkingLevel(level: string): Promise<void> {
     if(this.reasoningChanging) throw new Error('正在切换模型或推理强度，请稍候。');
-    if(normalizeReasoning(this.modelSelection(),level)!==level) throw new Error('当前模型不支持该推理强度。');
+    if(normalizeReasoning(this.modelSelection(),level)!==level) throw new Error('The selected model does not support this reasoning level.');
     this.reasoningChanging=true;
     try {
       const channelId=this.claudeChannelId();
@@ -67,7 +71,7 @@ export function applyReasoning(root, overlay) {
   patch(agent,'            onStderrError\n','            onStderrError,\n            reasoningLevel: this.thinkingLevel\n');
   const s=fs.readFileSync(path.join(root,agent),'utf8');
   const method=s.slice(s.indexOf('    async setThinkingLevel(channelId: string, level: string): Promise<void> {',s.indexOf('private getMaxThinkingTokens')),s.indexOf('    /**\n     * 设置权限模式',s.indexOf('private getMaxThinkingTokens')));
-  patch(agent,method,`    async setThinkingLevel(channelId: string, level: string): Promise<void> {\n        const channel=this.channels.get(channelId);\n        if(!channel) throw new Error('会话尚未启动，请重试。');\n        if(channel.busy) throw new Error('请等待当前回复完成或先停止，再切换推理强度。');\n        reasoningEnvironment(channel.model,level);\n        if(channel.thinkingLevel===level)return;\n        // Effort is a process option. Resume the same conversation with fresh options.\n        this.closeChannel(channelId,false);\n        try {\n            await this.launchClaude(channelId,channel.sessionId,channel.cwd,channel.model,channel.permissionMode,level);\n        } catch(error) {\n            this.closeChannel(channelId,false);\n            await this.launchClaude(channelId,channel.sessionId,channel.cwd,channel.model,channel.permissionMode,channel.thinkingLevel);\n            throw error;\n        }\n    }\n\n`);
+  patch(agent,method,`    async setThinkingLevel(channelId: string, level: string): Promise<void> {\n        const channel=this.channels.get(channelId);\n        if(!channel) throw new Error('会话尚未启动，请重试。');\n        if(channel.busy) throw new Error('Wait for the current reply to finish, or stop it, before changing the reasoning level.');\n        reasoningEnvironment(channel.model,level);\n        if(channel.thinkingLevel===level)return;\n        // Effort is a process option. Resume the same conversation with fresh options.\n        this.closeChannel(channelId,false);\n        try {\n            await this.launchClaude(channelId,channel.sessionId,channel.cwd,channel.model,channel.permissionMode,level);\n        } catch(error) {\n            this.closeChannel(channelId,false);\n            await this.launchClaude(channelId,channel.sessionId,channel.cwd,channel.model,channel.permissionMode,channel.thinkingLevel);\n            throw error;\n        }\n    }\n\n`);
   // Model changes also need fresh effort/model capabilities, even on the same provider.
   patch(agent,`        const usesProviderEnvironment = (value: string | null) => !!value && value.toLowerCase().startsWith('deepseek');\n        if (usesProviderEnvironment(channel.model) || usesProviderEnvironment(model)) {\n            this.closeChannel(channelId, false);\n            await this.launchClaude(channelId, channel.sessionId, channel.cwd, model, channel.permissionMode, channel.thinkingLevel);\n        } else {\n            await channel.query.setModel(model);\n            channel.model = model;\n        }`,`        this.closeChannel(channelId, false);\n        await this.launchClaude(channelId, channel.sessionId, channel.cwd, model, channel.permissionMode, channel.thinkingLevel);`);
   const sdk='src/services/claude/ClaudeSdkService.ts';

@@ -1,0 +1,6 @@
+# Generated editor profiles, installation backups and release packages.
+# Keep source, test reports and release checksums under version control.
+/audit/**/isolated-host/
+/audit/**/install-backup/
+/audit/**/*.vsix
+/audit/**/*.tgz

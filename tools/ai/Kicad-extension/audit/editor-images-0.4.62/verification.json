@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "version": "0.4.62",
+  "provenance": "production bundle; simulated SDK events and host responses; no model calls",
+  "checks": [
+    "filename click",
+    "OUT image Enter",
+    "filename Space",
+    "no automatic open",
+    "no modal or popup",
+    "original paths preserved",
+    "mixed text/image",
+    "legacy placeholder",
+    "failed Read remains ERR",
+    "host open failure and retry",
+    "stream continues",
+    "320px layout"
+  ],
+  "openRequests": [
+    {
+      "type": "open_file",
+      "filePath": "/private/tmp/Kicad 图片 exports/cleared PCB.png"
+    },
+    {
+      "type": "open_file",
+      "filePath": "/private/tmp/Kicad 图片 exports/cleared PCB.png"
+    },
+    {
+      "type": "open_file",
+      "filePath": "/private/tmp/Kicad 图片 exports/cleared PCB.png"
+    },
+    {
+      "type": "open_file",
+      "filePath": "/private/tmp/Kicad 图片 exports/cleared PCB.png"
+    },
+    {
+      "type": "open_file",
+      "filePath": "/private/tmp/Kicad 图片 exports/cleared PCB.png"
+    }
+  ],
+  "pageErrors": []
+}
