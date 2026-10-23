@@ -1,3 +1,4 @@
+import * as toolResult from '../composer/tool-result.ts';
 // KiCad tools on demand in the chat: real SDK registration, the packaged CLI over a localhost model
 // fixture, the relaunch that attaches the tools to an ongoing conversation, and the evidence that keeps
 // stored conversations loaded. No external model or user data.
@@ -26,7 +27,7 @@ function load(relative,overrides={}){
     require:name=>name==='vscode'?vscode:name==='@anthropic-ai/claude-agent-sdk'?sdk:name===directUrl?direct:overrides[name]??require(name)},{filename:file});
   return module.exports;
 }
-const policy=load('src/kicadToolsPolicy.ts'),runtime=load('src/kicadRuntime.ts',{'./shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadMcpSync':load('src/shared/kicadMcpSync.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'),'./shared/kicadDiagnostics':load('src/shared/kicadDiagnostics.ts'),'./kicadToolsPolicy':policy});
+const policy=load('src/kicadToolsPolicy.ts'),runtime=load('src/kicadRuntime.ts',{'./shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './kicadComputerUse':{computerCapabilities:()=>({capabilities:[],close:async()=>{}})}, './shared/kicadToolResult':toolResult, './shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadMcpSync':load('src/shared/kicadMcpSync.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'),'./shared/kicadDiagnostics':load('src/shared/kicadDiagnostics.ts'),'./kicadToolsPolicy':policy});
 const config=fs.mkdtempSync(path.join(os.tmpdir(),'Kicad-lazy-tools-')),cwd=path.join(config,'lazy project');
 fs.mkdirSync(cwd);process.env.CLAUDE_CONFIG_DIR=config;
 try{

@@ -1,3 +1,4 @@
+import * as toolResult from '../composer/tool-result.ts';
 // Validate the patched sources and exercise terminal/config boundaries without
 // launching an AI session, changing user configuration, or touching a PCB.
 import assert from 'node:assert/strict';
@@ -78,7 +79,7 @@ function load(relative, overrides = {}) {
 }
 
 const policy = load('src/kicadToolsPolicy.ts');
-const runtime = load('src/kicadRuntime.ts', { './shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadMcpSync':load('src/shared/kicadMcpSync.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'), './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './kicadToolsPolicy': policy });
+const runtime = load('src/kicadRuntime.ts', { './shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './kicadComputerUse':{computerCapabilities:()=>({capabilities:[],close:async()=>{}})}, './shared/kicadToolResult':toolResult, './shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadMcpSync':load('src/shared/kicadMcpSync.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'), './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './kicadToolsPolicy': policy });
 const server = runtime.getKiCadRuntimeConfig('/tmp/second board');
 assert.equal(server.command, undefined);
 assert.equal(server.entry, settings.directPath);
@@ -113,7 +114,7 @@ try {
   fs.rmSync(temporary, { recursive: true, force: true });
 }
 
-load('src/kicadIntegration.ts', { './kicadSettings':{agentSettings:()=>({settings:{maxProseWidth:100}})}, './shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'), './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './shared/kicadHistory': load('src/shared/kicadHistory.ts'), './kicadRuntime': runtime, './kicadProviders': { resolveDeepSeekCredentials: async()=>undefined } }).registerKiCadIntegration({ subscriptions: [] });
+load('src/kicadIntegration.ts', { './kicadSettings':{agentSettings:()=>({settings:{maxProseWidth:100}})}, './shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './kicadComputerUse':{computerCapabilities:()=>({capabilities:[],close:async()=>{}})}, './shared/kicadToolResult':toolResult, './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'), './shared/kicadDiagnostics': load('src/shared/kicadDiagnostics.ts'), './shared/kicadHistory': load('src/shared/kicadHistory.ts'), './kicadRuntime': runtime, './kicadProviders': { resolveDeepSeekCredentials: async()=>undefined } }).registerKiCadIntegration({ subscriptions: [] });
 const start = handlers.get('kicadAgent.startOpenCode');
 await start();
 assert.equal(terminals.length, 1);

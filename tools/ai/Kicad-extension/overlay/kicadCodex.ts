@@ -1,3 +1,4 @@
+import {codexToolResult,chatToolContent} from './shared/kicadToolResult';
 import {demandDefinitions,inspectDefinition,normalizeCapabilityCall} from './shared/kicadDemand';
 import {localToolDefinitions} from './shared/kicadLocalTools';
 import {CodexClient} from './shared/kicadMembership';
@@ -53,7 +54,10 @@ export async function codexQuery(params:any):Promise<any>{
     const disabledServers=new Set(settings.disabledServers);
     const deferredConfig:Record<string,any>={
       'skills.config':(skillList.data||[]).flatMap((entry:any)=>(entry.skills||[]).filter((skill:any)=>settings.skillsMode!=='native'||skill.enabled===false||settings.disabledSkills.includes(skill.name)).map((skill:any)=>({path:skill.path,enabled:false}))),
-      mcp_servers:Object.fromEntries(Object.entries(servers).map(([name,value]:[string,any])=>[name,{...value,enabled:settings.mcpMode==='direct'&&!disabledServers.has(name)&&value.enabled!==false&&!value.disabled}]))
+      // config/read includes null for unset optional fields. App-server's
+      // override conversion turns null into an empty string, which breaks typed
+      // fields such as tool_timeout_sec even when the server is disabled.
+      mcp_servers:Object.fromEntries(Object.entries(servers).map(([name,value]:[string,any])=>[name,{...Object.fromEntries(Object.entries(value).filter(([,v])=>v!==null&&v!==undefined)),enabled:settings.mcpMode==='direct'&&!disabledServers.has(name)&&value.enabled!==false&&!value.disabled}]))
     };
     const tools=[...demandDefinitions,...(settings.subagents?[inspectDefinition]:[])];
     let threadId='',turnId='',closed=false,active=false,mode=params.permissionMode,startedAt=Date.now();
@@ -66,7 +70,7 @@ export async function codexQuery(params:any):Promise<any>{
     const session=()=> 'codex-'+threadId;
     const event=(value:any)=>push({...value,uuid:randomUUID(),session_id:session()});
     const assistant=(content:any[],parent?:string)=>event({type:'assistant',...(parent?{parent_tool_use_id:parent}:{}),message:{id:randomUUID(),role:'assistant',model:params.model.slice(6),content,usage:{input_tokens:0,output_tokens:0},stop_reason:null}});
-    const result=(id:string,text:string,error=false,parent?:string)=>event({type:'user',...(parent?{parent_tool_use_id:parent}:{}),message:{role:'user',content:[{type:'tool_result',tool_use_id:id,content:text,is_error:error}]}});
+    const result=(id:string,text:any,error=false,parent?:string)=>event({type:'user',...(parent?{parent_tool_use_id:parent}:{}),message:{role:'user',content:[{type:'tool_result',tool_use_id:id,content:text,is_error:error}]}});
     const allow=async(name:string,args:any,id:string)=>{
       if(name==='local_memory'&&args?.operation==='read')return true;
       if(mode==='plan'&&!READ_ONLY_EDA_TOOLS.includes('mcp__kicad__'+name))return false;
@@ -91,8 +95,8 @@ export async function codexQuery(params:any):Promise<any>{
           const decision=continuity.beforeTool(input);
           if(decision.hookSpecificOutput?.permissionDecision==='deny')throw Error(decision.hookSpecificOutput.permissionDecisionReason||'Tool denied by policy');
           const output=p.tool==='capability_search'?await catalog.search(p.arguments):parsed?(p.tool==='capability_inspect'?await catalog.inspect(parsed.id,parsed.args):await catalog.call(parsed.id,parsed.args)):(()=>{throw Error('Unknown tool');})();
-          await continuity.afterTool({...input,tool_response:output});const text=JSON.stringify(output);result(p.callId,text,output?.ok===false||!!output?.isError,parent);
-          return {contentItems:[{type:'inputText',text}],success:output?.ok!==false&&!output?.isError};
+          await continuity.afterTool({...input,tool_response:output});result(p.callId,chatToolContent(output),output?.ok===false||!!output?.isError,parent);
+          return codexToolResult(output);
         }catch(error){continuity.failedTool({...input,error:String(error)});result(p.callId,String(error),true,parent);return {contentItems:[{type:'inputText',text:String(error)}],success:false};}
       }
       if(method.endsWith('/requestApproval')){

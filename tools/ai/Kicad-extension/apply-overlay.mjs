@@ -25,6 +25,7 @@ import {applyOrchestration} from './apply-orchestration.mjs';
 import {applySettings} from './apply-settings.mjs';
 import {applySlashMenu} from './apply-slash-menu.mjs';
 import {applyInventory} from './apply-inventory.mjs';
+import {applyComputerUse} from './apply-computer-use.mjs';
 
 const [, , buildDir, overlayDir] = process.argv;
 
@@ -47,7 +48,7 @@ pkg.bugs = { url: 'https://github.com/xiehaibo11/kicad/issues' };
 pkg.keywords = Array.from(new Set([...(pkg.keywords ?? []), 'kicad', 'pcb', 'eda', 'schematic']));
 pkg.categories = ['AI', 'Other'];
 pkg.kicadUpstreamVersion = pkg.version;
-pkg.version = '0.4.64';
+pkg.version = '0.4.65';
 pkg.activationEvents = Array.from(new Set([...(pkg.activationEvents ?? []), 'onUri']));
 pkg.dependencies['jsonc-parser'] = '^3.3.1';
 // Pinned JavaScript CLI with native effort support; keep the existing SDK API.
@@ -795,3 +796,5 @@ applyOrchestration(buildDir);
 applySettings(buildDir,overlayDir);
 applySlashMenu(buildDir,overlayDir);
 applyInventory(buildDir,overlayDir);
+
+applyComputerUse(buildDir,overlayDir);

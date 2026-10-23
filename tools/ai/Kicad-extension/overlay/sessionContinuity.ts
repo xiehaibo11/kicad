@@ -89,7 +89,7 @@ export class SessionContinuity {
     const archived=await archiveResult(path.join(this.directory(input.session_id),'tool-results'),input.tool_response,resultLimitForContext(this.contextWindow));
     return {continue:true,hookSpecificOutput:{hookEventName:'PostToolUse' as const,
       additionalContext:[reminder,advice,archived ? 'Full tool result: '+archived.archive : ''].filter(Boolean).join('\n'),
-      ...(archived && input.tool_name?.startsWith('mcp__') ? {updatedMCPToolOutput:{content:[{type:'text',text:JSON.stringify(archived)}],isError:failed}} : {})}};
+      ...(archived && !(input.tool_response as any)?.content?.some?.((block:any)=>block.type==='image') && input.tool_name?.startsWith('mcp__') ? {updatedMCPToolOutput:{content:[{type:'text',text:JSON.stringify(archived)}],isError:failed}} : {})}};
   }
   failedTool(input:HookInput){
     input=demandInput(input);

@@ -1,3 +1,5 @@
+import {computerCapabilities} from './kicadComputerUse';
+import {mcpResult} from './shared/kicadToolResult';
 import {DemandCatalog, demandDefinitions, demandGuidance, inspectDefinition, mcpConnector, normalizeCapabilityCall} from './shared/kicadDemand';
 import {DEFAULT_MCP_SYNC, readMcpSources, syncedMcpServers, claudeMcpApproval} from './shared/kicadMcpSync';
 import {SEARCH_PAGE_SIZE} from './shared/kicadModelProfile';
@@ -187,7 +189,7 @@ export function kicadPromptFeatures(settings: KiCadToolSettings, subagentTool = 
   return {mcp: settings.mcpMode, skills: settings.skillsMode, subagents: settings.subagents && subagentTool, agents: settings.subagents && subagentTool ? Object.keys(kicadAgents(settings) ?? {}) : [], memory: true};
 }
 export function kicadDemandGuidance(settings: KiCadToolSettings) {
-  return demandGuidance({mcp: settings.mcpMode, skills: settings.skillsMode});
+  return demandGuidance({mcp: settings.mcpMode, skills: settings.skillsMode})+' For an authorized desktop task, discover computer_tools, computer_read and computer_action through this catalog. Computer Control has its own application access settings, independent of external MCP. Keep observations and actions incremental; the background service does not authorize a task or delegation.';
 }
 /**
  * Adds MCP servers configured in other tools (Claude Code, Claude Desktop, Cursor, VS Code,
@@ -272,6 +274,7 @@ export async function getKiCadNativeTools(cwd?: string) {
 }
 const demandCatalogs=new Set<DemandCatalog>();
 export function createDemandCatalog(cwd=process.cwd(),configured:Record<string,any>={},skillFiles:string[]=[],disabledSkills:string[]=[],maxResults?:number,settings:KiCadToolSettings=kicadToolSettings(cwd)) {
+  const computer=computerCapabilities();
   const servers=Object.fromEntries(Object.entries(configured).filter(([name])=>!['kicad','easyeda'].includes(name)));
   // On-demand sources only; direct MCP and native skills are loaded by the runtime itself.
   const catalog=new DemandCatalog({cwd,servers,skillFiles,disabledSkills:[...disabledSkills,...settings.disabledSkills],disabledServers:settings.disabledServers,maxResults,mcp:settings.mcpMode==='onDemand',skills:settings.skillsMode==='onDemand',connect:mcpConnector({Client,StdioClientTransport,SSEClientTransport,StreamableHTTPClientTransport,ToolListChangedNotificationSchema},cwd),builtins:async()=>{
@@ -280,9 +283,9 @@ export function createDemandCatalog(cwd=process.cwd(),configured:Record<string,a
     // Native bindings validate their own input and answer with a short INVALID_ARGUMENTS result;
     // parsing them here again would throw Zod's full text, which lists every allowed action.
     const definitions=direct.toolsList();
-    return [...native.map((b:any)=>({...b,validates:true})),...localToolBindings(z,cwd),{name:'prompt_audit',description:'Read-only prompt audit: composed sections, instruction files and missing references. 提示词审计 doctor prompt-audit',args:{},execute:()=>promptAudit(cwd)},{name:'runtime_diagnostics',description:'Read local runtime diagnostics and error analysis. 日志 报错 运行诊断',args:{sessionId:z.string().optional()},execute:(args:any)=>diagnosticReport(cwd,args.sessionId)}].map((b:any)=>({name:b.name,description:b.description,inputSchema:definitions.find((d:any)=>d.name===b.name)?.inputSchema || (b.name==='prompt_audit'?{type:'object',properties:{}}:b.name==='runtime_diagnostics'?{type:'object',properties:{sessionId:{type:'string'}}}:localToolDefinitions.find(d=>d.name===b.name)?.inputSchema),annotations:definitions.find((d:any)=>d.name===b.name)?.annotations ?? (['prompt_audit','runtime_diagnostics'].includes(b.name)?{readOnlyHint:true}:(localToolDefinitions.find(d=>d.name===b.name) as any)?.annotations),actions:b.searchActions,execute:(args:any,ctx:any)=>b.execute(b.validates?args:z.object(b.args).parse(args),{...ctx,directory:cwd})}));
+    return [...[...native.map((b:any)=>({...b,validates:true})),...localToolBindings(z,cwd),{name:'prompt_audit',description:'Read-only prompt audit: composed sections, instruction files and missing references. 提示词审计 doctor prompt-audit',args:{},execute:()=>promptAudit(cwd)},{name:'runtime_diagnostics',description:'Read local runtime diagnostics and error analysis. 日志 报错 运行诊断',args:{sessionId:z.string().optional()},execute:(args:any)=>diagnosticReport(cwd,args.sessionId)}].map((b:any)=>({name:b.name,description:b.description,inputSchema:definitions.find((d:any)=>d.name===b.name)?.inputSchema || (b.name==='prompt_audit'?{type:'object',properties:{}}:b.name==='runtime_diagnostics'?{type:'object',properties:{sessionId:{type:'string'}}}:localToolDefinitions.find(d=>d.name===b.name)?.inputSchema),annotations:definitions.find((d:any)=>d.name===b.name)?.annotations ?? (['prompt_audit','runtime_diagnostics'].includes(b.name)?{readOnlyHint:true}:(localToolDefinitions.find(d=>d.name===b.name) as any)?.annotations),actions:b.searchActions,execute:(args:any,ctx:any)=>b.execute(b.validates?args:z.object(b.args).parse(args),{...ctx,directory:cwd})})),...computer.capabilities];
   }});
-  const close=catalog.close.bind(catalog);catalog.close=async()=>{demandCatalogs.delete(catalog);await close();};
+  const close=catalog.close.bind(catalog);catalog.close=async()=>{demandCatalogs.delete(catalog);await computer.close();await close();};
   demandCatalogs.add(catalog);return catalog;
 }
 export async function getKiCadSdkSession(cwd?:string,configured:Record<string,any>={},options:KiCadToolsOptions={tools:false}) {
@@ -290,7 +293,7 @@ export async function getKiCadSdkSession(cwd?:string,configured:Record<string,an
   configured=await withSyncedServers(cwd,configured,settings);
   const catalog=createDemandCatalog(cwd,configured,[],[],SEARCH_PAGE_SIZE,settings);
   if(settings.skillRoots.length)catalog.setSkillRoots(settings.skillRoots);
-  const reply=(result:any)=>({content:[{type:'text' as const,text:JSON.stringify(result)}],isError:result?.ok===false||!!result?.isError});
+  const reply=mcpResult;
   const callArgs={id:z.string(),arguments:z.union([z.record(z.unknown()),z.string()])};
   const server=createSdkMcpServer({name:'kicad',version:'0.3.0',tools:[
     tool('capability_search',demandDefinitions[0].description,{query:z.string(),kind:z.enum(['tool','skill','server']).optional(),server:z.string().optional(),offset:z.number().int().min(0).optional()},async args=>reply(await catalog.search(args))),

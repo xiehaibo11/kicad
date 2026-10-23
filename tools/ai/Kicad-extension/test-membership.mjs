@@ -1,3 +1,4 @@
+import * as toolResult from '../composer/tool-result.ts';
 import assert from 'node:assert/strict';
 import {resolveSettings,assertModelAllowed,capEffort} from '../composer/settings.ts';
 import {autoDecision} from '../composer/permission-gates.ts';
@@ -6,6 +7,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import {createRequire} from 'node:module';
 const root=process.argv[2],require=createRequire(path.join(root,'package.json')),ts=require('typescript');
+let fixtureOutput={ok:true};
 let executions=0,closed=0,accountType='chatgpt',calls=[],toolReply,denyPolicy=false,readOnly=false,nativeChildren=false,fixtureEffort;
 let skills=[{name:'private',path:'/skills/private/SKILL.md',enabled:true},{name:'user-off',path:'/skills/off/SKILL.md',enabled:false},{name:'public',path:'/skills/public/SKILL.md',enabled:true}];
 const fixture={direct:async()=>({toolsList:()=>[{name:'kicad_board',description:'fixture',inputSchema:{type:'object',properties:{}}}]})};
@@ -31,6 +33,7 @@ class Client {
 }
 let fixtureSettings={mcpMode:'onDemand',disabledServers:[],skillsMode:'onDemand',disabledSkills:[],skillRoots:[],subagents:true,disabledSections:[]};
 const mocks={
+ './shared/kicadToolResult':toolResult,
  './kicadSettings':{agentSettings:()=>({settings:resolveSettings([])})},
  './shared/kicadSettings':{assertModelAllowed,capEffort},
  './shared/kicadPermissionGates':{autoDecision},
@@ -42,7 +45,7 @@ const mocks={
  './shared/kicadDemand':{normalizeCapabilityCall:(id,args)=>({id,args:typeof args==='string'?JSON.parse(args):args||{}}),inspectDefinition:{name:'capability_inspect'},demandDefinitions:[{name:'capability_search'},{name:'capability_call'}]},
  './shared/kicadLocalTools':{localToolDefinitions:[],executeLocalTool:async()=>({})},
  './shared/kicadMembership':{CodexClient:Client},
- './kicadRuntime':{withSyncedServers:async(cwd,servers)=>servers,createDemandCatalog:()=>({target:()=>({kind:'tool',name:'kicad_board'}),isReadOnly:async()=>readOnly,call:async()=>{executions++;return {ok:true}},close:async()=>{}}),getKiCadRuntimeConfig:()=>({entry:'/fixture.mjs'}),getKiCadNativeTools:async()=>[{name:'kicad_board',execute:async()=>{executions++;return {ok:true};}}],READ_ONLY_EDA_TOOLS:[],kicadToolSettings:()=>fixtureSettings,kicadPromptFeatures:()=>({}),kicadDemandGuidance:()=> 'on demand'},
+ './kicadRuntime':{withSyncedServers:async(cwd,servers)=>servers,createDemandCatalog:()=>({target:()=>({kind:'tool',name:'kicad_board'}),isReadOnly:async()=>readOnly,call:async()=>{executions++;return fixtureOutput},close:async()=>{}}),getKiCadRuntimeConfig:()=>({entry:'/fixture.mjs'}),getKiCadNativeTools:async()=>[{name:'kicad_board',execute:async()=>{executions++;return {ok:true};}}],READ_ONLY_EDA_TOOLS:[],kicadToolSettings:()=>fixtureSettings,kicadPromptFeatures:()=>({}),kicadDemandGuidance:()=> 'on demand'},
  './shared/kicadHistory':{readHistory:async()=>[{type:'user',message:{content:'original constraint'}}]},
  './shared/kicadDiagnostics':{diagnosticReport:async()=>({})},
  './services/claude/sessionContinuity':{SessionContinuity:class{configure(){}async observe(){}async recordInput(message){this.request=message.message?.content||''}delegationRequested(){return fixtureSettings.subagents&&mocks['./shared/kicadIntent'].explicitDelegation(this.request)}async prompt(){return {hookSpecificOutput:{additionalContext:'preserve constraints'}}}beforeTool(){return denyPolicy?{continue:true,hookSpecificOutput:{permissionDecision:'deny',permissionDecisionReason:'fixture policy denial'}}:{continue:true}}async afterTool(){}failedTool(){}async diagnosticError(){}validateAnswer(t,i,r){return r}}}
@@ -55,7 +58,7 @@ const query=await codexQuery(params),events=[];for await(const event of query)ev
 assert.equal(executions,0);assert.equal(toolReply.success,false);assert.ok(events.some(e=>e.type==='user'&&e.message.content[0].is_error));assert.ok(events.some(e=>e.type==='result'&&!e.is_error));
 assert.equal(calls.find(c=>c.method==='turn/start').params.sandboxPolicy.type,'readOnly');
 const overrides=calls.find(c=>c.method==='thread/start').params.config;
-assert.deepEqual(JSON.parse(JSON.stringify(overrides.mcp_servers)),{'computer-use':{command:'fixture',tool_timeout_sec:null,enabled:false},'server.with.dots':{url:'https://fixture.invalid/mcp',http_headers:null,enabled:false}});
+assert.deepEqual(JSON.parse(JSON.stringify(overrides.mcp_servers)),{'computer-use':{command:'fixture',enabled:false},'server.with.dots':{url:'https://fixture.invalid/mcp',enabled:false}});
 assert.ok(!Object.keys(overrides).some(key=>key.startsWith('mcp_servers.')), 'MCP names must remain literal table keys');
 assert.match(calls.find(c=>c.method==='thread/start').params.developerInstructions,/^fixture prompt sections\n\non demand/,'Codex receives the same model-agnostic components');
 assert.ok('skills.config' in overrides,'on-demand skills disable Codex\'s own skill loading');
@@ -63,12 +66,17 @@ assert.ok('skills.config' in overrides,'on-demand skills disable Codex\'s own sk
 fixtureSettings={...fixtureSettings,mcpMode:'direct',disabledServers:['computer-use'],skillsMode:'native',disabledSkills:['private']};calls.length=0;
 for await(const event of await codexQuery(params))void event;
 const direct=calls.find(c=>c.method==='thread/start').params.config;
-assert.deepEqual(JSON.parse(JSON.stringify(direct.mcp_servers)),{'computer-use':{command:'fixture',tool_timeout_sec:null,enabled:false},'server.with.dots':{url:'https://fixture.invalid/mcp',http_headers:null,enabled:true}});assert.deepEqual(JSON.parse(JSON.stringify(direct['skills.config'])),[{path:'/skills/private/SKILL.md',enabled:false},{path:'/skills/off/SKILL.md',enabled:false}]);
+assert.deepEqual(JSON.parse(JSON.stringify(direct.mcp_servers)),{'computer-use':{command:'fixture',enabled:false},'server.with.dots':{url:'https://fixture.invalid/mcp',enabled:true}});assert.deepEqual(JSON.parse(JSON.stringify(direct['skills.config'])),[{path:'/skills/private/SKILL.md',enabled:false},{path:'/skills/off/SKILL.md',enabled:false}]);
 assert.ok(closed>0);
 // Read-only typed actions work in plan mode, and policy denials still apply in bypass.
 readOnly=true;executions=0;
 for await(const event of await codexQuery(params))void event;
 assert.equal(executions,1);assert.equal(toolReply.success,true);
+fixtureOutput={content:[{type:'image',mimeType:'image/png',data:'fixture-pixels'},{type:'text',text:'fixture window'}]};
+const mediaEvents=[];for await(const event of await codexQuery(params))mediaEvents.push(event);
+assert.equal(toolReply.contentItems[0].type,'inputImage');assert.equal(toolReply.contentItems[0].imageUrl,'data:image/png;base64,fixture-pixels');
+assert.ok(mediaEvents.some(e=>e.type==='user'&&Array.isArray(e.message.content[0].content)&&e.message.content[0].content[0].type==='image'));
+fixtureOutput={ok:true};
 denyPolicy=true;executions=0;
 for await(const event of await codexQuery({...params,permissionMode:'bypassPermissions'}))void event;
 assert.equal(executions,0);assert.equal(toolReply.success,false);assert.match(toolReply.contentItems[0].text,/policy denial/);

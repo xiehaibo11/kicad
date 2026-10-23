@@ -498,3 +498,27 @@ Ultracode 是独立于 effort 的多代理工作流，不是 Ultra 档位的别�
 [Serverworks 的版本评述](https://blog.serverworks.co.jp/2026/10/03/190000)。
 当前捆绑 CLI 2.1.83 不支持该新功能，因此不显示不可用的 Ultracode 开关；
 同时设置 `CLAUDE_CODE_DISABLE_WORKFLOWS=1`，子代理继续由独立设置和当前用户明确请求共同授权。
+
+
+## Computer Control (0.4.65, macOS)
+
+Open **Kicad Settings → Computer Control**. The independent switch manages the signed [Cua Driver](https://github.com/trycua/cua/tree/main/libs/cua-driver) app (tested with 0.38.0). Install the official signed app and grant it Accessibility and Screen Recording in macOS before enabling screen actions. The extension does not download a driver or optional perception models automatically.
+
+```json
+{
+  "kicadAgent.computer.enabled": true,
+  "kicadAgent.computer.driverPath": "",
+  "kicadAgent.computer.anyApp": false,
+  "kicadAgent.computer.allowedApps": [
+    "org.kicad.kicad", "org.kicad.pcbnew", "org.kicad.eeschema"
+  ]
+}
+```
+
+These are application settings, so a repository cannot enable computer control. KiCad is allowed by default; Chrome, Excel and additional bundle IDs have separate access controls. Any App permits native application windows. Chrome's browser extension, Excel's add-in and locked-screen access are separate integrations and are not installed or emulated by this feature. Unlock the Mac before using screen control.
+
+The private `org.kicad.agent.cua-driver` LaunchAgent starts the signed app in the background without a floating preview or cursor overlay, survives editor exit, and restarts at login. Off disconnects current MCP clients, stops only this extension's endpoint and removes its LaunchAgent. Restart, permission status and View Log are available in settings. The driver remains an external MIT-licensed dependency; optional AGPL perception components are not bundled.
+
+Models discover `computer_tools`, then use `computer_read` and `computer_action` through the existing capability catalog as needed. Starting the service does not start an agent, capture the screen or run a workflow. App access is rechecked on each call; actions require an observed window and conversation-owned tokens. Read-only mode cannot dispatch input. Screenshots remain image blocks through the Claude-compatible SDK and Codex adapter; text-only providers can request accessibility trees with `include_screenshot:false`. The managed service currently supports macOS only.
+
+Validation distinguishes deterministic host/UI tests from live model acceptance. `test-computer-use.mjs BUILD_DIR` tests policy and transport; `test-computer-ui.cjs BUILD_DIR` uses the production webview with a fixture host. `test-computer-models.mjs BUILD_DIR /tmp/kicad-cua-fixture PID WINDOW_ID OUTPUT_DIR` is an explicit live acceptance script that permits only one disposable KiCad window and restores its selection filter after each model. It is never run by the build and never operates on user boards.
