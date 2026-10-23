@@ -103,7 +103,7 @@ class ComputerSession {
     if(name==='get_window_state'&&input.since!==undefined&&result.isError&&initial.code==='typed_output_mismatch'&&initial.detail==='returned_element_count does not match elements'){
       const full={...input};delete full.since;
       result=await this.raw(name,full,signal);
-      if(!result.isError)result={...result,content:[...result.content,{type:'text',text:'Cua delta readback failed validation; returned a fresh full window observation. No input action was retried.'}]};
+      if(!result.isError)result={...result,content:[...(Array.isArray(result.content)?result.content:[]),{type:'text',text:'Cua delta readback failed validation; returned a fresh full window observation. No input action was retried.'}]};
     }
     const data=driverData(result);
     if(name==='get_window_state'&&typeof data.snapshot_id==='string'){
