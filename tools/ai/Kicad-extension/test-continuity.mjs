@@ -11,7 +11,8 @@ const {SessionContinuity:LoadedContinuity}=load(path.join(root,'src/services/cla
 // Hooks record diagnostics without awaiting; wait for those writes before deleting the fixture directory.
 const continuities=[];class SessionContinuity extends LoadedContinuity{constructor(...args){super(...args);continuities.push(this);}}
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'Kicad-continuity-'));
-const oldDiagnostics=process.env.KICAD_DIAGNOSTICS_DIR;process.env.KICAD_DIAGNOSTICS_DIR=path.join(tmp,'diagnostics');
+const oldDiagnostics=process.env.KICAD_DIAGNOSTICS_DIR,oldHistory=process.env.KICAD_HISTORY_DIR;
+process.env.KICAD_DIAGNOSTICS_DIR=path.join(tmp,'diagnostics');process.env.KICAD_HISTORY_DIR=path.join(tmp,'history');
 try{
  const policy=new SessionContinuity(path.join(tmp,'state')),input={session_id:'fixture-session',cwd:tmp,transcript_path:path.join(tmp,'session.jsonl')};
  // Continuity records events. It must never deny a tool based on a conversational heuristic.
@@ -146,4 +147,4 @@ try{
  for await(const _ of fakeResult){}
  assert.deepEqual(seen,['assistant','result'],'for-await over the SDK query must pass every message through observe');
  console.log('Continuity passed: hooks record events and give advice without denying tools; malformed checkpoints do not crash; history/todos/pending state survive compaction.');
-}finally{await Promise.all(continuities.map(c=>c.flushDiagnostics()));if(oldDiagnostics===undefined)delete process.env.KICAD_DIAGNOSTICS_DIR;else process.env.KICAD_DIAGNOSTICS_DIR=oldDiagnostics;await fsp.rm(tmp,{recursive:true,force:true});}
+}finally{await Promise.all(continuities.map(c=>c.flushDiagnostics()));for(const [key,value] of [['KICAD_DIAGNOSTICS_DIR',oldDiagnostics],['KICAD_HISTORY_DIR',oldHistory]])value===undefined?delete process.env[key]:process.env[key]=value;await fsp.rm(tmp,{recursive:true,force:true});}

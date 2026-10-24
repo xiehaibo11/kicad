@@ -72,7 +72,7 @@ export async function codexQuery(params:any):Promise<any>{
     const assistant=(content:any[],parent?:string)=>event({type:'assistant',...(parent?{parent_tool_use_id:parent}:{}),message:{id:randomUUID(),role:'assistant',model:params.model.slice(6),content,usage:{input_tokens:0,output_tokens:0},stop_reason:null}});
     const result=(id:string,text:any,error=false,parent?:string)=>event({type:'user',...(parent?{parent_tool_use_id:parent}:{}),message:{role:'user',content:[{type:'tool_result',tool_use_id:id,content:text,is_error:error}]}});
     const allow=async(name:string,args:any,id:string)=>{
-      if(name==='local_memory'&&args?.operation==='read')return true;
+      if(name==='local_memory'&&['list','read','search'].includes(args?.operation))return true;
       if(mode==='plan'&&!READ_ONLY_EDA_TOOLS.includes('mcp__kicad__'+name))return false;
       if(mode==='bypassPermissions'||READ_ONLY_EDA_TOOLS.includes('mcp__kicad__'+name)||name==='runtime_diagnostics')return true;
       const answer=await params.canUseTool((name.startsWith('kicad_')||localToolDefinitions.some(t=>t.name===name))?'mcp__kicad__'+name:name,args,{signal:new AbortController().signal,toolUseID:id});return answer.behavior==='allow';

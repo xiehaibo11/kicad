@@ -3,7 +3,7 @@ import path from 'node:path';
 export function applySettings(root,overlay){
   function patch(file,before,after){const target=path.join(root,file),source=fs.readFileSync(target,'utf8');if(source.split(before).length!==2)throw Error('Settings anchor missing/ambiguous: '+file+' '+before.slice(0,80));fs.writeFileSync(target,source.replace(before,()=>after));}
   for(const [source,target] of [['settings.ts','kicadSettings.ts'],['prompt-audit.ts','kicadPromptAudit.ts']]){
-    const text=fs.readFileSync(path.join(overlay,'../../composer',source),'utf8').replace("from './prompt-sections.ts'","from './kicadPromptSections'");
+    const text=fs.readFileSync(path.join(overlay,'../../composer',source),'utf8').replace("from './prompt-sections.ts'","from './kicadPromptSections'").replace("from './history.ts'","from './kicadHistory'");
     fs.writeFileSync(path.join(root,'src/shared',target),text);
   }
   fs.copyFileSync(path.join(overlay,'kicadSettings.ts'),path.join(root,'src/kicadSettings.ts'));

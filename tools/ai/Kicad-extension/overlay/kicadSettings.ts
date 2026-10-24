@@ -23,5 +23,11 @@ export function agentSettings(cwd=process.cwd()){
     const value=setting?.workspaceFolderValue??setting?.workspaceValue??setting?.globalValue;
     if(value!==undefined)overrides[key]=value;
   }
+  const memory:Record<string,boolean>={};
+  for(const key of ['globalEnabled','projectEnabled','autoLearn']){
+    const setting=cfg.inspect?.('memory.'+key),value=setting?.globalValue;
+    if(value!==undefined)memory[key]=value as boolean;
+  }
+  if(Object.keys(memory).length)overrides.memory=memory;
   return readSettings(cwd,overrides,{parse(raw){const errors:ParseError[]=[];const value=parse(raw,errors,{allowTrailingComma:true});if(errors.length)throw Error('Invalid JSONC');return value;}});
 }

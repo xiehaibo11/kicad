@@ -73,7 +73,8 @@ function load(relative, overrides = {}) {
   const module = { exports: {} };
   vm.runInNewContext(result.outputText, {
     module, exports: module.exports, process, console, Buffer, URL, AbortController,
-    require: name => name === 'vscode' ? vscode : name === '@anthropic-ai/claude-agent-sdk' ? {} : overrides[name] ?? require(name)
+    require: name => name === 'vscode' ? vscode : name === '@anthropic-ai/claude-agent-sdk' ? {} : overrides[name] ??
+      (name.startsWith('.') && fs.existsSync(path.resolve(path.dirname(file),name+'.ts')) ? load(path.relative(root,path.resolve(path.dirname(file),name+'.ts'))) : require(name))
   }, { filename: file });
   return module.exports;
 }

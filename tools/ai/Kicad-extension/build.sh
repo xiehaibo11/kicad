@@ -78,6 +78,7 @@ echo "Installing dependencies and packaging (first run can take a few minutes) .
   node "$SCRIPT_DIR/test-model-selection.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-message-editing.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-continuity.mjs" "$BUILD_DIR"
+  node "$SCRIPT_DIR/test-memory.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-tool-output.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-computer-use.mjs" "$BUILD_DIR"
   node "$SCRIPT_DIR/test-shared-integrations.mjs" "$BUILD_DIR"
