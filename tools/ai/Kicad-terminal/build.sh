@@ -29,6 +29,7 @@ node "$SCRIPT_DIR/apply-workbench.mjs" "$SOURCE_DIR"
 node "$SCRIPT_DIR/apply-runtime-fixes.mjs" "$SOURCE_DIR"
 node "$SCRIPT_DIR/apply-demand.mjs" "$SOURCE_DIR"
 node "$SCRIPT_DIR/apply-settings.mjs" "$SOURCE_DIR"
+node "$SCRIPT_DIR/test-settings-copy.mjs" "$SOURCE_DIR"
 (
   cd "$SOURCE_DIR"
   bun install --frozen-lockfile --filter opencode --filter @opencode-ai/app --filter @opencode-ai/tui --filter @opencode-ai/client --filter @opencode-ai/core --filter @opencode-ai/server --filter @opencode-ai/httpapi-codegen --network-concurrency=12

@@ -260,3 +260,9 @@ The model selector shows short names only (for example `Opus 5.5`, `GPT-6.1 Sol`
 
 固定上游 v1.19.3 的 Web UI 引用了缺失的 `@opencode-ai/client/promise` 导出。
 `apply-settings.mjs` 把它映射到已有的生成版 Promise 客户端，保留完整嵌入式 Web UI。
+
+## 0.2.4：用户与项目记忆
+
+与扩展 0.4.68 共用全局记忆、项目记忆和自动学习开关。仅从真实用户消息提取持久偏好，
+按任务检索相关记忆；可通过内置 `local_memory` 能力查看、编辑、删除和导出。
+关闭对应开关后停止该范围的自动读取和学习；历史记忆不授予工具或子代理执行权限。
