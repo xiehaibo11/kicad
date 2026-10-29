@@ -1,0 +1,16 @@
+{
+  "version": "0.4.70",
+  "vsixSha256": "37f2bb1aebeae323887b7101d131480ec4dc8e6ec07a4461da766129b75547cd",
+  "installed": [
+    {
+      "editor": "VS Code",
+      "path": "/Users/mosc/.vscode/extensions/kicad-agent.kicad-0.4.70",
+      "allPayloadsMatch": true
+    },
+    {
+      "editor": "Cursor",
+      "path": "/Users/mosc/.cursor/extensions/kicad-agent.kicad-0.4.70",
+      "allPayloadsMatch": true
+    }
+  ]
+}

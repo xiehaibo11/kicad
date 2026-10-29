@@ -1,0 +1,75 @@
+{
+  "version": "0.4.68",
+  "artifact": {
+    "filename": "kicad-0.4.68.vsix",
+    "sha256": "b0962d569cd249a30114be609675a9103aff3eb740f2e0984643fd837499c5e4",
+    "bytes": 34650347
+  },
+  "buildManifestVerified": true,
+  "composer": {
+    "tests": 65,
+    "passed": 65
+  },
+  "extension": {
+    "buildChecksPassed": 29,
+    "typescript": true,
+    "vueTypecheck": true,
+    "productionBuild": true
+  },
+  "terminal": {
+    "memory": true,
+    "sessionRuntime": true
+  },
+  "productionWebview": {
+    "passed": true,
+    "bridge": "simulated VS Code bridge, real temporary storage"
+  },
+  "realVSCodeHost": {
+    "ok": true,
+    "version": "0.4.68",
+    "active": true,
+    "memorySchemaRegistered": [
+      "globalEnabled",
+      "projectEnabled",
+      "autoLearn"
+    ],
+    "liveToggleSync": true,
+    "settingsWebview": {
+      "resolved": 2,
+      "mounted": 2
+    },
+    "isolatedProfile": true,
+    "modelRequests": 0,
+    "productionDataAccess": false
+  },
+  "installation": {
+    "editors": {
+      "VS Code": {
+        "version": "0.4.68",
+        "payloadFiles": 1218,
+        "mismatches": [],
+        "ok": true
+      },
+      "Cursor": {
+        "version": "0.4.68",
+        "payloadFiles": 1218,
+        "mismatches": [],
+        "ok": true
+      }
+    },
+    "settingsUnchanged": true,
+    "gitIndexUnchanged": true,
+    "activeBranchAndHeadUnchanged": true,
+    "ignoredInstallerOwnedField": "package.json.__metadata"
+  },
+  "modelCoverage": {
+    "providerProfiles": [
+      "Claude",
+      "DeepSeek",
+      "Codex",
+      "other/text-only"
+    ],
+    "liveModelApiCalls": 0
+  },
+  "sourceCommit": "6568b147e091f5d25fff78925d4c8fd6dc3f37c4"
+}

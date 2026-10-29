@@ -1,0 +1,80 @@
+{
+  "assets": [
+    {
+      "apiUrl": "https://api.github.com/repos/xiehaibo11/kicad/releases/assets/670764083",
+      "contentType": "application/json",
+      "createdAt": "2026-10-24T00:00:40Z",
+      "digest": "sha256:caaf71d70556be504599b67e0a2a357d19b5b00235d4f5d4464c489ee414c68b",
+      "downloadCount": 0,
+      "id": "RA_kwDOVQOUjM4n-wwz",
+      "label": "",
+      "name": "build-manifest.json",
+      "size": 382,
+      "state": "uploaded",
+      "updatedAt": "2026-10-24T00:00:40Z",
+      "url": "https://github.com/xiehaibo11/kicad/releases/download/kicad-extension-v0.4.68/build-manifest.json"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/xiehaibo11/kicad/releases/assets/670764088",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-10-24T00:00:40Z",
+      "digest": "sha256:b0962d569cd249a30114be609675a9103aff3eb740f2e0984643fd837499c5e4",
+      "downloadCount": 0,
+      "id": "RA_kwDOVQOUjM4n-ww4",
+      "label": "",
+      "name": "kicad-0.4.68.vsix",
+      "size": 34650347,
+      "state": "uploaded",
+      "updatedAt": "2026-10-24T00:12:50Z",
+      "url": "https://github.com/xiehaibo11/kicad/releases/download/kicad-extension-v0.4.68/kicad-0.4.68.vsix"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/xiehaibo11/kicad/releases/assets/670772225",
+      "contentType": "application/json",
+      "createdAt": "2026-10-24T00:04:54Z",
+      "digest": "sha256:a90bdddd298b522f7c35f41c3abe633cdb73ce4d381a789587c2c4a0ba4f2fee",
+      "downloadCount": 0,
+      "id": "RA_kwDOVQOUjM4n-ywB",
+      "label": "",
+      "name": "memory-validation.json",
+      "size": 1663,
+      "state": "uploaded",
+      "updatedAt": "2026-10-24T00:04:54Z",
+      "url": "https://github.com/xiehaibo11/kicad/releases/download/kicad-extension-v0.4.68/memory-validation.json"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/xiehaibo11/kicad/releases/assets/670764095",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-10-24T00:00:40Z",
+      "digest": "sha256:52ac879f6568ca43af7ed5ab0f732a152229fb2f2cf2348c1872ad26dbe546f8",
+      "downloadCount": 0,
+      "id": "RA_kwDOVQOUjM4n-ww_",
+      "label": "",
+      "name": "REPORT.md",
+      "size": 1680,
+      "state": "uploaded",
+      "updatedAt": "2026-10-24T00:00:41Z",
+      "url": "https://github.com/xiehaibo11/kicad/releases/download/kicad-extension-v0.4.68/REPORT.md"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/xiehaibo11/kicad/releases/assets/670772226",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-10-24T00:04:54Z",
+      "digest": "sha256:8c606ffdac98b030cda6f39ad8d963848a9a4da3b328e10f1248d9a1783a4c58",
+      "downloadCount": 0,
+      "id": "RA_kwDOVQOUjM4n-ywC",
+      "label": "",
+      "name": "SHA256SUMS",
+      "size": 335,
+      "state": "uploaded",
+      "updatedAt": "2026-10-24T00:04:54Z",
+      "url": "https://github.com/xiehaibo11/kicad/releases/download/kicad-extension-v0.4.68/SHA256SUMS"
+    }
+  ],
+  "isDraft": false,
+  "isPrerelease": false,
+  "publishedAt": "2026-10-24T00:12:57Z",
+  "tagName": "kicad-extension-v0.4.68",
+  "targetCommitish": "6568b147e091f5d25fff78925d4c8fd6dc3f37c4",
+  "url": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-extension-v0.4.68"
+}

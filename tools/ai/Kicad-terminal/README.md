@@ -234,7 +234,7 @@ Both interfaces register `context7`, `session_history`, and `local_memory` direc
 
 Chat archives remain local: extension events under `~/.local/share/kicad/history/extension/`, terminal conversations in `~/.local/share/opencode/opencode.db`, and native Claude history under `~/.claude/projects/`. The shared history reader scopes both sources to the canonical workspace. `KICAD_HISTORY_DIR` overrides the shared history root; `KICAD_HISTORY_DB` overrides the terminal database.
 
-`local_memory` appends verified summaries or user-requested preferences to `<history-root>/memory/<workspace-hash>/memory.jsonl` with private file permissions. `read` recalls the latest 30 matching records; it does not automatically replay historical instructions. Credentials are redacted from memory summaries. Chat archives and memory summaries are distinct: retaining chats does not imply every message becomes an enduring preference. The model can list/read prior chats and append/recall memory through natural-language requests. Network documentation queries and memory writes respect the active tool permission mode.
+`local_memory` manages global and project notes in private local `memory-v2.json` stores; existing `memory.jsonl` notes migrate on their next mutation. Both interfaces automatically recall relevant records and learn explicit preferences or repeated low-risk reply-style choices from newly submitted human messages. Settings → Memory provides independent scope/learning switches, view/edit/export/delete controls and project counts. Switches apply to running terminal sessions on their next turn. Model-generated memory writes retain the active tool permission mode; memory never grants execution or sub-agent authority. See [memory behavior and storage](../composer/MEMORY.md) for limits, settings and tests.
 
 The model selector shows short names only (for example `Opus 5.5`, `GPT-6.1 Sol`); the full model ID remains the request value and is available in the extension's hover hint. Local login status is in the selector heading's hover hint.
 
@@ -260,3 +260,9 @@ The model selector shows short names only (for example `Opus 5.5`, `GPT-6.1 Sol`
 
 固定上游 v1.19.3 的 Web UI 引用了缺失的 `@opencode-ai/client/promise` 导出。
 `apply-settings.mjs` 把它映射到已有的生成版 Promise 客户端，保留完整嵌入式 Web UI。
+
+## 0.2.4：用户与项目记忆
+
+与扩展 0.4.68 共用全局记忆、项目记忆和自动学习开关。仅从真实用户消息提取持久偏好，
+按任务检索相关记忆；可通过内置 `local_memory` 能力查看、编辑、删除和导出。
+关闭对应开关后停止该范围的自动读取和学习；历史记忆不授予工具或子代理执行权限。

@@ -1,0 +1,42 @@
+  const nativeInput = ref<InstanceType<typeof ChatInputBox> | null>(null);
+  const nativeDropNotice = ref('');
+  const appliedNativeBatches = new Set<string>();
+  const applyingNativeBatches = new Set<string>();
+  let nativeComposerMounted = true;
+  const postNative = (message:unknown) => (window as any).KICAD_HOST_API?.postMessage(message);
+
+  watch(nativeInput,input => {
+    if (input) nativeDropNotice.value = '';
+    postNative({type:input ? 'kicad_composer_ready' : 'kicad_composer_detached'});
+  },{flush:'post'});
+
+  async function receiveNativeFiles(event:MessageEvent) {
+    if (event.data?.type !== 'from-extension') return;
+    const message = event.data.message;
+    if (message?.type === 'kicad_composer_files_available') {
+      if (nativeInput.value) postNative({type:'kicad_composer_ready'});
+      else nativeDropNotice.value = '已接收文件；当前是只读历史，请切换到可编辑对话。';
+      return;
+    }
+    if (message?.type !== 'kicad_composer_files' || typeof message.id !== 'string' || !Array.isArray(message.paths)) return;
+    if (appliedNativeBatches.has(message.id)) {
+      postNative({type:'kicad_composer_files_applied',id:message.id});
+      return;
+    }
+    if (!nativeInput.value || applyingNativeBatches.has(message.id)) return;
+    applyingNativeBatches.add(message.id);
+    try {
+      await nativeInput.value.addDroppedPaths(message.paths);
+      await nextTick();
+      if (!nativeComposerMounted) return;
+      appliedNativeBatches.add(message.id);
+      if (appliedNativeBatches.size > 100) appliedNativeBatches.delete(appliedNativeBatches.values().next().value!);
+      postNative({type:'kicad_composer_files_applied',id:message.id});
+    } finally { applyingNativeBatches.delete(message.id); }
+  }
+  window.addEventListener('message',receiveNativeFiles);
+  onUnmounted(() => {
+    nativeComposerMounted = false;
+    window.removeEventListener('message',receiveNativeFiles);
+    postNative({type:'kicad_composer_detached'});
+  });

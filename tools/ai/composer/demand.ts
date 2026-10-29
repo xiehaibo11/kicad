@@ -283,6 +283,7 @@ export class DemandCatalog {
     this.builtins??=this.options.builtins();
     const item=(await this.builtins).find(tool=>'tool:'+tool.name===key);
     if(!item||item.annotations?.openWorldHint)return false;
+    if(item.name==='local_memory')return ['list','read','search'].includes(args?.operation);
     if(item.annotations?.readOnlyHint===true)return true;
     const action=args&&typeof args==='object'?(args as any).action:undefined;
     return typeof action==='string'&&!!item.actions?.some(entry=>entry.name===action&&entry.mutates===false);

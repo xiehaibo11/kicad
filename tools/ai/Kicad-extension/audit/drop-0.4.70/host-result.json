@@ -1,0 +1,54 @@
+{
+  "version": "0.4.70",
+  "vscodeVersion": "1.136.1",
+  "fixture": "Local generated images; no chat message sent",
+  "events": [
+    {
+      "type": "native-drop",
+      "paths": [
+        "/tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image copy 2.png"
+      ]
+    },
+    {
+      "type": "attachment-read",
+      "paths": [
+        "/tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image copy 2.png"
+      ],
+      "attachments": [
+        {
+          "fileName": "image copy 2.png",
+          "bytes": 218,
+          "sha256": "638052edd2ea829d7f27510d97b61f3b77c4b6032128527eb72845f32005da53"
+        }
+      ],
+      "references": [],
+      "errors": []
+    },
+    {
+      "type": "native-drop",
+      "paths": [
+        "/tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image.png"
+      ]
+    },
+    {
+      "type": "attachment-read",
+      "paths": [
+        "/tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image.png"
+      ],
+      "attachments": [
+        {
+          "fileName": "image.png",
+          "bytes": 218,
+          "sha256": "0f739325410e6b397ffcd685096763f0694bfe065e71c44bf2d23e1c4c4047a4"
+        }
+      ],
+      "references": [],
+      "errors": []
+    }
+  ],
+  "ready": true,
+  "readiness": {
+    "resolved": 1,
+    "mounted": 1
+  }
+}

@@ -1,0 +1,280 @@
+Window: "image copy 3.png — drop-fixtures", App: Code.
+0 标准窗口 image copy 3.png — drop-fixtures, URL: file:///tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image%20copy%203.png, Secondary Actions: Raise
+	1 container image copy 3.png — drop-fixtures
+		2 container
+			3 HTML 内容 image copy 3.png — drop-fixtures, URL: vscode-file://vscode-app/Applications/Visual%20Studio%20Code.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html
+				4 container
+					5 container
+						6 container
+							7 工具栏
+								8 按钮 返回 (⌃-)
+									9 文本 
+								10 按钮 (disabled) 前进 (⌃⇧-)
+									11 文本 
+								12 工具栏 智能体状态
+									13 按钮 打开快速访问
+									14 container
+										15 按钮 切换聊天
+											16 按钮 切换聊天
+												17 文本 
+										18 弹出式按钮 更多操作
+							19 工具栏
+								20 按钮 在智能体窗口中打开 (⇧⌥⌘A)
+							21 工具栏 标题操作
+								22 切换按钮 Description: 切换主侧栏 (⌘B), Value: 1
+									23 文本 
+								24 按钮 自定义布局...
+									25 文本 
+								26 切换按钮 Description: 切换面板 (⌘J), Value: 0
+									27 文本 
+								28 切换按钮 Description: 切换辅助侧栏 (⌥⌘B), Value: 1
+									29 文本 
+						30 container
+							31 container
+								32 标签组 活动视图切换器
+									33 标签 (selected) 资源管理器 (⇧⌘E), Value: 1
+										34 container 资源管理器 (⇧⌘E)
+											35 文本 
+									36 标签 (settable, integer) 搜索 (⇧⌘F), Value: 0
+										37 container 搜索 (⇧⌘F)
+											38 文本 
+									39 标签 (settable, integer) 源代码管理 (⌃⇧G), Value: 0
+										40 container 源代码管理 (⌃⇧G)
+											41 文本 
+									42 标签 (settable, integer) 运行和调试 (⇧⌘D), Value: 0
+										43 container 运行和调试 (⇧⌘D)
+											44 文本 
+									45 标签 (settable, integer) 远程资源管理器, Value: 0
+										46 container 远程资源管理器
+											47 文本 
+									48 标签 (settable, integer) 扩展 (⇧⌘X), Value: 0
+										49 container 扩展 (⇧⌘X)
+											50 文本 
+									51 标签 (settable, integer) Claude Code, Value: 0
+										52 container Claude Code
+								53 工具栏 管理
+									54 弹出式按钮 帐户
+										55 container 帐户
+									56 弹出式按钮 管理
+										57 container 管理
+											58 文本 
+							59 container
+								60 标题 资源管理器, Value: 2
+									61 文本 资源管理器
+								62 工具栏 资源管理器操作
+									63 弹出式按钮 视图和更多操作…
+								64 container
+									65 container
+										66 按钮 资源管理器部分: drop-fixtures
+											67 文本 
+											68 标题 Description: 资源管理器部分: drop-fixtures, Value: 3
+												69 文本 drop-fixtures
+											70 工具栏 drop-fixtures操作
+												71 按钮 新建文件...
+													72 文本 
+												73 按钮 新建文件夹...
+													74 文本 
+												75 按钮 刷新资源管理器
+													76 文本 
+												77 按钮 在资源管理器中折叠文件夹
+													78 文本 
+										79 外框 文件资源管理器
+											80 container
+												81 row .vscode
+													82 container
+														83 文本 
+														84 container /tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/.vscode
+															85 文本 .vscode
+												86 row image copy 2.png
+													87 container
+														88 container /tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image copy 2.png
+															89 文本 
+															90 文本 image copy 2.png
+												91 row (selected) image copy 3.png
+													92 container
+														93 container /tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image copy 3.png
+															94 文本 
+															95 文本 image copy 3.png
+												96 row image copy.png
+													97 container
+														98 container /tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image copy.png
+															99 文本 
+															100 文本 image copy.png
+												101 row image.png
+													102 container
+														103 container /tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image.png
+															104 文本 
+															105 文本 image.png
+												106 row notes.md
+													107 container
+														108 container /tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/notes.md
+															109 文本 
+															110 文本 notes.md
+									111 按钮 大纲部分
+										112 文本 
+										113 标题 大纲, Value: 3
+											114 文本 大纲
+									115 按钮 时间线部分
+										116 文本 
+										117 标题 时间线, Value: 3
+											118 文本 时间线
+							119 container
+								120 container
+								121 container
+									122 container
+										123 container
+											124 标签组
+												125 标签 (selected) Description: image copy 3.png，预览, Value: 1
+													126 container image copy 3.png
+														127 文本 
+														128 文本 image copy 3.png
+													129 工具栏 选项卡操作
+														130 按钮 关闭 (⌘W)
+															131 文本 
+											132 工具栏 编辑器操作
+												133 按钮 Claude Code: Open
+												134 按钮 Open Codex Sidebar
+												135 按钮 向右拆分编辑器 (⌘\) [⌥] 向下拆分编辑器
+													136 文本 
+												137 弹出式按钮 更多操作...
+													138 文本 
+										139 内容列表
+											140 container /tmp/ki-drop-ui-q3rzvmg0/drop-fixtures/image copy 3.png
+												141 文本 
+												142 文本 image copy 3.png
+										143 按钮 图像预览 
+											144 text 图像预览 
+							145 container
+								146 标签组 活动视图切换器
+									147 标签 (settable, integer) 聊天 (⌃⌘I), Value: 0
+										148 container 聊天 (⌃⌘I)
+											149 文本 聊天
+									150 标签 (settable, integer) Codex, Value: 0
+										151 container Codex
+											152 文本 Codex
+									153 标签 (settable, integer) Claude Code, Value: 0
+										154 container Claude Code
+											155 文本 Claude Code
+									156 标签 (selected) Kicad, Value: 1
+										157 container Kicad
+											158 文本 Kicad
+								159 工具栏 聊天操作
+									160 弹出式按钮 视图和更多操作…
+								161 工具栏
+									162 切换按钮 Description: 最大化辅助侧栏, Value: 0
+										163 文本 
+									164 按钮 隐藏辅助侧栏 (⌥⌘B)
+										165 文本 
+								166 container
+									167 container
+										168 按钮 Kicad部分
+											169 文本 
+											170 标题 Kicad, Value: 3
+												171 文本 Kicad
+											172 工具栏 Kicad操作
+												173 按钮 Kicad: 打开终端
+													174 文本 
+												175 按钮 Kicad: 共享会话历史
+													176 文本 
+												177 按钮 Kicad: Settings
+													178 文本 
+									179 container
+										180 按钮 附件部分
+											181 文本 
+											182 标题 附件, Value: 3
+												183 文本 附件
+											184 工具栏 附件操作
+										185 外框 附件
+											186 row 直接拖入文件或文件夹
+												187 container
+													188 container 直接拖入文件或文件夹
+														189 文本 
+														190 文本 将文件拖到这里添加到对话
+						191 container
+							192 container remote
+								193 按钮 remote
+							194 container comment-discussion Kimi, Open Kimi
+								195 按钮 comment-discussion Kimi, Open Kimi
+									196 文本 
+									197 文本  Kimi
+							198 container 没有问题
+								199 按钮 没有问题
+									200 文本 
+									201 文本  0 
+									202 文本 
+									203 文本  0
+							204 container circuit-board Kicad, 点击按需检查内部工具、KiCad IPC、文档与可选工具
+								205 按钮 circuit-board Kicad, 点击按需检查内部工具、KiCad IPC、文档与可选工具
+									206 文本 
+									207 文本  Kicad
+							208 container 通知
+								209 按钮 通知
+							210 container ✻ Claude Code, Open Claude Code
+								211 按钮 ✻ Claude Code, Open Claude Code
+							212 container 216 B
+								213 按钮 216 B
+							214 container Copilot 状态
+								215 按钮 Copilot 状态
+							216 container 已为屏幕阅读器优化
+								217 按钮 已为屏幕阅读器优化
+							218 container 100x64
+								219 按钮 100x64
+							220 container 整张图片
+								221 按钮 整张图片
+					222 文本 Auto
+					223 HTML 内容 vscode-webview://0e886b3ctmj5ummktr0u5udl35ko0vlqk2b8nqu474gf6bhp09ck/index.html?id=244bd526-346f-4559-bc90-1b55ae36c8d0&parentId=37&origin=62396229-11c8-47a0-93a7-d091149b7f0e&swVersion=6&extensionId=kicad-agent.kicad&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app&purpose=webviewView
+						224 container Kicad
+							225 HTML 内容 Claudex Chat, URL: vscode-webview://0e886b3ctmj5ummktr0u5udl35ko0vlqk2b8nqu474gf6bhp09ck/index.html?id=244bd526-346f-4559-bc90-1b55ae36c8d0&parentId=37&origin=62396229-11c8-47a0-93a7-d091149b7f0e&swVersion=6&extensionId=kicad-agent.kicad&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app&purpose=webviewView
+								226 container
+									227 container
+										228 按钮 
+										229 标题 New Conversation, Value: 2
+											230 文本 New Conversation
+										231 按钮 , Help: 新开对话
+										232 container
+											233 图像 Kicad
+											234 文本 在终端运行 kicad；输入 /status 检查 KiCad MCP 连接。
+										235 container
+											236 按钮 Remove image copy 2.png image copy 2.png, Help: 点击预览 image copy 2.png
+												237 container
+													238 按钮 Remove image copy 2.png
+												239 文本 image copy 2.png
+											240 按钮 Remove image copy 2.png image copy 2.png, Help: 点击预览 image copy 2.png
+												241 container
+													242 按钮 Remove image copy 2.png
+												243 文本 image copy 2.png
+											244 文本输入区 (settable) 拖放验收草稿：保留这段文字，不发送。
+												245 文本 拖放验收草稿：保留这段文字，不发送。
+											246 container
+												247 text  Agent 
+											248 按钮 选择模型
+												249 文本 DeepSeek Flash
+												250 文本 
+											251 文本 0%
+											252 按钮 Select reasoning effort
+												253 container Reasoning effort: Auto
+													254 text  Auto 
+											255 按钮 优化提示词
+											256 按钮 
+											257 按钮 
+									258 图像
+					259 HTML 内容 vscode-webview://1dc196li88pbjd21817tn625m2bc7ud6a23fat80mm7joti1qd5s/index.html?id=bfd6b843-65c1-4501-a3c1-777b6b9bf24d&parentId=37&origin=af982613-a525-4a65-b205-ad2eace80d46&swVersion=6&extensionId=vscode.media-preview&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app
+						260 container undefined
+							261 HTML 内容 Image Preview, URL: vscode-webview://1dc196li88pbjd21817tn625m2bc7ud6a23fat80mm7joti1qd5s/index.html?id=bfd6b843-65c1-4501-a3c1-777b6b9bf24d&parentId=37&origin=af982613-a525-4a65-b205-ad2eace80d46&swVersion=6&extensionId=vscode.media-preview&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app
+								262 图像 /image%20copy%203.png?version%3D1792807846347
+	263 关闭按钮
+	264 全屏幕按钮 Help: 此按钮也可以执行缩放窗口的操作, Secondary Actions: 缩放窗口
+	265 最小化按钮
+266 menu bar
+	267 Code
+	268 文件
+	269 编辑
+	270 选择
+	271 查看
+	272 转到
+	273 运行
+	274 终端
+	275 窗口
+	276 帮助
+
+The focused UI element is 91 row (selected) image copy 3.png

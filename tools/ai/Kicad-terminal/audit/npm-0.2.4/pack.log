@@ -1,0 +1,10 @@
+
+> @-kicadai/kicad-code@0.2.4 build
+> node scripts/prepare.mjs
+
+{"verified": true, "kind": "terminal", "version": "1.19.3"}
+Prepared native runtime + shared JavaScript runtime, skills, plugins and third-party licenses.
+
+> @-kicadai/kicad-code@0.2.4 prepack
+> node scripts/verify.mjs
+

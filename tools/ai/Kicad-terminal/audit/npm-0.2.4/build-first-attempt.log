@@ -1,0 +1,35 @@
+Launcher passed: inherited JSON/JSONC, strings, explicit MCP/providers, empty config, invalid config, auto-use instructions and built-in KiCad tools; obsolete connectors removed.
+Legacy middleware retirement passed: recoverable, precise, idempotent.
+Bundled 428 modules in 223ms
+
+  session-runtime.mjs  3.1 MB  (entry point)
+
+Bundled 5 modules in 3ms
+
+  agent-doctor.mjs  20.22 KB  (entry point)
+
+Bundled 102 modules in 19ms
+
+  kicad-direct.mjs  1.92 MB  (entry point)
+
+Applied Kicad presentation branding to 27 source files.
+Applied KiCad composer overlay.
+Applied Kicad waiting indicator in transcript; removed assistant metadata row and toolbar duplicate; interrupt/retry retained.
+Applied model-specific /effort selector; native /variants retained.
+Applied Kicad 0.2.4 workbench: theme, home card, KiCad status, tool cards, sidebar and update channel.
+bun install v1.3.14 (0d9b296a)
+Resolving dependencies
+Resolved, downloaded and extracted [38]
+
+$ bun run --cwd packages/core fix-node-pty
+$ bun run script/fix-node-pty.ts
+$ husky
+
++ @opencode-ai/plugin@workspace:packages/plugin
++ @opencode-ai/script@workspace:packages/script
++ @opencode-ai/sdk@workspace:packages/sdk/js
+
+24 packages installed [6.88s]
+$ bun run script/build.ts
+$ tsgo --noEmit
+../core/src/kicad/settings.ts(6,27): error TS2307: Cannot find module './history.ts' or its corresponding type declarations.

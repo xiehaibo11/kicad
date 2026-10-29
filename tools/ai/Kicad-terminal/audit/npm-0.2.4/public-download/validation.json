@@ -1,0 +1,103 @@
+{
+  "version": "0.2.4",
+  "createdAt": "2026-10-24T00:21:34.145516+00:00",
+  "source": {
+    "commit": "0c624cb06530b24c1213c6ce958e9cd8a03d2e82",
+    "sourceSha256": "ac246921c07250922ef56742ea05c3c6cce4bd3d18e85b577d8b6002bece926f",
+    "inputsVerified": 188,
+    "allInputsMatchPinnedCommit": true
+  },
+  "checks": {
+    "composerPassed": 65,
+    "tuiPassed": 212,
+    "tuiSkipped": 1,
+    "terminalRuntimeChecksPassed": 11,
+    "npmConfigPassed": 4,
+    "memoryHookModelProfiles": [
+      "claude",
+      "deepseek-flash",
+      "openai-compatible",
+      "other-text-model"
+    ],
+    "liveModelApiCalls": false,
+    "settingsCopyDependencyRegression": true
+  },
+  "install": {
+    "ok": true,
+    "package": "/Users/mosc/Downloads/Kicad/tools/ai/Kicad-terminal/dist/-kicadai-kicad-code-0.2.4.tgz",
+    "version": "0.2.4",
+    "platform": "darwin-arm64",
+    "runtimeVersion": "1.19.3",
+    "cleanCacheNpx": true,
+    "globalCommand": "Kicad",
+    "packageName": "@-kicadai/kicad-code",
+    "caseVariantCommandsVerified": [
+      "kicad",
+      "kicaD",
+      "kicAd",
+      "kicAD",
+      "kiCad",
+      "kiCaD",
+      "kiCAd",
+      "kiCAD",
+      "kIcad",
+      "kIcaD",
+      "kIcAd",
+      "kIcAD",
+      "kICad",
+      "kICaD",
+      "kICAd",
+      "kICAD",
+      "Kicad",
+      "KicaD",
+      "KicAd",
+      "KicAD",
+      "KiCad",
+      "KiCaD",
+      "KiCAd",
+      "KiCAD",
+      "KIcad",
+      "KIcaD",
+      "KIcAd",
+      "KIcAD",
+      "KICad",
+      "KICaD",
+      "KICAd",
+      "KICAD"
+    ],
+    "installationWithoutForce": true,
+    "reinstallationWithoutForce": true,
+    "all22CommandsPreserved": true,
+    "packageFilesVerified": 581,
+    "bundledSkills": 8,
+    "frontendTools": 20,
+    "actionCount": 333,
+    "engineeringReferences": {
+      "version": "2026-10-20.1",
+      "topicCount": 20,
+      "ruleCount": 86,
+      "sourceCount": 21,
+      "exampleProjectCount": 37,
+      "contentSha256": "02c554917b0fd6329f74ec4c9933d646650e3faceb7ae9a229d01fd61656cc5a"
+    },
+    "referenceActionsExecuted": true,
+    "referenceInProcessToolExecuted": true,
+    "nativeTransportBundled": true,
+    "builtInToolsRegistered": true,
+    "oldGlobalConnectorsRemovedAfterMerge": true,
+    "terminalServerHealthy": true,
+    "embeddedWebAndJavaScript": true,
+    "startupCreatesNoTask": true,
+    "existingModelAndSettingsPreserved": true,
+    "prefixWithSpaces": true
+  },
+  "npm": {
+    "published": false,
+    "reason": "Registry E403: two-factor authentication or granular access token with bypass 2fa is required."
+  },
+  "artifact": {
+    "file": "-kicadai-kicad-code-0.2.4.tgz",
+    "bytes": 47506159,
+    "sha256": "09fa9c6723d3375b043dbc79f60e0da1690a158f5e0fc055e008ac6ddd98cc41"
+  }
+}

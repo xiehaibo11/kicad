@@ -33,13 +33,13 @@ npx --yes @-kicadai/kicad-code@latest --continue
 
 npm 官方包为 [`@-kicadai/kicad-code`](https://www.npmjs.com/package/@-kicadai/kicad-code)，
 `latest` 可能落后于 GitHub 发行版；可用 `npm view @-kicadai/kicad-code version` 查询。
-本次 0.2.3 可从 GitHub Release 的完整 tarball 启动：
+本次 0.2.4 可从 GitHub Release 的完整 tarball 启动：
 
 ```sh
-npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-code-v0.2.3/-kicadai-kicad-code-0.2.3.tgz Kicad
+npx --yes --package=https://github.com/xiehaibo11/kicad/releases/download/kicad-code-v0.2.4/-kicadai-kicad-code-0.2.4.tgz Kicad
 ```
 
-校验报告与发行包见 [Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.2.3)。
+校验报告与发行包见 [Release](https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.2.4)。
 
 `npx` 是下载、缓存并运行 npm 包的入口；全局安装后才会在 PATH 中长期提供
 这些命令。包内携带原生运行时和完整后端，不要求 Bun、Python 或 Go。
@@ -59,6 +59,12 @@ KICAD_CLI=/path/to/kicad-cli Kicad
 
 源码与许可证：https://github.com/xiehaibo11/kicad/tree/codex/kicad-npm/tools/ai/Kicad-terminal
 各开源组件保留原许可证，详见 THIRD_PARTY_NOTICES.md 与 licenses/。
+
+## 0.2.4 用户与项目记忆
+
+自动从用户对话中学习持久偏好，分别保存全局记忆与项目记忆，按当前任务检索并注入上下文。
+与扩展 0.4.68 共用记忆存储和开关；支持查看、编辑、删除与导出。
+记忆作为历史参考，不授予工具执行或子代理权限。适用于所有已配置模型。
 
 ## 0.2.3 共享策略与按需发现
 

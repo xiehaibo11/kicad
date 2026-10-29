@@ -1,0 +1,11 @@
+{
+  "headUnchanged": true,
+  "branchUnchanged": true,
+  "stagedDiffEmpty": true,
+  "files": {
+    "/Users/mosc/Downloads/Kicad/.git/index": false,
+    "/Users/mosc/Library/Application Support/Code/User/settings.json": true,
+    "/Users/mosc/Library/Application Support/Cursor/User/settings.json": true
+  },
+  "indexNote": "The binary index hash changed after status refresh; staged diff is empty. The index was not restored or rewritten."
+}

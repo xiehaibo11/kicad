@@ -1,0 +1,7 @@
+{
+  "checkedAt": "2026-10-24T00:34:22.829608+00:00",
+  "account2FAEnabled": true,
+  "status": "waiting_for_security_key_authentication",
+  "version": "0.2.4",
+  "published": false
+}

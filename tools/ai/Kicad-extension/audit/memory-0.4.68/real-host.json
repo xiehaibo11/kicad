@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "version": "0.4.68",
+  "active": true,
+  "memorySchemaRegistered": [
+    "globalEnabled",
+    "projectEnabled",
+    "autoLearn"
+  ],
+  "liveToggleSync": true,
+  "settingsWebview": {
+    "resolved": 2,
+    "mounted": 2
+  },
+  "isolatedProfile": true,
+  "modelRequests": 0,
+  "productionDataAccess": false
+}

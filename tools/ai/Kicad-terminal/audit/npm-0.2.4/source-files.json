@@ -1,0 +1,13 @@
+{
+  "base": "6568b147e091f5d25fff78925d4c8fd6dc3f37c4",
+  "commit": "0c624cb06530b24c1213c6ce958e9cd8a03d2e82",
+  "files": [
+    "tools/ai/Kicad-terminal/README.md",
+    "tools/ai/Kicad-terminal/apply-settings.mjs",
+    "tools/ai/Kicad-terminal/build.sh",
+    "tools/ai/Kicad-terminal/npm/README.md",
+    "tools/ai/Kicad-terminal/npm/package.json",
+    "tools/ai/Kicad-terminal/npm/package-lock.json",
+    "tools/ai/Kicad-terminal/test-settings-copy.mjs"
+  ]
+}

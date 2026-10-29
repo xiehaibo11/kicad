@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "checkedAt": "2026-10-24T00:23:22.949013+00:00",
+  "publicRelease": "https://github.com/xiehaibo11/kicad/releases/tag/kicad-code-v0.2.4",
+  "anonymousDownloads": {
+    "-kicadai-kicad-code-0.2.4.tgz": "09fa9c6723d3375b043dbc79f60e0da1690a158f5e0fc055e008ac6ddd98cc41",
+    "build-manifest.json": "f5ba34aeefce91a19eb8e72baaf794ef846ecfe8b0049f80d46dbefb0c14f48c",
+    "REPORT.md": "a07dc6dbd5b4d680bbb00d179930f9906565cac9e28b497bc581bc5525a96628",
+    "SHA256SUMS": "564e83ea550269debb2403f48e80c1aea0ff20548b5061dcfa3a69a3f929c543",
+    "validation.json": "740d4b964679bddf359c8119d15b7db1a94efff60e69a548e4b7c1c895e47572"
+  },
+  "checksumsMatch": true,
+  "cleanCachePublicNpx": true,
+  "version": "0.2.4",
+  "filesVerified": 581,
+  "npmRegistryLatest": "0.2.0",
+  "npmPublicationBlockedBy2FA": true
+}

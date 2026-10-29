@@ -1,0 +1,75 @@
+const fileDragActive = ref(false), dropError = ref('');
+
+function handleDragOver(event: DragEvent) {
+  if (!isFileTransfer(event.dataTransfer)) return;
+  event.preventDefault();
+  event.stopPropagation();
+  if (event.dataTransfer) event.dataTransfer.dropEffect = 'copy';
+  fileDragActive.value = true;
+}
+
+function handleDragLeave(event: DragEvent) {
+  if (!(event.currentTarget as HTMLElement).contains(event.relatedTarget as Node | null)) fileDragActive.value = false;
+}
+
+function insertDroppedReferences(references: Array<{path:string;directory:boolean}>) {
+  if (!references.length) return;
+  const text = references.map(item => fileMention(toWorkspaceRelativePath(item.path), item.directory)).join(' ');
+  const draft = content.value.trimEnd();
+  content.value = `${draft ? draft + ' ' : ''}${text} `;
+  if (textareaRef.value) {
+    textareaRef.value.textContent = content.value;
+    placeCaretAtEnd(textareaRef.value);
+  }
+  emit('input', content.value);
+  autoResizeTextarea();
+  nextTick(() => textareaRef.value?.focus());
+}
+
+async function addDroppedPaths(paths:string[]) {
+  dropError.value = '';
+  try {
+    const connection = await runtime!.connectionManager.get();
+    const result = await connection.kicadDropFiles(paths, getWorkspaceRoot());
+    if (result.attachments?.length) emit('addAttachmentItems', result.attachments);
+    insertDroppedReferences(result.references || []);
+    dropError.value = (result.errors || []).join('\n');
+    nextTick(() => textareaRef.value?.focus());
+  } catch (error) { dropError.value = error instanceof Error ? error.message : String(error); }
+}
+
+async function handleDrop(event: DragEvent) {
+  fileDragActive.value = false;
+  const transfer = event.dataTransfer;
+  if (!isFileTransfer(transfer) || !transfer) return;
+  // Capture synchronously: Chromium protects DataTransfer once the event ends.
+  const paths = droppedFilePaths(transfer), files = Array.from(transfer.files || []);
+  const types = Array.from(transfer.types || []).map(type => type.toLowerCase());
+  // A browser link also has text/uri-list; let ordinary link/text drops behave normally.
+  if (!paths.length && !files.length && !types.some(type => ['files','codeeditors','resourceurls','codefiles','application/vnd.code.uri-list'].includes(type))) return;
+  event.preventDefault();
+  event.stopPropagation();
+  dropError.value = '';
+  textareaRef.value?.focus();
+  try {
+    if (paths.length && paths.length >= files.length) {
+      await addDroppedPaths(paths);
+      return;
+    }
+    if (files.length) {
+      const captured = new DataTransfer();
+      let total = 0;
+      for (const file of files) {
+        if (file.size > 20 * 1024 * 1024 || total + file.size > 40 * 1024 * 1024) {
+          dropError.value += `${file.name}：附件大小超出限制（单个 20 MB，每次 40 MB）。\n`;
+          continue;
+        }
+        total += file.size;
+        captured.items.add(file);
+      }
+      if (captured.files.length) handleAddFiles(captured.files);
+      return;
+    }
+    dropError.value = '未读取到文件，请重试或使用附件按钮。';
+  } catch (error) { dropError.value = error instanceof Error ? error.message : String(error); }
+}

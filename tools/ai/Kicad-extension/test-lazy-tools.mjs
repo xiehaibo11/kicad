@@ -24,7 +24,8 @@ function load(relative,overrides={}){
   const js=ts.transpileModule(fs.readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
   const module={exports:{}};
   vm.runInNewContext(js,{module,exports:module.exports,process,console,Buffer,URL,setTimeout,clearTimeout,
-    require:name=>name==='vscode'?vscode:name==='@anthropic-ai/claude-agent-sdk'?sdk:name===directUrl?direct:overrides[name]??require(name)},{filename:file});
+    require:name=>name==='vscode'?vscode:name==='@anthropic-ai/claude-agent-sdk'?sdk:name===directUrl?direct:overrides[name]??
+      (name.startsWith('.')&&fs.existsSync(path.resolve(path.dirname(file),name+'.ts'))?load(path.relative(root,path.resolve(path.dirname(file),name+'.ts'))):require(name))},{filename:file});
   return module.exports;
 }
 const policy=load('src/kicadToolsPolicy.ts'),runtime=load('src/kicadRuntime.ts',{'./shared/kicadPromptAudit':{promptAudit:()=>({readOnly:true})}, './kicadComputerUse':{computerCapabilities:()=>({capabilities:[],close:async()=>{}})}, './shared/kicadToolResult':toolResult, './shared/kicadDemand':load('src/shared/kicadDemand.ts'), './shared/kicadMcpSync':load('src/shared/kicadMcpSync.ts'), './shared/kicadLocalTools':load('src/shared/kicadLocalTools.ts',{'./kicadHistory':load('src/shared/kicadHistory.ts')}), './shared/kicadModelProfile':load('src/shared/kicadModelProfile.ts'),'./shared/kicadDiagnostics':load('src/shared/kicadDiagnostics.ts'),'./kicadToolsPolicy':policy});

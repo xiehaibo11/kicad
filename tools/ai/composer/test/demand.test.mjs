@@ -166,9 +166,12 @@ test('read-only classification gates capability_inspect',async()=>{
  const tool=(name,annotations,actions)=>({name,description:name,inputSchema:{type:'object'},annotations,actions,execute:async args=>{executed.push(name);return {name,args};}});
  const catalog=new DemandCatalog({cwd:'/fixture',skillRoots:[],servers:{ext:{}},connect:async()=>({list:async()=>[{name:'lookup',description:'lookup',inputSchema:{type:'object'},annotations:{readOnlyHint:true}},{name:'write',description:'write',inputSchema:{type:'object'}}],call:async(name)=>({name}),close:async()=>{}}),builtins:async()=>[
   tool('kicad_health',{readOnlyHint:true}),
+  tool('local_memory',{readOnlyHint:false}),
   tool('kicad_web',{readOnlyHint:true,openWorldHint:true}),
   tool('kicad_board',{readOnlyHint:false},[{name:'board.drc.run',mutates:false},{name:'board.items.update',mutates:true},{name:'board.unknown'}])]});
  assert.equal(await catalog.isReadOnly('tool:kicad_health',{}),true);
+ for(const operation of ['list','read','search'])assert.equal(await catalog.isReadOnly('tool:local_memory',{operation}),true);
+ for(const operation of ['append','replace','delete',undefined])assert.equal(await catalog.isReadOnly('tool:local_memory',{operation}),false);
  assert.equal(await catalog.isReadOnly('kicad_board',{action:'board.drc.run'}),true,'bare ids and read-only typed actions');
  for(const [id,args] of [['tool:kicad_board',{action:'board.items.update'}],['tool:kicad_board',{action:'board.unknown'}],['tool:kicad_board',{}],['tool:kicad_web',{}],['tool:missing',{}],['mcp:ext:lookup',{}],['',{}]])
   assert.equal(await catalog.isReadOnly(id,args),false,id+' '+JSON.stringify(args));

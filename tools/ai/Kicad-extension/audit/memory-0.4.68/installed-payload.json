@@ -1,0 +1,20 @@
+{
+  "editors": {
+    "VS Code": {
+      "version": "0.4.68",
+      "payloadFiles": 1218,
+      "mismatches": [],
+      "ok": true
+    },
+    "Cursor": {
+      "version": "0.4.68",
+      "payloadFiles": 1218,
+      "mismatches": [],
+      "ok": true
+    }
+  },
+  "settingsUnchanged": true,
+  "gitIndexUnchanged": true,
+  "activeBranchAndHeadUnchanged": true,
+  "ignoredInstallerOwnedField": "package.json.__metadata"
+}

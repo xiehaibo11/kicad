@@ -1,0 +1,16 @@
+{
+  "version": "0.4.69",
+  "vsixSha256": "e0b5e72c11c664c74261ad291363a41a47c3c4f926079254f0a74765bae77370",
+  "installed": {
+    "VS Code": {
+      "manifest": true,
+      "dist/extension.cjs": true,
+      "dist/media/main.js": true
+    },
+    "Cursor": {
+      "manifest": true,
+      "dist/extension.cjs": true,
+      "dist/media/main.js": true
+    }
+  }
+}

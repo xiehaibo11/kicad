@@ -2,6 +2,17 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import {randomUUID} from 'node:crypto';
+import {historyRoot} from './history.ts';
+
+const MEMORY_KEYS=['globalEnabled','projectEnabled','autoLearn'];
+// One atomic file per switch avoids lost updates between editor processes.
+export function writeMemorySetting(key:string,enabled:boolean){
+  if(!MEMORY_KEYS.includes(key)||typeof enabled!=='boolean')throw Error('Invalid memory setting.');
+  const directory=path.join(historyRoot(),'memory-policy'),file=path.join(directory,key+'.json'),tmp=file+'.'+randomUUID()+'.tmp';
+  fs.mkdirSync(directory,{recursive:true,mode:0o700});
+  try{fs.writeFileSync(tmp,JSON.stringify({memory:{[key]:enabled}})+'\n',{mode:0o600,flag:'wx'});fs.renameSync(tmp,file);}finally{fs.rmSync(tmp,{force:true});}
+}
 
 export const EFFORT_LEVELS = ['off','minimal','low','medium','high','xhigh','max','ultra'];
 export interface AgentSettings {
@@ -13,6 +24,7 @@ export interface AgentSettings {
   commitAttribution: boolean;
   mcpVerification: boolean;
   autoModeSuggestions: boolean;
+  memory: {globalEnabled:boolean;projectEnabled:boolean;autoLearn:boolean};
 }
 export type SettingsLayer = {source:string;value:Record<string,any>;managed?:boolean};
 const list = (value:unknown):string[] => Array.isArray(value) ? value.filter((v):v is string=>typeof v==='string'&&!!v.trim()).map(v=>v.trim()) : [];
@@ -22,6 +34,7 @@ const lower = (a?:string,b?:string) => !a?b:!b?a:EFFORT_LEVELS.indexOf(a)<EFFORT
 export function resolveSettings(layers:SettingsLayer[]):AgentSettings {
   const ordered=[...layers.filter(l=>!l.managed),...layers.filter(l=>l.managed)];
   const merged=Object.assign({},...ordered.map(l=>l.value));
+  const memory=Object.assign({globalEnabled:true,projectEnabled:true,autoLearn:true},...ordered.map(l=>l.value.memory||{}));
   // A narrower scope cannot remove a model denial or raise an effort ceiling.
   const deniedModels=[...new Set(ordered.flatMap(l=>list(l.value.deniedModels)))];
   const modelSettings:AgentSettings['modelSettings']=Object.create(null);
@@ -36,7 +49,7 @@ export function resolveSettings(layers:SettingsLayer[]):AgentSettings {
   return {autoMode:merged.autoMode!==false,deniedModels,maxEffortLevel,modelSettings,
     maxProseWidth:Number.isInteger(merged.maxProseWidth)&&merged.maxProseWidth>=0?merged.maxProseWidth:100,
     commitAttribution:merged.commitAttribution!==false,mcpVerification:merged.mcpVerification!==false,
-    autoModeSuggestions:merged.autoModeSuggestions!==false};
+    autoModeSuggestions:merged.autoModeSuggestions!==false,memory};
 }
 export function readSettings(cwd:string,overrides:Record<string,any>={},options:{home?:string;managedPath?:string;parse?:(s:string)=>any}={}){
   const home=options.home||os.homedir();
@@ -47,6 +60,7 @@ export function readSettings(cwd:string,overrides:Record<string,any>={},options:
     [path.join(cwd,'.kicad/settings.json'),false],[path.join(cwd,'.kicad/settings.local.json'),false]] as const){
     load(source,isManaged);
   }
+  for(const key of MEMORY_KEYS)load(path.join(historyRoot(),'memory-policy',key+'.json'),false);
   layers.push({source:'host settings',value:overrides});load(managed,true);
   return {settings:resolveSettings(layers),sources:layers.map(({source,managed})=>({source,managed:!!managed}))};
   function load(source:string,managed:boolean){
@@ -58,6 +72,7 @@ export function readSettings(cwd:string,overrides:Record<string,any>={},options:
       if(value.maxEffortLevel!==undefined&&!effort(value.maxEffortLevel))throw Error();
       for(const key of ['autoMode','commitAttribution','mcpVerification','autoModeSuggestions'])if(value[key]!==undefined&&typeof value[key]!=='boolean')throw Error();
       if(value.maxProseWidth!==undefined&&(!Number.isInteger(value.maxProseWidth)||value.maxProseWidth<0))throw Error();
+      if(value.memory!==undefined&&(!value.memory||typeof value.memory!=='object'||Array.isArray(value.memory)||Object.entries(value.memory).some(([key,v])=>!['globalEnabled','projectEnabled','autoLearn'].includes(key)||typeof v!=='boolean')))throw Error();
       if(value.modelSettings!==undefined){
         if(!value.modelSettings||typeof value.modelSettings!=='object'||Array.isArray(value.modelSettings))throw Error();
         for(const entry of Object.values(value.modelSettings))if(!entry||typeof entry!=='object'||(entry as any).maxEffortLevel!==undefined&&!effort((entry as any).maxEffortLevel))throw Error();

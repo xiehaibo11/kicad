@@ -30,7 +30,7 @@ test('memory supports list/search/replace/delete, preserves ids, and rejects a f
  const deleted=await executeLocalTool('local_memory',{operation:'delete',id:second.id},tmp);assert.equal(deleted.id,second.id);
  assert.equal((await executeLocalTool('local_memory',{operation:'list'},tmp)).total,1);
  await assert.rejects(()=>executeLocalTool('local_memory',{operation:'delete',id:'missing'},tmp),/not found/);
- const huge='x'.repeat(8000);let full=false;for(let i=0;i<40;i++){try{await executeLocalTool('local_memory',{operation:'append',text:huge},tmp);}catch(error){full=/full/.test(String(error));break;}}
+ const huge='x'.repeat(7990);let full=false;for(let i=0;i<40;i++){try{await executeLocalTool('local_memory',{operation:'append',text:i+huge},tmp);}catch(error){full=/full/.test(String(error));break;}}
  assert.equal(full,true,'the memory store has a hard size cap');
  }finally{old===undefined?delete process.env.KICAD_HISTORY_DIR:process.env.KICAD_HISTORY_DIR=old;await fs.rm(tmp,{recursive:true,force:true});}
 });

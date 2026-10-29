@@ -3,7 +3,7 @@ import path from 'node:path';
 const root=process.argv[2];
 function patch(file,before,after){const target=path.join(root,file),source=fs.readFileSync(target,'utf8');if(source.split(before).length!==2)throw Error('Terminal settings anchor missing/ambiguous: '+file+' '+before.slice(0,80));fs.writeFileSync(target,source.replace(before,()=>after));}
 const here=path.dirname(new URL(import.meta.url).pathname);
-fs.copyFileSync(path.join(here,'../composer/settings.ts'),path.join(root,'packages/core/src/kicad/settings.ts'));
+for(const name of ['settings.ts','history.ts'])fs.copyFileSync(path.join(here,'../composer',name),path.join(root,'packages/core/src/kicad',name));
 const session='packages/tui/src/routes/session/index.tsx';
 patch(session,'import path from "node:path"','import path from "node:path"\nimport {readSettings} from "@opencode-ai/core/kicad/settings"');
 patch(session,'function TextPart(props: { last: boolean; part: TextPart; message: AssistantMessage }) {\n  const ctx = use()',`function TextPart(props: { last: boolean; part: TextPart; message: AssistantMessage }) {

@@ -18,6 +18,7 @@ the exact limits of that verification are recorded in the report.
 - `Kicad-extension/`: Claudix-based chat and terminal integration, with in-process
   SDK tools loaded from the exact same shared bundle.
 - `composer/`: shared intent and engineering instructions.
+- [Local memory](composer/MEMORY.md): automatic preference learning, scoped recall and shared terminal/extension controls.
 - `stepcheck/`: optional native OpenCASCADE STEP collision checker.
 
 ## Build

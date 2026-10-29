@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "kind": "extension",
+  "version": "0.4.68",
+  "createdAt": "2026-10-23T23:58:41.139262+00:00",
+  "upstreamCommit": "c238b3e57c55e95220a8e2837cd4cbe6350a6b65",
+  "sourceSha256": "abc6e627bc693279b8ba55f372483c0e6a268e83053b4719fa0d9e18a6e90726",
+  "files": {
+    "kicad-0.4.68.vsix": "b0962d569cd249a30114be609675a9103aff3eb740f2e0984643fd837499c5e4"
+  }
+}
